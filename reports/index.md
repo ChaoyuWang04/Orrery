@@ -173,6 +173,7 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| Agensh | Microsoft | 没有中心编排者的多 agent harness:worker 经共享工作区、消息接口与共享上下文自行认领子任务并异步合并进度,扩到 1,024 个 agent |
 | Skill2Env | NVIDIA | 把 3.4k 个公开 Agent Skills 转成 8k 个带程序化测试与行为 rubric 的终端环境,300 步 RL 让 Qwen-3.8 27B 在 Terminal-Bench 2.1 上涨 4.7 个点 |
 | Self-Organizing-Agent-Teams | Stanford | 固定的一组 agent 从过往协作里学可复用的组织策略(角色、阶段、发言与信息流),只用 15 道数学题与 25 道研究生知识题学到的策略原样迁移到未见基准 |
 | CodeMidas | Xiaomi | 只用源码本身造编码 RL 环境:agent 探索已实现功能、写行为规格与测试并反复验证,得到 3,185 个仓库的 5,545 个任务 |
@@ -199,7 +200,6 @@
 | WebGPT | OpenAI | 浏览器辅助问答,人类反馈训练的早期 web agent |
 | Fara-1.5 | Microsoft | 电脑操作 agent 的可扩展学习环境与小模型数据配方;前作 Fara-7B 见 arXiv 2511.19663 |
 | Harness-Zero | Peking | harness 蒸馏:用优化过的 harness 指导一个 harnessing agent 在目标 harness 的动作空间里改写学生回答,微调后部署时去掉专用 harness |
-| Agensh | Microsoft | 没有中心编排者的多 agent harness:worker 经共享工作区、消息接口与共享上下文自行认领子任务并异步合并进度,扩到 1,024 个 agent |
 
 ## 推理服务与架构探索
 
@@ -345,6 +345,7 @@
 | 报告 | 公司 | 一句话 |
 |---|---|---|
 | ART-Discovery | Anthropic | 自主运行的 Claude Code 实例在 19 亿个蛋白簇里普查逆转录酶位点,找出带约 200 nt 重复阵列的新家族 ART(alphaXiv 自有编号,非 arXiv) |
+| InternW0 | ShanghaiAILab | 物理世界模型:视频专家慢速预测未来、动作专家快速出动作的异步双专家结构,混合真机、仿真、第一人称与接触力数据预训练(上海 AI 实验室) |
 | WorldCrafter | Tencent | 视频世界模型的隐式 3D 感知记忆:按请求的相机视角把历史多视图观测压进固定数量的视角 token,不靠显式深度对应,单图或文本起步做分钟级流式探索 |
 | DexTouch-WM | HKUST | 人手与灵巧手共用一套触觉阵列与动作表示,让人类触觉交互数据监督同一个动作条件世界模型,联合预测未来 RGB 与双手触觉 |
 | JEPA-Anything | CUHK | 正交预测分解把 JEPA 的潜目标拆成互补因子分路学习再合并,同一套框架跑视觉、生物、临床、控制、分子动力学、物理场与天气七个领域 |
@@ -370,7 +371,6 @@
 | DreamerV3 | Google | 一套超参掌握多样控制任务(DeepMind,Nature) |
 | Workspace-Models | MIT | 训练时用 VLM 标出任务相关的当前与历史信息,蒸馏成轻量的 workspace token,部署时代替观测喂给策略,不再在环调用 VLM |
 | MotionJEPA | Oxford | JEPA 偏好慢特征导致时间维坍塌:加一个预测差分图像嵌入的正则 DISReg,不需要动作标签也不做像素重建 |
-| InternW0 | ShanghaiAILab | 物理世界模型:视频专家慢速预测未来、动作专家快速出动作的异步双专家结构,混合真机、仿真、第一人称与接触力数据预训练(上海 AI 实验室) |
 
 ## 自进化系统
 

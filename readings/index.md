@@ -45,6 +45,7 @@
 
 | 材料 | 机构 | 一句话 |
 |---|---|---|
+| Self-Play-Pretraining | Independent | 从随机初始化起零数据预训练:生成器用 RL 写程序交给通用图灵机产出字节序列,学习器做自回归预测,生成器专挑学习器能力边界上的数据(与特拉维夫大学、斯坦福合作) |
 | On-Policy Self-Distillation | UCSD | 无监督的 on-policy 自蒸馏,后训练不再依赖外部标注 |
 | Rethinking-OPD | Tsinghua | 系统查 on-policy 蒸馏的训练动力学:成败取决于师生思维模式是否兼容 |
 | Self-Distillation-Zero | Princeton | 让模型自我修订,把 RLVR 的二值奖励变成 token 级的稠密监督,不需要外部教师 |
@@ -82,7 +83,6 @@
 | RL2 | Berkeley | 把 RL 算法本身学进 RNN 的隐状态,元学习式的快速适应 |
 | Knowledge-Distillation | Google | 知识蒸馏原始论文:用教师的软标签带温度去教学生 |
 | KLPO | Independent | 无 critic、单 rollout 的异步离策略 agentic RL:回归训练端与采样端的对数比来拟合局部策略镜像下降条件,不用乘性重要性权重 |
-| Self-Play-Pretraining | Independent | 从随机初始化起零数据预训练:生成器用 RL 写程序交给通用图灵机产出字节序列,学习器做自回归预测,生成器专挑学习器能力边界上的数据(与特拉维夫大学、斯坦福合作) |
 
 ## Agent 训练与工具使用
 
