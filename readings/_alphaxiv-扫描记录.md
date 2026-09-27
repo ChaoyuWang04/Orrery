@@ -51,3 +51,6 @@
 | 2026-09-25 | 2609.26457 | Recursive self-improvement of AI research agents | Weco AI | 30 | D · 已在库 | reports/Weco/AIDE2 |
 | 2026-09-25 | 2609.24919 | PixelDiT2: Representation-Grounded Pixel Diffusion Transformers | NVIDIA、University of Rochester | 30 | A · 名单内(NVIDIA) | reports/NVIDIA/PixelDiT2 |
 | 2026-09-26 | 2609.24170 | An Unexpected Robot Policy: Early Evaluations of GPT-6 Astra on RoboDojo and Beyond | RoboProbe、RoboDojo、University of Hong Kong、Tsinghua University | 31 | B · 名单外 | readings/世界模型与 Agent/LLM-as-Policy |
+| 2026-09-27 | 2609.30063 | Self-Play Pretraining with Zero Data | Tel Aviv University、Stanford University、LAPTh、USMB | 49 | B · 名单外 | readings/训练方法与强化学习/Self-Play-Pretraining |
+| 2026-09-27 | 2609.27656 | InternW0: A Foundational Physical World Model for Efficient Real-World Interactions | Shanghai Artificial Intelligence Laboratory | 38 | A · 名单内(ShanghaiAILab) | reports/ShanghaiAILab/InternW0 |
+| 2026-09-27 | 2609.26781 | Agensh: Scaling Organizational Intelligence to 1,024 Agents | Microsoft Research | 32 | A · 名单内(Microsoft) | reports/Microsoft/Agensh |

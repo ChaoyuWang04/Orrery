@@ -82,6 +82,7 @@
 | RL2 | Berkeley | 把 RL 算法本身学进 RNN 的隐状态,元学习式的快速适应 |
 | Knowledge-Distillation | Google | 知识蒸馏原始论文:用教师的软标签带温度去教学生 |
 | KLPO | Independent | 无 critic、单 rollout 的异步离策略 agentic RL:回归训练端与采样端的对数比来拟合局部策略镜像下降条件,不用乘性重要性权重 |
+| Self-Play-Pretraining | Independent | 从随机初始化起零数据预训练:生成器用 RL 写程序交给通用图灵机产出字节序列,学习器做自回归预测,生成器专挑学习器能力边界上的数据(与特拉维夫大学、斯坦福合作) |
 
 ## Agent 训练与工具使用
 

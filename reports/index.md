@@ -199,6 +199,7 @@
 | WebGPT | OpenAI | 浏览器辅助问答,人类反馈训练的早期 web agent |
 | Fara-1.5 | Microsoft | 电脑操作 agent 的可扩展学习环境与小模型数据配方;前作 Fara-7B 见 arXiv 2511.19663 |
 | Harness-Zero | Peking | harness 蒸馏:用优化过的 harness 指导一个 harnessing agent 在目标 harness 的动作空间里改写学生回答,微调后部署时去掉专用 harness |
+| Agensh | Microsoft | 没有中心编排者的多 agent harness:worker 经共享工作区、消息接口与共享上下文自行认领子任务并异步合并进度,扩到 1,024 个 agent |
 
 ## 推理服务与架构探索
 
@@ -369,6 +370,7 @@
 | DreamerV3 | Google | 一套超参掌握多样控制任务(DeepMind,Nature) |
 | Workspace-Models | MIT | 训练时用 VLM 标出任务相关的当前与历史信息,蒸馏成轻量的 workspace token,部署时代替观测喂给策略,不再在环调用 VLM |
 | MotionJEPA | Oxford | JEPA 偏好慢特征导致时间维坍塌:加一个预测差分图像嵌入的正则 DISReg,不需要动作标签也不做像素重建 |
+| InternW0 | ShanghaiAILab | 物理世界模型:视频专家慢速预测未来、动作专家快速出动作的异步双专家结构,混合真机、仿真、第一人称与接触力数据预训练(上海 AI 实验室) |
 
 ## 自进化系统
 
