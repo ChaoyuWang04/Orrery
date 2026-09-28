@@ -13,6 +13,7 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| Claude-Opus-5.5 | Anthropic | Claude Opus 5.5 的系统卡:RSP 与 FCF 风险评估、防护与智能体安全、对齐评估等上线前评测(230 页) |
 | Model-Growth-Scaling-Exponents | NYU | 架构能改预训练的缩放指数:以循环 Transformer 为锚,训练中加循环数的模型增长改变指数最多,边界算子也有较小提升 |
 | DeepSeek-V4.1-Flash | DeepSeek | 552B CED,prefill 8B/decode 16B,CSA2+FP4 把全局 KV 压到 890 B/token |
 | Qwen3.8-Max | Alibaba | 2.4T/95B;真正的内容是 RL 系统——环境按 Task/Workspace/Harness 三轴解耦扩展、统一奖励系统、在线数据均衡器压批间梯度方差。**原件是网页**,见 qwen.ai/blog?id=qwen3.8 |
@@ -75,7 +76,6 @@
 | Falcon-H1 | TII | Transformer-Mamba 混合头的开放权重家族;推理续作 H1R 见 arXiv 2601.02346 |
 | LFM2 | LiquidAI | 为端侧效率反推架构的开源小基模家族(arXiv 2511.23404) |
 | SmolLM3 | HuggingFace | 3B 长上下文多语推理,训练方法与配方全公开。**原件待核**(HF 博客抓取失败) |
-| Claude-Opus-5.5 | Anthropic | Claude Opus 5.5 的系统卡:RSP 与 FCF 风险评估、防护与智能体安全、对齐评估等上线前评测(230 页) |
 | PuRo-2B | Tsinghua | RTX 5090 上 FP8 从零预训练 2B 模型,不到 6.9K 美元逼近 Qwen2.5-1.5B,并拟合训练成本缩放定律(arXiv 2608.27370) |
 
 ## 注意力与长上下文
