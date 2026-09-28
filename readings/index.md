@@ -247,11 +247,11 @@
 
 | 材料 | 机构 | 一句话 |
 |---|---|---|
+| Test-Time-Covert-Channels | Arizona State University | 参数固定、没有码本的两个 agent 只靠每轮一比特的成败反馈,就能在明令保密、逐条消息受监控的条件下,把机密值藏进正常措辞里传出去(alphaXiv 自有编号,非 arXiv) |
 | Few-Shot-World-Representations | University of Tokyo | 少样本示范让 LLM 更会用上下文里学到的图结构世界表示:线性探针显示示范移动了表示的位置并提高其预测作用(arXiv 2609.24352) |
 | Reward-Hacking-Probes | Goodfire | 差值均值向量就能表示并检测前沿开源模型的奖励黑客,成本近乎为零,效果接近 LLM 监控器,还能在思维链上提前预警 |
 | Scaling Monosemanticity | Anthropic | 稀疏自编码器在 Claude 3 Sonnet 上规模化,抽出可解释、可干预的单义特征 |
 | Refusal Direction | Independent | 拒答行为由残差流里的单一方向中介;删掉该方向就能定向解除拒答,加回去能诱发拒答 |
-| Test-Time-Covert-Channels | Arizona State University | 参数固定、没有码本的两个 agent 只靠每轮一比特的成败反馈,就能在明令保密、逐条消息受监控的条件下,把机密值藏进正常措辞里传出去(alphaXiv 自有编号,非 arXiv) |
 
 ## 深度学习基石
 
