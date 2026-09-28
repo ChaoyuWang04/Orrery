@@ -283,6 +283,7 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| Video-DeltaNet | Berkeley | 视频扩散的混合注意力:局部 Softmax 加逐帧更新的双向线性记忆,分阶段对齐教师接进预训练模型,在 MiniMax H3 上实例化 |
 | Qwen-Image-2.0-RL | Alibaba | 在 Qwen-Image-2.0 上做 RLHF + on-policy 蒸馏;组合奖励模型、GRPO 框架与混合 CFG,最后用 OPD 合并 T2I 与编辑两条策略 |
 | World-Tracing | WorldLabs | 生成像素对齐的几何,超出可见范围 |
 | Seed3D-2.0 | ByteDance | 仿真可用的高保真 3D 生成,统一 PBR 模型(Seed) |
@@ -317,7 +318,6 @@
 | Seedream-4.0 | ByteDance | 统一文生图与图像编辑的多模态生成(arXiv 2509.20427) |
 | Kling-Omni | Kuaishou | 统一多任务的视频生成框架(arXiv 2512.16776) |
 | Movie-Gen | Meta | 视频、图像、个性化与音频四件套媒体基模;Meta 生成线此前零收录(arXiv 2410.13720) |
-| Video-DeltaNet | Berkeley | 视频扩散的混合注意力:局部 Softmax 加逐帧更新的双向线性记忆,分阶段对齐教师接进预训练模型,在 MiniMax H3 上实例化 |
 | Geometric-AutoEncoder | HKUST | 几何原生自编码器 GAE:把几何基础模型的特征重参数化成紧凑潜空间,可同时解码外观、深度、相机与点图,再在上面做条件流生成 |
 | PixelDiT2 | NVIDIA | 端到端像素空间扩散:冻结的视觉基础模型逐 patch 给表示引导,不引入自编码器;ImageNet 256×256 上 600 epoch FID 1.46(arXiv 2609.24919) |
 
