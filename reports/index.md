@@ -371,6 +371,7 @@
 | DreamerV3 | Google | 一套超参掌握多样控制任务(DeepMind,Nature) |
 | Workspace-Models | MIT | 训练时用 VLM 标出任务相关的当前与历史信息,蒸馏成轻量的 workspace token,部署时代替观测喂给策略,不再在环调用 VLM |
 | MotionJEPA | Oxford | JEPA 偏好慢特征导致时间维坍塌:加一个预测差分图像嵌入的正则 DISReg,不需要动作标签也不做像素重建 |
+| InsertionWM | NVIDIA | 用 TD-MPC2 视觉世界模型做机器人插装:腕部深度图加本体感知,一个模型在 90 种零件上训练,对未见几何零样本成功率 56%,远高于无模型基线的 7% |
 
 ## 自进化系统
 

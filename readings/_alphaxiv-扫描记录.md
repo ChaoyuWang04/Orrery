@@ -54,3 +54,5 @@
 | 2026-09-27 | 2609.30063 | Self-Play Pretraining with Zero Data | Tel Aviv University、Stanford University、LAPTh、USMB | 49 | B · 名单外 | readings/训练方法与强化学习/Self-Play-Pretraining |
 | 2026-09-27 | 2609.27656 | InternW0: A Foundational Physical World Model for Efficient Real-World Interactions | Shanghai Artificial Intelligence Laboratory | 38 | A · 名单内(ShanghaiAILab) | reports/ShanghaiAILab/InternW0 |
 | 2026-09-27 | 2609.26781 | Agensh: Scaling Organizational Intelligence to 1,024 Agents | Microsoft Research | 32 | A · 名单内(Microsoft) | reports/Microsoft/Agensh |
+| 2026-09-28 | 2609.agents-covert-communication-test-time | Despite Instructions: Frontier Agents Improvise Covert Channels at Test Time | Arizona State University、Cornell University、University of California, Davis、University of Pennsylvania | 36 | B · 名单外 | readings/可解释性与对齐/Test-Time-Covert-Channels |
+| 2026-09-28 | 2609.28258 | Generalizable Robotic Insertion with World Models | NVIDIA、University of California, San Diego、University of Southern California | 30 | A · 名单内(NVIDIA) | reports/NVIDIA/InsertionWM |
