@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 660" width="1120" height="660" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="660" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 10：看「现在」的 Decode 就会反相振荡，看「Prefill 做完时」的 Decode 就能一直接单</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">绿线 = Prefill 池负载；黄线 = Decode 池负载（0–1）。紫点 = 这一阶段 Conductor 接受新请求；红点 = 拒绝。理论示意。</text>
+<rect x="16" y="70" width="1088" height="270" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="94.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) 提前拒绝：按当前 Decode 负载决定接不接</text>
+<line x1="110.0" y1="180.0" x2="1080.0" y2="180.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="120.0" x2="1080.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="114.0" x2="110.0" y2="240.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110.0" y1="240.0" x2="1080.0" y2="240.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="102.0" y="244.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="102.0" y="184.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<text x="102.0" y="124.0" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<polyline points="230.0,126.0 470.0,228.0 710.0,150.0 950.0,204.0" fill="none" stroke="#5fa886" stroke-width="2.6"/>
+<circle cx="230" cy="126.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="470" cy="228.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="710" cy="150.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="950" cy="204.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<polyline points="230.0,216.0 470.0,144.0 710.0,222.0 950.0,165.6" fill="none" stroke="#d4a24c" stroke-width="2.6"/>
+<circle cx="230" cy="216.0" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="470" cy="144.0" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="710" cy="222.0" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="950" cy="165.6" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="186" cy="262" r="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="198.0" y="267.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">阶段 1：接受</text>
+<text x="230.0" y="290.0" font-size="11" fill="#6b7280" text-anchor="middle">两池都空，大量接受</text>
+<text x="230.0" y="308.0" font-size="11" fill="#6b7280" text-anchor="middle">直到 Prefill 打满</text>
+<circle cx="426" cy="262" r="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="438.0" y="267.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">阶段 2：拒绝</text>
+<text x="470.0" y="290.0" font-size="11" fill="#6b7280" text-anchor="middle">上一拍的产物涌进 Decode</text>
+<text x="470.0" y="308.0" font-size="11" fill="#6b7280" text-anchor="middle">看它忙就拒，Prefill 变空</text>
+<circle cx="666" cy="262" r="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="678.0" y="267.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">阶段 3：接受</text>
+<text x="710.0" y="290.0" font-size="11" fill="#6b7280" text-anchor="middle">Decode 吃完存货变空</text>
+<text x="710.0" y="308.0" font-size="11" fill="#6b7280" text-anchor="middle">又大量接受</text>
+<circle cx="906" cy="262" r="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="918.0" y="267.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">阶段 4：拒绝</text>
+<text x="950.0" y="290.0" font-size="11" fill="#6b7280" text-anchor="middle">Decode 再次变满</text>
+<text x="950.0" y="308.0" font-size="11" fill="#6b7280" text-anchor="middle">再拒，Prefill 又被抽空</text>
+<rect x="16" y="356" width="1088" height="270" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="380.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 带预测的提前拒绝：按「这批 Prefill 做完时」的 Decode 负载决定</text>
+<line x1="110.0" y1="466.0" x2="1080.0" y2="466.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="406.0" x2="1080.0" y2="406.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="400.0" x2="110.0" y2="526.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110.0" y1="526.0" x2="1080.0" y2="526.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="102.0" y="530.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="102.0" y="470.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<text x="102.0" y="410.0" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<polyline points="230.0,454.0 470.0,466.0 710.0,436.0 950.0,451.6" fill="none" stroke="#5fa886" stroke-width="2.6"/>
+<circle cx="230" cy="454.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="470" cy="466.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="710" cy="436.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="950" cy="451.6" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<polyline points="230.0,437.2 470.0,430.0 710.0,446.8 950.0,434.8" fill="none" stroke="#d4a24c" stroke-width="2.6"/>
+<circle cx="230" cy="437.2" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="470" cy="430.0" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="710" cy="446.8" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="950" cy="434.8" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="186" cy="548" r="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="198.0" y="553.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">阶段 1：接受</text>
+<text x="230.0" y="576.0" font-size="11" fill="#6b7280" text-anchor="middle">预测 Decode 接得住</text>
+<text x="230.0" y="594.0" font-size="11" fill="#6b7280" text-anchor="middle">照常接受</text>
+<circle cx="426" cy="548" r="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="438.0" y="553.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">阶段 2：接受</text>
+<text x="470.0" y="576.0" font-size="11" fill="#6b7280" text-anchor="middle">两池都维持在高位</text>
+<circle cx="666" cy="548" r="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="678.0" y="553.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">阶段 3：接受</text>
+<text x="710.0" y="576.0" font-size="11" fill="#6b7280" text-anchor="middle">不再出现一边满一边空</text>
+<circle cx="906" cy="548" r="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="918.0" y="553.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">阶段 4：接受</text>
+<text x="30.0" y="648.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p.14 Figure 10 与 p.13 正文重画，曲线高度只示意趋势。实测见 p.13 Figure 9：20 台机器 20 分钟，只做提前拒绝时两池负载明显反相。</text>
+</svg>

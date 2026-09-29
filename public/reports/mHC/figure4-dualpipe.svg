@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 420" width="1120" height="420" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="420" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">mHC 的新增工作被塞进 DualPipe 原有的缝里</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">黄 = 前向；绿 = 反向；紫 = 权重梯度；红 = 整段重算 mHC 算子。窄条是 mHC 的小算子。方块长度只表达先后与重叠，不是实测耗时。</text>
+<text x="156" y="140" font-size="13" fill="#111827" text-anchor="end" font-weight="700">普通计算流</text>
+<polyline points="164,134 1098,134" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="156" y="210" font-size="13" fill="#111827" text-anchor="end" font-weight="700">通信流</text>
+<polyline points="164,204 1098,204" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="156" y="280" font-size="13" fill="#111827" text-anchor="end" font-weight="700">高优先级计算流</text>
+<polyline points="164,274 1098,274" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="170.0" y="120" width="103.8" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="221.9" y="139" font-size="12" fill="#111827" text-anchor="middle">MLP (B)</text>
+<rect x="273.8" y="120" width="77.3" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="312.5" y="139" font-size="12" fill="#111827" text-anchor="middle">MLP (W)</text>
+<rect x="351.1" y="120" width="84.3" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="393.2" y="139" font-size="12" fill="#111827" text-anchor="middle">MLP (F)</text>
+<rect x="435.4" y="120" width="7.7" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="443.1" y="120" width="7.6" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="450.7" y="120" width="268.9" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="585.1" y="139" font-size="12" fill="#111827" text-anchor="middle">ATTN (B)</text>
+<rect x="719.6" y="120" width="7.7" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="727.3" y="120" width="69.6" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="762.1" y="139" font-size="12" fill="#111827" text-anchor="middle">ATTN (W)</text>
+<rect x="796.9" y="120" width="102.6" height="28" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="848.2" y="139" font-size="12" fill="#111827" text-anchor="middle">整段重算 (B)</text>
+<rect x="899.5" y="120" width="7.7" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="907.2" y="120" width="142.7" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="978.6" y="139" font-size="12" fill="#111827" text-anchor="middle">ATTN (F)</text>
+<rect x="1049.9" y="120" width="7.7" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="1057.6" y="120" width="7.6" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="170.0" y="190" width="132.1" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="236.1" y="209" font-size="12" fill="#111827" text-anchor="middle">DISPATCH (F)</text>
+<rect x="302.1" y="190" width="133.3" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="368.8" y="209" font-size="12" fill="#111827" text-anchor="middle">DISPATCH (B)</text>
+<rect x="435.4" y="190" width="132.7" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="501.8" y="209" font-size="12" fill="#111827" text-anchor="middle">COMBINE (F)</text>
+<rect x="575.7" y="190" width="173.4" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="662.4" y="209" font-size="12" fill="#111827" text-anchor="middle">PP 收发 (F)</text>
+<rect x="749.1" y="190" width="175.2" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="836.7" y="209" font-size="12" fill="#111827" text-anchor="middle">PP 收发 (B)</text>
+<rect x="931.9" y="190" width="133.3" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="998.5" y="209" font-size="12" fill="#111827" text-anchor="middle">COMBINE (B)</text>
+<rect x="568.1" y="260" width="7.6" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="924.3" y="260" width="7.6" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="438.9" y="110" font-size="11" fill="#6b7280" text-anchor="end">MLP 的 Pre 与注意力的 Post·Res（反向）</text>
+<text x="723.2" y="110" font-size="11" fill="#6b7280" text-anchor="middle">注意力 Pre（反向）</text>
+<text x="903.1" y="96" font-size="11" fill="#6b7280" text-anchor="middle">注意力 Pre（前向）</text>
+<text x="1061.1" y="110" font-size="11" fill="#6b7280" text-anchor="end">注意力 Post·Res 与 MLP Pre（前向）</text>
+<text x="571.6" y="312" font-size="11" fill="#6b7280" text-anchor="middle">MLP 的 Post·Res（前向）</text>
+<text x="927.8" y="312" font-size="11" fill="#6b7280" text-anchor="middle">MLP 的 Post·Res（反向）</text>
+<text x="30" y="350" font-size="11" fill="#9ca3af" text-anchor="start">三条改动（PDF p. 11）：MLP 层的 Post·Res 算子走专用高优先级计算流，不堵通信；注意力层的长算子不用 persistent kernel，可被抢占；</text>
+<text x="30" y="368" font-size="11" fill="#9ca3af" text-anchor="start">每个 stage 的块首输入本来就缓存在本地，所以整段重算不依赖流水通信，可以和 PP 收发并行。</text>
+<text x="30" y="396" font-size="11" fill="#9ca3af" text-anchor="start">按 PDF p. 12 Figure 4 的块序重画，保留原图的相对位置。</text>
+</svg>

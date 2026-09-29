@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 2：Prefill 越长越吃亏，Decode 越并发越划算</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">dummy LLaMA2-70B。绿柱 = 吞吐（词元/秒）；紫线 = Prefill 延迟；黄线 = Decode 延迟。每条量都按自己的最大值归一到 1。</text>
+<text x="80.0" y="100.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">左：batch = 1，序列从 8k 拉到 128k</text>
+<line x1="80.0" y1="285.0" x2="530.0" y2="285.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="80.0" y1="150.0" x2="530.0" y2="150.0" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="84.2" y="150.0" width="19.7" height="270.0" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="112.3" y="164.6" width="19.7" height="255.4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="140.5" y="178.1" width="19.7" height="241.9" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="168.6" y="190.0" width="19.7" height="230.0" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="196.7" y="201.0" width="19.7" height="219.0" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="224.8" y="209.4" width="19.7" height="210.6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="253.0" y="218.0" width="19.7" height="202.0" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="281.1" y="225.3" width="19.7" height="194.7" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="309.2" y="233.7" width="19.7" height="186.3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="337.3" y="240.4" width="19.7" height="179.6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="365.5" y="246.7" width="19.7" height="173.3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="393.6" y="253.4" width="19.7" height="166.6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="421.7" y="258.8" width="19.7" height="161.2" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="449.8" y="265.0" width="19.7" height="155.0" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="478.0" y="270.1" width="19.7" height="149.9" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="506.1" y="274.7" width="19.7" height="145.3" fill="#e3f4ec" stroke="#5fa886"/>
+<polyline points="94.1,410.6 122.2,400.3 150.3,389.2 178.4,377.3 206.6,363.8 234.7,349.8 262.8,334.7 290.9,319.0 319.1,301.5 347.2,283.6 375.3,263.9 403.4,243.2 431.6,221.8 459.7,198.9 487.8,174.6 515.9,150.0" fill="none" stroke="#8f8bd8" stroke-width="2.4"/>
+<circle cx="94.1" cy="410.6" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="122.2" cy="400.3" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="150.3" cy="389.2" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="178.4" cy="377.3" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="206.6" cy="363.8" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="234.7" cy="349.8" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="262.8" cy="334.7" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="290.9" cy="319.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="319.1" cy="301.5" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="347.2" cy="283.6" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="375.3" cy="263.9" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="403.4" cy="243.2" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="431.6" cy="221.8" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="459.7" cy="198.9" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="487.8" cy="174.6" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="515.9" cy="150.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="80.0" y1="138.0" x2="80.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="80.0" y1="420.0" x2="530.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="72.0" y="424.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="72.0" y="289.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<text x="72.0" y="154.0" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<text x="94.1" y="438.0" font-size="12" fill="#111827" text-anchor="middle">8k</text>
+<text x="178.4" y="438.0" font-size="12" fill="#111827" text-anchor="middle">32k</text>
+<text x="290.9" y="438.0" font-size="12" fill="#111827" text-anchor="middle">64k</text>
+<text x="403.4" y="438.0" font-size="12" fill="#111827" text-anchor="middle">96k</text>
+<text x="515.9" y="438.0" font-size="12" fill="#111827" text-anchor="middle">128k</text>
+<text x="305.0" y="458.0" font-size="12" fill="#6b7280" text-anchor="middle">序列长度</text>
+<text x="620.0" y="100.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">右：序列 = 8k，batch 从 1 涨到 16</text>
+<line x1="620.0" y1="285.0" x2="1070.0" y2="285.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="620.0" y1="150.0" x2="1070.0" y2="150.0" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="624.2" y="398.7" width="19.7" height="21.3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="652.3" y="377.9" width="19.7" height="42.1" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="680.5" y="357.1" width="19.7" height="62.9" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="708.6" y="338.7" width="19.7" height="81.3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="736.7" y="319.0" width="19.7" height="101.0" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="764.8" y="299.9" width="19.7" height="120.2" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="793.0" y="283.6" width="19.7" height="136.3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="821.1" y="266.6" width="19.7" height="153.4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="849.2" y="250.4" width="19.7" height="169.6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="877.3" y="236.9" width="19.7" height="183.1" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="905.5" y="222.9" width="19.7" height="197.1" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="933.6" y="205.1" width="19.7" height="214.9" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="961.7" y="192.7" width="19.7" height="227.3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="989.8" y="185.4" width="19.7" height="234.6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="1018.0" y="166.2" width="19.7" height="253.8" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="1046.1" y="150.0" width="19.7" height="270.0" fill="#e3f4ec" stroke="#5fa886"/>
+<polyline points="634.1,203.5 662.2,203.5 690.3,203.5 718.4,196.7 746.6,194.8 774.7,192.7 802.8,187.0 830.9,183.2 859.1,179.2 887.2,171.9 915.3,166.7 943.4,166.2 971.6,160.8 999.7,150.0 1027.8,152.2 1055.9,151.1" fill="none" stroke="#d4a24c" stroke-width="2.4"/>
+<circle cx="634.1" cy="203.5" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="662.2" cy="203.5" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="690.3" cy="203.5" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="718.4" cy="196.7" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="746.6" cy="194.8" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="774.7" cy="192.7" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="802.8" cy="187.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="830.9" cy="183.2" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="859.1" cy="179.2" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="887.2" cy="171.9" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="915.3" cy="166.7" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="943.4" cy="166.2" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="971.6" cy="160.8" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="999.7" cy="150.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="1027.8" cy="152.2" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="1055.9" cy="151.1" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="620.0" y1="138.0" x2="620.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="620.0" y1="420.0" x2="1070.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="612.0" y="424.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="612.0" y="289.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<text x="612.0" y="154.0" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<text x="634.1" y="438.0" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<text x="718.4" y="438.0" font-size="12" fill="#111827" text-anchor="middle">4</text>
+<text x="830.9" y="438.0" font-size="12" fill="#111827" text-anchor="middle">8</text>
+<text x="943.4" y="438.0" font-size="12" fill="#111827" text-anchor="middle">12</text>
+<text x="1055.9" y="438.0" font-size="12" fill="#111827" text-anchor="middle">16</text>
+<text x="845.0" y="458.0" font-size="12" fill="#6b7280" text-anchor="middle">batch 大小</text>
+<text x="30.0" y="500.0" font-size="12" fill="#6b7280" text-anchor="start">读自 PDF p.4 Figure 2，数值为读图近似。左：长度翻 16 倍，Prefill 延迟涨到约 30 倍，吞吐跌到约一半。</text>
+<text x="30.0" y="522.0" font-size="12" fill="#6b7280" text-anchor="start">右：batch 翻 16 倍，Decode 每步延迟只从约 0.80 升到 1.0，吞吐涨到约 13 倍。</text>
+</svg>

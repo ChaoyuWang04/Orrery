@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="ad" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 3：自回归草稿越写越贵，块扩散草稿几乎不随块长变</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">一轮草稿的耗时（毫秒）。黄 = EAGLE-3（1 层，逐 Token 自回归）；紫 = DFlash（块扩散，一次前向），柱下标层数。</text>
+<line x1="110.0" y1="440.0" x2="1060.0" y2="440.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="444.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="110.0" y1="379.3" x2="1060.0" y2="379.3" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="383.3" font-size="11" fill="#9ca3af" text-anchor="end">5</text>
+<line x1="110.0" y1="318.6" x2="1060.0" y2="318.6" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="322.6" font-size="11" fill="#9ca3af" text-anchor="end">10</text>
+<line x1="110.0" y1="257.9" x2="1060.0" y2="257.9" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="261.9" font-size="11" fill="#9ca3af" text-anchor="end">15</text>
+<line x1="110.0" y1="197.1" x2="1060.0" y2="197.1" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="201.1" font-size="11" fill="#9ca3af" text-anchor="end">20</text>
+<line x1="110.0" y1="136.4" x2="1060.0" y2="136.4" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="140.4" font-size="11" fill="#9ca3af" text-anchor="end">25</text>
+<line x1="110.0" y1="100.0" x2="110.0" y2="440.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110.0" y1="440.0" x2="1060.0" y2="440.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="60.0" y="88.0" font-size="11" fill="#9ca3af" text-anchor="start">毫秒</text>
+<rect x="148.3" y="362.8" width="54.0" height="77.2" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="175.3" y="356.8" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">6.4</text>
+<text x="175.3" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">EAGLE-3</text>
+<rect x="210.3" y="418.1" width="54.0" height="21.9" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="237.3" y="412.1" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">1.8</text>
+<text x="237.3" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">1 层</text>
+<rect x="272.3" y="393.9" width="54.0" height="46.1" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="299.3" y="387.9" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">3.8</text>
+<text x="299.3" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">3 层</text>
+<rect x="334.3" y="376.9" width="54.0" height="63.1" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="361.3" y="370.9" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">5.2</text>
+<text x="361.3" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">5 层</text>
+<text x="268.3" y="480.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">草稿 4 个 Token</text>
+<rect x="465.0" y="300.4" width="54.0" height="139.6" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="492.0" y="294.4" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">11.5</text>
+<text x="492.0" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">EAGLE-3</text>
+<rect x="527.0" y="419.4" width="54.0" height="20.6" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="554.0" y="413.4" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">1.7</text>
+<text x="554.0" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">1 层</text>
+<rect x="589.0" y="398.7" width="54.0" height="41.3" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="616.0" y="392.7" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">3.4</text>
+<text x="616.0" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">3 层</text>
+<rect x="651.0" y="373.2" width="54.0" height="66.8" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="678.0" y="367.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">5.5</text>
+<text x="678.0" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">5 层</text>
+<text x="585.0" y="480.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">草稿 8 个 Token</text>
+<rect x="781.7" y="129.0" width="54.0" height="311.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="808.7" y="123.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">25.6</text>
+<text x="808.7" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">EAGLE-3</text>
+<rect x="843.7" y="419.4" width="54.0" height="20.6" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="870.7" y="413.4" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">1.7</text>
+<text x="870.7" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">1 层</text>
+<rect x="905.7" y="395.1" width="54.0" height="44.9" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="932.7" y="389.1" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">3.7</text>
+<text x="932.7" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">3 层</text>
+<rect x="967.7" y="374.4" width="54.0" height="65.6" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="994.7" y="368.4" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">5.4</text>
+<text x="994.7" y="456.0" font-size="11" fill="#6b7280" text-anchor="middle">5 层</text>
+<text x="901.7" y="480.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">草稿 16 个 Token</text>
+<text x="30.0" y="506.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p. 3 Figure 3 的矢量坐标读数（原图没有印数字）。EAGLE-3 从 6.4 涨到 25.6 毫秒，大致随草稿长度成正比；DFlash 三种深度都停在 1.7–5.5 毫秒。</text>
+<text x="30.0" y="528.0" font-size="12" fill="#6b7280" text-anchor="start">论文据此说：5 层 DFlash 写 16 个 Token（约 5.4 毫秒）比 1 层 EAGLE-3 写 8 个（约 11.5 毫秒）还便宜，接受长度还更高（PDF p. 4）。</text>
+</svg>

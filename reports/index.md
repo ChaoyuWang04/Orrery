@@ -209,8 +209,8 @@
 | SGLang-CUDA-Graph | Berkeley | 网页原件(LMSYS 博客 2026-08-17):不靠编译器的可断图让 prefill 默认上图,prefill 全图靠 token 分桶加零长度哨兵,图显存录到分块大小反而更省 |
 | DSpark | DeepSeek | 半自回归草稿 + 置信度调度验证,投机解码 |
 | Slicing-and-Dicing-MoE | Washington | MoE 配置的系统性搜索(158 页,含大量附录) |
-| DFlash | UCSD | 块扩散做并行草稿的投机解码,ICML 2026 |
 | Engram | DeepSeek | 可扩展查表式条件记忆,稀疏的新维度(依据 arXiv v2) |
+| DFlash | UCSD | 块扩散做并行草稿的投机解码,ICML 2026 |
 | mHC | DeepSeek | 流形约束的超连接 |
 | LiquidGEMM | ByteDance | W4A8 GEMM 内核的硬件高效实现(Seed,与上交合作) |
 | DeepSeek-V3-Insights | DeepSeek | 从 V3 回看硬件与模型协同设计的取舍,ISCA 2025;与 DeepSeek-V3 报告互补不重复 |

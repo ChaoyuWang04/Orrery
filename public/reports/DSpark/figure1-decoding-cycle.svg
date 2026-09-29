@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="ad" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 1：一轮 DSpark，并行出底子、顺序补依赖、调度器裁长度、目标模型拍板</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">黄 = 目标模型及它产出的 token；紫 = 并行骨干与它一次算出的 logits；绿 = 顺序头从左到右采出的草稿；灰 = 被调度器丢掉；红 = 被目标模型拒绝。</text>
+<rect x="16.0" y="86.0" width="220.0" height="410.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="126.0" y="110.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">① 目标模型走一步</text>
+<rect x="252.0" y="86.0" width="420.0" height="410.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="462.0" y="110.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">② 草稿：重并行 + 轻顺序</text>
+<rect x="688.0" y="86.0" width="180.0" height="410.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="778.0" y="110.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">调度器裁验证长度</text>
+<rect x="884.0" y="86.0" width="220.0" height="410.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="994.0" y="110.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">③ 目标模型并行验证</text>
+<rect x="46.0" y="405.0" width="40.0" height="30.0" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="66.0" y="425.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A</text>
+<rect x="106.0" y="405.0" width="40.0" height="30.0" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="126.0" y="425.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">B</text>
+<rect x="166.0" y="405.0" width="40.0" height="30.0" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="186.0" y="425.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">C</text>
+<rect x="46.0" y="300.0" width="160.0" height="48.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="126.0" y="329.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">目标模型</text>
+<line x1="66.0" y1="404.0" x2="66.0" y2="350.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="126.0" y1="404.0" x2="126.0" y2="350.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="186.0" y1="404.0" x2="186.0" y2="350.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="126.0" y1="298.0" x2="126.0" y2="212.0" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#ay)"/>
+<rect x="106.0" y="180.0" width="40.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="126.0" y="200.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">D</text>
+<text x="126.0" y="160.0" font-size="11" fill="#6b7280" text-anchor="middle">锚点（上一轮的奖励 Token）</text>
+<text x="126.0" y="458.0" font-size="11" fill="#6b7280" text-anchor="middle">提示词 ABC</text>
+<rect x="298.0" y="415.0" width="48.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="322.0" y="435.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">D</text>
+<rect x="384.0" y="415.0" width="56.0" height="30.0" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="412.0" y="435.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">mask</text>
+<rect x="474.0" y="415.0" width="56.0" height="30.0" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="502.0" y="435.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">mask</text>
+<rect x="564.0" y="415.0" width="56.0" height="30.0" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="592.0" y="435.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">mask</text>
+<rect x="282.0" y="348.0" width="360.0" height="44.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="462.0" y="368.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">并行骨干：一次前向算完整块</text>
+<text x="462.0" y="384.0" font-size="11" fill="#6b7280" text-anchor="middle">输入 γ 个位置（锚点 + γ−1 个 mask），出 γ 组 logits</text>
+<line x1="322.0" y1="414.0" x2="322.0" y2="394.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="412.0" y1="414.0" x2="412.0" y2="394.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="502.0" y1="414.0" x2="502.0" y2="394.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="592.0" y1="414.0" x2="592.0" y2="394.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="296.0" y="280.0" width="52.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="322.0" y="299.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">U1</text>
+<line x1="322.0" y1="346.0" x2="322.0" y2="310.0" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="322.0" y1="278.0" x2="322.0" y2="232.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="386.0" y="280.0" width="52.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="412.0" y="299.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">U2</text>
+<line x1="412.0" y1="346.0" x2="412.0" y2="310.0" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="412.0" y1="278.0" x2="412.0" y2="232.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="476.0" y="280.0" width="52.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="502.0" y="299.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">U3</text>
+<line x1="502.0" y1="346.0" x2="502.0" y2="310.0" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="502.0" y1="278.0" x2="502.0" y2="232.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="566.0" y="280.0" width="52.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="592.0" y="299.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">U4</text>
+<line x1="592.0" y1="346.0" x2="592.0" y2="310.0" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="592.0" y1="278.0" x2="592.0" y2="232.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="302.0" y="200.0" width="40.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="322.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">E</text>
+<rect x="392.0" y="200.0" width="40.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="412.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">F</text>
+<rect x="482.0" y="200.0" width="40.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="502.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">G</text>
+<rect x="572.0" y="200.0" width="40.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="592.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">H</text>
+<line x1="344.0" y1="215.0" x2="388.0" y2="215.0" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="434.0" y1="215.0" x2="478.0" y2="215.0" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="524.0" y1="215.0" x2="568.0" y2="215.0" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<text x="322.0" y="176.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">c1</text>
+<text x="412.0" y="176.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">c2</text>
+<text x="502.0" y="176.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">c3</text>
+<text x="592.0" y="176.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">c4</text>
+<text x="462.0" y="150.0" font-size="11" fill="#6b7280" text-anchor="middle">置信度头给每位一个 c_k：前面都被接受时这一位能活的概率</text>
+<text x="462.0" y="468.0" font-size="11" fill="#6b7280" text-anchor="middle">顺序头：U_k 加上一个已采样词给的转移偏置再 softmax；</text>
+<text x="462.0" y="482.0" font-size="11" fill="#6b7280" text-anchor="middle">只做低秩查表，比并行骨干轻得多</text>
+<line x1="236.0" y1="195.0" x2="250.0" y2="195.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="672.0" y1="215.0" x2="686.0" y2="215.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="868.0" y1="215.0" x2="882.0" y2="215.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="692.0" y="200.0" width="36.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="710.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">E</text>
+<rect x="736.0" y="200.0" width="36.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="754.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">F</text>
+<rect x="780.0" y="200.0" width="36.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="798.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">G</text>
+<rect x="824.0" y="200.0" width="36.0" height="30.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="842.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">H</text>
+<line x1="692.0" y1="248.0" x2="816.0" y2="248.0" stroke="#5fa886" stroke-width="1.4"/>
+<text x="754.0" y="266.0" font-size="12" fill="#5fa886" text-anchor="middle" font-weight="700">保留</text>
+<line x1="826.0" y1="248.0" x2="858.0" y2="248.0" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="842.0" y="266.0" font-size="12" fill="#9ca3af" text-anchor="middle" font-weight="700">丢弃</text>
+<text x="778.0" y="318.0" font-size="11" fill="#6b7280" text-anchor="middle">看前缀存活概率</text>
+<text x="778.0" y="338.0" font-size="11" fill="#6b7280" text-anchor="middle">a_j = c_1 × … × c_j</text>
+<text x="778.0" y="358.0" font-size="11" fill="#6b7280" text-anchor="middle">和引擎吞吐表 SPS(B)，</text>
+<text x="778.0" y="378.0" font-size="11" fill="#6b7280" text-anchor="middle">决定这个请求验几个；</text>
+<text x="778.0" y="398.0" font-size="11" fill="#6b7280" text-anchor="middle">负载越高，裁得越狠。</text>
+<rect x="905.0" y="405.0" width="38.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="924.0" y="425.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">D</text>
+<rect x="955.0" y="405.0" width="38.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="974.0" y="425.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">E</text>
+<rect x="1005.0" y="405.0" width="38.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1024.0" y="425.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">F</text>
+<rect x="1055.0" y="405.0" width="38.0" height="30.0" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1074.0" y="425.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">G</text>
+<rect x="904.0" y="300.0" width="170.0" height="48.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="994.0" y="329.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">目标模型</text>
+<line x1="924.0" y1="404.0" x2="924.0" y2="350.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="974.0" y1="404.0" x2="974.0" y2="350.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="1024.0" y1="404.0" x2="1024.0" y2="350.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="1074.0" y1="404.0" x2="1074.0" y2="350.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="974.0" y="460.0" font-size="14" fill="#5fa886" text-anchor="middle" font-weight="700">✓</text>
+<text x="1024.0" y="460.0" font-size="14" fill="#5fa886" text-anchor="middle" font-weight="700">✓</text>
+<text x="1074.0" y="460.0" font-size="14" fill="#d9877a" text-anchor="middle" font-weight="700">✗</text>
+<line x1="974.0" y1="298.0" x2="974.0" y2="232.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="955.0" y="200.0" width="38.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="974.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">E</text>
+<line x1="1024.0" y1="298.0" x2="1024.0" y2="232.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="1005.0" y="200.0" width="38.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1024.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">F</text>
+<line x1="1074.0" y1="298.0" x2="1074.0" y2="232.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="1055.0" y="200.0" width="38.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1074.0" y="220.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">G*</text>
+<text x="994.0" y="160.0" font-size="11" fill="#6b7280" text-anchor="middle">E、F 留下，G 被拒，补出 G*；</text>
+<text x="994.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">G* 当下一轮的锚点</text>
+<text x="30.0" y="530.0" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 5 Figure 1 重画的机制示意，不是实测耗时；c1–c4 的具体数值论文没有给，图上只标位置。</text>
+<text x="30.0" y="554.0" font-size="13" fill="#6b7280" text-anchor="start">离线实验（第 4 节）关掉调度器，整块送验；线上部署（第 5 节）最大块长 γ = 5，调度器改成异步版本（见后文）。</text>
+</svg>

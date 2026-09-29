@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 6：ExCP 把反量化交给单独一组，ImFP 让两组计算轮流反量化和 MMA</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">灰 = Load WG 用 TMA 把权重搬进 SMEM；黄 = 从 SMEM 读进寄存器并反量化；红 = 反量化结果写回 SMEM；紫 = Tensor Core MMA。时间从左到右。</text>
+<rect x="16" y="70" width="1088" height="196" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="94.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) 显式粗粒度流水 ExCP：搬数、反量化、MMA 各占一个 warp group</text>
+<rect x="130" y="110" width="960" height="34" rx="4" fill="#f7f7f8" stroke="none"/>
+<rect x="130" y="154" width="960" height="34" rx="4" fill="#f7f7f8" stroke="none"/>
+<rect x="130" y="198" width="960" height="34" rx="4" fill="#f7f7f8" stroke="none"/>
+<rect x="150.0" y="112.0" width="130.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="280.0" y="156.0" width="105.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="385.0" y="156.0" width="40.0" height="30.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="425.0" y="200.0" width="95.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="278.0" y1="142.0" x2="284.0" y2="154.0" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="423.0" y1="186.0" x2="429.0" y2="198.0" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<rect x="350.0" y="112.0" width="130.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="480.0" y="156.0" width="105.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="585.0" y="156.0" width="40.0" height="30.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="625.0" y="200.0" width="95.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="478.0" y1="142.0" x2="484.0" y2="154.0" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="623.0" y1="186.0" x2="629.0" y2="198.0" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<rect x="550.0" y="112.0" width="130.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="680.0" y="156.0" width="105.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="785.0" y="156.0" width="40.0" height="30.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="825.0" y="200.0" width="95.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="678.0" y1="142.0" x2="684.0" y2="154.0" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="823.0" y1="186.0" x2="829.0" y2="198.0" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<rect x="750.0" y="112.0" width="130.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="880.0" y="156.0" width="105.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="985.0" y="156.0" width="40.0" height="30.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="1025.0" y="200.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="878.0" y1="142.0" x2="884.0" y2="154.0" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="1023.0" y1="186.0" x2="1029.0" y2="198.0" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<text x="36.0" y="132.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">Load WG</text>
+<text x="36.0" y="176.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">Dequant WG</text>
+<text x="36.0" y="220.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">MMA WG</text>
+<text x="560.0" y="252.0" font-size="12" fill="#6b7280" text-anchor="middle">紫色行留着空档：MMA 组要等反量化组把结果写回 SMEM、再用软件同步通知它</text>
+<rect x="16" y="282" width="1088" height="196" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="306.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 隐式细粒度流水 ImFP：1 个 Load WG + 2 个 Compute WG，反量化结果留在寄存器</text>
+<rect x="130" y="322" width="960" height="34" rx="4" fill="#f7f7f8" stroke="none"/>
+<rect x="130" y="366" width="960" height="34" rx="4" fill="#f7f7f8" stroke="none"/>
+<rect x="130" y="404" width="960" height="34" rx="4" fill="#f7f7f8" stroke="none"/>
+<rect x="150.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="244.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="278.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="308.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="214.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="278.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="308.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="342.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="372.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="278.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="342.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="372.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="406.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="436.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="342.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="406.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="436.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="470.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="500.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="406.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="470.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="500.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="534.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="564.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="470.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="534.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="564.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="598.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="628.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="534.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="598.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="628.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="662.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="692.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="598.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="662.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="692.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="726.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="756.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="662.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="726.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="756.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="790.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="820.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="726.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="820.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="854.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="884.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="790.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="854.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="884.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="918.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="948.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="854.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="918.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="948.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="982.0" y="406.0" width="60.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1012.0" y="425.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="918.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="982.0" y="368.0" width="60.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1012.0" y="387.0" font-size="11" fill="#111827" text-anchor="middle">WG0</text>
+<rect x="982.0" y="324.0" width="60.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="36.0" y="344.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">Load WG</text>
+<text x="36.0" y="390.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">Compute</text>
+<text x="36.0" y="408.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">WG ×2</text>
+<text x="560.0" y="464.0" font-size="12" fill="#6b7280" text-anchor="middle">同一组先反量化、紧接着 MMA；WG0 做 MMA 时 WG1 在反量化下一块，紫色行几乎连成一片</text>
+<text x="30.0" y="506.0" font-size="12" fill="#6b7280" text-anchor="start">机制示意，据 PDF p.6 Figure 6 重画；块长只表示先后与重叠，不是实测时间。ImFP 里任务由 Compute WG 抢着领，调度交给硬件，没有显式的组间握手（PDF p.2、p.7）。</text>
+<text x="30.0" y="528.0" font-size="12" fill="#6b7280" text-anchor="start">两种流水共用同一套数据布局和反量化逻辑；它们在消融里多出来的收益还来自 grouped GEMM 之间的流水（PDF p.11）。</text>
+</svg>

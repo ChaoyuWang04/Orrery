@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="ad" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">附录 A 的反例：先看 x₁ 再决定收不收 x₁，输出就不再服从目标分布</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">单请求、γ = 2 的最小例子。绿 = 输出服从目标分布；红 = 输出偏离；黄 = 依赖 x₁ 采成什么的量；灰 = 设定、调度与验证步骤。</text>
+<rect x="30.0" y="96.0" width="220.0" height="392.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="140.0" y="124.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">设定（PDF p. 32–33）</text>
+<text x="140.0" y="149.0" font-size="12" fill="#374151" text-anchor="middle">目标分布 p_t：A 0.7，B 0.3</text>
+<text x="140.0" y="174.0" font-size="12" fill="#374151" text-anchor="middle">草稿分布 p_d：A 0.5，B 0.5</text>
+<text x="140.0" y="199.0" font-size="12" fill="#374151" text-anchor="middle">a₁ = Σ min(p_t, p_d) = 0.8</text>
+<text x="140.0" y="249.0" font-size="12" fill="#374151" text-anchor="middle">SPS(1) = 1.0</text>
+<text x="140.0" y="274.0" font-size="12" fill="#374151" text-anchor="middle">SPS(2) = 0.5</text>
+<text x="140.0" y="299.0" font-size="12" fill="#374151" text-anchor="middle">SPS(3) = 0.45</text>
+<text x="140.0" y="349.0" font-size="12" fill="#374151" text-anchor="middle">Θ₀ = 1 × SPS(1) = 1.0</text>
+<text x="140.0" y="374.0" font-size="12" fill="#374151" text-anchor="middle">Θ₁ = 1.8 × SPS(2) = 0.9</text>
+<text x="140.0" y="424.0" font-size="12" fill="#374151" text-anchor="middle">这两个量在 x₁ 采出来之前</text>
+<text x="140.0" y="449.0" font-size="12" fill="#374151" text-anchor="middle">就能算，不依赖 x₁</text>
+<rect x="290.0" y="100.0" width="190.0" height="60.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="385.0" y="125.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">有早停（Algorithm 1）</text>
+<text x="385.0" y="143.0" font-size="11" fill="#6b7280" text-anchor="middle">Θ 不再上升就停</text>
+<rect x="520.0" y="100.0" width="200.0" height="60.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="620.0" y="125.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Θ₁ = 0.9 &lt; Θ₀ = 1.0</text>
+<text x="620.0" y="143.0" font-size="11" fill="#6b7280" text-anchor="middle">立刻停，不去算 c₂</text>
+<rect x="760.0" y="100.0" width="150.0" height="60.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="835.0" y="125.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">ℓ = 0</text>
+<text x="835.0" y="143.0" font-size="11" fill="#6b7280" text-anchor="middle">x₁ 不送验</text>
+<rect x="940.0" y="100.0" width="160.0" height="60.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1020.0" y="125.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">目标模型自己采</text>
+<text x="1020.0" y="143.0" font-size="11" fill="#6b7280" text-anchor="middle">A 0.7 / B 0.3</text>
+<line x1="482.0" y1="130.0" x2="516.0" y2="130.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="722.0" y1="130.0" x2="756.0" y2="130.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="912.0" y1="130.0" x2="936.0" y2="130.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="290.0" y="300.0" width="190.0" height="60.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="385.0" y="325.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">事后全局搜索</text>
+<text x="385.0" y="343.0" font-size="11" fill="#6b7280" text-anchor="middle">三档 Θ 都算完再取最大</text>
+<rect x="520.0" y="230.0" width="200.0" height="60.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="620.0" y="255.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">x₁ = A（概率 0.5）</text>
+<text x="620.0" y="273.0" font-size="11" fill="#6b7280" text-anchor="middle">设它让 c₂ = 0.9，a₂ = 0.72</text>
+<rect x="520.0" y="370.0" width="200.0" height="60.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="620.0" y="395.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">x₁ = B（概率 0.5）</text>
+<text x="620.0" y="413.0" font-size="11" fill="#6b7280" text-anchor="middle">设它让 c₂ = 0，a₂ = 0</text>
+<rect x="760.0" y="230.0" width="150.0" height="60.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="835.0" y="255.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Θ₂ = 1.134 最大</text>
+<text x="835.0" y="273.0" font-size="11" fill="#6b7280" text-anchor="middle">ℓ = 2，收 x₁</text>
+<rect x="760.0" y="370.0" width="150.0" height="60.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="835.0" y="395.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Θ₂ = 0.81</text>
+<text x="835.0" y="413.0" font-size="11" fill="#6b7280" text-anchor="middle">最大仍是 Θ₀，ℓ = 0</text>
+<rect x="940.0" y="230.0" width="160.0" height="60.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1020.0" y="255.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">A 被接受的概率</text>
+<text x="1020.0" y="273.0" font-size="11" fill="#6b7280" text-anchor="middle">min(1, 0.7/0.5) = 1</text>
+<rect x="940.0" y="370.0" width="160.0" height="60.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1020.0" y="395.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">x₁ 不送验</text>
+<text x="1020.0" y="413.0" font-size="11" fill="#6b7280" text-anchor="middle">目标模型重采：A 0.7 / B 0.3</text>
+<line x1="482.0" y1="318.0" x2="518.0" y2="266.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="482.0" y1="342.0" x2="518.0" y2="394.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="722.0" y1="260.0" x2="756.0" y2="260.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="912.0" y1="260.0" x2="936.0" y2="260.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="722.0" y1="400.0" x2="756.0" y2="400.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="912.0" y1="400.0" x2="936.0" y2="400.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="520.0" y="452.0" width="580.0" height="48.0" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="810.0" y="474.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">合起来：P(A) = 0.5 × 1 + 0.5 × 0.7 = 0.85，P(B) = 0.15</text>
+<text x="810.0" y="492.0" font-size="11" fill="#6b7280" text-anchor="middle">不等于目标分布 (0.7, 0.3)，这个调度器不再无损</text>
+<text x="30.0" y="530.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p. 32–33 附录 A 重画，数字全部来自原文。「A 带来高 c₂、B 带来低 c₂」是原文为构造反例所作的假设；病根是收不收 x₁ 取决于 x₁ 自己。</text>
+</svg>

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="ad" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 7：同一张前沿图，竖着读比吞吐，横着读比单用户速度</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">线上遥测的拟合前沿（散点省略）。横轴 = 每用户生成速度，纵轴 = 每 GPU 总吞吐。灰 = MTP-1（生产基线）；绿 = DSpark-5。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">竖虚线 = 固定 SLA 比吞吐；横虚线 = 固定吞吐比单用户速度。</text>
+<text x="315.0" y="106.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">DeepSeek-V4-Flash</text>
+<line x1="90.0" y1="480.0" x2="540.0" y2="480.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="484.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="90.0" y1="390.0" x2="540.0" y2="390.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="394.0" font-size="11" fill="#9ca3af" text-anchor="end">5k</text>
+<line x1="90.0" y1="300.0" x2="540.0" y2="300.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="304.0" font-size="11" fill="#9ca3af" text-anchor="end">10k</text>
+<line x1="90.0" y1="210.0" x2="540.0" y2="210.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="214.0" font-size="11" fill="#9ca3af" text-anchor="end">15k</text>
+<line x1="90.0" y1="120.0" x2="540.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="124.0" font-size="11" fill="#9ca3af" text-anchor="end">20k</text>
+<text x="90.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">50</text>
+<text x="152.5" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">75</text>
+<text x="215.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">100</text>
+<text x="277.5" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">125</text>
+<text x="340.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">150</text>
+<text x="402.5" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">175</text>
+<text x="465.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">200</text>
+<text x="527.5" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">225</text>
+<line x1="90.0" y1="120.0" x2="90.0" y2="480.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="90.0" y1="480.0" x2="540.0" y2="480.0" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="90.8,130.2 174.9,309.8 183.5,326.7 187.8,336.1 192.5,347.4 206.2,381.0 210.1,389.3 214.0,396.8 217.8,403.6 222.1,410.4 226.4,416.6 230.7,422.3 235.4,428.0 240.2,433.1 244.9,437.7 250.0,442.2 255.2,446.2 260.8,450.1 266.4,453.5 272.4,456.8 278.8,459.8 285.7,462.6 293.0,465.2 300.7,467.5 305.0,468.6" fill="none" stroke="#b9b9b9" stroke-width="2.4"/>
+<polyline points="149.5,178.8 333.0,327.3 342.4,333.9 349.5,339.2 355.0,343.7 360.6,348.6 366.9,354.8 374.7,363.2 395.2,385.2 401.5,391.2 407.0,396.0 414.9,402.4 422.8,408.2 430.7,413.6 439.3,419.1 448.0,424.1 456.6,428.8 466.1,433.4 475.5,437.6 485.8,441.7 496.0,445.4 507.0,449.0 518.9,452.4 531.5,455.7" fill="none" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="165.0" y1="288.8" x2="165.0" y2="191.3" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<circle cx="165.0" cy="288.8" r="3.5" fill="#eeeeee" stroke="#6b7280"/>
+<circle cx="165.0" cy="191.3" r="3.5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="171.0" y="244.1" font-size="11" fill="#111827" text-anchor="start" font-weight="700">+51% 吞吐</text>
+<line x1="165.0" y1="288.8" x2="285.5" y2="288.8" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<circle cx="165.0" cy="288.8" r="3.5" fill="#eeeeee" stroke="#6b7280"/>
+<circle cx="285.5" cy="288.8" r="3.5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="225.2" y="282.8" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">+60% 速度</text>
+<line x1="265.0" y1="452.8" x2="265.0" y2="272.5" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<circle cx="265.0" cy="452.8" r="3.5" fill="#eeeeee" stroke="#6b7280"/>
+<circle cx="265.0" cy="272.5" r="3.5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="271.0" y="366.6" font-size="11" fill="#111827" text-anchor="start" font-weight="700">+661% 吞吐</text>
+<line x1="265.0" y1="452.8" x2="520.0" y2="452.8" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<circle cx="265.0" cy="452.8" r="3.5" fill="#eeeeee" stroke="#6b7280"/>
+<circle cx="520.0" cy="452.8" r="3.5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="392.5" y="446.8" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">+85% 速度</text>
+<text x="315.0" y="518.0" font-size="12" fill="#6b7280" text-anchor="middle">每用户生成速度（token/s/user）</text>
+<line x1="390.0" y1="130.0" x2="414.0" y2="130.0" stroke="#b9b9b9" stroke-width="2.4"/>
+<text x="420.0" y="134.0" font-size="11" fill="#111827" text-anchor="start">MTP-1</text>
+<line x1="470.0" y1="130.0" x2="494.0" y2="130.0" stroke="#5fa886" stroke-width="2.4"/>
+<text x="500.0" y="134.0" font-size="11" fill="#111827" text-anchor="start">DSpark</text>
+<text x="845.0" y="106.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">DeepSeek-V4-Pro</text>
+<line x1="620.0" y1="480.0" x2="1070.0" y2="480.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="612.0" y="484.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="620.0" y1="424.6" x2="1070.0" y2="424.6" stroke="#e5e7eb" stroke-width="1"/>
+<text x="612.0" y="428.6" font-size="11" fill="#9ca3af" text-anchor="end">1k</text>
+<line x1="620.0" y1="369.2" x2="1070.0" y2="369.2" stroke="#e5e7eb" stroke-width="1"/>
+<text x="612.0" y="373.2" font-size="11" fill="#9ca3af" text-anchor="end">2k</text>
+<line x1="620.0" y1="313.8" x2="1070.0" y2="313.8" stroke="#e5e7eb" stroke-width="1"/>
+<text x="612.0" y="317.8" font-size="11" fill="#9ca3af" text-anchor="end">3k</text>
+<line x1="620.0" y1="258.5" x2="1070.0" y2="258.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="612.0" y="262.5" font-size="11" fill="#9ca3af" text-anchor="end">4k</text>
+<line x1="620.0" y1="203.1" x2="1070.0" y2="203.1" stroke="#e5e7eb" stroke-width="1"/>
+<text x="612.0" y="207.1" font-size="11" fill="#9ca3af" text-anchor="end">5k</text>
+<line x1="620.0" y1="147.7" x2="1070.0" y2="147.7" stroke="#e5e7eb" stroke-width="1"/>
+<text x="612.0" y="151.7" font-size="11" fill="#9ca3af" text-anchor="end">6k</text>
+<text x="620.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">20</text>
+<text x="710.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">40</text>
+<text x="800.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">60</text>
+<text x="890.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">80</text>
+<text x="980.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">100</text>
+<text x="1070.0" y="498.0" font-size="11" fill="#9ca3af" text-anchor="middle">120</text>
+<line x1="620.0" y1="120.0" x2="620.0" y2="480.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="620.0" y1="480.0" x2="1070.0" y2="480.0" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="638.9,122.2 690.5,282.8 694.3,296.4 704.2,332.8 707.6,343.5 710.4,351.8 712.8,357.8 715.1,363.1 717.5,367.5 718.4,369.1 720.3,375.2 723.2,383.4 726.5,392.0 729.3,398.5 732.2,404.3 735.0,409.4 737.9,413.8 741.2,418.3 745.0,422.8 754.4,433.4 759.2,438.0 763.9,442.1 769.1,446.1 774.3,449.6 780.0,453.1 786.1,456.3 792.8,459.3 799.9,462.1 807.5,464.7 815.5,467.0 824.5,469.2 834.4,471.1 845.3,472.8 857.6,474.4 871.8,475.7 875.2,476.0" fill="none" stroke="#b9b9b9" stroke-width="2.4"/>
+<polyline points="675.4,151.6 800.6,302.0 805.2,308.5 816.8,324.9 821.4,330.7 825.3,335.0 828.4,337.9 831.5,340.4 834.6,342.6 839.2,348.5 858.5,373.5 865.5,381.7 871.7,388.5 878.6,395.5 885.6,402.1 892.5,408.3 899.5,413.9 907.2,419.8 914.9,425.1 922.7,430.0 930.4,434.5 938.9,438.9 947.4,443.0 956.7,447.0 965.9,450.5 976.0,454.0 986.8,457.3 997.6,460.1 1009.2,462.8 1021.6,465.3 1035.5,467.7 1050.2,469.8 1061.0,471.1" fill="none" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="687.5" y1="273.0" x2="687.5" y2="166.2" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<circle cx="687.5" cy="273.0" r="3.5" fill="#eeeeee" stroke="#6b7280"/>
+<circle cx="687.5" cy="166.2" r="3.5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="693.5" y="223.6" font-size="11" fill="#111827" text-anchor="start" font-weight="700">+52% 吞吐</text>
+<line x1="687.5" y1="273.0" x2="776.6" y2="273.0" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<circle cx="687.5" cy="273.0" r="3.5" fill="#eeeeee" stroke="#6b7280"/>
+<circle cx="776.6" cy="273.0" r="3.5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="732.0" y="267.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">+57% 速度</text>
+<line x1="755.0" y1="433.8" x2="755.0" y2="247.1" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<circle cx="755.0" cy="433.8" r="3.5" fill="#eeeeee" stroke="#6b7280"/>
+<circle cx="755.0" cy="247.1" r="3.5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="761.0" y="344.5" font-size="11" fill="#111827" text-anchor="start" font-weight="700">+406% 吞吐</text>
+<line x1="755.0" y1="433.8" x2="929.6" y2="433.8" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="4 3"/>
+<circle cx="755.0" cy="433.8" r="3.5" fill="#eeeeee" stroke="#6b7280"/>
+<circle cx="929.6" cy="433.8" r="3.5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="842.3" y="427.8" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">+78% 速度</text>
+<text x="845.0" y="518.0" font-size="12" fill="#6b7280" text-anchor="middle">每用户生成速度（token/s/user）</text>
+<line x1="920.0" y1="130.0" x2="944.0" y2="130.0" stroke="#b9b9b9" stroke-width="2.4"/>
+<text x="950.0" y="134.0" font-size="11" fill="#111827" text-anchor="start">MTP-1</text>
+<line x1="1000.0" y1="130.0" x2="1024.0" y2="130.0" stroke="#5fa886" stroke-width="2.4"/>
+<text x="1030.0" y="134.0" font-size="11" fill="#111827" text-anchor="start">DSpark</text>
+<text x="30.0" y="548.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p. 18 Figure 7 的拟合线与标注点重画；标注百分比照抄原图。纵轴单位 token/s/gpu，Flash 与 Pro 的量程不同。</text>
+<text x="30.0" y="570.0" font-size="12" fill="#6b7280" text-anchor="start">严 SLA 下（Flash 120、Pro 50）MTP-1 已贴近自己的运行边界，只剩很小的并发，所以 +661% 与 +406% 是名义倍数。</text>
+</svg>

@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="ad" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Table 5：同样的训练数据，树开到 60 的 EAGLE-3 接受更长，并发一高却比不开还慢</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">LLaMA-3.1-8B-Instruct，SGLang（Spec-v1，Flashinfer），单卡 B200。纵轴 = 相对不开投机的加速比，灰虚线 = 1×。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">黄 = EAGLE-3 树里 10 个草稿 Token；红 = 同一 EAGLE-3 树里 60 个草稿 Token；紫 = DFlash 块长 10（一条链）。</text>
+<line x1="640.0" y1="112.0" x2="664.0" y2="112.0" stroke="#d4a24c" stroke-width="2.2"/>
+<circle cx="652.0" cy="112.0" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="670.0" y="116.0" font-size="12" fill="#111827" text-anchor="start">EAGLE-3（10）</text>
+<line x1="790.0" y1="112.0" x2="814.0" y2="112.0" stroke="#d9877a" stroke-width="2.2"/>
+<circle cx="802.0" cy="112.0" r="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="820.0" y="116.0" font-size="12" fill="#111827" text-anchor="start">EAGLE-3（60）</text>
+<line x1="940.0" y1="112.0" x2="964.0" y2="112.0" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="952.0" cy="112.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="970.0" y="116.0" font-size="12" fill="#111827" text-anchor="start">DFlash（10）</text>
+<text x="225.0" y="136.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">GSM8K</text>
+<line x1="80.0" y1="420.0" x2="370.0" y2="420.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72.0" y="424.0" font-size="11" fill="#9ca3af" text-anchor="end">0×</text>
+<line x1="80.0" y1="375.0" x2="370.0" y2="375.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72.0" y="379.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5×</text>
+<line x1="80.0" y1="330.0" x2="370.0" y2="330.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72.0" y="334.0" font-size="11" fill="#9ca3af" text-anchor="end">1×</text>
+<line x1="80.0" y1="285.0" x2="370.0" y2="285.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72.0" y="289.0" font-size="11" fill="#9ca3af" text-anchor="end">1.5×</text>
+<line x1="80.0" y1="240.0" x2="370.0" y2="240.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72.0" y="244.0" font-size="11" fill="#9ca3af" text-anchor="end">2×</text>
+<line x1="80.0" y1="195.0" x2="370.0" y2="195.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72.0" y="199.0" font-size="11" fill="#9ca3af" text-anchor="end">2.5×</text>
+<line x1="80.0" y1="150.0" x2="370.0" y2="150.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72.0" y="154.0" font-size="11" fill="#9ca3af" text-anchor="end">3×</text>
+<line x1="80.0" y1="330.0" x2="370.0" y2="330.0" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="80.0" y1="150.0" x2="80.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="80.0" y1="420.0" x2="370.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="96.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="160.5" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">4</text>
+<text x="225.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">8</text>
+<text x="289.5" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">16</text>
+<text x="354.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">32</text>
+<text x="225.0" y="458.0" font-size="12" fill="#6b7280" text-anchor="middle">并发请求数</text>
+<polyline points="96.0,276.0 160.5,285.0 225.0,294.0 289.5,312.0 354.0,330.0" fill="none" stroke="#d4a24c" stroke-width="2.2"/>
+<circle cx="96.0" cy="276.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="160.5" cy="285.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="225.0" cy="294.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="289.5" cy="312.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="354.0" cy="330.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="362.0" y="334.0" font-size="11" fill="#d4a24c" text-anchor="start">1.0×</text>
+<polyline points="96.0,249.0 160.5,276.0 225.0,303.0 289.5,339.0 354.0,366.0" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<circle cx="96.0" cy="249.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="160.5" cy="276.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="225.0" cy="303.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="289.5" cy="339.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="354.0" cy="366.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="362.0" y="370.0" font-size="11" fill="#d9877a" text-anchor="start">0.6×</text>
+<polyline points="96.0,204.0 160.5,222.0 225.0,231.0 289.5,258.0 354.0,276.0" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="96.0" cy="204.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="160.5" cy="222.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="225.0" cy="231.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="289.5" cy="258.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="354.0" cy="276.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="362.0" y="280.0" font-size="11" fill="#8f8bd8" text-anchor="start">1.6×</text>
+<text x="225.0" y="480.0" font-size="11" fill="#6b7280" text-anchor="middle">平均 τ：3.49 / 4.55 / 4.32（黄 / 红 / 紫）</text>
+<text x="575.0" y="136.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">HumanEval</text>
+<line x1="430.0" y1="420.0" x2="720.0" y2="420.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="422.0" y="424.0" font-size="11" fill="#9ca3af" text-anchor="end">0×</text>
+<line x1="430.0" y1="375.0" x2="720.0" y2="375.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="422.0" y="379.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5×</text>
+<line x1="430.0" y1="330.0" x2="720.0" y2="330.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="422.0" y="334.0" font-size="11" fill="#9ca3af" text-anchor="end">1×</text>
+<line x1="430.0" y1="285.0" x2="720.0" y2="285.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="422.0" y="289.0" font-size="11" fill="#9ca3af" text-anchor="end">1.5×</text>
+<line x1="430.0" y1="240.0" x2="720.0" y2="240.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="422.0" y="244.0" font-size="11" fill="#9ca3af" text-anchor="end">2×</text>
+<line x1="430.0" y1="195.0" x2="720.0" y2="195.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="422.0" y="199.0" font-size="11" fill="#9ca3af" text-anchor="end">2.5×</text>
+<line x1="430.0" y1="150.0" x2="720.0" y2="150.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="422.0" y="154.0" font-size="11" fill="#9ca3af" text-anchor="end">3×</text>
+<line x1="430.0" y1="330.0" x2="720.0" y2="330.0" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="430.0" y1="150.0" x2="430.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="430.0" y1="420.0" x2="720.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="446.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="510.5" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">4</text>
+<text x="575.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">8</text>
+<text x="639.5" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">16</text>
+<text x="704.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">32</text>
+<text x="575.0" y="458.0" font-size="12" fill="#6b7280" text-anchor="middle">并发请求数</text>
+<polyline points="446.0,240.0 510.5,249.0 575.0,258.0 639.5,285.0 704.0,312.0" fill="none" stroke="#d4a24c" stroke-width="2.2"/>
+<circle cx="446.0" cy="240.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="510.5" cy="249.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="575.0" cy="258.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="639.5" cy="285.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="704.0" cy="312.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="712.0" y="316.0" font-size="11" fill="#d4a24c" text-anchor="start">1.2×</text>
+<polyline points="446.0,240.0 510.5,267.0 575.0,303.0 639.5,339.0 704.0,366.0" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<circle cx="446.0" cy="240.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="510.5" cy="267.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="575.0" cy="303.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="639.5" cy="339.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="704.0" cy="366.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="712.0" y="370.0" font-size="11" fill="#d9877a" text-anchor="start">0.6×</text>
+<polyline points="446.0,168.0 510.5,186.0 575.0,195.0 639.5,231.0 704.0,258.0" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="446.0" cy="168.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="510.5" cy="186.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="575.0" cy="195.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="639.5" cy="231.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="704.0" cy="258.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="712.0" y="262.0" font-size="11" fill="#8f8bd8" text-anchor="start">1.8×</text>
+<text x="575.0" y="480.0" font-size="11" fill="#6b7280" text-anchor="middle">平均 τ：3.62 / 4.65 / 4.91（黄 / 红 / 紫）</text>
+<text x="925.0" y="136.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Alpaca</text>
+<line x1="780.0" y1="420.0" x2="1070.0" y2="420.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="772.0" y="424.0" font-size="11" fill="#9ca3af" text-anchor="end">0×</text>
+<line x1="780.0" y1="375.0" x2="1070.0" y2="375.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="772.0" y="379.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5×</text>
+<line x1="780.0" y1="330.0" x2="1070.0" y2="330.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="772.0" y="334.0" font-size="11" fill="#9ca3af" text-anchor="end">1×</text>
+<line x1="780.0" y1="285.0" x2="1070.0" y2="285.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="772.0" y="289.0" font-size="11" fill="#9ca3af" text-anchor="end">1.5×</text>
+<line x1="780.0" y1="240.0" x2="1070.0" y2="240.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="772.0" y="244.0" font-size="11" fill="#9ca3af" text-anchor="end">2×</text>
+<line x1="780.0" y1="195.0" x2="1070.0" y2="195.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="772.0" y="199.0" font-size="11" fill="#9ca3af" text-anchor="end">2.5×</text>
+<line x1="780.0" y1="150.0" x2="1070.0" y2="150.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="772.0" y="154.0" font-size="11" fill="#9ca3af" text-anchor="end">3×</text>
+<line x1="780.0" y1="330.0" x2="1070.0" y2="330.0" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="780.0" y1="150.0" x2="780.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="780.0" y1="420.0" x2="1070.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="796.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="860.5" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">4</text>
+<text x="925.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">8</text>
+<text x="989.5" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">16</text>
+<text x="1054.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">32</text>
+<text x="925.0" y="458.0" font-size="12" fill="#6b7280" text-anchor="middle">并发请求数</text>
+<polyline points="796.0,285.0 860.5,294.0 925.0,294.0 989.5,321.0 1054.0,339.0" fill="none" stroke="#d4a24c" stroke-width="2.2"/>
+<circle cx="796.0" cy="285.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="860.5" cy="294.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="925.0" cy="294.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="989.5" cy="321.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="1054.0" cy="339.0" r="3.5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1062.0" y="343.0" font-size="11" fill="#d4a24c" text-anchor="start">0.9×</text>
+<polyline points="796.0,258.0 860.5,285.0 925.0,312.0 989.5,348.0 1054.0,375.0" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<circle cx="796.0" cy="258.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="860.5" cy="285.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="925.0" cy="312.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="989.5" cy="348.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="1054.0" cy="375.0" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1062.0" y="379.0" font-size="11" fill="#d9877a" text-anchor="start">0.5×</text>
+<polyline points="796.0,222.0 860.5,240.0 925.0,258.0 989.5,285.0 1054.0,294.0" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="796.0" cy="222.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="860.5" cy="240.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="925.0" cy="258.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="989.5" cy="285.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="1054.0" cy="294.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1062.0" y="298.0" font-size="11" fill="#8f8bd8" text-anchor="start">1.4×</text>
+<text x="925.0" y="480.0" font-size="11" fill="#6b7280" text-anchor="middle">平均 τ：3.11 / 4.07 / 3.73（黄 / 红 / 紫）</text>
+<text x="30.0" y="524.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p. 8 Table 5 重画，数值照抄原表。红线的 τ 在三个任务上都比黄线长，但并发 16 起跌破 1×：树越大，验证要算的 Token 越多。</text>
+</svg>

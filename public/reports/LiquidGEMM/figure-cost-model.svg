@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">成本模型：一次主循环要多久，看三段时间里最长的那段</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">灰 = 搬权重 T_LD；紫 = Tensor Core 做 INT8 乘加 T_MMA；黄 = CUDA Core 反量化 T_DQ。纵轴是每个权重元素分摊的时间（皮秒）。</text>
+<line x1="110.0" y1="379.0" x2="1060.0" y2="379.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="298.1" x2="1060.0" y2="298.1" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="217.1" x2="1060.0" y2="217.1" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="136.2" x2="1060.0" y2="136.2" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="110.0" x2="110.0" y2="460.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110.0" y1="460.0" x2="1060.0" y2="460.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110.0" y1="214.7" x2="1060.0" y2="214.7" stroke="#b9b9b9" stroke-width="2.4"/>
+<line x1="110.0" y1="337.3" x2="1060.0" y2="337.3" stroke="#b9b9b9" stroke-width="2.4" stroke-dasharray="7 5"/>
+<line x1="110.0" y1="438.9" x2="1060.0" y2="438.9" stroke="#d4a24c" stroke-width="2.4"/>
+<line x1="110.0" y1="460.0" x2="1060.0" y2="132.7" stroke="#8f8bd8" stroke-width="2.4"/>
+<circle cx="466.2" cy="337.3" r="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="466.2" y1="343.3" x2="466.2" y2="460.0" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="822.5" cy="214.7" r="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="822.5" y1="220.7" x2="822.5" y2="460.0" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="100.0" y="383.0" font-size="11" fill="#9ca3af" text-anchor="end">0.1</text>
+<text x="100.0" y="302.1" font-size="11" fill="#9ca3af" text-anchor="end">0.2</text>
+<text x="100.0" y="221.1" font-size="11" fill="#9ca3af" text-anchor="end">0.3</text>
+<text x="100.0" y="140.2" font-size="11" fill="#9ca3af" text-anchor="end">0.4</text>
+<text x="100.0" y="464.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="110.0" y="480.0" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<text x="347.5" y="480.0" font-size="12" fill="#111827" text-anchor="middle">100</text>
+<text x="585.0" y="480.0" font-size="12" fill="#111827" text-anchor="middle">200</text>
+<text x="822.5" y="480.0" font-size="12" fill="#111827" text-anchor="middle">300</text>
+<text x="1060.0" y="480.0" font-size="12" fill="#111827" text-anchor="middle">400</text>
+<text x="585.0" y="502.0" font-size="12" fill="#6b7280" text-anchor="middle">batch 大小 M（设 M 不超过 tile 高 Mt）</text>
+<text x="129.0" y="204.7" font-size="13" fill="#111827" text-anchor="start">T_LD，W8A8：每个权重 1 字节</text>
+<text x="129.0" y="327.3" font-size="13" fill="#111827" text-anchor="start">T_LD，W4A8：每个权重半字节，搬数时间减半</text>
+<text x="537.5" y="359.3" font-size="12" fill="#6b7280" text-anchor="start">α = 5 时 T_DQ 与这条线重合，α 更大就压过它</text>
+<text x="205.0" y="428.9" font-size="13" fill="#111827" text-anchor="start">T_DQ，LiquidGEMM：8 个元素 7 条指令，α ≈ 0.875（本文推算）</text>
+<text x="715.6" y="136.0" font-size="13" fill="#111827" text-anchor="start">T_MMA：随 M 线性变长，W4A8 与 W8A8 相同</text>
+<text x="476.2" y="381.3" font-size="12" fill="#111827" text-anchor="start">W4A8 拐点 M ≈ 150</text>
+<text x="832.5" y="236.7" font-size="12" fill="#111827" text-anchor="start">W8A8 拐点 M ≈ 300</text>
+<text x="30.0" y="540.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p.4–5 式（3）（4）（6）与 p.2 Figure 1a 的 H100 峰值（INT8 1978.9 TOPS、CUDA Core INT32 33.5 TOPS、带宽 3.3 TB/s）画出。</text>
+<text x="30.0" y="562.0" font-size="12" fill="#6b7280" text-anchor="start">两个拐点与 α ≤ 5.07 的门槛与原文一致。T_DQ 只和权重个数有关、不随 M 变：α 越大，黄线越高，它成为最长那段的 batch 区间就越宽。</text>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 7：把同一线程两次 MMA 要的 32 个 UINT4 排在一起，一条 LDS.128 拿齐</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 线程 T0 的数据；灰 = 其他线程的数据；红框 = ldmatrix 按「1 字节 1 个元素」切出的 4 字节。常规布局一格是 4 个 UINT4（2 字节）。</text>
+<rect x="16" y="70" width="1088" height="200" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="94.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) 常规 2D 布局：按 INT8 的 fragment 排，T0 的数据分成几小段散在各处</text>
+<rect x="62" y="142" width="168" height="42" rx="4" fill="none" stroke="#d9877a" stroke-width="2"/>
+<rect x="234" y="142" width="168" height="42" rx="4" fill="none" stroke="#d9877a" stroke-width="2"/>
+<rect x="406" y="142" width="168" height="42" rx="4" fill="none" stroke="#d9877a" stroke-width="2"/>
+<rect x="578" y="142" width="168" height="42" rx="4" fill="none" stroke="#d9877a" stroke-width="2"/>
+<rect x="64.0" y="146.0" width="78.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="103.0" y="168.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<rect x="150.0" y="146.0" width="78.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="189.0" y="168.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">T1</text>
+<rect x="236.0" y="146.0" width="78.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="275.0" y="168.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">T2</text>
+<rect x="322.0" y="146.0" width="78.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="361.0" y="168.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">T3</text>
+<rect x="408.0" y="146.0" width="78.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="447.0" y="168.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<rect x="494.0" y="146.0" width="78.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="533.0" y="168.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">T1</text>
+<rect x="580.0" y="146.0" width="78.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="619.0" y="168.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">T2</text>
+<rect x="666.0" y="146.0" width="78.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="705.0" y="168.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">T3</text>
+<rect x="64.0" y="192.0" width="78.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="103.0" y="212.0" font-size="12" fill="#111827" text-anchor="middle">T4</text>
+<rect x="150.0" y="192.0" width="78.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="189.0" y="212.0" font-size="12" fill="#111827" text-anchor="middle">T5</text>
+<rect x="236.0" y="192.0" width="78.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="275.0" y="212.0" font-size="12" fill="#111827" text-anchor="middle">T6</text>
+<rect x="322.0" y="192.0" width="78.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="361.0" y="212.0" font-size="12" fill="#111827" text-anchor="middle">T7</text>
+<rect x="408.0" y="192.0" width="78.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="447.0" y="212.0" font-size="12" fill="#111827" text-anchor="middle">T4</text>
+<rect x="494.0" y="192.0" width="78.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="533.0" y="212.0" font-size="12" fill="#111827" text-anchor="middle">T5</text>
+<rect x="580.0" y="192.0" width="78.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="619.0" y="212.0" font-size="12" fill="#111827" text-anchor="middle">T6</text>
+<rect x="666.0" y="192.0" width="78.0" height="30.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="705.0" y="212.0" font-size="12" fill="#111827" text-anchor="middle">T7</text>
+<line x1="404.0" y1="118.0" x2="404.0" y2="230.0" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="232.0" y="132.0" font-size="12" fill="#6b7280" text-anchor="middle">MMA1 要的一半</text>
+<text x="576.0" y="132.0" font-size="12" fill="#6b7280" text-anchor="middle">MMA2 要的一半</text>
+<text x="404.0" y="250.0" font-size="11" fill="#9ca3af" text-anchor="middle">每行 32 个 UINT4 = 16 字节；往下各行依次轮到 T8–T31</text>
+<text x="790.0" y="130.0" font-size="12" fill="#6b7280" text-anchor="start">ldmatrix 每 4 字节交给一个线程，</text>
+<text x="790.0" y="152.0" font-size="12" fill="#6b7280" text-anchor="start">而 4 字节此时装着两格、8 个 UINT4：</text>
+<text x="790.0" y="174.0" font-size="12" fill="#6b7280" text-anchor="start">本该给相邻线程的数据被送错了人。</text>
+<text x="790.0" y="196.0" font-size="12" fill="#6b7280" text-anchor="start">退路 LDS.32：一次拿 8 个只用 4 个，</text>
+<text x="790.0" y="218.0" font-size="12" fill="#6b7280" text-anchor="start">带宽浪费一半，指令和地址计算都更多。</text>
+<rect x="16" y="286" width="1088" height="170" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="310.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) Dual-MMA 打包布局：T0 两次 MMA 的 32 个 UINT4 连成一段 16 字节</text>
+<rect x="62.0" y="350.0" width="41.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="82.5" y="372.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<rect x="107.0" y="350.0" width="41.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="127.5" y="372.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<rect x="152.0" y="350.0" width="41.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="172.5" y="372.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<rect x="197.0" y="350.0" width="41.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="217.5" y="372.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<rect x="242.0" y="350.0" width="41.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="262.5" y="372.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<rect x="287.0" y="350.0" width="41.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="307.5" y="372.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<rect x="332.0" y="350.0" width="41.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="352.5" y="372.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<rect x="377.0" y="350.0" width="41.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="397.5" y="372.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">T0</text>
+<text x="150.0" y="342.0" font-size="11" fill="#6b7280" text-anchor="middle">MMA1 的 16 个</text>
+<text x="330.0" y="342.0" font-size="11" fill="#6b7280" text-anchor="middle">MMA2 的 16 个</text>
+<rect x="426.0" y="350.0" width="116.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="484.0" y="372.0" font-size="12" fill="#111827" text-anchor="middle">T1 的 32 个</text>
+<text x="582.0" y="372.0" font-size="14" fill="#111827" text-anchor="middle">…</text>
+<rect x="622.0" y="350.0" width="116.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="680.0" y="372.0" font-size="12" fill="#111827" text-anchor="middle">T7 的 32 个</text>
+<text x="240.0" y="404.0" font-size="11" fill="#9ca3af" text-anchor="middle">T0 一条 LDS.128，bank 0–3</text>
+<text x="484.0" y="404.0" font-size="11" fill="#9ca3af" text-anchor="middle">bank 4–7</text>
+<text x="680.0" y="404.0" font-size="11" fill="#9ca3af" text-anchor="middle">bank 28–31</text>
+<text x="400.0" y="432.0" font-size="11" fill="#9ca3af" text-anchor="middle">下一行轮到 T8–T15，再往下 T16–T23、T24–T31，4 行排满一个 warp</text>
+<text x="790.0" y="334.0" font-size="12" fill="#6b7280" text-anchor="start">8 个线程同时各发一条 LDS.128，</text>
+<text x="790.0" y="356.0" font-size="12" fill="#6b7280" text-anchor="start">8 × 16 字节正好铺满 32 个 bank：</text>
+<text x="790.0" y="378.0" font-size="12" fill="#6b7280" text-anchor="start">没有 bank 冲突，也不用 swizzle。</text>
+<text x="790.0" y="400.0" font-size="12" fill="#6b7280" text-anchor="start">显存里离线排成同样顺序，</text>
+<text x="790.0" y="422.0" font-size="12" fill="#6b7280" text-anchor="start">从 HBM 搬进来直接用 LDG.128。</text>
+<text x="30.0" y="486.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p.7 Figure 7 与 p.7–8 正文重画；格宽只表示数据归属，不按字节比例。</text>
+</svg>

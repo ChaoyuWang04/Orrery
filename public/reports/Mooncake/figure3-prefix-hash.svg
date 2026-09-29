@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="540" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 3：每块的哈希连着它的前缀，命中只能从第一块起连续往后数</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">黄 = 能复用的前缀块；红 = 这次新算出的增量块；灰 = 还没有缓存的词元块。一块 = 512 个词元（PDF p.7）。</text>
+<text x="36.0" y="110.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">词元块</text>
+<text x="36.0" y="170.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">块哈希</text>
+<text x="36.0" y="230.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">与缓存比对</text>
+<rect x="150.0" y="88.0" width="88.0" height="34.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="194.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">a</text>
+<line x1="194.0" y1="124.0" x2="194.0" y2="146.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="150.0" y="150.0" width="88.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="194.0" y="170.0" font-size="11" fill="#111827" text-anchor="middle">A=H(a)</text>
+<rect x="246.0" y="88.0" width="88.0" height="34.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="290.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">b</text>
+<line x1="290.0" y1="124.0" x2="290.0" y2="146.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="246.0" y="150.0" width="88.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="290.0" y="170.0" font-size="11" fill="#111827" text-anchor="middle">B=H(A+b)</text>
+<rect x="342.0" y="88.0" width="88.0" height="34.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="386.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">c</text>
+<line x1="386.0" y1="124.0" x2="386.0" y2="146.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="342.0" y="150.0" width="88.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="386.0" y="170.0" font-size="11" fill="#111827" text-anchor="middle">C=H(B+c)</text>
+<rect x="438.0" y="88.0" width="88.0" height="34.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="482.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">d</text>
+<line x1="482.0" y1="124.0" x2="482.0" y2="146.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="438.0" y="150.0" width="88.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="482.0" y="170.0" font-size="11" fill="#111827" text-anchor="middle">D=H(C+d)</text>
+<rect x="534.0" y="88.0" width="88.0" height="34.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="578.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">e</text>
+<line x1="578.0" y1="124.0" x2="578.0" y2="146.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="534.0" y="150.0" width="88.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="578.0" y="170.0" font-size="11" fill="#111827" text-anchor="middle">E=H(D+e)</text>
+<rect x="630.0" y="88.0" width="88.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="674.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">f</text>
+<line x1="674.0" y1="124.0" x2="674.0" y2="146.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="630.0" y="150.0" width="88.0" height="30.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="674.0" y="170.0" font-size="11" fill="#111827" text-anchor="middle">F=H(E+f)</text>
+<rect x="726.0" y="88.0" width="88.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="770.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">g</text>
+<line x1="770.0" y1="124.0" x2="770.0" y2="146.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="726.0" y="150.0" width="88.0" height="30.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="770.0" y="170.0" font-size="11" fill="#111827" text-anchor="middle">G=H(F+g)</text>
+<rect x="822.0" y="88.0" width="88.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="866.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">h</text>
+<line x1="866.0" y1="124.0" x2="866.0" y2="146.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="822.0" y="150.0" width="88.0" height="30.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="866.0" y="170.0" font-size="11" fill="#111827" text-anchor="middle">H=H(G+h)</text>
+<rect x="918.0" y="88.0" width="88.0" height="34.0" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="962.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">i</text>
+<line x1="962.0" y1="124.0" x2="962.0" y2="146.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="918.0" y="150.0" width="88.0" height="30.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="962.0" y="170.0" font-size="11" fill="#111827" text-anchor="middle">I=H(H+i)</text>
+<line x1="194.0" y1="182.0" x2="194.0" y2="206.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="290.0" y1="182.0" x2="290.0" y2="206.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="386.0" y1="182.0" x2="386.0" y2="206.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="482.0" y1="182.0" x2="482.0" y2="206.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="578.0" y1="182.0" x2="578.0" y2="206.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="674.0" y1="182.0" x2="674.0" y2="206.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="194.0" y="228.0" font-size="12" fill="#111827" text-anchor="middle">命中</text>
+<text x="290.0" y="228.0" font-size="12" fill="#111827" text-anchor="middle">命中</text>
+<text x="386.0" y="228.0" font-size="12" fill="#111827" text-anchor="middle">命中</text>
+<text x="482.0" y="228.0" font-size="12" fill="#111827" text-anchor="middle">命中</text>
+<text x="578.0" y="228.0" font-size="12" fill="#111827" text-anchor="middle">命中</text>
+<text x="674.0" y="228.0" font-size="12" fill="#111827" text-anchor="middle">不命中</text>
+<text x="846.0" y="228.0" font-size="12" fill="#9ca3af" text-anchor="middle">后面不再比</text>
+<rect x="16" y="256" width="1088" height="184" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="280.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">一条请求怎样用这些块（PDF p.5 Figure 3、p.5–6 四步流程）</text>
+<rect x="40.0" y="300.0" width="220.0" height="64.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="150.0" y="326.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">CPU 缓存池</text>
+<text x="150.0" y="348.0" font-size="11" fill="#6b7280" text-anchor="middle">前缀块 A–E 已在池里</text>
+<rect x="300.0" y="300.0" width="220.0" height="64.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="410.0" y="326.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Prefill 实例</text>
+<text x="410.0" y="348.0" font-size="11" fill="#6b7280" text-anchor="middle">装入 A–E，只算 f–i</text>
+<rect x="560.0" y="300.0" width="220.0" height="64.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="670.0" y="326.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Messenger</text>
+<text x="670.0" y="348.0" font-size="11" fill="#6b7280" text-anchor="middle">逐层经 RDMA 发出</text>
+<rect x="820.0" y="300.0" width="220.0" height="64.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="930.0" y="326.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Decode 实例</text>
+<text x="930.0" y="348.0" font-size="11" fill="#6b7280" text-anchor="middle">收齐 A–I 后进批处理</text>
+<line x1="262.0" y1="332.0" x2="298.0" y2="332.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="522.0" y1="332.0" x2="558.0" y2="332.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="782.0" y1="332.0" x2="818.0" y2="332.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="300.0" y="384.0" width="220.0" height="36.0" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="410.0" y="407.0" font-size="12" fill="#111827" text-anchor="middle">新块 F–I 写回 CPU 池</text>
+<line x1="410.0" y1="366.0" x2="410.0" y2="382.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="560.0" y="404.0" font-size="12" fill="#6b7280" text-anchor="start">写回的块带着哈希留在池里，下一条同前缀的请求就能命中</text>
+<text x="30.0" y="474.0" font-size="12" fill="#6b7280" text-anchor="start">F 的哈希里含 E，E 里含 D……前缀任何一块不同，后面每一块的哈希都跟着不同，所以匹配到第一处不一致就停。</text>
+<text x="30.0" y="496.0" font-size="12" fill="#6b7280" text-anchor="start">开源 trace 里两条请求的前 12 个 hash_ids 相同，就意味着前 12 × 512 = 6,144 个词元可以共享前缀缓存（PDF p.7）。</text>
+<text x="30.0" y="518.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p.5 Figure 3 重画并补上四步流程的去向；机制示意，不是实测。</text>
+</svg>
