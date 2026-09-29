@@ -233,6 +233,7 @@
 | DINO-WM | NYU | 在冻结的 DINO 视觉特征上建世界模型,零样本规划不用重训策略 |
 | JEPA-Position-Paper | ICFO | Les Houches 讲义:用能量模型与潜变量搭出 H-JEPA,不是 OpenReview 立场文本身 |
 | LLM-as-Policy | RoboProbe | 不经微调、不接预训练动作策略,让 LLM 直接给出末端执行器目标:GPT-6 Astra 在 RoboDojo 42 个任务上平均成功率 22.48%,排在全部 40 个公开策略之上,但精细与动态控制仍弱(arXiv 2609.24170) |
+| WROP | USC | 用 150 个 Blender 生成器造出客体永久性与固体性的训练语料与考卷,在其上微调 16B 视频续写模型,在盲评 Elo 中居续写类第一(arXiv 2609.28654) |
 
 ## 自进化系统
 
@@ -270,6 +271,7 @@
 | AlexNet | Toronto | ImageNet 上让深度 CNN 一举确立地位;GPU 训练加 ReLU 与 dropout 的组合 |
 | LSTM | TUMunich | 用门控与恒定误差流治住 RNN 的梯度消失,长程依赖第一次可训 |
 | RNN | UCSD | 多层网的误差反传:隐层表征从任务误差里长出来,同一规则也能训迭代网 |
+| Linear-Superposition | 未标注 | 把两段文本的词嵌入逐位平均后送进预训练 LLM,输出近似两路各自下一词分布的叠加;这种线性在初始化时最强、随预训练减弱,轻量微调可恢复,并能从一次前向中解出两路续写(arXiv 2609.29845) |
 
 
 

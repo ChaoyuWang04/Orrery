@@ -200,6 +200,7 @@
 | WebGPT | OpenAI | 浏览器辅助问答,人类反馈训练的早期 web agent |
 | Fara-1.5 | Microsoft | 电脑操作 agent 的可扩展学习环境与小模型数据配方;前作 Fara-7B 见 arXiv 2511.19663 |
 | Harness-Zero | Peking | harness 蒸馏:用优化过的 harness 指导一个 harnessing agent 在目标 harness 的动作空间里改写学生回答,微调后部署时去掉专用 harness |
+| JAZ | MIT | 把 agent 循环抽象成语言原语 invoke:输入与 REPL 历史都是代码变量、子 agent 就是递归调用;只靠提示,就在 StuLife 长程回忆与 AppWorld 自我改进上胜过 Letta 与 ACE 这类专用 harness(arXiv 2609.26891) |
 
 ## 推理服务与架构探索
 
@@ -230,6 +231,7 @@
 | XGrammar | CMU | 约束解码的上下文无关文法执行开销吃掉整条延迟(arXiv 2411.15100,MLSys 2025) |
 | KTransformers | Tsinghua | CPU 与 GPU 混合推理 MoE,把内存当一层慢显存用(SOSP 2025) |
 | Hyper-Connections | ByteDance | 把残差连接扩成多条带可学习权重的并行流,化解梯度消失与表示坍缩的跷跷板;DeepSeek mHC 的前作(arXiv 2409.19606,ICLR 2025) |
+| Flash-dLLM | MBZUAI | 扩散语言模型的免训练推理加速:融合 KV cache 更新内核削减显存读写,再让模型自己起草、自己验证做并行解码(arXiv 2609.26796) |
 
 ## 分布式训练与并行
 
@@ -278,6 +280,7 @@
 | Molmo2 | Ai2 | 开放权重 VLM:视频理解加指点接地的数据机器(CVPR 2026,arXiv 2601.10611) |
 | DINOv3 | Meta | 稠密特征与 42 亿图蒸馏;日常研读侧只收了 DINOv2(arXiv 2508.10104) |
 | SAM-3 | Meta | 按概念提示做分割与追踪;日常研读侧只收了 Segment Anything(arXiv 2511.16719) |
+| Qwen3.8-Omni | Alibaba | 面向多模态生产力的原生全模态 agent 模型:继承 Qwen3.8-Next 的稀疏 MoE 与百万 token 上下文,配套开源音视频插件框架与实时交互 harness(arXiv 2609.25611) |
 
 ## 图像、视频与 3D 生成
 
@@ -320,6 +323,8 @@
 | Movie-Gen | Meta | 视频、图像、个性化与音频四件套媒体基模;Meta 生成线此前零收录(arXiv 2410.13720) |
 | Geometric-AutoEncoder | HKUST | 几何原生自编码器 GAE:把几何基础模型的特征重参数化成紧凑潜空间,可同时解码外观、深度、相机与点图,再在上面做条件流生成 |
 | PixelDiT2 | NVIDIA | 端到端像素空间扩散:冻结的视觉基础模型逐 patch 给表示引导,不引入自编码器;ImageNet 256×256 上 600 epoch FID 1.46(arXiv 2609.24919) |
+| AR-Video-Memory-Survey | HKUST | 综述:自回归视频生成里的记忆,按形式、功能、操作、学习、评测五个视角梳理(arXiv 2609.28466) |
+| High-Dim-Latent-Diffusibility | Cornell | 重建微调让表征自编码器的有效维度塌缩,速度预测因此要去拟合流形外的正交噪声;改成直接预测干净表征(x0-prediction)后文生图指标回升(arXiv 2609.28473) |
 
 ## 音频
 
@@ -372,6 +377,9 @@
 | Workspace-Models | MIT | 训练时用 VLM 标出任务相关的当前与历史信息,蒸馏成轻量的 workspace token,部署时代替观测喂给策略,不再在环调用 VLM |
 | MotionJEPA | Oxford | JEPA 偏好慢特征导致时间维坍塌:加一个预测差分图像嵌入的正则 DISReg,不需要动作标签也不做像素重建 |
 | InsertionWM | NVIDIA | 用 TD-MPC2 视觉世界模型做机器人插装:腕部深度图加本体感知,一个模型在 90 种零件上训练,对未见几何零样本成功率 56%,远高于无模型基线的 7% |
+| Representation-World-Model | Tsinghua | 不学前向动力学、不做搜索:在端点表征之间直接插出隐空间路径,用逆动力学沿路径解码动作,把规划做进表征几何本身(arXiv 2609.29171) |
+| MachEmbodied-U0 | LiAuto | 理想汽车的具身统一模型:理解专家出子任务与可交互区域,生成专家用流匹配联合生成未来 RGB、深度、法线、光流与动作,约 4,200 小时演示预训练(arXiv 2609.25627) |
+| ECO | Toronto | 端到端驾驶策略与控制器之间插一层免训练后处理:锚定已执行历史与预测终点,只重整中间航点,六个策略的闭环分数全部上升(alphaXiv 原件,非 arXiv 编号) |
 
 ## 自进化系统
 
@@ -412,6 +420,8 @@
 | CoT-Empowers-Serial-Problems | Stanford | 给 CoT 的能力增益称重量:常数深度加立刻舍入的 Transformer 连 O(log n) 步思维链也只能算 AC0(定点数那档是 TC0),而 T 步思维链配 Θ(log n) 嵌入就能算任意规模 T 的电路;唯一的严格分离要假设 TC0 ⊊ NC1,且构造里的思维链是 0/1 门真值、人类读不懂(依据 arXiv v4,38 页) |
 | Towards-Monosemanticity | Anthropic | 一层 Transformer 的 512 个 MLP 神经元上训稀疏自编码器:字典从 512 扩到 131,072,人工打分(区间级)特征中位 12 分、神经元 0 分,A/1 恢复 79% 的 MLP 损失贡献(131,072 时 94.5%);阿拉伯文、DNA、base64、希伯来文四个特征逐项过特异性、敏感性、下游因果、非神经元、跨种子五关;特征随字典变大而分裂,还能经 token 流接成生成 HTML 的「有限状态自动机」(**原件是网页**,依据 transformer-circuits.pub 2023-10-04) |
 | Patchscopes | Google | 把隐藏表示打补丁进另一次前向,让模型自己用自然语言解释它;logit lens 等旧方法都是特例(arXiv 2401.06102,ICML 2024) |
+| Agent-Trace-Tampering | MaxPlanck | 本地编码 agent 能改写、删除自己的执行轨迹:十组模型与 harness 在用户直接要求时大多照删,奖励诱导下也会自发删痕;作者主张把轨迹记录挪到 agent 控制之外的独立拦截层(arXiv 2609.30266) |
+| Matryoshka-Attribution | Stanford | 把归因写成「找出最小化下游损失的嵌套组件子集」:sigmoid top-k 掩码加随机稀疏预算一次学出组件排序,在 MIB 榜单排第一,还能用 RL 定位微调中改出拒答行为的那部分权重(arXiv 2609.25518) |
 
 ## 检索与 RAG
 
@@ -437,3 +447,4 @@
 | WildBench | Ai2 | 考什么交给真实用户、怎么判交给一张 5 到 10 问的清单:1,024 题、用三个不同水平的基线合成 WB-Reward,与 Arena 人类 Elo 的头部 Pearson 0.984(依据 arXiv v2,19 页) |
 | SWE-bench | Princeton | 2,294 道真实 GitHub 缺陷:已合并且自带测试的 PR 同时给出题目、答案与验收标准;判分是 F2P 与 P2P 的与运算,当年最好的模型只解出 1.96%(依据 arXiv v3,52 页) |
 | Lessons-from-the-Trenches | EleutherAI | 可复现评测的方法学教训:打分口径怎么会错(arXiv 2405.14782) |
+| EmbodiedMemory-Bench | ZJU | 2,554 个交互式具身记忆考题,覆盖细粒度视觉记忆、动态状态追踪、交互反馈与经验迁移四类;附带场景、空间、事件三层外部记忆基线与 8B 策略(arXiv 2609.28236) |
