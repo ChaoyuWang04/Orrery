@@ -189,7 +189,9 @@ flowchart TD
 
 这里有个最容易答错的区分:**采样分布和散度方向是两个正交维度**。前缀由学生生成,不代表目标就一定是反向 KL;拿到学生前缀后,两个模型在该位置的完整词表分布都在手里,前向、反向甚至两者的混合(如广义 JSD)都能直接算——GKD 正是把散度当成一个可选项的。
 
-也正因为要在任意前缀上拿到教师的完整分布,**OPD 死死依赖 teacher logits**:监督信号就是那份归一化的全词表分布。这也决定了成本结构——每轮都要教师在新轨迹上前向一遍。好消息是这次前向是纯 prefill(序列已经生成完),没有 decode 的逐 token 依赖,可以大 batch 打满算力;还能只在学生熵高或师生分歧大的位置打分来省算力。
+也正因为要在任意前缀上拿到教师的完整分布,**OPD 死死依赖 teacher logits**:监督信号就是那份归一化的全词表分布。这也决定了成本结构——每轮都要教师在新轨迹上前向一遍。好消息是这次前向是纯 prefill(序列已经生成完),没有 decode 的逐 token 依赖,可以大 batch 打满算力。只在一小部分位置算损失(学生熵高、师生分歧大的位置)在 0.1%–1% 的 token 预算下就能接近全量效果,**但省不了算力**:回答照样整段生成、教师照样整段 prefill,挑位置本身还要先给所有位置打分,实测步时反而略增 2% 上下(IER-OPD,arXiv:2609.24432)。稀疏的收益在效果,要换成吞吐得反过来缩短 rollout 或减少教师调用。
+
+许多实现并不在每个位置对全词表求反向 KL,而是只用学生采出的那一个 token 估它的梯度(采样反向 KL)。这个估计无偏,但方差很不均匀:要修正的分歧若落在学生很少写的 token 上,单样本多数时候采不到它,一采到又是一步很长的更新,噪声按 $(1-p_a)/p_a$ 放大。所以挑监督位置时,"这里值不值得教"之外还要问"用一个样本能不能教对方向",两者挑出的头部位置重合度很低(同上)。
 
 学生和教师差距很大时,**先 SFT 再 OPD**。因为差距大时学生采出的前缀落在教师分布的极低概率区,教师在那种上下文上本来就没被训练过,给出的分布不可靠,密集信号变成密集噪声。同理,数据再多也不能从随机初始化直接 OPD:随机学生的前缀远离有效语言分布,而教师要同时教词法、知识、指令和任务,支持集差距太大且生成成本极高。
 
@@ -258,3 +260,4 @@ flowchart TD
 - On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes(GKD)— [arXiv:2306.13649](https://arxiv.org/abs/2306.13649)
 - Distilling the Knowledge in a Neural Network(固定教师软目标)— [arXiv:1503.02531](https://arxiv.org/abs/1503.02531)
 - Sequence-Level Knowledge Distillation(序列级退路的出处)— [arXiv:1606.07947](https://arxiv.org/abs/1606.07947)
+- 1% of Tokens Can Be Enough: On Gradient Estimation in On-Policy Distillation(稀疏 OPD 与单样本梯度的信噪比 IER)— [arXiv:2609.24432](https://arxiv.org/abs/2609.24432)

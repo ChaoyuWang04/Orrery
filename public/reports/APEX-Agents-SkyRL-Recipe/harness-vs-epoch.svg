@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 470" width="1120" height="470" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="470" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">两个 28.69%：修 harness 与训 1 个 epoch 买到同一个分数</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">35B 在 480 个保留任务上的平均奖励（3 次评测）。黄 = 两个相等的格子；灰 = 起点；虚线格 = 原文没有报告</text>
+<text x="490.0" y="112" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">未训练</text>
+<text x="860.0" y="112" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">训满 1 个 epoch</text>
+<text x="300" y="181.0" font-size="14" fill="#111827" text-anchor="end" font-weight="700">修复前的 harness</text>
+<text x="300" y="199.0" font-size="11" fill="#6b7280" text-anchor="end">（消融期，Table 1）</text>
+<text x="300" y="351.0" font-size="14" fill="#111827" text-anchor="end" font-weight="700">修复后的 harness</text>
+<text x="300" y="369.0" font-size="11" fill="#6b7280" text-anchor="end">（头条结果，Table 2）</text>
+<rect x="330" y="130" width="320" height="110" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="490.0" y="181.0" font-size="18" font-weight="700" fill="#111827" text-anchor="middle">22.74 ± 1.04</text>
+<text x="490.0" y="199.0" font-size="11" fill="#6b7280" text-anchor="middle">Table 1 第一行</text>
+<rect x="700" y="130" width="320" height="110" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="860.0" y="181.0" font-size="18" font-weight="700" fill="#111827" text-anchor="middle">28.69 ± 0.80</text>
+<text x="860.0" y="199.0" font-size="11" fill="#6b7280" text-anchor="middle">Table 1 run 1（Baseline）</text>
+<rect x="330" y="300" width="320" height="110" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="490.0" y="351.0" font-size="18" font-weight="700" fill="#111827" text-anchor="middle">28.69 ± 1.2</text>
+<text x="490.0" y="369.0" font-size="11" fill="#6b7280" text-anchor="middle">Table 2 Archipelago 列的基座</text>
+<rect x="700" y="300" width="320" height="110" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="860.0" y="351.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">没有报告</text>
+<text x="860.0" y="369.0" font-size="11" fill="#6b7280" text-anchor="middle">只有换成 run 5 配置训完全程的 38.69</text>
+<line x1="654" y1="185.0" x2="694" y2="185.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="675.0" y="177.0" font-size="11" fill="#6b7280" text-anchor="middle">训练</text>
+<line x1="490.0" y1="244" x2="490.0" y2="294" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="500.0" y="274.0" font-size="11" fill="#6b7280" text-anchor="start">修 harness，零训练</text>
+<text x="560" y="450" font-size="11" fill="#9ca3af" text-anchor="middle">两个 28.69 标准差不同，是两次独立测量恰好相等；原文 1.2 节说修复的收益「大约等于」训一个 epoch</text>
+</svg>

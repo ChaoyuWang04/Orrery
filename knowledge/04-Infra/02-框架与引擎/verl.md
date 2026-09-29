@@ -165,7 +165,7 @@ RL 的回答动辄几千上万 token,而且**长度极不均匀**。对应旋钮
 
 ### 生成与训练算出的 logprob 对不上
 
-同一份权重、同一个 token,推理引擎和训练引擎给出的 logprob 会有数值差异——kernel 实现不同、精度不同、批的组织方式不同。差异小时只是噪声;一旦被重要性比放大,轻则梯度有偏,重则训练崩掉。verl 默认走**解耦模式**:在训练侧重算旧策略 logprob 当锚点,而不是直接用推理端返回的那个;也提供把这份差异显式当 off-policy 纠正的开关(重要性采样权重 + 拒绝采样)。**记住"两边本来就算不一样"是问题的根,不是实现 bug。**
+同一份权重、同一个 token,推理引擎和训练引擎给出的 logprob 会有数值差异——kernel 实现不同、精度不同、批的组织方式不同。差异再小也不只是噪声:采样端是训练端的一份有偏拷贝,每步又从训练端同步回去,策略梯度里会多出一项与奖励内容无关、把训练端往采样端"蒸馏"的系统性漂移,它逐步复利累积,攒够了训练就崩;被重要性比放大时崩得更快(Score Centering,arXiv:2609.20807)。verl 默认走**解耦模式**:在训练侧重算旧策略 logprob 当锚点,而不是直接用推理端返回的那个;也提供把这份差异显式当 off-policy 纠正的开关(重要性采样权重 + 拒绝采样)。**记住"两边本来就算不一样"是问题的根,不是实现 bug。**
 
 ### rollout 长尾拖垮利用率
 
@@ -194,6 +194,7 @@ RL 的回答动辄几千上万 token,而且**长度极不均匀**。对应旋钮
 - HybridFlow: A Flexible and Efficient RLHF Framework(verl 的系统论文,EuroSys 2025)— [arXiv:2409.19256](https://arxiv.org/abs/2409.19256)
 - DAPO: An Open-Source LLM Reinforcement Learning System at Scale(以 verl 为基座的大规模 RLVR 实践)— [arXiv:2503.14476](https://arxiv.org/abs/2503.14476)
 - AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning(异步 RL 系统,verl 异步方案的参考对象)— [arXiv:2505.24298](https://arxiv.org/abs/2505.24298)
+- Score Centering Stabilizes Off-policy Reinforcement Learning(训推不一致下的漂移分解与加法修正)— [arXiv:2609.20807](https://arxiv.org/abs/2609.20807)
 - verl 仓库(2026 年初从 volcengine 迁至 verl-project)— https://github.com/verl-project/verl
 - verl 文档 — https://verl.readthedocs.io/en/latest/
 - HybridFlow 编程指南(两层数据流与设计取舍的官方说明)— https://verl.readthedocs.io/en/latest/hybrid_flow.html
