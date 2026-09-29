@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">三处稳定补丁各落在哪：两个 softmax 各管一个，34B 再把归一化挪到子层输出上</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">灰 = 沿用 Llama-2 的部件；紫 = QK-Norm（管注意力里的 softmax）；红 = z-loss（管词表 softmax）；黄 = 挪了位置的归一化。</text>
+<rect x="30" y="80" width="340" height="440" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="200" y="106" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">Llama-2：先归一化，再算子层</text>
+<text x="200" y="124" font-size="11" fill="#6b7280" text-anchor="middle">h = x + attention(norm(x))</text>
+<text x="180" y="152" font-size="12" fill="#6b7280" text-anchor="middle">输入 x</text>
+<line x1="180" y1="160" x2="180" y2="178" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="80.0" y="178" width="200" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="180.0" y="203.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">RMSNorm</text>
+<line x1="180" y1="218" x2="180" y2="234" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="80.0" y="234" width="200" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="180.0" y="259.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">注意力</text>
+<line x1="180" y1="274" x2="180" y2="289" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<circle cx="180" cy="300" r="11" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="180" y="305" font-size="14" fill="#111827" text-anchor="middle">+</text>
+<polyline points="180,166 310,166 310,300" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="310" y1="300" x2="193" y2="300" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="180" y1="311" x2="180" y2="329" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="80.0" y="329" width="200" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="180.0" y="354.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">RMSNorm</text>
+<line x1="180" y1="369" x2="180" y2="385" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="80.0" y="385" width="200" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="180.0" y="410.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">SwiGLU 前馈</text>
+<line x1="180" y1="425" x2="180" y2="440" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<circle cx="180" cy="451" r="11" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="180" y="456" font-size="14" fill="#111827" text-anchor="middle">+</text>
+<polyline points="180,317 310,317 310,451" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="310" y1="451" x2="193" y2="451" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="180" y1="462" x2="180" y2="480" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="180" y="496" font-size="12" fill="#6b7280" text-anchor="middle">输出</text>
+<rect x="400" y="80" width="340" height="440" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="570" y="106" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">Chameleon-34B：先算子层，再归一化</text>
+<text x="570" y="124" font-size="11" fill="#6b7280" text-anchor="middle">h = x + norm(attention(x))</text>
+<text x="550" y="152" font-size="12" fill="#6b7280" text-anchor="middle">输入 x</text>
+<line x1="550" y1="160" x2="550" y2="178" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="450.0" y="178" width="200" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="550.0" y="196.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">注意力</text>
+<text x="550.0" y="212.0" font-size="11" fill="#6b7280" text-anchor="middle">内含 QK-Norm</text>
+<line x1="550" y1="218" x2="550" y2="234" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="450.0" y="234" width="200" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="550.0" y="252.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">RMSNorm</text>
+<text x="550.0" y="268.0" font-size="11" fill="#6b7280" text-anchor="middle">按住子层输出的范数</text>
+<line x1="550" y1="274" x2="550" y2="289" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<circle cx="550" cy="300" r="11" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="550" y="305" font-size="14" fill="#111827" text-anchor="middle">+</text>
+<polyline points="550,166 680,166 680,300" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="680" y1="300" x2="563" y2="300" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="550" y1="311" x2="550" y2="329" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="450.0" y="329" width="200" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="550.0" y="354.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">SwiGLU 前馈</text>
+<line x1="550" y1="369" x2="550" y2="385" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="450.0" y="385" width="200" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="550.0" y="403.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">RMSNorm</text>
+<text x="550.0" y="419.0" font-size="11" fill="#6b7280" text-anchor="middle">按住子层输出的范数</text>
+<line x1="550" y1="425" x2="550" y2="440" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<circle cx="550" cy="451" r="11" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="550" y="456" font-size="14" fill="#111827" text-anchor="middle">+</text>
+<polyline points="550,317 680,317 680,451" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="680" y1="451" x2="563" y2="451" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="550" y1="462" x2="550" y2="480" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="550" y="496" font-size="12" fill="#6b7280" text-anchor="middle">输出</text>
+<rect x="770" y="80" width="320" height="440" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="930" y="106" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">softmax 出现的两处</text>
+<text x="930" y="124" font-size="11" fill="#6b7280" text-anchor="middle">softmax(z) = softmax(z + c)，只看相对大小</text>
+<rect x="800" y="150" width="260" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="930.0" y="170.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">注意力打分的 softmax</text>
+<text x="930.0" y="186.0" font-size="11" fill="#6b7280" text-anchor="middle">每个头、每一层都有</text>
+<line x1="930" y1="194" x2="930" y2="214" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="800" y="214" width="260" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="930.0" y="234.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">QK-Norm</text>
+<text x="930.0" y="250.0" font-size="11" fill="#6b7280" text-anchor="middle">先对 Q、K 做 LayerNorm 再点积</text>
+<rect x="800" y="300" width="260" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="930.0" y="320.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">输出词表的 softmax</text>
+<text x="930.0" y="336.0" font-size="11" fill="#6b7280" text-anchor="middle">65,536 个候选，图文共用</text>
+<line x1="930" y1="344" x2="930" y2="364" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="800" y="364" width="260" height="44" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="930.0" y="384.0" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">z-loss</text>
+<text x="930.0" y="400.0" font-size="11" fill="#6b7280" text-anchor="middle">损失里加 10⁻⁵ · log² Z</text>
+<text x="800" y="440" font-size="11" fill="#6b7280">QK-Norm 只管第一处，</text>
+<text x="800" y="456" font-size="11" fill="#6b7280">最后一层的 logit 漂移要靠 z-loss。</text>
+<text x="800" y="480" font-size="11" fill="#6b7280">7B 与 34B 都开 QK-Norm 和 z-loss。</text>
+<rect x="30" y="532" width="1060" height="36" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="50" y="555" font-size="13" fill="#111827">7B 保持左边的 pre-norm，加 QK-Norm、z-loss 与 dropout 0.1；34B 用中间的重排、不用 dropout。事后发现 7B 用重排也可以去掉 dropout。</text>
+<text x="30" y="590" font-size="11" fill="#9ca3af">机制示意，据 PDF p. 6–7 第 2.3 节的公式与文字重画；只画一个 Transformer 块，位置编码、dropout 的具体位置略去。</text>
+</svg>

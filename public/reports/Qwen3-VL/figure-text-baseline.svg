@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" width="1120" height="700" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="700" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" text-anchor="start" font-weight="700">纯文本有没有被视觉训练拖累，取决于拿哪一版 Qwen3 对照</text>
+<text x="30" y="56" font-size="13" fill="#6b7280" text-anchor="start">每行一组同尺寸对照，数 Table 5–10 里的纯文本基准项。绿 = Qwen3-VL 更高的项数（向右）；红 = 纯文本基线更高的项数（向左）；灰字 = 持平。</text>
+<text x="692" y="100" font-size="12" fill="#d9877a" text-anchor="end">← 纯文本基线更高</text>
+<text x="708" y="100" font-size="12" fill="#5fa886" text-anchor="start">Qwen3-VL 更高 →</text>
+<text x="30" y="144" font-size="14" fill="#111827" text-anchor="start" font-weight="700">对照原始 Qwen3（Table 7–10）</text>
+<text x="30" y="175" font-size="13" fill="#111827" text-anchor="start">32B Instruct</text>
+<text x="210" y="175" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-32B</text>
+<rect x="700" y="162" width="306" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1012" y="176" font-size="12" fill="#111827" text-anchor="start">17</text>
+<text x="30" y="201" font-size="13" fill="#111827" text-anchor="start">32B Thinking</text>
+<text x="210" y="201" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-32B</text>
+<rect x="700" y="188" width="324" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1030" y="202" font-size="12" fill="#111827" text-anchor="start">18</text>
+<rect x="628" y="188" width="72" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="622" y="202" font-size="12" fill="#111827" text-anchor="end">4</text>
+<text x="30" y="227" font-size="13" fill="#111827" text-anchor="start">30B-A3B Instruct</text>
+<text x="210" y="227" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-30B-A3B</text>
+<rect x="700" y="214" width="288" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="994" y="228" font-size="12" fill="#111827" text-anchor="start">16</text>
+<rect x="682" y="214" width="18" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="676" y="228" font-size="12" fill="#111827" text-anchor="end">1</text>
+<text x="30" y="253" font-size="13" fill="#111827" text-anchor="start">30B-A3B Thinking</text>
+<text x="210" y="253" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-30B-A3B</text>
+<rect x="700" y="240" width="324" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1030" y="254" font-size="12" fill="#111827" text-anchor="start">18</text>
+<rect x="628" y="240" width="72" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="622" y="254" font-size="12" fill="#111827" text-anchor="end">4</text>
+<text x="30" y="279" font-size="13" fill="#111827" text-anchor="start">8B Instruct</text>
+<text x="210" y="279" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-8B</text>
+<rect x="700" y="266" width="288" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="994" y="280" font-size="12" fill="#111827" text-anchor="start">16</text>
+<rect x="682" y="266" width="18" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="676" y="280" font-size="12" fill="#111827" text-anchor="end">1</text>
+<text x="30" y="305" font-size="13" fill="#111827" text-anchor="start">8B Thinking</text>
+<text x="210" y="305" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-8B</text>
+<rect x="700" y="292" width="270" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="976" y="306" font-size="12" fill="#111827" text-anchor="start">15</text>
+<rect x="664" y="292" width="36" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="658" y="306" font-size="12" fill="#111827" text-anchor="end">2</text>
+<text x="30" y="331" font-size="13" fill="#111827" text-anchor="start">4B Instruct</text>
+<text x="210" y="331" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-4B</text>
+<rect x="700" y="318" width="306" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1012" y="332" font-size="12" fill="#111827" text-anchor="start">17</text>
+<text x="30" y="357" font-size="13" fill="#111827" text-anchor="start">4B Thinking</text>
+<text x="210" y="357" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-4B</text>
+<rect x="700" y="344" width="306" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1012" y="358" font-size="12" fill="#111827" text-anchor="start">17</text>
+<text x="30" y="383" font-size="13" fill="#111827" text-anchor="start">2B Instruct</text>
+<text x="210" y="383" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-1.7B</text>
+<rect x="700" y="370" width="270" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="976" y="384" font-size="12" fill="#111827" text-anchor="start">15</text>
+<rect x="682" y="370" width="18" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="676" y="384" font-size="12" fill="#111827" text-anchor="end">1</text>
+<text x="1000" y="384" font-size="11" fill="#9ca3af" text-anchor="start">持平 1</text>
+<text x="30" y="409" font-size="13" fill="#111827" text-anchor="start">2B Thinking</text>
+<text x="210" y="409" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-1.7B</text>
+<rect x="700" y="396" width="252" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="958" y="410" font-size="12" fill="#111827" text-anchor="start">14</text>
+<rect x="646" y="396" width="54" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="640" y="410" font-size="12" fill="#111827" text-anchor="end">3</text>
+<text x="30" y="446" font-size="14" fill="#111827" text-anchor="start" font-weight="700">对照 2507 刷新版（Table 5–10）</text>
+<text x="30" y="477" font-size="13" fill="#111827" text-anchor="start">235B-A22B Instruct</text>
+<text x="210" y="477" font-size="11" fill="#6b7280" text-anchor="start">对 Instruct-2507</text>
+<rect x="700" y="464" width="90" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="796" y="478" font-size="12" fill="#111827" text-anchor="start">5</text>
+<rect x="484" y="464" width="216" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="478" y="478" font-size="12" fill="#111827" text-anchor="end">12</text>
+<text x="30" y="503" font-size="13" fill="#111827" text-anchor="start">235B-A22B Thinking</text>
+<text x="210" y="503" font-size="11" fill="#6b7280" text-anchor="start">对 Thinking-2507</text>
+<rect x="700" y="490" width="54" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="760" y="504" font-size="12" fill="#111827" text-anchor="start">3</text>
+<rect x="358" y="490" width="342" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="352" y="504" font-size="12" fill="#111827" text-anchor="end">19</text>
+<text x="30" y="529" font-size="13" fill="#111827" text-anchor="start">30B-A3B Instruct</text>
+<text x="210" y="529" font-size="11" fill="#6b7280" text-anchor="start">对 Instruct-2507</text>
+<rect x="700" y="516" width="90" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="796" y="530" font-size="12" fill="#111827" text-anchor="start">5</text>
+<rect x="502" y="516" width="198" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="496" y="530" font-size="12" fill="#111827" text-anchor="end">11</text>
+<text x="820" y="530" font-size="11" fill="#9ca3af" text-anchor="start">持平 1</text>
+<text x="30" y="555" font-size="13" fill="#111827" text-anchor="start">30B-A3B Thinking</text>
+<text x="210" y="555" font-size="11" fill="#6b7280" text-anchor="start">对 Thinking-2507</text>
+<rect x="700" y="542" width="108" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="814" y="556" font-size="12" fill="#111827" text-anchor="start">6</text>
+<rect x="412" y="542" width="288" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="406" y="556" font-size="12" fill="#111827" text-anchor="end">16</text>
+<text x="30" y="581" font-size="13" fill="#111827" text-anchor="start">4B Instruct</text>
+<text x="210" y="581" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-4B-2507</text>
+<rect x="700" y="568" width="54" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="760" y="582" font-size="12" fill="#111827" text-anchor="start">3</text>
+<rect x="448" y="568" width="252" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="442" y="582" font-size="12" fill="#111827" text-anchor="end">14</text>
+<text x="30" y="607" font-size="13" fill="#111827" text-anchor="start">4B Thinking</text>
+<text x="210" y="607" font-size="11" fill="#6b7280" text-anchor="start">对 Qwen3-4B-2507</text>
+<rect x="700" y="594" width="90" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="796" y="608" font-size="12" fill="#111827" text-anchor="start">5</text>
+<rect x="484" y="594" width="216" height="18" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="478" y="608" font-size="12" fill="#111827" text-anchor="end">12</text>
+<line x1="700" y1="140" x2="700" y2="616" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="30" y="654" font-size="13" fill="#6b7280" text-anchor="start">本文按 PDF p. 21–24 的 Table 5–10 逐项计数；Instruct 表 17 项，235B / 32B / 30B-A3B 的 Thinking 表 22 项，2B–8B 的 Thinking 表 17 项。</text>
+<text x="30" y="678" font-size="13" fill="#6b7280" text-anchor="start">对原始 Qwen3 几乎全胜；对 2507 刷新版多数项落后。报告摘要的「several cases」对得上后一组，「majority」对不上。</text>
+</svg>

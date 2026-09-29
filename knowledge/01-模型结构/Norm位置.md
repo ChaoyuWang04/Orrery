@@ -165,7 +165,7 @@ $$
 |---|---|---|---|
 | Post-LN(原始) | **有** | 是(整个残差和一起) | 原始 Transformer、BERT |
 | Pre-LN | 没有 | 否 | GPT-2 起的绝对主流 |
-| 残差内 Post-Norm | 没有 | 是(只限增量) | OLMo 2 / OLMo 3 |
+| 残差内 Post-Norm | 没有 | 是(只限增量) | OLMo 2 / OLMo 3;更早的 Chameleon-34B 也这么排,同样配 QK-Norm |
 | Sandwich / Peri-LN | 没有 | 是(进口出口各一次) | CogView、Gemma 3 |
 
 ```mermaid
@@ -241,6 +241,7 @@ Norm 位置只是整体配方的一环,同样吃重的至少还有:
 - On Layer Normalization in the Transformer Architecture(Pre/Post 梯度范数与 warm-up 分析)— [arXiv:2002.04745](https://arxiv.org/abs/2002.04745)
 - CogView: Mastering Text-to-Image Generation via Transformers(Sandwich-LN 与 FP16 稳定性)— [arXiv:2105.13290](https://arxiv.org/abs/2105.13290)
 - DeepNet: Scaling Transformers to 1,000 Layers(DeepNorm 的残差缩放与初始化)— [arXiv:2203.00555](https://arxiv.org/abs/2203.00555)
+- Chameleon: Mixed-Modal Early-Fusion Foundation Models(34B 在 QK-Norm 之外改用残差内 Post-Norm 才训稳)— [arXiv:2405.09818](https://arxiv.org/abs/2405.09818)
 - 2 OLMo 2 Furious(残差内 Post-Norm + QK-Norm,梯度 spike score 0.108 → 0.069)— [arXiv:2501.00656](https://arxiv.org/abs/2501.00656)
 - Peri-LN: Revisiting Normalization Layer in the Transformer Architecture — [arXiv:2502.02732](https://arxiv.org/abs/2502.02732)
 - Gemma 3 Technical Report(pre-norm 与 post-norm 都用 RMSNorm)— [arXiv:2503.19786](https://arxiv.org/abs/2503.19786)
