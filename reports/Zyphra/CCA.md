@@ -1,626 +1,353 @@
-# CCA：GQA 和 MLA 缩小了 KV，真正决定训练速度的二次项还在全维度里
+# CCA：把整次注意力搬进压缩空间，省的不只是 KV cache
 
 <!-- release-date: 2025-10-06 -->
 
-> 本文依据 Zyphra 发布的 **Compressed Convolutional Attention: Efficient Attention in a Compressed Latent Space**，即 arXiv:2510.04476v2（提交 2025-10-06，修订 2026-03-16），共 21 页。动笔前已核对 [arXiv 官方页](https://arxiv.org/abs/2510.04476) 与 [arXiv API](http://export.arxiv.org/api/query?id_list=2510.04476)：该论文只有 v1（2025-10-06 04:24:23 UTC）与 v2（2026-03-16 23:36:13 UTC）两个版本，**本地 PDF 封面已是 v2（16 Mar 2026），即最新版**，不存在需要替换的更新修订。v2 比 v1 晚五个月，全文以 v2 正文为准。页码均指这份 PDF 本身的页码。
->
-> 这是一篇方法论文，不是 ZAYA1 基模报告。它没有对外发布的模型权重，也没有完整训练 recipe。它只回答一件事：**怎样让注意力的参数、KV Cache 和 FLOPs 按同一个压缩倍数一起降，而不是只把解码时的缓存做小**。ZAYA1-8B 后来怎么用 CCGQA、怎么改温度参数化，见本站 [ZAYA1-8B](/reports/Zyphra/ZAYA1-8B)；那些内容标成外部补充，不写入「论文写了什么」。
->
-> 全文把三件事分开：**论文明确写了什么**（一律带 PDF 页码）、**我们如何解释或验算它**（凡属推导、换算或从图上读数都会写明）、**外部资料补充**（给链接并标注）。
+> 本文依据 Zyphra 的 **Compressed Convolutional Attention: Efficient Attention in a Compressed Latent Space**（Tomas Figliolia、Nicholas Alonso、Rishi Iyer、Quentin Anthony、Beren Millidge），arXiv:2510.04476v2，2026-03-16，共 21 页：正文到 p. 9，参考文献 p. 10–11，附录 A–D 在 p. 12–21。页码均指这份 PDF 自身的页码。文中区分三件事：**报告明确写了什么**、**我们怎么解释它**、**哪些是外部资料或本文推算**。
 
-## 阅读前先搭一张最小地图
+## 读前先把几个词说成人话
 
-这篇论文只改注意力这一块，但会反复用到几组系统词。先把它们翻成人话。
-
-- **Token（词元）**：模型读写文本的基本小块。
-- **Query / Key / Value（查询 / 键 / 值）**：注意力的三个角色。Query 是当前 Token 的提问，Key 是每个历史位置的索引标签，Value 是它真正携带的内容。
-- **KV Cache（Key-Value Cache，键值缓存）**：生成时把已经算过的 Key 和 Value 留下来，避免每吐一个新 Token 就重算整段历史。
-- **Prefill 与 Decode（预填充与解码）**：处理一个请求分两段。Prefill 一次性读完输入提示，Decode 随后逐个吐字。两段的硬件瓶颈完全不同：prefill 和训练被算力卡住，decode 被带宽卡住。
-- **MHA / GQA / MQA**：Multi-Head Attention（多头注意力）里每个头有自己的一套 KV；Grouped-Query Attention（分组查询注意力）让一组内的多个 Query 头共用一套 KV；Multi-Query Attention（多查询注意力）是极端情形，所有头共用一套。GQA 和 MQA 的目的都是减少 decode 时要从显存搬运的 KV 数量。
-- **MLA（Multi-head Latent Attention，多头潜在注意力）**：DeepSeek-V3 用的注意力。它把 K、V 压进低维潜空间存进缓存，真正做注意力之前再升回全维度。
-- **RoPE（Rotary Position Embedding，旋转位置编码）**：把位置信息旋进 Query 和 Key 的一种位置编码。MLA 不能把它直接打在压缩缓存上，必须另开 RoPE 头。
-- **潜空间（latent space）**：把原来宽度为 $E$ 的残差流，用线性层压到宽度 $\tilde{e}=E/C$ 的窄空间。$C$ 就是压缩倍数。
-
-这篇论文自己造的名字只有两个：
-
-- **压缩卷积注意力（Compressed Convolutional Attention，CCA）**：Q、K、V 都下投影，**整次注意力都在共享潜空间里完成**，再用卷积、QK 均值和 Value 时延把被压掉的局部结构补回来。
-- **压缩卷积分组查询注意力（Compressed Convolutional Grouped Query Attention，CCGQA）**：在已经压缩的潜空间里再做 GQA 式的头共享。压缩和共享是两件正交的事，可以分别拧。
+- **MHA（Multi-Head Attention，多头注意力）**：标准注意力。每个 Token 生成 query、key、value，按头切开各算一遍。
+- **KV cache（键值缓存）**：解码时存下每个历史 Token 的 key 和 value。它随上下文线性变大，解码往往卡在「读这块缓存」的显存带宽上。
+- **Prefill / 解码**：prefill 一次读完整段输入，受算力限制；解码一次吐一个 Token，多半受带宽限制。
+- **FLOPs（浮点运算次数）**：训练和 prefill 的主账单。注意力里有两项和序列长度 $S$ 的平方成正比：$QK^{\top}$ 和「注意力权重乘 $V$」。
+- **GQA（Grouped Query Attention，分组查询注意力）**：几个 query 头共用一组 K、V 头，KV cache 按组数缩小。**MQA** 是只剩一组的极端情况。
+- **MLA（Multi-Latent Attention，多头潜在注意力）**：DeepSeek 的做法，把 K、V 压进一个低维「潜向量」再存，用时上投影回全宽（见站内 DeepSeek-V2 一篇）。
+- **潜空间（latent space）**：把宽 $E$ 的向量线性压到宽 $\tilde{e} = E / C$ 之后所在的低维空间，$C$ 是压缩倍数。
+- **RoPE（旋转位置编码）**：按位置旋转 q、k 的一种位置编码；**NoPE** 指不加位置编码。
+- **张量并行（TP）**：把一层的矩阵按头或按列切给多张卡。
+- **算术强度（arithmetic intensity）**：每读 1 字节数据做多少次运算。低于硬件「屋脊」时受带宽限制，高于时受算力限制。
 
 ## 一句话先说清
 
-GQA 和 MLA 主要缩小 KV Cache、加快 decode。决定 prefill 和训练速度的，是注意力里那个随序列长度平方增长的计算量；这两条路对它几乎没动手。（PDF p.1–2）
+注意力贵在两处：KV cache 随长度线性涨，拖慢解码；$S^2$ 项随长度平方涨，拖慢训练和 prefill。GQA 和 MLA 都在第一处下功夫：一个共享 K、V 头，一个把 K、V 压成潜向量。可两者做注意力时仍在全宽 $E$ 上算，第二处几乎没动，MLA 因为多了上投影还略贵一点（PDF p. 1–2）。
 
-CCA 的选择不是「把缓存压小、算的时候再升回去」，而是：
+CCA（Compressed Convolutional Attention，压缩卷积注意力）的做法很直接：**Q、K、V 一起下投影，整次注意力都在潜空间里算完，最后再升回 $E$**。于是参数、KV cache 和注意力 FLOPs 按同一个压缩倍数 $C$ 一起降（PDF p. 1、4）。
 
-> **Q、K、V 都压进同一个窄空间，点积、softmax、加权求和全部在那里做完，参数、KV Cache、FLOPs 按压缩倍数一起降**。
+直接在潜空间里做注意力会明显掉点。CCA 的「卷积」二字来自它补回表达力的三件轻量运算：对 q、k 做沿序列与通道的两层卷积，把卷积前后的 q、k 均值加回去，让一半头看上一个 Token 的 value（PDF p. 2、5–6）。它还能和 GQA 叠加成 CCGQA：压缩和共享是两只独立的旋钮（PDF p. 2）。
 
-朴素地把注意力搬进窄空间会掉点。论文用三件小部件把它补回来：序列加通道的卷积、Query 与 Key 的均值跳连、一半 Value 头推迟一拍。然后再和 GQA 组合成 CCGQA，把压缩拨向 FLOP 或拨向内存。（PDF p.1、4–6）
+报告的主要结论（PDF p. 1–2、7）：
 
-## 全文主矛盾：省 KV 不等于省训练
+- 在 KV cache 压缩率相同的前提下，CCGQA 在 dense 和 MoE 两种模型上都优于 GQA 与 MLA；
+- MoE 上，CCGQA 用 GQA、MLA 一半的 KV cache，相对 MHA 压缩 8 倍而不掉点；
+- H100 上的融合 kernel，16K 长度时 prefill 比 MHA 快约 1.7 倍，反向快约 1.3 倍。
 
-### 注意力贵在两处，不是一处
+站内索引把它概括为「MLA 的激进版」。这是一个好记的读法，但要说准：CCA 沿用了 MLA「下投影到共享潜空间」的第一步，然后不再升回去；这也意味着它放弃了 MLA 靠上投影换来的表达力，要靠卷积等补丁补回来。论文自己的定位是「与 GQA、MLA 同为压 KV 的方法，但在潜空间里完成全部注意力」（PDF p. 4）。
 
-标准多头注意力里，每个 Token 都要和前面所有 Token 比一次。论文把代价拆成两项（PDF p.3，式 1–2）：
+实验规模只到 1B dense 和 1.5B 总参 MoE，这是读所有结论时要记住的第一条边界。
 
-$$
-o_h=\operatorname{softmax}\!\left(\frac{q_h k_h^{\top}}{\sqrt{d}}\right)v_h,
-\qquad
-\text{out}=W_O[o_1,\ldots,o_{n_h}]
-$$
+### 一条阅读路线
 
-$q_h$、$k_h$、$v_h$ 是第 $h$ 个头的查询、键、值，$d$ 是头维度，$W_O$ 是输出投影。$q_h k_h^{\top}$ 这一项让计算量随序列长度 $S$ 平方增长；四张 $E\times E$ 的投影矩阵 $W_Q,W_K,W_V,W_O$ 又让参数和通道方向的计算随隐藏维度 $E$ 平方增长。生成时还要把每个位置的 $k_h$、$v_h$ 存进 KV Cache，大小是 $2\times S\times E$。（PDF p.3）
+1. **p. 1–2 引言**：GQA 与 MLA 各省了哪一半，CCA 想省哪一半。
+2. **p. 3–4 §II.A 与 Table II**：四种注意力的参数、KV 与 FLOPs 公式。
+3. **p. 4–6 §II.B，Figure 1、式 7–11**：CCA 的完整流程。
+4. **p. 6 §II.C 方法论**：对照怎么配平，谁被让了便宜。
+5. **p. 6–8 §III，Table III–V、Figure 3–4**：dense、MoE 与消融。
+6. **p. 8–9 §IV–V，Figure 5–6**：kernel 实测与讨论。
+7. **p. 12–16 附录 B–D**：MLA 推理与张量并行、完整损失曲线、测速设置。
 
-可以把它想成开会：
+## 主要矛盾：省了 KV，没省 $S^2$
 
-- 平方项是「每个人都要和所有人说话」——序列越长，会越开不完；
-- 线性增长的 KV Cache 是「每个人的名牌都得一直挂在墙上」——上下文越长，墙越不够用。
+![四行对比：MHA、GQA、MLA 都在宽 E 上做注意力，只有 CCA 的注意力块缩到宽 E/C；右侧列出各自的二次项宽度与 KV 公式。](/reports/CCA/figure-cca-vs-mla.svg)
 
-GQA 和 MLA 主要拆的是第二件事。第一件事几乎原封不动。这是全文的主矛盾。
+图里左边三列是「存什么」，中间紫块是「在多宽上算」。GQA 缩小的是黄块，紫块不变。MLA 的黄块更窄，但它先把潜向量上投影回全宽，紫块仍是 $E$（PDF p. 2–3）。
 
-### 两条旧路各自拆了哪一半
+MLA 还有两处额外负担（PDF p. 2–3）：
 
-**GQA：共享头，不减少乘法。** 一组里的多个 Query 头共用同一套 K、V。缓存按组数 $G$ 缩小到 $1/G$，MQA 是 $G=1$ 的极端。论文写得很干脆：GQA **不减少**训练或 prefill 相对 MHA 的 FLOPs；它省的是 decode 时每个 Token 要加载的参数，因为 decode 通常是带宽瓶颈。（PDF p.2–3）
+- **RoPE**。旋转位置编码不能直接作用在压缩后的 KV 上，否则推理时无法把上投影矩阵合并掉。MLA 只好另设一组跨头共享的 RoPE key 和对应缓存，报告认为共享的位置 key 削弱了位置信息的表达力；
+- **上投影**。它带来可观的参数开销，训练时注意力的 FLOPs 与 MHA 大致相同。
 
-**MLA：压缩缓存，算的时候升回去。** K、V 先投影到共享潜空间 $C_{KV}\in\mathbb{R}^{S\times \tilde{e}}$ 再存进缓存，真正做注意力前再用上投影还原成全维度的头。Query 通常压得比 KV 轻。decode 时 MLA 有一种「MQA 模式」：把共享 KV 的上投影合并进 Query 上投影和输出投影，带宽需求明显下降。但训练和 prefill 里，Q、K、V 都是升回全维度再做注意力，所以 MLA **不提供**相对 MHA 或 GQA 的计算节省，由于上投影，算力和参数还略贵一点。RoPE 也不能直接打在压缩缓存上，必须另留一套共享的 Key RoPE 缓存。（PDF p.2–4）
+MLA 的优势在解码：不带 RoPE 时，可以把上投影吸收进 query 投影和输出投影，整层化成一个 MQA，大幅减少解码时要读的数据（PDF p. 3，式 5）。附录 B 专门讨论了这种「MQA 模式」的得失，后面并行一节再讲。
 
-两条路的共同空白，论文用一句话钉死（PDF p.2）：
+报告强调 prefill 在长上下文里的分量：绝大多数 Token 是输入而不是生成出来的（PDF p. 2）。于是矛盾是：
 
-> Both GQA and MLA focus primarily on reducing the KV-cache, which is important for decoding speed, but do not meaningfully reduce the fundamental compute cost of attention which is the performance bottleneck in both training and inference prefill.
+> 两条主流路线都在解码的带宽账上省钱，训练和 prefill 的算力账几乎原封不动。能不能用同一个压缩倍数，把三本账一起省下来？
 
-长上下文工作负载里，绝大多数 Token 是输入而不是生成。prefill 才是大头。只优化 decode 的缓存，训练账单不会动。
+## 核心设计一：Q、K、V 一起压，注意力不再回到全宽
 
-### 其他路论文怎么看
+### 新设计
 
-引言还扫过三类更激进的方案，作为「为什么还要改注意力本身」的铺垫（PDF p.1）：
+CCA 用三个 $E \times \tilde{e}$ 的矩阵把 q、k、v 下投影到潜空间，$\tilde{e} = E / C$；每个头在潜空间里的宽度是 $d_h = \tilde{e} / n_h$（PDF p. 3–5，式 7）。和 MLA 不同，query 也按同样倍数压，因为注意力整个在潜空间里算（PDF p. 5）。注意力做完，由 $\tilde{W}_O \in \mathbb{R}^{\tilde{e} \times E}$ 升回残差流的宽度（PDF p. 6，式 11）。
 
-- **状态空间模型（SSM）**：用恒定大小的状态替换线性增长的 KV Cache，但表达力往往不如注意力，复杂推理和上下文学习上容易落后；
-- **混合架构**：SSM 加注意力取长补短，可注意力还在，平方瓶颈没有消失；
-- **离线压缩 KV**：压缩率可以很高，生成质量代价也很大。
+### 账单：三本一起降
 
-这些都不是 CCA 的对手盘。真正拿来对照的，始终是 MHA、GQA、MLA。
+Table II（PDF p. 4）给出了四种注意力的理论成本。取 batch 为 1，把最要紧的几项列出来：
 
-## 新设计：整次注意力都在共享潜空间里完成
+| 方法 | 参数 | KV cache | 前向 FLOPs |
+|---|---|---|---|
+| MHA | $4E^2$ | $2SE$ | $8SE^2 + 4ES^2$ |
+| GQA | $2E^2 + 2E^2/G$ | $2SE/G$ | $(1 + 1/G)\cdot 4SE^2 + 4ES^2$ |
+| MLA | $E^2 + 3E^2/c_{kv} + 2E^2/c_q$ | $SE/c_{kv} + SE_r$ | $2SE^2 + 4SE^2/c_q + 6SE^2/c_{kv} + 4ES^2$ |
+| CCA | $4E^2/C$ + 卷积 | $2SE/C$ | $(2/C)\cdot 4SE^2 + 4ES^2/C$ + 卷积 |
+| CCGQA | $2E^2/C_1 + 2E^2/C_2$ + 卷积 | $2SE/C_2$ | $(1/C_1 + 1/C_2)\cdot 4SE^2 + 4ES^2/C_1$ + 卷积 |
 
-### 旧问题：压缩之后立刻升回去，二次项的宽度没变
+$G$ 是 GQA 的组数，$c_q$、$c_{kv}$ 是 MLA 的 query 与 KV 压缩倍数，$E_r$ 是 MLA 的 RoPE 维度，$C_1$、$C_2$ 是 CCGQA 的 query 与 KV 压缩倍数。MLA 的 FLOPs 没算 RoPE 相关的投影，所以实际略高于表中值（PDF p. 4）。
 
-MLA 已经证明「K、V 可以压」。它的默认动作却是：压完存起来，算的时候再升回 $E$ 维。于是 $q_h k_h^{\top}$ 仍然发生在全头维度上，$S^2$ 项的宽度几乎没变。
+看最后一列的 $S^2$ 项：MHA、GQA、MLA 都是 $4ES^2$，只有 CCA 变成 $4ES^2/C$。这就是全文的主张落在公式上的样子。卷积项的参数与 FLOPs 和核大小成正比，报告在表注里给了完整式子，量级很小（PDF p. 4）。
 
-论文的判断是：这条路拿掉了上投影，压缩倍数才能同时作用在参数、缓存和 FLOPs 上；RoPE 也可以直接打在潜空间里，不必另开一套头。（PDF p.2、4）
+![四个面板：参数量上 CCA-4× 只有 4.4 百万、约为 MHA 的四分之一；KV cache 上 CCGQA 最小；prefill FLOPs 上 CCA-4× 约 0.69 TFLOPs，其余三种都在 2.5 以上；解码 FLOPs 上 MLA 约 1.1 GFLOPs，远高于其他。](/reports/CCA/figure2-cca.svg)
 
-### 新设计：Q、K、V 一起下投影，注意力不再回到全维度
+Figure 2 把这张表代进 $E = 2048$、$S = 16384$（PDF p. 5）。图上最值得多看一眼的是 (d)：MLA 的解码 FLOPs 远高于其余几种，这是它走 MQA 模式、用算力换带宽的直接结果。
 
-CCA 的第一步和 MLA 看起来像，差别在第二步。下投影是（PDF p.4，式 7）：
+报告还从公式里读出两条推论（PDF p. 4）：
 
-$$
-\tilde q = [\tilde q_1,\ldots,\tilde q_{n_h}] = x\tilde W_Q,
-\qquad
-\tilde k = [\tilde k_1,\ldots,\tilde k_{n_h}] = x\tilde W_K
-$$
+- 训练参数比 MLA 少一半以上，因为省掉了上投影矩阵；
+- CCA 不改变注意力的平方本质，但把平方项的常数除以 $C$，同样的 FLOPs 预算下可以处理 $\sqrt{C}$ 倍长的序列，比如压 16 倍可以处理约 4 倍长的序列。
 
-$x\in\mathbb{R}^{S\times E}$ 是残差流， $\tilde W_Q,\tilde W_K\in\mathbb{R}^{E\times \tilde{e}}$，$\tilde{e}=E/C$。和 MLA 不同：因为注意力就在压缩空间里做，Query 和 Key、Value **按同一个倍数压**。只有 CCGQA 这种还要重复 KV 头的情形，才允许 Query 压得轻一些，最多轻到组数那么多倍。（PDF p.5）
+### 代价
 
-然后——这是和 MLA 分叉的那一步——**不再升回全维度**。卷积、QK 均值、Value 时延都在 $\tilde{e}$ 维里做完，标准注意力也在 $\tilde{e}$ 维里做完，最后才用 $\tilde W_O\in\mathbb{R}^{\tilde{e}\times E}$ 一次上投影回到残差流。（PDF p.4–6）
-
-```mermaid
-flowchart TB
-    X[残差流 x] --> WQ["下投影 W̃_Q"]
-    X --> WK["下投影 W̃_K"]
-    X --> WVt["当前 Value 投影 W̃_V"]
-    X --> WVprev["上一拍 Value 投影 W̃_V̄"]
-    WQ --> C1Q[序列卷积 conv1]
-    WK --> C1K[序列卷积 conv1]
-    C1Q --> C2Q[序列加通道卷积 conv2]
-    C1K --> C2K[序列加通道卷积 conv2]
-    WQ --> MEAN[QK 均值 取卷积前]
-    WK --> MEAN
-    MEAN --> ADDQ[加到卷积后的 Q]
-    MEAN --> ADDK[加到卷积后的 K]
-    C2Q --> ADDQ
-    C2K --> ADDK
-    ADDQ --> NQ[L2 归一化 再 RoPE]
-    ADDK --> NK["L2 归一化、乘温度 β、再 RoPE"]
-    WVt --> CAT["拼接：一半头看当前、一半头看上一拍"]
-    WVprev --> CAT
-    NQ --> ATTN[压缩潜空间里的标准注意力]
-    NK --> ATTN
-    CAT --> ATTN
-    ATTN --> WO["上投影 W̃_O 回到残差维"]
-```
-
-这张图根据 Figure 1（PDF p.4）重画，是**机制示意**，不含任何实测时间。Value 支路没有卷积，只有时延，这是原图就画清楚的。
-
-### 工作机制：压缩倍数 $C$ 同时打在三处
-
-把 $\tilde{e}=E/C$ 代进去，二次项 $QK^{\top}$ 和 $\mathrm{Attn}\cdot V$ 的宽度从 $E$ 变成 $E/C$，所以这两项按 $1/C$ 缩小。投影项同样按 $C$ 缩。KV Cache 从 $2BSE$ 变成 $2BSE/C$。（PDF p.4，Table II）
-
-论文举了一个帮助建立数量级的例子：CCA 取 $16\times$ 压缩时，同样的 FLOP 预算能处理 $\sqrt{16}=4\times$ 更长的序列。它**没有**取消平方复杂度，只是把常数除以 $C$。（PDF p.4）
-
-相对 MLA，少掉 Q、K、V 三张上投影，同一压缩率下训练参数能少一半以上。（PDF p.4）
-
-### 收益与代价，先记在这里
-
-收益是结构上的，后面实验再证明：
-
-- 参数、KV Cache、训练 / prefill FLOPs 按 $C$ 一起降；
-- RoPE 或任何位置编码可以直接打在潜空间，不必另开 RoPE 头和 RoPE 缓存；
-- 和 GQA 正交，还能再组合。
-
-代价也是结构上的：
-
-- 朴素地在压缩 QKV 上做注意力「会有显著性能损失」（PDF p.2）。后面三件补丁就是为这件事来的；
-- 平方没有消失，只是变窄。要再往下压，得和 NSA、MoBA、DSA 这类**序列**压缩方法叠，论文把它列为未来工作（PDF p.8）；
-- 卷积、均值、时延在理论上 FLOPs 可忽略，朴素 PyTorch 实现里却经常变成开销，必须写融合核才能拿到纸面加速（PDF p.8–9）。
+压得越狠，每个头的宽度越窄。报告直言：朴素地在压缩后的 QKV 潜向量上做注意力，会带来明显的性能损失（PDF p. 2）。下一节的三件补丁就是为此而来。
 
 ### 可迁移启发
 
-如果训练或 prefill 已经被注意力算力卡住，只把 KV Cache 做小是不够的。真正改变训练成本的，是让 $S^2$ 那一项发生在更窄的空间里。GQA 解决解码内存，不一定解决训练时间。
+先问卡住的是哪本账。解码受带宽限制，缩 KV 就够；训练与 prefill 受算力限制，就得让 $S^2$ 项发生在更窄的空间里。只看「KV 压了几倍」来比注意力变体，会漏掉一半成本。
 
-## 为什么叫 Convolutional：三件补丁，不是装饰
+## 核心设计二：三件轻量补丁，把表达力补回来
 
-论文自己说，朴素潜空间注意力掉点之后，他们发现对压缩后的 Q、K 做卷积混合，就能超过 MLA，甚至碰到 MHA。（PDF p.2）名字里的 Convolutional，指的就是这件事。另外两件——QK 均值和 Value 时延——参数和算力都很少，但让「在全压缩空间里做注意力」变得可行。（PDF p.6）
+![CCA 块的流程：q、k 各自下投影后经过沿序列和沿序列加通道的两层卷积，再加回卷积前 q、k 的均值，经 L2 归一化和 RoPE 后进入注意力；v 分成当前 Token 和上一 Token 两组投影再拼接；注意力在宽 E/C 上完成。](/reports/CCA/figure1-cca.svg)
 
 ### 补丁一：两层卷积，沿序列也沿通道
 
-压缩之后立刻做点积，等于让模型在「被压糊的向量」上找相关位置。论文的直觉是：这些卷积给潜空间里学到的变换额外的表达力，平滑之后信息更容易穿过注意力，类比 Mamba 在 SSM 前加因果卷积。（PDF p.5）
-
-具体是两层，只作用在 Q 和 K 上，V 不做卷积（PDF p.4–5，式 8）：
+q、k 下投影之后，先过一层只沿序列方向的因果卷积，再过一层同时混合序列与头内通道的卷积（PDF p. 5，式 8）：
 
 $$
-\tilde q=\operatorname{conv2}_{\mathrm{seq+ch}}\!\big(\operatorname{conv1}_{\mathrm{seq}}(\tilde q)\big),
-\qquad
-\tilde k=\operatorname{conv2}_{\mathrm{seq+ch}}\!\big(\operatorname{conv1}_{\mathrm{seq}}(\tilde k)\big)
+\tilde{q} = \mathrm{conv2}_{\mathrm{seq+ch}}\bigl(\mathrm{conv1}_{\mathrm{seq}}(\tilde{q})\bigr), \qquad \tilde{k} = \mathrm{conv2}_{\mathrm{seq+ch}}\bigl(\mathrm{conv1}_{\mathrm{seq}}(\tilde{k})\bigr)
 $$
 
-- $\operatorname{conv1}_{\mathrm{seq}}$：沿序列的深度可分离因果卷积，核宽记作 $k_{\mathrm{seq}}$；
-- $\operatorname{conv2}_{\mathrm{seq+ch}}$：沿序列再沿头内通道的分组卷积，核宽记作 $k_{\mathrm{ch}}$。
+作者的直觉是：卷积给潜空间里学到的变换添了表达力，这点平滑也让信息更好地穿过注意力，类似 Mamba 在 SSM 前加因果卷积的效果。他们也提到了「canon layers」，区别在于 CCA 只在注意力内部对 q、k 用卷积，而且用两层（PDF p. 5）。卷积核大小正文没给具体数值，只在表注里记作 $k_{\mathrm{seq}}$（深度可分、因果）和 $k_{\mathrm{ch}}$（分组）（PDF p. 4）。
 
-论文发现两种混合都有用：头内通道（ch）和序列（seq）。（PDF p.5）Table II 脚注给出卷积的参数和 FLOPs 公式，但**正文和附录都没有写出 $k_{\mathrm{seq}}$、$k_{\mathrm{ch}}$ 的具体取值**。（PDF p.4）
+### 补丁二：QK 均值，一条跳连加一点对角偏置
 
-它和最近的 canon layers 不是一回事。canon layers 把卷积铺到 MLP 和注意力外面；CCA 只在压缩后的 Q、K 上做，而且是注意力内部的预处理器。（PDF p.5）
-
-### 补丁二：QK 均值，既是跳连，也是 Q 和 K 的耦合
-
-卷积前的 Q、K 先取平均，再加回卷积后的向量（PDF p.5，式 9）：
+把卷积前的 q、k 取平均，加回卷积后的 q、k（PDF p. 5，式 9）：
 
 $$
-\widetilde{qk}_{\mu}=\frac12\big(\tilde q_{\mathrm{pre}}+B_{\mathrm{group}}(\tilde k_{\mathrm{pre}})\big),
-\qquad
-\tilde q\leftarrow\tilde q+\widetilde{qk}_{\mu},
-\qquad
-\tilde k\leftarrow\tilde k+E_{\mathrm{group}}(\widetilde{qk}_{\mu})
+\tilde{qk}_{\mu} = \tfrac{1}{2}\bigl(\tilde{q}_{\mathrm{pre}} + B_{\mathrm{group}}(\tilde{k}_{\mathrm{pre}})\bigr), \qquad \tilde{q} \leftarrow \tilde{q} + \tilde{qk}_{\mu}, \qquad \tilde{k} \leftarrow \tilde{k} + E_{\mathrm{group}}(\tilde{qk}_{\mu})
 $$
 
-$\tilde q_{\mathrm{pre}}$、$\tilde k_{\mathrm{pre}}$ 是卷积前的潜向量。$B_{\mathrm{group}}$ 在 CCGQA 里把共享的 Key 广播到对应的 Query 头；$E_{\mathrm{group}}$ 把同一组 Query 头的均值收回到共享 Key 上。普通 CCA 没有分组，这两步就是恒等。
+$B_{\mathrm{group}}$ 把 key 广播给共用它的各个 query 头，$E_{\mathrm{group}}$ 在合并成一个 key 头的那些头上取平均，两者只在分组版本里起作用（PDF p. 6）。报告给了三层解释：它让 q 和 k 共享信息；它是一条跳连，让模型可以调节卷积的强度；配合 QK 归一化，它会让注意力矩阵的对角线更突出，并让 q、k 向量略微变稀疏（PDF p. 5、8）。
 
-论文给的直觉有三条（PDF p.5、8）：
+### 补丁三：V 平移，一半头看不见当前 Token
 
-1. 让 Q 和 K 共享信息；
-2. 提供一条跳连，模型可以自己插值「卷积要多强」；
-3. 和 QK 归一化一起用时，注意力对角会更稀疏一点，相当于给对角线加偏置。
-
-**我们的解释**：这不是把 Q 和 K 做成同一个向量，而是强迫它们不要在压缩之后各走各的。压缩会让本来该对齐的方向错开；均值跳连把「压缩前还相似」的那部分重新灌回去。论文没有单独可视化过注意力矩阵，第三条几何解释是作者观察，不是实验证明。
-
-### 补丁三：Value 时延，一半头看不见当前 Token
-
-每个位置的 Value 来自两路独立投影，再拼在一起，各供应一半头（PDF p.6，式 10）：
+value 不做卷积。它用两组独立的投影：一组来自当前输入 $x_t$，一组来自上一个 Token $x_{t-1}$，各给一半的头用（PDF p. 6，式 10）：
 
 $$
-\tilde v_t=\tilde W_V x_t,
-\qquad
-\bar v_{t-1}=\tilde W_{\bar V}\,x_{t-1},
-\qquad
-\tilde v=[\tilde v_t,\ \bar v_{t-1}]
+\tilde{v}_t = \tilde{W}_V x_t, \qquad \bar{v}_{t-1} = \tilde{W}_{\bar{V}} x_{t-1}, \qquad \tilde{v} = [\tilde{v}_t, \bar{v}_{t-1}]
 $$
 
-一半头看当前 Token，一半头被迫看上一拍。论文把这叫 value-shift。讨论里说，这是一个强归纳偏置：「一半头看不见现在」；RWKV 的 token-shift 是同类做法，算旁证，不是证明。（PDF p.8）
+作者把它看作一种强归纳偏置：「一半头看不见当前位置」。RWKV 的 token-shift 是类似做法，报告把这当作间接佐证（PDF p. 8）。
 
-**我们的解释**：语言里「当前词的意思」经常要等下一个词才清楚，推迟一拍等于给 Value 一条最低成本的局部上下文。它几乎不花钱：多一张 $E\times \tilde{e}/2$ 量级的投影，再在序列维上移一格。论文没有单独解释「为什么有效」，只在消融里证明「加上会再降一点 loss」。
+### 最后进标准注意力
 
-### 做完三件补丁，才进入标准注意力
+q、k 做 L2 归一化并乘 $\sqrt{d_h}$，key 再乘一个可学的温度 $\beta$，然后加 RoPE，送进标准的 softmax 注意力（PDF p. 6，式 11）。附录 A 的代码里，温度写成 $\exp(T)$ 乘到 key 上（PDF p. 12）。因为整个注意力在潜空间里，RoPE 直接作用在潜向量上，不需要 MLA 那样的专用 RoPE 头和缓存（PDF p. 4）。
 
-压缩后的 $\tilde q,\tilde k,\tilde v$ 先做 Q、K 的 L2 归一化，乘上头维度的平方根，Key 再乘一个可学习温度 $\beta$，打上 RoPE，然后走普通 softmax 注意力（PDF p.6，式 11）：
+### 消融：卷积是大头，另两件是小增益
 
-$$
-\begin{aligned}
-\tilde q&=\operatorname{RoPE}\big(\operatorname{norm}(\tilde q)\,\sqrt{d_h}\big),\\
-\tilde k&=\operatorname{RoPE}\big(\operatorname{norm}(\tilde k)\,\sqrt{d_h}\cdot\beta\big),\\
-\tilde o_h&=\operatorname{softmax}\!\left(\frac1{\sqrt d}\,\tilde q_h\tilde k_h^{\top}\right)\tilde v_h,\\
-\mathrm{out}&=\tilde W_O[\tilde o_1,\ldots,\tilde o_{n_h}]
-\end{aligned}
-$$
+Table IV（dense 1B，约 300B Token，PDF p. 7）：
 
-$d_h=\tilde{e}/n_h$ 是潜空间里的头维度。附录 A 的示例代码把温度写成 $\exp(T)$，即 $\beta=\exp(\texttt{self.temp})$（PDF p.12，Listing 1）。正文式 (11) 只写 $\beta$，没有写指数。
+| 卷积层数 | QK 均值 | V 平移 | HellaSwag | ARC Easy | ARC Hard | PIQA | Winogrande | 平均 | 验证损失 |
+|---:|:-:|:-:|---:|---:|---:|---:|---:|---:|---:|
+| 0 | ✕ | ✕ | 56.8 | 59.7 | 34.0 | 73.9 | 56.0 | 56.1 | 2.330 |
+| 1 | ✕ | ✕ | 57.1 | 58.8 | 33.5 | 72.9 | 54.8 | 55.4 | 2.327 |
+| 2 | ✕ | ✕ | 58.2 | 60.4 | 33.9 | 74.3 | 56.3 | 56.6 | 2.319 |
+| 2 | ✕ | ✔ | 58.0 | 59.3 | 33.4 | 73.7 | 56.1 | 56.1 | 2.317 |
+| 2 | ✔ | ✔ | 57.4 | 62.4 | 34.7 | 74.0 | 56.7 | 57.0 | 2.315 |
 
-**外部补充，不是这篇论文的改动。** ZAYA1-8B 后来把温度改成直接乘学到的 $T$，不再走 $\exp(T)$，因为指数很容易涨到过大、Query-Key 内积失控；QK 归一化也从这篇论文的 L2 改成了 RMSNorm。详见 [ZAYA1-8B](/reports/Zyphra/ZAYA1-8B) 附录 C。本篇按 CCA 论文和它自己的示例代码来写。
+Table V（MoE 350M 激活 / 1.5B 总参，50B Token，PDF p. 8）：
+
+| 卷积层数 | QK 均值 | V 平移 | 验证损失 |
+|---:|:-:|:-:|---:|
+| 0 | ✕ | ✕ | 2.280 |
+| 1 | ✕ | ✕ | 2.264 |
+| 2 | ✕ | ✕ | 2.252 |
+| 2 | ✕ | ✔ | 2.248 |
+| 2 | ✔ | ✔ | 2.241 |
+
+报告的读法是：性能提升大部分来自卷积，QK 均值和 V 平移合起来带来小而可见的困惑度下降，在 MoE 上更明显（PDF p. 7–8）。
+
+**我们怎么解释它**：损失一栏确实单调下降，MoE 上从 2.280 降到 2.241，其中卷积贡献了 0.028，另两件合计 0.011。评测分数就没这么整齐了：dense 上加 1 层卷积、以及单加 V 平移时，平均分反而下降。1B 规模的这几项基准波动不小，稳定的证据主要是损失。
 
 ### 可迁移启发
 
-压缩不是免费的。把表示变窄之后，要用**便宜的局部运算**把分辨率补回去，而不是把向量再升回全维度。卷积、跳连、一拍延迟，FLOPs 都可以忽略；它们买到的是「让窄空间里的点积仍然有意义」。哪一件贡献最大，后面消融会给出数字。
+维度压窄之后，与其升回全维度去补表达力，不如在窄空间里加便宜的局部运算。短卷积、跳连、位移这类操作，参数和 FLOPs 都跟着压缩后的宽度走。报告自己也说，这三件补丁不一定专属于 CCA，可以用来改进一般的序列混合器（PDF p. 8）。
 
-## CCGQA：压缩和共享是正交的，可以分别拧
+## 核心设计三：CCGQA，压缩和共享是两只旋钮
 
-### 旧问题：同一份压缩率，只能走一条路
+GQA 的做法是共享参数，MLA 和 CCA 的做法是压缩参数。报告称自己第一个指出并从理论上说明了这两类方法彼此正交、可以组合（PDF p. 8）。
 
-GQA 是参数共享：同一组头用同一套 KV。MLA 和 CCA 是参数压缩：用低维潜空间存 KV。论文认为自己是**第一个把这两件事说清楚、并且真正组合起来的**（PDF p.8）：
+CCGQA 就是在已经压缩的潜空间里，再对 k、v 头做 GQA 式共享（PDF p. 6）。它有两个好处（PDF p. 2、5）：
 
-> parameter-sharing methods such as GQA and parameter-compression methods such as MLA and CCA are orthogonal to one another and can be effectively combined.
+- 在 CCA 的基础上再把 KV cache 缩小 2 倍，而不掉点；
+- query 和 key 可以用不同的压缩倍数：$\tilde{W}_Q \in \mathbb{R}^{E \times E/C_1}$，$\tilde{W}_K \in \mathbb{R}^{E \times E/C_2}$，$C_2 \ge C_1$，压缩更少的 query 去对应被复制的压缩 key。
 
-正交的意思是：共享不改变每个头的宽度，压缩不改变头与头之间是否绑在一起。同一份 KV 预算，可以多共享少压缩，也可以少共享多压缩。
+两只旋钮一起拧，就能在「算力受限」和「带宽受限」两种场景之间滑动选点，报告称之为一条平滑的帕累托前沿（PDF p. 2、7）。实验里的 CCGQA 配置，dense 是 16 个 query 头、4 个 KV 头；MoE 是 8 个 query 头（压 2 倍）、2 个 KV 头（压 8 倍）（PDF p. 6–7）。
 
-### 新设计：在已经压过的头上再做 GQA
-
-CCGQA 直接在潜空间里的压缩头上做分组。组大小为 4 时，就是 $\tilde k_{g1}=\tilde k_1=\tilde k_2=\tilde k_3=\tilde k_4$。（PDF p.6）
-
-它还允许 Query 和 KV 用不同压缩率。记 $C_1$ 为 Query 压缩、$C_2$ 为 KV 压缩，要求 $C_2\ge C_1$。投影形状是 $\tilde W_Q\in\mathbb{R}^{E\times E/C_1}$、$\tilde W_K\in\mathbb{R}^{E\times E/C_2}$。Query 压得轻时，可以把压缩后的 Key 复制几份去对齐。（PDF p.2、5）
-
-于是出现一条 Pareto 前沿：偏向 FLOP 就加大 $C_1$（Query 也压窄，二次项更便宜）；偏向内存就加大 $C_2$ 或分组（KV Cache 更小）。论文说，用户可以按自己是算力受限还是带宽受限来拧，不必牺牲质量。（PDF p.1–2）
-
-人话版：CCA 是「把会议室变小，所有对话在小房间里进行」；CCGQA 是「小房间里还让几个人共用一本笔记」。房间大小和笔记本共享份数是两个旋钮。
-
-### 工作机制上多出来的东西
-
-QK 均值里的 $B_{\mathrm{group}}$ / $E_{\mathrm{group}}$ 就是为 CCGQA 准备的：Query 头比 KV 头多时，先把共享 Key 广播开再取平均，再把均值收回到 KV 头上。（PDF p.6）
-
-论文给的一个具体额外收益：相对已经压缩过的 CCA，CCGQA 再砍一倍 KV Cache，且声称没有性能惩罚。（PDF p.2）后面 MoE 实验把这句话落成 8× 相对 MHA、相对 GQA/MLA 再半倍。
-
-### 代价与边界
-
-- 分组之后，组内头不能再有各自的 KV，这是 GQA 一贯的精度让步。论文没有做「同样压缩率下，共享 vs 不共享」的独立消融，精度代价只能从 CCGQA 对 CCA 的对照里间接看；
-- Query 和 KV 压缩率解耦后，二次项宽度跟的是 Query 侧 $C_1$，不是 KV 侧 $C_2$。想靠 CCGQA 再降 FLOPs，必须把 $C_1$ 也拧上去，不能只拧 KV。
-
-### 可迁移启发
-
-省内存和省算力不必绑在同一个旋钮上。共享头主要省 decode 带宽，压宽度主要省 $S^2$ 算力。先问系统被哪一边卡住，再决定拧哪一个。
-
-## 复杂度：哪些按 $C$ 降，哪些没降
-
-Table II 把五种注意力的参数、KV Cache、前向 FLOPs、decode FLOPs 写在一起（PDF p.4）。下面只保留主项，卷积项记作 $+\mathrm{Conv}$。$B$ 是 batch，$S$ 是序列长度，$E$ 是残差维度，$G$ 是 GQA 组数，$C$ 是 CCA 压缩倍数，$C_1,C_2$ 是 CCGQA 的 Query / KV 压缩，$c_q,c_{kv}$ 是 MLA 的 Query / KV 压缩。
-
-| 方法 | 参数 | KV Cache | 前向主项（投影 + $S^2$） |
-|---|---|---|---|
-| MHA | $4E^2$ | $2BSE$ | $8BSE^2+4BES^2$ |
-| GQA | $2E^2+2E^2/G$ | $2BSE/G$ | $(1+1/G)\,4BSE^2+4BES^2$ |
-| MLA | $E^2+3E^2/c_{kv}+2E^2/c_q$ | $BSE/c_{kv}+BSE_r$ | 投影略贵于 MHA，$S^2$ 仍是 $4BES^2$ |
-| CCA | $4E^2/C+\mathrm{Conv}$ | $2BSE/C$ | $(2/C)\,4BSE^2+4BES^2/C+\mathrm{Conv}$ |
-| CCGQA | $2E^2/C_1+2E^2/C_2+\mathrm{Conv}$ | $2BSE/C_2$ | $(1/C_1+1/C_2)\,4BSE^2+4BES^2/C_1+\mathrm{Conv}$ |
-
-读这张表时有三条不能滑过去：
-
-1. **GQA 的 $S^2$ 项仍是 $4BES^2$**，和 MHA 一样。它只让投影少了一点。这就是「GQA 不减少训练 / prefill FLOPs」的公式版。（PDF p.2、4）
-2. **MLA 的 $S^2$ 项同样是 $4BES^2$**。上投影让投影项甚至更贵。脚注写明：表里还省略了共享 Key-RoPE 和 Query-RoPE 的推理投影，所以 MLA 的真实 FLOPs 比表上还略高。（PDF p.4）
-3. **只有 CCA / CCGQA 把 $S^2$ 项除以压缩倍数。** CCA 除以 $C$，CCGQA 的二次项跟 Query 侧 $C_1$。
-
-Figure 2 用 $E=2048$ 把这张表画成四张柱 / 线图，标注为**理论** FLOPs 和内存，不是实测延迟（PDF p.5）。**我们从图上读到的数字**（论文未另给数值表）：
-
-| 方法 | 参数（百万） | $S=16384$ 的 KV 元素（百万） |
-|---|---:|---:|
-| MHA | 16.8 | 67.1 |
-| GQA-4 | 10.5 | 16.8 |
-| MLA（2×/4×） | 14.3 | 16.8 |
-| CCA-4× | 4.4 | 16.8 |
-| CCGQA-2×/8× | 5.75 | 8.39 |
-
-**我们的验算**：$4E^2=4\times 2048^2=16\,777\,216$，即 16.8M，与 MHA 柱一致。$2SE=2\times 16384\times 2048=67\,108\,864$，即 67.1M 个 KV 元素，与 MHA 柱一致。CCA-4× 的 KV 正好是 1/4，CCGQA-2×/8× 正好是 1/8。参数上 CCA-4× 约 16.8/4=4.2，加上卷积后读到 4.4，也对得上。
-
-图注还说内核还会靠更好的算子融合和访存模式继续改进，并指向「Appendix V」讨论 MLA 推理。正文附录实际标号是 B，这是论文自己的编号残留。（PDF p.5、12–13）
+附录 C 还有一个对照变体 CCMLA：query 与 KV 的压缩率和 CCGQA 相同，但不共享 K、V 头，改为加上投影和 50% RoPE，用来检验「上投影带来的表达力」与「共享 RoPE key 损失的表达力」孰轻孰重（PDF p. 7、13）。它不共享 K、V 头的原因是：在注意力之前对 value 做序列卷积，实测效果差（PDF p. 7）。
 
 ## 实验怎么比：故意把便宜让给对手
 
-### 对照口径
+对照口径写在 §II.C（PDF p. 6）：
 
-论文**不做** FLOPs / 字节匹配的消融。它做参数匹配（总参数和激活参数）和 KV Cache 大小匹配。理由是给 MLA、GQA 这类偏 decode 的方法一个公平机会。匹配不上时，便宜让给非 CCA 的一方：对 MHA 只匹配参数、忽略 CCA 更小的 KV；对 MLA / GQA 匹配参数和压缩率，**不**匹配 FLOPs，因为后两者算得更多。（PDF p.6）
+- **不按 FLOPs 配平**，而是按总参数、激活参数和 KV cache 大小配平。理由是给 MLA、GQA 这类专攻解码的方法公平的机会；
+- 实在配不平时，**故意让非 CCA 的一方占便宜**：和 MHA 比，只配平参数，不管 CCA 的 KV 压缩率；和 MLA、GQA 比，配平参数和压缩率，但不配平 FLOPs，因为它们用的 FLOPs 本来就比 CCA 多得多。
 
-数据是 Zyda2 的随机子集。两条骨干（PDF p.6、13）：
+模型与数据（PDF p. 6、13）：Zyda2 数据集的随机子集；dense 是 Llama3 式 1B、24 层，训 300B Token；MoE 是 Zyphra 自有架构，28 层，训 50B Token。
 
-| 骨干 | 规模 | 层数 | 训练量 | 注意力配置 |
-|---|---|---|---|---|
-| Llama3 风格 dense | 1B | 24 | 300B Token | CCA：4 个 Query 头 / 4 个 KV 头；CCGQA：16 个 Query 头 / 4 个 KV 头，重复 4 次 |
-| 自研 MoE | 350M 激活 / 1.5B 总参 | 28 | 50B Token | CCA：4 个 Q/KV 头（4×）；CCGQA：8 个 Query 头（2×）/ 2 个 KV 头（8×） |
+## Dense 1B：CCGQA 赢，CCA 本身没赢过 MHA
 
-正文 §III.B 有一处写成「300M-active / 1.5B-total」（PDF p.7 双栏），与同页 Figure 4、Table V 和附录「350M active / 1.5B total」不一致。本文以图表和附录的 350M 为准。
+dense 设置里，MLA、GQA、CCA、CCGQA 的 KV cache 都配到 MHA 的 1/4（PDF p. 6）。Table III（PDF p. 6）与 Figure 3（PDF p. 7）合在一起：
 
-MoE 上他们只做了一次 8× 的 CCGQA，用来展示「提高算术强度」这条 Pareto 前沿。（PDF p.6）
+| 方法 | 损失 | 困惑度 | HellaSwag | ARC Easy | ARC Hard | PIQA | Winogrande | 平均 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| MHA | 2.297 | 9.944 | 58.9 | 63.4 | 37.2 | 74.5 | 56.8 | 58.2 |
+| MLA | 2.321 | 10.186 | 57.8 | 63.3 | 35.4 | 74.6 | 57.6 | 58.2 |
+| GQA | 2.297 | 9.944 | 58.6 | 62.3 | 34.7 | 73.5 | 56.9 | 57.2 |
+| CCA | 2.307 | 10.044 | 57.4 | 62.4 | 34.7 | 74.0 | 56.7 | 57.0 |
+| CCGQA | 2.286 | 9.836 | 59.6 | 62.6 | 36.0 | 75.0 | 59.7 | 58.6 |
 
-这里有一处正文和附录图注不完全一致，需要并排写出来：
+Figure 3 的困惑度就是损失取指数，两边一一对应（本文验算）。
 
-- §III.A 写：dense 上 MLA、GQA、CCA、CCGQA 的 KV 压缩都匹配为 MHA 的 1/4（PDF p.6）；
-- Figure 9 图注写：除 MHA 外各方法先限制到 4× 压缩，但 **CCGQA 是 8×，MLA / CCA / GQA 是 4×**（PDF p.15）。
+报告的两句结论是：参数配平时 CCA 的损失优于 MLA，同时训练和推理 FLOPs 大幅减少；CCGQA 在参数配平、且 KV 压缩与 FLOPs 更少的前提下超过 MHA（PDF p. 6–7）。
 
-**我们的读法**：4× 匹配说的是 MLA / GQA / CCA；CCGQA 在 dense 上用 16 个 Query 头、4 个 KV 头，再叠加 Query 2× / KV 8× 的解耦压缩，缓存是别人的一半。后面引用 8× 时以 Figure 9 图注和摘要为准。
+读这张表还要补两句。第一，CCA 自己的损失低于 MLA，但高于 MHA 和 GQA，平均分也是五者最低，它在 dense 上的卖点是「用少得多的算力接近」，不是「更好」。第二，赢过 MHA 的是 CCGQA。
 
-论文还强调：在 MoE 里把注意力参数省下来，可以加给专家、让每个专家变宽，固定总参下专家数可以更少；前向里的固定参数也变少。他们说在自己的 MoE 里这种再分配是有益的，但没有单独拆「省下的参数去了专家」和「注意力本身更好」两笔账。（PDF p.7）
+## MoE 350M / 1.5B：注意力省下的参数给了专家
 
-### Dense：CCGQA 赢，CCA 本身没有赢过 MHA
+MoE 实验按总参数和激活参数配平，除 MHA 的 KV cache 是 4 倍外，其余都配平 KV（PDF p. 7）。Figure 4（50B Token，PDF p. 7）：
 
-Table III 是 1B dense、300B Token 的 loss 和下游分（PDF p.6）：
+| 方法 | KV 相对 MHA | 最终困惑度 |
+|---|---|---:|
+| MHA | 1 | 9.796 |
+| GQA | 1/4 | 9.757 |
+| MLA | 1/4 | 9.689 |
+| CCMLA | 1/8 | 9.516 |
+| CCGQA（8 个 Q 头、2 个 KV 头） | 1/8 | 9.450 |
+| CCA（4 个 Q 头、4 个 KV 头） | 1/4 | 9.403 |
 
-| 模型 | Loss | HellaSwag | ARC Easy | ARC Hard | PIQA | Winogrande | 平均 |
+KV 一列是本文按正文配置整理的：CCA 压 4 倍，CCGQA 压 8 倍，CCMLA 与 CCGQA 同压缩率，GQA、MLA 与 CCA 配平（PDF p. 7）。
+
+这张表最反直觉的是 MHA 垫底。报告的解释是：参数配平时，注意力越省参数，省下的就能分给专家，专家变大、数量变少，这种再分配在他们的 MoE 架构上是有利的；把参数从注意力挪到专家，还减少了前向中固定参与的参数（PDF p. 7）。**我们怎么解释它**：这说明 MoE 场景下的注意力比较，本质上也在比「注意力和专家怎么分参数预算」，结论很依赖配平口径，不宜直接推到 dense 或更大规模。
+
+摘要里「CCGQA 用一半 KV 超过其他所有方法，相对 MHA 压 8 倍不掉点」对应的就是这张表：CCGQA 优于 MHA、GQA、MLA 与 CCMLA，只略逊于 KV 多一倍的 CCA 本身（PDF p. 1、7）。CCMLA 排在 MLA 与 CCGQA 之间，作者据此认为上投影换来的表达力，抵不过共享 RoPE key 损失的表达力（PDF p. 13）。
+
+附录 C 的完整损失曲线（Figure 9，PDF p. 15）显示，各方法的差距一旦出现就保持稳定，不再收敛或交叉（PDF p. 14）。
+
+## H100 kernel：16K 时 prefill 约 1.7 倍
+
+### 为什么需要融合 kernel
+
+理论上卷积等运算的 FLOPs 可以忽略，但在朴素的 PyTorch 实现里它们常常带来实打实的开销，要拿到理论加速就得写融合 kernel（PDF p. 9）。作者为 H100 写了一个 kernel，把卷积和 FlashAttention 式的在线 softmax 融合在一起（PDF p. 8）。测速设置是单卡 H100、BF16、$E = 2048$、头维 64 / 128 / 256、序列长 512 到 16,384；前向测因果与非因果两种，反向只测非因果（PDF p. 16）。
+
+### 16K 时的实测
+
+Figure 5（$S = 16{,}384$，单位 ms，PDF p. 9）：
+
+| 配置 | MHA | GQA-4 | GQA-8 | MLA | CCA-4× | CCA-2×8× | CCA-8× |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| MHA | 2.297 | 58.9 | 63.4 | 37.2 | 74.5 | 56.8 | 58.2 |
-| MLA | 2.321 | 57.8 | 63.3 | 35.4 | 74.6 | 57.6 | 58.2 |
-| GQA | 2.297 | 58.6 | 62.3 | 34.7 | 73.5 | 56.9 | 57.2 |
-| CCA | 2.307 | 57.4 | 62.4 | 34.7 | 74.0 | 56.7 | 57.0 |
-| CCGQA | 2.286 | 59.6 | 62.6 | 36.0 | 75.0 | 59.7 | 58.6 |
+| 反向，非因果，头维 64 | 11.60 | 10.23 | 10.00 | 12.18 | 9.82 | 9.93 | 9.03 |
+| 反向，非因果，头维 128 | 9.80 | 8.90 | 8.75 | 10.29 | 8.60 | 8.69 | 7.97 |
+| 反向，非因果，头维 256 | 8.01 | 7.12 | 7.04 | 8.41 | 6.09 | 6.66 | 5.73 |
+| 前向，非因果，头维 64 | 4.42 | 3.69 | 3.57 | 4.69 | 2.64 | 3.20 | 2.01 |
+| 前向，非因果，头维 128 | 3.39 | 2.94 | 2.86 | 3.60 | 1.97 | 2.50 | 1.65 |
+| 前向，非因果，头维 256 | 2.91 | 2.60 | 2.55 | 3.08 | 1.80 | 2.25 | 1.49 |
+| 前向，因果，头维 64 | 2.33 | 1.89 | 1.82 | 2.46 | 1.43 | 1.67 | 1.11 |
+| 前向，因果，头维 128 | 1.78 | 1.51 | 1.47 | 1.89 | 1.33 | 1.41 | 1.09 |
+| 前向，因果，头维 256 | 1.71 | 1.51 | 1.48 | 1.82 | 1.25 | 1.39 | 1.05 |
 
-Figure 3 把同一组实验画成最终困惑度柱（PDF p.7）。**我们验算** $\mathrm{PPL}=\exp(\mathrm{loss})$：MHA / GQA 9.944、CCA 10.044、MLA 10.186、CCGQA 9.836，与图上标注 9.944、10.044、10.186、9.836 一致。
+CCA-2×8× 是 query 压 2 倍、KV 压 8 倍的解耦配置。Figure 6 与附录 D 的 Figure 10–18 给了各长度下的曲线，差距随长度增大，因为固定开销在长序列上被摊薄（PDF p. 8–9、16–21）。
 
-论文的读法：参数匹配下 CCA 以更少 FLOPs 超过 MLA；用 CCGQA 把 FLOPs 对齐到 GQA / MHA 时，困惑度有明显改善。（PDF p.7）讨论里更硬的一句是：匹配训练参数时，CCGQA（16/4 头）显著超过所有主流注意力；CCA（4/4 头）以 16× 更少的 decode FLOPs 超过 MLA，CCGQA 则是 8× 更少。（PDF p.8）
+**本文推算**，用上表相除：
 
-**我们的读法要更保守。** Table III 里 CCA 的 loss 2.307 高于 MHA / GQA 的 2.297，平均分 57.0 也低于 MHA 的 58.2。CCA 赢的是 MLA，不是 MHA。真正在 dense 上既压 KV 又压分的是 CCGQA。那句「16× 更少 decode FLOPs」来自 Table II 的理论对照，正文没有逐步验算这一倍数。
+- CCA-4× 相对 MHA：非因果前向 1.62–1.72 倍，因果前向 1.34–1.63 倍，反向 1.14–1.32 倍；
+- CCA-4× 相对 GQA-8：非因果前向 1.35–1.45 倍；相对 MLA：非因果前向 1.71–1.83 倍；
+- CCA-2×8× 相对 MHA：非因果前向 1.29–1.38 倍；相对 GQA-8：1.12–1.14 倍。
 
-### MoE：半份 KV 仍然优于对照，相对 MHA 的 8× 没有掉点
-
-Figure 4 是 350M / 1.5B MoE、50B Token 的最终困惑度（PDF p.7）。**我们从图上读到**：
-
-| 方法 | 最终困惑度 | 相对 MHA 的 KV |
-|---|---:|---|
-| MHA | 9.796 | 1× |
-| GQA | 9.757 | 4× 压缩 |
-| MLA | 9.689 | 4× 压缩 |
-| CCMLA | 9.516 | 与 CCGQA 相同的 Q / KV 压缩，但不共享头 |
-| CCGQA | 9.450 | 8× 压缩（GQA / MLA 的一半） |
-| CCA | 9.403 | 4× 压缩 |
-
-**我们的换算**：$\ln 9.403\approx 2.241$，与 Table V 里完整 CCA 的 2.241 一致（PDF p.8）。
-
-这张图对应摘要里最硬的那句：MoE 上 CCGQA 用 GQA / MLA 一半的 KV，超过所有其他注意力，相对标准 MHA 做到 8× KV 压缩且没有掉点。（PDF p.1）按图上的数，不只是「没有掉点」，CCA 和 CCGQA 的困惑度都低于 MHA。
-
-这些比较都是参数匹配、KV 匹配（MHA 除外，它的 KV 是别人的 4 倍）。（PDF p.7）
-
-CCMLA 是附录里的对照：在 CCGQA 的压缩率上加上上投影和 50% RoPE，**不**共享 K/V 头。论文说对 Value 做序列卷积在注意力前「empirically poor」，所以这条路没有走通。CCMLA 用来说明：MLA 式的上投影加共享 Key RoPE，并不自动比 CCGQA 更强。（PDF p.7、13）
-
-### 损失曲线：差距出现之后不再交叉
-
-Figure 9 给出 MoE 和 dense 的完整 loss 曲线，各有一张全貌和一张放大（PDF p.15）。论文的观察是：所有情况训练都稳定；loss 差距一旦出现，后续不再收敛或交叉，意味着某些方法对另一些方法有跨 step 的、对样本平均的长期优势。单条样本上各方法的 loss 彼此咬得很紧，只是有一个大致固定的偏移。（PDF p.14）
-
-**我们从放大图读到的终点顺序**与 Table III / Figure 4 一致：MoE 上 CCA（4/4）最低，CCGQA（8/2）次之，然后 CCMLA、MLA、GQA、MHA；dense 上 CCGQA（16/4）最低，MHA 与 GQA 接近，CCA（4/4）略高，MLA 最高。论文没有给每条曲线的数值表。
-
-## 消融：卷积才是大头，均值和时延是小增益
-
-两组消融都固定在 CCA 的 4 Query / 4 Key / 4 Value 变体上，逐项打开卷积层数、QK 均值、Value 时延。（PDF p.7–8）
-
-Table IV，1B dense，约 300B Token（PDF p.7）：
-
-| 卷积层 | QK 均值 | V-Shift | HellaSwag | ARC Easy | ARC Hard | PIQA | Winogrande | 平均 | Loss |
-|---|---|---|---:|---:|---:|---:|---:|---:|---:|
-| 0 | 否 | 否 | 56.8 | 59.7 | 34.0 | 73.9 | 56.0 | 56.1 | 2.330 |
-| 1 | 否 | 否 | 57.1 | 58.8 | 33.5 | 72.9 | 54.8 | 55.4 | 2.327 |
-| 2 | 否 | 否 | 58.2 | 60.4 | 33.9 | 74.3 | 56.3 | 56.6 | 2.319 |
-| 2 | 否 | 是 | 58.0 | 59.3 | 33.4 | 73.7 | 56.1 | 56.1 | 2.317 |
-| 2 | 是 | 是 | 57.4 | 62.4 | 34.7 | 74.0 | 56.7 | 57.0 | 2.315 |
-
-Table V，350M / 1.5B MoE，50B Token，只报验证交叉熵（PDF p.8）：
-
-| 卷积层 | QK 均值 | V-Shift | Loss |
-|---|---|---|---:|
-| 0 | 否 | 否 | 2.280 |
-| 1 | 否 | 否 | 2.264 |
-| 2 | 否 | 否 | 2.252 |
-| 2 | 否 | 是 | 2.248 |
-| 2 | 是 | 是 | 2.241 |
-
-论文的读法：dense 上性能提升的大部分来自两层卷积；QK 均值和 Value 时延一起再提供「小但可察觉」的困惑度下降和评测提升。MoE 上辅助改动的跳跃更明显。（PDF p.7–8）
-
-**我们的读法。** 从 0 层卷积到 2 层，dense loss 从 2.330 降到 2.319（−0.011），再加两件辅助只再降 0.004；MoE 从 2.280 到 2.252（−0.028），辅助再降 0.011。卷积是主杠杆，另外两件是稳定器。注意 Table IV 完整配置的 2.315 和 Table III 里 CCA 的 2.307 差 0.008，论文没有解释是两次独立训练还是统计波动。
-
-还有一件消融没做：核宽 $k_{\mathrm{seq}}$、$k_{\mathrm{ch}}$ 扫过哪些值、头数和 $C$ 怎么选，全部没有表。
-
-## H100 融合核：16k 上 prefill 约 1.7×，backward 约 1.3×
-
-### 旧问题：理论 FLOPs 降了，朴素实现拿不到
-
-卷积、均值、时延在 Table II 里是可忽略的小项，但「在朴素 PyTorch 实现里这些操作经常造成开销」。要拿到与 $1/C$ 相称的速度，必须把卷积和在线 softmax 融进 FlashAttention 风格的核。（PDF p.8–9）
-
-### 新设计：整次注意力在 $\tilde{e}=E/C$ 里融合执行
-
-论文写了 H100 上的前向和反向融合核：卷积与在线 softmax 融在一起，RoPE、QK 的 L2 归一化、Key 温度、qk-mean、value-shift 作为融合的 prologue / epilogue。（PDF p.8、16）
-
-测量口径（PDF p.16）：
-
-- 单卡 H100，BF16，$E=2048$；
-- 头维度 $d_h\in\{64,128,256\}$；
-- 序列长度 512 到 16 384；
-- 前向报非因果和因果两种；反向只报非因果。
-
-他们故意报延迟、不报 TFLOPs。理由：TFLOPs 适合比较「同一运算用满加速器的程度」；不同注意力方法的真实 FLOP 成本不同，拿 TFLOPs 比会误导。CCA 在大加速器上的吞吐预计略低于 MHA，因为它算得更少；但更少的计算本身会变成端到端加速，以及更好的 loss。高效地打满 FLOPs 只有在这些 FLOPs 买到东西时才有用。（PDF p.16）
-
-### 数字：分母必须写清楚
-
-摘要给出的是两个约数：相对 MHA，16k 上 fused CCA / CCGQA 核把 prefill 延迟降约 1.7×，反向加速约 1.3×。（PDF p.1）
-
-正文 §I 把同一组测量拆得更细（PDF p.2）：
-
-| 配置 | 对照 | 16k 上的延迟比 | 范围 |
-|---|---|---|---|
-| CCA-4× prefill | MHA | 约 1.6–1.7× | 头维度 64 / 128 / 256 |
-| CCA-4× prefill | GQA-8 | 约 1.3–1.4× | 同上 |
-| CCA-4× prefill | MLA | 约 1.3–1.5× | 同上 |
-| CCA-4× 因果前向 | MHA | 约 1.6–1.9× | 同上 |
-| CCA-4× 训练反向 | MHA | 约 1.2–1.3× | 同上 |
-| 解耦 $C_1=2,C_2=8$ prefill | MHA | 约 1.3–1.4× | 同上 |
-| 解耦 $C_1=2,C_2=8$ prefill | GQA-8 | 约 1.1–1.3× | 同上 |
-
-解耦配置仍保留 KV Cache 收益和理论上的 $1/C$ 缩放。（PDF p.2）
-
-Figure 5 是 16 384 长度、隐藏 2048、BF16、H100 上九组柱的总览；Figure 6 与附录 Figure 10–18 是按头维度拆开的曲线（PDF p.9、17–21）。柱和线上有具体毫秒数，论文没有另给数值表。**本文不把图上读数当作论文结论**，只采用正文写明的倍数。
-
-附录 D 还补了两条实现观察（PDF p.16）：
-
-- 理论 FLOPs 和延迟在大 $S$ 上对齐得最清楚，因为 $S^2/C$ 占主导；短序列上内核启动、reduction、prologue / epilogue 的固定部分让实际加速低于理想倍数 $C$，但方法之间的排序稳定；
-- MLA 的 decode 摊销和 GQA 的 KV 共享主要改带宽用法，都不减少 prefill / 训练里的核心 $S^2$ 算术，所以它们的前向曲线更靠近 MHA 而不是 CCA。
+摘要的「prefill 约 1.7 倍」对应的是非因果前向那一组。引言给的几个区间有两处和图上数字对不上（PDF p. 2）：它说 CCA-4× 相对 MLA 快 1.3–1.5 倍，图上是 1.7–1.8 倍；说因果前向快 1.6–1.9 倍，图上 CCA-4× 只有 1.3–1.6 倍，CCA-8× 才到 1.6–2.1 倍。以图为准。
 
 ### 明确没测的
 
-「KV Cache 变小带来的 decode 加速」**没有出现在这些结果里**。论文说这会显著改进解码速度，但「KV cache results will be included in a follow-up work, since the focus of this initial work is on pretraining。」（PDF p.8、16）
+- **解码速度与 KV cache 的实际收益**。报告说 KV cache 的结果留给后续工作，这篇的重点是预训练（PDF p. 8）；附录 D 也写明 KV 缩小带来的解码提速没有在这些结果里体现（PDF p. 16）；
+- **端到端训练吞吐**。实测只到注意力算子的延迟，没有整模型每秒 Token 数；
+- **多卡**。全部是单卡测速。
 
-所以 1.7× / 1.3× 是注意力核的 prefill / 反向延迟，不是端到端训练吞吐，也不是线上 decode 延迟。
+作者还解释了为什么报延迟而不报 TFLOPs：不同注意力方法的真实 FLOPs 本就不同，比 TFLOPs 利用率会误导；CCA 在大卡上的利用率可能略低于 MHA，但用少得多的 FLOPs 换来端到端更快（PDF p. 16）。
 
-### 可迁移启发
+## 并行：CCGQA 按 KV 头切给各卡
 
-报加速比时把「测的是什么、哪个阶段、对照谁、在什么硬件上」写全。这篇论文在这一点上比很多同行老实：它不用 TFLOPs 跨方法比，也承认短序列拿不到理想 $C$ 倍。缺的是 decode 实测和端到端吞吐——读的人自己要把这两块补进「尚未兑现」的清单。
+![左侧 MLA 的 MQA 模式在 8 卡张量并行下每张卡都存同一份 KV，右侧 CCGQA 让 KV 头数等于并行数，每张卡只存自己的那一个 KV 头。](/reports/CCA/figure-cca-tp.svg)
 
-## 并行：CCA 按 GQA 的方式切，不必走 MLA 的模式切换
+附录 B 讨论 MLA 的推理（PDF p. 12–13）：解码时最优的是 MQA，因为它受带宽限制；训练和 prefill 时最优的是 MHA，因为表达力最强。MLA 的两种模式正好让它在两者之间切换。MQA 模式的算术强度约为 2 倍头数，128 个头时是 256，贴近 H100 BF16 的屋脊 295 FLOPs/byte（Figure 8，PDF p. 14），报告推测 DeepSeek 正是按这个屋脊来选 V3 的头数。
 
-附录 B 用了相当篇幅讲 MLA 在推理期的两种模式，以及为什么 CCGQA 更适合张量并行。这是论文自己的系统设计讨论，不是 ZAYA1 的训练栈。
+问题出在两处：一是投机解码会把算术强度推过屋脊，多出的 FLOPs 收益不大；二是张量并行时，共享的 KV 必须复制到每张卡，MQA 的优势就没了（PDF p. 13）。作者认为张量并行下最优的是「潜空间里的 GQA」：KV 头数等于并行数，组尽量大以提高算术强度，这正是 CCGQA。他们还推测，这也是用 MLA 的模型偏向专家并行和流水线并行的原因（PDF p. 13）。
 
-### MLA 的两种模式，以及它在 TP 上的别扭
+正文补了两条并行上的好处（PDF p. 9）：按 GQA 的方式切 CCA 的潜向量，只要 TP 数等于组数，代价和 GQA 一样低；上下文并行时只需在环或树里传宽 $E/C$ 的潜向量。RoPE 直接加在潜向量上，因果卷积和一步 V 平移只需要一段固定大小的边界数据，不用额外的集合通信，也不用重算上投影。
 
-MLA 的逻辑是：decode 带宽受限，最优是 MQA；训练 / prefill 要表达力，最优是 MHA。两种模式可以切换。MQA 模式靠大量头去打满算术强度——H100 BF16 的屋顶线脊大约是每字节 295 FLOPs，DeepSeek-V3 的头数被论文解读成几乎正好顶上这条脊，以便 batch=1 时接近算力受限。（PDF p.12–13，Figure 8）
+这些是分析和推测，报告没有给多卡实测。
 
-一旦上张量并行，这份好处会翻面。TP=8、1 个 KV 头、16 个 Query 头时，共享 KV 必须按 TP 份数复制到每张卡。论文的判断：带 TP 的最优推理注意力，是潜空间里的 GQA，KV 头数等于 TP 切分数，组数尽量多以拉高算术强度。MLA 算术强度是 $2n_{\mathrm{heads}}$，GQA / CCGQA 是 $n_{\mathrm{groups}}$。这也是论文观察到「用 MLA 的模型倾向重专家并行和流水线并行、而不是张量并行」的原因。（PDF p.13）
+## 和序列稀疏方法的关系
 
-投机解码会把算术强度推过屋顶线，这时 MLA 多出来的 FLOPs 不一定换来延迟收益。论文强调终点是模型质量和延迟，不是 SM 利用率。（PDF p.13）
+CCA 没有改变注意力「每个 Token 看所有 Token」的平方本质，只是把常数除以了 $C$。所以报告认为它和 NSA、MoBA、DSA 这类在序列方向上做压缩和挑选的方法正交，未来可以组合；压缩后的 KV cache 能否再叠加离线 KV 压缩方法，也列为未来工作（PDF p. 8）。相关方法见站内 NSA、MoBA、DeepSeek-V3.2 几篇。
 
-Figure 8 是 H100 SXM、dense BF16 屋顶线，点了 MLA 128 头和 GQA 16 组在 batch=1 时的理论算术强度；图注写 CCGQA 与 GQA 相同。（PDF p.14）
+## 论文之后：CCGQA 用进了 ZAYA1
 
-### CCA / CCGQA 怎么切
+以下是外部补充，不是本 PDF 的内容。Zyphra 官方博客说 CCGQA 后来被用于训练 ZAYA 系列模型。站内 ZAYA1-8B 一篇依据其技术报告记录：ZAYA1-8B 采用 CCGQA，8 个 query 头、2 个 KV 头，query 压 2 倍、KV cache 压 8 倍，与本篇 MoE 实验的配置一致；它还把 key 温度从 $\exp(T)$ 改成直接乘可学的 $T$，理由是指数形式容易让注意力 logit 失控。
 
-正文给出三条（PDF p.9）：
+这让「更大规模上 CCA 是否还有效」有了一个 8B 级别的旁证，但 ZAYA1 的报告里没有 CCA 与 MLA、GQA 的同规模对照，不能当作本篇结论的放大复现。
 
-- **张量并行**：切分潜表示的成本和 GQA 相同，只要 TP 切分数等于组数，就相对便宜；
-- **上下文并行**：在 ring 或 tree 里通信宽度 $E/C$ 而不是 $E$；
-- **边界**：因果卷积和一拍 Value 时延只需要恒定大小的潜空间 halo，不必额外集合通信，也不必把上投影再物化一遍——这是相对 MLA 的结构优势。
+## 限制与没有公开的部分
 
-论文把 CCA 设计成「对未来的模型并行和投机解码策略保持不可知」，算术强度就是 $n_{\mathrm{groups}}$；因为能在同等质量下把 KV 压得更狠，需要时可以把算术强度做到比 GQA 更大。（PDF p.13）
+报告自己划出的边界：
 
-**外部补充，不是这篇论文写的。** 官方博客多写了一句：QK 均值的 TP 通信可以和卷积计算重叠。见 [Zyphra CCA 博客](https://www.zyphra.com/post/cca)。ZAYA1-8B 后来在 32K / 131K 上用 all-gather KV 的上下文并行，卷积和 Value 移位的边界用短异步点对点处理，那是基模报告的实现，不是本篇的实验。
+- **规模**。作者承认 CCA 比 MLA、GQA 做了更多潜空间里的运算，带有更强的归纳偏置，可能在小规模占优、在大规模收益变小；这需要更大规模的实验来验证或证伪（PDF p. 9）；
+- **解码与 KV 实测**留给后续工作（PDF p. 8、16）。
 
-## 和序列稀疏方法的关系：通道压缩对序列压缩
+读原文时发现的几处前后不一：
 
-CCA 压的是**通道 / 缓存**，不碰注意力的全对全拓扑。因此它和 NSA、MoBA、DeepSeek Sparse Attention（DSA）这类**序列**压缩 / 选择方法正交。论文把「通道压缩加序列压缩还能叠到什么程度」列为未来工作，也提到压缩后的 KV 如何与离线 KV 压缩互动，尚未研究。（PDF p.8）
+- 同一个 dense CCA 配置，Table III 的损失是 2.307，Table IV 最后一行是 2.315，而两行的五项评测分数完全相同（PDF p. 6–7）；
+- dense 实验的 KV 配平，正文说 MLA、GQA、CCA、CCGQA 都是 MHA 的 1/4（PDF p. 6），Figure 9 的图注却说 CCGQA 是 8 倍压缩（PDF p. 15）；
+- MoE 模型的激活参数，§II.C 写 300M，其余处写 350M（PDF p. 6、7、13）；
+- kernel 加速的文字区间与 Figure 5 的数字有两处不符，见上文。
 
-这不是一句客套。GQA / MLA 省 decode 内存，CCA 再把 $S^2$ 的宽度除以 $C$，NSA 一类再把参与 $S^2$ 的 Token 数降下来。三条轴可以同时拧。本仓库已发布的 [NSA](/reports/DeepSeek/NSA)、[MoBA](/reports/Moonshot/MoBA) 可以对照阅读；它们不是本篇的实验基线。
+正文没有公开的：
 
-## 论文没有公开的部分
+- 卷积核大小 $k_{\mathrm{seq}}$、$k_{\mathrm{ch}}$ 的取值，各实验的学习率、batch 等超参数；
+- MoE 架构的细节（专家数、路由方式），只写了「proprietary」；
+- MLA 基线的 $c_q$、$c_{kv}$、$E_r$ 取值；
+- kernel 源码。
 
-### 明确留下的边界
+## 可迁移启发
 
-- **没有更大规模。** dense 1B、MoE 1.5B 总参。作者自己担心：相对 MLA / GQA，CCA 在压缩潜变量上做了更复杂的运算，引入了更多归纳偏置，可能小规模占优、大规模优势变小。验证或证伪这件事需要更大尺度，本文没有做。（PDF p.9）
-- **没有长上下文质量实验。** 内核测到 16k，训练序列长度没有写。没有 NIAH、LongBench 或任何长程检索数字。
-- **decode 速度没有实测。** 明确留给后续工作（PDF p.8、16）。
-- **端到端训练吞吐没有报。** 只有注意力核延迟。
-- **核宽、头维度、学习率、batch、优化器全部没有。** 卷积公式里的 $k_{\mathrm{seq}}$、$k_{\mathrm{ch}}$ 是符号。
-
-### 论文没有写、本文也不替它补的空白
-
-- 官方融合核没有发布。附录 A 只给了一份「为简洁拆开、许多操作可以融合」的 PyTorch 示意（PDF p.12）。检索 Zyphra 官方 GitHub 组织未见独立的 CCA 仓库（外部核对：[组织仓库列表](https://api.github.com/orgs/Zyphra/repos?per_page=100)）；
-- 自研 MoE 的专家数、路由、共享专家、是否有残差专家，全部没有；
-- 训练上下文长度、位置编码是否 partial RoPE、是否 QK 预热，没有；
-- CCGQA vs CCA 在「同一 KV 预算、只改共享」上的独立消融没有；CCMLA 只有一根 MoE 困惑度柱，没有评测表；
-- Value 时延为什么有效，没有机制分析；注意力矩阵是否真的更稀疏，没有图；
-- Figure 2 承诺的内核继续融合，没有后续数字。
-
-### 和 ZAYA1 必须分开的实现细节
-
-下面这些出现在 [ZAYA1-8B](/reports/Zyphra/ZAYA1-8B) 里，**不是** CCA 论文的内容：
-
-- 8 个 Query 头 / 2 个 KV 头、2× Query 压缩、相对 MHA 的 8× KV，以及 40 层 / 隐藏 2048 的 ZAYA1-8B 规格；
-- 温度从 $\exp(T)$ 改为线性 $T$；
-- QK 归一化从 L2 改为 RMSNorm；
-- 32K / 131K 中训、上下文并行的具体 rank 数；
-- 路由器、残差缩放、AP-trimming、RL 和 Markovian RSA。
-
-本篇可以确认的只有：ZAYA1 用的 CCGQA 骨架来自这里；温度参数化后来改过。
-
-## 可迁移的六条
-
-### 1. 先问卡住的是算力还是带宽，再决定压哪一维
-
-GQA / MLA 把 decode 的 KV 做小，训练和 prefill 的 $S^2$ 原封不动（PDF p.2）。CCA 把二次项的宽度除以 $C$，三笔账单一起动。
-
-**迁移方式**：任何「我们把注意力优化了」的说法，都要拆成三列——参数、缓存、FLOPs——并分别问：这一列在当前阶段是不是瓶颈。只动其中一列，另外两列的账单不会自动消失。
-
-### 2. 压缩和共享是两只旋钮，不要拧成一只
-
-CCGQA 的核心不是又一个缩写，而是「参数共享 ⊥ 参数压缩」（PDF p.8）。同一份 KV 预算，可以多共享、少压宽度，也可以反过来。
-
-**迁移方式**：设计缓存格式时先分开写两行：头之间是否绑定、每条记录有多宽。然后再看硬件是 TP 切分、batch=1 解码，还是长 prefill。
-
-### 3. 变窄之后，用便宜的局部运算补分辨率，而不是升回全维度
-
-两层卷积加跳连加一拍延迟，参数几乎可以忽略，却让全压缩注意力从「显著掉点」变成能打过 MLA（PDF p.2、7–8）。升回全维度等于把 $S^2$ 的宽度买回来。
-
-**迁移方式**：低秩注意力、低秩 KV、低秩适配器都适用同一条。压缩后立刻做昂贵的全局运算，通常要先插入一层便宜的局部混合。
-
-### 4. 匹配实验时，把便宜让给对手，比把 FLOPs 对齐更诚实
-
-论文刻意不匹配 FLOPs，让 MLA / GQA 用它们习惯的那份算力（PDF p.6）。CCA 仍然在同等 KV 下打过它们，结论更硬。
-
-**迁移方式**：新方法如果「算得更少又更好」，不要再做 FLOPs 匹配来美化；把多出来的算力留给旧方法，反而更有说服力。反过来，如果新方法算得更多，就必须匹配算力，否则那是用钱买分。
-
-### 5. 理论 $1/C$ 只在 $S$ 足够大、核足够融合时兑现
-
-短序列上启动开销吃掉加速；朴素 PyTorch 会把理论上可忽略的卷积变成热路径（PDF p.9、16）。融合核是这套方法从公式走到墙钟时间的必要一步。
-
-**迁移方式**：复杂度表只能当资格审查。资格通过之后，还要有一篇「短序列亏多少、融合前亏多少、融合后还剩多少」的测量。
-
-### 6. 并行切分要跟共享单位对齐
-
-MLA 在 TP 上必须把共享 KV 复制到每张卡；CCGQA 把 KV 头数做成和 TP 切分数一样，复制发生在卡内而不是卡间（PDF p.13）。这和 NSA 要求「GQA 组内选择一致」是同一条结构原则：共享单位决定切分单位。
-
-**迁移方式**：先画出「一份 KV 被谁复用」，再决定 TP / PP / EP。复用发生在卡内，切分就按这份 KV 的条数来；复用发生在卡间，就会把共享收益吐回去。
-
-## 用一张图重新串起全文
-
-```mermaid
-flowchart TB
-    A["矛盾：GQA / MLA 缩小 KV<br/>训练和 prefill 的 S² 几乎不动"] --> B["CCA：Q K V 都下投影<br/>整次注意力在潜空间里做完"]
-    B --> C["三件补丁：序列加通道卷积<br/>QK 均值跳连、一半 Value 推迟一拍"]
-    C --> D["CCGQA：压缩 ⊥ 共享<br/>C1 拨向 FLOP，C2 拨向内存"]
-    D --> E["Dense 1B：CCGQA 低于 MHA<br/>CCA 本身赢 MLA 不赢 MHA"]
-    D --> F["MoE 1.5B：半份 KV 仍优于 GQA / MLA<br/>相对 MHA 8× 压缩无掉点"]
-    C --> G["消融：两层卷积是大头<br/>均值和时延是小增益"]
-    B --> H["H100 融合核 16k<br/>prefill 约 1.7× / backward 约 1.3×"]
-    H --> I["空白：decode 未测、核未发布<br/>更大规模和长上下文未做"]
-    F --> I
-```
-
-这张图是本文对全文逻辑的归纳，不对应论文中的任何一张图。
+1. **先问卡住的是算力还是带宽，再决定压哪一维。** 缩 KV 解决解码，缩注意力宽度才解决训练和 prefill。
+2. **压缩和共享是两只旋钮。** 在压缩空间里再做 GQA，就能在 FLOPs 与 KV 之间按场景选点。
+3. **变窄之后，用便宜的局部运算补表达力，而不是升回全维度。** 卷积、均值跳连、一步位移，都按压缩后的宽度计价。
+4. **对照实验把便宜让给对手，比强行对齐 FLOPs 更有说服力。** 但也要记住：MoE 下的结论会被「参数预算怎么分给专家」强烈影响。
+5. **理论 $1/C$ 只在序列够长、kernel 够融合时兑现。** 短序列被固定开销吃掉，朴素实现甚至可能更慢。
+6. **并行切分要和共享单位对齐。** 共享 KV 在张量并行下变成复制；KV 头数等于并行数，才能每卡一份不重不漏。
 
 ## 关键词回看
 
-- **CCA（Compressed Convolutional Attention，压缩卷积注意力）**：Q、K、V 下投影到共享潜空间，注意力不再升回全维度；卷积、QK 均值、Value 时延是让这件事不掉点的三件补丁。
-- **CCGQA（Compressed Convolutional Grouped Query Attention，压缩卷积分组查询注意力）**：在压缩头上再做 GQA。$C_1$ 管 Query 宽度（从而管 FLOPs），$C_2$ 管 KV 宽度（从而管缓存）。
-- **主矛盾**：GQA / MLA 主要加快 decode，对决定 prefill / 训练速度的计算量改动不大。
-- **潜空间宽度 $\tilde{e}=E/C$**：二次项 $QK^{\top}$ 和 $\mathrm{Attn}\cdot V$ 按 $1/C$ 缩小的那个宽度。
-- **conv1 / conv2**：只作用于 Q、K 的两层卷积。一层沿序列深度可分离，一层沿序列加头内通道。核宽未公开。
-- **QK 均值**：卷积前 Q、K 的平均，加回卷积后的向量；CCGQA 里带组广播和组均值。
-- **Value 时延（value-shift）**：一半头的 Value 来自上一拍，独立投影。
-- **温度 $\beta$**：正文写可学习温度；附录代码是 $\exp(T)$。ZAYA1 后来改成线性 $T$，那是另一篇文章。
-- **CCMLA**：给 CCGQA 加上上投影和共享 Key RoPE、不共享 KV 头的对照，用来说明 MLA 式结构并不自动更强。
-- **1.7× / 1.3×**：H100、BF16、$E=2048$、序列 16k，注意力核相对 MHA 的 prefill / 反向延迟，不是端到端，也不是 decode。
-
-## 最后的判断
-
-CCA 最值得记住的不是又一个注意力缩写，而是它把一件常被混在一起的事拆开了：**缩小 KV Cache，和缩小注意力的计算宽度，不是同一件事**。GQA 和 MLA 做了前一件，训练账单基本不动。CCA 坚持后一件，所以参数、缓存、FLOPs 会按同一个 $C$ 一起降。
-
-被实验支持的结论：
-
-- dense 1B、300B Token、参数匹配：CCGQA loss 2.286、平均 58.6，优于 MHA 的 2.297 / 58.2；CCA 本身 2.307 / 57.0，赢 MLA 不赢 MHA（PDF p.6）；
-- MoE 350M / 1.5B、50B Token、参数匹配：CCA 和 CCGQA 的困惑度都低于 GQA、MLA、MHA；CCGQA 用 8× KV 压缩（GQA / MLA 的一半）没有掉点（PDF p.1、7）；
-- 消融里两层卷积贡献最大，QK 均值和 Value 时延是小增益（PDF p.7–8）；
-- H100 融合核在 16k 上相对 MHA，prefill 约 1.7×、反向约 1.3×（PDF p.1–2）。
-
-只是作者观察或理论对照、尚未被这篇文章的实验闭合的部分：
-
-- 「16× 更少 decode FLOPs」来自 Table II，不是墙上的秒表（PDF p.8）；
-- QK 均值让注意力对角更稀疏，没有可视化（PDF p.5、8）；
-- Value 时延的归纳偏置「一般有用」，旁证是 RWKV，不是消融机制分析（PDF p.8）；
-- 小规模的归纳偏置优势可能在更大规模上变弱，作者自己提出，没有验证（PDF p.9）；
-- decode 因 KV 变小而变快，论文认为会，但明确没测（PDF p.16）。
-
-完全没有公开的部分：卷积核宽、融合核代码、decode 实测、端到端训练吞吐、MoE 内部结构、训练序列长度、更大规模和长上下文质量。
-
-如果只记一句话，可以记：
-
-> **省 KV 只加快解码；要把训练和 prefill 变便宜，必须让 $QK^{\top}$ 发生在更窄的空间里。压缩之后不要升回去，用卷积把局部结构补上——这就是 CCA。共享头是另一只旋钮，两只一起拧才是 CCGQA**。
+- **CCA**：Q、K、V 一起下投影，整次注意力在宽 $E/C$ 的潜空间里完成，再由 $\tilde{W}_O$ 升回。
+- **CCGQA**：在潜空间里再做 GQA；query 压 $C_1$，KV 压 $C_2 \ge C_1$。
+- **两层卷积**：先沿序列，再沿序列加头内通道，只作用在 q、k 上，是消融里的最大增益。
+- **QK 均值**：卷积前 q、k 的均值加回卷积后，兼作跳连与对角偏置。
+- **V 平移**：一半头的 value 来自上一个 Token。
+- **$S^2$ 项除以 $C$**：CCA 与 GQA、MLA 在公式上的根本区别。
+- **MQA 模式**：MLA 把上投影吸收进投影层的解码方式，省带宽、多花算力，TP 下要复制 KV。
+- **1.7 倍 / 1.3 倍**：16K 时非因果前向与反向相对 MHA 的加速，单卡 H100。
+- **9.403 / 9.450**：MoE 上 CCA 与 CCGQA 的困惑度，低于 MHA 的 9.796。
 
 ## 资料与阅读边界
 
-- 原始依据：本地 `papers/Zyphra/CCA.pdf`，**Compressed Convolutional Attention: Efficient Attention in a Compressed Latent Space**，Tomas Figliolia、Nicholas Alonso、Rishi Iyer、Quentin Anthony、Beren Millidge，Zyphra，arXiv:2510.04476v2，21 页。
-- 论文页：[arXiv:2510.04476](https://arxiv.org/abs/2510.04476)。官方页与 [arXiv API](http://export.arxiv.org/api/query?id_list=2510.04476) 显示提交历史为 v1（2025-10-06 04:24:23 UTC，2 840 KB）与 v2（2026-03-16 23:36:13 UTC，2 836 KB），**v2 即最新版，与本地原件一致**。v2 比 v1 晚五个月，本文以 v2 正文为准，不沿用 v1 的页码或表述。
-- `release-date` 取 **2025-10-06**。理由：CCA 是一项技术方案，从未作为独立产品对外开放，因此按流程取「该技术首次官方公开日」。已核查的官方渠道中，最早的官方公开事件是同一天的两处：arXiv v1 提交（2025-10-06 04:24:23 UTC）与 Zyphra 官方博客标注的 Oct 6, 2025（[zyphra.com/post/cca](https://www.zyphra.com/post/cca)、[zyphra.com/our-work/cca](https://www.zyphra.com/our-work/cca)）。官方 GitHub 组织没有独立的 CCA 仓库，因此不存在更早的仓库提交证据。Zyphra 官方账号在 X 上的介绍帖为 2025-10-07，晚于 arXiv v1。ZAYA1-8B 首发日 2026-05-06 晚于论文 v1，不能作为本篇日期。后续 v2 修订与博客更新都不回写这个日期。
-- **外部补充**，官方博客（与 v2 同期改过，访问日期 2026-09-10）：[CCA 博客](https://www.zyphra.com/post/cca)。博客多写了「QK 均值的 TP 通信可与卷积重叠」以及指向 ZAYA 套件；这些不冒充论文正文。
-- **外部补充**，后续基模怎么用 CCGQA、以及温度从 $\exp(T)$ 改为线性 $T$：本站 [ZAYA1-8B](/reports/Zyphra/ZAYA1-8B)。不要和本篇混读。
-- **外部补充**，正交的序列稀疏方法：本站 [NSA](/reports/DeepSeek/NSA)、[MoBA](/reports/Moonshot/MoBA)。它们不是本篇的实验基线。
-- 文中所有标为「我们的解释」「我们的验算」「我们从图上读到」「我们的读法」的内容，都是对论文数据的二次处理，不是论文原文结论；论文原文结论一律带 PDF 页码。
+### 本文依据的版本
+
+- 原件：`papers/Zyphra/CCA.pdf`，页边标注 arXiv:2510.04476v2、2026-03-16，21 页。[arXiv 官方页](https://arxiv.org/abs/2510.04476) 只有 v1（2025-10-06）与 v2（2026-03-16）两个版本，v2 即最新版。
+- `release-date` 取 **2025-10-06**。CCA 是一项技术，没有作为独立模型对外开放，按该技术首次官方公开日取值：arXiv v1 提交于 2025-10-06 UTC，Zyphra 官方博客 [CCA](https://www.zyphra.com/post/cca) 标注的日期同为 2025-10-06。v2 修订不回写首发日。
+
+### 本文覆盖的部分
+
+摘要；第 I 节引言；第 II.A 节 MHA、GQA、MLA 与式 1–6；Table I–II；第 II.B 节 CCA 与式 7–11、Figure 1–2、CCGQA；第 II.C 节方法论；第 III 节 dense 与 MoE 实验、Table III–V、Figure 3–4、CCMLA；第 IV 节 kernel 与 Figure 5–6；第 V 节讨论；附录 A 代码；附录 B 的 MLA 推理、张量并行与 Figure 7–8；附录 C 的损失曲线 Figure 9；附录 D 的测速设置与 Figure 10–18。
+
+### 外部资料补充（不是 PDF 原文）
+
+- Zyphra 官方博客 [CCA](https://www.zyphra.com/post/cca)：发布日期与「CCGQA 后续用于训练 ZAYA 系列」一句。
+- ZAYA1-8B 使用 CCGQA 的配置与温度改动，依据站内 ZAYA1-8B 一篇。
+- MLA 的原始设计见站内 DeepSeek-V2 一篇；序列稀疏方法见 NSA、MoBA、DeepSeek-V3.2 几篇。这些都不是本篇的实验证据。
+- 文中标为「我们怎么解释它」「本文推算」的内容，是对论文数据的二次处理，不是论文原文结论。

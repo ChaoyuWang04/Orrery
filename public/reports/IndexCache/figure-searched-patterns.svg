@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" width="1120" height="430" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="430" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">30B 模型 47 层：贪心搜出来的索引器位置，和均匀交错不是一回事</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = F 层（保留索引器）；灰 = S 层（抄前面最近 F 层的下标）。每格一层，从左到右是第 1 层到第 47 层。</text>
+<text x="30" y="132" font-size="13" fill="#111827" text-anchor="start" font-weight="700">均匀交错 1/4</text>
+<rect x="170.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="187.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="205.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="222.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="240.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="257.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="275.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="292.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="310.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="327.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="345.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="362.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="380.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="397.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="415.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="432.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="450.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="467.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="485.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="502.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="520.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="537.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="555.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="572.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="590.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="607.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="625.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="642.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="660.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="677.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="695.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="712.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="730.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="747.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="765.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="782.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="800.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="817.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="835.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="852.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="870.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="887.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="905.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="922.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="940.0" y="110" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="957.5" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="975.0" y="110" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<text x="1004.5" y="132" font-size="12" fill="#6b7280" text-anchor="start">12 个 F</text>
+<text x="30" y="184" font-size="13" fill="#111827" text-anchor="start" font-weight="700">搜索 1/2</text>
+<rect x="170.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="187.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="205.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="222.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="240.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="257.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="275.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="292.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="310.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="327.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="345.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="362.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="380.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="397.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="415.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="432.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="450.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="467.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="485.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="502.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="520.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="537.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="555.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="572.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="590.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="607.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="625.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="642.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="660.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="677.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="695.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="712.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="730.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="747.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="765.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="782.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="800.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="817.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="835.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="852.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="870.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="887.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="905.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="922.5" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="940.0" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="957.5" y="162" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="975.0" y="162" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<text x="1004.5" y="184" font-size="12" fill="#6b7280" text-anchor="start">24 个 F</text>
+<text x="30" y="236" font-size="13" fill="#111827" text-anchor="start" font-weight="700">搜索 1/4</text>
+<rect x="170.0" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="187.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="205.0" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="222.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="240.0" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="257.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="275.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="292.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="310.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="327.5" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="345.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="362.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="380.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="397.5" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="415.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="432.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="450.0" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="467.5" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="485.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="502.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="520.0" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="537.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="555.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="572.5" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="590.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="607.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="625.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="642.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="660.0" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="677.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="695.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="712.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="730.0" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="747.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="765.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="782.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="800.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="817.5" y="214" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="835.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="852.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="870.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="887.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="905.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="922.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="940.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="957.5" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="975.0" y="214" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<text x="1004.5" y="236" font-size="12" fill="#6b7280" text-anchor="start">12 个 F</text>
+<text x="30" y="288" font-size="13" fill="#111827" text-anchor="start" font-weight="700">搜索 1/8</text>
+<rect x="170.0" y="266" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="187.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="205.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="222.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="240.0" y="266" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="257.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="275.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="292.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="310.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="327.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="345.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="362.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="380.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="397.5" y="266" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="415.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="432.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="450.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="467.5" y="266" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="485.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="502.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="520.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="537.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="555.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="572.5" y="266" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="590.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="607.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="625.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="642.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="660.0" y="266" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="677.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="695.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="712.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="730.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="747.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="765.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="782.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="800.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="817.5" y="266" width="17.5" height="34" fill="#8f8bd8" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="835.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="852.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="870.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="887.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="905.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="922.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="940.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="957.5" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="975.0" y="266" width="17.5" height="34" fill="#eeeeee" stroke="#ffffff" stroke-width="0.8"/>
+<text x="1004.5" y="288" font-size="12" fill="#6b7280" text-anchor="start">7 个 F</text>
+<text x="178.8" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="248.8" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="336.2" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">10</text>
+<text x="423.8" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">15</text>
+<text x="511.2" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">20</text>
+<text x="598.8" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">25</text>
+<text x="686.2" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">30</text>
+<text x="773.8" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">35</text>
+<text x="861.2" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">40</text>
+<text x="948.8" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">45</text>
+<text x="983.8" y="322" font-size="11" fill="#9ca3af" text-anchor="middle">47</text>
+<text x="30" y="354" font-size="13" fill="#6b7280" text-anchor="start">三条搜索图案是同一次贪心的三个停点：1/8 的 F 全在 1/4 里，1/4 的 F 全在 1/2 里。1/4 图案在前 5 层留了 3 个 F，后 9 层一个都不留。</text>
+<text x="30" y="376" font-size="13" fill="#6b7280" text-anchor="start">图案字符串原样取自 PDF p.17 附录 B；F 的个数与嵌套关系是本文清点。均匀交错按 FSSS 从第 1 层起排。</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" width="1120" height="440" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="440" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">索引器占端到端延迟的比例：上下文越长，prefill 越被它吃掉</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">30B DSA 模型实测。紫 = prefill；绿 = decode。柱高是索引器耗时占该阶段总耗时的百分比。</text>
+<line x1="110" y1="350.0" x2="1060" y2="350.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102" y="354.0" font-size="11" fill="#9ca3af" text-anchor="end">0%</text>
+<line x1="110" y1="300.0" x2="1060" y2="300.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102" y="304.0" font-size="11" fill="#9ca3af" text-anchor="end">20%</text>
+<line x1="110" y1="250.0" x2="1060" y2="250.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102" y="254.0" font-size="11" fill="#9ca3af" text-anchor="end">40%</text>
+<line x1="110" y1="200.0" x2="1060" y2="200.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102" y="204.0" font-size="11" fill="#9ca3af" text-anchor="end">60%</text>
+<line x1="110" y1="150.0" x2="1060" y2="150.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102" y="154.0" font-size="11" fill="#9ca3af" text-anchor="end">80%</text>
+<line x1="110" y1="100.0" x2="1060" y2="100.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102" y="104.0" font-size="11" fill="#9ca3af" text-anchor="end">100%</text>
+<line x1="110" y1="350" x2="1060" y2="350" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="154.8" y="282.5" width="70" height="67.5" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="189.8" y="274.5" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">27%</text>
+<rect x="232.8" y="282.5" width="70" height="67.5" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="267.8" y="274.5" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">27%</text>
+<text x="228.8" y="370" font-size="12" fill="#111827" text-anchor="middle">10K</text>
+<rect x="392.2" y="225.0" width="70" height="125.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="427.2" y="217.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">50%</text>
+<rect x="470.2" y="272.5" width="70" height="77.5" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="505.2" y="264.5" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">31%</text>
+<text x="466.2" y="370" font-size="12" fill="#111827" text-anchor="middle">60K</text>
+<rect x="629.8" y="180.0" width="70" height="170.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="664.8" y="172.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">68%</text>
+<rect x="707.8" y="255.0" width="70" height="95.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="742.8" y="247.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">38%</text>
+<text x="703.8" y="370" font-size="12" fill="#111827" text-anchor="middle">120K</text>
+<rect x="867.2" y="147.5" width="70" height="202.5" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="902.2" y="139.5" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">81%</text>
+<rect x="945.2" y="247.5" width="70" height="102.5" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="980.2" y="239.5" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">41%</text>
+<text x="941.2" y="370" font-size="12" fill="#111827" text-anchor="middle">200K</text>
+<text x="585" y="390" font-size="11" fill="#6b7280" text-anchor="middle">上下文长度（Token）</text>
+<text x="30" y="414" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p.2 引言右侧的未编号图重画，百分比是原图标注。原文没有写这组 profiling 的硬件与并发设置。</text>
+</svg>

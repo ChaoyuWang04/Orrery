@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">把 DPLR 的 a、b 都绑到 k 上：块内要特殊处理的矩阵从 4 个减到 2 个</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">红 = 块内 C×C 注意力式矩阵，含累计衰减的倒数 1/Γ，要做全精度二级分块；灰虚线 = KDA 不再需要的那一份。</text>
+<rect x="16" y="72" width="536" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="568" y="72" width="536" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="284" y="100" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">通用 DPLR：(D − a<tspan baseline-shift="sub" font-size="75%">t</tspan> b<tspan baseline-shift="sub" font-size="75%">t</tspan><tspan baseline-shift="super" font-size="75%">⊤</tspan>) S<tspan baseline-shift="sub" font-size="75%">t−1</tspan> + k<tspan baseline-shift="sub" font-size="75%">t</tspan> v<tspan baseline-shift="sub" font-size="75%">t</tspan><tspan baseline-shift="super" font-size="75%">⊤</tspan></text>
+<text x="284" y="120" font-size="11" fill="#6b7280" text-anchor="middle">a、b 是两组独立向量，D 是对角衰减</text>
+<text x="836" y="100" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">KDA：D = Diag(α<tspan baseline-shift="sub" font-size="75%">t</tspan>)，a<tspan baseline-shift="sub" font-size="75%">t</tspan> = β<tspan baseline-shift="sub" font-size="75%">t</tspan> k<tspan baseline-shift="sub" font-size="75%">t</tspan>，b<tspan baseline-shift="sub" font-size="75%">t</tspan> = k<tspan baseline-shift="sub" font-size="75%">t</tspan> ⊙ α<tspan baseline-shift="sub" font-size="75%">t</tspan></text>
+<text x="836" y="120" font-size="11" fill="#6b7280" text-anchor="middle">同一个受限 DPLR，只剩 k 与 α 两种量（PDF p. 14，式 1 改写）</text>
+<rect x="40" y="150" width="120" height="120" rx="4" fill="#ffffff" stroke="#d9877a" stroke-width="1"/>
+<rect x="42" y="152" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="42" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="62" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="42" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="62" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="82" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="42" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="62" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="82" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="102" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="42" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="62" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="82" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="102" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="122" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="42" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="62" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="82" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="102" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="122" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="142" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<text x="100.0" y="292" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A<tspan baseline-shift="sub" font-size="75%">qk</tspan></text>
+<text x="100.0" y="310" font-size="11" fill="#6b7280" text-anchor="middle">q 对 k</text>
+<rect x="168" y="150" width="120" height="120" rx="4" fill="#ffffff" stroke="#d9877a" stroke-width="1"/>
+<rect x="170" y="152" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="170" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="190" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="170" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="190" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="210" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="170" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="190" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="210" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="230" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="170" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="190" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="210" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="230" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="250" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="170" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="190" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="210" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="230" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="250" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="270" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<text x="228.0" y="292" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A<tspan baseline-shift="sub" font-size="75%">qb</tspan></text>
+<text x="228.0" y="310" font-size="11" fill="#6b7280" text-anchor="middle">q 对 b</text>
+<rect x="296" y="150" width="120" height="120" rx="4" fill="#ffffff" stroke="#d9877a" stroke-width="1"/>
+<rect x="298" y="152" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="298" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="318" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="298" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="318" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="338" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="298" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="318" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="338" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="358" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="298" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="318" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="338" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="358" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="378" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="298" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="318" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="338" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="358" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="378" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="398" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<text x="356.0" y="292" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A<tspan baseline-shift="sub" font-size="75%">ab</tspan></text>
+<text x="356.0" y="310" font-size="11" fill="#6b7280" text-anchor="middle">a 对 b</text>
+<rect x="424" y="150" width="120" height="120" rx="4" fill="#ffffff" stroke="#d9877a" stroke-width="1"/>
+<rect x="426" y="152" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="426" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="446" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="426" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="446" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="466" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="426" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="446" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="466" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="486" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="426" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="446" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="466" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="486" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="506" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="426" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="446" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="466" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="486" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="506" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="526" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<text x="484.0" y="292" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A<tspan baseline-shift="sub" font-size="75%">ak</tspan></text>
+<text x="484.0" y="310" font-size="11" fill="#6b7280" text-anchor="middle">a 对 k</text>
+<rect x="592" y="150" width="120" height="120" rx="4" fill="#ffffff" stroke="#d9877a" stroke-width="1"/>
+<rect x="594" y="152" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="594" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="614" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="594" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="614" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="634" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="594" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="614" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="634" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="654" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="594" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="614" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="634" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="654" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="674" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="594" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="614" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="634" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="654" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="674" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="694" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<text x="652.0" y="292" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A<tspan baseline-shift="sub" font-size="75%">qk</tspan></text>
+<text x="652.0" y="310" font-size="11" fill="#6b7280" text-anchor="middle">q 对 k</text>
+<rect x="720" y="150" width="120" height="120" rx="4" fill="#ffffff" stroke="#d9877a" stroke-width="1"/>
+<rect x="722" y="152" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="722" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="742" y="172" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="722" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="742" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="762" y="192" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="722" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="742" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="762" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="782" y="212" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="722" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="742" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="762" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="782" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="802" y="232" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="722" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="742" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="762" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="782" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="802" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="822" y="252" width="16" height="16" rx="2" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<text x="780.0" y="292" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A<tspan baseline-shift="sub" font-size="75%">kk</tspan></text>
+<text x="780.0" y="310" font-size="11" fill="#6b7280" text-anchor="middle">k 对 k（a、b 都是 k）</text>
+<rect x="848" y="150" width="120" height="120" rx="4" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="908.0" y="214.0" font-size="13" fill="#9ca3af" text-anchor="middle">省掉</text>
+<text x="908.0" y="292" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">—</text>
+<text x="908.0" y="310" font-size="11" fill="#6b7280" text-anchor="middle">b 并入 k</text>
+<rect x="976" y="150" width="120" height="120" rx="4" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="1036.0" y="214.0" font-size="13" fill="#9ca3af" text-anchor="middle">省掉</text>
+<text x="1036.0" y="292" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">—</text>
+<text x="1036.0" y="310" font-size="11" fill="#6b7280" text-anchor="middle">a 并入 k</text>
+<text x="284" y="344" font-size="11" fill="#9ca3af" text-anchor="middle">Listing 8a 第 13–16 行：块内 4 个矩阵</text>
+<text x="836" y="344" font-size="11" fill="#9ca3af" text-anchor="middle">Listing 8b 第 14–15 行：块内 2 个矩阵</text>
+<text x="284" y="372" font-size="11" fill="#9ca3af" text-anchor="middle">输出与跨块状态更新：o1 + o2 + o3，状态加两项</text>
+<text x="836" y="372" font-size="11" fill="#9ca3af" text-anchor="middle">输出与跨块状态更新：再省约 3 次矩阵乘</text>
+<rect x="16" y="418" width="1088" height="166" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="444" font-size="14" fill="#111827" text-anchor="start" font-weight="700">为什么这一步值钱</text>
+<text x="36" y="470" font-size="13" fill="#6b7280" text-anchor="start">细粒度衰减让块内计算里出现 Γ<tspan baseline-shift="super" font-size="75%">i</tspan>/Γ<tspan baseline-shift="super" font-size="75%">j</tspan> 这样的除法。半精度下这会失真，GLA 的老办法是转到对数域、再做一层全精度的二级分块，</text>
+<text x="36" y="492" font-size="13" fill="#6b7280" text-anchor="start">代价是用不满 Tensor Core 的半精度矩阵乘。需要这样特殊处理的矩阵越少，kernel 越快（PDF p. 5、15）。</text>
+<text x="36" y="522" font-size="13" fill="#6b7280" text-anchor="start">Figure 2（batch 1、16 头）：输入 2K–64K 时 KDA 的 kernel 耗时约为通用 DPLR 的一半；读图约为 64K 时 57 ms 对 30 ms。</text>
+<text x="36" y="544" font-size="13" fill="#6b7280" text-anchor="start">论文文字给的是「算子效率约提升 100%」「64K 以内接近 2 倍」（PDF p. 5、15）。</text>
+<text x="36" y="570" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 5 §3.2、p. 14–15 §6.2 与 Listing 8 重画；方格是示意，C 取 6 只为画得下，实际 C = 64。</text>
+</svg>

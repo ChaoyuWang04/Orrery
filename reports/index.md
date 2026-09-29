@@ -85,7 +85,7 @@
 | HySparse2 | Xiaomi | 面向长程 agent 的混合稀疏注意力:外层 KV Bridging 让交叉解码器的全注意力层复用自解码器全注意力层的 KV,内层沿用 HySparse 的 KV Reuse 并改成 token 级稀疏(arXiv 2609.26368) |
 | MiniMax-Sparse-Attention | MiniMax | MSA:GQA 之上的块稀疏,在未压缩 KV 上做选择;MiniMax-M3 的注意力底座 |
 | Mixture-of-Depths-Attention | ByteDance | 让 Query 额外看前层同位置的 depth KV,缓解深层信号稀释(Seed) |
-| IndexCache | Z.ai | 每四个稀疏注意力层复用同一个 indexer,1M 上下文每 token FLOPs 降 2.9×;GLM-5.2 的 IndexShare 出处,GLM-5 报告未覆盖 |
+| IndexCache | Z.ai | 相邻 DSA 层复用同一份 indexer 的 top-k 下标:30B 上只留 1/4 索引器,200K 时 prefill 快 1.82×;GLM-5.2 的 IndexShare 出处,GLM-5 报告未覆盖 |
 | DeepSeek-V3.2 | DeepSeek | DSA 稀疏注意力,先让长上下文变便宜 |
 | Kimi-Linear | Moonshot | KDA:通道级遗忘门的线性注意力,Kimi-K3 的骨干 |
 | Recursive-Language-Models | MIT | 把长上下文当外部变量,让模型递归调用自己来处理 |

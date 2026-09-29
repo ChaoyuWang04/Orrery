@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 480" width="1120" height="480" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="480" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 4：长度拉到 1M，理论算力省 28.4 倍，H800 上实测省 14.2 倍和 7.6 倍</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = 全注意力 GQA；紫 = MSA。三幅都是同一套头配置（64 个 Query 头、4 个 KV 头、头维 128），横轴是上下文长度。</text>
+<text x="220" y="108" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">每 Token 注意力 FLOPs（理论）</text>
+<line x1="100" y1="370.0" x2="340" y2="370.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92" y="374.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="100" y1="310.0" x2="340" y2="310.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92" y="314.0" font-size="11" fill="#9ca3af" text-anchor="end">5 G</text>
+<line x1="100" y1="250.0" x2="340" y2="250.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92" y="254.0" font-size="11" fill="#9ca3af" text-anchor="end">10 G</text>
+<line x1="100" y1="190.0" x2="340" y2="190.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92" y="194.0" font-size="11" fill="#9ca3af" text-anchor="end">15 G</text>
+<line x1="100" y1="130.0" x2="340" y2="130.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92" y="134.0" font-size="11" fill="#9ca3af" text-anchor="end">20 G</text>
+<line x1="100" y1="370" x2="340" y2="370" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="100" y1="130" x2="100" y2="370" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="100.0,363.4 106.0,358.4 112.0,353.3 118.0,348.2 124.0,343.1 130.0,338.0 136.0,332.9 142.0,327.8 148.0,322.8 154.0,317.7 160.0,312.6 166.0,307.5 172.0,302.4 178.0,297.3 184.0,292.2 190.0,287.1 196.0,282.1 202.0,277.0 208.0,271.9 214.0,266.8 220.0,261.7 226.0,256.6 232.0,251.5 238.0,246.5 244.0,241.4 250.0,236.3 256.0,231.2 262.0,226.1 268.0,221.0 274.0,215.9 280.0,210.9 286.0,205.8 292.0,200.7 298.0,195.6 304.0,190.5 310.0,185.4 316.0,180.3 322.0,175.3 328.0,170.2 334.0,165.1 340.0,160.0" fill="none" stroke="#b9b9b9" stroke-width="2.2"/>
+<polyline points="100.0,368.8 106.0,368.7 112.0,368.5 118.0,368.4 124.0,368.2 130.0,368.1 136.0,367.9 142.0,367.8 148.0,367.6 154.0,367.5 160.0,367.3 166.0,367.2 172.0,367.0 178.0,366.9 184.0,366.7 190.0,366.6 196.0,366.4 202.0,366.3 208.0,366.1 214.0,366.0 220.0,365.8 226.0,365.7 232.0,365.5 238.0,365.4 244.0,365.2 250.0,365.1 256.0,364.9 262.0,364.8 268.0,364.6 274.0,364.5 280.0,364.3 286.0,364.2 292.0,364.0 298.0,363.9 304.0,363.7 310.0,363.6 316.0,363.4 322.0,363.3 328.0,363.1 334.0,363.0 340.0,362.8" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="340.0" cy="160.0" r="4" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="340.0" cy="362.8" r="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="100.0" y="388" font-size="11" fill="#111827" text-anchor="middle">32K</text>
+<text x="216.1290322580645" y="388" font-size="11" fill="#111827" text-anchor="middle">512K</text>
+<text x="340.0" y="388" font-size="11" fill="#111827" text-anchor="middle">1M</text>
+<text x="332.0" y="164.0" font-size="11" fill="#6b7280" text-anchor="end">约 17.5 G</text>
+<text x="340.0" y="352.8" font-size="11" fill="#6b7280" text-anchor="end">约 0.6 G</text>
+<text x="175" y="180" font-size="22" fill="#111827" text-anchor="middle" font-weight="700">28.4×</text>
+<text x="175" y="200" font-size="11" fill="#6b7280" text-anchor="middle">1M 处</text>
+<text x="580" y="108" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Prefill 延迟（实测）</text>
+<line x1="460" y1="370.0" x2="700" y2="370.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="452" y="374.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="460" y1="310.0" x2="700" y2="310.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="452" y="314.0" font-size="11" fill="#9ca3af" text-anchor="end">8 s</text>
+<line x1="460" y1="250.0" x2="700" y2="250.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="452" y="254.0" font-size="11" fill="#9ca3af" text-anchor="end">16 s</text>
+<line x1="460" y1="190.0" x2="700" y2="190.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="452" y="194.0" font-size="11" fill="#9ca3af" text-anchor="end">24 s</text>
+<line x1="460" y1="130.0" x2="700" y2="130.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="452" y="134.0" font-size="11" fill="#9ca3af" text-anchor="end">32 s</text>
+<line x1="460" y1="370" x2="700" y2="370" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="460" y1="130" x2="460" y2="370" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="460.0,369.8 466.0,369.3 472.0,368.6 478.0,367.7 484.0,366.4 490.0,365.0 496.0,363.2 502.0,361.2 508.0,359.0 514.0,356.5 520.0,353.7 526.0,350.7 532.0,347.5 538.0,343.9 544.0,340.2 550.0,336.1 556.0,331.9 562.0,327.3 568.0,322.5 574.0,317.5 580.0,312.2 586.0,306.6 592.0,300.8 598.0,294.7 604.0,288.4 610.0,281.8 616.0,275.0 622.0,267.9 628.0,260.6 634.0,253.0 640.0,245.1 646.0,237.0 652.0,228.6 658.0,220.0 664.0,211.1 670.0,202.0 676.0,192.6 682.0,183.0 688.0,173.1 694.0,162.9 700.0,152.5" fill="none" stroke="#b9b9b9" stroke-width="2.2"/>
+<polyline points="460.0,369.5 466.0,369.2 472.0,368.8 478.0,368.4 484.0,368.1 490.0,367.7 496.0,367.4 502.0,367.0 508.0,366.6 514.0,366.3 520.0,365.9 526.0,365.5 532.0,365.2 538.0,364.8 544.0,364.4 550.0,364.1 556.0,363.7 562.0,363.4 568.0,363.0 574.0,362.6 580.0,362.3 586.0,361.9 592.0,361.5 598.0,361.2 604.0,360.8 610.0,360.4 616.0,360.1 622.0,359.7 628.0,359.4 634.0,359.0 640.0,358.6 646.0,358.3 652.0,357.9 658.0,357.5 664.0,357.2 670.0,356.8 676.0,356.5 682.0,356.1 688.0,355.7 694.0,355.4 700.0,355.0" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="700.0" cy="152.5" r="4" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="700.0" cy="355.0" r="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="460.0" y="388" font-size="11" fill="#111827" text-anchor="middle">32K</text>
+<text x="576.1290322580645" y="388" font-size="11" fill="#111827" text-anchor="middle">512K</text>
+<text x="700.0" y="388" font-size="11" fill="#111827" text-anchor="middle">1M</text>
+<text x="692.0" y="156.5" font-size="11" fill="#6b7280" text-anchor="end">约 29 s</text>
+<text x="700.0" y="345.0" font-size="11" fill="#6b7280" text-anchor="end">约 2 s</text>
+<text x="535" y="180" font-size="22" fill="#111827" text-anchor="middle" font-weight="700">14.2×</text>
+<text x="535" y="200" font-size="11" fill="#6b7280" text-anchor="middle">1M 处</text>
+<text x="940" y="108" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Decode 延迟（实测）</text>
+<line x1="820" y1="370.0" x2="1060" y2="370.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="812" y="374.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="820" y1="310.0" x2="1060" y2="310.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="812" y="314.0" font-size="11" fill="#9ca3af" text-anchor="end">0.25 ms</text>
+<line x1="820" y1="250.0" x2="1060" y2="250.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="812" y="254.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5 ms</text>
+<line x1="820" y1="190.0" x2="1060" y2="190.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="812" y="194.0" font-size="11" fill="#9ca3af" text-anchor="end">0.75 ms</text>
+<line x1="820" y1="130.0" x2="1060" y2="130.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="812" y="134.0" font-size="11" fill="#9ca3af" text-anchor="end">1 ms</text>
+<line x1="820" y1="370" x2="1060" y2="370" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="820" y1="130" x2="820" y2="370" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="820.0,356.8 826.0,352.1 832.0,347.5 838.0,342.9 844.0,338.2 850.0,333.6 856.0,328.9 862.0,324.2 868.0,319.6 874.0,314.9 880.0,310.3 886.0,305.6 892.0,301.0 898.0,296.4 904.0,291.7 910.0,287.0 916.0,282.4 922.0,277.8 928.0,273.1 934.0,268.4 940.0,263.8 946.0,259.1 952.0,254.5 958.0,249.9 964.0,245.2 970.0,240.5 976.0,235.9 982.0,231.2 988.0,226.6 994.0,221.9 1000.0,217.3 1006.0,212.7 1012.0,208.0 1018.0,203.3 1024.0,198.7 1030.0,194.0 1036.0,189.4 1042.0,184.7 1048.0,180.1 1054.0,175.4 1060.0,170.8" fill="none" stroke="#b9b9b9" stroke-width="2.2"/>
+<polyline points="820.0,368.0 826.0,367.4 832.0,366.8 838.0,366.2 844.0,365.6 850.0,365.0 856.0,364.4 862.0,363.7 868.0,363.1 874.0,362.5 880.0,361.9 886.0,361.3 892.0,360.7 898.0,360.1 904.0,359.5 910.0,358.9 916.0,358.2 922.0,357.6 928.0,357.0 934.0,356.4 940.0,355.8 946.0,355.2 952.0,354.6 958.0,354.0 964.0,353.4 970.0,352.8 976.0,352.1 982.0,351.5 988.0,350.9 994.0,350.3 1000.0,349.7 1006.0,349.1 1012.0,348.5 1018.0,347.9 1024.0,347.3 1030.0,346.7 1036.0,346.0 1042.0,345.4 1048.0,344.8 1054.0,344.2 1060.0,343.6" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="1060.0" cy="170.8" r="4" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="1060.0" cy="343.6" r="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="820.0" y="388" font-size="11" fill="#111827" text-anchor="middle">32K</text>
+<text x="936.1290322580645" y="388" font-size="11" fill="#111827" text-anchor="middle">512K</text>
+<text x="1060.0" y="388" font-size="11" fill="#111827" text-anchor="middle">1M</text>
+<text x="1052.0" y="174.79999999999998" font-size="11" fill="#6b7280" text-anchor="end">约 0.83 ms</text>
+<text x="1060.0" y="333.6" font-size="11" fill="#6b7280" text-anchor="end">约 0.11 ms</text>
+<text x="895" y="180" font-size="22" fill="#111827" text-anchor="middle" font-weight="700">7.6×</text>
+<text x="895" y="200" font-size="11" fill="#6b7280" text-anchor="middle">1M 处</text>
+<text x="30" y="424" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p.12 Figure 4 重画。三个倍数是原文标注；端点数值与曲线形状是读图近似，原文没有给数值表，也没有标 32K、512K 处的倍数。</text>
+<text x="30" y="446" font-size="13" fill="#6b7280" text-anchor="start">左幅是按式 (12) 算的理论值；中、右两幅是论文 kernel 在 H800 上的实测（PDF p.1），原文没有写 batch 与是否为单层。</text>
+</svg>

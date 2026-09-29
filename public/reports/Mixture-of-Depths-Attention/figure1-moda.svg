@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">MoDA 的一个 Query 能看见什么：本层的序列 KV，加上前面各层同一位置的深度 KV</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">黄 = 发出查询的位置；紫 = 本层因果可见的序列 KV；绿 = 前面各层在同一位置写下的深度 KV；灰 = 看不见。两类候选进同一个 softmax。</text>
+<rect x="30" y="78" width="520" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="50" y="104" font-size="14" fill="#111827" font-weight="700">(a) 第 3 层、位置 x6 的 Query</text>
+<text x="50" y="124" font-size="11" fill="#6b7280">序列方向看 x0–x6（本层），深度方向看第 0–2 层的 x6</text>
+<text x="149" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x0</text>
+<text x="187" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x1</text>
+<text x="225" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x2</text>
+<text x="263" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x3</text>
+<text x="301" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x4</text>
+<text x="339" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x5</text>
+<text x="377" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x6</text>
+<text x="415" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x7</text>
+<text x="453" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x8</text>
+<text x="491" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x9</text>
+<text x="118" y="181" font-size="11" fill="#6b7280" text-anchor="end">第 5 层</text>
+<rect x="132" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="170" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="208" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="246" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="284" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="322" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="360" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="398" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="436" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="474" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="118" y="215" font-size="11" fill="#6b7280" text-anchor="end">第 4 层</text>
+<rect x="132" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="170" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="208" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="246" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="284" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="322" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="360" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="398" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="436" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="474" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="118" y="249" font-size="11" fill="#6b7280" text-anchor="end">第 3 层</text>
+<rect x="132" y="230" width="34" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="170" y="230" width="34" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="208" y="230" width="34" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="246" y="230" width="34" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="284" y="230" width="34" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="322" y="230" width="34" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="360" y="230" width="34" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="377" y="250" font-size="13" fill="#111827" font-weight="700" text-anchor="middle">Q</text>
+<rect x="398" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="436" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="474" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="118" y="283" font-size="11" fill="#6b7280" text-anchor="end">第 2 层</text>
+<rect x="132" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="170" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="208" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="246" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="284" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="322" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="360" y="264" width="34" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="398" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="436" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="474" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="118" y="317" font-size="11" fill="#6b7280" text-anchor="end">第 1 层</text>
+<rect x="132" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="170" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="208" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="246" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="284" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="322" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="360" y="298" width="34" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="398" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="436" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="474" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="118" y="351" font-size="11" fill="#6b7280" text-anchor="end">第 0 层</text>
+<rect x="132" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="170" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="208" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="246" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="284" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="322" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="360" y="332" width="34" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="398" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="436" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="474" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="570" y="78" width="520" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="590" y="104" font-size="14" fill="#111827" font-weight="700">(b) 第 5 层、位置 x2 的 Query</text>
+<text x="590" y="124" font-size="11" fill="#6b7280">位置靠前：序列候选只有 3 个；层靠后：深度候选有 5 个</text>
+<text x="689" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x0</text>
+<text x="727" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x1</text>
+<text x="765" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x2</text>
+<text x="803" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x3</text>
+<text x="841" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x4</text>
+<text x="879" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x5</text>
+<text x="917" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x6</text>
+<text x="955" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x7</text>
+<text x="993" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x8</text>
+<text x="1031" y="150" font-size="11" fill="#6b7280" text-anchor="middle">x9</text>
+<text x="658" y="181" font-size="11" fill="#6b7280" text-anchor="end">第 5 层</text>
+<rect x="672" y="162" width="34" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="710" y="162" width="34" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="748" y="162" width="34" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="765" y="182" font-size="13" fill="#111827" font-weight="700" text-anchor="middle">Q</text>
+<rect x="786" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="824" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="862" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="900" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="938" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="976" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1014" y="162" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="658" y="215" font-size="11" fill="#6b7280" text-anchor="end">第 4 层</text>
+<rect x="672" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="710" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="748" y="196" width="34" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="786" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="824" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="862" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="900" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="938" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="976" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1014" y="196" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="658" y="249" font-size="11" fill="#6b7280" text-anchor="end">第 3 层</text>
+<rect x="672" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="710" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="748" y="230" width="34" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="786" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="824" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="862" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="900" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="938" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="976" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1014" y="230" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="658" y="283" font-size="11" fill="#6b7280" text-anchor="end">第 2 层</text>
+<rect x="672" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="710" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="748" y="264" width="34" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="786" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="824" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="862" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="900" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="938" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="976" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1014" y="264" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="658" y="317" font-size="11" fill="#6b7280" text-anchor="end">第 1 层</text>
+<rect x="672" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="710" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="748" y="298" width="34" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="786" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="824" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="862" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="900" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="938" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="976" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1014" y="298" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="658" y="351" font-size="11" fill="#6b7280" text-anchor="end">第 0 层</text>
+<rect x="672" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="710" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="748" y="332" width="34" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="786" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="824" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="862" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="900" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="938" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="976" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1014" y="332" width="34" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="130" y="392" font-size="11" fill="#9ca3af">序列候选数随位置增长，深度候选数随层号增长</text>
+<text x="670" y="392" font-size="11" fill="#9ca3af">绿色那一列只取同一位置，不去看别的位置的历史层</text>
+<rect x="30" y="434" width="1060" height="146" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="50" y="462" font-size="14" fill="#111827" font-weight="700">和普通因果注意力、以及残差流比</text>
+<text x="50" y="488" font-size="13" fill="#6b7280">普通因果注意力：只有紫色那一行。前面各层的信息只能通过残差流 X 间接到达，而 X 是层层相加后的一个 T×D 张量。</text>
+<text x="50" y="512" font-size="13" fill="#6b7280">MoDA：再加上绿色那一列。它们是前面各层在这个位置写下的 K、V 原件，没有被后续相加冲淡，每个头按内容决定取多少。</text>
+<text x="50" y="536" font-size="13" fill="#6b7280">紫与绿的打分放在同一个 softmax 里归一化，彼此争同一份概率，而不是两路各自算完再固定加权。</text>
+<text x="50" y="564" font-size="11" fill="#9ca3af">按 PDF p. 1 Figure 1 右幅重画的机制示意；原图画到第 L−1 层与 T 个位置，这里只画 6 层 10 个位置。原图左幅里 FFN 也经一个线性投影写出一对深度 KV。</text>
+</svg>

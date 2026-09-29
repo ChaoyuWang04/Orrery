@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">稀疏 prefill 的循环顺序：让外循环扫 KV 块，而不是扫 Query</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = Query；绿 = KV 块；黄 = 落在显存里的中间缓冲；灰 = 计算步骤。两边 FLOPs 相同，差的是每搬一个字节能做多少计算。</text>
+<rect x="16" y="90" width="536" height="390" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="568" y="90" width="536" height="390" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="284" y="116" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) Q-outer：每个 Query 自己去搬它选的块</text>
+<text x="836" y="116" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) KV-outer：每块 KV 只搬一次，把选中它的 Query 聚过来</text>
+<rect x="40" y="140" width="110" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="95.0" y="163.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Query 1</text>
+<rect x="40" y="190" width="110" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="95.0" y="213.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Query 2</text>
+<rect x="40" y="240" width="110" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="95.0" y="263.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Query 3</text>
+<rect x="40" y="290" width="110" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="95.0" y="313.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Query 4</text>
+<rect x="380" y="135" width="140" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="450.0" y="157.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">块 1（sink）</text>
+<rect x="380" y="180" width="140" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="450.0" y="202.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">块 7</text>
+<rect x="380" y="225" width="140" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="450.0" y="247.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">块 12</text>
+<rect x="380" y="270" width="140" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="450.0" y="292.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">块 20</text>
+<rect x="380" y="315" width="140" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="450.0" y="337.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">块 31</text>
+<line x1="150" y1="158" x2="376" y2="152" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="158" x2="376" y2="197" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="158" x2="376" y2="287" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="208" x2="376" y2="152" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="208" x2="376" y2="242" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="208" x2="376" y2="287" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="258" x2="376" y2="152" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="258" x2="376" y2="197" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="258" x2="376" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="308" x2="376" y2="152" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="308" x2="376" y2="242" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="308" x2="376" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="40" y="375" font-size="11" fill="#6b7280" text-anchor="start">各 Query 选的块不同，没法沿序列维拼成大矩阵乘；</text>
+<text x="40" y="392" font-size="11" fill="#6b7280" text-anchor="start">热门块（如开头的 sink 块）被一遍遍重复读进来。</text>
+<rect x="588" y="140" width="150" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="663.0" y="165.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">KV 块 b</text>
+<text x="663.0" y="182.0" font-size="11" fill="#6b7280" text-anchor="middle">128 个 Token，读一次</text>
+<rect x="763" y="140" width="150" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="838.0" y="165.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">反向索引</text>
+<text x="838.0" y="182.0" font-size="11" fill="#6b7280" text-anchor="middle">找出选了块 b 的 Query</text>
+<rect x="938" y="140" width="150" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="1013.0" y="165.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Query 拼接</text>
+<text x="1013.0" y="182.0" font-size="11" fill="#6b7280" text-anchor="middle">8 个位置 × 16 头 = 128 行</text>
+<line x1="738" y1="168" x2="759" y2="168" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="913" y1="168" x2="934" y2="168" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M1013,196 L1013,214 L663,214 L663,232" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="588" y="236" width="150" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="663.0" y="261.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">128 × 128 MMA</text>
+<text x="663.0" y="278.0" font-size="11" fill="#6b7280" text-anchor="middle">共享同一份 K、V</text>
+<rect x="763" y="236" width="150" height="56" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="838.0" y="261.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">写入 O_buf 第 s 槽</text>
+<text x="838.0" y="278.0" font-size="11" fill="#6b7280" text-anchor="middle">槽位预分配，免原子加</text>
+<rect x="938" y="236" width="150" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="1013.0" y="261.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">combine kernel</text>
+<text x="1013.0" y="278.0" font-size="11" fill="#6b7280" text-anchor="middle">按 k 份 LSE 合并</text>
+<line x1="738" y1="264" x2="759" y2="264" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="913" y1="264" x2="934" y2="264" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="588" y="322" font-size="11" fill="#6b7280" text-anchor="start">热门块沿 Query 维切成至多约 2k·B_k 个 Query 的小段，分给多个 CTA；</text>
+<text x="588" y="339" font-size="11" fill="#6b7280" text-anchor="start">一个 Query 的 k 份部分输出来自 k 个 CTA，所以 softmax 归一化拆到第二个 kernel。</text>
+<text x="40" y="420" font-size="11" fill="#6b7280" text-anchor="start">算术强度</text>
+<rect x="40" y="428" width="56.5" height="22" fill="#b9b9b9"/>
+<text x="106.47058823529412" y="444" font-size="12" fill="#111827" text-anchor="start">FLOPs / IO ≈ G = 16</text>
+<text x="40" y="468" font-size="11" fill="#9ca3af" text-anchor="start">PDF p.7 式 13–14</text>
+<text x="588" y="420" font-size="11" fill="#6b7280" text-anchor="start">算术强度</text>
+<rect x="588" y="428" width="301.1" height="22" fill="#b9b9b9"/>
+<text x="899.0588235294117" y="444" font-size="12" fill="#111827" text-anchor="start">FLOPs / IO ≈ ⅔ · B_k ≈ 85</text>
+<text x="588" y="468" font-size="11" fill="#9ca3af" text-anchor="start">PDF p.7 式 15–16</text>
+<text x="30" y="512" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p.7–8（§4.2）重画的机制示意。G = 16、B_k = 128 是论文配置；IO 按 2 字节元素估算，换成 fp8 只改绝对量、不改两种顺序的比较。</text>
+<text x="30" y="534" font-size="13" fill="#6b7280" text-anchor="start">灰条长度按两个近似值等比例画。Query 拼接的 ⌈128/G⌉ = 8 个位置只在 KV-outer 下成立，因为它们共享同一份 KV 操作数。</text>
+</svg>

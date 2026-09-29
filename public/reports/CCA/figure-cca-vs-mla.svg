@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">四种注意力：KV 存多宽，和注意力在多宽上算，是两件事</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">黄 = 存进 KV cache 的东西；紫 = 注意力计算，块宽 = 做 QKᵀ 与 AV 的宽度；绿 = CCA 在潜空间里加的轻量运算；灰 = 其余投影。</text>
+<text x="240" y="88" font-size="11" fill="#9ca3af" text-anchor="start">投影之后</text>
+<text x="410" y="88" font-size="11" fill="#9ca3af" text-anchor="start">注意力之前</text>
+<text x="610" y="88" font-size="11" fill="#9ca3af" text-anchor="start">注意力在多宽上算</text>
+<text x="790" y="88" font-size="11" fill="#9ca3af" text-anchor="start">输出</text>
+<text x="870" y="88" font-size="11" fill="#9ca3af" text-anchor="start">账单（Table II，B = 1）</text>
+<rect x="16" y="100" width="1088" height="110" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="150" font-size="16" fill="#111827" text-anchor="start" font-weight="700">MHA</text>
+<text x="36" y="170" font-size="11" fill="#6b7280" text-anchor="start">标准多头注意力</text>
+<rect x="170" y="138" width="44" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="192" y="159" font-size="13" fill="#111827" text-anchor="middle">x</text>
+<line x1="216" y1="154" x2="234" y2="154" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="240" y="122" width="120" height="18" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="366" y="135" font-size="11" fill="#6b7280" text-anchor="start">Q：E</text>
+<rect x="240" y="144" width="120" height="18" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="366" y="157" font-size="11" fill="#6b7280" text-anchor="start">K：E</text>
+<rect x="240" y="166" width="120" height="18" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="366" y="179" font-size="11" fill="#6b7280" text-anchor="start">V：E</text>
+<text x="410" y="159" font-size="11" fill="#9ca3af" text-anchor="start">（无）</text>
+<line x1="530" y1="155" x2="604" y2="155" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="610" y="130" width="120" height="50" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="670.0" y="160" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">宽 E</text>
+<line x1="732" y1="155" x2="784" y2="155" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="790" y="138" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="818" y="159" font-size="12" fill="#111827" text-anchor="middle">W<tspan baseline-shift="sub" font-size="75%">O</tspan></text>
+<text x="870" y="136" font-size="12" fill="#111827" text-anchor="start" font-weight="700">二次项宽度：E</text>
+<text x="870" y="158" font-size="12" fill="#111827" text-anchor="start">KV：2SE</text>
+<text x="870" y="180" font-size="11" fill="#6b7280" text-anchor="start">参数：4E<tspan baseline-shift="super" font-size="75%">2</tspan></text>
+<rect x="16" y="222" width="1088" height="110" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="272" font-size="16" fill="#111827" text-anchor="start" font-weight="700">GQA</text>
+<text x="36" y="292" font-size="11" fill="#6b7280" text-anchor="start">K、V 头分组共享</text>
+<rect x="170" y="260" width="44" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="192" y="281" font-size="13" fill="#111827" text-anchor="middle">x</text>
+<line x1="216" y1="276" x2="234" y2="276" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="240" y="244" width="120" height="18" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="366" y="257" font-size="11" fill="#6b7280" text-anchor="start">Q：E</text>
+<rect x="240" y="266" width="30" height="18" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="276" y="279" font-size="11" fill="#6b7280" text-anchor="start">K：E/G</text>
+<rect x="240" y="288" width="30" height="18" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="276" y="301" font-size="11" fill="#6b7280" text-anchor="start">V：E/G</text>
+<text x="410" y="271" font-size="11" fill="#6b7280" text-anchor="start">每组 K、V 复用给</text>
+<text x="410" y="287" font-size="11" fill="#6b7280" text-anchor="start">组内所有 Q 头</text>
+<line x1="530" y1="277" x2="604" y2="277" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="610" y="252" width="120" height="50" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="670.0" y="282" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">宽 E</text>
+<line x1="732" y1="277" x2="784" y2="277" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="790" y="260" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="818" y="281" font-size="12" fill="#111827" text-anchor="middle">W<tspan baseline-shift="sub" font-size="75%">O</tspan></text>
+<text x="870" y="258" font-size="12" fill="#111827" text-anchor="start" font-weight="700">二次项宽度：E</text>
+<text x="870" y="280" font-size="12" fill="#111827" text-anchor="start">KV：2SE/G</text>
+<text x="870" y="302" font-size="11" fill="#6b7280" text-anchor="start">Q 头数不变，算量不省</text>
+<rect x="16" y="344" width="1088" height="110" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="394" font-size="16" fill="#111827" text-anchor="start" font-weight="700">MLA</text>
+<text x="36" y="414" font-size="11" fill="#6b7280" text-anchor="start">KV 压进潜向量</text>
+<rect x="170" y="382" width="44" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="192" y="403" font-size="13" fill="#111827" text-anchor="middle">x</text>
+<line x1="216" y1="398" x2="234" y2="398" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="240" y="366" width="60" height="18" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="306" y="379" font-size="11" fill="#6b7280" text-anchor="start">C<tspan baseline-shift="sub" font-size="75%">Q</tspan>：E/c<tspan baseline-shift="sub" font-size="75%">q</tspan></text>
+<rect x="240" y="388" width="30" height="18" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="276" y="401" font-size="11" fill="#6b7280" text-anchor="start">C<tspan baseline-shift="sub" font-size="75%">KV</tspan>：E/c<tspan baseline-shift="sub" font-size="75%">kv</tspan></text>
+<rect x="240" y="410" width="14" height="18" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="260" y="423" font-size="11" fill="#6b7280" text-anchor="start">RoPE key：E<tspan baseline-shift="sub" font-size="75%">r</tspan></text>
+<rect x="410" y="374" width="120" height="50" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="470" y="396" font-size="11" fill="#111827" text-anchor="middle">上投影回全宽</text>
+<text x="470" y="412" font-size="11" fill="#6b7280" text-anchor="middle">Q、K、V：E</text>
+<line x1="574" y1="399" x2="604" y2="399" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="610" y="374" width="120" height="50" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="670.0" y="404" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">宽 E</text>
+<line x1="732" y1="399" x2="784" y2="399" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="790" y="382" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="818" y="403" font-size="12" fill="#111827" text-anchor="middle">W<tspan baseline-shift="sub" font-size="75%">O</tspan></text>
+<text x="870" y="380" font-size="12" fill="#111827" text-anchor="start" font-weight="700">二次项宽度：E</text>
+<text x="870" y="402" font-size="12" fill="#111827" text-anchor="start">KV：SE/c<tspan baseline-shift="sub" font-size="75%">kv</tspan> + SE<tspan baseline-shift="sub" font-size="75%">r</tspan></text>
+<text x="870" y="424" font-size="11" fill="#6b7280" text-anchor="start">上投影让参数与算量略增</text>
+<rect x="16" y="466" width="1088" height="110" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="516" font-size="16" fill="#111827" text-anchor="start" font-weight="700">CCA</text>
+<text x="36" y="536" font-size="11" fill="#6b7280" text-anchor="start">整次注意力在潜空间</text>
+<rect x="170" y="504" width="44" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="192" y="525" font-size="13" fill="#111827" text-anchor="middle">x</text>
+<line x1="216" y1="520" x2="234" y2="520" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="240" y="488" width="30" height="18" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="276" y="501" font-size="11" fill="#6b7280" text-anchor="start">q̃：E/C</text>
+<rect x="240" y="510" width="30" height="18" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="276" y="523" font-size="11" fill="#6b7280" text-anchor="start">k̃：E/C</text>
+<rect x="240" y="532" width="30" height="18" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="276" y="545" font-size="11" fill="#6b7280" text-anchor="start">ṽ：E/C</text>
+<rect x="410" y="496" width="160" height="50" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="490" y="518" font-size="11" fill="#111827" text-anchor="middle">两层卷积 + QK 均值</text>
+<text x="490" y="534" font-size="11" fill="#6b7280" text-anchor="middle">+ V 平移，仍是 E/C 宽</text>
+<line x1="574" y1="521" x2="604" y2="521" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="610" y="496" width="30" height="50" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="648" y="526" font-size="12" fill="#8f8bd8" text-anchor="start" font-weight="700">宽 E/C</text>
+<line x1="702" y1="521" x2="784" y2="521" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="790" y="504" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="818" y="525" font-size="12" fill="#111827" text-anchor="middle">W̃<tspan baseline-shift="sub" font-size="75%">O</tspan></text>
+<text x="870" y="502" font-size="12" fill="#111827" text-anchor="start" font-weight="700">二次项宽度：E/C</text>
+<text x="870" y="524" font-size="12" fill="#111827" text-anchor="start">KV：2SE/C</text>
+<text x="870" y="546" font-size="11" fill="#6b7280" text-anchor="start">参数：4E<tspan baseline-shift="super" font-size="75%">2</tspan>/C + 卷积</text>
+<text x="30" y="610" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 2–5（§II.A–B、Figure 1、Table II）重画的机制示意；块宽只表示相对宽度，E/C 按 C = 4 画。GQA 的 G 是分组数。</text>
+</svg>

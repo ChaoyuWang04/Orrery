@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 4：序列变长时，三种线性注意力在合成任务上谁先掉下来</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = KDA；绿 = GDN；灰虚线 = Mamba2。纵轴是训练准确率（%），横轴是训练序列长度；2 层、2 头、头维 128 的小模型。</text>
+<rect x="16" y="72" width="350" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="191.0" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 回文：倒序复述整段</text>
+<line x1="72" y1="360.0" x2="336" y2="360.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="364.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="72" y1="302.5" x2="336" y2="302.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="306.5" font-size="11" fill="#9ca3af" text-anchor="end">25</text>
+<line x1="72" y1="245.0" x2="336" y2="245.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="249.0" font-size="11" fill="#9ca3af" text-anchor="end">50</text>
+<line x1="72" y1="187.5" x2="336" y2="187.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="191.5" font-size="11" fill="#9ca3af" text-anchor="end">75</text>
+<line x1="72" y1="130.0" x2="336" y2="130.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="134.0" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<line x1="72" y1="124" x2="72" y2="360" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="72" y1="360" x2="336" y2="360" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="92.0" y="380" font-size="11" fill="#111827" text-anchor="middle">256</text>
+<text x="166.66666666666669" y="380" font-size="11" fill="#111827" text-anchor="middle">512</text>
+<text x="241.33333333333334" y="380" font-size="11" fill="#111827" text-anchor="middle">1024</text>
+<text x="316.0" y="380" font-size="11" fill="#111827" text-anchor="middle">2048</text>
+<text x="204.0" y="400" font-size="11" fill="#6b7280" text-anchor="middle">训练序列长度</text>
+<polyline points="92.0,130.0 166.7,360.0 241.3,360.0 316.0,360.0" fill="none" stroke="#b9b9b9" stroke-width="2.2" stroke-dasharray="6 4"/>
+<circle cx="92.0" cy="130.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="166.7" cy="360.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="241.3" cy="360.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="316.0" cy="360.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<polyline points="92.0,130.0 166.7,130.0 241.3,136.9 316.0,274.9" fill="none" stroke="#5fa886" stroke-width="2.2"/>
+<circle cx="92.0" cy="130.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="166.7" cy="130.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="241.3" cy="136.9" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="316.0" cy="274.9" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<polyline points="92.0,130.0 166.7,130.0 241.3,130.0 316.0,263.4" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="92.0" cy="130.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="166.7" cy="130.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="241.3" cy="130.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="316.0" cy="263.4" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="326.0" y="267.4" font-size="11" fill="#8f8bd8" text-anchor="start">42</text>
+<text x="326.0" y="282.9" font-size="11" fill="#5fa886" text-anchor="start">37</text>
+<rect x="385" y="72" width="350" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="560.0" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) MQAR：多查询联想回忆</text>
+<line x1="441" y1="360.0" x2="705" y2="360.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="433" y="364.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="441" y1="302.5" x2="705" y2="302.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="433" y="306.5" font-size="11" fill="#9ca3af" text-anchor="end">25</text>
+<line x1="441" y1="245.0" x2="705" y2="245.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="433" y="249.0" font-size="11" fill="#9ca3af" text-anchor="end">50</text>
+<line x1="441" y1="187.5" x2="705" y2="187.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="433" y="191.5" font-size="11" fill="#9ca3af" text-anchor="end">75</text>
+<line x1="441" y1="130.0" x2="705" y2="130.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="433" y="134.0" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<line x1="441" y1="124" x2="441" y2="360" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="441" y1="360" x2="705" y2="360" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="461.0" y="380" font-size="11" fill="#111827" text-anchor="middle">256</text>
+<text x="535.6666666666666" y="380" font-size="11" fill="#111827" text-anchor="middle">512</text>
+<text x="610.3333333333334" y="380" font-size="11" fill="#111827" text-anchor="middle">1024</text>
+<text x="685.0" y="380" font-size="11" fill="#111827" text-anchor="middle">2048</text>
+<text x="573.0" y="400" font-size="11" fill="#6b7280" text-anchor="middle">训练序列长度</text>
+<polyline points="461.0,134.6 535.7,360.0 610.3,360.0 685.0,360.0" fill="none" stroke="#b9b9b9" stroke-width="2.2" stroke-dasharray="6 4"/>
+<circle cx="461.0" cy="134.6" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="535.7" cy="360.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="610.3" cy="360.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="685.0" cy="360.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<polyline points="461.0,130.0 535.7,130.0 610.3,178.3 685.0,293.3" fill="none" stroke="#5fa886" stroke-width="2.2"/>
+<circle cx="461.0" cy="130.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="535.7" cy="130.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="610.3" cy="178.3" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="685.0" cy="293.3" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<polyline points="461.0,130.0 535.7,130.0 610.3,130.0 685.0,251.9" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="461.0" cy="130.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="535.7" cy="130.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="610.3" cy="130.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="685.0" cy="251.9" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="695.0" y="255.9" font-size="11" fill="#8f8bd8" text-anchor="start">47</text>
+<text x="695.0" y="301.3" font-size="11" fill="#5fa886" text-anchor="start">29</text>
+<rect x="754" y="72" width="350" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="929.0" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(c) Stack：追踪 64 个栈</text>
+<line x1="810" y1="360.0" x2="1074" y2="360.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="802" y="364.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="810" y1="302.5" x2="1074" y2="302.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="802" y="306.5" font-size="11" fill="#9ca3af" text-anchor="end">25</text>
+<line x1="810" y1="245.0" x2="1074" y2="245.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="802" y="249.0" font-size="11" fill="#9ca3af" text-anchor="end">50</text>
+<line x1="810" y1="187.5" x2="1074" y2="187.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="802" y="191.5" font-size="11" fill="#9ca3af" text-anchor="end">75</text>
+<line x1="810" y1="130.0" x2="1074" y2="130.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="802" y="134.0" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<line x1="810" y1="124" x2="810" y2="360" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="810" y1="360" x2="1074" y2="360" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="830.0" y="380" font-size="11" fill="#111827" text-anchor="middle">256</text>
+<text x="904.6666666666666" y="380" font-size="11" fill="#111827" text-anchor="middle">512</text>
+<text x="979.3333333333334" y="380" font-size="11" fill="#111827" text-anchor="middle">1024</text>
+<text x="1054.0" y="380" font-size="11" fill="#111827" text-anchor="middle">2048</text>
+<text x="942.0" y="400" font-size="11" fill="#6b7280" text-anchor="middle">训练序列长度</text>
+<polyline points="830.0,130.0 904.7,130.0 979.3,360.0 1054.0,360.0" fill="none" stroke="#b9b9b9" stroke-width="2.2" stroke-dasharray="6 4"/>
+<circle cx="830.0" cy="130.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="904.7" cy="130.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="979.3" cy="360.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="1054.0" cy="360.0" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<polyline points="830.0,133.0 904.7,133.0 979.3,133.0 1054.0,133.0" fill="none" stroke="#5fa886" stroke-width="2.2"/>
+<circle cx="830.0" cy="133.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="904.7" cy="133.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="979.3" cy="133.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<circle cx="1054.0" cy="133.0" r="4" fill="#e3f4ec" stroke="#5fa886"/>
+<polyline points="830.0,127.0 904.7,127.0 979.3,127.0 1054.0,127.0" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="830.0" cy="127.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="904.7" cy="127.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="979.3" cy="127.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="1054.0" cy="127.0" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="16" y="428" width="1088" height="120" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="454" font-size="14" fill="#111827" text-anchor="start" font-weight="700">下排（固定长度 1024，看收敛快慢；读图估计）</text>
+<text x="36" y="480" font-size="13" fill="#6b7280" text-anchor="start">回文：KDA 约 4K 步就到 94% 左右；GDN 约 6K 步后才起步，约 16K 步到 100%。</text>
+<text x="36" y="502" font-size="13" fill="#6b7280" text-anchor="start">MQAR：KDA 约 2K 步过 90%；GDN 到 20K 步也只有约 79%。</text>
+<text x="36" y="524" font-size="13" fill="#6b7280" text-anchor="start">Stack：两者都在约 8K 步内到 100%，KDA 略早；Mamba2 在 1024 长度上三项都始终为 0。</text>
+<text x="30" y="580" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 7 Figure 4 读图重画，数值是读图估计；(c) 里 KDA 与 GDN 都是 100%，两线故意错开一点。每条曲线取学习率网格里最好的一次（PDF p. 7）。</text>
+</svg>

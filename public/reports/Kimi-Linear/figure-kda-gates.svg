@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">KDA：遗忘率从「一头一个数」细到「每个 key 通道一个数」</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">格子 = 一个注意力头的记忆状态 S（行 = key 通道，列 = value 维）；紫色深浅 = 这一步保留旧记忆的比例 α，越深保留越多。</text>
+<rect x="16" y="72" width="350" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="191.0" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 线性注意力</text>
+<text x="191.0" y="116" font-size="11" fill="#6b7280" text-anchor="middle">只写不擦：α 恒为 1</text>
+<rect x="76" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="100" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="124" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="148" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="172" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="196" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="220" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="244" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="76" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="100" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="124" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="148" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="172" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="196" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="220" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="244" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="76" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="100" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="124" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="148" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="172" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="196" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="220" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="244" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="76" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="100" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="124" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="148" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="172" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="196" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="220" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="244" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="76" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="100" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="124" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="148" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="172" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="196" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="220" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="244" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="76" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="100" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="124" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="148" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="172" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="196" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="220" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="244" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="76" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="100" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="124" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="148" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="172" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="196" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="220" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="244" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="76" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="100" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="124" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="148" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="172" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="196" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="220" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<rect x="244" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.97"/>
+<text x="278" y="232" font-size="11" fill="#6b7280" text-anchor="start">α=1</text>
+<text x="172" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">行 = key 通道（dk），列 = value 维（dv）</text>
+<text x="191.0" y="370" font-size="11" fill="#6b7280" text-anchor="middle">旧联想越堆越多，互相干扰</text>
+<text x="191.0" y="388" font-size="11" fill="#6b7280" text-anchor="middle">没有「该擦哪条」的判据</text>
+<rect x="385" y="72" width="350" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="560.0" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) GDN：每头一个标量 α<tspan baseline-shift="sub" font-size="75%">t</tspan></text>
+<text x="560.0" y="116" font-size="11" fill="#6b7280" text-anchor="middle">整块记忆按同一速度褪色</text>
+<rect x="445" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="469" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="493" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="517" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="541" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="565" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="589" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="613" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="445" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="469" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="493" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="517" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="541" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="565" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="589" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="613" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="445" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="469" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="493" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="517" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="541" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="565" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="589" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="613" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="445" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="469" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="493" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="517" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="541" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="565" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="589" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="613" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="445" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="469" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="493" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="517" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="541" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="565" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="589" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="613" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="445" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="469" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="493" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="517" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="541" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="565" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="589" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="613" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="445" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="469" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="493" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="517" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="541" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="565" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="589" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="613" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="445" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="469" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="493" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="517" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="541" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="565" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="589" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<rect x="613" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.588"/>
+<text x="647" y="232" font-size="11" fill="#6b7280" text-anchor="start">α=0.55</text>
+<text x="541" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">行 = key 通道（dk），列 = value 维（dv）</text>
+<text x="560.0" y="370" font-size="11" fill="#6b7280" text-anchor="middle">想留长程，就得整头慢忘</text>
+<text x="560.0" y="388" font-size="11" fill="#6b7280" text-anchor="middle">想清近邻，就得整头快忘</text>
+<rect x="754" y="72" width="350" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="929.0" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(c) KDA：每个通道一个 α</text>
+<text x="929.0" y="116" font-size="11" fill="#6b7280" text-anchor="middle">α<tspan baseline-shift="sub" font-size="75%">t</tspan> 是长 d<tspan baseline-shift="sub" font-size="75%">k</tspan> 的向量</text>
+<rect x="814" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.927"/>
+<rect x="838" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.927"/>
+<rect x="862" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.927"/>
+<rect x="886" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.927"/>
+<rect x="910" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.927"/>
+<rect x="934" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.927"/>
+<rect x="958" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.927"/>
+<rect x="982" y="132" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.927"/>
+<text x="1016" y="148" font-size="11" fill="#6b7280" text-anchor="start">α=0.95</text>
+<rect x="814" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.375"/>
+<rect x="838" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.375"/>
+<rect x="862" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.375"/>
+<rect x="886" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.375"/>
+<rect x="910" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.375"/>
+<rect x="934" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.375"/>
+<rect x="958" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.375"/>
+<rect x="982" y="156" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.375"/>
+<text x="1016" y="172" font-size="11" fill="#6b7280" text-anchor="start">α=0.3</text>
+<rect x="814" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.8"/>
+<rect x="838" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.8"/>
+<rect x="862" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.8"/>
+<rect x="886" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.8"/>
+<rect x="910" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.8"/>
+<rect x="934" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.8"/>
+<rect x="958" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.8"/>
+<rect x="982" y="180" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.8"/>
+<text x="1016" y="196" font-size="11" fill="#6b7280" text-anchor="start">α=0.8</text>
+<rect x="814" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.247"/>
+<rect x="838" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.247"/>
+<rect x="862" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.247"/>
+<rect x="886" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.247"/>
+<rect x="910" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.247"/>
+<rect x="934" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.247"/>
+<rect x="958" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.247"/>
+<rect x="982" y="204" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.247"/>
+<text x="1016" y="220" font-size="11" fill="#6b7280" text-anchor="start">α=0.15</text>
+<rect x="814" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.63"/>
+<rect x="838" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.63"/>
+<rect x="862" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.63"/>
+<rect x="886" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.63"/>
+<rect x="910" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.63"/>
+<rect x="934" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.63"/>
+<rect x="958" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.63"/>
+<rect x="982" y="228" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.63"/>
+<text x="1016" y="244" font-size="11" fill="#6b7280" text-anchor="start">α=0.6</text>
+<rect x="814" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.885"/>
+<rect x="838" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.885"/>
+<rect x="862" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.885"/>
+<rect x="886" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.885"/>
+<rect x="910" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.885"/>
+<rect x="934" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.885"/>
+<rect x="958" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.885"/>
+<rect x="982" y="252" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.885"/>
+<text x="1016" y="268" font-size="11" fill="#6b7280" text-anchor="start">α=0.9</text>
+<rect x="814" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.46"/>
+<rect x="838" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.46"/>
+<rect x="862" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.46"/>
+<rect x="886" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.46"/>
+<rect x="910" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.46"/>
+<rect x="934" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.46"/>
+<rect x="958" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.46"/>
+<rect x="982" y="276" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.46"/>
+<text x="1016" y="292" font-size="11" fill="#6b7280" text-anchor="start">α=0.4</text>
+<rect x="814" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.715"/>
+<rect x="838" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.715"/>
+<rect x="862" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.715"/>
+<rect x="886" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.715"/>
+<rect x="910" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.715"/>
+<rect x="934" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.715"/>
+<rect x="958" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.715"/>
+<rect x="982" y="300" width="22" height="22" rx="2" fill="#8f8bd8" fill-opacity="0.715"/>
+<text x="1016" y="316" font-size="11" fill="#6b7280" text-anchor="start">α=0.7</text>
+<text x="910" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">行 = key 通道（dk），列 = value 维（dv）</text>
+<text x="929.0" y="370" font-size="11" fill="#6b7280" text-anchor="middle">有的通道记长程，有的只记最近</text>
+<text x="929.0" y="388" font-size="11" fill="#6b7280" text-anchor="middle">同一个头里分工，不必二选一</text>
+<rect x="16" y="420" width="1088" height="160" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="446" font-size="14" fill="#111827" text-anchor="start" font-weight="700">一步更新的顺序（式 1，PDF p. 4）：先按通道衰减，再做 delta 修正，最后写入</text>
+<rect x="36" y="470" width="176" height="66" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="124.0" y="498" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">S<tspan baseline-shift="sub" font-size="75%">t−1</tspan></text>
+<text x="124.0" y="520" font-size="11" fill="#6b7280" text-anchor="middle">上一步的记忆</text>
+<line x1="214" y1="503" x2="248" y2="503" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="252" y="470" width="176" height="66" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="340.0" y="498" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">乘 Diag(α<tspan baseline-shift="sub" font-size="75%">t</tspan>)</text>
+<text x="340.0" y="520" font-size="11" fill="#6b7280" text-anchor="middle">每个 key 通道各自衰减</text>
+<line x1="430" y1="503" x2="464" y2="503" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="468" y="470" width="176" height="66" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="556.0" y="498" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">乘 (I − β<tspan baseline-shift="sub" font-size="75%">t</tspan> k<tspan baseline-shift="sub" font-size="75%">t</tspan> k<tspan baseline-shift="sub" font-size="75%">t</tspan><tspan baseline-shift="super" font-size="75%">⊤</tspan>)</text>
+<text x="556.0" y="520" font-size="11" fill="#6b7280" text-anchor="middle">沿 k<tspan baseline-shift="sub" font-size="75%">t</tspan> 方向擦掉 β<tspan baseline-shift="sub" font-size="75%">t</tspan> 份旧值</text>
+<line x1="646" y1="503" x2="680" y2="503" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="684" y="470" width="176" height="66" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="772.0" y="498" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">加 β<tspan baseline-shift="sub" font-size="75%">t</tspan> k<tspan baseline-shift="sub" font-size="75%">t</tspan> v<tspan baseline-shift="sub" font-size="75%">t</tspan><tspan baseline-shift="super" font-size="75%">⊤</tspan></text>
+<text x="772.0" y="520" font-size="11" fill="#6b7280" text-anchor="middle">写入新的 k<tspan baseline-shift="sub" font-size="75%">t</tspan> → v<tspan baseline-shift="sub" font-size="75%">t</tspan> 联想</text>
+<line x1="862" y1="503" x2="896" y2="503" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="900" y="470" width="176" height="66" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="988.0" y="498" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">S<tspan baseline-shift="sub" font-size="75%">t</tspan></text>
+<text x="988.0" y="520" font-size="11" fill="#6b7280" text-anchor="middle">新记忆；读出 o<tspan baseline-shift="sub" font-size="75%">t</tspan> = S<tspan baseline-shift="sub" font-size="75%">t</tspan><tspan baseline-shift="super" font-size="75%">⊤</tspan> q<tspan baseline-shift="sub" font-size="75%">t</tspan></text>
+<text x="36" y="562" font-size="11" fill="#9ca3af" text-anchor="start">GDN 把第二个框换成乘一个标量 α<tspan baseline-shift="sub" font-size="75%">t</tspan>；线性注意力既没有第二个框，也没有第三个框。</text>
+<text x="30" y="608" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 3–4 的式子与 p. 2、14 的文字重画。机制示意：格子数、α 数值都是假设值，不是论文的实测或可视化。</text>
+</svg>

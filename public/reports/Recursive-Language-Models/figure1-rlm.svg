@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="540" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">输入越长、任务越密，GPT-5 掉得越快；RLM(GPT-5) 掉得慢，还能跑到窗口之外</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">绿 = S-NIAH（要找的信息量不随长度变）；紫 = OOLONG（随长度线性）；红 = OOLONG-Pairs（随长度平方）；灰底 = 超出 GPT-5 的 272K 窗口。</text>
+<text x="296" y="96" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">GPT-5 直接读</text>
+<rect x="390" y="120" width="140" height="280" fill="#eeeeee"/>
+<line x1="70" y1="400" x2="530" y2="400" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="404" font-size="11" fill="#6b7280" text-anchor="end">0</text>
+<line x1="70" y1="344" x2="530" y2="344" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="348" font-size="11" fill="#6b7280" text-anchor="end">20</text>
+<line x1="70" y1="288" x2="530" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="292" font-size="11" fill="#6b7280" text-anchor="end">40</text>
+<line x1="70" y1="232" x2="530" y2="232" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="236" font-size="11" fill="#6b7280" text-anchor="end">60</text>
+<line x1="70" y1="176" x2="530" y2="176" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="180" font-size="11" fill="#6b7280" text-anchor="end">80</text>
+<line x1="70" y1="120" x2="530" y2="120" stroke="#e5e7eb" stroke-width="1"/>
+<text x="64" y="124" font-size="11" fill="#6b7280" text-anchor="end">100</text>
+<text x="76" y="420" font-size="11" fill="#6b7280" text-anchor="middle">8K</text>
+<text x="139" y="420" font-size="11" fill="#6b7280" text-anchor="middle">16K</text>
+<text x="202" y="420" font-size="11" fill="#6b7280" text-anchor="middle">33K</text>
+<text x="265" y="420" font-size="11" fill="#6b7280" text-anchor="middle">66K</text>
+<text x="327" y="420" font-size="11" fill="#6b7280" text-anchor="middle">131K</text>
+<text x="390" y="420" font-size="11" fill="#6b7280" text-anchor="middle">262K</text>
+<text x="453" y="420" font-size="11" fill="#6b7280" text-anchor="middle">524K</text>
+<text x="516" y="420" font-size="11" fill="#6b7280" text-anchor="middle">1M</text>
+<text x="296" y="442" font-size="11" fill="#6b7280" text-anchor="middle">输入长度（对数刻度）</text>
+<polyline points="76.0,120.0 138.9,120.0 201.7,120.0 264.6,120.0 327.4,120.0 390.3,120.0" fill="none" stroke="#5fa886" stroke-width="2.2"/>
+<circle cx="76.0" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="138.9" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="201.7" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="264.6" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="327.4" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="390.3" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<polyline points="76.0,142.4 138.9,184.4 201.7,262.8 264.6,274.0 327.4,276.8 390.3,313.2" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="76.0" cy="142.4" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="138.9" cy="184.4" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="201.7" cy="262.8" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="264.6" cy="274.0" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="327.4" cy="276.8" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="390.3" cy="313.2" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<polyline points="76.0,173.2 138.9,240.4 201.7,388.8 264.6,400.0 327.4,400.0 390.3,400.0" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<circle cx="76.0" cy="173.2" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="138.9" cy="240.4" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="201.7" cy="388.8" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="264.6" cy="400.0" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="327.4" cy="400.0" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="390.3" cy="400.0" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<text x="250" y="146" font-size="11" fill="#5fa886" font-weight="700">S-NIAH</text>
+<text x="250" y="262" font-size="11" fill="#8f8bd8" font-weight="700">OOLONG</text>
+<text x="250" y="384" font-size="11" fill="#d9877a" font-weight="700">OOLONG-Pairs</text>
+<text x="453" y="250" font-size="11" fill="#6b7280" text-anchor="middle">放不进窗口</text>
+<text x="453" y="266" font-size="11" fill="#6b7280" text-anchor="middle">没有分数</text>
+<text x="856" y="96" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">RLM(GPT-5)，depth 1</text>
+<rect x="950" y="120" width="140" height="280" fill="#eeeeee"/>
+<line x1="630" y1="400" x2="1090" y2="400" stroke="#e5e7eb" stroke-width="1"/>
+<text x="624" y="404" font-size="11" fill="#6b7280" text-anchor="end">0</text>
+<line x1="630" y1="344" x2="1090" y2="344" stroke="#e5e7eb" stroke-width="1"/>
+<text x="624" y="348" font-size="11" fill="#6b7280" text-anchor="end">20</text>
+<line x1="630" y1="288" x2="1090" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+<text x="624" y="292" font-size="11" fill="#6b7280" text-anchor="end">40</text>
+<line x1="630" y1="232" x2="1090" y2="232" stroke="#e5e7eb" stroke-width="1"/>
+<text x="624" y="236" font-size="11" fill="#6b7280" text-anchor="end">60</text>
+<line x1="630" y1="176" x2="1090" y2="176" stroke="#e5e7eb" stroke-width="1"/>
+<text x="624" y="180" font-size="11" fill="#6b7280" text-anchor="end">80</text>
+<line x1="630" y1="120" x2="1090" y2="120" stroke="#e5e7eb" stroke-width="1"/>
+<text x="624" y="124" font-size="11" fill="#6b7280" text-anchor="end">100</text>
+<text x="636" y="420" font-size="11" fill="#6b7280" text-anchor="middle">8K</text>
+<text x="699" y="420" font-size="11" fill="#6b7280" text-anchor="middle">16K</text>
+<text x="762" y="420" font-size="11" fill="#6b7280" text-anchor="middle">33K</text>
+<text x="825" y="420" font-size="11" fill="#6b7280" text-anchor="middle">66K</text>
+<text x="887" y="420" font-size="11" fill="#6b7280" text-anchor="middle">131K</text>
+<text x="950" y="420" font-size="11" fill="#6b7280" text-anchor="middle">262K</text>
+<text x="1013" y="420" font-size="11" fill="#6b7280" text-anchor="middle">524K</text>
+<text x="1076" y="420" font-size="11" fill="#6b7280" text-anchor="middle">1M</text>
+<text x="856" y="442" font-size="11" fill="#6b7280" text-anchor="middle">输入长度（对数刻度）</text>
+<polyline points="636.0,120.0 698.9,120.0 761.7,120.0 824.6,120.0 887.4,120.0 950.3,120.0 1013.1,120.0 1076.0,120.0" fill="none" stroke="#5fa886" stroke-width="2.2"/>
+<circle cx="636.0" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="698.9" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="761.7" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="824.6" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="887.4" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="950.3" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="1013.1" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="1076.0" cy="120.0" r="3.5" fill="#ffffff" stroke="#5fa886" stroke-width="1.6"/>
+<polyline points="636.0,162.0 698.9,187.2 761.7,220.8 824.6,229.2 887.4,240.4 950.3,257.2 1013.1,260.0 1076.0,271.2" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="636.0" cy="162.0" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="698.9" cy="187.2" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="761.7" cy="220.8" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="824.6" cy="229.2" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="887.4" cy="240.4" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="950.3" cy="257.2" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="1013.1" cy="260.0" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="1076.0" cy="271.2" r="3.5" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<polyline points="636.0,192.8 698.9,232.0 761.7,237.6 824.6,229.2 887.4,212.4 950.3,240.4 1013.1,248.8 1076.0,262.8" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<circle cx="636.0" cy="192.8" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="698.9" cy="232.0" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="761.7" cy="237.6" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="824.6" cy="229.2" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="887.4" cy="212.4" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="950.3" cy="240.4" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="1013.1" cy="248.8" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="1076.0" cy="262.8" r="3.5" fill="#ffffff" stroke="#d9877a" stroke-width="1.6"/>
+<text x="840" y="146" font-size="11" fill="#5fa886" font-weight="700">S-NIAH</text>
+<text x="990" y="225" font-size="11" fill="#d9877a" font-weight="700">OOLONG-Pairs</text>
+<text x="1000" y="294" font-size="11" fill="#8f8bd8" font-weight="700">OOLONG</text>
+<rect x="30" y="470" width="1060" height="56" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="50" y="494" font-size="13" fill="#6b7280">每条线是同一组题，只把输入从 2 的 13 次方拉到 2 的 20 次方 Token；右图同样的题换成 RLM 来做，子调用用 GPT-5-mini（PDF p. 1、p. 5）。</text>
+<text x="50" y="514" font-size="11" fill="#9ca3af">按 PDF p. 1 Figure 1 重画；分数是本文从原图读出的近似值，误差约 ±3 分。</text>
+</svg>

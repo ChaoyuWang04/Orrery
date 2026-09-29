@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 1：CCA 在进注意力之前，对压缩后的 q、k、v 做了什么</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = 线性投影与归一化；绿 = CCA 加的三件事（卷积、QK 均值、V 平移）；黄 = 存进 KV cache 的 k̃、ṽ；紫 = 注意力本身，全程在宽 E/C 上。</text>
+<rect x="24" y="250" width="48" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="48" y="275" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">x</text>
+<line x1="72" y1="270" x2="90" y2="270" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="90" y1="120" x2="90" y2="420" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="90" y1="120" x2="108" y2="120" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="90" y1="240" x2="108" y2="240" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="106" y="100" width="98" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="155.0" y="117" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">下投影 W<tspan baseline-shift="sub" font-size="75%">Q</tspan></text>
+<text x="155.0" y="132" font-size="10" fill="#6b7280" text-anchor="middle">E → E/C</text>
+<line x1="200" y1="120" x2="228" y2="120" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="230" y="100" width="120" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="290.0" y="117" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">卷积 1：沿序列</text>
+<text x="290.0" y="132" font-size="10" fill="#6b7280" text-anchor="middle">因果，深度可分</text>
+<line x1="350" y1="120" x2="378" y2="120" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="380" y="100" width="130" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="445.0" y="117" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">卷积 2：序列 + 通道</text>
+<text x="445.0" y="132" font-size="10" fill="#6b7280" text-anchor="middle">头内分组</text>
+<line x1="510" y1="120" x2="530" y2="120" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<circle cx="544.0" cy="120.0" r="12" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="544" y="125" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">+</text>
+<line x1="556" y1="120" x2="578" y2="120" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="580" y="100" width="160" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="660.0" y="117" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">L2 归一 × √d<tspan baseline-shift="sub" font-size="75%">h</tspan></text>
+<text x="660.0" y="132" font-size="10" fill="#6b7280" text-anchor="middle">按头</text>
+<line x1="740" y1="120" x2="758" y2="120" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="760" y="100" width="64" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="792.0" y="125.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">RoPE</text>
+<line x1="824" y1="120" x2="848" y2="120" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="850" y="100" width="50" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="875.0" y="125.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">q̃</text>
+<rect x="106" y="220" width="98" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="155.0" y="237" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">下投影 W<tspan baseline-shift="sub" font-size="75%">K</tspan></text>
+<text x="155.0" y="252" font-size="10" fill="#6b7280" text-anchor="middle">E → E/C</text>
+<line x1="200" y1="240" x2="228" y2="240" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="230" y="220" width="120" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="290.0" y="237" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">卷积 1：沿序列</text>
+<text x="290.0" y="252" font-size="10" fill="#6b7280" text-anchor="middle">因果，深度可分</text>
+<line x1="350" y1="240" x2="378" y2="240" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="380" y="220" width="130" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="445.0" y="237" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">卷积 2：序列 + 通道</text>
+<text x="445.0" y="252" font-size="10" fill="#6b7280" text-anchor="middle">头内分组</text>
+<line x1="510" y1="240" x2="530" y2="240" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<circle cx="544.0" cy="240.0" r="12" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="544" y="245" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">+</text>
+<line x1="556" y1="240" x2="578" y2="240" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="580" y="220" width="160" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="660.0" y="237" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">L2 归一 × √d<tspan baseline-shift="sub" font-size="75%">h</tspan> × β</text>
+<text x="660.0" y="252" font-size="10" fill="#6b7280" text-anchor="middle">k 另乘可学温度 β</text>
+<line x1="740" y1="240" x2="758" y2="240" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="760" y="220" width="64" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="792.0" y="245.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">RoPE</text>
+<line x1="824" y1="240" x2="848" y2="240" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="850" y="220" width="50" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="875.0" y="245.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">k̃</text>
+<rect x="380" y="158" width="130" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="445.0" y="175" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">QK 均值</text>
+<text x="445.0" y="190" font-size="10" fill="#6b7280" text-anchor="middle">(q̃<tspan baseline-shift="sub" font-size="75%">pre</tspan> + k̃<tspan baseline-shift="sub" font-size="75%">pre</tspan>) / 2</text>
+<line x1="205" y1="140" x2="380" y2="176" stroke="#5fa886" stroke-width="1.4"/>
+<line x1="205" y1="220" x2="380" y2="190" stroke="#5fa886" stroke-width="1.4"/>
+<line x1="510" y1="172" x2="535" y2="130" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="510" y1="190" x2="535" y2="230" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<text x="560" y="176" font-size="11" fill="#6b7280" text-anchor="start">卷积前的 q、k 取均值，</text>
+<text x="560" y="192" font-size="11" fill="#6b7280" text-anchor="start">加回卷积后的 q、k（式 9）</text>
+<line x1="90" y1="340" x2="108" y2="340" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="110" y="320" width="90" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="155.0" y="337" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">下投影 W<tspan baseline-shift="sub" font-size="75%">V</tspan></text>
+<text x="155.0" y="352" font-size="10" fill="#6b7280" text-anchor="middle">当前 x<tspan baseline-shift="sub" font-size="75%">t</tspan></text>
+<rect x="110" y="400" width="36" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="128" y="425" font-size="11" fill="#111827" text-anchor="middle">z<tspan baseline-shift="super" font-size="75%">−1</tspan></text>
+<line x1="90" y1="420" x2="108" y2="420" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="146" y1="420" x2="158" y2="420" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="160" y="400" width="100" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="210.0" y="417" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">另一组下投影</text>
+<text x="210.0" y="432" font-size="10" fill="#6b7280" text-anchor="middle">上一 Token x<tspan baseline-shift="sub" font-size="75%">t−1</tspan></text>
+<line x1="200" y1="340" x2="578" y2="360" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="260" y1="420" x2="578" y2="400" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="580" y="340" width="160" height="80" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="660.0" y="357" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">V 平移：拼接</text>
+<text x="660.0" y="372" font-size="10" fill="#6b7280" text-anchor="middle">一半头用 ṽ<tspan baseline-shift="sub" font-size="75%">t</tspan>，一半用 v̄<tspan baseline-shift="sub" font-size="75%">t−1</tspan></text>
+<line x1="740" y1="380" x2="848" y2="380" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="850" y="360" width="50" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="875.0" y="385.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">ṽ</text>
+<text x="300" y="300" font-size="11" fill="#9ca3af" text-anchor="start">v 不做卷积，也不做均值</text>
+<rect x="930" y="100" width="174" height="340" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="1017" y="190" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">标准 FlashAttention</text>
+<text x="1017" y="238" font-size="12" fill="#111827" text-anchor="middle">在宽 E/C 上</text>
+<text x="1017" y="262" font-size="12" fill="#6b7280" text-anchor="middle">做 softmax(q̃k̃ᵀ/√d) ṽ</text>
+<text x="1017" y="310" font-size="13" fill="#6b7280" text-anchor="middle">再由 W<tspan baseline-shift="sub" font-size="75%">O</tspan></text>
+<text x="1017" y="334" font-size="13" fill="#6b7280" text-anchor="middle">升回宽 E</text>
+<line x1="900" y1="120" x2="926" y2="120" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="900" y1="240" x2="926" y2="240" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="900" y1="380" x2="926" y2="380" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="16" y="460" width="1088" height="84" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="486" font-size="14" fill="#111827" text-anchor="start" font-weight="700">要点</text>
+<text x="36" y="510" font-size="12" fill="#6b7280" text-anchor="start">三件事都只动潜空间里的小向量，参数与 FLOPs 很少；卷积只用在 q、k 上。CCGQA 时，QK 均值要按组广播（B<tspan baseline-shift="sub" font-size="75%">group</tspan>）或按组求平均（E<tspan baseline-shift="sub" font-size="75%">group</tspan>）。</text>
+<text x="36" y="532" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p. 4 Figure 1 与 p. 5–6 式 7–11 重画；附录 A 的 PyTorch 代码（PDF p. 12）与此一致。</text>
+</svg>

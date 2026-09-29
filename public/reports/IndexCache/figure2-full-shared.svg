@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 590" width="1120" height="590" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="590" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">IndexCache：F 层算下标，S 层只抄下标；训练时让一个索引器对准它服务的几层</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 索引器；绿 = 每层自己的核心注意力（及其注意力分布）；黄 = 被多层共用的量；灰 = F / S 标记。</text>
+<rect x="16" y="90" width="536" height="440" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="568" y="90" width="536" height="440" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="284" y="116" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 推理：只多一个条件分支</text>
+<text x="836" y="116" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) 训练感知版：多层蒸馏</text>
+<rect x="262" y="140" width="64" height="360" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="294" y="314" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Tcache</text>
+<text x="294" y="332" font-size="11" fill="#6b7280" text-anchor="middle">每遇 F</text>
+<text x="294" y="346" font-size="11" fill="#6b7280" text-anchor="middle">覆盖一次</text>
+<rect x="34" y="144" width="64" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="66" y="164" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">第8层 S</text>
+<text x="180" y="164" font-size="11" fill="#9ca3af" text-anchor="middle">跳过索引器</text>
+<rect x="348" y="142" width="184" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="440" y="164" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">稀疏核心注意力 + FFN</text>
+<line x1="326" y1="159" x2="344" y2="159" stroke="#d4a24c" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ay)"/>
+<rect x="34" y="190" width="64" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="66" y="210" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">第7层 S</text>
+<text x="180" y="210" font-size="11" fill="#9ca3af" text-anchor="middle">跳过索引器</text>
+<rect x="348" y="188" width="184" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="440" y="210" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">稀疏核心注意力 + FFN</text>
+<line x1="326" y1="205" x2="344" y2="205" stroke="#d4a24c" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ay)"/>
+<rect x="34" y="236" width="64" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="66" y="256" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">第6层 S</text>
+<text x="180" y="256" font-size="11" fill="#9ca3af" text-anchor="middle">跳过索引器</text>
+<rect x="348" y="234" width="184" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="440" y="256" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">稀疏核心注意力 + FFN</text>
+<line x1="326" y1="251" x2="344" y2="251" stroke="#d4a24c" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ay)"/>
+<rect x="34" y="282" width="64" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="66" y="302" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">第5层 F</text>
+<rect x="114" y="280" width="132" height="34" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="180" y="302" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">索引器 → Top-k</text>
+<line x1="246" y1="297" x2="258" y2="297" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<rect x="348" y="280" width="184" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="440" y="302" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">稀疏核心注意力 + FFN</text>
+<line x1="326" y1="297" x2="344" y2="297" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#ay)"/>
+<rect x="34" y="328" width="64" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="66" y="348" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">第4层 S</text>
+<text x="180" y="348" font-size="11" fill="#9ca3af" text-anchor="middle">跳过索引器</text>
+<rect x="348" y="326" width="184" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="440" y="348" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">稀疏核心注意力 + FFN</text>
+<line x1="326" y1="343" x2="344" y2="343" stroke="#d4a24c" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ay)"/>
+<rect x="34" y="374" width="64" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="66" y="394" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">第3层 S</text>
+<text x="180" y="394" font-size="11" fill="#9ca3af" text-anchor="middle">跳过索引器</text>
+<rect x="348" y="372" width="184" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="440" y="394" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">稀疏核心注意力 + FFN</text>
+<line x1="326" y1="389" x2="344" y2="389" stroke="#d4a24c" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ay)"/>
+<rect x="34" y="420" width="64" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="66" y="440" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">第2层 S</text>
+<text x="180" y="440" font-size="11" fill="#9ca3af" text-anchor="middle">跳过索引器</text>
+<rect x="348" y="418" width="184" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="440" y="440" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">稀疏核心注意力 + FFN</text>
+<line x1="326" y1="435" x2="344" y2="435" stroke="#d4a24c" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ay)"/>
+<rect x="34" y="466" width="64" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="66" y="486" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">第1层 F</text>
+<rect x="114" y="464" width="132" height="34" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="180" y="486" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">索引器 → Top-k</text>
+<line x1="246" y1="481" x2="258" y2="481" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<rect x="348" y="464" width="184" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="440" y="486" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">稀疏核心注意力 + FFN</text>
+<line x1="326" y1="481" x2="344" y2="481" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#ay)"/>
+<text x="34" y="522" font-size="11" fill="#6b7280" text-anchor="start">第 1 层必须是 F。S 层只能抄前面最近的 F 层，KV 与注意力仍各算各的。</text>
+<text x="651.0" y="146" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">第 ℓ 层</text>
+<text x="651.0" y="162" font-size="11" fill="#6b7280" text-anchor="middle">注意力分布 p</text>
+<line x1="592" y1="250" x2="710" y2="250" stroke="#9ca3af" stroke-width="1"/>
+<rect x="598.0" y="181.0" width="10" height="69.0" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="611.5" y="238.5" width="10" height="11.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="625.0" y="192.5" width="10" height="57.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="638.5" y="240.8" width="10" height="9.2" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="652.0" y="243.1" width="10" height="6.9" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="665.5" y="208.6" width="10" height="41.4" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="679.0" y="238.5" width="10" height="11.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="692.5" y="227.0" width="10" height="23.0" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<line x1="651.0" y1="256" x2="836" y2="300" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="781.0" y="146" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">第 ℓ+1 层</text>
+<text x="781.0" y="162" font-size="11" fill="#6b7280" text-anchor="middle">注意力分布 p</text>
+<line x1="722" y1="250" x2="840" y2="250" stroke="#9ca3af" stroke-width="1"/>
+<rect x="728.0" y="190.2" width="10" height="59.8" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="741.5" y="240.8" width="10" height="9.2" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="755.0" y="181.0" width="10" height="69.0" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="768.5" y="243.1" width="10" height="6.9" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="782.0" y="238.5" width="10" height="11.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="795.5" y="213.2" width="10" height="36.8" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="809.0" y="236.2" width="10" height="13.8" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="822.5" y="227.0" width="10" height="23.0" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<line x1="781.0" y1="256" x2="836" y2="300" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="911.0" y="146" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">第 ℓ+2 层</text>
+<text x="911.0" y="162" font-size="11" fill="#6b7280" text-anchor="middle">注意力分布 p</text>
+<line x1="852" y1="250" x2="970" y2="250" stroke="#9ca3af" stroke-width="1"/>
+<rect x="858.0" y="199.4" width="10" height="50.6" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="871.5" y="236.2" width="10" height="13.8" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="885.0" y="194.8" width="10" height="55.2" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="898.5" y="245.4" width="10" height="4.6" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="912.0" y="240.8" width="10" height="9.2" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="925.5" y="194.8" width="10" height="55.2" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="939.0" y="231.6" width="10" height="18.4" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="952.5" y="227.0" width="10" height="23.0" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<line x1="911.0" y1="256" x2="836" y2="300" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="1041.0" y="146" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">第 ℓ+3 层</text>
+<text x="1041.0" y="162" font-size="11" fill="#6b7280" text-anchor="middle">注意力分布 p</text>
+<line x1="982" y1="250" x2="1100" y2="250" stroke="#9ca3af" stroke-width="1"/>
+<rect x="988.0" y="204.0" width="10" height="46.0" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="1001.5" y="243.1" width="10" height="6.9" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="1015.0" y="208.6" width="10" height="41.4" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="1028.5" y="227.0" width="10" height="23.0" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="1042.0" y="245.4" width="10" height="4.6" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="1055.5" y="185.6" width="10" height="64.4" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="1069.0" y="233.9" width="10" height="16.1" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<rect x="1082.5" y="222.4" width="10" height="27.6" fill="#e3f4ec" stroke="#5fa886" stroke-width="0.8"/>
+<line x1="1041.0" y1="256" x2="836" y2="300" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="760" y="304" width="152" height="86" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="836" y="322" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">平均目标 p_avg</text>
+<rect x="780" y="333.0" width="10" height="49.0" fill="#d4a24c"/>
+<rect x="794" y="373.0" width="10" height="9.0" fill="#d4a24c"/>
+<rect x="808" y="333.5" width="10" height="48.5" fill="#d4a24c"/>
+<rect x="822" y="372.5" width="10" height="9.5" fill="#d4a24c"/>
+<rect x="836" y="375.0" width="10" height="7.0" fill="#d4a24c"/>
+<rect x="850" y="339.0" width="10" height="43.0" fill="#d4a24c"/>
+<rect x="864" y="369.0" width="10" height="13.0" fill="#d4a24c"/>
+<rect x="878" y="361.0" width="10" height="21.0" fill="#d4a24c"/>
+<line x1="836" y1="390" x2="836" y2="424" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#ay)"/>
+<text x="850" y="412" font-size="12" fill="#111827" text-anchor="start">KL(p_avg ‖ q)</text>
+<rect x="740" y="428" width="192" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="836" y="453" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">F 层索引器输出 q</text>
+<text x="592" y="494" font-size="11" fill="#6b7280" text-anchor="start">命题 1：对 4 层分别做 KL 再平均，梯度与直接对 p_avg 做 KL 完全相同；</text>
+<text x="592" y="510" font-size="11" fill="#6b7280" text-anchor="start">索引器学的是这几层注意力分布的「质心」，挑一份几层都用得上的 Top-k。</text>
+<text x="30" y="556" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p.3 Figure 2 与 p.4、p.6 的定义与命题 1 重画，是机制示意；FSSS 交替和各柱高度都是示意，不是实测。</text>
+<text x="30" y="576" font-size="13" fill="#6b7280" text-anchor="start">论文实现用逐层 KL 的写法，因为 S 层只需接收 F 层的 q，不必把各层 p 传回来（PDF p.6）。</text>
+</svg>

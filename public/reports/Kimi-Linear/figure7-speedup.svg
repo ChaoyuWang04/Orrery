@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">三组「比 MLA 快几倍」不是同一个量：prefill、batch 1 解码、放大 batch 的解码</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">黄 = prefill 耗时比（Figure 7a）；紫 = 每 Token 解码时间比，batch 1（Figure 7b）；绿 = 每 Token 解码时间比，放大 batch（Figure 1b）。</text>
+<rect x="16" y="72" width="700" height="440" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<line x1="80" y1="440.0" x2="690" y2="440.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="444.0" font-size="11" fill="#9ca3af" text-anchor="end">0×</text>
+<line x1="80" y1="392.85714285714283" x2="690" y2="392.85714285714283" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="396.85714285714283" font-size="11" fill="#9ca3af" text-anchor="end">1×</text>
+<line x1="80" y1="345.7142857142857" x2="690" y2="345.7142857142857" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="349.7142857142857" font-size="11" fill="#9ca3af" text-anchor="end">2×</text>
+<line x1="80" y1="298.57142857142856" x2="690" y2="298.57142857142856" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="302.57142857142856" font-size="11" fill="#9ca3af" text-anchor="end">3×</text>
+<line x1="80" y1="251.42857142857142" x2="690" y2="251.42857142857142" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="255.42857142857142" font-size="11" fill="#9ca3af" text-anchor="end">4×</text>
+<line x1="80" y1="204.28571428571428" x2="690" y2="204.28571428571428" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="208.28571428571428" font-size="11" fill="#9ca3af" text-anchor="end">5×</text>
+<line x1="80" y1="157.14285714285717" x2="690" y2="157.14285714285717" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="161.14285714285717" font-size="11" fill="#9ca3af" text-anchor="end">6×</text>
+<line x1="80" y1="110.0" x2="690" y2="110.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="114.0" font-size="11" fill="#9ca3af" text-anchor="end">7×</text>
+<line x1="80" y1="102" x2="80" y2="440" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="80" y1="440" x2="690" y2="440" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="181.66666666666669" y="462" font-size="12" fill="#111827" text-anchor="middle">256K</text>
+<rect x="103.66666666666669" y="380" width="48" height="60" rx="3" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="4 3"/>
+<text x="127.66666666666669" y="406" font-size="10" fill="#9ca3af" text-anchor="middle">图上</text>
+<text x="127.66666666666669" y="420" font-size="10" fill="#9ca3af" text-anchor="middle">未标</text>
+<rect x="157.66666666666669" y="380" width="48" height="60" rx="3" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="4 3"/>
+<text x="181.66666666666669" y="406" font-size="10" fill="#9ca3af" text-anchor="middle">图上</text>
+<text x="181.66666666666669" y="420" font-size="10" fill="#9ca3af" text-anchor="middle">未标</text>
+<rect x="211.66666666666669" y="213.71428571428572" width="48" height="226.28571428571428" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="235.66666666666669" y="205.71428571428572" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">4.8×</text>
+<text x="385.00000000000006" y="462" font-size="12" fill="#111827" text-anchor="middle">512K</text>
+<rect x="307.00000000000006" y="331.57142857142856" width="48" height="108.42857142857142" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="331.00000000000006" y="323.57142857142856" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">2.3×</text>
+<rect x="361.00000000000006" y="355.1428571428571" width="48" height="84.85714285714286" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="385.00000000000006" y="347.1428571428571" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">1.8×</text>
+<rect x="415.00000000000006" y="171.28571428571428" width="48" height="268.7142857142857" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="439.00000000000006" y="163.28571428571428" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">5.7×</text>
+<text x="588.3333333333334" y="462" font-size="12" fill="#111827" text-anchor="middle">1M</text>
+<rect x="510.33333333333337" y="303.2857142857143" width="48" height="136.71428571428572" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="534.3333333333334" y="295.2857142857143" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">2.9×</text>
+<rect x="564.3333333333334" y="336.2857142857143" width="48" height="103.71428571428574" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="588.3333333333334" y="328.2857142857143" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">2.2×</text>
+<rect x="618.3333333333334" y="143.0" width="48" height="297.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="642.3333333333334" y="135.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">6.3×</text>
+<text x="385.0" y="486" font-size="11" fill="#6b7280" text-anchor="middle">上下文长度（论文只在这几处标了倍数）</text>
+<rect x="732" y="72" width="372" height="440" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="752" y="100" font-size="14" fill="#111827" text-anchor="start" font-weight="700">怎么读这三根柱</text>
+<text x="752" y="128" font-size="13" fill="#111827" text-anchor="start" font-weight="700">黄：prefill 整段耗时</text>
+<text x="752" y="154" font-size="12" fill="#6b7280" text-anchor="start">1M 时 MLA 约 65 s，Kimi Linear 约 22 s；</text>
+<text x="752" y="176" font-size="12" fill="#6b7280" text-anchor="start">4K–16K 两者相当（PDF p. 13）。</text>
+<text x="752" y="198" font-size="13" fill="#111827" text-anchor="start" font-weight="700">紫：解码，batch 1</text>
+<text x="752" y="224" font-size="12" fill="#6b7280" text-anchor="start">KV 少了，但每步仍要读 1/4 层的 KV，</text>
+<text x="752" y="246" font-size="12" fill="#6b7280" text-anchor="start">1M 时约 2.2×（Figure 7b）。</text>
+<text x="752" y="268" font-size="13" fill="#111827" text-anchor="start" font-weight="700">绿：解码，放大 batch</text>
+<text x="752" y="294" font-size="12" fill="#6b7280" text-anchor="start">省下的显存拿去放更大 batch，1M 时</text>
+<text x="752" y="316" font-size="12" fill="#6b7280" text-anchor="start">1.84 ms 对 11.48 ms，即 6.3×（PDF p. 1）；</text>
+<text x="752" y="338" font-size="12" fill="#6b7280" text-anchor="start">放大到多少 batch，论文没写。</text>
+<text x="752" y="360" font-size="13" fill="#111827" text-anchor="start" font-weight="700">摘要里的「最多 6×」就是绿柱，</text>
+<text x="752" y="386" font-size="13" fill="#111827" text-anchor="start" font-weight="700">不是单请求延迟。</text>
+<text x="30" y="540" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 1 Figure 1b 与 p. 13 Figure 7 图上标注的倍数重画；秒数为读图估计。三组都以同一 48B 设置的 MLA 为分母。</text>
+</svg>

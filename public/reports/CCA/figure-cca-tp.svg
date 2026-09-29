@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 490" width="1120" height="490" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="490" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">张量并行（TP = 8）下，共享一份 KV 和每卡一份 KV 的差别</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">方框 = 一张 GPU；黄 = 这张卡上存的 KV；紫 = 这张卡负责的 Query 头。左侧取附录 B 的例子：1 个 KV、16 个 Query 头。</text>
+<rect x="16" y="72" width="536" height="300" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="284" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MLA 的 MQA 模式：一份共享 KV</text>
+<text x="284" y="116" font-size="11" fill="#6b7280" text-anchor="middle">每张卡都得存一份完整副本，8 份内容相同</text>
+<rect x="38" y="132" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="95" y="150" font-size="11" fill="#6b7280" text-anchor="middle">GPU 1</text>
+<rect x="48" y="160" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="95" y="178" font-size="11" fill="#111827" text-anchor="middle">同一份 KV</text>
+<rect x="48" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="98" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="70" y="212" font-size="11" fill="#111827" text-anchor="middle">Q1</text>
+<text x="120" y="212" font-size="11" fill="#111827" text-anchor="middle">Q2</text>
+<rect x="164" y="132" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="221" y="150" font-size="11" fill="#6b7280" text-anchor="middle">GPU 2</text>
+<rect x="174" y="160" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="221" y="178" font-size="11" fill="#111827" text-anchor="middle">同一份 KV</text>
+<rect x="174" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="224" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="196" y="212" font-size="11" fill="#111827" text-anchor="middle">Q3</text>
+<text x="246" y="212" font-size="11" fill="#111827" text-anchor="middle">Q4</text>
+<rect x="290" y="132" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="347" y="150" font-size="11" fill="#6b7280" text-anchor="middle">GPU 3</text>
+<rect x="300" y="160" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="347" y="178" font-size="11" fill="#111827" text-anchor="middle">同一份 KV</text>
+<rect x="300" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="350" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="322" y="212" font-size="11" fill="#111827" text-anchor="middle">Q5</text>
+<text x="372" y="212" font-size="11" fill="#111827" text-anchor="middle">Q6</text>
+<rect x="416" y="132" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="473" y="150" font-size="11" fill="#6b7280" text-anchor="middle">GPU 4</text>
+<rect x="426" y="160" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="473" y="178" font-size="11" fill="#111827" text-anchor="middle">同一份 KV</text>
+<rect x="426" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="476" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="448" y="212" font-size="11" fill="#111827" text-anchor="middle">Q7</text>
+<text x="498" y="212" font-size="11" fill="#111827" text-anchor="middle">Q8</text>
+<rect x="38" y="248" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="95" y="266" font-size="11" fill="#6b7280" text-anchor="middle">GPU 5</text>
+<rect x="48" y="276" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="95" y="294" font-size="11" fill="#111827" text-anchor="middle">同一份 KV</text>
+<rect x="48" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="98" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="70" y="328" font-size="11" fill="#111827" text-anchor="middle">Q9</text>
+<text x="120" y="328" font-size="11" fill="#111827" text-anchor="middle">Q10</text>
+<rect x="164" y="248" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="221" y="266" font-size="11" fill="#6b7280" text-anchor="middle">GPU 6</text>
+<rect x="174" y="276" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="221" y="294" font-size="11" fill="#111827" text-anchor="middle">同一份 KV</text>
+<rect x="174" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="224" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="196" y="328" font-size="11" fill="#111827" text-anchor="middle">Q11</text>
+<text x="246" y="328" font-size="11" fill="#111827" text-anchor="middle">Q12</text>
+<rect x="290" y="248" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="347" y="266" font-size="11" fill="#6b7280" text-anchor="middle">GPU 7</text>
+<rect x="300" y="276" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="347" y="294" font-size="11" fill="#111827" text-anchor="middle">同一份 KV</text>
+<rect x="300" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="350" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="322" y="328" font-size="11" fill="#111827" text-anchor="middle">Q13</text>
+<text x="372" y="328" font-size="11" fill="#111827" text-anchor="middle">Q14</text>
+<rect x="416" y="248" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="473" y="266" font-size="11" fill="#6b7280" text-anchor="middle">GPU 8</text>
+<rect x="426" y="276" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="473" y="294" font-size="11" fill="#111827" text-anchor="middle">同一份 KV</text>
+<rect x="426" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="476" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="448" y="328" font-size="11" fill="#111827" text-anchor="middle">Q15</text>
+<text x="498" y="328" font-size="11" fill="#111827" text-anchor="middle">Q16</text>
+<rect x="568" y="72" width="536" height="300" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="836" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">CCGQA：KV 头数 = TP 数</text>
+<text x="836" y="116" font-size="11" fill="#6b7280" text-anchor="middle">同样 16 个 Query 头，改为 8 个 KV 头，每卡一个，没有重复</text>
+<rect x="590" y="132" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="647" y="150" font-size="11" fill="#6b7280" text-anchor="middle">GPU 1</text>
+<rect x="600" y="160" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="647" y="178" font-size="11" fill="#111827" text-anchor="middle">KV 头 1</text>
+<rect x="600" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="650" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="622" y="212" font-size="11" fill="#111827" text-anchor="middle">Q1</text>
+<text x="672" y="212" font-size="11" fill="#111827" text-anchor="middle">Q2</text>
+<rect x="716" y="132" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="773" y="150" font-size="11" fill="#6b7280" text-anchor="middle">GPU 2</text>
+<rect x="726" y="160" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="773" y="178" font-size="11" fill="#111827" text-anchor="middle">KV 头 2</text>
+<rect x="726" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="776" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="748" y="212" font-size="11" fill="#111827" text-anchor="middle">Q3</text>
+<text x="798" y="212" font-size="11" fill="#111827" text-anchor="middle">Q4</text>
+<rect x="842" y="132" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="899" y="150" font-size="11" fill="#6b7280" text-anchor="middle">GPU 3</text>
+<rect x="852" y="160" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="899" y="178" font-size="11" fill="#111827" text-anchor="middle">KV 头 3</text>
+<rect x="852" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="902" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="874" y="212" font-size="11" fill="#111827" text-anchor="middle">Q5</text>
+<text x="924" y="212" font-size="11" fill="#111827" text-anchor="middle">Q6</text>
+<rect x="968" y="132" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="1025" y="150" font-size="11" fill="#6b7280" text-anchor="middle">GPU 4</text>
+<rect x="978" y="160" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="1025" y="178" font-size="11" fill="#111827" text-anchor="middle">KV 头 4</text>
+<rect x="978" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="1028" y="194" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="1000" y="212" font-size="11" fill="#111827" text-anchor="middle">Q7</text>
+<text x="1050" y="212" font-size="11" fill="#111827" text-anchor="middle">Q8</text>
+<rect x="590" y="248" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="647" y="266" font-size="11" fill="#6b7280" text-anchor="middle">GPU 5</text>
+<rect x="600" y="276" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="647" y="294" font-size="11" fill="#111827" text-anchor="middle">KV 头 5</text>
+<rect x="600" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="650" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="622" y="328" font-size="11" fill="#111827" text-anchor="middle">Q9</text>
+<text x="672" y="328" font-size="11" fill="#111827" text-anchor="middle">Q10</text>
+<rect x="716" y="248" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="773" y="266" font-size="11" fill="#6b7280" text-anchor="middle">GPU 6</text>
+<rect x="726" y="276" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="773" y="294" font-size="11" fill="#111827" text-anchor="middle">KV 头 6</text>
+<rect x="726" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="776" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="748" y="328" font-size="11" fill="#111827" text-anchor="middle">Q11</text>
+<text x="798" y="328" font-size="11" fill="#111827" text-anchor="middle">Q12</text>
+<rect x="842" y="248" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="899" y="266" font-size="11" fill="#6b7280" text-anchor="middle">GPU 7</text>
+<rect x="852" y="276" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="899" y="294" font-size="11" fill="#111827" text-anchor="middle">KV 头 7</text>
+<rect x="852" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="902" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="874" y="328" font-size="11" fill="#111827" text-anchor="middle">Q13</text>
+<text x="924" y="328" font-size="11" fill="#111827" text-anchor="middle">Q14</text>
+<rect x="968" y="248" width="114" height="100" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="1025" y="266" font-size="11" fill="#6b7280" text-anchor="middle">GPU 8</text>
+<rect x="978" y="276" width="94" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="1025" y="294" font-size="11" fill="#111827" text-anchor="middle">KV 头 8</text>
+<rect x="978" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="1028" y="310" width="44" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="1000" y="328" font-size="11" fill="#111827" text-anchor="middle">Q15</text>
+<text x="1050" y="328" font-size="11" fill="#111827" text-anchor="middle">Q16</text>
+<rect x="16" y="386" width="1088" height="90" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="410" font-size="12" fill="#6b7280" text-anchor="start">附录 B 的论证（PDF p. 12–13）：MQA 模式把算术强度推到 2 × 头数（128 头即 256），贴近 H100 BF16 的屋脊 295 FLOPs/byte，单卡解码很划算；</text>
+<text x="36" y="430" font-size="12" fill="#6b7280" text-anchor="start">但一上 TP，共享 KV 必须复制到每张卡。GQA / CCGQA 的算术强度只有「组数」，却能按 KV 头切给各卡。作者认为这也是用 MLA 的模型偏向专家并行与流水线并行的原因。</text>
+<text x="36" y="464" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 12–14 附录 B 与 Figure 8 画的机制示意，不是实测。</text>
+</svg>

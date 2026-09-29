@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Kimi Linear：3 层 KDA 配 1 层不加位置编码的 MLA，通道混合全是 MoE</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = KDA（固定大小状态）；黄 = MLA 全注意力（唯一存 KV cache 的层）；绿 = MoE / FFN；灰 = 其余运算。</text>
+<rect x="16" y="72" width="360" height="528" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="196" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">整机堆叠（自下而上）</text>
+<rect x="56" y="110" width="280" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="196" y="131" font-size="13" fill="#111827" text-anchor="middle">输出</text>
+<rect x="40" y="160" width="312" height="318" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="54" y="181" font-size="11" fill="#6b7280" text-anchor="start">一组 4 层，按组重复</text>
+<rect x="56" y="194" width="150" height="50" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="131" y="224" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MLA（NoPE）</text>
+<rect x="222" y="194" width="114" height="50" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="279" y="224" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MoE</text>
+<text x="214" y="223" font-size="13" fill="#9ca3af" text-anchor="middle">→</text>
+<rect x="56" y="264" width="150" height="50" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="131" y="294" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">KDA</text>
+<rect x="222" y="264" width="114" height="50" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="279" y="294" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MoE</text>
+<text x="214" y="293" font-size="13" fill="#9ca3af" text-anchor="middle">→</text>
+<rect x="56" y="334" width="150" height="50" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="131" y="364" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">KDA</text>
+<rect x="222" y="334" width="114" height="50" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="279" y="364" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MoE</text>
+<text x="214" y="363" font-size="13" fill="#9ca3af" text-anchor="middle">→</text>
+<rect x="56" y="404" width="150" height="50" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="131" y="434" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">KDA</text>
+<rect x="222" y="404" width="114" height="50" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="279" y="434" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MoE</text>
+<text x="214" y="433" font-size="13" fill="#9ca3af" text-anchor="middle">→</text>
+<rect x="56" y="496" width="280" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="196" y="514" font-size="11" fill="#111827" text-anchor="middle">第 1 层的 FFN 用 dense，不做 MoE</text>
+<text x="196" y="529" font-size="11" fill="#6b7280" text-anchor="middle">作者给的理由：训练稳定</text>
+<rect x="56" y="550" width="280" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="196" y="571" font-size="13" fill="#111827" text-anchor="middle">输入 Token 嵌入</text>
+<line x1="196" y1="550" x2="196" y2="538" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="196" y1="496" x2="196" y2="480" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="196" y1="194" x2="196" y2="144" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="392" y="72" width="376" height="528" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="580" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">一层 KDA 内部（每个头）</text>
+<rect x="420" y="112" width="320" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="580" y="132" font-size="13" fill="#111827" text-anchor="middle">W<tspan baseline-shift="sub" font-size="75%">o</tspan> 输出投影</text>
+<rect x="420" y="160" width="320" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="580" y="180" font-size="12" fill="#111827" text-anchor="middle">⊙ Sigmoid 输出门（低秩 W<tspan baseline-shift="sub" font-size="75%">g</tspan><tspan baseline-shift="super" font-size="75%">↑</tspan>W<tspan baseline-shift="sub" font-size="75%">g</tspan><tspan baseline-shift="super" font-size="75%">↓</tspan>x）</text>
+<rect x="420" y="208" width="320" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="580" y="228" font-size="13" fill="#111827" text-anchor="middle">按头 RMSNorm</text>
+<rect x="420" y="256" width="320" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="580" y="276" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">KDA 递归：式 (1)</text>
+<text x="580" y="292" font-size="11" fill="#6b7280" text-anchor="middle">d<tspan baseline-shift="sub" font-size="75%">k</tspan> = d<tspan baseline-shift="sub" font-size="75%">v</tspan> = 128，状态 128 × 128，不随长度变</text>
+<line x1="580" y1="208" x2="580" y2="192" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="580" y1="160" x2="580" y2="144" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="580" y1="256" x2="580" y2="240" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="440" y="328" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">q</text>
+<rect x="408" y="520" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="440" y="538" font-size="10" fill="#111827" text-anchor="middle">Linear</text>
+<rect x="408" y="478" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="440" y="496" font-size="10" fill="#111827" text-anchor="middle">ShortConv</text>
+<line x1="440" y1="520" x2="440" y2="508" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="408" y="436" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="440" y="454" font-size="10" fill="#111827" text-anchor="middle">Swish</text>
+<line x1="440" y1="478" x2="440" y2="466" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="408" y="394" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="440" y="412" font-size="10" fill="#111827" text-anchor="middle">L2Norm</text>
+<line x1="440" y1="436" x2="440" y2="424" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="440" y1="394" x2="440" y2="338" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="510" y="328" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">k</text>
+<rect x="478" y="520" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="510" y="538" font-size="10" fill="#111827" text-anchor="middle">Linear</text>
+<rect x="478" y="478" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="510" y="496" font-size="10" fill="#111827" text-anchor="middle">ShortConv</text>
+<line x1="510" y1="520" x2="510" y2="508" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="478" y="436" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="510" y="454" font-size="10" fill="#111827" text-anchor="middle">Swish</text>
+<line x1="510" y1="478" x2="510" y2="466" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="478" y="394" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="510" y="412" font-size="10" fill="#111827" text-anchor="middle">L2Norm</text>
+<line x1="510" y1="436" x2="510" y2="424" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="510" y1="394" x2="510" y2="338" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="580" y="328" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">v</text>
+<rect x="548" y="520" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="580" y="538" font-size="10" fill="#111827" text-anchor="middle">Linear</text>
+<rect x="548" y="478" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="580" y="496" font-size="10" fill="#111827" text-anchor="middle">ShortConv</text>
+<line x1="580" y1="520" x2="580" y2="508" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="548" y="436" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="580" y="454" font-size="10" fill="#111827" text-anchor="middle">Swish</text>
+<line x1="580" y1="478" x2="580" y2="466" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="580" y1="436" x2="580" y2="338" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="650" y="328" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">α</text>
+<rect x="618" y="520" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="650" y="538" font-size="10" fill="#111827" text-anchor="middle">低秩 W<tspan baseline-shift="super" font-size="75%">↓</tspan></text>
+<rect x="618" y="478" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="650" y="496" font-size="10" fill="#111827" text-anchor="middle">W<tspan baseline-shift="super" font-size="75%">↑</tspan></text>
+<line x1="650" y1="520" x2="650" y2="508" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="618" y="436" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="650" y="454" font-size="10" fill="#111827" text-anchor="middle">f(·) ∈ [0,1]</text>
+<line x1="650" y1="478" x2="650" y2="466" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="650" y1="436" x2="650" y2="338" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="720" y="328" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">β</text>
+<rect x="688" y="520" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="720" y="538" font-size="10" fill="#111827" text-anchor="middle">Linear</text>
+<rect x="688" y="478" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="720" y="496" font-size="10" fill="#111827" text-anchor="middle">Sigmoid</text>
+<line x1="720" y1="520" x2="720" y2="508" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="720" y1="478" x2="720" y2="338" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="430" y1="572" x2="730" y2="572" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="440" y1="572" x2="440" y2="550" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="510" y1="572" x2="510" y2="550" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="580" y1="572" x2="580" y2="550" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="650" y1="572" x2="650" y2="550" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="720" y1="572" x2="720" y2="550" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="580" y="590" font-size="13" fill="#6b7280" text-anchor="middle">x<tspan baseline-shift="sub" font-size="75%">t</tspan></text>
+<rect x="784" y="72" width="320" height="528" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="944" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">另外两种部件</text>
+<rect x="804" y="114" width="280" height="150" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="944" y="140" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MLA 层（全局注意力）</text>
+<text x="944" y="166" font-size="11" fill="#6b7280" text-anchor="middle">不加任何位置编码（NoPE）</text>
+<text x="944" y="186" font-size="11" fill="#6b7280" text-anchor="middle">位置与「远近」全交给 KDA 层</text>
+<text x="944" y="206" font-size="11" fill="#6b7280" text-anchor="middle">推理时可以化成纯 MQA</text>
+<text x="944" y="226" font-size="11" fill="#6b7280" text-anchor="middle">长上下文不必调 RoPE 基频或 YaRN</text>
+<text x="944" y="246" font-size="11" fill="#6b7280" text-anchor="middle">只有这 1/4 的层存 KV cache</text>
+<rect x="804" y="284" width="280" height="130" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="944" y="310" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MoE 通道混合</text>
+<text x="944" y="336" font-size="11" fill="#6b7280" text-anchor="middle">256 个专家，每 Token 激活 8 个</text>
+<text x="944" y="356" font-size="11" fill="#6b7280" text-anchor="middle">其中含 1 个共享专家</text>
+<text x="944" y="376" font-size="11" fill="#6b7280" text-anchor="middle">总参 48B，激活 3B</text>
+<text x="944" y="396" font-size="11" fill="#6b7280" text-anchor="middle">稀疏度 32，高于 Moonlight</text>
+<rect x="804" y="434" width="280" height="96" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="944" y="460" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">骨架沿用 Moonlight</text>
+<text x="944" y="486" font-size="11" fill="#6b7280" text-anchor="middle">三个对照模型（MLA、GDN-H、</text>
+<text x="944" y="506" font-size="11" fill="#6b7280" text-anchor="middle">Kimi Linear RoPE 版）同骨架同参数量</text>
+<text x="944" y="556" font-size="11" fill="#9ca3af" text-anchor="middle">层数、隐藏维、MLA 维度</text>
+<text x="944" y="574" font-size="11" fill="#9ca3af" text-anchor="middle">论文正文都没给</text>
+<text x="30" y="624" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 5–6（Figure 3、式 10 与参数化公式）和 p. 9（§5.4 配置）重画。结构示意，不代表真实层数。</text>
+</svg>
