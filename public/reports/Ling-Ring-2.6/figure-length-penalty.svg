@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 440" width="860" height="440" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="lrl-ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="860" height="440" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" font-weight="700">动态长度惩罚：「短」只在「对」的前提下值钱</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280">横轴是回答在同题一组采样里的相对长度，纵轴是长度项。绿 = 答对；红虚线 = 答错。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280">按 PDF p. 14 式 3–4 画；准确性、格式、冗余三项另算，未画。</text>
+<rect x="120" y="110" width="660" height="260" fill="none" stroke="#cbd2d9"/>
+<path d="M120.0,348.3 L780.0,348.3" fill="none" stroke="#eeeeee" stroke-width="1"/>
+<text x="110.0" y="352.3" font-size="11" fill="#6b7280" text-anchor="end">-0.5</text>
+<path d="M120.0,240.0 L780.0,240.0" fill="none" stroke="#eeeeee" stroke-width="1"/>
+<text x="110.0" y="244.0" font-size="11" fill="#6b7280" text-anchor="end">0</text>
+<path d="M120.0,131.7 L780.0,131.7" fill="none" stroke="#eeeeee" stroke-width="1"/>
+<text x="110.0" y="135.7" font-size="11" fill="#6b7280" text-anchor="end">+0.5</text>
+<path d="M450.0,110.0 L450.0,370.0" fill="none" stroke="#eeeeee" stroke-width="1"/>
+<text x="120.0" y="390.0" font-size="11" fill="#6b7280" text-anchor="middle">同题最短</text>
+<text x="450.0" y="390.0" font-size="11" fill="#6b7280" text-anchor="middle">最短与最长的正中</text>
+<text x="780.0" y="390.0" font-size="11" fill="#6b7280" text-anchor="middle">同题最长</text>
+<text x="60.0" y="232.0" font-size="11" fill="#6b7280" text-anchor="middle">长度项</text>
+<path d="M120.0,131.7 L780.0,348.3" fill="none" stroke="#5fa886" stroke-width="2.4"/>
+<path d="M120.0,240.0 L450.0,240.0 L780.0,348.3" fill="none" stroke="#d9877a" stroke-width="2.4" stroke-dasharray="7 5"/>
+<text x="159.6" y="121.7" font-size="11" fill="#5fa886">答对：最短 +0.5，越长越扣，最长 −0.5</text>
+<text x="146.4" y="230.0" font-size="11" fill="#d9877a">答错：短不加分，封顶为 0</text>
+<text x="542.4" y="209.7" font-size="11" fill="#6b7280">过了正中，对错两条线重合：</text>
+<text x="542.4" y="227.7" font-size="11" fill="#6b7280">长回答无论对错都扣分</text>
+</svg>

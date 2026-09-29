@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 590" width="1120" height="590" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="590" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">保留思考：第 2 轮开始时，前一轮的思考块还在不在上下文里</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 思考块；灰 = 工具定义、用户消息、工具调用与结果、答案；虚线空框 = 新一轮开始时被清掉的思考块。每列从上往下就是模型看到的上下文顺序。</text>
+<rect x="16" y="72" width="352" height="472" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="192" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">第 1 轮（第 3 步）</text>
+<text x="192" y="114" font-size="11" fill="#6b7280" text-anchor="middle">每次调工具前先想：交替思考</text>
+<rect x="112" y="132" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="212.0" y="149" font-size="11" fill="#111827" text-anchor="middle">工具定义</text>
+<rect x="112" y="164" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="212.0" y="181" font-size="11" fill="#111827" text-anchor="middle">用户消息 1</text>
+<rect x="112" y="196" width="200" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="212.0" y="213" font-size="11" fill="#111827" text-anchor="middle">思考 1</text>
+<rect x="112" y="228" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="212.0" y="245" font-size="11" fill="#111827" text-anchor="middle">工具调用 1</text>
+<rect x="112" y="260" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="212.0" y="277" font-size="11" fill="#111827" text-anchor="middle">工具结果 1</text>
+<rect x="112" y="292" width="200" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="212.0" y="309" font-size="11" fill="#111827" text-anchor="middle">思考 2</text>
+<rect x="112" y="324" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="212.0" y="341" font-size="11" fill="#111827" text-anchor="middle">工具调用 2</text>
+<rect x="112" y="356" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="212.0" y="373" font-size="11" fill="#111827" text-anchor="middle">工具结果 2</text>
+<rect x="112" y="388" width="200" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="212.0" y="405" font-size="11" fill="#111827" text-anchor="middle">思考 3</text>
+<rect x="112" y="420" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="212.0" y="437" font-size="11" fill="#111827" text-anchor="middle">答案</text>
+<line x1="100" y1="128" x2="100" y2="380" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="62" y="258.0" font-size="11" fill="#6b7280" text-anchor="middle">输入</text>
+<line x1="100" y1="384" x2="100" y2="444" stroke="#5fa886" stroke-width="1.4"/>
+<text x="62" y="418.0" font-size="11" fill="#6b7280" text-anchor="middle">输出</text>
+<rect x="384" y="72" width="352" height="472" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="560" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">第 2 轮，不保留思考</text>
+<text x="560" y="114" font-size="11" fill="#6b7280" text-anchor="middle">旧思考被清掉，只剩动作和结果</text>
+<rect x="480" y="132" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="580.0" y="149" font-size="11" fill="#111827" text-anchor="middle">工具定义</text>
+<rect x="480" y="164" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="580.0" y="181" font-size="11" fill="#111827" text-anchor="middle">用户消息 1</text>
+<rect x="480" y="196" width="200" height="26" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="580.0" y="213" font-size="11" fill="#9ca3af" text-anchor="middle">思考 1（已清掉）</text>
+<rect x="480" y="228" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="580.0" y="245" font-size="11" fill="#111827" text-anchor="middle">工具调用 1</text>
+<rect x="480" y="260" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="580.0" y="277" font-size="11" fill="#111827" text-anchor="middle">工具结果 1</text>
+<rect x="480" y="292" width="200" height="26" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="580.0" y="309" font-size="11" fill="#9ca3af" text-anchor="middle">思考 2（已清掉）</text>
+<rect x="480" y="324" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="580.0" y="341" font-size="11" fill="#111827" text-anchor="middle">工具调用 2</text>
+<rect x="480" y="356" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="580.0" y="373" font-size="11" fill="#111827" text-anchor="middle">工具结果 2</text>
+<rect x="480" y="388" width="200" height="26" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="580.0" y="405" font-size="11" fill="#9ca3af" text-anchor="middle">思考 3（已清掉）</text>
+<rect x="480" y="420" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="580.0" y="437" font-size="11" fill="#111827" text-anchor="middle">答案</text>
+<rect x="480" y="452" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="580.0" y="469" font-size="11" fill="#111827" text-anchor="middle">用户消息 2</text>
+<line x1="468" y1="128" x2="468" y2="476" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="430" y="306.0" font-size="11" fill="#6b7280" text-anchor="middle">输入</text>
+<line x1="468" y1="490" x2="468" y2="524" stroke="#5fa886" stroke-width="1.4"/>
+<text x="430" y="511" font-size="11" fill="#6b7280" text-anchor="middle">输出</text>
+<rect x="480" y="494" width="200" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="580.0" y="511" font-size="11" fill="#111827" text-anchor="middle">思考 4 …</text>
+<rect x="752" y="72" width="352" height="472" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="928" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">第 2 轮，保留思考</text>
+<text x="928" y="114" font-size="11" fill="#6b7280" text-anchor="middle">旧思考原样留在上下文里</text>
+<rect x="848" y="132" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="948.0" y="149" font-size="11" fill="#111827" text-anchor="middle">工具定义</text>
+<rect x="848" y="164" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="948.0" y="181" font-size="11" fill="#111827" text-anchor="middle">用户消息 1</text>
+<rect x="848" y="196" width="200" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="948.0" y="213" font-size="11" fill="#111827" text-anchor="middle">思考 1</text>
+<rect x="848" y="228" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="948.0" y="245" font-size="11" fill="#111827" text-anchor="middle">工具调用 1</text>
+<rect x="848" y="260" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="948.0" y="277" font-size="11" fill="#111827" text-anchor="middle">工具结果 1</text>
+<rect x="848" y="292" width="200" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="948.0" y="309" font-size="11" fill="#111827" text-anchor="middle">思考 2</text>
+<rect x="848" y="324" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="948.0" y="341" font-size="11" fill="#111827" text-anchor="middle">工具调用 2</text>
+<rect x="848" y="356" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="948.0" y="373" font-size="11" fill="#111827" text-anchor="middle">工具结果 2</text>
+<rect x="848" y="388" width="200" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="948.0" y="405" font-size="11" fill="#111827" text-anchor="middle">思考 3</text>
+<rect x="848" y="420" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="948.0" y="437" font-size="11" fill="#111827" text-anchor="middle">答案</text>
+<rect x="848" y="452" width="200" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="948.0" y="469" font-size="11" fill="#111827" text-anchor="middle">用户消息 2</text>
+<line x1="836" y1="128" x2="836" y2="476" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="798" y="306.0" font-size="11" fill="#6b7280" text-anchor="middle">输入</text>
+<line x1="836" y1="490" x2="836" y2="524" stroke="#5fa886" stroke-width="1.4"/>
+<text x="798" y="511" font-size="11" fill="#6b7280" text-anchor="middle">输出</text>
+<rect x="848" y="494" width="200" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="948.0" y="511" font-size="11" fill="#111827" text-anchor="middle">思考 4 …</text>
+<text x="30" y="572" font-size="11" fill="#9ca3af" text-anchor="start">按报告 Figure 7（PDF p. 10）重画，只保留第 1 轮最后一步与第 2 轮第一步；文字说明见 §3.1（PDF p. 11）。示意上下文结构，不是训练样本原文。</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 420" width="1120" height="420" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="lr4-ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="420" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" font-weight="700">9.6T Token 怎么花：八成多是 4K 上下文的继续预训练</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280">上面的条按 Token 量等比例画，下面是每段的上下文与配比。黄 = 迁移预训练；绿 = 继续预训练；紫 = 中期训练。按 PDF p. 9 Figure 4 与 p. 9–10 正文。</text>
+<rect x="30.0" y="88.0" width="44.2" height="34.0" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="74.2" y="88.0" width="883.3" height="34.0" rx="2" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="957.5" y="88.0" width="27.6" height="34.0" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="985.1" y="88.0" width="46.9" height="34.0" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1032.0" y="88.0" width="58.0" height="34.0" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="515.7" y="110.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">继续预训练 8T</text>
+<path d="M52.1,124.0 L52.1,146.0 L130.0,146.0 L130.0,166.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#lr4-ar)"/>
+<rect x="30.0" y="170.0" width="200.0" height="190.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="42.0" y="196.0" font-size="14" fill="#111827" font-weight="700">迁移预训练 约 400B</text>
+<text x="42.0" y="224.0" font-size="11" fill="#6b7280">4K 上下文，分四步</text>
+<text x="42.0" y="248.0" font-size="11" fill="#6b7280">把 GQA 换成 Lightning + MLA</text>
+<text x="42.0" y="272.0" font-size="11" fill="#6b7280">每步只解冻少量参数</text>
+<text x="42.0" y="296.0" font-size="11" fill="#6b7280">配比未单独给出</text>
+<path d="M515.8,124.0 L515.8,146.0 L375.0,146.0 L375.0,166.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#lr4-ar)"/>
+<rect x="245.0" y="170.0" width="260.0" height="190.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="257.0" y="196.0" font-size="14" fill="#111827" font-weight="700">继续预训练 8T</text>
+<text x="257.0" y="224.0" font-size="11" fill="#6b7280">4K 上下文，全参数解冻</text>
+<text x="257.0" y="248.0" font-size="11" fill="#6b7280">正文：46% 推理、50% 通用、4% 多语言</text>
+<text x="257.0" y="272.0" font-size="11" fill="#6b7280">图：64% 通用、36% 推理</text>
+<text x="257.0" y="296.0" font-size="11" fill="#6b7280">推理占比两处差 10 个点，报告未解释</text>
+<text x="257.0" y="320.0" font-size="11" fill="#6b7280">一开始就上新数据（激进策略）</text>
+<path d="M971.3,124.0 L971.3,134.0 L610.0,134.0 L610.0,166.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#lr4-ar)"/>
+<rect x="520.0" y="170.0" width="180.0" height="190.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="532.0" y="196.0" font-size="14" fill="#111827" font-weight="700">中期 ① 250B</text>
+<text x="532.0" y="224.0" font-size="11" fill="#6b7280">20% 序列取 32K</text>
+<text x="532.0" y="248.0" font-size="11" fill="#6b7280">图：67% 通用、33% 推理</text>
+<text x="532.0" y="272.0" font-size="11" fill="#6b7280">学习率仍在峰值</text>
+<path d="M1008.6,124.0 L1008.6,146.0 L805.0,146.0 L805.0,166.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#lr4-ar)"/>
+<rect x="715.0" y="170.0" width="180.0" height="190.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="727.0" y="196.0" font-size="14" fill="#111827" font-weight="700">中期 ② 425B</text>
+<text x="727.0" y="224.0" font-size="11" fill="#6b7280">32K 上下文</text>
+<text x="727.0" y="248.0" font-size="11" fill="#6b7280">图：47% 通用、53% 推理</text>
+<text x="727.0" y="272.0" font-size="11" fill="#6b7280">高质量数据占比显著提高</text>
+<path d="M1061.0,124.0 L1061.0,158.0 L1000.0,158.0 L1000.0,166.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#lr4-ar)"/>
+<rect x="910.0" y="170.0" width="180.0" height="190.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="922.0" y="196.0" font-size="14" fill="#111827" font-weight="700">中期 ③ 525B</text>
+<text x="922.0" y="224.0" font-size="11" fill="#6b7280">256K 上下文</text>
+<text x="922.0" y="248.0" font-size="11" fill="#6b7280">图：43% 通用、42% 推理、</text>
+<text x="922.0" y="272.0" font-size="11" fill="#6b7280">15% Agentic</text>
+<text x="922.0" y="296.0" font-size="11" fill="#6b7280">保持高质量配比</text>
+<text x="30.0" y="392.0" font-size="11" fill="#9ca3af">全程沿用 WSM：warmup 到峰值后学习率恒定，退火效果靠合并 checkpoint 得到。多语言在迁移与继续预训练占 4%，中期训练去掉通用网页（PDF p. 9）。</text>
+</svg>

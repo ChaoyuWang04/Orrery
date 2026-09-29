@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 610" width="1120" height="610" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="610" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">ZAYA1-8B 的一个 Block：三处改动分别落在哪里</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">绿 = 残差缩放；紫 = 投到压缩空间；黄 = CCA 的预处理（卷积、均值跳连、时延）；红 = 路由器的新部件；灰 = 沿用的标准部件。</text>
+
+<rect x="16" y="74" width="280" height="486" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="312" y="74" width="460" height="486" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="788" y="74" width="316" height="486" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="156" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 残差缩放</text>
+<text x="156" y="116" font-size="11" fill="#6b7280" text-anchor="middle">每个子层的残差与输出各一组 α、β</text>
+<rect x="96" y="136" width="120" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="156" y="154" font-size="11" fill="#111827" text-anchor="middle">输入 x_l</text>
+<polyline points="156,164 156,176 76,176 76,296" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="156,176 226,176 226,192" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="176" y="196" width="100" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="226" y="213" font-size="11" fill="#111827" text-anchor="middle">RMSNorm</text>
+<line x1="226" y1="222" x2="226" y2="236" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="176" y="240" width="100" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="226" y="257" font-size="11" fill="#111827" text-anchor="middle">子层</text>
+<text x="226" y="272" font-size="11" fill="#6b7280" text-anchor="middle">CCA 或 MoE</text>
+<line x1="226" y1="280" x2="226" y2="296" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="176" y="300" width="100" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="226" y="319" font-size="11" fill="#111827" text-anchor="middle">输出侧缩放</text>
+<rect x="30" y="300" width="92" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="76" y="319" font-size="11" fill="#111827" text-anchor="middle">残差侧缩放</text>
+<polyline points="76,330 76,370 146,370" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="226,330 226,370 166,370" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<circle cx="156" cy="370" r="9" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="156" y="374" font-size="12" fill="#111827" text-anchor="middle">+</text>
+<line x1="156" y1="379" x2="156" y2="392" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="96" y="396" width="120" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="156" y="414" font-size="11" fill="#111827" text-anchor="middle">输出 x_(l+1)</text>
+<text x="156" y="454" font-size="12" fill="#111827" text-anchor="middle">Res-scale(x) = αx + β</text>
+<text x="156" y="474" font-size="11" fill="#6b7280" text-anchor="middle">α、β 都是 D 维向量，逐维缩放</text>
+<text x="156" y="492" font-size="11" fill="#6b7280" text-anchor="middle">初始化 α = 1、β = 0，即普通残差</text>
+<text x="156" y="510" font-size="11" fill="#6b7280" text-anchor="middle">新增参数 4 × L × D</text>
+<text x="156" y="528" font-size="11" fill="#6b7280" text-anchor="middle">与 LayerNorm 同一量级</text>
+
+<text x="542" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) CCA：注意力在压缩空间里做</text>
+<text x="542" y="116" font-size="11" fill="#6b7280" text-anchor="middle">正式配置叫 CCGQA：带 CCA 预处理，再叠分组查询</text>
+<rect x="472" y="136" width="140" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="542" y="154" font-size="11" fill="#111827" text-anchor="middle">残差流 x（2048 维）</text>
+<polyline points="542,164 542,172 400,172 400,182" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="542" y1="164" x2="542" y2="172" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="542,172 620,172 620,182" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="620,172 718,172 718,182" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="350" y="186" width="100" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="400" y="205" font-size="11" fill="#111827" text-anchor="middle">Q 下投影</text>
+<rect x="570" y="186" width="100" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="620" y="205" font-size="11" fill="#111827" text-anchor="middle">K 下投影</text>
+<rect x="676" y="186" width="84" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="718" y="205" font-size="11" fill="#111827" text-anchor="middle">V 下投影</text>
+<polyline points="450,201 510,201 510,278" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="570" y1="201" x2="510" y2="201" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="400" y1="216" x2="400" y2="232" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="620" y1="216" x2="620" y2="232" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="718" y1="216" x2="718" y2="232" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="350" y="236" width="100" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="400" y="255" font-size="11" fill="#111827" text-anchor="middle">逐通道短卷积</text>
+<rect x="570" y="236" width="100" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="620" y="255" font-size="11" fill="#111827" text-anchor="middle">逐通道短卷积</text>
+<rect x="676" y="236" width="84" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="718" y="254" font-size="11" fill="#111827" text-anchor="middle">时延 1 Token</text>
+<text x="718" y="271" font-size="11" fill="#6b7280" text-anchor="middle">一半 V 头</text>
+<line x1="400" y1="266" x2="400" y2="278" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="620" y1="266" x2="620" y2="278" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="350" y="282" width="100" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="400" y="301" font-size="11" fill="#111827" text-anchor="middle">逐头分组卷积</text>
+<rect x="570" y="282" width="100" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="620" y="301" font-size="11" fill="#111827" text-anchor="middle">逐头分组卷积</text>
+<rect x="478" y="282" width="64" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="510" y="301" font-size="11" fill="#111827" text-anchor="middle">QK 均值</text>
+<line x1="400" y1="312" x2="400" y2="334" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="620" y1="312" x2="620" y2="334" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="510,312 510,345 411,345" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="510,345 609,345" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<circle cx="400" cy="345" r="8" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="400" y="349" font-size="12" fill="#111827" text-anchor="middle">+</text>
+<circle cx="620" cy="345" r="8" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="620" y="349" font-size="12" fill="#111827" text-anchor="middle">+</text>
+<line x1="400" y1="353" x2="400" y2="366" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="620" y1="353" x2="620" y2="366" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="350" y="370" width="100" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="400" y="389" font-size="11" fill="#111827" text-anchor="middle">RMSNorm</text>
+<rect x="570" y="370" width="100" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="620" y="389" font-size="11" fill="#111827" text-anchor="middle">RMSNorm × T</text>
+<line x1="400" y1="400" x2="400" y2="436" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="620" y1="400" x2="620" y2="436" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="718" y1="280" x2="718" y2="436" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="412" y="422" font-size="11" fill="#6b7280" text-anchor="start">q̃</text>
+<text x="632" y="422" font-size="11" fill="#6b7280" text-anchor="start">k̃</text>
+<text x="730" y="422" font-size="11" fill="#6b7280" text-anchor="start">ṽ</text>
+<rect x="350" y="440" width="410" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="555" y="463" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">在压缩空间里做注意力：8 个 Q 头共享 2 个 KV 头</text>
+<text x="542" y="500" font-size="11" fill="#6b7280" text-anchor="middle">Query 压 2×；KV Cache 相对完整多头注意力压 8×</text>
+<text x="542" y="518" font-size="11" fill="#6b7280" text-anchor="middle">K 乘学到的温度 T（标准 CCA 用 exp(T)），QK 内积上界 T·√d_h</text>
+<text x="542" y="536" font-size="11" fill="#6b7280" text-anchor="middle">每个头一半通道加 RoPE，另一半不加位置编码</text>
+
+<text x="946" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(c) ZAYA1 路由器 + Top-1</text>
+<text x="946" y="116" font-size="11" fill="#6b7280" text-anchor="middle">线性打分换成一个小网络</text>
+<rect x="866" y="136" width="160" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="946" y="154" font-size="11" fill="#111827" text-anchor="middle">残差流 x_l（2048 维）</text>
+<line x1="946" y1="164" x2="946" y2="182" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="866" y="186" width="160" height="30" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="946" y="205" font-size="11" fill="#111827" text-anchor="middle">下投影到 R = 256 维</text>
+<line x1="946" y1="216" x2="946" y2="232" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="796" y="236" width="56" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="824" y="255" font-size="11" fill="#111827" text-anchor="middle">上一层</text>
+<line x1="852" y1="251" x2="862" y2="251" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="866" y="236" width="160" height="30" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="946" y="255" font-size="11" fill="#111827" text-anchor="middle">EDA：r_l + γ · r_(l−1)</text>
+<line x1="946" y1="266" x2="946" y2="278" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="866" y="282" width="160" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="946" y="299" font-size="11" fill="#111827" text-anchor="middle">RMSNorm</text>
+<line x1="946" y1="308" x2="946" y2="322" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="866" y="326" width="160" height="30" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="946" y="345" font-size="11" fill="#111827" text-anchor="middle">三层 MLP（GeLU）+ softmax</text>
+<line x1="946" y1="356" x2="946" y2="372" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="866" y="376" width="160" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="946" y="395" font-size="11" fill="#111827" text-anchor="middle">加偏置 b_l，取最大的 1 个</text>
+<line x1="946" y1="406" x2="946" y2="436" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="803" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="821" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="839" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="857" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="875" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="893" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="911" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="929" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="947" y="440" width="16" height="36" rx="3" fill="#b9b9b9" stroke="#6b7280" stroke-width="1.6"/>
+<rect x="965" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="983" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1001" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1019" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1037" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1055" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1073" y="440" width="16" height="36" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="946" y="500" font-size="11" fill="#6b7280" text-anchor="middle">16 个专家，每个 Token 只走深色那 1 个，无共享专家</text>
+<text x="946" y="518" font-size="11" fill="#6b7280" text-anchor="middle">偏置 b_l 交给 AdamW，梯度 = p_(l,e) − 1/E</text>
+<text x="946" y="536" font-size="11" fill="#6b7280" text-anchor="middle">MLP 跑在 256 维上，参数与算力都小</text>
+
+<text x="30" y="590" font-size="12" fill="#9ca3af" text-anchor="start">机制示意，不是原图复制。依据 PDF p. 4 Fig. 3 与 Table I、p. 4–5 式 1–6、p. 30–31 附录 C 与 Fig. 12；卷积核宽度与下投影秩原文未给，图上不标。</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" width="1120" height="400" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="lrm-ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="400" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" font-weight="700">四步移植：每改一处结构，先只训相关参数把损失拉回来</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280">黄 = 结构改动；绿 = 本步可训练；灰 = 冻结或原样保留。四步都在 4K 上下文，合计约 400B Token；各步预算未单独给出（PDF p. 6–7、9–10）。</text>
+<rect x="30.0" y="84.0" width="206.0" height="292.0" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="133.0" y="108.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">① Lightning 转换</text>
+<rect x="40.0" y="124.0" width="186.0" height="70.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="50.0" y="146.0" font-size="13" fill="#111827" font-weight="700">部分 GQA 层 → Lightning</text>
+<text x="50.0" y="166.0" font-size="11" fill="#6b7280">Wqkv 沿头维扩成标准多头，</text>
+<text x="50.0" y="184.0" font-size="11" fill="#6b7280">新增参数随机初始化</text>
+<rect x="40.0" y="204.0" width="186.0" height="52.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="50.0" y="226.0" font-size="13" fill="#111827" font-weight="700">新增门控参数</text>
+<text x="50.0" y="246.0" font-size="11" fill="#6b7280">W_gate 与 γ_gate</text>
+<rect x="40.0" y="266.0" width="186.0" height="70.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="50.0" y="288.0" font-size="13" fill="#111827" font-weight="700">原样保留</text>
+<text x="50.0" y="308.0" font-size="11" fill="#6b7280">QK Norm 与 Partial RoPE：</text>
+<text x="50.0" y="326.0" font-size="11" fill="#6b7280">稳训练、兼容 FP8、利长上下文</text>
+<path d="M238.0,249.0 L256.0,249.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#lrm-ar)"/>
+<rect x="258.0" y="84.0" width="206.0" height="292.0" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="361.0" y="108.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">② 线性 warmup</text>
+<rect x="268.0" y="124.0" width="186.0" height="52.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="278.0" y="146.0" font-size="13" fill="#111827" font-weight="700">可训练</text>
+<text x="278.0" y="166.0" font-size="11" fill="#6b7280">Wqkv 与 QK Norm 权重</text>
+<rect x="268.0" y="186.0" width="186.0" height="52.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="278.0" y="208.0" font-size="13" fill="#111827" font-weight="700">冻结</text>
+<text x="278.0" y="228.0" font-size="11" fill="#6b7280">其余全部参数</text>
+<text x="270.0" y="264.0" font-size="11" fill="#9ca3af">小数据预算加学习率 warmup，</text>
+<text x="270.0" y="282.0" font-size="11" fill="#9ca3af">损失回到转换前</text>
+<path d="M466.0,249.0 L484.0,249.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#lrm-ar)"/>
+<rect x="486.0" y="84.0" width="206.0" height="292.0" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="589.0" y="108.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">③ MLA 转换</text>
+<rect x="496.0" y="124.0" width="186.0" height="70.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="506.0" y="146.0" font-size="13" fill="#111827" font-weight="700">(1) 校准融合去掉 QK Norm</text>
+<text x="506.0" y="166.0" font-size="11" fill="#6b7280">mini 规模上困惑度</text>
+<text x="506.0" y="184.0" font-size="11" fill="#6b7280">6.65 → 11.13</text>
+<rect x="496.0" y="204.0" width="186.0" height="70.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="506.0" y="226.0" font-size="13" fill="#111827" font-weight="700">(2) 短暂的部分参数训练</text>
+<text x="506.0" y="246.0" font-size="11" fill="#6b7280">只解冻 Wqkv、QK Norm、</text>
+<text x="506.0" y="264.0" font-size="11" fill="#6b7280">W_gate、γ_gate</text>
+<rect x="496.0" y="284.0" width="186.0" height="70.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="506.0" y="306.0" font-size="13" fill="#111827" font-weight="700">(3) Partial RoPE 适配</text>
+<text x="506.0" y="326.0" font-size="11" fill="#6b7280">再用 TransMLA 把剩下的</text>
+<text x="506.0" y="344.0" font-size="11" fill="#6b7280">GQA 层转成 MLA</text>
+<path d="M694.0,249.0 L712.0,249.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#lrm-ar)"/>
+<rect x="714.0" y="84.0" width="206.0" height="292.0" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="817.0" y="108.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">④ MLA warmup</text>
+<rect x="724.0" y="124.0" width="186.0" height="52.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="734.0" y="146.0" font-size="13" fill="#111827" font-weight="700">可训练</text>
+<text x="734.0" y="166.0" font-size="11" fill="#6b7280">结构改动过的参数</text>
+<rect x="724.0" y="186.0" width="186.0" height="52.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="734.0" y="208.0" font-size="13" fill="#111827" font-weight="700">冻结</text>
+<text x="734.0" y="228.0" font-size="11" fill="#6b7280">没被结构改动的参数</text>
+<text x="726.0" y="264.0" font-size="11" fill="#9ca3af">学习率 warmup，</text>
+<text x="726.0" y="282.0" font-size="11" fill="#9ca3af">损失回到转换前</text>
+<path d="M922.0,249.0 L940.0,249.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#lrm-ar)"/>
+<rect x="942.0" y="84.0" width="148.0" height="292.0" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="1016.0" y="108.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">继续预训练</text>
+<rect x="952.0" y="124.0" width="128.0" height="70.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="962.0" y="146.0" font-size="13" fill="#111827" font-weight="700">全参数解冻</text>
+<text x="962.0" y="166.0" font-size="11" fill="#6b7280">8T Token，4K</text>
+<text x="962.0" y="184.0" font-size="11" fill="#6b7280">目标架构已就位</text>
+</svg>

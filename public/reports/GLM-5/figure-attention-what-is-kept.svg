@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" width="1120" height="430" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="430" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">省注意力算力的三种办法，丢掉的东西不一样</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">绿 = 这一步真正参与注意力的历史位置；灰 = 这一层已经看不到的位置；黄 = 压缩后的固定大小状态；紫 = 仍完整存在缓存里、这一步没读的位置。</text>
+<rect x="16" y="72" width="352" height="300" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="192" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 滑动窗口（SWA）</text>
+<text x="192" y="116" font-size="11" fill="#6b7280" text-anchor="middle">只看最近一段</text>
+<text x="40" y="140" font-size="11" fill="#9ca3af" text-anchor="start">历史位置 1 → 16（当前 token 在最右）</text>
+<rect x="40" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="59" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="78" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="97" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="116" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="135" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="154" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="173" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="192" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="211" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="230" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="249" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="268" y="150" width="16" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="287" y="150" width="16" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="306" y="150" width="16" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="325" y="150" width="16" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="40" y1="190" x2="265" y2="190" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="154.0" y="208" font-size="11" fill="#6b7280" text-anchor="middle">窗口外：这一层根本不在视野里</text>
+<line x1="268" y1="190" x2="341" y2="190" stroke="#5fa886" stroke-width="1.4"/>
+<text x="306.0" y="208" font-size="11" fill="#6b7280" text-anchor="middle">窗口内</text>
+<text x="192" y="250" font-size="11" fill="#6b7280" text-anchor="middle">窗口外的内容要靠别的全注意力层补，</text>
+<text x="192" y="268" font-size="11" fill="#6b7280" text-anchor="middle">哪几层换成滑窗决定了能补回多少</text>
+<text x="192" y="345" font-size="11" fill="#9ca3af" text-anchor="middle">固定交替 vs 搜索出的层模式：Table 4、5</text>
+<rect x="384" y="72" width="352" height="300" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="560" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) 线性注意力（GDN 一类）</text>
+<text x="560" y="116" font-size="11" fill="#6b7280" text-anchor="middle">历史折进固定大小的状态</text>
+<text x="408" y="140" font-size="11" fill="#9ca3af" text-anchor="start">历史位置 1 → 16（当前 token 在最右）</text>
+<rect x="408" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="427" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="446" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="465" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="484" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="503" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="522" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="541" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="560" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="579" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="598" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="617" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="636" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="655" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="674" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="693" y="150" width="16" height="28" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="416.0" y1="180" x2="560" y2="222" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="511.0" y1="180" x2="560" y2="222" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="606.0" y1="180" x2="560" y2="222" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="701.0" y1="180" x2="560" y2="222" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="500" y="224" width="120" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="560" y="242" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">状态 S</text>
+<text x="560" y="257" font-size="11" fill="#6b7280" text-anchor="middle">大小与长度无关</text>
+<text x="560" y="296" font-size="11" fill="#6b7280" text-anchor="middle">读的是 S，原始 KV 不再保留，</text>
+<text x="560" y="314" font-size="11" fill="#6b7280" text-anchor="middle">被挤掉的细节回不来</text>
+<text x="560" y="345" font-size="11" fill="#9ca3af" text-anchor="middle">GDN 与 SimpleGDN：Table 5</text>
+<rect x="752" y="72" width="352" height="300" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="928" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(c) DSA</text>
+<text x="928" y="116" font-size="11" fill="#6b7280" text-anchor="middle">索引器挑 top-k，别的不删</text>
+<text x="776" y="140" font-size="11" fill="#9ca3af" text-anchor="start">历史位置 1 → 16（当前 token 在最右）</text>
+<rect x="776" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="795" y="150" width="16" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="814" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="833" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="852" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="871" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="890" y="150" width="16" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="909" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="928" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="947" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="966" y="150" width="16" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="985" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1004" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1023" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1042" y="150" width="16" height="28" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="1061" y="150" width="16" height="28" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="776" y="206" font-size="11" fill="#9ca3af" text-anchor="start">索引器给每个位置打分</text>
+<rect x="776" y="234" width="16" height="8" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="795" y="220" width="16" height="22" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="814" y="236" width="16" height="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="833" y="232" width="16" height="10" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="852" y="237" width="16" height="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="871" y="233" width="16" height="9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="890" y="218" width="16" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="909" y="235" width="16" height="7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="928" y="231" width="16" height="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="947" y="236" width="16" height="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="966" y="222" width="16" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="985" y="237" width="16" height="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1004" y="233" width="16" height="9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1023" y="234" width="16" height="8" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1042" y="216" width="16" height="26" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="1061" y="230" width="16" height="12" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="776" y1="242" x2="1077" y2="242" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="928" y="268" font-size="11" fill="#6b7280" text-anchor="middle">分数最高的 k 个参与注意力（图中 k = 4）</text>
+<text x="928" y="286" font-size="11" fill="#6b7280" text-anchor="middle">其余 KV 仍在缓存里，下一个 token 可能选中</text>
+<text x="928" y="345" font-size="11" fill="#9ca3af" text-anchor="middle">GLM-4.7-Flash 上的验证：Table 6</text>
+<text x="30" y="400" font-size="11" fill="#9ca3af" text-anchor="start">机制示意，依据报告 §2.1.2 的文字论证（PDF p. 6–7），不是实测；格子数不代表真实窗口长度或 top-k 大小（GLM-5 的索引器取 k = 2048，PDF p. 12）。</text>
+</svg>
