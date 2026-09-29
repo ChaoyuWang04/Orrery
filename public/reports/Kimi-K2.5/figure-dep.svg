@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 590" width="1120" height="590" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="590" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">DEP：把视觉编码器从流水线里摘出来，一步拆成三段</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">黄 = 视觉编码器的计算；绿 = 语言主干的计算；灰 = 等待。四条横道是四段流水线（PP Stage），横向是一个训练步内的先后。</text>
+<rect x="20" y="72" width="1080" height="190" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="40" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">常规做法：视觉编码器与文本嵌入挤在 Stage-0</text>
+<text x="40" y="131" font-size="11" fill="#6b7280" text-anchor="start">Stage-0</text>
+<text x="40" y="163" font-size="11" fill="#6b7280" text-anchor="start">Stage-1</text>
+<text x="40" y="195" font-size="11" fill="#6b7280" text-anchor="start">Stage-2</text>
+<text x="40" y="227" font-size="11" fill="#6b7280" text-anchor="start">Stage-3</text>
+<rect x="130" y="116" width="230" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="245" y="131" font-size="11" fill="#111827" text-anchor="middle">视觉编码（随图片数、分辨率变）</text>
+<rect x="360" y="116" width="300" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="130" y="148" width="260" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="390" y="148" width="300" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="130" y="180" width="290" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="420" y="180" width="300" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="130" y="212" width="320" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="450" y="212" width="300" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="780" y="140" font-size="13" fill="#111827" text-anchor="start">Stage-0 的计算和显存忽高忽低</text>
+<text x="780" y="160" font-size="11" fill="#6b7280" text-anchor="start">别的段只能等它；Kimi-VL 的办法是</text>
+<text x="780" y="176" font-size="11" fill="#6b7280" text-anchor="start">给 Stage-0 少放几层解码器腾显存，</text>
+<text x="780" y="192" font-size="11" fill="#6b7280" text-anchor="start">于是纯文本调好的并行配置不能直接复用</text>
+<rect x="20" y="282" width="1080" height="250" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="40" y="308" font-size="14" fill="#111827" text-anchor="start" font-weight="700">DEP</text>
+<text x="245" y="308" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">① 均衡视觉前向</text>
+<text x="590" y="308" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">② 主干训练</text>
+<text x="950" y="308" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">③ 视觉重算与反向</text>
+<text x="40" y="341" font-size="11" fill="#6b7280" text-anchor="start">Stage-0</text>
+<text x="40" y="373" font-size="11" fill="#6b7280" text-anchor="start">Stage-1</text>
+<text x="40" y="405" font-size="11" fill="#6b7280" text-anchor="start">Stage-2</text>
+<text x="40" y="437" font-size="11" fill="#6b7280" text-anchor="start">Stage-3</text>
+<rect x="150" y="326" width="190" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="150" y="358" width="190" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="150" y="390" width="190" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="150" y="422" width="190" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="365" y1="320" x2="365" y2="452" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="390" y="326" width="300" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="420" y="358" width="300" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="450" y="390" width="300" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="480" y="422" width="300" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="810" y1="320" x2="810" y2="452" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="840" y="326" width="220" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="840" y="358" width="220" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="840" y="390" width="220" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="840" y="422" width="220" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="150" y="474" font-size="11" fill="#6b7280" text-anchor="start">编码器复制到每张卡，按图片或</text>
+<text x="150" y="490" font-size="11" fill="#6b7280" text-anchor="start">patch 数均分；丢掉中间激活，</text>
+<text x="150" y="506" font-size="11" fill="#6b7280" text-anchor="start">只把输出激活送回 Stage-0</text>
+<text x="390" y="474" font-size="11" fill="#6b7280" text-anchor="start">主干前向与反向，直接沿用纯文本训练</text>
+<text x="390" y="490" font-size="11" fill="#6b7280" text-anchor="start">调好的并行策略；梯度停在视觉编码器的</text>
+<text x="390" y="506" font-size="11" fill="#6b7280" text-anchor="start">输出上</text>
+<text x="840" y="474" font-size="11" fill="#6b7280" text-anchor="start">重跑一遍视觉前向，接上</text>
+<text x="840" y="490" font-size="11" fill="#6b7280" text-anchor="start">第 ② 段留下的梯度做反向，</text>
+<text x="840" y="506" font-size="11" fill="#6b7280" text-anchor="start">得到编码器参数的梯度</text>
+<text x="30" y="562" font-size="12" fill="#9ca3af" text-anchor="start">据 PDF p. 9–10 的 DEP 文字描述重画，是机制示意；方块长度不表示实测耗时，报告没有给流水线时序图。</text>
+</svg>

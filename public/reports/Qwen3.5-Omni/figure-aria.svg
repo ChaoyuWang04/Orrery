@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">ARIA 不定死交织比例，只画一条上界：语音不许跑到文字前面</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">绿 = ARIA 允许的一条路径；红 = 越过上界的禁区与固定比例路径；灰 = 文本领先的说明；黄 = 开头的约束</text>
+
+<polygon points="120,470 600,110 120,110" fill="#fbe9e7"/>
+<text x="135" y="140" font-size="14" fill="#111827" font-weight="700">禁区：语音 Token 多于 r 倍文本 Token</text>
+
+<line x1="120" y1="470" x2="620" y2="470" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="120" y1="470" x2="120" y2="100" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="30" y="92" font-size="11" fill="#6b7280">已生成的语音 Token 数 n_s</text>
+<text x="360" y="512" font-size="11" fill="#6b7280" text-anchor="middle">已生成的文本 Token 数 n_t</text>
+<text x="120" y="488" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="240" y="488" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<text x="360" y="488" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="480" y="488" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="600" y="488" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="110" y="474" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="110" y="384" font-size="11" fill="#9ca3af" text-anchor="end">6</text>
+<text x="110" y="294" font-size="11" fill="#9ca3af" text-anchor="end">12</text>
+<text x="110" y="204" font-size="11" fill="#9ca3af" text-anchor="end">18</text>
+<text x="110" y="114" font-size="11" fill="#9ca3af" text-anchor="end">24</text>
+
+<line x1="120" y1="470" x2="600" y2="110" stroke="#d9877a" stroke-width="1.4"/>
+<text x="612" y="104" font-size="11" fill="#6b7280">上界 n_s = 3 n_t</text>
+
+<polyline points="120,470 180,470 180,410 240,410 240,350 300,350 300,290 360,290 360,230 420,230 420,170 480,170 480,110" fill="none" stroke="#d9877a" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="140" y="320" font-size="14" fill="#111827" font-weight="700">固定 1:4 交织</text>
+<text x="140" y="338" font-size="11" fill="#6b7280">第一次出声就越界，之后一路领先</text>
+
+<polyline points="120,470 180,470 180,425 240,425 240,395 300,395 360,395 360,290 420,290 420,245 480,245 480,200 540,200 540,155 600,155 600,110" fill="none" stroke="#5fa886" stroke-width="2.4"/>
+<text x="440" y="340" font-size="14" fill="#111827" font-weight="700">ARIA 路径</text>
+<text x="440" y="358" font-size="11" fill="#6b7280">始终在上界之下或压线</text>
+
+<rect x="700" y="90" width="390" height="70" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="718" y="118" font-size="14" fill="#111827" font-weight="700">任意前缀都满足 n_s ≤ r · n_t</text>
+<text x="718" y="140" font-size="11" fill="#6b7280">r = 这条样本的语音 Token 总数 ÷ 文本 Token 总数</text>
+
+<rect x="700" y="175" width="390" height="70" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="718" y="203" font-size="14" fill="#111827" font-weight="700">文本可以领先</text>
+<text x="718" y="225" font-size="11" fill="#6b7280">向右走多少步都合法：手里总有写好的字可念</text>
+
+<rect x="700" y="260" width="390" height="70" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="718" y="288" font-size="14" fill="#111827" font-weight="700">语音不许领先</text>
+<text x="718" y="310" font-size="11" fill="#6b7280">越过上界 = 给还没写出来的字配音，于是漏字、读错</text>
+
+<rect x="700" y="345" width="390" height="70" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="718" y="373" font-size="14" fill="#111827" font-weight="700">开头必须先出文本</text>
+<text x="718" y="395" font-size="11" fill="#6b7280">n_t = 0 时右边为 0，n_s 只能是 0</text>
+
+<text x="30" y="545" font-size="11" fill="#9ca3af">机制示意：r = 3 与两条路径都是虚构示例；约束形式按 PDF p.5 原文，报告没有说明推理时 r 从哪里来。</text>
+</svg>

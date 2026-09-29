@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">ERNIE 5.0 统一到哪一层：共用的是中间那条主干，入口和出口仍按任务分开</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">绿 = 所有模态共用一份；黄 = 按模态或任务单独一份；灰 = 不另设部件；红 = 与主干分开训练</text>
+
+<text x="268" y="94" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">文本</text>
+<text x="456" y="94" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">看图 / 视频</text>
+<text x="644" y="94" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">画图 / 视频</text>
+<text x="832" y="94" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">听音频</text>
+<text x="1020" y="94" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">说音频</text>
+
+<text x="30" y="146" font-size="14" fill="#111827" font-weight="700">入口</text>
+<text x="30" y="240" font-size="14" fill="#111827" font-weight="700">主干</text>
+<text x="30" y="316" font-size="14" fill="#111827" font-weight="700">专家实际使用</text>
+<text x="30" y="398" font-size="14" fill="#111827" font-weight="700">出口</text>
+<text x="30" y="480" font-size="14" fill="#111827" font-weight="700">还原</text>
+
+<rect x="180" y="112" width="176" height="58" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="268" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">文本嵌入</text>
+<text x="268" y="156" font-size="11" fill="#6b7280" text-anchor="middle">重训的 BPE 词表</text>
+<rect x="368" y="112" width="176" height="58" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="456" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">CNN + ViT 双路</text>
+<text x="456" y="156" font-size="11" fill="#6b7280" text-anchor="middle">量化前特征 + Patch Merger</text>
+<rect x="556" y="112" width="176" height="58" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="644" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">多尺度比特码</text>
+<text x="644" y="156" font-size="11" fill="#6b7280" text-anchor="middle">因果 3D tokenizer 量化</text>
+<rect x="744" y="112" width="176" height="58" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="832" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">RVQ 各层嵌入相加</text>
+<text x="832" y="156" font-size="11" fill="#6b7280" text-anchor="middle">12.5 Hz，首层对齐 Whisper</text>
+<rect x="932" y="112" width="176" height="58" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1020" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">上文 + 说话人嵌入</text>
+<text x="1020" y="156" font-size="11" fill="#6b7280" text-anchor="middle">说话人嵌入控制音色</text>
+
+<line x1="268" y1="170" x2="268" y2="196" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="456" y1="170" x2="456" y2="196" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="644" y1="170" x2="644" y2="196" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="832" y1="170" x2="832" y2="196" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="1020" y1="170" x2="1020" y2="196" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="180" y="198" width="928" height="74" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="644" y="228" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">统一 Transformer 主干：同一套注意力、同一个路由器、同一池专家</text>
+<text x="644" y="252" font-size="11" fill="#6b7280" text-anchor="middle">Next-Group-of-Tokens 目标；路由只看 Token 表示、不看模态 ID；激活率低于 3%</text>
+
+<rect x="368" y="290" width="364" height="52" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="550" y="312" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">看图 × 画图：高频专家 IoU 只有 0.18–0.25</text>
+<text x="550" y="331" font-size="11" fill="#6b7280" text-anchor="middle">同一池专家，实际多由两批不同的专家承担</text>
+
+<line x1="456" y1="272" x2="456" y2="288" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="644" y1="272" x2="644" y2="288" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="456" y1="342" x2="456" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="644" y1="342" x2="644" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="268" y1="272" x2="268" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="832" y1="272" x2="832" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="1020" y1="272" x2="1020" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="180" y="364" width="176" height="58" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="268" y="388" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">文本头</text>
+<text x="268" y="408" font-size="11" fill="#6b7280" text-anchor="middle">NTP + MTP</text>
+<rect x="368" y="364" width="176" height="58" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="456" y="388" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">复用文本头</text>
+<text x="456" y="408" font-size="11" fill="#6b7280" text-anchor="middle">理解任务输出文字</text>
+<rect x="556" y="364" width="176" height="58" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="644" y="388" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">视觉头</text>
+<text x="644" y="408" font-size="11" fill="#6b7280" text-anchor="middle">尺度内并行，尺度间因果</text>
+<rect x="744" y="364" width="176" height="58" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="832" y="388" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">复用文本头</text>
+<text x="832" y="408" font-size="11" fill="#6b7280" text-anchor="middle">理解任务输出文字</text>
+<rect x="932" y="364" width="176" height="58" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1020" y="388" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">顶层多个音频头</text>
+<text x="1020" y="408" font-size="11" fill="#6b7280" text-anchor="middle">沿深度逐级预测残差码</text>
+
+<line x1="644" y1="422" x2="644" y2="444" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="1020" y1="422" x2="1020" y2="444" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="556" y="446" width="176" height="58" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="644" y="470" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">扩散精修器</text>
+<text x="644" y="490" font-size="11" fill="#6b7280" text-anchor="middle">低分辨率补成高分辨率</text>
+<rect x="932" y="446" width="176" height="58" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1020" y="470" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">音频解码器</text>
+<text x="1020" y="490" font-size="11" fill="#6b7280" text-anchor="middle">层级码还原成波形</text>
+
+<text x="30" y="540" font-size="11" fill="#9ca3af">机制示意，按 PDF p.4–9 与 Figure 1、2、3、9 重画；层数、专家数、码本层数与精修器结构报告均未公开。</text>
+</svg>

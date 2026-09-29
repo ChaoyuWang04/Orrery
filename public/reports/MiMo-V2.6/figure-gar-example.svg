@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="860" height="480" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="860" height="480" fill="#ffffff"/>
+<text x="24" y="32" font-size="19" fill="#111827" font-weight="700">GAR：通过者之间挪优势，总量不变</text>
+<text x="24" y="54" font-size="13" fill="#6b7280">一组 4 条、2 条通过的示例。绿 = 通过者的优势；红 = 失败者的优势；灰虚框 = 重分配前的位置。</text>
+<rect x="16" y="72" width="386" height="364" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="458" y="72" width="386" height="364" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="209" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">重分配前：普通组相对优势</text>
+<text x="209" y="114" font-size="11" fill="#6b7280" text-anchor="middle">测试奖励只有 0 / 1，两条通过者各拿 +0.5</text>
+<text x="651" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">GAR 之后</text>
+<text x="651" y="114" font-size="11" fill="#6b7280" text-anchor="middle">评分器给质量因子 f甲 = 1、f乙 = 0.5，λ ≈ 1.33</text>
+<line x1="40" y1="280" x2="378" y2="280" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="482" y1="280" x2="820" y2="280" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="36" y="284" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<rect x="60" y="180" width="54" height="100" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="142" y="180" width="54" height="100" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="224" y="280" width="54" height="100" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="306" y="280" width="54" height="100" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="87" y="172" font-size="11" fill="#111827" text-anchor="middle">+0.50</text>
+<text x="169" y="172" font-size="11" fill="#111827" text-anchor="middle">+0.50</text>
+<text x="251" y="398" font-size="11" fill="#111827" text-anchor="middle">−0.50</text>
+<text x="333" y="398" font-size="11" fill="#111827" text-anchor="middle">−0.50</text>
+<text x="292" y="216" font-size="11" fill="#6b7280" text-anchor="middle">通过者合计 1.0</text>
+<text x="292" y="232" font-size="11" fill="#6b7280" text-anchor="middle">好坏分不出来</text>
+<rect x="502" y="180" width="54" height="100" rx="6" fill="none" stroke="#b9b9b9" stroke-dasharray="4 3"/>
+<rect x="584" y="180" width="54" height="100" rx="6" fill="none" stroke="#b9b9b9" stroke-dasharray="4 3"/>
+<rect x="502" y="147" width="54" height="133" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="584" y="213" width="54" height="67" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="666" y="280" width="54" height="100" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="748" y="280" width="54" height="100" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="529" y="139" font-size="11" fill="#111827" text-anchor="middle">+0.67</text>
+<text x="611" y="172" font-size="11" fill="#111827" text-anchor="middle">+0.33</text>
+<text x="693" y="398" font-size="11" fill="#111827" text-anchor="middle">−0.50</text>
+<text x="775" y="398" font-size="11" fill="#111827" text-anchor="middle">−0.50</text>
+<text x="734" y="216" font-size="11" fill="#6b7280" text-anchor="middle">通过者合计仍是 1.0</text>
+<text x="734" y="232" font-size="11" fill="#6b7280" text-anchor="middle">失败者一格不动</text>
+<text x="87" y="420" font-size="11" fill="#6b7280" text-anchor="middle">甲 · 通过</text>
+<text x="169" y="420" font-size="11" fill="#6b7280" text-anchor="middle">乙 · 通过</text>
+<text x="251" y="420" font-size="11" fill="#6b7280" text-anchor="middle">丙 · 失败</text>
+<text x="333" y="420" font-size="11" fill="#6b7280" text-anchor="middle">丁 · 失败</text>
+<text x="529" y="420" font-size="11" fill="#6b7280" text-anchor="middle">甲 · 写得好</text>
+<text x="611" y="420" font-size="11" fill="#6b7280" text-anchor="middle">乙 · 将就过关</text>
+<text x="693" y="420" font-size="11" fill="#6b7280" text-anchor="middle">丙 · 失败</text>
+<text x="775" y="420" font-size="11" fill="#6b7280" text-anchor="middle">丁 · 失败</text>
+<line x1="408" y1="250" x2="450" y2="250" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="24" y="462" font-size="11" fill="#9ca3af">机制示意：数字为讲解所编，不是报告数据；公式见原文式 3（PDF p. 18）。正式实现还给 λ 设上限，再减去组均值。</text>
+</svg>

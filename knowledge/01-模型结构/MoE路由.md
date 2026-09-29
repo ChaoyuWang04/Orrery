@@ -186,6 +186,12 @@ Switch 的论点是「同样算力预算下,把 K 压到 1、把专家数翻倍�
 3. **再动旋钮**,一次只动一个:调大均衡系数或偏置更新速度、加探索噪声、必要时临时收紧容量上限。
 4. **最后才回退到更早的健康检查点**。重置或重新初始化专家会把它已经学到的东西一起丢掉,不是无代价的修复。
 
+### RL 阶段的负载崩塌:先分清是 router 漂了还是专家坏了
+
+「死循环几乎都在训练前期形成」说的是预训练。后训练的 RL 会再开一次口子:数据分布比预训练窄得多,router 继续可训时,负载可能在几十步内重新塌掉。MiMo-V2.6 的对照实验是一个干净的例子:Pro 的 RL 里 router 可训时,第 9 层的负载变异系数在 20 步内从 0.78 升到 2.0,最忙专家与平均之比从 6 倍升到 16 倍,负载不到平均十分之一的冷专家从 0.5% 升到 22%。
+
+诊断手段比结论更值得记:**只把 router 参数恢复到 RL 之前的值、其余参数不动**,负载回到接近初始水平,基准分数不变。这一步就把「router 漂移」和「专家权重退化」分开了——后者靠重置 router 救不回来。于是正式训练直接冻结 router,让所有适应发生在专家内部与注意力层。代价是 RL 阶段不能再调整「哪个 token 去哪个专家」;该报告只在 30 步的 RL 里验证了分数不受损,更长的 RL 是否依然成立没有回答。
+
 ## 八、往上一层:稀疏度、LatentMoE 与优化器是一条链
 
 **LatentMoE 不是「省通信的小优化」,它是把路由问题本身放大一个量级的开关。** 做法是先把 token 从模型宽度 $d$ 投影到更窄的潜维度 $\ell$,路由专家全部在 $\ell$ 维里算,算完再投回 $d$——类比跨科室会诊不再推着整车病历跑,先把病历浓缩成一页摘要,专科医生在摘要上写意见。
@@ -241,3 +247,4 @@ Switch 的论点是「同样算力预算下,把 K 压到 1、把专家数翻倍�
 - Nemotron 3 Super(LatentMoE:压维度,把省下的额度换成更多专家与更大 K)— [arXiv:2604.12374](https://arxiv.org/abs/2604.12374)
 - DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence(Sqrt(Softplus) 打分、前 3 层哈希 bootstrap)— [arXiv:2606.19348](https://arxiv.org/abs/2606.19348)
 - Kimi K3: Open Frontier Intelligence(Quantile Balancing 与 Stable LatentMoE)— [arXiv:2607.24653](https://arxiv.org/abs/2607.24653)
+- MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement(RL 期间路由器漂移导致负载崩塌、恢复 router 的诊断与冻结 router)— <https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL>

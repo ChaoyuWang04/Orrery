@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">同一份工作，两把尺子：总步数与 critical steps</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = 主 agent 的 1 步；紫 = 子 agent 的步数；红 = 本阶段最长的分支（决定这一段的时长）。横向长度 = 步数。</text>
+<text x="30" y="108" font-size="14" fill="#111827" text-anchor="start" font-weight="700">只数总步数</text>
+<text x="30" y="126" font-size="11" fill="#6b7280" text-anchor="start">1 + 1 + 12 + 9 + 40 + 11 = 74</text>
+<rect x="220" y="96" width="11" height="30" rx="2" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="231" y="96" width="11" height="30" rx="2" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="242" y="96" width="132" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="308" y="116" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">12</text>
+<rect x="374" y="96" width="99" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="423" y="116" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">9</text>
+<rect x="473" y="96" width="440" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="693" y="116" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">40</text>
+<rect x="913" y="96" width="121" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="973" y="116" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">11</text>
+<line x1="30" y1="146" x2="1090" y2="146" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="226" font-size="14" fill="#111827" text-anchor="start" font-weight="700">按关键路径计</text>
+<text x="30" y="244" font-size="11" fill="#6b7280" text-anchor="start">(1 + 0) + (1 + 40) = 42</text>
+<rect x="220" y="211" width="11" height="26" rx="2" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="231" y="211" width="11" height="26" rx="2" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="242" y="160" width="132" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="308" y="178" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">12</text>
+<rect x="242" y="194" width="99" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="291" y="212" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">9</text>
+<rect x="242" y="228" width="440" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="462" y="246" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">40</text>
+<rect x="242" y="262" width="121" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="302" y="280" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">11</text>
+<text x="706" y="238" font-size="13" fill="#111827" text-anchor="start">四个子 agent 同时跑，这一段只算最长的 40</text>
+<text x="706" y="256" font-size="11" fill="#6b7280" text-anchor="start">另外三条的 32 步藏在它的时长里</text>
+<line x1="30" y1="306" x2="1090" y2="306" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="404" font-size="14" fill="#111827" text-anchor="start" font-weight="700">把最长分支再拆开</text>
+<text x="30" y="422" font-size="11" fill="#6b7280" text-anchor="start">(1 + 0) + (1 + 20) = 22</text>
+<rect x="220" y="389" width="11" height="26" rx="2" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="231" y="389" width="11" height="26" rx="2" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="242" y="320" width="132" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="308" y="338" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">12</text>
+<rect x="242" y="354" width="99" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="291" y="372" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">9</text>
+<rect x="242" y="388" width="220" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="352" y="406" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">20</text>
+<rect x="242" y="422" width="220" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="352" y="440" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">20</text>
+<rect x="242" y="456" width="121" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="302" y="474" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">11</text>
+<text x="486" y="410" font-size="13" fill="#111827" text-anchor="start">总步数仍是 74，关键路径从 42 降到 22</text>
+<text x="486" y="428" font-size="11" fill="#6b7280" text-anchor="start">反过来，多派五个各跑 3 步的子 agent，总步数 +15，关键路径不动</text>
+<text x="30" y="522" font-size="12" fill="#9ca3af" text-anchor="start">公式据 PDF p. 6：CriticalSteps = Σ(S_main + max_i S_sub,i)。步数是本文构造的例子，不是报告数据；图是机制示意，不表示实测时长。</text>
+</svg>
