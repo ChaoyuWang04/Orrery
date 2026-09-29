@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Table 4：门越稀疏，首 Token 注意力与最大激活越低</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 查询相关、逐头的 G1；绿 = G2 值门控；灰 = 削弱了某个条件的 G1 变体；红虚线 = 无门基线。标签里依次是最大激活 M-Act 与 PPL。</text>
+<rect x="16.0" y="72.0" width="800.0" height="510.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<line x1="110" y1="520.0" x2="770" y2="520.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="524.0" font-size="11" fill="#9ca3af" text-anchor="end">0.0</text>
+<line x1="110" y1="436.0" x2="770" y2="436.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="440.0" font-size="11" fill="#9ca3af" text-anchor="end">0.1</text>
+<line x1="110" y1="352.0" x2="770" y2="352.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="356.0" font-size="11" fill="#9ca3af" text-anchor="end">0.2</text>
+<line x1="110" y1="268.0" x2="770" y2="268.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="272.0" font-size="11" fill="#9ca3af" text-anchor="end">0.3</text>
+<line x1="110" y1="184.0" x2="770" y2="184.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="188.0" font-size="11" fill="#9ca3af" text-anchor="end">0.4</text>
+<line x1="110" y1="100.0" x2="770" y2="100.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="104.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<text x="110.0" y="540.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.0</text>
+<text x="204.3" y="540.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.1</text>
+<text x="298.6" y="540.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.2</text>
+<text x="392.9" y="540.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.3</text>
+<text x="487.1" y="540.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.4</text>
+<text x="581.4" y="540.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.5</text>
+<text x="675.7" y="540.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.6</text>
+<text x="770.0" y="540.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.7</text>
+<line x1="110" y1="520" x2="770" y2="520" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110" y1="520" x2="110" y2="100" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="440.0" y="564.0" font-size="11" fill="#6b7280" text-anchor="middle">平均门控分数（越小越稀疏）</text>
+<text x="36.0" y="92.0" font-size="11" fill="#6b7280" text-anchor="start">首 Token 注意力占比 F-Attn</text>
+<line x1="110" y1="127.7" x2="770" y2="127.7" stroke="#d9877a" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="766.0" y="119.7" font-size="11" fill="#111827" text-anchor="end">无门基线 0.467（M-Act 1053，PPL 6.026）</text>
+<circle cx="219.4" cy="479.7" r="7" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="229.4" y="501.7" font-size="11" fill="#111827" text-anchor="start">SDPA 逐元素：94，5.761</text>
+<circle cx="272.2" cy="458.7" r="7" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="282.2" y="444.7" font-size="11" fill="#111827" text-anchor="start">SDPA 逐头：98，5.792</text>
+<circle cx="365.5" cy="267.2" r="7" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<text x="375.5" y="293.2" font-size="11" fill="#111827" text-anchor="start">SDPA 头间共享：286，5.801</text>
+<circle cx="318.4" cy="270.5" r="7" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.6"/>
+<text x="308.4" y="256.5" font-size="11" fill="#111827" text-anchor="end">V 逐元素（G2）：125，5.820</text>
+<circle cx="425.9" cy="214.2" r="7" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<text x="435.9" y="200.2" font-size="11" fill="#111827" text-anchor="start">与输入无关的门：471，5.917</text>
+<circle cx="725.7" cy="141.2" r="7" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<text x="715.7" y="167.2" font-size="11" fill="#111827" text-anchor="end">NS-sigmoid 门（≥ 0.5）：892，5.900</text>
+<rect x="832.0" y="72.0" width="272.0" height="510.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="852.0" y="98.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">怎么读</text>
+<text x="852.0" y="128.0" font-size="12" fill="#111827" text-anchor="start">1  最稀疏的两个点（紫）同时</text>
+<text x="852.0" y="152.0" font-size="12" fill="#6b7280" text-anchor="start">   压低了 sink、最大激活和 PPL。</text>
+<text x="852.0" y="176.0" font-size="12" fill="#6b7280" text-anchor="start"></text>
+<text x="852.0" y="200.0" font-size="12" fill="#111827" text-anchor="start">2  G2（绿）把最大激活压到 125，</text>
+<text x="852.0" y="224.0" font-size="12" fill="#6b7280" text-anchor="start">   但首 Token 注意力仍有 0.297：</text>
+<text x="852.0" y="248.0" font-size="12" fill="#6b7280" text-anchor="start">   大激活不是 sink 的必要条件。</text>
+<text x="852.0" y="272.0" font-size="12" fill="#6b7280" text-anchor="start"></text>
+<text x="852.0" y="296.0" font-size="12" fill="#111827" text-anchor="start">3  头间共享、与输入无关、</text>
+<text x="852.0" y="320.0" font-size="12" fill="#6b7280" text-anchor="start">   把门限在 0.5 以上（灰）：</text>
+<text x="852.0" y="344.0" font-size="12" fill="#6b7280" text-anchor="start">   稀疏性一弱，sink 就回来了。</text>
+<text x="852.0" y="368.0" font-size="12" fill="#6b7280" text-anchor="start"></text>
+<text x="852.0" y="392.0" font-size="12" fill="#111827" text-anchor="start">4  PPL 最好的也是最稀疏的；</text>
+<text x="852.0" y="416.0" font-size="12" fill="#6b7280" text-anchor="start">   只加非线性（NS-sigmoid）</text>
+<text x="852.0" y="440.0" font-size="12" fill="#6b7280" text-anchor="start">   只能拿回一部分收益。</text>
+<text x="852.0" y="560.0" font-size="11" fill="#9ca3af" text-anchor="start">数据：Table 4，PDF p. 8</text>
+</svg>

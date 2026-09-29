@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">软件模拟 2ˣ：一行分数里挪一小部分给 FMA 单元去算</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">黄 = 走 MUFU.EX2 硬件指令；绿 = 走 FMA 上的多项式模拟；灰 = 模拟的五个步骤。</text>
+<rect x="16.0" y="72.0" width="1088.0" height="132.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="98.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">① 一个线程手里的一行 128 个分数，按比例分给两种部件（PDF p. 8）</text>
+<rect x="40.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="68.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="96.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="124.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="152.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="180.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="208.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="236.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="264.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="292.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="320.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="348.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="376.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="404.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="432.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="460.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="488.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="516.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="544.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="572.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="600.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="628.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="656.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="684.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="712.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="740.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="768.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="796.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="824.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="852.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="880.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="908.0" y="114.0" width="24.0" height="30.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="40.0" y="166.0" font-size="11" fill="#111827" text-anchor="start">约 75–90% 用 MUFU.EX2：每 SM 每时钟 16 个</text>
+<text x="768.0" y="166.0" font-size="11" fill="#111827" text-anchor="start">10–25% 用多项式模拟</text>
+<text x="40.0" y="188.0" font-size="11" fill="#9ca3af" text-anchor="start">比例按每种 tile 配置的「矩阵乘 : 指数」吞吐比实测调；哪几个位置走 FMA，论文没写，这里只画比例。</text>
+<rect x="16.0" y="220.0" width="1088.0" height="320.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="246.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">② 模拟一次 2ˣ 的五步（PDF p. 7–8）</text>
+<rect x="40.0" y="262.0" width="190.0" height="74.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="135.0" y="286.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">1 钳位</text>
+<text x="135.0" y="306.0" font-size="11" fill="#6b7280" text-anchor="middle">x 至少取 −127</text>
+<text x="135.0" y="324.0" font-size="11" fill="#6b7280" text-anchor="middle">防止下溢</text>
+<line x1="232.0" y1="299.0" x2="250.0" y2="299.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="252.0" y="262.0" width="190.0" height="74.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="347.0" y="286.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">2 取整数部分</text>
+<text x="347.0" y="306.0" font-size="11" fill="#6b7280" text-anchor="middle">加 2²³ + 2²² 再减回</text>
+<text x="347.0" y="324.0" font-size="11" fill="#6b7280" text-anchor="middle">向下舍入得 ⌊x⌋</text>
+<line x1="444.0" y1="299.0" x2="462.0" y2="299.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="464.0" y="262.0" width="190.0" height="74.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="559.0" y="286.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">3 取小数部分</text>
+<text x="559.0" y="306.0" font-size="11" fill="#6b7280" text-anchor="middle">f = x − ⌊x⌋</text>
+<text x="559.0" y="324.0" font-size="11" fill="#6b7280" text-anchor="middle">f 落在 [0, 1)</text>
+<line x1="656.0" y1="299.0" x2="674.0" y2="299.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="676.0" y="262.0" width="190.0" height="74.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="771.0" y="286.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">4 多项式</text>
+<text x="771.0" y="306.0" font-size="11" fill="#6b7280" text-anchor="middle">Horner 法，每阶 1 条 FMA</text>
+<text x="771.0" y="324.0" font-size="11" fill="#6b7280" text-anchor="middle">例：3 次 = 3 条 FMA</text>
+<line x1="868.0" y1="299.0" x2="886.0" y2="299.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="888.0" y="262.0" width="190.0" height="74.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="983.0" y="286.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">5 拼回去</text>
+<text x="983.0" y="306.0" font-size="11" fill="#6b7280" text-anchor="middle">⌊x⌋ 移进指数位</text>
+<text x="983.0" y="324.0" font-size="11" fill="#6b7280" text-anchor="middle">加上 2ᶠ 的尾数位</text>
+<text x="36.0" y="372.0" font-size="13" fill="#111827" text-anchor="start">第 5 步为什么只要整数运算：FP32 的值 = 2^(指数位 − 127) × 1.尾数</text>
+<rect x="160.0" y="390.0" width="24.0" height="34.0" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="172.0" y="412.0" font-size="11" fill="#111827" text-anchor="middle">符</text>
+<rect x="186.0" y="390.0" width="190.0" height="34.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="281.0" y="412.0" font-size="11" fill="#111827" text-anchor="middle">指数 8 位 ← ⌊x⌋ + 127</text>
+<rect x="378.0" y="390.0" width="560.0" height="34.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="658.0" y="412.0" font-size="11" fill="#111827" text-anchor="middle">尾数 23 位 ← 2ᶠ ∈ [1, 2) 的尾数</text>
+<text x="172.0" y="442.0" font-size="11" fill="#9ca3af" text-anchor="middle">1 位</text>
+<text x="281.0" y="442.0" font-size="11" fill="#9ca3af" text-anchor="middle">乘 2^⌊x⌋ = 往指数位加一个整数</text>
+<text x="658.0" y="442.0" font-size="11" fill="#9ca3af" text-anchor="middle">只有这一段需要多项式去逼近</text>
+<text x="36.0" y="480.0" font-size="11" fill="#9ca3af" text-anchor="start">紫色这一格在这里只标「指数位」，与上半图的颜色无关。</text>
+<text x="36.0" y="506.0" font-size="12" fill="#6b7280" text-anchor="start">代价：多占寄存器和寄存器带宽、延迟比一条 MUFU 指令长，所以只模拟一小部分；全模拟会溢出寄存器，把收益吃掉（PDF p. 8）。</text>
+<text x="36.0" y="528.0" font-size="11" fill="#9ca3af" text-anchor="start">3 次多项式是本图的例子：Table 2 说 3 次在 BF16 精度下已与硬件无法区分，论文没写内核实际用几次。</text>
+</svg>

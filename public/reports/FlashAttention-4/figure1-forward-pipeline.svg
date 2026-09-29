@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 1：两个 Q 块打乒乓，Tensor Core 和指数单元都不空转</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = Tensor Core 上的一次 128×128×128 矩阵乘（512 周期）；黄 = MUFU 上一整块 128×128 的 softmax（1024 周期）。</text>
+<text x="40.0" y="123.0" font-size="13" fill="#111827" text-anchor="start">Tensor Core · H 块</text>
+<line x1="250" y1="136" x2="1070.0" y2="136" stroke="#e5e7eb" stroke-width="1"/>
+<text x="40.0" y="173.0" font-size="13" fill="#111827" text-anchor="start">MUFU · 两组 softmax 轮流</text>
+<line x1="250" y1="186" x2="1070.0" y2="186" stroke="#e5e7eb" stroke-width="1"/>
+<text x="40.0" y="223.0" font-size="13" fill="#111827" text-anchor="start">Tensor Core · L 块</text>
+<line x1="250" y1="236" x2="1070.0" y2="236" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="251.0" y="100.0" width="89.1" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="295.6" y="121.0" font-size="11" fill="#111827" text-anchor="middle">QKᵀ 第 0 块</text>
+<rect x="524.3" y="100.0" width="89.1" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="568.9" y="121.0" font-size="11" fill="#111827" text-anchor="middle">PV 第 0 块</text>
+<rect x="615.4" y="100.0" width="89.1" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="660.0" y="121.0" font-size="11" fill="#111827" text-anchor="middle">QKᵀ 第 1 块</text>
+<rect x="888.8" y="100.0" width="89.1" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="933.3" y="121.0" font-size="11" fill="#111827" text-anchor="middle">PV 第 1 块</text>
+<rect x="979.9" y="100.0" width="89.1" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1024.4" y="121.0" font-size="11" fill="#111827" text-anchor="middle">QKᵀ 第 2 块</text>
+<rect x="342.1" y="150.0" width="180.2" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="432.2" y="171.0" font-size="11" fill="#111827" text-anchor="middle">softmax · H 第 0 块</text>
+<rect x="524.3" y="150.0" width="180.2" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="614.4" y="171.0" font-size="11" fill="#111827" text-anchor="middle">softmax · L 第 0 块</text>
+<rect x="706.6" y="150.0" width="180.2" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="796.7" y="171.0" font-size="11" fill="#111827" text-anchor="middle">softmax · H 第 1 块</text>
+<rect x="888.8" y="150.0" width="180.2" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="978.9" y="171.0" font-size="11" fill="#111827" text-anchor="middle">softmax · L 第 1 块</text>
+<rect x="342.1" y="200.0" width="89.1" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="386.7" y="221.0" font-size="11" fill="#111827" text-anchor="middle">QKᵀ 第 0 块</text>
+<rect x="706.6" y="200.0" width="89.1" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="751.1" y="221.0" font-size="11" fill="#111827" text-anchor="middle">PV 第 0 块</text>
+<rect x="797.7" y="200.0" width="89.1" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="842.2" y="221.0" font-size="11" fill="#111827" text-anchor="middle">QKᵀ 第 1 块</text>
+<line x1="250.0" y1="246" x2="250.0" y2="254" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="250.0" y="270.0" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<line x1="341.1" y1="246" x2="341.1" y2="254" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="341.1" y="270.0" font-size="11" fill="#9ca3af" text-anchor="middle">512</text>
+<line x1="523.3" y1="246" x2="523.3" y2="254" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="523.3" y="270.0" font-size="11" fill="#9ca3af" text-anchor="middle">1536</text>
+<line x1="614.4" y1="246" x2="614.4" y2="254" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="614.4" y="270.0" font-size="11" fill="#9ca3af" text-anchor="middle">2048</text>
+<line x1="705.6" y1="246" x2="705.6" y2="254" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="705.6" y="270.0" font-size="11" fill="#9ca3af" text-anchor="middle">2560</text>
+<line x1="887.8" y1="246" x2="887.8" y2="254" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="887.8" y="270.0" font-size="11" fill="#9ca3af" text-anchor="middle">3584</text>
+<line x1="978.9" y1="246" x2="978.9" y2="254" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="978.9" y="270.0" font-size="11" fill="#9ca3af" text-anchor="middle">4096</text>
+<line x1="1070.0" y1="246" x2="1070.0" y2="254" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="1070.0" y="270.0" font-size="11" fill="#9ca3af" text-anchor="middle">4608</text>
+<line x1="250" y1="250" x2="1070.0" y2="250" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="40.0" y="270.0" font-size="11" fill="#9ca3af" text-anchor="start">时钟周期（同一个 SM）</text>
+<rect x="523.3" y="284.0" width="364.4" height="50.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="705.6" y="305.0" font-size="11" fill="#6b7280" text-anchor="middle">稳定段每 2048 周期：矩阵乘 4 次 × 512 = 2048</text>
+<text x="705.6" y="323.0" font-size="11" fill="#6b7280" text-anchor="middle">softmax 2 块 × 1024 = 2048，两边都填满</text>
+<rect x="16.0" y="352.0" width="1088.0" height="146.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="378.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">一个 CTA 里的四个角色（PDF p. 6–7）</text>
+<rect x="36.0" y="394.0" width="250.0" height="58.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="161.0" y="418.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MMA / TMA warpgroup</text>
+<text x="161.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">发矩阵乘、搬数据</text>
+<rect x="302.0" y="394.0" width="250.0" height="58.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="427.0" y="418.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">softmax warpgroup × 2</text>
+<text x="427.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">一个线程管一整行 128 个分数</text>
+<rect x="568.0" y="394.0" width="250.0" height="58.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="693.0" y="418.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">correction warpgroup</text>
+<text x="693.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">按需重缩放 O，最后归一化</text>
+<rect x="834.0" y="394.0" width="250.0" height="58.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="959.0" y="418.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">TMEM 里放什么</text>
+<text x="959.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">两片 O 累加器 + 两片 S，P 写回 S</text>
+<text x="36.0" y="480.0" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 6 Figure 1 与 p. 6–7 正文重画。四个 SM 的时间线在原图里完全相同，这里只画一个；周期数是理想化的机制示意，不是实测。</text>
+</svg>

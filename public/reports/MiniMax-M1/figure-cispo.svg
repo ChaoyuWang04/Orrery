@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 550" width="1120" height="550" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="550" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">CISPO：不裁 Token，只裁权重</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫线 = 这个 Token 的梯度前面乘的系数；红 = 梯度被整段丢掉的区间；绿 = 系数封顶但梯度保留的区间。只画优势 A &gt; 0 的情形。</text>
+<rect x="20" y="72" width="520" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="40" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) PPO / GRPO：比值超过 1 + ε，梯度直接归零</text>
+<rect x="352.5" y="130" width="157.5" height="220" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="431.25" y="152" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">梯度为 0</text>
+<text x="431.25" y="170" font-size="11" fill="#6b7280" text-anchor="middle">这个 Token 被踢出本轮</text>
+<polyline points="90.0,350.0 352.5,178.1" fill="none" stroke="#8f8bd8" stroke-width="3"/>
+<polyline points="352.5,350.0 510.0,350.0" fill="none" stroke="#8f8bd8" stroke-width="3"/>
+<line x1="90" y1="350" x2="510" y2="350" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="90" y1="350" x2="90" y2="130" stroke="#9ca3af" stroke-width="1.2"/>
+<text x="90.0" y="368" font-size="11" fill="#6b7280" text-anchor="middle">0</text>
+<text x="300.0" y="368" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="352.5" y="368" font-size="11" fill="#6b7280" text-anchor="middle">1 + ε</text>
+<text x="300.0" y="388" font-size="11" fill="#6b7280" text-anchor="middle">重要性采样比值 r = π_新 / π_旧</text>
+<text x="82" y="216.5" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<rect x="580" y="72" width="520" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="600" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) CISPO：比值超过 1 + ε，权重封顶，梯度照走</text>
+<rect x="912.5" y="130" width="157.5" height="220" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="991.25" y="152" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">仍有梯度</text>
+<text x="991.25" y="170" font-size="11" fill="#6b7280" text-anchor="middle">系数固定为 1 + ε</text>
+<polyline points="650.0,350.0 912.5,178.1 1070.0,178.1" fill="none" stroke="#8f8bd8" stroke-width="3"/>
+<line x1="650" y1="350" x2="1070" y2="350" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="650" y1="350" x2="650" y2="130" stroke="#9ca3af" stroke-width="1.2"/>
+<text x="650.0" y="368" font-size="11" fill="#6b7280" text-anchor="middle">0</text>
+<text x="860.0" y="368" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="912.5" y="368" font-size="11" fill="#6b7280" text-anchor="middle">1 + ε</text>
+<text x="860.0" y="388" font-size="11" fill="#6b7280" text-anchor="middle">重要性采样比值 r = π_新 / π_旧</text>
+<text x="642" y="216.5" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<text x="30" y="440" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 5–7 式 1、3–5、7 重画，是机制示意，1 + ε 的位置随意取。CISPO 的系数是 sg(clip(r))，梯度只从 log π 走；报告把下界设得很大、只调上界（PDF p. 6–7）。</text>
+<text x="30" y="464" font-size="13" fill="#6b7280" text-anchor="start">为什么这件事在 M1 上要紧：However、Wait、Recheck、Aha 这类反思用的「分叉词」在基座模型里概率低，一次更新后 r 很容易变大，</text>
+<text x="30" y="486" font-size="13" fill="#6b7280" text-anchor="start">正好落进 (a) 的红区；而 M1 每批生成的数据要做 16 轮离策略更新，第一轮之后被裁掉的 Token，后面几轮都拿不到梯度（PDF p. 5–6）。</text>
+<text x="30" y="516" font-size="13" fill="#9ca3af" text-anchor="start">优势 A &lt; 0 时 PPO 在 r &lt; 1 − ε 处归零，情形对称，这里不画。把 (a) 里的红区写成一个掩码乘回去，就是报告的统一形式（PDF p. 7，式 6–7）。</text>
+</svg>

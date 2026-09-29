@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">lightning attention：块内做小的左乘，块间只传一个 d × d 的状态</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">黄 = 块内左乘（带因果掩码的 B × B 小矩阵）；紫 = 块间右乘与随身携带的 KV 状态；灰 = 从显存读入的 Q、K、V 块。</text>
+<rect x="20" y="72" width="530" height="170" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="40" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) 同一个注意力，两种乘法顺序</text>
+<rect x="40" y="114" width="230" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="155.0" y="137.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">左乘 (QKᵀ)V</text>
+<text x="155.0" y="155.0" font-size="11" fill="#6b7280" text-anchor="middle">先算 n × n 分数矩阵</text>
+<text x="155" y="190" font-size="11" fill="#6b7280" text-anchor="middle">计算 O(n²d)，因果掩码好加</text>
+<rect x="300" y="114" width="230" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="415.0" y="137.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">右乘 Q(KᵀV)</text>
+<text x="415.0" y="155.0" font-size="11" fill="#6b7280" text-anchor="middle">先算 d × d 状态</text>
+<text x="415" y="190" font-size="11" fill="#6b7280" text-anchor="middle">计算 O(nd²)，但因果时要逐位累加</text>
+<text x="40" y="224" font-size="11" fill="#9ca3af" text-anchor="start">因果语言模型里，第 t 个位置只能看前 t 个：右乘退化成 kvₜ = kvₜ₋₁ + kₜvₜᵀ 的串行累加。</text>
+<rect x="570" y="72" width="530" height="170" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="590" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 为什么以前没人用</text>
+<text x="590" y="126" font-size="13" fill="#111827" text-anchor="start">逐位累加（cumsum）线性但不能并行，GPU 上跑不快。</text>
+<text x="590" y="152" font-size="13" fill="#111827" text-anchor="start">报告认为，这很可能就是线性注意力提出九年仍没进主流</text>
+<text x="590" y="172" font-size="13" fill="#111827" text-anchor="start">开源大模型的原因（PDF p. 6）。lightning 就是为绕开它而做。</text>
+<text x="590" y="206" font-size="13" fill="#6b7280" text-anchor="start">复杂度：O(nd² + nBd)，B 是块大小；训练时 B = 256。</text>
+<rect x="20" y="262" width="1080" height="250" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="40" y="288" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(c) 按块扫描：每一块同时做两件事，然后把自己的 KᵀV 加进状态</text>
+<rect x="60" y="306" width="160" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="140.0" y="327.2" font-size="12" fill="#111827" text-anchor="middle">读入第 1 块 Q、K、V</text>
+<rect x="60" y="356" width="160" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="140.0" y="375.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块内：左乘</text>
+<text x="140.0" y="393.0" font-size="11" fill="#6b7280" text-anchor="middle">[(Q K ᵀ) ⊙ M] V</text>
+<rect x="60" y="414" width="160" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="140.0" y="433.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块间：Q · KV</text>
+<text x="140.0" y="451.0" font-size="11" fill="#6b7280" text-anchor="middle">用之前所有块</text>
+<line x1="140" y1="340" x2="140" y2="352" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="270" y="306" width="160" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="350.0" y="327.2" font-size="12" fill="#111827" text-anchor="middle">读入第 2 块 Q、K、V</text>
+<rect x="270" y="356" width="160" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="350.0" y="375.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块内：左乘</text>
+<text x="350.0" y="393.0" font-size="11" fill="#6b7280" text-anchor="middle">[(Q K ᵀ) ⊙ M] V</text>
+<rect x="270" y="414" width="160" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="350.0" y="433.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块间：Q · KV</text>
+<text x="350.0" y="451.0" font-size="11" fill="#6b7280" text-anchor="middle">用之前所有块</text>
+<line x1="350" y1="340" x2="350" y2="352" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="480" y="306" width="160" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="560.0" y="327.2" font-size="12" fill="#111827" text-anchor="middle">读入第 3 块 Q、K、V</text>
+<rect x="480" y="356" width="160" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="560.0" y="375.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块内：左乘</text>
+<text x="560.0" y="393.0" font-size="11" fill="#6b7280" text-anchor="middle">[(Q K ᵀ) ⊙ M] V</text>
+<rect x="480" y="414" width="160" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="560.0" y="433.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块间：Q · KV</text>
+<text x="560.0" y="451.0" font-size="11" fill="#6b7280" text-anchor="middle">用之前所有块</text>
+<line x1="560" y1="340" x2="560" y2="352" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="690" y="306" width="160" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="770.0" y="327.2" font-size="12" fill="#111827" text-anchor="middle">读入第 4 块 Q、K、V</text>
+<rect x="690" y="356" width="160" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="770.0" y="375.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块内：左乘</text>
+<text x="770.0" y="393.0" font-size="11" fill="#6b7280" text-anchor="middle">[(Q K ᵀ) ⊙ M] V</text>
+<rect x="690" y="414" width="160" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="770.0" y="433.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块间：Q · KV</text>
+<text x="770.0" y="451.0" font-size="11" fill="#6b7280" text-anchor="middle">用之前所有块</text>
+<line x1="770" y1="340" x2="770" y2="352" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="900" y="306" width="160" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="980.0" y="327.2" font-size="12" fill="#111827" text-anchor="middle">读入最后一块 Q、K、V</text>
+<rect x="900" y="356" width="160" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="980.0" y="375.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块内：左乘</text>
+<text x="980.0" y="393.0" font-size="11" fill="#6b7280" text-anchor="middle">[(Q K ᵀ) ⊙ M] V</text>
+<rect x="900" y="414" width="160" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="980.0" y="433.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">块间：Q · KV</text>
+<text x="980.0" y="451.0" font-size="11" fill="#6b7280" text-anchor="middle">用之前所有块</text>
+<line x1="980" y1="340" x2="980" y2="352" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="875" y="386" font-size="14" fill="#9ca3af" text-anchor="middle">…</text>
+<rect x="90" y="472" width="100" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="140" y="490" font-size="11" fill="#111827" text-anchor="middle">KV = 0</text>
+<line x1="190" y1="485" x2="296" y2="485" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="245" y="478" font-size="11" fill="#6b7280" text-anchor="middle">+ KᵀV</text>
+<rect x="300" y="472" width="100" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="350" y="490" font-size="11" fill="#111827" text-anchor="middle">KV 累加中</text>
+<line x1="400" y1="485" x2="506" y2="485" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="455" y="478" font-size="11" fill="#6b7280" text-anchor="middle">+ KᵀV</text>
+<rect x="510" y="472" width="100" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="560" y="490" font-size="11" fill="#111827" text-anchor="middle">KV 累加中</text>
+<line x1="610" y1="485" x2="716" y2="485" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="665" y="478" font-size="11" fill="#6b7280" text-anchor="middle">+ KᵀV</text>
+<rect x="720" y="472" width="100" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="770" y="490" font-size="11" fill="#111827" text-anchor="middle">KV 累加中</text>
+<line x1="820" y1="485" x2="926" y2="485" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="875" y="478" font-size="11" fill="#6b7280" text-anchor="middle">+ KᵀV</text>
+<rect x="930" y="472" width="100" height="26" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="980" y="490" font-size="11" fill="#111827" text-anchor="middle">KV</text>
+<text x="30" y="540" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 6 Figure 5、p. 7 式 4–9 与 p. 8 Algorithm 1 重画，是机制示意。输出 O_t = 块内 + 块间，写回显存；状态 KV 始终是 d × d，与序列长度无关。</text>
+<text x="30" y="564" font-size="13" fill="#6b7280" text-anchor="start">推导里省掉了归一化、SiLU、门控与衰减（p. 7 原文说明）；序列并行版本里的衰减矩阵 D 见 p. 18 Figure 12。</text>
+</svg>

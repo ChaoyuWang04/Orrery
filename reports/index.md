@@ -95,7 +95,7 @@
 | Gated-Attention | Alibaba | 注意力输出加门控,消 attention sink 并提升稀疏性;Qwen3-Next 采用 |
 | MoBA | Moonshot | 块注意力混合,与 NSA 同期对打 |
 | NSA | DeepSeek | 原生可训练、硬件对齐的稀疏注意力 |
-| MiniMax-01 | MiniMax | lightning attention 的出处 |
+| MiniMax-01 | MiniMax | lightning attention 首次放大到 456B:每 8 层 7 层线性、1 层 softmax 的混合架构 |
 | From-Attention-to-Activation | Huawei | 首 token 注意力集中与激活离群值的成因,OrthoAdam 消除(诺亚方舟) |
 | FlashAttention-3 | Stanford | 异步与低精度(依据 NeurIPS 2024 正式版) |
 | FlashAttention-2 | Stanford | 并行与工作划分改进 |

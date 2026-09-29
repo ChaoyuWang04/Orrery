@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 450" width="860" height="450" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="860" height="450" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 4：块切多细，只有最粗那一档明显吃亏</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">1.5B 模型、32K 上下文，五档都只读 25% 的块（稀疏度 75%）。绿 = MoBA；红虚线 = 全注意力。数值读自原图，近似。</text>
+<line x1="100.0" y1="380.0" x2="800.0" y2="380.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92.0" y="384.0" font-size="11" fill="#9ca3af" text-anchor="end">2.235</text>
+<line x1="100.0" y1="324.0" x2="800.0" y2="324.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92.0" y="328.0" font-size="11" fill="#9ca3af" text-anchor="end">2.240</text>
+<line x1="100.0" y1="268.0" x2="800.0" y2="268.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92.0" y="272.0" font-size="11" fill="#9ca3af" text-anchor="end">2.245</text>
+<line x1="100.0" y1="212.0" x2="800.0" y2="212.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92.0" y="216.0" font-size="11" fill="#9ca3af" text-anchor="end">2.250</text>
+<line x1="100.0" y1="156.0" x2="800.0" y2="156.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92.0" y="160.0" font-size="11" fill="#9ca3af" text-anchor="end">2.255</text>
+<line x1="100.0" y1="100.0" x2="800.0" y2="100.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="92.0" y="104.0" font-size="11" fill="#9ca3af" text-anchor="end">2.260</text>
+<line x1="100.0" y1="100.0" x2="100.0" y2="380.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="100.0" y1="380.0" x2="800.0" y2="380.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="100.0" y1="306.1" x2="800.0" y2="306.1" stroke="#d9877a" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="108.0" y="298.1" font-size="11" fill="#d9877a" text-anchor="start">全注意力 约 2.2416</text>
+<polyline points="170.0,124.6 310.0,287.0 450.0,324.0 590.0,290.4 730.0,315.0" fill="none" stroke="#5fa886" stroke-width="2"/>
+<circle cx="170.0" cy="124.6" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="170.0" y="400.0" font-size="12" fill="#111827" text-anchor="middle">8 块选 2</text>
+<circle cx="310.0" cy="287.0" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="310.0" y="400.0" font-size="12" fill="#111827" text-anchor="middle">16 块选 4</text>
+<circle cx="450.0" cy="324.0" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="450.0" y="400.0" font-size="12" fill="#111827" text-anchor="middle">32 块选 8</text>
+<circle cx="590.0" cy="290.4" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="590.0" y="400.0" font-size="12" fill="#111827" text-anchor="middle">64 块选 16</text>
+<circle cx="730.0" cy="315.0" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="730.0" y="400.0" font-size="12" fill="#111827" text-anchor="middle">128 块选 32</text>
+<text x="182.0" y="128.6" font-size="11" fill="#6b7280" text-anchor="start">约 2.258</text>
+<text x="322.0" y="254.6" font-size="11" fill="#9ca3af" text-anchor="start">从这一档起，四个点都在基线 ±0.002 以内</text>
+<text x="100.0" y="425.0" font-size="11" fill="#9ca3af" text-anchor="start">纵轴是验证集 LM loss。块数翻倍、选中数同步翻倍，读到的 Token 总量不变，变的只是「以多大的颗粒去挑」。</text>
+</svg>

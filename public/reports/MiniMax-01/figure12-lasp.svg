@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">LASP 到 LASP+：把「一棒传一棒」换成「各算各的，再一次性交换」</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">黄 = 不依赖别人的本地计算；紫 = 块间计算（要用前面所有 rank 的 KV）；绿 = 通信；灰 = 干等。横轴是时间，长度为示意。</text>
+<text x="40" y="86" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) LASP：第 r 个 rank 要等前面 r 个 rank 依次算完、把 KV 传过来</text>
+<text x="186" y="117" font-size="12" fill="#6b7280" text-anchor="end">CP rank 0</text>
+<text x="186" y="151" font-size="12" fill="#6b7280" text-anchor="end">CP rank 1</text>
+<text x="186" y="185" font-size="12" fill="#6b7280" text-anchor="end">CP rank 2</text>
+<text x="186" y="219" font-size="12" fill="#6b7280" text-anchor="end">CP rank 3</text>
+<rect x="200.0" y="100" width="156.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="278.0" y="117" font-size="11" fill="#111827" text-anchor="middle">块内</text>
+<rect x="356.0" y="100" width="130.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="421.0" y="117" font-size="11" fill="#111827" text-anchor="middle">块间</text>
+<rect x="486.0" y="100" width="52.0" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="512.0" y="117" font-size="11" fill="#111827" text-anchor="middle">send</text>
+<rect x="200.0" y="134" width="156.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="278.0" y="151" font-size="11" fill="#111827" text-anchor="middle">块内</text>
+<rect x="356.0" y="134" width="182.0" height="26" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="447.0" y="151" font-size="11" fill="#111827" text-anchor="middle">等前一个 rank</text>
+<rect x="538.0" y="134" width="130.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="603.0" y="151" font-size="11" fill="#111827" text-anchor="middle">块间</text>
+<rect x="668.0" y="134" width="52.0" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="694.0" y="151" font-size="11" fill="#111827" text-anchor="middle">send</text>
+<rect x="200.0" y="168" width="156.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="278.0" y="185" font-size="11" fill="#111827" text-anchor="middle">块内</text>
+<rect x="356.0" y="168" width="364.0" height="26" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="538.0" y="185" font-size="11" fill="#111827" text-anchor="middle">等前一个 rank</text>
+<rect x="720.0" y="168" width="130.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="785.0" y="185" font-size="11" fill="#111827" text-anchor="middle">块间</text>
+<rect x="850.0" y="168" width="52.0" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="876.0" y="185" font-size="11" fill="#111827" text-anchor="middle">send</text>
+<rect x="200.0" y="202" width="156.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="278.0" y="219" font-size="11" fill="#111827" text-anchor="middle">块内</text>
+<rect x="356.0" y="202" width="546.0" height="26" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="629.0" y="219" font-size="11" fill="#111827" text-anchor="middle">等前一个 rank</text>
+<rect x="902.0" y="202" width="130.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="967.0" y="219" font-size="11" fill="#111827" text-anchor="middle">块间</text>
+<line x1="1032.0" y1="90" x2="1032.0" y2="236" stroke="#d9877a" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="1026.0" y="250" font-size="11" fill="#6b7280" text-anchor="end">结束</text>
+<text x="40" y="296" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) LASP+：各 rank 先算本地前缀和 KV_L，一次 AllGather，再各自拼出全局前缀 KV_G</text>
+<text x="186" y="327" font-size="12" fill="#6b7280" text-anchor="end">CP rank 0</text>
+<text x="186" y="361" font-size="12" fill="#6b7280" text-anchor="end">CP rank 1</text>
+<text x="186" y="395" font-size="12" fill="#6b7280" text-anchor="end">CP rank 2</text>
+<text x="186" y="429" font-size="12" fill="#6b7280" text-anchor="end">CP rank 3</text>
+<rect x="200.0" y="310" width="156.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="278.0" y="327" font-size="11" fill="#111827" text-anchor="middle">块内</text>
+<rect x="356.0" y="310" width="78.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="395.0" y="327" font-size="11" fill="#111827" text-anchor="middle">本地 KV_L</text>
+<rect x="434.0" y="310" width="78.0" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="473.0" y="327" font-size="11" fill="#111827" text-anchor="middle">AllGather</text>
+<rect x="512.0" y="310" width="130.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="577.0" y="327" font-size="11" fill="#111827" text-anchor="middle">块间</text>
+<rect x="200.0" y="344" width="156.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="278.0" y="361" font-size="11" fill="#111827" text-anchor="middle">块内</text>
+<rect x="356.0" y="344" width="78.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="395.0" y="361" font-size="11" fill="#111827" text-anchor="middle">本地 KV_L</text>
+<rect x="434.0" y="344" width="78.0" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="473.0" y="361" font-size="11" fill="#111827" text-anchor="middle">AllGather</text>
+<rect x="512.0" y="344" width="130.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="577.0" y="361" font-size="11" fill="#111827" text-anchor="middle">块间</text>
+<rect x="200.0" y="378" width="156.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="278.0" y="395" font-size="11" fill="#111827" text-anchor="middle">块内</text>
+<rect x="356.0" y="378" width="78.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="395.0" y="395" font-size="11" fill="#111827" text-anchor="middle">本地 KV_L</text>
+<rect x="434.0" y="378" width="78.0" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="473.0" y="395" font-size="11" fill="#111827" text-anchor="middle">AllGather</text>
+<rect x="512.0" y="378" width="130.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="577.0" y="395" font-size="11" fill="#111827" text-anchor="middle">块间</text>
+<rect x="200.0" y="412" width="156.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="278.0" y="429" font-size="11" fill="#111827" text-anchor="middle">块内</text>
+<rect x="356.0" y="412" width="78.0" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="395.0" y="429" font-size="11" fill="#111827" text-anchor="middle">本地 KV_L</text>
+<rect x="434.0" y="412" width="78.0" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="473.0" y="429" font-size="11" fill="#111827" text-anchor="middle">AllGather</text>
+<rect x="512.0" y="412" width="130.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="577.0" y="429" font-size="11" fill="#111827" text-anchor="middle">块间</text>
+<line x1="642.0" y1="300" x2="642.0" y2="446" stroke="#5fa886" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="648.0" y="460" font-size="11" fill="#6b7280" text-anchor="start">结束</text>
+<text x="30" y="500" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 18 Figure 12 与 p. 17–19 正文重画。原图每个 rank 内部还分成多个 B 大小的小块，不能整除的部分补零；这里只画 rank 之间的依赖。</text>
+<text x="30" y="524" font-size="13" fill="#6b7280" text-anchor="start">代价（报告自述）：总通信量与临时显存都变多；收益：串行依赖消失，报告称 AllGather 的额外开销很小。</text>
+<text x="30" y="548" font-size="13" fill="#6b7280" text-anchor="start">在此之上再加 varlen：每条样本先补齐到 256 的倍数再首尾拼接，一个 kernel 处理整批不等长输入（PDF p. 19）。</text>
+</svg>

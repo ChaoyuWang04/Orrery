@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 470" width="1120" height="470" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="470" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 2：注意力层前向耗时，序列越长差距越大</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">灰 = 全注意力（FlashAttention）；绿 = MoBA。点位是读自原文 Figure 2 的近似值，倍数 6.5× 与 16× 是原文正文给的数字。</text>
+<text x="90.0" y="92.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) 1M 模型，32K–1M，单位毫秒</text>
+<line x1="90.0" y1="390.0" x2="520.0" y2="390.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="394.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="90.0" y1="334.0" x2="520.0" y2="334.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="338.0" font-size="11" fill="#9ca3af" text-anchor="end">200</text>
+<line x1="90.0" y1="278.0" x2="520.0" y2="278.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="282.0" font-size="11" fill="#9ca3af" text-anchor="end">400</text>
+<line x1="90.0" y1="222.0" x2="520.0" y2="222.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="226.0" font-size="11" fill="#9ca3af" text-anchor="end">600</text>
+<line x1="90.0" y1="166.0" x2="520.0" y2="166.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="end">800</text>
+<line x1="90.0" y1="110.0" x2="520.0" y2="110.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="82.0" y="114.0" font-size="11" fill="#9ca3af" text-anchor="end">1000</text>
+<line x1="90.0" y1="110.0" x2="90.0" y2="390.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="90.0" y1="390.0" x2="520.0" y2="390.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="103.4" y="408.0" font-size="11" fill="#9ca3af" text-anchor="middle">32K</text>
+<text x="197.5" y="408.0" font-size="11" fill="#9ca3af" text-anchor="middle">256K</text>
+<text x="305.0" y="408.0" font-size="11" fill="#9ca3af" text-anchor="middle">512K</text>
+<text x="520.0" y="408.0" font-size="11" fill="#9ca3af" text-anchor="middle">1M</text>
+<polyline points="103.4,389.7 143.8,387.8 197.5,373.8 305.0,324.5 520.0,127.6" fill="none" stroke="#b9b9b9" stroke-width="2"/>
+<polyline points="103.4,389.7 143.8,388.0 197.5,382.4 305.0,372.9 520.0,349.7" fill="none" stroke="#5fa886" stroke-width="2"/>
+<circle cx="103.4" cy="389.7" r="3.5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<circle cx="143.8" cy="387.8" r="3.5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<circle cx="197.5" cy="373.8" r="3.5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<circle cx="305.0" cy="324.5" r="3.5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<circle cx="520.0" cy="127.6" r="3.5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<circle cx="103.4" cy="389.7" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<circle cx="143.8" cy="388.0" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<circle cx="197.5" cy="382.4" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<circle cx="305.0" cy="372.9" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<circle cx="520.0" cy="349.7" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<line x1="506.0" y1="138.0" x2="506.0" y2="342.4" stroke="#d9877a" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="498.0" y="238.8" font-size="13" fill="#d9877a" text-anchor="end" font-weight="700">约 6.5×</text>
+<text x="106.8" y="342.4" font-size="11" fill="#9ca3af" text-anchor="start">256K 以内两条线几乎贴着</text>
+<text x="640.0" y="92.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 固定 95.31% 稀疏度，到 10M，单位秒</text>
+<line x1="640.0" y1="390.0" x2="1080.0" y2="390.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632.0" y="394.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="640.0" y1="334.0" x2="1080.0" y2="334.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632.0" y="338.0" font-size="11" fill="#9ca3af" text-anchor="end">20</text>
+<line x1="640.0" y1="278.0" x2="1080.0" y2="278.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632.0" y="282.0" font-size="11" fill="#9ca3af" text-anchor="end">40</text>
+<line x1="640.0" y1="222.0" x2="1080.0" y2="222.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632.0" y="226.0" font-size="11" fill="#9ca3af" text-anchor="end">60</text>
+<line x1="640.0" y1="166.0" x2="1080.0" y2="166.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="end">80</text>
+<line x1="640.0" y1="110.0" x2="1080.0" y2="110.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632.0" y="114.0" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<line x1="640.0" y1="110.0" x2="640.0" y2="390.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640.0" y1="390.0" x2="1080.0" y2="390.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="684.0" y="408.0" font-size="11" fill="#9ca3af" text-anchor="middle">1M</text>
+<text x="816.0" y="408.0" font-size="11" fill="#9ca3af" text-anchor="middle">4M</text>
+<text x="948.0" y="408.0" font-size="11" fill="#9ca3af" text-anchor="middle">7M</text>
+<text x="1080.0" y="408.0" font-size="11" fill="#9ca3af" text-anchor="middle">10M</text>
+<polyline points="662.0,389.4 684.0,387.5 816.0,349.7 1080.0,136.6" fill="none" stroke="#b9b9b9" stroke-width="2"/>
+<polyline points="662.0,389.9 684.0,389.6 816.0,386.9 1080.0,373.8" fill="none" stroke="#5fa886" stroke-width="2"/>
+<circle cx="662.0" cy="389.4" r="3.5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<circle cx="684.0" cy="387.5" r="3.5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<circle cx="816.0" cy="349.7" r="3.5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<circle cx="1080.0" cy="136.6" r="3.5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<circle cx="662.0" cy="389.9" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<circle cx="684.0" cy="389.6" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<circle cx="816.0" cy="386.9" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<circle cx="1080.0" cy="373.8" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<line x1="1066.0" y1="143.6" x2="1066.0" y2="367.6" stroke="#d9877a" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1058.0" y="250.0" font-size="13" fill="#d9877a" text-anchor="end" font-weight="700">约 16×</text>
+<text x="806.0" y="347.7" font-size="11" fill="#9ca3af" text-anchor="end">约 14 s</text>
+<text x="824.0" y="378.9" font-size="11" fill="#9ca3af" text-anchor="start">约 1 s</text>
+<text x="30.0" y="430.0" font-size="11" fill="#9ca3af" text-anchor="start">(b) 的做法：块数固定 64、top-k 固定 3，序列越长块越大；10M 时把张量并行扩到 Query 头这一级，Key 与 Value 广播到各个头。</text>
+<text x="30.0" y="450.0" font-size="11" fill="#9ca3af" text-anchor="start">两幅都只计注意力层的前向时间，不含 FFN，也不含反向与解码。</text>
+</svg>

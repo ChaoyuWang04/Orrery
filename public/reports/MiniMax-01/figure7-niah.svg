@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">大海捞针（NIAH）：纯 lightning 最差，每 8 层换回 1 层 softmax 反而最好</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">黄 = 纯 softmax；紫 = 纯 lightning；红 = hybrid-lightning（7 层 lightning + 1 层 softmax）。纵轴是 NIAH 得分。</text>
+<line x1="90" y1="390.0" x2="1090" y2="390.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="80" y="394.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="90" y1="330.0" x2="1090" y2="330.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="80" y="334.0" font-size="11" fill="#9ca3af" text-anchor="end">20</text>
+<line x1="90" y1="270.0" x2="1090" y2="270.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="80" y="274.0" font-size="11" fill="#9ca3af" text-anchor="end">40</text>
+<line x1="90" y1="210.0" x2="1090" y2="210.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="80" y="214.0" font-size="11" fill="#9ca3af" text-anchor="end">60</text>
+<line x1="90" y1="150.0" x2="1090" y2="150.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="80" y="154.0" font-size="11" fill="#9ca3af" text-anchor="end">80</text>
+<line x1="90" y1="90.0" x2="1090" y2="90.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="80" y="94.0" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<rect x="130" y="234.0" width="50" height="156.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="155" y="228.0" font-size="11" fill="#6b7280" text-anchor="middle">约 52</text>
+<rect x="188" y="348.0" width="50" height="42.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="213" y="342.0" font-size="11" fill="#6b7280" text-anchor="middle">约 14</text>
+<rect x="246" y="137.39999999999998" width="50" height="252.60000000000002" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="271" y="131.39999999999998" font-size="11" fill="#111827" text-anchor="middle">84.2</text>
+<text x="213" y="412" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">410M</text>
+<rect x="375" y="258.0" width="50" height="132.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="400" y="252.0" font-size="11" fill="#6b7280" text-anchor="middle">约 44</text>
+<rect x="433" y="306.0" width="50" height="84.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="458" y="300.0" font-size="11" fill="#6b7280" text-anchor="middle">约 28</text>
+<rect x="491" y="102.89999999999998" width="50" height="287.1" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="516" y="96.89999999999998" font-size="11" fill="#111827" text-anchor="middle">95.7</text>
+<text x="458" y="412" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">1B</text>
+<rect x="620" y="255.0" width="50" height="135.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="645" y="249.0" font-size="11" fill="#6b7280" text-anchor="middle">约 45</text>
+<rect x="678" y="357.0" width="50" height="33.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="703" y="351.0" font-size="11" fill="#6b7280" text-anchor="middle">约 11</text>
+<rect x="736" y="96.0" width="50" height="294.0" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="761" y="90.0" font-size="11" fill="#111827" text-anchor="middle">98.0</text>
+<text x="703" y="412" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">3B</text>
+<rect x="865" y="213.0" width="50" height="177.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="890" y="207.0" font-size="11" fill="#6b7280" text-anchor="middle">约 59</text>
+<rect x="923" y="330.0" width="50" height="60.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="948" y="324.0" font-size="11" fill="#6b7280" text-anchor="middle">约 20</text>
+<rect x="981" y="96.90000000000003" width="50" height="293.09999999999997" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1006" y="90.90000000000003" font-size="11" fill="#111827" text-anchor="middle">97.7</text>
+<text x="948" y="412" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">7B</text>
+<line x1="90" y1="390" x2="1090" y2="390" stroke="#9ca3af" stroke-width="1.2"/>
+<text x="30" y="452" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 10 Figure 7 重画。红柱数字是原图标注；黄、紫两色原图没有标数，是按柱高读出的近似值（误差约 ±2）。</text>
+<text x="30" y="476" font-size="13" fill="#6b7280" text-anchor="start">同一张图上的常识推理平均分（CSR-AVG）三种结构相差都在 2 分以内（读图）：lightning 的语言建模能力不差，差的是检索。</text>
+<text x="30" y="500" font-size="13" fill="#6b7280" text-anchor="start">实验设置：70M–7B 六个规模、至多 300B Token、上下文 8192、固定学习率（PDF p. 8–9）；图里只画了 410M 到 7B 四档。</text>
+</svg>
