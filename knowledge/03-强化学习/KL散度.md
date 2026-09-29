@@ -211,12 +211,12 @@ flowchart TD
 
 | 教师能给 | 可行做法 | 丢了什么 |
 | --- | --- | --- |
-| top-k logprob | 在 top-k 上算截断 KL,余下质量归"其他"桶 | 长尾;k 越小、分布越平偏差越大 |
+| top-k logprob | 在 top-k 上算截断 KL,余下质量归"其他"桶;截断项要补 $-p_S+p_T$,最小点才落在师生相等处 | 长尾,以及学生高估、教师不看好的词:它不在教师 top-k 里,梯度恰为 0 |
 | 仅文本 | 学生采样,教师在其前缀上改写/纠错,再 SFT | 逐 token 密集信号,退化成序列级 |
 | 仅偏好或打分 | 组偏好对做 DPO,或当 RLAIF 的奖励 | 监督退化成序列级标量 |
 | 有标准答案 | 转可验证奖励,不再依赖教师分布 | 只适用可自动判对错的任务 |
 
-这些方案保住了 OPD 最本质的那一半(样本来自学生自己),所以仍能缓解 exposure bias;丢掉的是另一半,**目标函数已经不是 KL 最小化,答题时别继续叫它标准 OPD**。截断 KL 的偏差有多大是可以实测的:学生侧拿得到完整分布,先量一量自己分布的 top-k 覆盖了多少质量,就知道这层近似有多糙。
+这些方案保住了 OPD 最本质的那一半(样本来自学生自己),所以仍能缓解 exposure bias;丢掉的是另一半,**目标函数已经不是 KL 最小化,答题时别继续叫它标准 OPD**。截断 KL 的偏差要实测,但**量质量覆盖不够**:教师 top-32 留下 99.99% 的质量,仍可能在 99.6% 的 prompt 上漏掉学生高估的那个决策词(比如「该不该调工具」的入口 token),这个坐标上的纠正梯度就是 0。要量的是关键 token 的覆盖率和它们的梯度占全词表梯度的比例;便宜的修法是教师与学生 top-k 取并集,只多查约两成坐标(When Top-K Misses the Decision,arXiv:2607.07050)。
 
 还有两个前提不确认,上面全不成立:一是**tokenizer 必须一致**,分词边界对不上时一个教师 token 可能横跨学生的两三个 token,任何拆分方案都是在猜条件概率怎么分配,有损;二是**要问清返回的 logprob 是哪个分布的**,如果 API 在温度和 top-p 截断之后才给,那已经不是教师原始分布,拿它当目标会把对方的解码超参一起学进来。
 
@@ -261,3 +261,4 @@ flowchart TD
 - Distilling the Knowledge in a Neural Network(固定教师软目标)— [arXiv:1503.02531](https://arxiv.org/abs/1503.02531)
 - Sequence-Level Knowledge Distillation(序列级退路的出处)— [arXiv:1606.07947](https://arxiv.org/abs/1606.07947)
 - 1% of Tokens Can Be Enough: On Gradient Estimation in On-Policy Distillation(稀疏 OPD 与单样本梯度的信噪比 IER)— [arXiv:2609.24432](https://arxiv.org/abs/2609.24432)
+- When Top-K Misses the Decision: Tool-Call Drift in Multi-Teacher On-Policy Distillation(top-k 截断丢掉决策坐标)— [arXiv:2607.07050](https://arxiv.org/abs/2607.07050)

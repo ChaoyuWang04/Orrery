@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 470" width="1120" height="470" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="470" fill="#ffffff"/>
+<text x="30.0" y="34.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">全局 batch 推到 1 亿 token，单个路由专家看到的仍只有几百万</text>
+<text x="30.0" y="58.0" font-size="13" fill="#6b7280" text-anchor="start">灰 = 稠密与共享参数看到的 batch（就是全局 batch），绿 = 单个路由专家看到的有效 batch。按原文式 (2)、理想负载均衡换算。</text>
+<text x="30.0" y="116.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">稠密与共享参数</text>
+<text x="30.0" y="134.0" font-size="11" fill="#6b7280" text-anchor="start">注意力、共享专家、Mamba 投影</text>
+<rect x="330.0" y="106.0" width="660.0" height="28.0" rx="4" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="980.0" y="125.0" font-size="11" fill="#6b7280" text-anchor="end">100M，吃满全局 batch</text>
+<text x="30.0" y="174.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Qwen3-30B-A3B</text>
+<text x="30.0" y="192.0" font-size="11" fill="#6b7280" text-anchor="start">单个专家，top-8 / 128</text>
+<rect x="330.0" y="164.0" width="41.2" height="28.0" rx="4" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="381.2" y="183.0" font-size="11" fill="#6b7280" text-anchor="start">6.25M，全局的 1/16</text>
+<text x="30.0" y="232.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Nemotron-3-Nano-30B-A3B</text>
+<text x="30.0" y="250.0" font-size="11" fill="#6b7280" text-anchor="start">单个专家，top-6 / 128</text>
+<rect x="330.0" y="222.0" width="30.9" height="28.0" rx="4" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="370.9" y="241.0" font-size="11" fill="#6b7280" text-anchor="start">4.69M，约全局的 1/21</text>
+<text x="30.0" y="290.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">原文举例：top-8 / 256</text>
+<text x="30.0" y="308.0" font-size="11" fill="#6b7280" text-anchor="start">细粒度 MoE 的典型配置</text>
+<rect x="330.0" y="280.0" width="20.6" height="28.0" rx="4" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="360.6" y="299.0" font-size="11" fill="#6b7280" text-anchor="start">3.13M，全局的 1/32</text>
+<text x="30.0" y="348.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Nemotron-3-72B-A8B</text>
+<text x="30.0" y="366.0" font-size="11" fill="#6b7280" text-anchor="start">单个专家，top-6 / 512</text>
+<rect x="330.0" y="338.0" width="7.7" height="28.0" rx="4" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="347.7" y="357.0" font-size="11" fill="#6b7280" text-anchor="start">1.17M，约全局的 1/85</text>
+<line x1="330.0" y1="92.0" x2="330.0" y2="384.0" stroke="#b9b9b9" stroke-width="1"/>
+<text x="30.0" y="404.0" font-size="11" fill="#9ca3af" text-anchor="start">全局 batch 统一取 100M 只为比较比例。原文真正跑到 100M 的只有 Qwen3-30B-A3B（4 倍基线）；72B 模型最大只跑到 50M。</text>
+<text x="30.0" y="424.0" font-size="11" fill="#9ca3af" text-anchor="start">专家停在小 batch 区、容易优化；把全局 batch 推大，压力几乎全落在第一行那些稠密参数上（原文 3.1 节，PDF p. 4）。</text>
+</svg>

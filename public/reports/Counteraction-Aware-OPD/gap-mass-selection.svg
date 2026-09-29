@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 580" width="1120" height="580" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="580" fill="#ffffff"/>
+<text x="30.0" y="34.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">同样覆盖 80% 的 gap 质量，留下几条样本由分数分布的形状决定</text>
+<text x="30.0" y="58.0" font-size="13" fill="#6b7280" text-anchor="start">每根柱是一条样本的平均 gap 分数，已从大到小排好。紫 = 被选中、进入损失，灰 = 被丢掉的低 gap 尾巴。数字是虚构的小例子。</text>
+<rect x="30.0" y="78.0" width="515.0" height="440.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="50.0" y="106.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">尖的分布：少数样本集中了大部分纠正需求</text>
+<text x="50.0" y="126.0" font-size="11" fill="#9ca3af" text-anchor="start">形状类似原文 Figure 3(d) 角色扮演领域支路，那里选中比例约 0.22–0.26</text>
+<line x1="58.0" y1="380.0" x2="522.0" y2="380.0" stroke="#b9b9b9" stroke-width="1"/>
+<text x="54.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="end">累计</text>
+<rect x="66.0" y="190.0" width="28.0" height="190.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="80.0" y="184.0" font-size="11" fill="#6b7280" text-anchor="middle">10</text>
+<text x="80.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">42%</text>
+<rect x="104.0" y="266.0" width="28.0" height="114.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="118.0" y="260.0" font-size="11" fill="#6b7280" text-anchor="middle">6</text>
+<text x="118.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">67%</text>
+<rect x="142.0" y="304.0" width="28.0" height="76.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="156.0" y="298.0" font-size="11" fill="#6b7280" text-anchor="middle">4</text>
+<text x="156.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">83%</text>
+<rect x="180.0" y="361.0" width="28.0" height="19.0" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="194.0" y="355.0" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="194.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">88%</text>
+<rect x="218.0" y="364.8" width="28.0" height="15.2" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="232.0" y="358.8" font-size="11" fill="#6b7280" text-anchor="middle">0.8</text>
+<text x="232.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">91%</text>
+<rect x="256.0" y="368.6" width="28.0" height="11.4" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="270.0" y="362.6" font-size="11" fill="#6b7280" text-anchor="middle">0.6</text>
+<text x="270.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">93%</text>
+<rect x="294.0" y="370.5" width="28.0" height="9.5" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="308.0" y="364.5" font-size="11" fill="#6b7280" text-anchor="middle">0.5</text>
+<text x="308.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">95%</text>
+<rect x="332.0" y="372.4" width="28.0" height="7.6" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="346.0" y="366.4" font-size="11" fill="#6b7280" text-anchor="middle">0.4</text>
+<text x="346.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">97%</text>
+<rect x="370.0" y="374.3" width="28.0" height="5.7" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="384.0" y="368.3" font-size="11" fill="#6b7280" text-anchor="middle">0.3</text>
+<text x="384.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">98%</text>
+<rect x="408.0" y="376.2" width="28.0" height="3.8" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="422.0" y="370.2" font-size="11" fill="#6b7280" text-anchor="middle">0.2</text>
+<text x="422.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">99%</text>
+<rect x="446.0" y="378.1" width="28.0" height="1.9" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="460.0" y="372.1" font-size="11" fill="#6b7280" text-anchor="middle">0.1</text>
+<text x="460.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">100%</text>
+<rect x="484.0" y="378.1" width="28.0" height="1.9" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="498.0" y="372.1" font-size="11" fill="#6b7280" text-anchor="middle">0.1</text>
+<text x="498.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">100%</text>
+<line x1="175.0" y1="150.0" x2="175.0" y2="414.0" stroke="#d9877a" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="181.0" y="166.0" font-size="11" fill="#6b7280" text-anchor="start">前 3 条累计 83%，第一次 ≥ 80%</text>
+<text x="50.0" y="450.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">k = 3，留下 3/12 = 25% 的样本</text>
+<text x="50.0" y="474.0" font-size="11" fill="#6b7280" text-anchor="start">丢掉的 9 条只占总 gap 质量的 17%</text>
+<rect x="575.0" y="78.0" width="515.0" height="440.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="595.0" y="106.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">平的分布：纠正需求摊在大多数样本上</text>
+<text x="595.0" y="126.0" font-size="11" fill="#9ca3af" text-anchor="start">形状类似原文 Figure 3(h) 医学领域支路，那里选中比例约 0.73</text>
+<line x1="603.0" y1="380.0" x2="1067.0" y2="380.0" stroke="#b9b9b9" stroke-width="1"/>
+<text x="599.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="end">累计</text>
+<rect x="611.0" y="190.0" width="28.0" height="190.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="625.0" y="184.0" font-size="11" fill="#6b7280" text-anchor="middle">3</text>
+<text x="625.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">12%</text>
+<rect x="649.0" y="202.7" width="28.0" height="177.3" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="663.0" y="196.7" font-size="11" fill="#6b7280" text-anchor="middle">2.8</text>
+<text x="663.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">23%</text>
+<rect x="687.0" y="215.3" width="28.0" height="164.7" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="701.0" y="209.3" font-size="11" fill="#6b7280" text-anchor="middle">2.6</text>
+<text x="701.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">33%</text>
+<rect x="725.0" y="221.7" width="28.0" height="158.3" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="739.0" y="215.7" font-size="11" fill="#6b7280" text-anchor="middle">2.5</text>
+<text x="739.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">43%</text>
+<rect x="763.0" y="228.0" width="28.0" height="152.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="777.0" y="222.0" font-size="11" fill="#6b7280" text-anchor="middle">2.4</text>
+<text x="777.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">52%</text>
+<rect x="801.0" y="234.3" width="28.0" height="145.7" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="815.0" y="228.3" font-size="11" fill="#6b7280" text-anchor="middle">2.3</text>
+<text x="815.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">61%</text>
+<rect x="839.0" y="240.7" width="28.0" height="139.3" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="853.0" y="234.7" font-size="11" fill="#6b7280" text-anchor="middle">2.2</text>
+<text x="853.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">70%</text>
+<rect x="877.0" y="247.0" width="28.0" height="133.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="891.0" y="241.0" font-size="11" fill="#6b7280" text-anchor="middle">2.1</text>
+<text x="891.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">78%</text>
+<rect x="915.0" y="253.3" width="28.0" height="126.7" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="929.0" y="247.3" font-size="11" fill="#6b7280" text-anchor="middle">2</text>
+<text x="929.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="middle">86%</text>
+<rect x="953.0" y="291.3" width="28.0" height="88.7" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="967.0" y="285.3" font-size="11" fill="#6b7280" text-anchor="middle">1.4</text>
+<text x="967.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">91%</text>
+<rect x="991.0" y="304.0" width="28.0" height="76.0" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="1005.0" y="298.0" font-size="11" fill="#6b7280" text-anchor="middle">1.2</text>
+<text x="1005.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">96%</text>
+<rect x="1029.0" y="316.7" width="28.0" height="63.3" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="1043.0" y="310.7" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="1043.0" y="402.0" font-size="11" fill="#9ca3af" text-anchor="middle">100%</text>
+<line x1="948.0" y1="150.0" x2="948.0" y2="414.0" stroke="#d9877a" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="942.0" y="166.0" font-size="11" fill="#6b7280" text-anchor="end">前 9 条累计 86%，第一次 ≥ 80%</text>
+<text x="595.0" y="450.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">k = 9，留下 9/12 = 75% 的样本</text>
+<text x="595.0" y="474.0" font-size="11" fill="#6b7280" text-anchor="start">丢掉的 3 条只占总 gap 质量的 14%</text>
+<text x="30.0" y="548.0" font-size="11" fill="#9ca3af" text-anchor="start">判据是原文式 (6)：按分数降序取最短前缀，使前缀分数之和 ≥ ρ × 全批分数之和，主实验 ρ = 0.8。留几条不是超参，是由这一批的分数分布算出来的。</text>
+</svg>

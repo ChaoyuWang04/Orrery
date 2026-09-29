@@ -120,7 +120,6 @@
 | SOAP-Muon-and-Beyond | NVIDIA | 优化器 scaling 对照,附开源实现 |
 | Behavior-Leverage-Imbalance | AntGroup | 多教师 OPD 的 top-K 丢掉决策坐标,导致过调用 |
 | AReaL-2.0 | AntGroup | position paper:轨迹协议、数据代理、演化控制面三支柱 |
-| MOPD | Xiaomi | 多教师 on-policy 蒸馏做能力整合,MiMo-V2-Flash 的后训练方法(北大合作) |
 | Counteraction-Aware-OPD | Kuaishou | 多教师在线策略蒸馏:恢复通用能力同时保住领域能力 |
 | Polar | NVIDIA | harness 当黑盒的 agentic RL;同模型同算法换 harness 差 22 分 |
 | Continuous-Latent-Diffusion-LM | ByteDance | 连续潜空间上的扩散式语言模型(Seed) |
@@ -131,6 +130,7 @@
 | AReaL-DTA | AntGroup | 动态树注意力,共享前缀只算一次 |
 | AReaL-SEA | AntGroup | 多 agent 合成对话 + 每实例可执行 checker |
 | Endless-Terminals | Stanford | 规模化生成 terminal agent 的 RL 环境 |
+| MOPD | Xiaomi | 多教师 on-policy 蒸馏做能力整合,MiMo-V2-Flash 的后训练方法(北大合作) |
 | Stabilizing-RL-with-LLMs | Alibaba | RL 稳定性的形式化与实践(与 GSPO 篇立场相反,已在文中摆明) |
 | SkyRL-Agent | Berkeley | 多轮长程 agent 的异步流水线调度 |
 | AgentEvolver | Alibaba | 通义,自进化 agent 系统:自出题、自导航、自归因 |

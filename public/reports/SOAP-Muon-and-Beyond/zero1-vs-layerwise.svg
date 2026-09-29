@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="34.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">同样 4 张卡：按元素均分会切碎矩阵，按层分配让每张卡拿到整张矩阵</text>
+<text x="30.0" y="58.0" font-size="13" fill="#6b7280" text-anchor="start">红 = 被切成 4 片的矩阵碎片，每卡各拿 1/4；绿 = 完整矩阵。8 个矩阵的大小是虚构的示意单位。</text>
+<rect x="30.0" y="78.0" width="515.0" height="420.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="50.0" y="106.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">ZeRO-1 式按元素均分</text>
+<text x="50.0" y="124.0" font-size="11" fill="#9ca3af" text-anchor="start">每张矩阵都被切成 4 片，每卡各拿一片</text>
+<rect x="50.0" y="364.0" width="96.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="98.0" y="386.0" font-size="11" fill="#6b7280" text-anchor="middle">W1 的 1/4</text>
+<rect x="50.0" y="328.0" width="96.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="98.0" y="350.0" font-size="11" fill="#6b7280" text-anchor="middle">W2 的 1/4</text>
+<rect x="50.0" y="298.0" width="96.0" height="28.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="98.0" y="317.0" font-size="11" fill="#6b7280" text-anchor="middle">W3 的 1/4</text>
+<rect x="50.0" y="268.0" width="96.0" height="28.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="98.0" y="287.0" font-size="11" fill="#6b7280" text-anchor="middle">W4 的 1/4</text>
+<rect x="50.0" y="244.0" width="96.0" height="22.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="98.0" y="260.0" font-size="11" fill="#6b7280" text-anchor="middle">W5 的 1/4</text>
+<rect x="50.0" y="220.0" width="96.0" height="22.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="98.0" y="236.0" font-size="11" fill="#6b7280" text-anchor="middle">W6 的 1/4</text>
+<rect x="50.0" y="202.0" width="96.0" height="16.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="98.0" y="215.0" font-size="11" fill="#6b7280" text-anchor="middle">W7 的 1/4</text>
+<rect x="50.0" y="184.0" width="96.0" height="16.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="98.0" y="197.0" font-size="11" fill="#6b7280" text-anchor="middle">W8 的 1/4</text>
+<text x="98.0" y="420.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">rank 0</text>
+<text x="98.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">9 个单位</text>
+<rect x="172.0" y="364.0" width="96.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="220.0" y="386.0" font-size="11" fill="#6b7280" text-anchor="middle">W1 的 1/4</text>
+<rect x="172.0" y="328.0" width="96.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="220.0" y="350.0" font-size="11" fill="#6b7280" text-anchor="middle">W2 的 1/4</text>
+<rect x="172.0" y="298.0" width="96.0" height="28.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="220.0" y="317.0" font-size="11" fill="#6b7280" text-anchor="middle">W3 的 1/4</text>
+<rect x="172.0" y="268.0" width="96.0" height="28.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="220.0" y="287.0" font-size="11" fill="#6b7280" text-anchor="middle">W4 的 1/4</text>
+<rect x="172.0" y="244.0" width="96.0" height="22.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="220.0" y="260.0" font-size="11" fill="#6b7280" text-anchor="middle">W5 的 1/4</text>
+<rect x="172.0" y="220.0" width="96.0" height="22.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="220.0" y="236.0" font-size="11" fill="#6b7280" text-anchor="middle">W6 的 1/4</text>
+<rect x="172.0" y="202.0" width="96.0" height="16.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="220.0" y="215.0" font-size="11" fill="#6b7280" text-anchor="middle">W7 的 1/4</text>
+<rect x="172.0" y="184.0" width="96.0" height="16.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="220.0" y="197.0" font-size="11" fill="#6b7280" text-anchor="middle">W8 的 1/4</text>
+<text x="220.0" y="420.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">rank 1</text>
+<text x="220.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">9 个单位</text>
+<rect x="294.0" y="364.0" width="96.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="342.0" y="386.0" font-size="11" fill="#6b7280" text-anchor="middle">W1 的 1/4</text>
+<rect x="294.0" y="328.0" width="96.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="342.0" y="350.0" font-size="11" fill="#6b7280" text-anchor="middle">W2 的 1/4</text>
+<rect x="294.0" y="298.0" width="96.0" height="28.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="342.0" y="317.0" font-size="11" fill="#6b7280" text-anchor="middle">W3 的 1/4</text>
+<rect x="294.0" y="268.0" width="96.0" height="28.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="342.0" y="287.0" font-size="11" fill="#6b7280" text-anchor="middle">W4 的 1/4</text>
+<rect x="294.0" y="244.0" width="96.0" height="22.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="342.0" y="260.0" font-size="11" fill="#6b7280" text-anchor="middle">W5 的 1/4</text>
+<rect x="294.0" y="220.0" width="96.0" height="22.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="342.0" y="236.0" font-size="11" fill="#6b7280" text-anchor="middle">W6 的 1/4</text>
+<rect x="294.0" y="202.0" width="96.0" height="16.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="342.0" y="215.0" font-size="11" fill="#6b7280" text-anchor="middle">W7 的 1/4</text>
+<rect x="294.0" y="184.0" width="96.0" height="16.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="342.0" y="197.0" font-size="11" fill="#6b7280" text-anchor="middle">W8 的 1/4</text>
+<text x="342.0" y="420.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">rank 2</text>
+<text x="342.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">9 个单位</text>
+<rect x="416.0" y="364.0" width="96.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="464.0" y="386.0" font-size="11" fill="#6b7280" text-anchor="middle">W1 的 1/4</text>
+<rect x="416.0" y="328.0" width="96.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="464.0" y="350.0" font-size="11" fill="#6b7280" text-anchor="middle">W2 的 1/4</text>
+<rect x="416.0" y="298.0" width="96.0" height="28.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="464.0" y="317.0" font-size="11" fill="#6b7280" text-anchor="middle">W3 的 1/4</text>
+<rect x="416.0" y="268.0" width="96.0" height="28.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="464.0" y="287.0" font-size="11" fill="#6b7280" text-anchor="middle">W4 的 1/4</text>
+<rect x="416.0" y="244.0" width="96.0" height="22.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="464.0" y="260.0" font-size="11" fill="#6b7280" text-anchor="middle">W5 的 1/4</text>
+<rect x="416.0" y="220.0" width="96.0" height="22.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="464.0" y="236.0" font-size="11" fill="#6b7280" text-anchor="middle">W6 的 1/4</text>
+<rect x="416.0" y="202.0" width="96.0" height="16.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="464.0" y="215.0" font-size="11" fill="#6b7280" text-anchor="middle">W7 的 1/4</text>
+<rect x="416.0" y="184.0" width="96.0" height="16.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="464.0" y="197.0" font-size="11" fill="#6b7280" text-anchor="middle">W8 的 1/4</text>
+<text x="464.0" y="420.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">rank 3</text>
+<text x="464.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">9 个单位</text>
+<text x="50.0" y="468.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">每卡完全均匀，但 Muon、SOAP 手里只有碎片</text>
+<text x="50.0" y="486.0" font-size="11" fill="#6b7280" text-anchor="start">要算一步更新，先得把整张矩阵拼回来，多一轮通信</text>
+<rect x="575.0" y="78.0" width="515.0" height="420.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="595.0" y="106.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">layer-wise：整张矩阵按大小排序，轮流分给各卡</text>
+<text x="595.0" y="124.0" font-size="11" fill="#9ca3af" text-anchor="start">排序后 W1–W8 依次发给 rank 0、1、2、3、0、1、2、3</text>
+<rect x="595.0" y="256.0" width="96.0" height="142.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="643.0" y="332.0" font-size="11" fill="#6b7280" text-anchor="middle">W1</text>
+<rect x="595.0" y="160.0" width="96.0" height="94.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="643.0" y="212.0" font-size="11" fill="#6b7280" text-anchor="middle">W5</text>
+<text x="643.0" y="420.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">rank 0</text>
+<text x="643.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">10 个单位</text>
+<rect x="717.0" y="256.0" width="96.0" height="142.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="765.0" y="332.0" font-size="11" fill="#6b7280" text-anchor="middle">W2</text>
+<rect x="717.0" y="160.0" width="96.0" height="94.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="765.0" y="212.0" font-size="11" fill="#6b7280" text-anchor="middle">W6</text>
+<text x="765.0" y="420.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">rank 1</text>
+<text x="765.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">10 个单位</text>
+<rect x="839.0" y="280.0" width="96.0" height="118.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="887.0" y="344.0" font-size="11" fill="#6b7280" text-anchor="middle">W3</text>
+<rect x="839.0" y="208.0" width="96.0" height="70.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="887.0" y="248.0" font-size="11" fill="#6b7280" text-anchor="middle">W7</text>
+<text x="887.0" y="420.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">rank 2</text>
+<text x="887.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">8 个单位</text>
+<rect x="961.0" y="280.0" width="96.0" height="118.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="1009.0" y="344.0" font-size="11" fill="#6b7280" text-anchor="middle">W4</text>
+<rect x="961.0" y="208.0" width="96.0" height="70.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="1009.0" y="248.0" font-size="11" fill="#6b7280" text-anchor="middle">W8</text>
+<text x="1009.0" y="420.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">rank 3</text>
+<text x="1009.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">8 个单位</text>
+<text x="595.0" y="468.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">每卡直接算完整更新，数学上不做任何近似</text>
+<text x="595.0" y="486.0" font-size="11" fill="#6b7280" text-anchor="start">代价是各卡略不均，只能用变长的 allgather-V 同步</text>
+<text x="30.0" y="530.0" font-size="11" fill="#9ca3af" text-anchor="start">依据原文 3.3 节与第 6 节（PDF p. 5、p. 18–19）重画的机制示意。真实模型里同形状的矩阵很多，各卡的不均比这里小。</text>
+</svg>

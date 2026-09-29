@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">前缀合并：可训练的只有模型亲手采样出的那些 token</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = prompt；绿 = 行为策略采样出的 token；黄 = 夹层（服务器规范分词）；红 = 规范渲染的上一轮回复，合并时丢弃。据 PDF p. 7–8 示意，长度不按比例。</text>
+
+<text x="30" y="106" font-size="14" fill="#111827" font-weight="700">第 1 次调用</text>
+<rect x="190" y="82" width="250" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="315" y="107" font-size="14" fill="#111827" text-anchor="middle">p₁：系统提示 + 任务</text>
+<rect x="440" y="82" width="190" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="535" y="107" font-size="14" fill="#111827" text-anchor="middle">a₁：采样出的回复</text>
+
+<text x="30" y="166" font-size="14" fill="#111827" font-weight="700">第 2 次调用</text>
+<rect x="190" y="142" width="250" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="315" y="167" font-size="14" fill="#111827" text-anchor="middle">与 p₁ 逐 token 相同</text>
+<rect x="440" y="142" width="190" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="535" y="167" font-size="14" fill="#111827" text-anchor="middle">规范渲染的 a₁</text>
+<rect x="630" y="142" width="230" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="745" y="167" font-size="14" fill="#111827" text-anchor="middle">u₁：工具结果 + 下轮开头</text>
+<rect x="860" y="142" width="190" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="955" y="167" font-size="14" fill="#111827" text-anchor="middle">a₂：采样出的回复</text>
+<text x="190" y="200" font-size="11" fill="#9ca3af">前三块合起来是 p₂。前缀检查 p₂[1:|p₁|] = p₁ 成立才并进同一条链；尾巴 t₁ = p₂[|p₁|+1:] 由红块与 u₁ 组成</text>
+
+<rect x="30" y="226" width="1060" height="146" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="46" y="266" font-size="14" fill="#111827" font-weight="700">发给训练器</text>
+<text x="46" y="284" font-size="14" fill="#111827" font-weight="700">的一条 trace</text>
+<rect x="190" y="242" width="250" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="315" y="267" font-size="14" fill="#111827" text-anchor="middle">prompt = p₁</text>
+<rect x="440" y="242" width="190" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="535" y="267" font-size="14" fill="#111827" text-anchor="middle">a₁</text>
+<rect x="630" y="242" width="230" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="745" y="267" font-size="14" fill="#111827" text-anchor="middle">u₁</text>
+<rect x="860" y="242" width="190" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="955" y="267" font-size="14" fill="#111827" text-anchor="middle">a₂</text>
+<text x="46" y="316" font-size="11" fill="#6b7280">loss_mask</text>
+<text x="315" y="316" font-size="11" fill="#6b7280" text-anchor="middle">不在 response 里</text>
+<text x="535" y="316" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1</text>
+<text x="745" y="316" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">0</text>
+<text x="955" y="316" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1</text>
+<text x="46" y="350" font-size="11" fill="#6b7280">logprob</text>
+<text x="315" y="350" font-size="11" fill="#6b7280" text-anchor="middle">—</text>
+<text x="535" y="350" font-size="11" fill="#6b7280" text-anchor="middle">推理引擎给的真实值</text>
+<text x="745" y="350" font-size="11" fill="#6b7280" text-anchor="middle">合成占位，只为与 response_ids 对齐</text>
+<text x="955" y="350" font-size="11" fill="#6b7280" text-anchor="middle">推理引擎给的真实值</text>
+
+<text x="30" y="410" font-size="14" fill="#111827" font-weight="700">回合结束符 e 归谁：看 a₁ 自己有没有生成它</text>
+
+<rect x="30" y="424" width="520" height="70" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="46" y="438" width="200" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="146" y="463" font-size="14" fill="#111827" text-anchor="middle">a₁ … e（模型生成）</text>
+<rect x="246" y="438" width="290" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="391" y="463" font-size="14" fill="#111827" text-anchor="middle">u₁ 取 t₁ 里第一个 e 之后的部分</text>
+
+<rect x="570" y="424" width="520" height="70" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="586" y="438" width="200" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="686" y="463" font-size="14" fill="#111827" text-anchor="middle">a₁（没生成 e）</text>
+<rect x="786" y="438" width="290" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="931" y="463" font-size="14" fill="#111827" text-anchor="middle">u₁ 从 t₁ 里第一个 e 开始</text>
+
+<text x="30" y="522" font-size="13" fill="#6b7280">两种情形下 a₁ 后面都恰好有一个 e 收尾：左边的 e 是模型生成的，mask 为 1；右边的 e 来自服务器渲染，落在 u₁ 里，mask 为 0。</text>
+<text x="30" y="544" font-size="13" fill="#6b7280">上下文压缩或子 Agent 让前缀检查失败时，另起一条链、另出一条 trace（见上方 Figure 4）。示意图，不是论文原图。</text>
+</svg>

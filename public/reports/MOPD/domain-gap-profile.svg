@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">六种整合办法各自在哪个领域留了缺口</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">横轴是分域归一化分数：0 = 只做 SFT 的学生，1 = 该领域的 RL 教师。紫 = 数学，黄 = 指令跟随，绿 = 软件工程。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">灰线连起三个领域的最低与最高。由原文 Table 2（PDF p. 7）按「领域内两个基准先平均」算出，右列「平均」即原文的归一化分数。</text>
+<rect x="30" y="96" width="1060" height="48" rx="6" fill="#f9fafb" stroke="#f9fafb"/>
+<rect x="30" y="204" width="1060" height="48" rx="6" fill="#f9fafb" stroke="#f9fafb"/>
+<rect x="30" y="312" width="1060" height="48" rx="6" fill="#f9fafb" stroke="#f9fafb"/>
+<line x1="270.0" y1="98" x2="270.0" y2="404" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="833.6" y1="98" x2="833.6" y2="404" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="270" y1="412" x2="890" y2="412" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="270.0" y1="412" x2="270.0" y2="417" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="270.0" y="432" font-size="11" fill="#9ca3af" text-anchor="middle">0.0</text>
+<line x1="382.7" y1="412" x2="382.7" y2="417" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="382.7" y="432" font-size="11" fill="#9ca3af" text-anchor="middle">0.2</text>
+<line x1="495.5" y1="412" x2="495.5" y2="417" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="495.5" y="432" font-size="11" fill="#9ca3af" text-anchor="middle">0.4</text>
+<line x1="608.2" y1="412" x2="608.2" y2="417" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="608.2" y="432" font-size="11" fill="#9ca3af" text-anchor="middle">0.6</text>
+<line x1="720.9" y1="412" x2="720.9" y2="417" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="720.9" y="432" font-size="11" fill="#9ca3af" text-anchor="middle">0.8</text>
+<line x1="833.6" y1="412" x2="833.6" y2="417" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="833.6" y="432" font-size="11" fill="#9ca3af" text-anchor="middle">1.0</text>
+<text x="270.0" y="450" font-size="11" fill="#9ca3af" text-anchor="middle">SFT 学生</text>
+<text x="833.6" y="450" font-size="11" fill="#9ca3af" text-anchor="middle">领域 RL 教师</text>
+<text x="960" y="94" font-size="11" fill="#9ca3af" text-anchor="middle">平均</text>
+<text x="1050" y="94" font-size="11" fill="#9ca3af" text-anchor="middle">极差</text>
+<text x="40" y="125" font-size="14" fill="#111827" font-weight="700">MOPD</text>
+<line x1="782.9" y1="120" x2="807.7" y2="120" stroke="#b9b9b9" stroke-width="3"/>
+<circle cx="782.9" cy="111" r="6" fill="#8f8bd8" stroke="#ffffff" stroke-width="1"/>
+<circle cx="807.7" cy="120" r="6" fill="#d4a24c" stroke="#ffffff" stroke-width="1"/>
+<circle cx="804.3" cy="129" r="6" fill="#5fa886" stroke="#ffffff" stroke-width="1"/>
+<text x="960" y="125" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">0.937</text>
+<text x="1050" y="125" font-size="14" fill="#6b7280" text-anchor="middle">0.044</text>
+<text x="40" y="179" font-size="14" fill="#111827" font-weight="700">Mix-RL</text>
+<line x1="745.7" y1="174" x2="781.8" y2="174" stroke="#b9b9b9" stroke-width="3"/>
+<circle cx="773.3" cy="165" r="6" fill="#8f8bd8" stroke="#ffffff" stroke-width="1"/>
+<circle cx="781.8" cy="174" r="6" fill="#d4a24c" stroke="#ffffff" stroke-width="1"/>
+<circle cx="745.7" cy="183" r="6" fill="#5fa886" stroke="#ffffff" stroke-width="1"/>
+<text x="960" y="179" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">0.882</text>
+<text x="1050" y="179" font-size="14" fill="#6b7280" text-anchor="middle">0.064</text>
+<text x="40" y="233" font-size="14" fill="#111827" font-weight="700">Param-Merge（任务算术）</text>
+<line x1="678.6" y1="228" x2="835.3" y2="228" stroke="#b9b9b9" stroke-width="3"/>
+<circle cx="678.6" cy="219" r="6" fill="#8f8bd8" stroke="#ffffff" stroke-width="1"/>
+<circle cx="835.3" cy="228" r="6" fill="#d4a24c" stroke="#ffffff" stroke-width="1"/>
+<circle cx="745.7" cy="237" r="6" fill="#5fa886" stroke="#ffffff" stroke-width="1"/>
+<text x="960" y="233" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">0.857</text>
+<text x="1050" y="233" font-size="14" fill="#6b7280" text-anchor="middle">0.278</text>
+<text x="40" y="287" font-size="14" fill="#111827" font-weight="700">Off-Policy Finetune</text>
+<line x1="635.8" y1="282" x2="838.7" y2="282" stroke="#b9b9b9" stroke-width="3"/>
+<circle cx="728.8" cy="273" r="6" fill="#8f8bd8" stroke="#ffffff" stroke-width="1"/>
+<circle cx="838.7" cy="282" r="6" fill="#d4a24c" stroke="#ffffff" stroke-width="1"/>
+<circle cx="635.8" cy="291" r="6" fill="#5fa886" stroke="#ffffff" stroke-width="1"/>
+<text x="960" y="287" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">0.824</text>
+<text x="1050" y="287" font-size="14" fill="#6b7280" text-anchor="middle">0.359</text>
+<text x="40" y="341" font-size="14" fill="#111827" font-weight="700">Cascade RL</text>
+<line x1="589.6" y1="336" x2="821.8" y2="336" stroke="#b9b9b9" stroke-width="3"/>
+<circle cx="589.6" cy="327" r="6" fill="#8f8bd8" stroke="#ffffff" stroke-width="1"/>
+<circle cx="821.8" cy="336" r="6" fill="#d4a24c" stroke="#ffffff" stroke-width="1"/>
+<circle cx="709.1" cy="345" r="6" fill="#5fa886" stroke="#ffffff" stroke-width="1"/>
+<text x="960" y="341" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">0.775</text>
+<text x="1050" y="341" font-size="14" fill="#6b7280" text-anchor="middle">0.412</text>
+<text x="40" y="395" font-size="14" fill="#111827" font-weight="700">Param-Merge（线性平均）</text>
+<line x1="409.2" y1="390" x2="497.7" y2="390" stroke="#b9b9b9" stroke-width="3"/>
+<circle cx="497.7" cy="381" r="6" fill="#8f8bd8" stroke="#ffffff" stroke-width="1"/>
+<circle cx="457.7" cy="390" r="6" fill="#d4a24c" stroke="#ffffff" stroke-width="1"/>
+<circle cx="409.2" cy="399" r="6" fill="#5fa886" stroke="#ffffff" stroke-width="1"/>
+<text x="960" y="395" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">0.328</text>
+<text x="1050" y="395" font-size="14" fill="#6b7280" text-anchor="middle">0.157</text>
+<circle cx="270" cy="474" r="6" fill="#8f8bd8"/>
+<text x="282" y="478" font-size="11" fill="#6b7280">数学</text>
+<circle cx="380" cy="474" r="6" fill="#d4a24c"/>
+<text x="392" y="478" font-size="11" fill="#6b7280">指令跟随</text>
+<circle cx="490" cy="474" r="6" fill="#5fa886"/>
+<text x="502" y="478" font-size="11" fill="#6b7280">软件工程</text>
+<line x1="600" y1="474" x2="630" y2="474" stroke="#b9b9b9" stroke-width="3"/>
+<text x="638" y="478" font-size="11" fill="#6b7280">三个领域之间的极差</text>
+</svg>
