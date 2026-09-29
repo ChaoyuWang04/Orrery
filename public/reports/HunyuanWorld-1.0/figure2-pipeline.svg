@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 720" width="1120" height="720" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="aq" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="720" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">HunyuanWorld 1.0 流水线：学习全在 2D，走到 3D 只靠几何</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 本报告训练或微调的扩散模型；黄 = 调用的现成模型；绿 = 无参数的几何步骤；红 = 可选或外挂组件；灰 = 输入与中间产物。</text>
+
+<rect x="20" y="74" width="400" height="486" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="430" y="74" width="330" height="486" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="770" y="74" width="330" height="486" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="40" y="100" font-size="14" fill="#111827" font-weight="700">① 生成世界代理（§2.1）</text>
+<text x="445" y="100" font-size="14" fill="#111827" font-weight="700">② 智能体式世界分层（§2.3）</text>
+<text x="785" y="100" font-size="14" fill="#111827" font-weight="700">③ 分层重建（§2.4）</text>
+
+<rect x="40" y="116" width="110" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="95" y="141" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文字提示</text>
+<rect x="170" y="116" width="235" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="287" y="141" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">一张普通照片</text>
+
+<rect x="40" y="176" width="110" height="70" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="95" y="200" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">LLM 改写</text>
+<text x="95" y="218" font-size="11" fill="#6b7280" text-anchor="middle">中文先译成英文</text>
+<text x="95" y="234" font-size="11" fill="#6b7280" text-anchor="middle">再扩写细节</text>
+<rect x="170" y="176" width="110" height="70" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="225" y="200" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">估相机内参</text>
+<text x="225" y="218" font-size="11" fill="#6b7280" text-anchor="middle">如 MoGe</text>
+<text x="225" y="234" font-size="11" fill="#6b7280" text-anchor="middle">或 UniK3D</text>
+<rect x="295" y="176" width="110" height="70" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="350" y="200" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">场景提示词</text>
+<text x="350" y="218" font-size="11" fill="#6b7280" text-anchor="middle">VLM 生成</text>
+<text x="350" y="234" font-size="11" fill="#6b7280" text-anchor="middle">显著物体作负向</text>
+<rect x="170" y="266" width="110" height="60" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="225" y="290" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">ERP 反投影</text>
+<text x="225" y="310" font-size="11" fill="#6b7280" text-anchor="middle">照片贴上球面</text>
+
+<rect x="40" y="346" width="365" height="90" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="222" y="370" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Panorama-DiT</text>
+<text x="222" y="389" font-size="11" fill="#6b7280" text-anchor="middle">文字路：只喂改写后的提示词</text>
+<text x="222" y="406" font-size="11" fill="#6b7280" text-anchor="middle">照片路：VAE 潜变量与噪声拼接，外加场景提示词</text>
+<text x="222" y="423" font-size="11" fill="#6b7280" text-anchor="middle">训练做俯仰增强，推理做循环去噪</text>
+
+<rect x="40" y="456" width="365" height="60" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="222" y="480" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">360° 全景（ERP）</text>
+<text x="222" y="500" font-size="11" fill="#6b7280" text-anchor="middle">世界代理：站在原地只能转头</text>
+
+<line x1="95" y1="156" x2="95" y2="172" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="225" y1="156" x2="225" y2="172" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="350" y1="156" x2="350" y2="172" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="225" y1="246" x2="225" y2="262" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="95" y1="246" x2="95" y2="342" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="225" y1="326" x2="225" y2="342" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="350" y1="246" x2="350" y2="342" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="222" y1="436" x2="222" y2="452" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="445" y="116" width="300" height="60" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="595" y="140" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VLM 识别实例</text>
+<text x="595" y="160" font-size="11" fill="#6b7280" text-anchor="middle">挑出要单独建模的前景，按语义与远近分子层</text>
+<rect x="445" y="196" width="300" height="70" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="595" y="218" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">检测与分割</text>
+<text x="595" y="237" font-size="11" fill="#6b7280" text-anchor="middle">先循环填充再检测（如 Grounding DINO）</text>
+<text x="595" y="254" font-size="11" fill="#6b7280" text-anchor="middle">分割出掩码（如 ZIM），按面积 NMS 合并碎片</text>
+<rect x="445" y="286" width="300" height="60" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="595" y="310" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">层补全</text>
+<text x="595" y="330" font-size="11" fill="#6b7280" text-anchor="middle">微调过的 Panorama-DiT：移除前景并修补</text>
+<rect x="445" y="366" width="300" height="60" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="595" y="390" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">天空补全</text>
+<text x="595" y="410" font-size="11" fill="#6b7280" text-anchor="middle">在天空 HDRI 数据上单独微调的模型</text>
+<rect x="445" y="456" width="300" height="60" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="595" y="480" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">RGBA 分层</text>
+<text x="595" y="500" font-size="11" fill="#6b7280" text-anchor="middle">1–2 个前景层、背景层、天空层（室外）</text>
+<text x="445" y="540" font-size="11" fill="#9ca3af">每剥一层，补全后的图作为下一轮输入</text>
+
+<line x1="595" y1="176" x2="595" y2="192" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="595" y1="266" x2="595" y2="282" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="595" y1="346" x2="595" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="595" y1="426" x2="595" y2="452" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="745,316 753,316 753,146 749,146" fill="none" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+<polyline points="405,486 424,486 424,146 441,146" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="785" y="116" width="300" height="60" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="935" y="140" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">基准深度</text>
+<text x="935" y="160" font-size="11" fill="#6b7280" text-anchor="middle">在原全景上估深度，第一前景层直接从中抠</text>
+<rect x="785" y="196" width="300" height="70" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="935" y="218" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">跨层深度对齐</text>
+<text x="935" y="237" font-size="11" fill="#6b7280" text-anchor="middle">后续层各估深度，在重叠区域向基准对齐</text>
+<text x="935" y="254" font-size="11" fill="#6b7280" text-anchor="middle">天空取略大于最大深度的常数</text>
+<rect x="785" y="286" width="300" height="60" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="935" y="310" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">薄片变形（sheet warping）</text>
+<text x="935" y="330" font-size="11" fill="#6b7280" text-anchor="middle">规则网格的顶点沿各自视线按深度推出去</text>
+<rect x="785" y="366" width="300" height="60" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="935" y="390" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">分层 3D 网格世界</text>
+<text x="935" y="410" font-size="11" fill="#6b7280" text-anchor="middle">可导出；物体可单独平移、旋转、缩放</text>
+<rect x="785" y="446" width="145" height="70" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="857" y="470" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">可选：图生 3D</text>
+<text x="857" y="488" font-size="11" fill="#6b7280" text-anchor="middle">前景交给 Hunyuan3D</text>
+<text x="857" y="504" font-size="11" fill="#6b7280" text-anchor="middle">再自动摆回场景</text>
+<rect x="940" y="446" width="145" height="70" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1012" y="470" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">可选：天空 HDRI</text>
+<text x="1012" y="488" font-size="11" fill="#6b7280" text-anchor="middle">导出成环境贴图</text>
+<text x="1012" y="504" font-size="11" fill="#6b7280" text-anchor="middle">给 VR 渲染天空</text>
+
+<line x1="935" y1="176" x2="935" y2="192" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="935" y1="266" x2="935" y2="282" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="935" y1="346" x2="935" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="745,486 764,486 764,146 781,146" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="857" y1="426" x2="857" y2="442" stroke="#d9877a" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#aq)"/>
+<line x1="1012" y1="426" x2="1012" y2="442" stroke="#d9877a" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#aq)"/>
+
+<rect x="20" y="580" width="1080" height="70" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="40" y="606" font-size="14" fill="#111827" font-weight="700">④ 远距扩展（§2.5，外挂另一篇论文的 Voyager）</text>
+<text x="40" y="626" font-size="11" fill="#6b7280">用已生成的场景建一份 3D 点云世界缓存，投影到新相机视角去引导 RGB-D 视频扩散；新帧再写回缓存，冗余点剔除，逐段自回归往外走。</text>
+<text x="40" y="642" font-size="11" fill="#6b7280">本报告对这一段只有描述，没有任何实验。</text>
+
+<text x="30" y="680" font-size="11" fill="#9ca3af">据 PDF p. 4–8 正文与 p. 5 Figure 2 重画。检测、分割与深度模型写的是报告举的例子，LLM 与 VLM 没有点名；报告没说对它们做过训练，也没给任何模块的规模。</text>
+<text x="30" y="700" font-size="11" fill="#9ca3af">层补全模型由 Panorama-DiT 微调而来，天空补全是另一个单独微调的模型（PDF p. 7）；Panorama-DiT 从哪个图像模型初始化，报告没写。</text>
+</svg>

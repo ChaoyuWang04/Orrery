@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">广义 2D RoPE：文本走对角线，图像在对角线的空当里铺成矩形</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">依据 PDF p. 7 Figure 5 重画。黄 = 文本 Token；紫 = 图像 Token。数字是位置编号。</text>
+<text x="40" y="190" font-size="14" fill="#111827" text-anchor="start" font-weight="700">一维位置（原 LLM 的写法）</text>
+<rect x="40" y="210" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="55.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<rect x="70" y="210" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="85.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">2</text>
+<rect x="100" y="210" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="115.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">3</text>
+<rect x="130" y="210" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="145.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">4</text>
+<rect x="160" y="210" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="175.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">5</text>
+<rect x="190" y="210" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="205.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">6</text>
+<rect x="220" y="210" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="235.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">7</text>
+<rect x="250" y="210" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="265.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">8</text>
+<rect x="280" y="210" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="295.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">9</text>
+<rect x="310" y="210" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="325.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">10</text>
+<rect x="340" y="210" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="355.0" y="258" font-size="11" fill="#6b7280" text-anchor="middle">11</text>
+<text x="40" y="290" font-size="11" fill="#6b7280" text-anchor="start">文本 1–3，图像 4–9（6 个 Token），文本 10–11</text>
+<line x1="384" y1="225" x2="440" y2="225" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="645.0" y="92" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">二维位置 (x, y)</text>
+<rect x="480" y="110" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c" stroke-width="0.8"/>
+<rect x="510" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="630" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="660" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="690" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="110" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="140" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c" stroke-width="0.8"/>
+<rect x="540" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="630" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="660" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="690" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="140" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="170" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c" stroke-width="0.8"/>
+<rect x="570" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="630" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="660" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="690" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="170" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="630" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="660" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="690" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="200" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="630" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="660" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="690" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="230" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="260" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="260" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="260" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="260" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="260" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8" stroke-width="0.8"/>
+<rect x="630" y="260" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8" stroke-width="0.8"/>
+<rect x="660" y="260" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8" stroke-width="0.8"/>
+<rect x="690" y="260" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="260" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="260" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="260" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="290" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="290" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="290" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="290" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="290" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8" stroke-width="0.8"/>
+<rect x="630" y="290" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8" stroke-width="0.8"/>
+<rect x="660" y="290" width="30" height="30" fill="#ecebfb" stroke="#8f8bd8" stroke-width="0.8"/>
+<rect x="690" y="290" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="290" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="290" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="290" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="630" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="660" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="690" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="320" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="630" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="660" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="690" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="350" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="630" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="660" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="690" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="380" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c" stroke-width="0.8"/>
+<rect x="780" y="380" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="480" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="510" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="540" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="570" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="600" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="630" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="660" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="690" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="720" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="750" y="410" width="30" height="30" fill="#ffffff" stroke="#e5e7eb" stroke-width="0.8"/>
+<rect x="780" y="410" width="30" height="30" fill="#fdf1dc" stroke="#d4a24c" stroke-width="0.8"/>
+<text x="495.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="472" y="129.0" font-size="11" fill="#6b7280" text-anchor="end">1</text>
+<text x="525.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">2</text>
+<text x="472" y="159.0" font-size="11" fill="#6b7280" text-anchor="end">2</text>
+<text x="555.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">3</text>
+<text x="472" y="189.0" font-size="11" fill="#6b7280" text-anchor="end">3</text>
+<text x="585.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">4</text>
+<text x="472" y="219.0" font-size="11" fill="#6b7280" text-anchor="end">4</text>
+<text x="615.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">5</text>
+<text x="472" y="249.0" font-size="11" fill="#6b7280" text-anchor="end">5</text>
+<text x="645.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">6</text>
+<text x="472" y="279.0" font-size="11" fill="#6b7280" text-anchor="end">6</text>
+<text x="675.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">7</text>
+<text x="472" y="309.0" font-size="11" fill="#6b7280" text-anchor="end">7</text>
+<text x="705.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">8</text>
+<text x="472" y="339.0" font-size="11" fill="#6b7280" text-anchor="end">8</text>
+<text x="735.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">9</text>
+<text x="472" y="369.0" font-size="11" fill="#6b7280" text-anchor="end">9</text>
+<text x="765.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">10</text>
+<text x="472" y="399.0" font-size="11" fill="#6b7280" text-anchor="end">10</text>
+<text x="795.0" y="456" font-size="11" fill="#6b7280" text-anchor="middle">11</text>
+<text x="472" y="429.0" font-size="11" fill="#6b7280" text-anchor="end">11</text>
+<text x="645.0" y="476" font-size="11" fill="#9ca3af" text-anchor="middle">x</text>
+<rect x="850" y="130" width="250" height="64" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="975.0" y="159.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文本：落在 (n, n)</text>
+<text x="975.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">令 x = y = n，逐项等于 1D RoPE</text>
+<rect x="850" y="216" width="250" height="64" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="975.0" y="245.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">图像：3 宽 × 2 高的矩形</text>
+<text x="975.0" y="262.0" font-size="11" fill="#6b7280" text-anchor="middle">按预测出的尺寸 Token 定形状</text>
+<rect x="850" y="302" width="250" height="64" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="975.0" y="331.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">图后文本：接着走 (10, 10)</text>
+<text x="975.0" y="348.0" font-size="11" fill="#6b7280" text-anchor="middle">编号不因图像被打乱</text>
+<text x="850" y="400" font-size="11" fill="#9ca3af" text-anchor="start">没有图像时，整条序列退化成原来的 1D RoPE</text>
+<text x="850" y="418" font-size="11" fill="#9ca3af" text-anchor="start">（PDF p. 8）</text>
+</svg>

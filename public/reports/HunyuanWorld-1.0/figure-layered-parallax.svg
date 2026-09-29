@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">为什么要分层：一张全景只能转头，挪一步就露出原图没有的地方</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">俯视示意。灰 = 原全景可见像素抬成的面；紫 = 层补全编出来的像素；红 = 单层网格里被拉长的三角面；黄 = 平移后的视线。</text>
+<rect x="20" y="74" width="530" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="40" y="100" font-size="14" fill="#111827" font-weight="700">(a) 一张全景加一张深度：抬成一整张曲面</text>
+<line x1="80" y1="300" x2="220" y2="275" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="80" y1="300" x2="220" y2="325" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4 4"/>
+<polyline points="420,130 420,239" fill="none" stroke="#b9b9b9" stroke-width="5"/>
+<polyline points="420,239 220,275" fill="none" stroke="#d9877a" stroke-width="3"/>
+<polyline points="220,275 220,325" fill="none" stroke="#b9b9b9" stroke-width="5"/>
+<polyline points="220,325 420,361" fill="none" stroke="#d9877a" stroke-width="3"/>
+<polyline points="420,361 420,440" fill="none" stroke="#b9b9b9" stroke-width="5"/>
+<text x="350" y="232" font-size="11" fill="#6b7280" text-anchor="middle">拉长面</text>
+<text x="350" y="392" font-size="11" fill="#6b7280" text-anchor="middle">拉长面</text>
+<text x="430" y="292" font-size="11" fill="#6b7280">这一段</text>
+<text x="430" y="308" font-size="11" fill="#6b7280">原图没有像素</text>
+<text x="430" y="150" font-size="11" fill="#6b7280">背景</text>
+<text x="220" y="346" font-size="11" fill="#6b7280" text-anchor="middle">前景</text>
+<line x1="80" y1="220" x2="420" y2="346" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="80" cy="300" r="6" fill="#6b7280"/>
+<circle cx="80" cy="220" r="6" fill="#d4a24c"/>
+<text x="80" y="324" font-size="11" fill="#111827" text-anchor="middle">原视点 O</text>
+<text x="80" y="204" font-size="11" fill="#111827" text-anchor="middle">平移后 O′</text>
+<text x="40" y="440" font-size="11" fill="#6b7280">从 O 看，拉长面正好沿着视线，看不出破绽</text>
+<text x="40" y="458" font-size="11" fill="#6b7280">一挪到 O′，视线就落进拉长面或空洞</text>
+<rect x="570" y="74" width="530" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="590" y="100" font-size="14" fill="#111827" font-weight="700">(b) 分层之后：前景、背景、天空各一张薄片</text>
+<line x1="630" y1="300" x2="970" y2="239" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="630" y1="300" x2="970" y2="361" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="970" y1="130" x2="970" y2="239" stroke="#b9b9b9" stroke-width="5"/>
+<line x1="970" y1="239" x2="970" y2="361" stroke="#8f8bd8" stroke-width="5"/>
+<line x1="970" y1="361" x2="970" y2="440" stroke="#b9b9b9" stroke-width="5"/>
+<line x1="770" y1="275" x2="770" y2="325" stroke="#b9b9b9" stroke-width="5"/>
+<line x1="1040" y1="120" x2="1040" y2="450" stroke="#b9b9b9" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="1048" y="140" font-size="11" fill="#6b7280">天空</text>
+<text x="1048" y="156" font-size="11" fill="#6b7280">常数深度</text>
+<text x="980" y="292" font-size="11" fill="#6b7280">补全出的背景</text>
+<text x="980" y="308" font-size="11" fill="#6b7280">原图没有</text>
+<text x="980" y="324" font-size="11" fill="#6b7280">O′ 看到的是它</text>
+<text x="980" y="150" font-size="11" fill="#6b7280">背景</text>
+<text x="770" y="346" font-size="11" fill="#6b7280" text-anchor="middle">前景</text>
+<line x1="630" y1="220" x2="970" y2="346" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="630" cy="300" r="6" fill="#6b7280"/>
+<circle cx="630" cy="220" r="6" fill="#d4a24c"/>
+<text x="630" y="324" font-size="11" fill="#111827" text-anchor="middle">原视点 O</text>
+<text x="630" y="204" font-size="11" fill="#111827" text-anchor="middle">平移后 O′</text>
+<text x="590" y="440" font-size="11" fill="#6b7280">三张薄片按对齐后的深度排开，平移时背后有内容可露</text>
+<text x="590" y="458" font-size="11" fill="#6b7280">天空永远在最远处，不会穿到地形前面</text>
+<text x="30" y="506" font-size="11" fill="#9ca3af">机制示意，按 PDF p. 6–7 §2.3–2.4 的文字画，不是报告原图，比例与深度都是示意。紫色那段是模型编出来的，它合不合理，报告没有真值可比。</text>
+<text x="30" y="526" font-size="11" fill="#9ca3af">单层网格在前景边缘会生出拉长的三角面，这是深度图抬升网格的通病，属于我们的解释；报告只写全景图缺遮挡区域的信息、只支持转头（PDF p. 6）。</text>
+</svg>

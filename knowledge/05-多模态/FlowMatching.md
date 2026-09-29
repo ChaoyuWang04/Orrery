@@ -123,6 +123,8 @@ flowchart TD
 
 但要说清它保证不了什么:**这是批内近似,不是两个分布之间的全局最优传输**,batch 越小近似越糙。代价是每个 batch 多一个 $O(B^2)$ 的距离矩阵和一次指派求解(匈牙利或 Sinkhorn),batch 大时不可忽略。所以 OT 配对是「可能有帮助、要实测」的选项,不是免费的稳定性。
 
+OT 还有第三种用法:不拿来配对,而是**当成生成器映射的正则**。Adversarial Flow Models(2025)从零训一步生成器,对抗损失只管「生成分布像不像数据」,再加一项 $\lVert G(z)-z\rVert^2$ 把噪声到数据的映射钉成搬运代价最小的那一张,于是每个噪声点的去向唯一。这一项是训练能不能收敛的关键:论文的网格实验里去掉它,FID 一律在 170 以上;系数还要随训练衰减,常数系数训到 100 epoch 是 29.4,衰减到 0.01 是 8.51。ImageNet-256 上一步 FID 2.38(均为论文自报)。代价是对抗训练本身的开销,论文自报约为对比基线 1.88 倍的训练计算。
+
 ## 四、和扩散的关系:改的不是同一层
 
 生成模型有两层可以分别改,混在一起谈就会得出「FM 比 DDIM 快」这种不成立的结论:
@@ -218,3 +220,4 @@ $$
 - Score-Based Generative Modeling through Stochastic Differential Equations(probability-flow ODE)— [arXiv:2011.13456](https://arxiv.org/abs/2011.13456)
 - Stochastic Interpolants: A Unifying Framework for Flows and Diffusions(流与扩散的统一框架)— [arXiv:2303.08797](https://arxiv.org/abs/2303.08797)
 - Flow Matching Guide and Code(系统性教程与实现)— [arXiv:2412.06264](https://arxiv.org/abs/2412.06264)
+- Adversarial Flow Models — [arXiv:2511.22475](https://arxiv.org/abs/2511.22475)

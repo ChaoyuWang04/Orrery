@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">一个主干，三种运行模式：理解、纯文本、生成共用同一份权重</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">依据 PDF p. 6 Figure 3 重画的机制示意。绿 = 生成通路的 VAE；紫 = 理解用的视觉编码器；灰 = 文本；黄 = 共享主干。</text>
+<rect x="16" y="76" width="420" height="452" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="100" font-size="14" fill="#111827" text-anchor="start" font-weight="700">图像理解</text>
+<rect x="452" y="76" width="250" height="452" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="466" y="100" font-size="14" fill="#111827" text-anchor="start" font-weight="700">语言建模</text>
+<rect x="718" y="76" width="386" height="452" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="732" y="100" font-size="14" fill="#111827" text-anchor="start" font-weight="700">图像生成</text>
+<rect x="36" y="262" width="1048" height="54" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="560.0" y="286.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Decoder-only Transformer：Hunyuan-A13B</text>
+<text x="560.0" y="303.0" font-size="11" fill="#6b7280" text-anchor="middle">超过 80B 总参，每 Token 激活约 13B；64 个专家选 8 个，外加 1 个共享 MLP（PDF p. 6）</text>
+<text x="130" y="500" font-size="12" fill="#111827" text-anchor="middle">条件图</text>
+<rect x="40" y="390" width="170" height="50" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="125.0" y="412.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VAE 编码器</text>
+<text x="125.0" y="429.0" font-size="11" fill="#6b7280" text-anchor="middle">时间步调制残差块投影</text>
+<rect x="222" y="390" width="100" height="50" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="272.0" y="412.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">视觉编码器</text>
+<text x="272.0" y="429.0" font-size="11" fill="#6b7280" text-anchor="middle">两层 MLP</text>
+<line x1="130" y1="486" x2="125" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="486" x2="262" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="334" y="390" width="90" height="50" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="379.0" y="420.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文本分词器</text>
+<text x="379" y="500" font-size="12" fill="#111827" text-anchor="middle">理解提示词</text>
+<line x1="379" y1="486" x2="379" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="125" y1="388" x2="125" y2="318" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="272" y1="388" x2="272" y2="318" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="379" y1="388" x2="379" y2="318" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="124" font-size="11" fill="#9ca3af" text-anchor="start">VAE 与视觉编码器两路特征拼接，进同一条序列</text>
+<rect x="300" y="150" width="124" height="50" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="362.0" y="172.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文本头</text>
+<text x="362.0" y="189.0" font-size="11" fill="#6b7280" text-anchor="middle">next-token 预测</text>
+<line x1="362" y1="260" x2="362" y2="202" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="362" y="132" font-size="12" fill="#111827" text-anchor="middle">文字回答</text>
+<line x1="362" y1="148" x2="362" y2="138" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="512" y="390" width="130" height="50" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="577.0" y="420.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文本分词器</text>
+<text x="577" y="500" font-size="12" fill="#111827" text-anchor="middle">提示词</text>
+<line x1="577" y1="486" x2="577" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="577" y1="388" x2="577" y2="318" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="512" y="150" width="130" height="50" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="577.0" y="172.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文本头</text>
+<text x="577.0" y="189.0" font-size="11" fill="#6b7280" text-anchor="middle">next-token 预测</text>
+<line x1="577" y1="260" x2="577" y2="202" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="577" y="132" font-size="12" fill="#111827" text-anchor="middle">文字回答</text>
+<line x1="577" y1="148" x2="577" y2="138" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="577" y="518" font-size="11" fill="#9ca3af" text-anchor="middle">没有图像时就是原来的 LLM</text>
+<rect x="740" y="390" width="130" height="50" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="805.0" y="420.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文本分词器</text>
+<text x="805" y="500" font-size="12" fill="#111827" text-anchor="middle">生成提示词</text>
+<line x1="805" y1="486" x2="805" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="805" y1="388" x2="805" y2="318" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="900" y="390" width="130" height="50" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="965.0" y="412.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VAE 编码器</text>
+<text x="965.0" y="429.0" font-size="11" fill="#6b7280" text-anchor="middle">16 倍下采样，32 维</text>
+<text x="965" y="500" font-size="12" fill="#111827" text-anchor="middle">目标图（训练时）</text>
+<line x1="965" y1="486" x2="965" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="965" y1="388" x2="965" y2="318" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="1044" y="340" width="50" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1069.0" y="362.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">噪声</text>
+<line x1="1042" y1="357" x2="970" y2="357" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="900" y="150" width="130" height="50" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="965.0" y="180.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VAE 解码器</text>
+<line x1="965" y1="260" x2="965" y2="202" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="955" y="232" font-size="11" fill="#6b7280" text-anchor="end">速度 velocity（扩散预测）</text>
+<text x="965" y="132" font-size="12" fill="#111827" text-anchor="middle">图像</text>
+<line x1="965" y1="148" x2="965" y2="138" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+</svg>

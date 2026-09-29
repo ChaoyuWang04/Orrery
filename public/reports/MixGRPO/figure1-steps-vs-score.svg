@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 520" width="860" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="860" height="520" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">优化的步数一少，DanceGRPO 就掉分；MixGRPO 4 步已在顶上</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">依据 PDF p. 2 Figure 1 左图重画，数值是本文从原图读出的约值。</text>
+<text x="30" y="77" font-size="13" fill="#6b7280">紫 = DanceGRPO（随机子集）；绿 = MixGRPO（滑动窗口）。横轴 = 每轮参与优化的去噪步数。</text>
+<rect x="110" y="110" width="560" height="330" fill="#ffffff" stroke="#cbd2d9"/>
+<line x1="110" y1="412.5" x2="670" y2="412.5" stroke="#eeeeee"/>
+<text x="102" y="416.49999999999994" font-size="11" fill="#6b7280" text-anchor="end">0.228</text>
+<line x1="110" y1="357.5" x2="670" y2="357.5" stroke="#eeeeee"/>
+<text x="102" y="361.49999999999983" font-size="11" fill="#6b7280" text-anchor="end">0.230</text>
+<line x1="110" y1="302.5" x2="670" y2="302.5" stroke="#eeeeee"/>
+<text x="102" y="306.49999999999966" font-size="11" fill="#6b7280" text-anchor="end">0.232</text>
+<line x1="110" y1="247.5" x2="670" y2="247.5" stroke="#eeeeee"/>
+<text x="102" y="251.49999999999955" font-size="11" fill="#6b7280" text-anchor="end">0.234</text>
+<line x1="110" y1="192.5" x2="670" y2="192.5" stroke="#eeeeee"/>
+<text x="102" y="196.50000000000017" font-size="11" fill="#6b7280" text-anchor="end">0.236</text>
+<line x1="110" y1="137.5" x2="670" y2="137.5" stroke="#eeeeee"/>
+<text x="102" y="141.50000000000006" font-size="11" fill="#6b7280" text-anchor="end">0.238</text>
+<text x="110.0" y="458" font-size="11" fill="#6b7280" text-anchor="middle">0</text>
+<text x="217.69230769230768" y="458" font-size="11" fill="#6b7280" text-anchor="middle">5</text>
+<text x="325.38461538461536" y="458" font-size="11" fill="#6b7280" text-anchor="middle">10</text>
+<text x="433.07692307692304" y="458" font-size="11" fill="#6b7280" text-anchor="middle">15</text>
+<text x="540.7692307692307" y="458" font-size="11" fill="#6b7280" text-anchor="middle">20</text>
+<text x="648.4615384615385" y="458" font-size="11" fill="#6b7280" text-anchor="middle">25</text>
+<text x="390.0" y="480" font-size="11" fill="#6b7280" text-anchor="middle">参与优化的去噪步数</text>
+<text x="40" y="275.0" font-size="11" fill="#6b7280" text-anchor="start">Pick Score</text>
+<polyline points="196.2,409.8 282.3,308.0 368.5,242.0 454.6,228.3 540.8,233.8 626.9,211.7" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="196.2" cy="409.8" r="5" fill="#8f8bd8"/>
+<circle cx="282.3" cy="308.0" r="5" fill="#8f8bd8"/>
+<circle cx="368.5" cy="242.0" r="5" fill="#8f8bd8"/>
+<circle cx="454.6" cy="228.3" r="5" fill="#8f8bd8"/>
+<circle cx="540.8" cy="233.8" r="5" fill="#8f8bd8"/>
+<circle cx="626.9" cy="211.7" r="5" fill="#8f8bd8"/>
+<polyline points="153.1,220.0 196.2,137.5 239.2,137.5" fill="none" stroke="#5fa886" stroke-width="2.2"/>
+<circle cx="153.1" cy="220.0" r="5" fill="#5fa886"/>
+<circle cx="196.2" cy="137.5" r="5" fill="#5fa886"/>
+<circle cx="239.2" cy="137.5" r="5" fill="#5fa886"/>
+<text x="626.9230769230769" y="256.74999999999966" font-size="11" fill="#6b7280" text-anchor="end">DanceGRPO 24 步 ≈ 0.235</text>
+<text x="206.15384615384616" y="413.7500000000002" font-size="11" fill="#6b7280" text-anchor="start">4 步 ≈ 0.228</text>
+<text x="226.15384615384616" y="125.50000000000006" font-size="11" fill="#6b7280" text-anchor="start">MixGRPO 4 步 ≈ 0.238</text>
+<text x="700" y="150" font-size="14" fill="#111827" text-anchor="start" font-weight="700">读图要点</text>
+<text x="700" y="176" font-size="11" fill="#9ca3af" text-anchor="start">DanceGRPO 砍步省时间，</text>
+<text x="700" y="194" font-size="11" fill="#9ca3af" text-anchor="start">但分跟着掉。</text>
+<text x="700" y="230" font-size="11" fill="#9ca3af" text-anchor="start">MixGRPO 只优化 4 步，</text>
+<text x="700" y="248" font-size="11" fill="#9ca3af" text-anchor="start">分高过 DanceGRPO</text>
+<text x="700" y="266" font-size="11" fill="#9ca3af" text-anchor="start">优化 24 步。</text>
+<text x="700" y="302" font-size="11" fill="#9ca3af" text-anchor="start">精确数字以 Table 1 为准：</text>
+<text x="700" y="320" font-size="11" fill="#9ca3af" text-anchor="start">4 步随机子集在表里是</text>
+<text x="700" y="338" font-size="11" fill="#9ca3af" text-anchor="start">0.225，与图上的点不是</text>
+<text x="700" y="356" font-size="11" fill="#9ca3af" text-anchor="start">同一组运行。</text>
+</svg>

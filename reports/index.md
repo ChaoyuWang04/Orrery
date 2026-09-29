@@ -293,12 +293,12 @@
 | Causal-Forcing | ShengShu | 自回归扩散蒸馏的正确做法,实时交互视频(生数,与清华合作) |
 | MOVA | OpenMOSS | 开源 32B 音视频同步生成:非对称双塔加 Bridge,逐处处理时间栅格、噪声进度与学习速度的不对称 |
 | TRELLIS-2 | Microsoft | 原生紧凑的结构化 3D 潜表示(O-Voxel) |
-| Adversarial-Flow-Models | ByteDance | 对抗式流模型(Seed) |
-| HunyuanVideo-1.5 | Tencent | 8.3B 视频 DiT,把成本压到单卡跑得动 |
-| Kandinsky-5.0 | Sber | 图像与视频的基座模型家族 |
-| HunyuanImage-3.0 | Tencent | 原生多模态图像生成 |
-| MixGRPO | Tencent | 混合 ODE-SDE 让流模型 GRPO 提速(混元) |
-| HunyuanWorld-1.0 | Tencent | 可探索、可交互的 3D 世界生成 |
+| Adversarial-Flow-Models | ByteDance | 对抗训练加 OT 正则把噪声到数据的映射钉成唯一,从零训一步生成器;ImageNet-256 一步 FID 2.38(Seed) |
+| HunyuanVideo-1.5 | Tencent | 8.3B 视频 DiT:16 倍压缩 VAE、SSTA 稀疏注意力与级联超分,把成本压到单卡跑得动 |
+| Kandinsky-5.0 | Sber | 六个模型共用 CrossDiT 骨架与 NABLA 稀疏注意力;画面强,提示词遵循受 256 Token 文本通道所限 |
+| HunyuanImage-3.0 | Tencent | 教 80B MoE 语言模型画图:文字自回归、图像扩散走同一条序列,广义因果注意力与可退化的 2D RoPE 保住语言能力 |
+| MixGRPO | Tencent | 只在滑动窗口里走 SDE 并优化、窗外走 ODE,流模型 GRPO 单轮训练时间约减半(混元) |
+| HunyuanWorld-1.0 | Tencent | 全景图当世界代理,VLM 编排语义分层与逐层补全,再按对齐深度抬成可导出的分层网格 |
 | AAPT | ByteDance | 自回归对抗后训练做实时交互视频生成(Seed) |
 | Self-Forcing | Adobe | 自回归视频扩散的训推差距:用自己的输出做条件 |
 | Flow-GRPO | Kuaishou | 在线 RL 训练流匹配模型(可灵,与港中文合作) |

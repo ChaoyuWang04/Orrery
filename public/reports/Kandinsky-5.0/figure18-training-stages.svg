@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 760" width="1120" height="760" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="760" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">六个模型长在三棵树上：先纯文生图打底，再多任务升分辨率与时长，最后分叉</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = 纯文生图预训练；绿 = 多任务预训练；黄 = SFT；紫 = RL 后训练或蒸馏。框内第三行是 Table 4 的步数 × 批大小。</text>
+<rect x="16" y="70" width="1088" height="210" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="94" font-size="14" fill="#111827" font-weight="700">Image Lite 6B</text>
+<text x="161" y="94" font-size="11" fill="#6b7280">产出 T2I Lite 与 Image Editing</text>
+<rect x="36" y="108" width="124" height="62" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="98.0" y="128" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">256 · T2I</text>
+<text x="98.0" y="145" font-size="11" fill="#6b7280" text-anchor="middle">低分辨率</text>
+<text x="98.0" y="161" font-size="11" fill="#6b7280" text-anchor="middle">400k × 8000</text>
+<rect x="174" y="108" width="124" height="62" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="236.0" y="128" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">512 · T2I</text>
+<text x="236.0" y="145" font-size="11" fill="#6b7280" text-anchor="middle">中分辨率</text>
+<text x="236.0" y="161" font-size="11" fill="#6b7280" text-anchor="middle">200k × 4000</text>
+<line x1="160" y1="139.0" x2="173" y2="139.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="312" y="108" width="124" height="62" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="374.0" y="128" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">1024 · T2I</text>
+<text x="374.0" y="145" font-size="11" fill="#6b7280" text-anchor="middle">高分辨率</text>
+<text x="374.0" y="161" font-size="11" fill="#6b7280" text-anchor="middle">200k × 2000</text>
+<line x1="298" y1="139.0" x2="311" y2="139.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="450" y="108" width="124" height="62" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="512.0" y="128" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">SFT</text>
+<text x="512.0" y="145" font-size="11" fill="#6b7280" text-anchor="middle">1024 · 分域模型汤</text>
+<line x1="436" y1="139.0" x2="449" y2="139.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="588" y="108" width="124" height="62" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="650.0" y="128" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">RL 后训练</text>
+<text x="650.0" y="145" font-size="11" fill="#6b7280" text-anchor="middle">1024 · DRaFT-K</text>
+<line x1="574" y1="139.0" x2="587" y2="139.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="720" y="143.0" font-size="11" fill="#9ca3af">→ T2I Lite</text>
+<polyline points="190,170 190,235.0 213,235.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="214" y="204" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="276.0" y="224" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">512 · 编辑</text>
+<text x="276.0" y="241" font-size="11" fill="#6b7280" text-anchor="middle">编辑 80% + T2I 20%</text>
+<text x="276.0" y="257" font-size="11" fill="#6b7280" text-anchor="middle">200k × 4000</text>
+<rect x="352" y="204" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="414.0" y="224" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">1024 · 编辑</text>
+<text x="414.0" y="241" font-size="11" fill="#6b7280" text-anchor="middle">同上配比</text>
+<text x="414.0" y="257" font-size="11" fill="#6b7280" text-anchor="middle">110k × 2000</text>
+<line x1="338" y1="235.0" x2="351" y2="235.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="490" y="204" width="124" height="62" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="552.0" y="224" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">编辑 SFT</text>
+<text x="552.0" y="241" font-size="11" fill="#6b7280" text-anchor="middle">1024</text>
+<line x1="476" y1="235.0" x2="489" y2="235.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="622" y="239.0" font-size="11" fill="#9ca3af">→ Image Editing</text>
+<rect x="16" y="296" width="1088" height="210" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="320" font-size="14" fill="#111827" font-weight="700">Video Lite 2B</text>
+<text x="161" y="320" font-size="11" fill="#6b7280">产出 T2V Lite（5 秒、10 秒）、I2V Lite、Video Lite Flash</text>
+<rect x="36" y="334" width="124" height="62" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="98.0" y="354" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">256 · T2I</text>
+<text x="98.0" y="371" font-size="11" fill="#6b7280" text-anchor="middle">纯图打底</text>
+<text x="98.0" y="387" font-size="11" fill="#6b7280" text-anchor="middle">220k × 8192</text>
+<rect x="174" y="334" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="236.0" y="354" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">256 · 三任务</text>
+<text x="236.0" y="371" font-size="11" fill="#6b7280" text-anchor="middle">≤5 秒</text>
+<text x="236.0" y="387" font-size="11" fill="#6b7280" text-anchor="middle">10k × 2662</text>
+<line x1="160" y1="365.0" x2="173" y2="365.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="312" y="334" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="374.0" y="354" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">512 · 三任务</text>
+<text x="374.0" y="371" font-size="11" fill="#6b7280" text-anchor="middle">≤5 秒</text>
+<text x="374.0" y="387" font-size="11" fill="#6b7280" text-anchor="middle">50k × 1331</text>
+<line x1="298" y1="365.0" x2="311" y2="365.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="450" y="334" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="512.0" y="354" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">512 · 三任务</text>
+<text x="512.0" y="371" font-size="11" fill="#6b7280" text-anchor="middle">≤10 秒 · NABLA</text>
+<text x="512.0" y="387" font-size="11" fill="#6b7280" text-anchor="middle">10k × 665</text>
+<line x1="436" y1="365.0" x2="449" y2="365.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="588" y="334" width="124" height="62" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="650.0" y="354" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">SFT</text>
+<text x="650.0" y="371" font-size="11" fill="#6b7280" text-anchor="middle">≤10 秒 · NABLA</text>
+<line x1="574" y1="365.0" x2="587" y2="365.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="726" y="334" width="124" height="62" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="788.0" y="354" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">蒸馏</text>
+<text x="788.0" y="371" font-size="11" fill="#6b7280" text-anchor="middle">≤10 秒 · NABLA</text>
+<line x1="712" y1="365.0" x2="725" y2="365.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="630.0" y="328" font-size="11" fill="#9ca3af">→ 10 秒版</text>
+<text x="858" y="369.0" font-size="11" fill="#9ca3af">→ Lite Flash</text>
+<polyline points="328,396 328,461.0 351,461.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="352" y="430" width="124" height="62" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="414.0" y="450" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">SFT</text>
+<text x="414.0" y="467" font-size="11" fill="#6b7280" text-anchor="middle">512 · ≤5 秒</text>
+<text x="390.0" y="506" font-size="11" fill="#9ca3af">→ 5 秒版</text>
+<polyline points="558,396 558,461.0 597,461.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="598" y="430" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="660.0" y="450" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">I2V 微调</text>
+<text x="660.0" y="467" font-size="11" fill="#6b7280" text-anchor="middle">512 · ≤5 秒</text>
+<line x1="722" y1="461.0" x2="735" y2="461.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="736" y="430" width="124" height="62" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="798.0" y="450" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">I2V SFT</text>
+<text x="798.0" y="467" font-size="11" fill="#6b7280" text-anchor="middle">512 · ≤5 秒</text>
+<text x="868" y="465.0" font-size="11" fill="#9ca3af">→ I2V Lite</text>
+<rect x="16" y="522" width="1088" height="210" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="546" font-size="14" fill="#111827" font-weight="700">Video Pro 19B</text>
+<text x="161" y="546" font-size="11" fill="#6b7280">产出 T2V Pro、I2V Pro、Video Pro Flash</text>
+<rect x="36" y="560" width="124" height="62" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="98.0" y="580" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">256 · T2I</text>
+<text x="98.0" y="597" font-size="11" fill="#6b7280" text-anchor="middle">纯图打底</text>
+<text x="98.0" y="613" font-size="11" fill="#6b7280" text-anchor="middle">200k × 16384</text>
+<rect x="174" y="560" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="236.0" y="580" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">256 · 三任务</text>
+<text x="236.0" y="597" font-size="11" fill="#6b7280" text-anchor="middle">≤5 秒</text>
+<text x="236.0" y="613" font-size="11" fill="#6b7280" text-anchor="middle">200k × 2662</text>
+<line x1="160" y1="591.0" x2="173" y2="591.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="312" y="560" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="374.0" y="580" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">512 · 三任务</text>
+<text x="374.0" y="597" font-size="11" fill="#6b7280" text-anchor="middle">≤5 秒</text>
+<text x="374.0" y="613" font-size="11" fill="#6b7280" text-anchor="middle">45k × 1331</text>
+<line x1="298" y1="591.0" x2="311" y2="591.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="450" y="560" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="512.0" y="580" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">1024 · 三任务</text>
+<text x="512.0" y="597" font-size="11" fill="#6b7280" text-anchor="middle">≤5 秒 · NABLA</text>
+<text x="512.0" y="613" font-size="11" fill="#6b7280" text-anchor="middle">22.5k × 665</text>
+<line x1="436" y1="591.0" x2="449" y2="591.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="588" y="560" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="650.0" y="580" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">1024 · 三任务</text>
+<text x="650.0" y="597" font-size="11" fill="#6b7280" text-anchor="middle">≤10 秒 · NABLA</text>
+<text x="650.0" y="613" font-size="11" fill="#6b7280" text-anchor="middle">10k × 333</text>
+<line x1="574" y1="591.0" x2="587" y2="591.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="726" y="560" width="124" height="62" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="788.0" y="580" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">SFT</text>
+<text x="788.0" y="597" font-size="11" fill="#6b7280" text-anchor="middle">≤10 秒 · NABLA</text>
+<line x1="712" y1="591.0" x2="725" y2="591.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="864" y="560" width="124" height="62" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="926.0" y="580" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">蒸馏</text>
+<text x="926.0" y="597" font-size="11" fill="#6b7280" text-anchor="middle">≤10 秒 · NABLA</text>
+<line x1="850" y1="591.0" x2="863" y2="591.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="764.0" y="554" font-size="11" fill="#9ca3af">→ T2V Pro</text>
+<text x="902.0" y="554" font-size="11" fill="#9ca3af">→ Pro Flash</text>
+<polyline points="604,622 604,687.0 627,687.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="628" y="656" width="124" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="690.0" y="676" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">I2V 微调</text>
+<text x="690.0" y="693" font-size="11" fill="#6b7280" text-anchor="middle">1024 · ≤10 秒</text>
+<rect x="766" y="656" width="124" height="62" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="828.0" y="676" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">I2V SFT</text>
+<text x="828.0" y="693" font-size="11" fill="#6b7280" text-anchor="middle">1024 · ≤10 秒</text>
+<line x1="752" y1="687.0" x2="765" y2="687.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="898" y="691.0" font-size="11" fill="#9ca3af">→ I2V Pro</text>
+<text x="30" y="752" font-size="13" fill="#6b7280">据 PDF p. 30 Figure 18、p. 31 正文与 p. 34 Table 4 重画。三任务 = T2I / T2V / I2V，采样概率 Lite 1% / 79% / 20%，Pro 2% / 77% / 21%。</text>
+</svg>

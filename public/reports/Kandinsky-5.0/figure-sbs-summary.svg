@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 686" width="1120" height="686" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="686" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">十三组人工并排评测：画面几乎组组赢，提示词遵循多数组输</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">绿 = Kandinsky 5.0 被判更好；灰 = 打平；红 = 对手被判更好。每条横条总长为 1。</text>
+<text x="510.0" y="92" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">提示词（指令）遵循</text>
+<text x="910.0" y="92" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">视觉质量</text>
+<text x="30" y="130" font-size="13" fill="#111827" text-anchor="start" font-weight="700">Video Lite 2B（文生视频，MovieGen 提示词）</text>
+<text x="42" y="155" font-size="12" fill="#111827" text-anchor="start">对 Sora †</text>
+<rect x="330.0" y="140" width="190.8" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="425.4" y="154" font-size="11" fill="#111827" text-anchor="middle">0.53</text>
+<rect x="520.8" y="140" width="169.2" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="605.4" y="154" font-size="11" fill="#111827" text-anchor="middle">0.47</text>
+<rect x="730.0" y="140" width="252.0" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="856.0" y="154" font-size="11" fill="#111827" text-anchor="middle">0.70</text>
+<rect x="982.0" y="140" width="108.0" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1036.0" y="154" font-size="11" fill="#111827" text-anchor="middle">0.30</text>
+<text x="42" y="185" font-size="12" fill="#111827" text-anchor="start">对 Wan 2.2 5B</text>
+<rect x="330.0" y="170" width="50.4" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="355.2" y="184" font-size="11" fill="#111827" text-anchor="middle">0.14</text>
+<rect x="380.4" y="170" width="259.2" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="510.0" y="184" font-size="11" fill="#111827" text-anchor="middle">0.72</text>
+<rect x="639.6" y="170" width="50.4" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="664.8" y="184" font-size="11" fill="#111827" text-anchor="middle">0.14</text>
+<rect x="730.0" y="170" width="216.0" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="838.0" y="184" font-size="11" fill="#111827" text-anchor="middle">0.60</text>
+<rect x="946.0" y="170" width="122.4" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1007.2" y="184" font-size="11" fill="#111827" text-anchor="middle">0.34</text>
+<rect x="1068.4" y="170" width="21.6" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1079.2" y="184" font-size="11" fill="#111827" text-anchor="middle">0.06</text>
+<text x="42" y="215" font-size="12" fill="#111827" text-anchor="start">对 Wan 2.1 14B</text>
+<rect x="330.0" y="200" width="54.0" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="357.0" y="214" font-size="11" fill="#111827" text-anchor="middle">0.15</text>
+<rect x="384.0" y="200" width="208.8" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="488.4" y="214" font-size="11" fill="#111827" text-anchor="middle">0.58</text>
+<rect x="592.8" y="200" width="97.2" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="641.4" y="214" font-size="11" fill="#111827" text-anchor="middle">0.27</text>
+<rect x="730.0" y="200" width="262.8" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="861.4" y="214" font-size="11" fill="#111827" text-anchor="middle">0.73</text>
+<rect x="992.8" y="200" width="86.4" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1036.0" y="214" font-size="11" fill="#111827" text-anchor="middle">0.24</text>
+<rect x="1079.2" y="200" width="10.8" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="42" y="245" font-size="12" fill="#111827" text-anchor="start">对 Wan 2.2 A14B</text>
+<rect x="330.0" y="230" width="46.8" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="353.4" y="244" font-size="11" fill="#111827" text-anchor="middle">0.13</text>
+<rect x="376.8" y="230" width="208.8" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="481.2" y="244" font-size="11" fill="#111827" text-anchor="middle">0.58</text>
+<rect x="585.6" y="230" width="104.4" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="637.8000000000001" y="244" font-size="11" fill="#111827" text-anchor="middle">0.29</text>
+<rect x="730.0" y="230" width="86.4" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="773.2" y="244" font-size="11" fill="#111827" text-anchor="middle">0.24</text>
+<rect x="816.4" y="230" width="201.6" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="917.2" y="244" font-size="11" fill="#111827" text-anchor="middle">0.56</text>
+<rect x="1018.0" y="230" width="72.0" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1054.0" y="244" font-size="11" fill="#111827" text-anchor="middle">0.20</text>
+<text x="42" y="275" font-size="12" fill="#111827" text-anchor="start">对 Kandinsky 4.1 Video †</text>
+<rect x="330.0" y="260" width="180.0" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="420.0" y="274" font-size="11" fill="#111827" text-anchor="middle">0.50</text>
+<rect x="510.0" y="260" width="180.0" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="600.0" y="274" font-size="11" fill="#111827" text-anchor="middle">0.50</text>
+<rect x="730.0" y="260" width="212.4" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="836.2" y="274" font-size="11" fill="#111827" text-anchor="middle">0.59</text>
+<rect x="942.4" y="260" width="147.6" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1016.1999999999999" y="274" font-size="11" fill="#111827" text-anchor="middle">0.41</text>
+<text x="30" y="310" font-size="13" fill="#111827" text-anchor="start" font-weight="700">Video Pro 19B</text>
+<text x="42" y="335" font-size="12" fill="#111827" text-anchor="start">对 Veo 3（文生视频）</text>
+<rect x="330.0" y="320" width="46.8" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="353.4" y="334" font-size="11" fill="#111827" text-anchor="middle">0.13</text>
+<rect x="376.8" y="320" width="158.4" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="456.0" y="334" font-size="11" fill="#111827" text-anchor="middle">0.44</text>
+<rect x="535.2" y="320" width="154.8" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="612.6" y="334" font-size="11" fill="#111827" text-anchor="middle">0.43</text>
+<rect x="730.0" y="320" width="86.4" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="773.2" y="334" font-size="11" fill="#111827" text-anchor="middle">0.24</text>
+<rect x="816.4" y="320" width="198.0" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="915.4" y="334" font-size="11" fill="#111827" text-anchor="middle">0.55</text>
+<rect x="1014.4" y="320" width="75.6" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1052.2" y="334" font-size="11" fill="#111827" text-anchor="middle">0.21</text>
+<text x="42" y="365" font-size="12" fill="#111827" text-anchor="start">对 Veo 3 fast（文生视频）</text>
+<rect x="330.0" y="350" width="57.6" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="358.8" y="364" font-size="11" fill="#111827" text-anchor="middle">0.16</text>
+<rect x="387.6" y="350" width="140.4" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="457.8" y="364" font-size="11" fill="#111827" text-anchor="middle">0.39</text>
+<rect x="528.0" y="350" width="162.0" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="609.0" y="364" font-size="11" fill="#111827" text-anchor="middle">0.45</text>
+<rect x="730.0" y="350" width="72.0" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="766.0" y="364" font-size="11" fill="#111827" text-anchor="middle">0.20</text>
+<rect x="802.0" y="350" width="216.0" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="910.0" y="364" font-size="11" fill="#111827" text-anchor="middle">0.60</text>
+<rect x="1018.0" y="350" width="72.0" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1054.0" y="364" font-size="11" fill="#111827" text-anchor="middle">0.20</text>
+<text x="42" y="395" font-size="12" fill="#111827" text-anchor="start">对 Wan 2.2 A14B（文生视频）</text>
+<rect x="330.0" y="380" width="72.0" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="366.0" y="394" font-size="11" fill="#111827" text-anchor="middle">0.20</text>
+<rect x="402.0" y="380" width="165.6" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="484.8" y="394" font-size="11" fill="#111827" text-anchor="middle">0.46</text>
+<rect x="567.6" y="380" width="122.4" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="628.8000000000001" y="394" font-size="11" fill="#111827" text-anchor="middle">0.34</text>
+<rect x="730.0" y="380" width="187.2" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="823.6" y="394" font-size="11" fill="#111827" text-anchor="middle">0.52</text>
+<rect x="917.2" y="380" width="115.2" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="974.8000000000001" y="394" font-size="11" fill="#111827" text-anchor="middle">0.32</text>
+<rect x="1032.4" y="380" width="57.6" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1061.2" y="394" font-size="11" fill="#111827" text-anchor="middle">0.16</text>
+<text x="42" y="425" font-size="12" fill="#111827" text-anchor="start">对 Wan 2.2 A14B（图生视频）</text>
+<rect x="330.0" y="410" width="68.4" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="364.2" y="424" font-size="11" fill="#111827" text-anchor="middle">0.19</text>
+<rect x="398.4" y="410" width="234.0" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="515.4" y="424" font-size="11" fill="#111827" text-anchor="middle">0.65</text>
+<rect x="632.4" y="410" width="57.6" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="661.1999999999999" y="424" font-size="11" fill="#111827" text-anchor="middle">0.16</text>
+<rect x="730.0" y="410" width="93.6" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="776.8" y="424" font-size="11" fill="#111827" text-anchor="middle">0.26</text>
+<rect x="823.6" y="410" width="190.8" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="919.0" y="424" font-size="11" fill="#111827" text-anchor="middle">0.53</text>
+<rect x="1014.4" y="410" width="75.6" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1052.2" y="424" font-size="11" fill="#111827" text-anchor="middle">0.21</text>
+<text x="30" y="460" font-size="13" fill="#111827" text-anchor="start" font-weight="700">Image Lite 6B 与 Image Editing</text>
+<text x="42" y="485" font-size="12" fill="#111827" text-anchor="start">Image Lite 对 FLUX.1 [dev]</text>
+<rect x="330.0" y="470" width="61.2" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="360.6" y="484" font-size="11" fill="#111827" text-anchor="middle">0.17</text>
+<rect x="391.2" y="470" width="252.0" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="517.1999999999999" y="484" font-size="11" fill="#111827" text-anchor="middle">0.70</text>
+<rect x="643.2" y="470" width="46.8" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="666.5999999999999" y="484" font-size="11" fill="#111827" text-anchor="middle">0.13</text>
+<rect x="730.0" y="470" width="219.6" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="839.8" y="484" font-size="11" fill="#111827" text-anchor="middle">0.61</text>
+<rect x="949.6" y="470" width="97.2" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="998.2" y="484" font-size="11" fill="#111827" text-anchor="middle">0.27</text>
+<rect x="1046.8" y="470" width="43.2" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1068.3999999999999" y="484" font-size="11" fill="#111827" text-anchor="middle">0.12</text>
+<text x="42" y="515" font-size="12" fill="#111827" text-anchor="start">Image Lite 对 Qwen-Image</text>
+<rect x="330.0" y="500" width="39.6" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="349.8" y="514" font-size="11" fill="#111827" text-anchor="middle">0.11</text>
+<rect x="369.6" y="500" width="262.8" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="501.0" y="514" font-size="11" fill="#111827" text-anchor="middle">0.73</text>
+<rect x="632.4" y="500" width="57.6" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="661.2" y="514" font-size="11" fill="#111827" text-anchor="middle">0.16</text>
+<rect x="730.0" y="500" width="118.8" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="789.4" y="514" font-size="11" fill="#111827" text-anchor="middle">0.33</text>
+<rect x="848.8" y="500" width="140.4" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="919.0" y="514" font-size="11" fill="#111827" text-anchor="middle">0.39</text>
+<rect x="989.2" y="500" width="100.8" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1039.6" y="514" font-size="11" fill="#111827" text-anchor="middle">0.28</text>
+<text x="42" y="545" font-size="12" fill="#111827" text-anchor="start">Editing 对 FLUX.1 Kontext [dev]</text>
+<rect x="330.0" y="530" width="100.8" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="380.4" y="544" font-size="11" fill="#111827" text-anchor="middle">0.28</text>
+<rect x="430.8" y="530" width="154.8" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="508.20000000000005" y="544" font-size="11" fill="#111827" text-anchor="middle">0.43</text>
+<rect x="585.6" y="530" width="104.4" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="637.8000000000001" y="544" font-size="11" fill="#111827" text-anchor="middle">0.29</text>
+<rect x="730.0" y="530" width="104.4" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="782.2" y="544" font-size="11" fill="#111827" text-anchor="middle">0.29</text>
+<rect x="834.4" y="530" width="208.8" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="938.8" y="544" font-size="11" fill="#111827" text-anchor="middle">0.58</text>
+<rect x="1043.2" y="530" width="46.8" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1066.6000000000001" y="544" font-size="11" fill="#111827" text-anchor="middle">0.13</text>
+<text x="42" y="575" font-size="12" fill="#111827" text-anchor="start">Editing 对 Qwen-Image-Edit-2509</text>
+<rect x="330.0" y="560" width="64.8" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="362.4" y="574" font-size="11" fill="#111827" text-anchor="middle">0.18</text>
+<rect x="394.8" y="560" width="180.0" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="484.8" y="574" font-size="11" fill="#111827" text-anchor="middle">0.50</text>
+<rect x="574.8" y="560" width="115.2" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="632.4" y="574" font-size="11" fill="#111827" text-anchor="middle">0.32</text>
+<rect x="730.0" y="560" width="61.2" height="20" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="760.6" y="574" font-size="11" fill="#111827" text-anchor="middle">0.17</text>
+<rect x="791.2" y="560" width="237.6" height="20" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="910.0" y="574" font-size="11" fill="#111827" text-anchor="middle">0.66</text>
+<rect x="1028.8" y="560" width="61.2" height="20" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1059.4" y="574" font-size="11" fill="#111827" text-anchor="middle">0.17</text>
+<text x="30" y="610" font-size="13" fill="#6b7280" text-anchor="start">† 这两行没有「打平」：原图给的是聚合分，打平与不确定的判断已按一半折进双方（PDF p. 44–45 的聚合公式）。</text>
+<text x="30" y="634" font-size="13" fill="#6b7280" text-anchor="start">数值从 PDF p. 46 Figure 28d、p. 47 Figure 29、p. 48 Figure 31c、p. 49 Figure 32、p. 50 Figure 33、p. 51 Figure 34–35 的堆叠条读出，报告没有数值表。</text>
+<text x="30" y="658" font-size="11" fill="#9ca3af" text-anchor="start">Wan 2.1 14B 那行视觉质量的红段只有 0.03，窄到放不下数字。Video Lite 对 Video Lite Flash 那组另见正文。</text>
+</svg>

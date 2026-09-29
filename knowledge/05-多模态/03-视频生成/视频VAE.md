@@ -54,8 +54,9 @@ $$
 | SD3 一代图像 VAE | 1 | 8×8 | 16 | **12×** |
 | CogVideoX 一系视频 VAE | 4 | 8×8 | 16 | **48×**(不含首帧开销) |
 | LTX-Video | 8 | 32×32 | 128(反推) | 论文自报 **1:192** |
+| HunyuanVideo 1.5 | 4 | 16×16 | 32 | **96×**(不含首帧开销) |
 
-**图像侧为了重建质量把潜通道从 4 提到 16,压缩比掉到原来的四分之一;视频侧靠 4 倍时间压缩,正好把这一刀补了回来。** 这就是「时间维是免费压缩空间」的量化版本。最后一行是另一种极端:LTX-Video 报的是 32×32×8 的时空下采样、1:192 压缩,两个数代进上面的公式反推,潜通道数是 $3\times8\times32^{2}/192 = 128$——**压缩率顶到 192 倍时,通道数被迫从 16 一路加到 128**,因为每个 latent 位置要装的信息实在太多了。
+**图像侧为了重建质量把潜通道从 4 提到 16,压缩比掉到原来的四分之一;视频侧靠 4 倍时间压缩,正好把这一刀补了回来。** 这就是「时间维是免费压缩空间」的量化版本。最后一行是另一种极端:LTX-Video 报的是 32×32×8 的时空下采样、1:192 压缩,两个数代进上面的公式反推,潜通道数是 $3\times8\times32^{2}/192 = 128$——**压缩率顶到 192 倍时,通道数被迫从 16 一路加到 128**,因为每个 latent 位置要装的信息实在太多了。HunyuanVideo 1.5 取的是中间一档:空间压到 16×16、通道 32,压缩比 96 倍,代价同样落在通道数上;它换来的是扩散骨干可以用 1×1 的 patch,不必再在 latent 上二次合并。
 
 ## 三、因果视频 VAE:首帧为什么单独占一格
 
@@ -203,3 +204,4 @@ $$
 - CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer(3D 因果 VAE 与 4×8×8 口径)— [arXiv:2408.06072](https://arxiv.org/abs/2408.06072)
 - LTX-Video: Realtime Video Latent Diffusion(32×32×8 下采样、1:192 压缩,解码器兼做最后一步去噪)— [arXiv:2501.00103](https://arxiv.org/abs/2501.00103)
 - Towards Accurate Generative Models of Video: A New Metric & Challenges(FVD)— [arXiv:1812.01717](https://arxiv.org/abs/1812.01717)
+- HunyuanVideo 1.5 Technical Report — [arXiv:2511.18870](https://arxiv.org/abs/2511.18870)

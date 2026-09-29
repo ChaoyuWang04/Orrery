@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">CrossDiT：视觉序列里没有文本 Token，文字只从交叉注意力进来</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 视觉 Token；黄 = 文本 Token；绿 = 时间步与 CLIP 句向量的调制；灰框 = 一次自注意力覆盖的范围。</text>
+<rect x="16" y="72" width="528" height="420" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="576" y="72" width="528" height="420" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="280" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) MMDiT 式：Kandinsky 4.0 的做法</text>
+<text x="280" y="118" font-size="11" fill="#6b7280" text-anchor="middle">文本与视觉拼成一条序列，每层做联合自注意力</text>
+<text x="840" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) CrossDiT：Kandinsky 5.0 的做法</text>
+<text x="840" y="118" font-size="11" fill="#6b7280" text-anchor="middle">视觉自己做自注意力，文本只被交叉注意力读取</text>
+<text x="40" y="150" font-size="11" fill="#6b7280" text-anchor="start">一个批里拼进两条长短不同的视频 A、B：</text>
+<rect x="40" y="160" width="16" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="58" y="160" width="16" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="76" y="160" width="16" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="94" y="160" width="16" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="112" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="130" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="148" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="166" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="184" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="202" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="220" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="238" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="256" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="274" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="298" y="160" width="16" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="316" y="160" width="16" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="334" y="160" width="16" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="352" y="160" width="16" height="26" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="370" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="388" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="406" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="424" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="442" y="160" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="76" y="204" font-size="11" fill="#9ca3af" text-anchor="middle">A 文本</text>
+<text x="202" y="204" font-size="11" fill="#9ca3af" text-anchor="middle">A 视频</text>
+<text x="334" y="204" font-size="11" fill="#9ca3af" text-anchor="middle">B 文本</text>
+<text x="415.0" y="204" font-size="11" fill="#9ca3af" text-anchor="middle">B 视频</text>
+<rect x="38" y="222" width="254" height="40" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="164" y="247" font-size="11" fill="#111827" text-anchor="middle">A 的联合注意力</text>
+<rect x="296" y="222" width="164" height="40" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="377.0" y="247" font-size="11" fill="#111827" text-anchor="middle">B 的联合注意力</text>
+<text x="40" y="296" font-size="12" fill="#111827" text-anchor="start">文本 Token 每层都跟视觉一起被更新，信息双向流动。</text>
+<text x="40" y="320" font-size="12" fill="#111827" text-anchor="start">代价：每层都要把两种模态拼接一次；样本边界与模态边界</text>
+<text x="40" y="340" font-size="12" fill="#111827" text-anchor="start">交错，块稀疏掩码要同时避开两种边界。</text>
+<text x="40" y="374" font-size="11" fill="#9ca3af" text-anchor="start">报告只写了结论：这次拼接显著拖慢训练（p. 24）。</text>
+<text x="600" y="148" font-size="11" fill="#6b7280" text-anchor="start">文本一侧：只算一次</text>
+<rect x="600" y="158" width="150" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="675" y="176" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Qwen2.5-VL 7B</text>
+<text x="675" y="191" font-size="11" fill="#6b7280" text-anchor="middle">最多 256 Token</text>
+<line x1="750" y1="178" x2="778" y2="178" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="780" y="158" width="150" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="855" y="176" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">LTF 精炼</text>
+<text x="855" y="191" font-size="11" fill="#6b7280" text-anchor="middle">2 或 4 个无交叉块</text>
+<rect x="960" y="158" width="130" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1025" y="176" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">时间步 + CLIP</text>
+<text x="1025" y="191" font-size="11" fill="#6b7280" text-anchor="middle">句向量 768 维</text>
+<rect x="600" y="230" width="490" height="190" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="612" y="250" font-size="11" fill="#6b7280" text-anchor="start">CrossDiT 块 × N（Image Lite 50、Video Lite 32、Video Pro 60）</text>
+<rect x="616" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="634" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="652" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="670" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="688" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="706" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="724" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="742" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="760" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="778" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="802" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="820" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="838" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="856" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="874" y="266" width="16" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="932" y="284" font-size="11" fill="#9ca3af" text-anchor="start">A、B 的视觉 Token</text>
+<rect x="614" y="298" width="182" height="20" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="800" y="298" width="92" height="20" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="932" y="312" font-size="11" fill="#9ca3af" text-anchor="start">自注意力（可套 NABLA）</text>
+<rect x="616" y="334" width="140" height="34" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="686" y="356" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">自注意力</text>
+<line x1="756" y1="351" x2="774" y2="351" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="776" y="334" width="140" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="846" y="356" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">交叉注意力</text>
+<line x1="916" y1="351" x2="934" y2="351" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="936" y="334" width="140" height="34" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1006" y="356" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">MLP</text>
+<text x="846" y="390" font-size="11" fill="#6b7280" text-anchor="middle">Q 来自视觉，K、V 来自文本</text>
+<text x="616" y="410" font-size="11" fill="#6b7280" text-anchor="start">三个子块都由绿色那一路生成 Shift、Scale、Gate</text>
+<line x1="904" y1="198" x2="904" y2="332" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="1025,198 1025,325 686,325" fill="none" stroke="#5fa886" stroke-width="1.4"/>
+<line x1="686" y1="325" x2="686" y2="332" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="1006" y1="325" x2="1006" y2="332" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="830" y1="325" x2="830" y2="332" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="40" y="524" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 23 Figure 10、p. 24 Figure 11 与 p. 23–24 正文重画。左栏是机制示意：报告没有画 MMDiT，只说它需要拼接、拖慢训练。</text>
+<text x="40" y="550" font-size="13" fill="#6b7280" text-anchor="start">文本只读一次、每层反复查询：这条旁路的宽度（256 Token）就是全模型理解提示词的上限，见后文「代价」。</text>
+<text x="40" y="580" font-size="11" fill="#9ca3af" text-anchor="start">图中格子数只表示长短不同，不代表真实 Token 数。</text>
+</svg>

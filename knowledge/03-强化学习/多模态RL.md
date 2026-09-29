@@ -126,6 +126,8 @@ flowchart TD
 2. **组内相对优势**:同提示采 $G$ 张 → 各自打分 → 组内减均值除标准差得到一个标量优势 → 这条轨迹上所有去噪步共享它 → 逐步概率比加裁剪更新,并保留对 reference 的 KL 项(组内标准化的原理、$G$ 怎么选、零方差组见 GRPO 篇)。
 3. **Denoising Reduction**:训练时用比推理**更少**的去噪步采样。Flow-GRPO 训练取 $T=10$、推理仍用默认的 $T=40$(论文口径)。这么做站得住,是因为优势本来就整条共享、信用分配的粒度不随步数变细,而 rollout 成本几乎正比于步数。
 
+MixGRPO(2025)从另一头降本:不缩短采样链,而是**只在一个滑动窗口里走 SDE 并进 GRPO 优化**,窗口外全走确定性 ODE、不参与优化;窗口随训练从高噪声端往干净端挪。窗后的 ODE 还能交给高阶求解器压步,窗前不能压,否则进窗口的状态会带着数值误差。FLUX 上它每轮只优化 4 步,单轮 149 秒,DanceGRPO 官方设定优化 14 步要 291 秒;ImageReward 1.645 对 1.436(论文 Table 1 自报)。
+
 **收益**:Flow-GRPO 论文自报把 GenEval 从 63% 做到 95%、视觉文字渲染准确率从 59% 做到 92%,且 reward hacking 很轻;DanceGRPO 自报在扩散与 rectified flow 上都能稳定优化,横跨三类任务、四个基座模型、五个奖励模型,在 HPS-v2.1、CLIP Score、VideoAlign、GenEval 上最多超基线 181%(均为论文自报)。
 
 **代价**:生成量乘以 $G$,而这里一条样本是整条几十步的去噪链,比文本一条回答贵得多;零方差组原样继承(一组图全达标或全不达标,这批算力白花),二值可验证奖励尤其容易撞上;还有一条**它本来就不负责**的事——组内标准化处理的是**合成之后那一个标量**,多路奖励怎么合成、各分量什么权重,必须在进组之前解决,那是下一节的内容。
@@ -134,7 +136,7 @@ flowchart TD
 
 | | 在线策略梯度 | 可微奖励反传 | 离线偏好优化 | 组相对 |
 |---|---|---|---|---|
-| 代表 | DDPO、DPOK | ReFL、DRaFT | Diffusion-DPO、D3PO | Flow-GRPO、DanceGRPO |
+| 代表 | DDPO、DPOK | ReFL、DRaFT | Diffusion-DPO、D3PO | Flow-GRPO、DanceGRPO、MixGRPO |
 | 要在线采样吗 | 要 | 要(但只为拿到 $x_0$) | **不要** | 要,且同题采一组 |
 | 奖励必须可微吗 | 不必 | **必须** | 不需要奖励,只要偏好对 | 不必 |
 | 算不算 RL | 是 | 否,是直接奖励优化 | 否,是离线偏好优化 | 是 |
@@ -259,3 +261,4 @@ $$
 - Pick-a-Pic: An Open Dataset of User Preferences for Text-to-Image Generation(PickScore)— [arXiv:2305.01569](https://arxiv.org/abs/2305.01569)
 - LAION improved-aesthetic-predictor(CLIP 特征 + MLP 的美学打分器)— https://github.com/christophschuhmann/improved-aesthetic-predictor
 - GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization — [arXiv:2601.05242](https://arxiv.org/abs/2601.05242)
+- MixGRPO: Unlocking Flow-based GRPO Efficiency with Mixed ODE-SDE — [arXiv:2507.21802](https://arxiv.org/abs/2507.21802)
