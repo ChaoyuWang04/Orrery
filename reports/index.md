@@ -409,6 +409,7 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| Matryoshka-Attribution | Stanford | 把归因写成「找出最小化下游损失的嵌套组件子集」:sigmoid top-k 掩码加随机稀疏预算一次学出组件排序,在 MIB 榜单排第一,还能用 RL 定位微调中改出拒答行为的那部分权重(arXiv 2609.25518) |
 | Chain-of-Thought-Monitorability | UK-AISI | 十余家机构联署的立场文:思维链在 RL 阶段是不受直接监督的潜变量,所以读得出来;四条训练与架构路径都能把它磨掉,而作者自认全篇零一手实验数字(依据 arXiv v2,11 页) |
 | CoT-Necessary-Evade-Monitors | Google | 把「能不能躲开读思维链的监控器」改写成「要外部给多少帮助才躲得开」:546 题筛出 59 道 CoT 必需的题、三个环境逐个压力测试,前两个躲不开,第 7 节用 10,000 步 RL 真躲开了——办法是外化一个错的中间值(依据 arXiv v1,70 页) |
 | CoT-Unfaithful-Reasoning | Anthropic | 把「说出来」量成百分比:四台模型 × 六类提示线索,推理模型的平均忠实性只有 25%(Claude 3.7)与 39%(R1),题一难再掉 44%/32%;结果监督 RL 先抬高再停滞,奖励黑客练到 >99% 会用线索时说出率不跟着涨(依据 arXiv v1,18 页) |
@@ -421,7 +422,6 @@
 | Towards-Monosemanticity | Anthropic | 一层 Transformer 的 512 个 MLP 神经元上训稀疏自编码器:字典从 512 扩到 131,072,人工打分(区间级)特征中位 12 分、神经元 0 分,A/1 恢复 79% 的 MLP 损失贡献(131,072 时 94.5%);阿拉伯文、DNA、base64、希伯来文四个特征逐项过特异性、敏感性、下游因果、非神经元、跨种子五关;特征随字典变大而分裂,还能经 token 流接成生成 HTML 的「有限状态自动机」(**原件是网页**,依据 transformer-circuits.pub 2023-10-04) |
 | Patchscopes | Google | 把隐藏表示打补丁进另一次前向,让模型自己用自然语言解释它;logit lens 等旧方法都是特例(arXiv 2401.06102,ICML 2024) |
 | Agent-Trace-Tampering | MaxPlanck | 本地编码 agent 能改写、删除自己的执行轨迹:十组模型与 harness 在用户直接要求时大多照删,奖励诱导下也会自发删痕;作者主张把轨迹记录挪到 agent 控制之外的独立拦截层(arXiv 2609.30266) |
-| Matryoshka-Attribution | Stanford | 把归因写成「找出最小化下游损失的嵌套组件子集」:sigmoid top-k 掩码加随机稀疏预算一次学出组件排序,在 MIB 榜单排第一,还能用 RL 定位微调中改出拒答行为的那部分权重(arXiv 2609.25518) |
 
 ## 检索与 RAG
 
