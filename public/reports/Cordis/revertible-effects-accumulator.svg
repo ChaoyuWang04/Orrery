@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">可撤回效应：每一步交出自己的逆，卸载就是倒着执行累加器</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = 上下文状态；绿 = 组件 A 的正向效应；紫 = 组件 B 的正向效应；红 = A 交出的逆；黄 = 累加器。按 PDF p. 9–16、26–28 的定义与定理重画，机制示意。</text>
+
+<rect x="16" y="76" width="532" height="460" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="572" y="76" width="532" height="460" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="282" y="102" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 一个组件单独装卸</text>
+<text x="282" y="122" font-size="11" fill="#6b7280" text-anchor="middle">装载时执行正向 f，同时把它交出的逆 g 接进累加器</text>
+
+<text x="36" y="148" font-size="11" fill="#9ca3af">装载</text>
+<rect x="36" y="156" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="166" y="156" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="296" y="156" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="426" y="156" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="179" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₀</text>
+<text x="206" y="179" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₁</text>
+<text x="336" y="179" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₂</text>
+<text x="466" y="179" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₃</text>
+<line x1="118" y1="174" x2="162" y2="174" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="248" y1="174" x2="292" y2="174" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="378" y1="174" x2="422" y2="174" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<text x="140" y="166" font-size="11" fill="#6b7280" text-anchor="middle">f₁</text>
+<text x="270" y="166" font-size="11" fill="#6b7280" text-anchor="middle">f₂</text>
+<text x="400" y="166" font-size="11" fill="#6b7280" text-anchor="middle">f₃</text>
+
+<rect x="166" y="212" width="80" height="30" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="296" y="212" width="80" height="30" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="426" y="212" width="80" height="30" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="206" y="231" font-size="11" fill="#111827" text-anchor="middle">g₁ 撤 f₁</text>
+<text x="336" y="231" font-size="11" fill="#111827" text-anchor="middle">g₂ 撤 f₂</text>
+<text x="466" y="231" font-size="11" fill="#111827" text-anchor="middle">g₃ 撤 f₃</text>
+<text x="36" y="231" font-size="11" fill="#9ca3af">每步交出的逆</text>
+
+<rect x="36" y="262" width="470" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="271" y="281" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">累加器 φ = g₁ ∘ g₂ ∘ g₃</text>
+<text x="271" y="296" font-size="11" fill="#6b7280" text-anchor="middle">新交出的逆接在最右边，执行时最先跑</text>
+
+<text x="36" y="334" font-size="11" fill="#9ca3af">卸载</text>
+<rect x="36" y="342" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="166" y="342" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="296" y="342" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="426" y="342" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="365" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₀</text>
+<text x="206" y="365" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₁</text>
+<text x="336" y="365" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₂</text>
+<text x="466" y="365" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₃</text>
+<line x1="424" y1="360" x2="380" y2="360" stroke="#d9877a" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="294" y1="360" x2="250" y2="360" stroke="#d9877a" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="164" y1="360" x2="120" y2="360" stroke="#d9877a" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="400" y="352" font-size="11" fill="#6b7280" text-anchor="middle">g₃</text>
+<text x="270" y="352" font-size="11" fill="#6b7280" text-anchor="middle">g₂</text>
+<text x="140" y="352" font-size="11" fill="#6b7280" text-anchor="middle">g₁</text>
+
+<text x="36" y="414" font-size="12" fill="#111827">卸载 = 把 φ 打到当前状态上：g₃ 先撤，g₁ 最后撤（后进先出，定理 16）</text>
+<text x="36" y="438" font-size="11" fill="#6b7280">见证条件（定义 8）只要求每个逆在它被交出的那个状态上撤得回来，</text>
+<text x="36" y="456" font-size="11" fill="#6b7280">不要求一个全局的 g 对所有状态都是逆；恢复后状态精确回到 γ₀</text>
+<text x="36" y="486" font-size="11" fill="#9ca3af">逆由组件作者给出，运行时不检查它是否真撤得回（PDF p. 59）</text>
+<text x="36" y="506" font-size="11" fill="#9ca3af">一段组件加载写成效应迭代器：每 yield 一次交出一个逆（定义 17–18）</text>
+
+<text x="838" y="102" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) 两个组件交错，只卸 A</text>
+<text x="838" y="122" font-size="11" fill="#6b7280" text-anchor="middle">B 的效应夹在 A 的两步之间，A 的逆要在被 B 挪过的状态上执行</text>
+
+<rect x="592" y="156" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="722" y="156" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="852" y="156" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="982" y="156" width="80" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="632" y="179" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₀</text>
+<text x="762" y="179" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₁</text>
+<text x="892" y="179" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₂</text>
+<text x="1022" y="179" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₃</text>
+<line x1="674" y1="174" x2="718" y2="174" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="804" y1="174" x2="848" y2="174" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="934" y1="174" x2="978" y2="174" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<text x="696" y="166" font-size="11" fill="#6b7280" text-anchor="middle">A:f₁</text>
+<text x="826" y="166" font-size="11" fill="#6b7280" text-anchor="middle">B:f₂</text>
+<text x="956" y="166" font-size="11" fill="#6b7280" text-anchor="middle">A:f₃</text>
+
+<rect x="592" y="212" width="225" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="837" y="212" width="225" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="704" y="231" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A 的累加器 g₁ ∘ g₃</text>
+<text x="704" y="246" font-size="11" fill="#6b7280" text-anchor="middle">只收 A 自己交出的逆</text>
+<text x="949" y="231" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">B 的累加器 g₂</text>
+<text x="949" y="246" font-size="11" fill="#6b7280" text-anchor="middle">B 不受 A 卸载影响</text>
+
+<text x="592" y="290" font-size="11" fill="#9ca3af">只卸 A</text>
+<rect x="592" y="300" width="120" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="767" y="300" width="120" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="942" y="300" width="120" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="652" y="323" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">γ₃</text>
+<text x="827" y="323" font-size="12" fill="#111827" text-anchor="middle">撤掉了 f₃</text>
+<text x="1002" y="323" font-size="12" fill="#111827" text-anchor="middle">≃ 只跑过 f₂</text>
+<line x1="714" y1="318" x2="763" y2="318" stroke="#d9877a" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="889" y1="318" x2="938" y2="318" stroke="#d9877a" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="738" y="310" font-size="11" fill="#6b7280" text-anchor="middle">g₃</text>
+<text x="913" y="310" font-size="11" fill="#6b7280" text-anchor="middle">g₁</text>
+
+<text x="592" y="374" font-size="12" fill="#111827">g₁ 执行时面对的是被 f₂ 改过的状态，这一步凭什么还对？</text>
+<text x="592" y="400" font-size="11" fill="#6b7280">前提是 A 与 B 独立（定义 42）：双方的正向映射与逆两两可交换，</text>
+<text x="592" y="418" font-size="11" fill="#6b7280">而且一方的改动不改变另一方交出的逆</text>
+<text x="592" y="446" font-size="11" fill="#6b7280">不同键上的操作天然独立（定理 45）；同一键上的操作，</text>
+<text x="592" y="464" font-size="11" fill="#6b7280">要由提供该键的组件证明可交换（带见证的协效应，定义 46）</text>
+<text x="592" y="494" font-size="11" fill="#9ca3af">独立时逆可按任意顺序执行，都回到起点（定理 43）；</text>
+<text x="592" y="512" font-size="11" fill="#9ca3af">整系统版本是定理 68，等号换成观察等价 ≃</text>
+</svg>

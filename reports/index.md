@@ -174,9 +174,9 @@
 | 报告 | 公司 | 一句话 |
 |---|---|---|
 | Agensh | Microsoft | 没有中心编排者的多 agent harness:worker 经共享工作区、消息接口与共享上下文自行认领子任务并异步合并进度,扩到 1,024 个 agent |
-| Skill2Env | NVIDIA | 把 3.4k 个公开 Agent Skills 转成 8k 个带程序化测试与行为 rubric 的终端环境,300 步 RL 让 Qwen-3.8 27B 在 Terminal-Bench 2.1 上涨 4.7 个点 |
 | Self-Organizing-Agent-Teams | Stanford | 固定的一组 agent 从过往协作里学可复用的组织策略(角色、阶段、发言与信息流),只用 15 道数学题与 25 道研究生知识题学到的策略原样迁移到未见基准 |
 | CodeMidas | Xiaomi | 只用源码本身造编码 RL 环境:agent 探索已实现功能、写行为规格与测试并反复验证,得到 3,185 个仓库的 5,545 个任务 |
+| Skill2Env | NVIDIA | 把 3.4k 个公开 Agent Skills 转成 8k 个带程序化测试与行为 rubric 的终端环境,300 步 RL 让 Qwen-3.8 27B 在 Terminal-Bench 2.1 上涨 4.7 个点 |
 | RetireOPD | ZJU | 多轮 agent 的自蒸馏:先用环境奖励优化带技能的教师,再让学生 RL 加 OPD 联合训练,差距不再缩小且达到目标成功率就自行退掉教师 |
 | ScienceIDE | Oxford | 让 agent 按专家定义的案例与验收标准把科学代码仓改造成可执行环境,用于 SFT、RL 与评测,并训出 PhAI-IDE 72B/9B/4B |
 | Cordis | DeepSeek | DeepSeek Harness 底下的插件内核;把动态组合拆成时间(可完全撤销副作用)与空间(响应式依赖)两维并给出演算 |

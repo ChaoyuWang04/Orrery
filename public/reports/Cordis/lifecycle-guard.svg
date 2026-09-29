@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 580" width="1120" height="580" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ak" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="580" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">组件生命周期：先宣布离场，等依赖方拆完，再执行自己的累加器</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = 未装；黄 = 迁移中（装载或卸载）；绿 = 活跃，对外提供键；红 = L-Unload 的守卫。左按 PDF p. 34–37 的 Figure 1 与规则重画并补上前提，右为机制示意。</text>
+
+<rect x="16" y="76" width="540" height="484" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="572" y="76" width="532" height="484" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="36" y="102" font-size="14" fill="#111827" font-weight="700">(a) 一条 fiber 的四个状态</text>
+
+<circle cx="46" cy="262" r="14" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="46" y="296" font-size="11" fill="#9ca3af" text-anchor="middle">不在注册表</text>
+<rect x="136" y="242" width="110" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="191" y="267" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Inactive</text>
+<rect x="272" y="140" width="120" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="332" y="165" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Reloading</text>
+<rect x="420" y="242" width="110" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="475" y="267" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Active</text>
+<rect x="272" y="344" width="120" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="332" y="369" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Unloading</text>
+
+<line x1="62" y1="256" x2="132" y2="256" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ak)"/>
+<line x1="134" y1="270" x2="64" y2="270" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ak)"/>
+<text x="97" y="248" font-size="11" fill="#6b7280" text-anchor="middle">O-Insert</text>
+<text x="97" y="284" font-size="11" fill="#6b7280" text-anchor="middle">O-Remove</text>
+
+<polyline points="191,240 191,160 268,160" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ak)"/>
+<text x="198" y="152" font-size="11" fill="#6b7280">L-Begin</text>
+<path d="M 318 138 C 312 104, 352 104, 346 138" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ak)"/>
+<text x="332" y="98" font-size="11" fill="#6b7280" text-anchor="middle">L-Iter</text>
+<polyline points="394,160 475,160 475,238" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ak)"/>
+<text x="410" y="152" font-size="11" fill="#6b7280">L-Finish</text>
+<line x1="332" y1="182" x2="332" y2="340" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ak)"/>
+<text x="338" y="266" font-size="11" fill="#6b7280">L-Divert</text>
+<polyline points="475,284 475,364 396,364" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ak)"/>
+<text x="412" y="380" font-size="11" fill="#6b7280">L-Leave</text>
+<polyline points="270,364 191,364 191,286" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ak)"/>
+<text x="200" y="356" font-size="11" fill="#6b7280">L-Unload</text>
+<rect x="150" y="390" width="116" height="24" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="208" y="406" font-size="11" fill="#111827" text-anchor="middle">守卫：无人还依赖它</text>
+
+<text x="36" y="442" font-size="11" fill="#6b7280">L-Begin：未退休，且声明的键都有活跃提供者（目标视图 ≠ ⊥）</text>
+<text x="36" y="462" font-size="11" fill="#6b7280">L-Iter / L-Finish：目标视图仍等于开始时记下的已提交视图</text>
+<text x="36" y="482" font-size="11" fill="#6b7280">L-Divert / L-Leave：目标视图变了（依赖撤走、换了提供者或被退休）</text>
+<text x="36" y="502" font-size="11" fill="#6b7280">L-Unload：没有其他已装 fiber 的已提交视图指向它；唯一执行累加器的规则</text>
+<text x="36" y="526" font-size="11" fill="#9ca3af">O-Retire 只写退休标记、在任何状态都可用，原图省略；本图同样省略</text>
+
+<text x="838" y="102" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) 提供者 P 与依赖它的消费者 C</text>
+<text x="838" y="122" font-size="11" fill="#6b7280" text-anchor="middle">C 声明依赖键 db，db 由 P 提供；横轴是步序，不是实测时间</text>
+
+<line x1="720" y1="140" x2="720" y2="262" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="900" y1="140" x2="900" y2="262" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="945" y1="140" x2="945" y2="262" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="1010" y1="140" x2="1010" y2="262" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<circle cx="720" cy="146" r="9" fill="#ffffff" stroke="#9ca3af"/>
+<circle cx="900" cy="146" r="9" fill="#ffffff" stroke="#9ca3af"/>
+<circle cx="945" cy="146" r="9" fill="#ffffff" stroke="#9ca3af"/>
+<circle cx="1010" cy="146" r="9" fill="#ffffff" stroke="#9ca3af"/>
+<text x="720" y="150" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<text x="900" y="150" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<text x="945" y="150" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="1010" y="150" font-size="11" fill="#111827" text-anchor="middle">4</text>
+
+<text x="596" y="190" font-size="14" fill="#111827" font-weight="700">P</text>
+<rect x="630" y="172" width="50" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="680" y="172" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="900" y="172" width="110" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="655" y="190" font-size="11" fill="#6b7280" text-anchor="middle">装载</text>
+<text x="790" y="190" font-size="11" fill="#111827" text-anchor="middle">活跃，提供 db</text>
+<text x="955" y="190" font-size="11" fill="#111827" text-anchor="middle">卸载中，等 C</text>
+
+<text x="596" y="240" font-size="14" fill="#111827" font-weight="700">C</text>
+<rect x="720" y="222" width="50" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="770" y="222" width="175" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="945" y="222" width="45" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="745" y="240" font-size="11" fill="#6b7280" text-anchor="middle">装载</text>
+<text x="857" y="240" font-size="11" fill="#111827" text-anchor="middle">活跃，读 db</text>
+<text x="967" y="240" font-size="11" fill="#111827" text-anchor="middle">拆</text>
+
+<text x="592" y="296" font-size="12" fill="#111827">1　P 进入活跃，db 出现在共享表里；C 的依赖满足，L-Begin，</text>
+<text x="610" y="314" font-size="12" fill="#111827">已提交视图记下「db 来自 P」</text>
+<text x="592" y="340" font-size="12" fill="#111827">2　P 被退休：L-Leave，P 立刻停止提供 db，但一个逆都还没执行</text>
+<text x="592" y="366" font-size="12" fill="#111827">3　C 的目标视图变成 ⊥：L-Leave，再由 L-Unload 执行 C 的累加器；</text>
+<text x="610" y="384" font-size="12" fill="#111827">C 的拆卸代码仍按已提交视图读到 db（比如归还连接）</text>
+<text x="592" y="410" font-size="12" fill="#111827">4　C 回到 Inactive，守卫放行，P 才执行自己的累加器（L-Unload）</text>
+
+<text x="592" y="450" font-size="11" fill="#6b7280">定理 70：P 的 episode 严格包住 C 的 episode，C 整个 episode 里 db 一直来自 P；</text>
+<text x="592" y="468" font-size="11" fill="#6b7280">守卫不会死锁，因为进入 Unloading 的 fiber 已不再提供任何键（定理 73）</text>
+<text x="592" y="498" font-size="11" fill="#9ca3af">实现里对应三行：reload 在第 14 行提交视图，refresh 在第 10 行先标 UNLOADING，</text>
+<text x="592" y="516" font-size="11" fill="#9ca3af">unload 在第 25 行等被通知的依赖方全部拆完（Algorithm 5，PDF p. 62–63）</text>
+</svg>
