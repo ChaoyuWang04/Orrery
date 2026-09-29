@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 564" width="860" height="564" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="860" height="564" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">1,059,348 条训练数据：按条数和按体积是两幅图</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">绿 = Table 11 标为来自真实网站；灰 = 标为非真实网站。每行上条是条数占比，下条是体积占比</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">条长按占比画（满格 = 100%）；百分比由 Table 11 的条数与体积换算</text>
+<text x="30" y="120" font-size="14" fill="#111827" font-weight="700">随机爬</text>
+<text x="30" y="140" font-size="11" fill="#6b7280">293,511 条 · 22.0G</text>
+<text x="318" y="118" font-size="11" fill="#9ca3af" text-anchor="end">条数</text>
+<rect x="330" y="105" width="121.9" height="18" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="459.9" y="118" font-size="12" fill="#111827">27.7%</text>
+<text x="318" y="142" font-size="11" fill="#9ca3af" text-anchor="end">体积</text>
+<rect x="330" y="129" width="190.2" height="18" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="528.2" y="142" font-size="12" fill="#111827">43.2%</text>
+<text x="30" y="186" font-size="14" fill="#111827" font-weight="700">自主探索</text>
+<text x="30" y="206" font-size="11" fill="#6b7280">38,356 条 · 10.4G</text>
+<text x="318" y="184" font-size="11" fill="#9ca3af" text-anchor="end">条数</text>
+<rect x="330" y="171" width="15.9" height="18" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="353.9" y="184" font-size="12" fill="#111827">3.6%</text>
+<text x="318" y="208" font-size="11" fill="#9ca3af" text-anchor="end">体积</text>
+<rect x="330" y="195" width="89.9" height="18" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="427.9" y="208" font-size="12" fill="#111827">20.4%</text>
+<text x="30" y="252" font-size="14" fill="#111827" font-weight="700">开源轨迹改写</text>
+<text x="30" y="272" font-size="11" fill="#6b7280">37,568 条 · 0.7G</text>
+<text x="318" y="250" font-size="11" fill="#9ca3af" text-anchor="end">条数</text>
+<rect x="330" y="237" width="15.6" height="18" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="353.6" y="250" font-size="12" fill="#111827">3.5%</text>
+<text x="318" y="274" font-size="11" fill="#9ca3af" text-anchor="end">体积</text>
+<rect x="330" y="261" width="6.1" height="18" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="344.1" y="274" font-size="12" fill="#111827">1.4%</text>
+<text x="30" y="318" font-size="14" fill="#111827" font-weight="700">多格式转写</text>
+<text x="30" y="338" font-size="11" fill="#6b7280">47,855 条 · 4.0G</text>
+<text x="318" y="316" font-size="11" fill="#9ca3af" text-anchor="end">条数</text>
+<rect x="330" y="303" width="19.9" height="18" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="357.9" y="316" font-size="12" fill="#111827">4.5%</text>
+<text x="318" y="340" font-size="11" fill="#9ca3af" text-anchor="end">体积</text>
+<rect x="330" y="327" width="34.6" height="18" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="372.6" y="340" font-size="12" fill="#111827">7.9%</text>
+<text x="30" y="384" font-size="14" fill="#111827" font-weight="700">任务向执行</text>
+<text x="30" y="404" font-size="11" fill="#6b7280">94,001 条 · 8.2G</text>
+<text x="318" y="382" font-size="11" fill="#9ca3af" text-anchor="end">条数</text>
+<rect x="330" y="369" width="39.0" height="18" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="377.0" y="382" font-size="12" fill="#111827">8.9%</text>
+<text x="318" y="406" font-size="11" fill="#9ca3af" text-anchor="end">体积</text>
+<rect x="330" y="393" width="70.9" height="18" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="408.9" y="406" font-size="12" fill="#111827">16.1%</text>
+<text x="30" y="450" font-size="14" fill="#111827" font-weight="700">对话 / 问答 / Web2NAL</text>
+<text x="30" y="470" font-size="11" fill="#6b7280">547,758 条 · 5.6G</text>
+<text x="318" y="448" font-size="11" fill="#9ca3af" text-anchor="end">条数</text>
+<rect x="330" y="435" width="227.5" height="18" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="565.5" y="448" font-size="12" fill="#111827">51.7%</text>
+<text x="318" y="472" font-size="11" fill="#9ca3af" text-anchor="end">体积</text>
+<rect x="330" y="459" width="48.4" height="18" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="386.4" y="472" font-size="12" fill="#111827">11.0%</text>
+<line x1="330" y1="96" x2="330" y2="496" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="30" y="524" font-size="12" fill="#111827">绿色四行合计：417,290 条，占条数 39.4%；37.1G，占体积 72.9%</text>
+<text x="30" y="546" font-size="11" fill="#9ca3af">按 PDF p. 16 的 Table 11 重画，不是原图；六行条数相加为 1,059,049，比表上总计少 299 条</text>
+</svg>

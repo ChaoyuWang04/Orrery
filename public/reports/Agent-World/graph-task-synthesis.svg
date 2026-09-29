@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 690" width="860" height="690" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+  <defs>
+    <marker id="aP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8f8bd8"/></marker>
+    <marker id="aY" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d4a24c"/></marker>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/></marker>
+  </defs>
+  <rect x="0" y="0" width="860" height="690" fill="#ffffff"/>
+  <text x="430" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="#111827">图任务：先在工具图上走出一条能执行的链，再倒着写题</text>
+  <text x="430" y="56" text-anchor="middle" font-size="13" fill="#6b7280">紫线 = 强依赖（权重 3），黄线 = 弱依赖（权重 2），灰虚线 = 独立边（权重 1），绿框 = 一次游走选中的工具</text>
+
+  <rect x="20" y="74" width="820" height="312" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+  <text x="36" y="98" font-size="14" font-weight="700" fill="#111827">A. 每个环境一张完全连通的加权有向图，节点是工具</text>
+
+  <!-- edges -->
+  <line x1="232" y1="160" x2="336" y2="160" stroke="#d4a24c" stroke-width="2" marker-start="url(#aY)" marker-end="url(#aY)"/>
+  <text x="284" y="148" text-anchor="middle" font-size="11" fill="#6b7280">弱 · 2</text>
+  <line x1="512" y1="160" x2="616" y2="160" stroke="#8f8bd8" stroke-width="2" marker-end="url(#aP)"/>
+  <text x="564" y="148" text-anchor="middle" font-size="11" fill="#6b7280">强 · 3</text>
+  <line x1="710" y1="182" x2="710" y2="286" stroke="#8f8bd8" stroke-width="2" marker-end="url(#aP)"/>
+  <text x="718" y="238" font-size="11" fill="#6b7280">强 · 3</text>
+  <line x1="145" y1="182" x2="145" y2="286" stroke="#b9b9b9" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="153" y="238" font-size="11" fill="#6b7280">独立 · 1</text>
+  <line x1="232" y1="310" x2="336" y2="310" stroke="#b9b9b9" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="284" y="298" text-anchor="middle" font-size="11" fill="#6b7280">独立 · 1</text>
+  <line x1="514" y1="310" x2="616" y2="310" stroke="#d4a24c" stroke-width="2" marker-start="url(#aY)" marker-end="url(#aY)"/>
+  <text x="565" y="298" text-anchor="middle" font-size="11" fill="#6b7280">弱 · 2</text>
+
+  <!-- nodes -->
+  <rect x="58" y="138" width="172" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="144" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="#111827">① list_products</text>
+  <text x="144" y="174" text-anchor="middle" font-size="11" fill="#6b7280">有输出，无强依赖前驱</text>
+
+  <rect x="338" y="138" width="172" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="424" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="#111827">② create_order</text>
+  <text x="424" y="174" text-anchor="middle" font-size="11" fill="#6b7280">返回 order_id</text>
+
+  <rect x="618" y="138" width="186" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="711" y="158" text-anchor="middle" font-size="14" font-weight="700" fill="#111827">③ get_order_details</text>
+  <text x="711" y="174" text-anchor="middle" font-size="11" fill="#6b7280">必须先拿到 order_id</text>
+
+  <rect x="58" y="288" width="172" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-width="1.4"/>
+  <text x="144" y="308" text-anchor="middle" font-size="14" font-weight="700" fill="#111827">get_user</text>
+  <text x="144" y="324" text-anchor="middle" font-size="11" fill="#6b7280">本次没走到</text>
+
+  <rect x="338" y="288" width="174" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-width="1.4"/>
+  <text x="425" y="308" text-anchor="middle" font-size="14" font-weight="700" fill="#111827">search_stores</text>
+  <text x="425" y="324" text-anchor="middle" font-size="11" fill="#6b7280">本次没走到</text>
+
+  <rect x="618" y="288" width="186" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="711" y="308" text-anchor="middle" font-size="14" font-weight="700" fill="#111827">④ refund_order</text>
+  <text x="711" y="324" text-anchor="middle" font-size="11" fill="#6b7280">链尾，得到最终结果</text>
+
+  <text x="36" y="360" font-size="11" fill="#6b7280">下一步按边权偏置抽样；加难时拉长最大步数，并提高弱依赖与独立边的抽样概率，让链不再「一眼顺下去」。</text>
+  <text x="36" y="376" font-size="11" fill="#9ca3af">示意：只有 create_order → get_order_details 是论文举的例子（PDF p. 7），其余工具名为虚构，只用来摆出三种边。</text>
+
+  <!-- part B -->
+  <text x="36" y="418" font-size="14" font-weight="700" fill="#111827">B. 把这条链变成一道带判据的题</text>
+
+  <rect x="40" y="432" width="250" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="56" y="456" font-size="14" font-weight="700" fill="#111827">1 · 填参数</text>
+  <text x="56" y="478" font-size="11" fill="#6b7280">强、弱依赖：传入上一步的输出</text>
+  <text x="56" y="496" font-size="11" fill="#6b7280">独立边：从数据库里采一个合法值</text>
+
+  <rect x="305" y="432" width="250" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="321" y="456" font-size="14" font-weight="700" fill="#111827">2 · 修剪成 τ*</text>
+  <text x="321" y="478" font-size="11" fill="#6b7280">LLM 删掉冗余调用、检查逻辑</text>
+  <text x="321" y="496" font-size="11" fill="#6b7280">得到一条可执行的调用链</text>
+
+  <rect x="570" y="432" width="250" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="586" y="456" font-size="14" font-weight="700" fill="#111827">3 · 草拟题面 q_init</text>
+  <text x="586" y="478" font-size="11" fill="#6b7280">只写用户目标</text>
+  <text x="586" y="496" font-size="11" fill="#6b7280">禁止出现工具名与数据库 schema</text>
+
+  <rect x="40" y="566" width="250" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="56" y="590" font-size="14" font-weight="700" fill="#111827">4 · 沙箱里执行 τ*</text>
+  <text x="56" y="612" font-size="11" fill="#6b7280">逐步跑出真实返回值</text>
+  <text x="56" y="630" font-size="11" fill="#6b7280">按真实字段把题面改写成 q_final</text>
+
+  <rect x="305" y="566" width="250" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="321" y="590" font-size="14" font-weight="700" fill="#111827">5 · 同时产出判据</text>
+  <text x="321" y="612" font-size="11" fill="#6b7280">JSON 标准答案 a*</text>
+  <text x="321" y="630" font-size="11" fill="#6b7280">细则 R：字段完整、schema、数值容差</text>
+
+  <rect x="570" y="566" width="250" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="586" y="590" font-size="14" font-weight="700" fill="#111827">6 · 可解性过滤</text>
+  <text x="586" y="612" font-size="11" fill="#6b7280">ReAct agent 独立做 5 次</text>
+  <text x="586" y="630" font-size="11" fill="#6b7280">至少 2 次得到一致答案才保留</text>
+
+  <line x1="290" y1="478" x2="301" y2="478" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#aG)"/>
+  <line x1="555" y1="478" x2="566" y2="478" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#aG)"/>
+  <path d="M695 524 V545 H165 V562" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#aG)"/>
+  <line x1="290" y1="612" x2="301" y2="612" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#aG)"/>
+  <line x1="555" y1="612" x2="566" y2="612" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#aG)"/>
+
+  <text x="430" y="680" text-anchor="middle" font-size="11" fill="#9ca3af">据 PDF p. 7 第 3.1.1 节（1）重画的机制示意，不是原图</text>
+</svg>

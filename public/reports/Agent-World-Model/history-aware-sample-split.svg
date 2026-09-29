@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 530" width="860" height="530" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="860" height="530" fill="#ffffff"/>
+<text x="20" y="32" font-size="19" font-weight="700" fill="#111827">历史感知训练：一条 T 轮轨迹拆成 T 个训练样本</text>
+<text x="20" y="54" font-size="13" fill="#6b7280">以窗口 w = 3、T = 6 为例。灰 = 每个样本都带的固定前缀；紫 = 窗口内历史，只作条件；</text>
+<text x="20" y="73" font-size="13" fill="#6b7280">绿 = 当前轮，只有它算损失；虚线框 = 被截掉的更早轮次。</text>
+<text x="20" y="117" font-size="11" fill="#6b7280">完整 rollout</text>
+<rect x="100" y="95" width="140" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170.0" y="110" font-size="11" text-anchor="middle" fill="#111827">系统提示 + 用户任务</text>
+<text x="170.0" y="124" font-size="11" text-anchor="middle" fill="#111827">首次 list_tools</text>
+<rect x="250" y="95" width="86" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="293.0" y="117.0" font-size="11" text-anchor="middle" fill="#111827">轮 1</text>
+<rect x="346" y="95" width="86" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="389.0" y="117.0" font-size="11" text-anchor="middle" fill="#111827">轮 2</text>
+<rect x="442" y="95" width="86" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="485.0" y="117.0" font-size="11" text-anchor="middle" fill="#111827">轮 3</text>
+<rect x="538" y="95" width="86" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="581.0" y="117.0" font-size="11" text-anchor="middle" fill="#111827">轮 4</text>
+<rect x="634" y="95" width="86" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="677.0" y="117.0" font-size="11" text-anchor="middle" fill="#111827">轮 5</text>
+<rect x="730" y="95" width="86" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="773.0" y="117.0" font-size="11" text-anchor="middle" fill="#111827">轮 6</text>
+<line x1="430.0" y1="137" x2="430.0" y2="161" stroke="#9ca3af" stroke-width="1.4"/>
+<path d="M425.0,155 L430.0,163 L435.0,155" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="442.0" y="155" font-size="11" fill="#9ca3af">按轮拆样本</text>
+<text x="20" y="197" font-size="11" fill="#6b7280">样本 t = 1</text>
+<rect x="100" y="175" width="140" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170.0" y="190" font-size="11" text-anchor="middle" fill="#111827">系统提示 + 用户任务</text>
+<text x="170.0" y="204" font-size="11" text-anchor="middle" fill="#111827">首次 list_tools</text>
+<rect x="250" y="175" width="86" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="293.0" y="197.0" font-size="11" text-anchor="middle" fill="#111827">算损失</text>
+<text x="20" y="241" font-size="11" fill="#6b7280">样本 t = 2</text>
+<rect x="100" y="219" width="140" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170.0" y="234" font-size="11" text-anchor="middle" fill="#111827">系统提示 + 用户任务</text>
+<text x="170.0" y="248" font-size="11" text-anchor="middle" fill="#111827">首次 list_tools</text>
+<rect x="250" y="219" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="293.0" y="241.0" font-size="11" text-anchor="middle" fill="#111827">轮 1</text>
+<rect x="346" y="219" width="86" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="389.0" y="241.0" font-size="11" text-anchor="middle" fill="#111827">算损失</text>
+<text x="20" y="285" font-size="11" fill="#6b7280">样本 t = 3</text>
+<rect x="100" y="263" width="140" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170.0" y="278" font-size="11" text-anchor="middle" fill="#111827">系统提示 + 用户任务</text>
+<text x="170.0" y="292" font-size="11" text-anchor="middle" fill="#111827">首次 list_tools</text>
+<rect x="250" y="263" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="293.0" y="285.0" font-size="11" text-anchor="middle" fill="#111827">轮 1</text>
+<rect x="346" y="263" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="389.0" y="285.0" font-size="11" text-anchor="middle" fill="#111827">轮 2</text>
+<rect x="442" y="263" width="86" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="485.0" y="285.0" font-size="11" text-anchor="middle" fill="#111827">算损失</text>
+<text x="20" y="329" font-size="11" fill="#6b7280">样本 t = 4</text>
+<rect x="100" y="307" width="140" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170.0" y="322" font-size="11" text-anchor="middle" fill="#111827">系统提示 + 用户任务</text>
+<text x="170.0" y="336" font-size="11" text-anchor="middle" fill="#111827">首次 list_tools</text>
+<rect x="250" y="307" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="293.0" y="329.0" font-size="11" text-anchor="middle" fill="#111827">轮 1</text>
+<rect x="346" y="307" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="389.0" y="329.0" font-size="11" text-anchor="middle" fill="#111827">轮 2</text>
+<rect x="442" y="307" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="485.0" y="329.0" font-size="11" text-anchor="middle" fill="#111827">轮 3</text>
+<rect x="538" y="307" width="86" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="581.0" y="329.0" font-size="11" text-anchor="middle" fill="#111827">算损失</text>
+<text x="20" y="373" font-size="11" fill="#6b7280">样本 t = 5</text>
+<rect x="100" y="351" width="140" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170.0" y="366" font-size="11" text-anchor="middle" fill="#111827">系统提示 + 用户任务</text>
+<text x="170.0" y="380" font-size="11" text-anchor="middle" fill="#111827">首次 list_tools</text>
+<rect x="250" y="351" width="86" height="36" rx="6" fill="none" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="293.0" y="373.0" font-size="11" text-anchor="middle" fill="#9ca3af">截掉</text>
+<rect x="346" y="351" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="389.0" y="373.0" font-size="11" text-anchor="middle" fill="#111827">轮 2</text>
+<rect x="442" y="351" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="485.0" y="373.0" font-size="11" text-anchor="middle" fill="#111827">轮 3</text>
+<rect x="538" y="351" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="581.0" y="373.0" font-size="11" text-anchor="middle" fill="#111827">轮 4</text>
+<rect x="634" y="351" width="86" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="677.0" y="373.0" font-size="11" text-anchor="middle" fill="#111827">算损失</text>
+<text x="20" y="417" font-size="11" fill="#6b7280">样本 t = 6</text>
+<rect x="100" y="395" width="140" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170.0" y="410" font-size="11" text-anchor="middle" fill="#111827">系统提示 + 用户任务</text>
+<text x="170.0" y="424" font-size="11" text-anchor="middle" fill="#111827">首次 list_tools</text>
+<rect x="250" y="395" width="86" height="36" rx="6" fill="none" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="293.0" y="417.0" font-size="11" text-anchor="middle" fill="#9ca3af">截掉</text>
+<rect x="346" y="395" width="86" height="36" rx="6" fill="none" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="389.0" y="417.0" font-size="11" text-anchor="middle" fill="#9ca3af">截掉</text>
+<rect x="442" y="395" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="485.0" y="417.0" font-size="11" text-anchor="middle" fill="#111827">轮 3</text>
+<rect x="538" y="395" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="581.0" y="417.0" font-size="11" text-anchor="middle" fill="#111827">轮 4</text>
+<rect x="634" y="395" width="86" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="677.0" y="417.0" font-size="11" text-anchor="middle" fill="#111827">轮 5</text>
+<rect x="730" y="395" width="86" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="773.0" y="417.0" font-size="11" text-anchor="middle" fill="#111827">算损失</text>
+<text x="20" y="457" font-size="11" fill="#6b7280">推理时 agent 看到的就是这种窗口（评测长上下文任务时放宽到 w = 10）。训练照同一窗口切，训练与部署的条件分布才一致；</text>
+<text x="20" y="475" font-size="11" fill="#6b7280">代价是每条轨迹的前向次数乘以 T。</text>
+<text x="20" y="497" font-size="11" fill="#9ca3af">据 PDF p. 6 式 (2)–(3) 与 p. 17 附录 A.5 重画的机制示意，不是实测数据。</text>
+</svg>
