@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="q38-ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">Qwen3.8-Max 的 RL 系统：环境拆轴组合，奖励收口，batch 压方差</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = 三条独立扩展的环境轴；绿 = 组合出的环境与轨迹；紫 = 统一奖励系统；黄 = 在线数据均衡器。</text>
+
+<rect x="40" y="80" width="320" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="200" y="108" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Task 轴</text>
+<text x="200" y="134" font-size="11" fill="#6b7280" text-anchor="middle">单任务 → 多任务 → 跨天任务</text>
+<text x="200" y="154" font-size="11" fill="#9ca3af" text-anchor="middle">时间跨度本身成为难度</text>
+<text x="380" y="132" font-size="18" fill="#6b7280" text-anchor="middle">×</text>
+<rect x="400" y="80" width="320" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="560" y="108" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Workspace 轴</text>
+<text x="560" y="134" font-size="11" fill="#6b7280" text-anchor="middle">多文件 → 层级目录 → 复杂异构目录</text>
+<text x="560" y="154" font-size="11" fill="#9ca3af" text-anchor="middle">文件布局本身成为难度</text>
+<text x="740" y="132" font-size="18" fill="#6b7280" text-anchor="middle">×</text>
+<rect x="760" y="80" width="320" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="920" y="108" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Harness 轴</text>
+<text x="920" y="134" font-size="11" fill="#6b7280" text-anchor="middle">类别 / 版本 / 技能</text>
+<text x="920" y="154" font-size="11" fill="#9ca3af" text-anchor="middle">QwenWork、Claude Code、Codex 等五套</text>
+
+<path d="M200 172 V204" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#q38-ar)"/>
+<path d="M560 172 V204" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#q38-ar)"/>
+<path d="M920 172 V204" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#q38-ar)"/>
+
+<rect x="40" y="206" width="1040" height="70" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="560" y="234" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">组合出来的环境池 → 策略在其中走 rollout</text>
+<text x="560" y="258" font-size="11" fill="#6b7280" text-anchor="middle">环境数按组合增长，不再逐个定制集成；Fig 1 的横轴 RL Training Envs 从 0 走到 5000</text>
+
+<path d="M290 276 V310" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#q38-ar)"/>
+<text x="300" y="298" font-size="11" fill="#9ca3af">轨迹送去打分</text>
+
+<rect x="40" y="312" width="500" height="112" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="290" y="340" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">统一奖励系统</text>
+<text x="60" y="366" font-size="11" fill="#6b7280">执行校验：跑测试、跑仿真，对错由环境状态说了算</text>
+<text x="60" y="386" font-size="11" fill="#6b7280">量表裁决：对文本和渲染出的视觉结果按量表打分</text>
+<text x="60" y="406" font-size="11" fill="#6b7280">agentic 检查：由 Agent 去查交付物；量表可自动扩展</text>
+
+<path d="M540 368 H578" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#q38-ar)"/>
+
+<rect x="580" y="312" width="500" height="112" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="830" y="340" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">在线数据均衡器</text>
+<text x="600" y="366" font-size="11" fill="#6b7280">重塑每个 batch：任务、难度、工作区、harness 四个维度保持均衡</text>
+<text x="600" y="386" font-size="11" fill="#6b7280">目的：压低批间梯度方差</text>
+<text x="600" y="406" font-size="11" fill="#6b7280">结果：RL 算力可以稳定地继续加</text>
+
+<text x="30" y="458" font-size="11" fill="#9ca3af">据原文 Work 小节「Scaling Real-World RL Systems」的三段话重画，是机制示意，不是博客原图。</text>
+<text x="30" y="478" font-size="11" fill="#9ca3af">博客只给了这三件事的名字和目标；各轴的档数、奖励怎样归一、均衡器用什么算法，都没有公开。</text>
+</svg>

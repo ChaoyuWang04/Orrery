@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker><marker id="arp" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#8f8bd8"/></marker><marker id="arg" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#5fa886"/></marker><marker id="ary" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#b9b9b9"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 3 中图重画：同样的损失，标准 Transformer 要多花几倍算力</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">每行左点 = 10¹⁸ FLOPs 处的倍数，箭头尖 = 10²⁰ 处。箭头越长，倍数随规模涨得越多，即指数更好；箭头很短或没有，就是只改常数。</text>
+<text x="30" y="74" font-size="13" fill="#6b7280" text-anchor="start">灰 = 无边界算子、无生长；紫 = 有边界算子、固定遍数；绿 = 生长。右列是图例给出的拟合指数 γ。</text>
+<line x1="286.2" y1="98" x2="286.2" y2="456" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="398.5" y1="98" x2="398.5" y2="456" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="510.8" y1="98" x2="510.8" y2="456" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="623.1" y1="98" x2="623.1" y2="456" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="735.4" y1="98" x2="735.4" y2="456" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="847.7" y1="98" x2="847.7" y2="456" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="960.0" y1="98" x2="960.0" y2="456" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="286.2" cy="118" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<line x1="353.5" y1="162" x2="374.0" y2="162" stroke="#b9b9b9" stroke-width="3" marker-end="url(#ary)"/>
+<circle cx="353.5" cy="162" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<line x1="420.9" y1="206" x2="564.9" y2="206" stroke="#8f8bd8" stroke-width="3" marker-end="url(#arp)"/>
+<circle cx="420.9" cy="206" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<line x1="398.5" y1="250" x2="576.2" y2="250" stroke="#8f8bd8" stroke-width="3" marker-end="url(#arp)"/>
+<circle cx="398.5" cy="250" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<line x1="499.5" y1="294" x2="666.0" y2="294" stroke="#8f8bd8" stroke-width="3" marker-end="url(#arp)"/>
+<circle cx="499.5" cy="294" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<line x1="443.4" y1="338" x2="598.6" y2="338" stroke="#5fa886" stroke-width="3" marker-end="url(#arg)"/>
+<circle cx="443.4" cy="338" r="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<line x1="420.9" y1="382" x2="688.5" y2="382" stroke="#5fa886" stroke-width="3" marker-end="url(#arg)"/>
+<circle cx="420.9" cy="382" r="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<line x1="623.1" y1="426" x2="901.8" y2="426" stroke="#5fa886" stroke-width="3" marker-end="url(#arg)"/>
+<circle cx="623.1" cy="426" r="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="210" y="123" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Vanilla</text>
+<text x="298.1538461538462" y="122" font-size="11" fill="#6b7280" text-anchor="start">1（基线）</text>
+<text x="1060" y="123" font-size="13" fill="#111827" text-anchor="end">0.111</text>
+<text x="210" y="167" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Deep Vanilla</text>
+<text x="343.53846153846166" y="166" font-size="11" fill="#6b7280" text-anchor="end">1.06</text>
+<text x="384.0000000000001" y="166" font-size="11" fill="#111827" text-anchor="start">1.08</text>
+<text x="1060" y="167" font-size="13" fill="#111827" text-anchor="end">0.111</text>
+<text x="210" y="211" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Operator-1</text>
+<text x="410.923076923077" y="210" font-size="11" fill="#6b7280" text-anchor="end">1.12</text>
+<text x="574.9230769230769" y="210" font-size="11" fill="#111827" text-anchor="start">1.25</text>
+<text x="1060" y="211" font-size="13" fill="#111827" text-anchor="end">0.114</text>
+<text x="210" y="255" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Loop-2</text>
+<text x="388.46153846153857" y="254" font-size="11" fill="#6b7280" text-anchor="end">1.10</text>
+<text x="586.1538461538462" y="254" font-size="11" fill="#111827" text-anchor="start">1.26</text>
+<text x="1060" y="255" font-size="13" fill="#111827" text-anchor="end">0.114</text>
+<text x="210" y="299" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Untied-2</text>
+<text x="489.5384615384615" y="298" font-size="11" fill="#6b7280" text-anchor="end">1.19</text>
+<text x="676.0" y="298" font-size="11" fill="#111827" text-anchor="start">1.34</text>
+<text x="1060" y="299" font-size="13" fill="#111827" text-anchor="end">0.114</text>
+<text x="210" y="343" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Deep Vanilla Grow</text>
+<text x="433.38461538461524" y="342" font-size="11" fill="#6b7280" text-anchor="end">1.14</text>
+<text x="608.6153846153845" y="342" font-size="11" fill="#111827" text-anchor="start">1.28</text>
+<text x="1060" y="343" font-size="13" fill="#111827" text-anchor="end">0.114</text>
+<text x="210" y="387" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Loop-Grow</text>
+<text x="410.923076923077" y="386" font-size="11" fill="#6b7280" text-anchor="end">1.12</text>
+<text x="698.4615384615386" y="386" font-size="11" fill="#111827" text-anchor="start">1.36</text>
+<text x="1060" y="387" font-size="13" fill="#111827" text-anchor="end">0.116</text>
+<text x="210" y="431" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Untied-Grow</text>
+<text x="613.0769230769231" y="430" font-size="11" fill="#6b7280" text-anchor="end">1.30</text>
+<text x="911.8461538461538" y="430" font-size="11" fill="#111827" text-anchor="start">1.55</text>
+<text x="1060" y="431" font-size="13" fill="#111827" text-anchor="end">0.117</text>
+<text x="1060" y="94" font-size="13" fill="#6b7280" text-anchor="end" font-weight="700">γ</text>
+<text x="286.1538461538462" y="468" font-size="11" fill="#9ca3af" text-anchor="middle">1.0×</text>
+<text x="398.46153846153857" y="468" font-size="11" fill="#9ca3af" text-anchor="middle">1.1×</text>
+<text x="510.7692307692307" y="468" font-size="11" fill="#9ca3af" text-anchor="middle">1.2×</text>
+<text x="623.0769230769231" y="468" font-size="11" fill="#9ca3af" text-anchor="middle">1.3×</text>
+<text x="735.3846153846152" y="468" font-size="11" fill="#9ca3af" text-anchor="middle">1.4×</text>
+<text x="847.6923076923076" y="468" font-size="11" fill="#9ca3af" text-anchor="middle">1.5×</text>
+<text x="960.0" y="468" font-size="11" fill="#9ca3af" text-anchor="middle">1.6×</text>
+<text x="595.0" y="488" font-size="12" fill="#6b7280" text-anchor="middle">相对 Vanilla 的算力倍数</text>
+<text x="30" y="522" font-size="11" fill="#9ca3af" text-anchor="start">Operator-1、Untied-2、Untied-Grow 两端与 Loop-Grow 终点 1.36 取自 PDF p. 2、p. 9 正文与图注；Loop-2 与 Loop-Grow 起点由正文的解绑 / 绑定比值推出；</text>
+<text x="30" y="540" font-size="11" fill="#9ca3af" text-anchor="start">Deep Vanilla 与 Deep Vanilla Grow 读自 PDF p. 9 Figure 3 中图，是约数。</text>
+</svg>

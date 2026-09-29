@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 3 与第 4.2.1 节重画：40 层里只有 4 层生产全局 KV</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">每格一层（从 0 数）。绿 = Full：自算全局 KV 并检索；紫 = Reindex：借 KV、自己重选 Top-k；黄 = Reuse：KV 和 Top-k 都借；灰 = 只有 SWA。</text>
+<text x="30" y="74" font-size="13" fill="#6b7280" text-anchor="start">每一层都另有自己的 Query 与 SWA 窗口 KV，也都接 MoE（1 共享 + 384 路由，激活 6 个）。</text>
+<rect x="60" y="150" width="48" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="150" width="48" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="160" y="150" width="48" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="210" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="260" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="310" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="360" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="410" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="460" y="150" width="48" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="510" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="560" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="610" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="660" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="710" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="760" y="150" width="48" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="810" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="860" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="910" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="960" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="1010" y="150" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="60" y="330" width="48" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="110" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="160" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="210" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="260" y="330" width="48" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="310" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="360" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="410" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="460" y="330" width="48" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="510" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="560" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="610" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="660" y="330" width="48" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="710" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="760" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="810" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="860" y="330" width="48" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="910" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="960" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="1010" y="330" width="48" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="134.0" y1="222" x2="134.0" y2="198" stroke="#d9877a" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="784.0" y1="222" x2="784.0" y2="198" stroke="#d9877a" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M1034.0,196 L1034.0,262 L84.0,262 L84.0,326" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M84.0,376 L84.0,396 L284.0,396 L284.0,378" fill="none" stroke="#8f8bd8" stroke-width="1.2" stroke-dasharray="4 3"/>
+<path d="M84.0,376 L84.0,396 L484.0,396 L484.0,378" fill="none" stroke="#8f8bd8" stroke-width="1.2" stroke-dasharray="4 3"/>
+<path d="M84.0,376 L84.0,396 L684.0,396 L684.0,378" fill="none" stroke="#8f8bd8" stroke-width="1.2" stroke-dasharray="4 3"/>
+<path d="M84.0,376 L84.0,396 L884.0,396 L884.0,378" fill="none" stroke="#8f8bd8" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="60" y="448" width="490" height="104" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="570" y="448" width="490" height="104" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="60" y="134" font-size="14" fill="#111827" text-anchor="start" font-weight="700">因果编码器 20 层 · CSA2 压缩比 m = 2</text>
+<text x="84.0" y="169" font-size="11" fill="#374151" text-anchor="middle">SWA</text>
+<text x="84.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="134.0" y="169" font-size="11" fill="#374151" text-anchor="middle">SWA</text>
+<text x="134.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="184.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Full</text>
+<text x="184.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<text x="234.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="234.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">3</text>
+<text x="284.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="284.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="334.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="334.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="384.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="384.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="434.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="434.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<text x="484.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Full</text>
+<text x="484.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="534.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="534.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">9</text>
+<text x="584.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="584.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">10</text>
+<text x="634.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="634.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">11</text>
+<text x="684.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="684.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">12</text>
+<text x="734.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="734.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">13</text>
+<text x="784.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Full</text>
+<text x="784.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">14</text>
+<text x="834.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="834.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">15</text>
+<text x="884.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="884.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">16</text>
+<text x="934.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="934.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">17</text>
+<text x="984.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="984.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">18</text>
+<text x="1034.0" y="169" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="1034.0" y="186" font-size="11" fill="#9ca3af" text-anchor="middle">19</text>
+<text x="60" y="314" font-size="14" fill="#111827" text-anchor="start" font-weight="700">解码器 20 层 · CSA2 m = 1（不压缩）</text>
+<text x="84.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Full</text>
+<text x="84.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">20</text>
+<text x="134.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="134.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">21</text>
+<text x="184.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="184.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">22</text>
+<text x="234.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="234.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">23</text>
+<text x="284.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reidx</text>
+<text x="284.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">24</text>
+<text x="334.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="334.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">25</text>
+<text x="384.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="384.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">26</text>
+<text x="434.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="434.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">27</text>
+<text x="484.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reidx</text>
+<text x="484.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">28</text>
+<text x="534.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="534.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">29</text>
+<text x="584.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="584.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">30</text>
+<text x="634.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="634.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">31</text>
+<text x="684.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reidx</text>
+<text x="684.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">32</text>
+<text x="734.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="734.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">33</text>
+<text x="784.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="784.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">34</text>
+<text x="834.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="834.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">35</text>
+<text x="884.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reidx</text>
+<text x="884.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">36</text>
+<text x="934.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="934.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">37</text>
+<text x="984.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="984.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">38</text>
+<text x="1034.0" y="349" font-size="11" fill="#374151" text-anchor="middle">Reuse</text>
+<text x="1034.0" y="366" font-size="11" fill="#9ca3af" text-anchor="middle">39</text>
+<text x="134.0" y="238" font-size="11" fill="#d9877a" text-anchor="middle" font-weight="700">Engram</text>
+<text x="784.0" y="238" font-size="11" fill="#d9877a" text-anchor="middle" font-weight="700">Engram</text>
+<text x="560" y="256" font-size="12" fill="#6b7280" text-anchor="middle">编码器最后一层隐状态 × 各层投影矩阵 → 解码器全局 KV（式 1）</text>
+<text x="260" y="414" font-size="12" fill="#8f8bd8" text-anchor="start">层次化稀疏索引：第 20 层给出至多 2048 块 × 8 = 16384 个候选位置，Reindex 层只在池内重选 Top-512</text>
+<text x="76" y="472" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Prefill：读提示词（每 Token 激活约 8B）</text>
+<text x="76" y="494" font-size="12" fill="#374151" text-anchor="start">全部提示 Token 只穿过编码器 20 层；</text>
+<text x="76" y="513" font-size="12" fill="#374151" text-anchor="start">解码器全局 KV 由投影得到，几乎不花算力；</text>
+<text x="76" y="532" font-size="12" fill="#374151" text-anchor="start">解码器只对最后 128 个 Token 跑一遍，补出窗口 KV。</text>
+<text x="586" y="472" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Decode：生成新 Token（激活约 16B）</text>
+<text x="586" y="494" font-size="12" fill="#374151" text-anchor="start">每个新 Token 穿过全部 40 层；</text>
+<text x="586" y="513" font-size="12" fill="#374151" text-anchor="start">Reuse 层不打分、直接按借来的 Top-k 读 KV；</text>
+<text x="586" y="532" font-size="12" fill="#374151" text-anchor="start">Full / Reindex 层才需要跑索引器。</text>
+<text x="30" y="584" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 7 Figure 3、p. 9 式 1、p. 11–12 与 p. 21–22 第 4.2.1 节重画，是结构示意。8B / 16B 的逐模块拆账报告没有给。</text>
+</svg>

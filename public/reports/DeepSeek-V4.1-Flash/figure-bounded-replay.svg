@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">SWA Bounded Replay：窗口 KV 丢了，只重放最近 128 个 Token</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">绿 = 直接复用的全局 KV；黄 = 需要现算的窗口 KV；红 = 新来的、没缓存的后缀（两种 KV 都要算）。</text>
+<rect x="60" y="112" width="700" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="700" y="112" width="60" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="760" y="112" width="180" height="34" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="200" y="270" width="860.0" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="200" y="316" width="430.0" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="200" y="362" width="21.5" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="30" y="96" font-size="14" fill="#111827" text-anchor="start" font-weight="700">一次前缀命中、窗口 KV 缺失的请求（Token 位置从左到右，长度示意）</text>
+<text x="380" y="134" font-size="12" fill="#374151" text-anchor="middle">已缓存前缀：全局 KV 命中，直接复用，不重算也不覆盖</text>
+<text x="730" y="134" font-size="11" fill="#374151" text-anchor="middle">128</text>
+<text x="850" y="134" font-size="12" fill="#374151" text-anchor="middle">未缓存后缀</text>
+<text x="730" y="170" font-size="12" fill="#6b7280" text-anchor="start">↑ 前缀最后 128 个 Token 重放一遍，只再生窗口 KV</text>
+<text x="60" y="196" font-size="12" fill="#6b7280" text-anchor="start">第 s 个位置开始重放时，位置 i 的 Query 只看 [max(s, i − W + 1), i] 里的窗口 Key：重放段之前的状态被截断，所以结果是近似的。</text>
+<text x="30" y="250" font-size="14" fill="#111827" text-anchor="start" font-weight="700">要重放多少个 Token（L = 40 层，窗口 n_win = 128，条长按比例）</text>
+<text x="188" y="290" font-size="12" fill="#111827" text-anchor="end" font-weight="700">精确重建全部 40 层窗口</text>
+<text x="1050.0" y="290" font-size="12" fill="#374151" text-anchor="end">L × n_win = 5120</text>
+<text x="188" y="336" font-size="12" fill="#111827" text-anchor="end" font-weight="700">精确重建解码器 20 层窗口</text>
+<text x="620.0" y="336" font-size="12" fill="#374151" text-anchor="end">L/2 × n_win = 2560</text>
+<text x="188" y="382" font-size="12" fill="#111827" text-anchor="end" font-weight="700">有界重放</text>
+<text x="233.5" y="382" font-size="12" fill="#111827" text-anchor="start">n_win = 128</text>
+<text x="30" y="430" font-size="11" fill="#9ca3af" text-anchor="start">编码器路径让前缀缓存只依赖全局 KV，窗口 KV 因此可以退出持久层；解码器路径让 Prefill 在编码器之后只多跑 128 个 Token，</text>
+<text x="30" y="448" font-size="11" fill="#9ca3af" text-anchor="start">它产出的解码器窗口 KV 只供接下来的 Decode 用，不写进前缀缓存。后训练里模拟同一套重放，让模型适应近似状态。</text>
+<text x="30" y="470" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 5、p. 9、p. 19–20 第 3.2 节重画，是机制示意；报告说质量影响可忽略，但没有给对照表。</text>
+</svg>

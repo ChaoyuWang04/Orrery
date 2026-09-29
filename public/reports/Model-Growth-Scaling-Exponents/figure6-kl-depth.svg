@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker><marker id="arp" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#8f8bd8"/></marker><marker id="arg" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#5fa886"/></marker><marker id="ary" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#b9b9b9"/></marker></defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 6 左图配 Table 2：执行了几块，用上了几块</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">每行取各阶梯最大的那个模型（约 10²⁰ FLOPs）。空心框长 = 执行深度（Table 2），实心条长 = KL 有效深度（Figure 6）。</text>
+<text x="30" y="74" font-size="13" fill="#6b7280" text-anchor="start">灰 = 无边界算子；紫 = 有边界算子、固定 2 遍；绿 = 生长到 4 遍。实心条短于空心框的那一截，就是「执行了却几乎不改预测」的块。</text>
+<line x1="230" y1="96" x2="230" y2="398" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="330" y1="96" x2="330" y2="398" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="430" y1="96" x2="430" y2="398" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="530" y1="96" x2="530" y2="398" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="630" y1="96" x2="630" y2="398" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="730" y1="96" x2="730" y2="398" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="830" y1="96" x2="830" y2="398" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="930" y1="96" x2="930" y2="398" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="1030" y1="96" x2="1030" y2="398" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="230" y="110" width="340" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="230" y="106" width="400" height="34" rx="6" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="230" y="160" width="400" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="230" y="156" width="480" height="34" rx="6" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="230" y="210" width="460" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="230" y="206" width="480" height="34" rx="6" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="230" y="260" width="480" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="230" y="256" width="480" height="34" rx="6" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="230" y="310" width="700" height="26" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="230" y="306" width="720" height="34" rx="6" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="230" y="360" width="720" height="26" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="230" y="356" width="720" height="34" rx="6" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="210" y="128" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Vanilla d20</text>
+<text x="642" y="122" font-size="11" fill="#6b7280" text-anchor="start">执行 20</text>
+<text x="642" y="137" font-size="11" fill="#111827" text-anchor="start">用上 17（读自图）</text>
+<text x="210" y="178" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Deep Vanilla d18</text>
+<text x="722" y="172" font-size="11" fill="#6b7280" text-anchor="start">执行 24</text>
+<text x="722" y="187" font-size="11" fill="#111827" text-anchor="start">用上 20</text>
+<text x="210" y="228" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Loop-2 d18</text>
+<text x="722" y="222" font-size="11" fill="#6b7280" text-anchor="start">执行 24</text>
+<text x="722" y="237" font-size="11" fill="#111827" text-anchor="start">用上 23（读自图）</text>
+<text x="210" y="278" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Untied-2 d18</text>
+<text x="722" y="272" font-size="11" fill="#6b7280" text-anchor="start">执行 24</text>
+<text x="722" y="287" font-size="11" fill="#111827" text-anchor="start">用上 24</text>
+<text x="210" y="328" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Loop-Grow d18</text>
+<text x="962" y="322" font-size="11" fill="#6b7280" text-anchor="start">执行 36</text>
+<text x="962" y="337" font-size="11" fill="#111827" text-anchor="start">用上 35（读自图）</text>
+<text x="210" y="378" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Untied-Grow d18</text>
+<text x="962" y="372" font-size="11" fill="#6b7280" text-anchor="start">执行 36</text>
+<text x="962" y="387" font-size="11" fill="#111827" text-anchor="start">用上 36</text>
+<text x="230" y="412" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="330" y="412" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="430" y="412" font-size="11" fill="#9ca3af" text-anchor="middle">10</text>
+<text x="530" y="412" font-size="11" fill="#9ca3af" text-anchor="middle">15</text>
+<text x="630" y="412" font-size="11" fill="#9ca3af" text-anchor="middle">20</text>
+<text x="730" y="412" font-size="11" fill="#9ca3af" text-anchor="middle">25</text>
+<text x="830" y="412" font-size="11" fill="#9ca3af" text-anchor="middle">30</text>
+<text x="930" y="412" font-size="11" fill="#9ca3af" text-anchor="middle">35</text>
+<text x="1030" y="412" font-size="11" fill="#9ca3af" text-anchor="middle">40</text>
+<text x="630" y="432" font-size="12" fill="#6b7280" text-anchor="middle">块数</text>
+<text x="30" y="488" font-size="11" fill="#9ca3af" text-anchor="start">KL 有效深度：logit lens 解码每块之后的残差流，KL 峰值之后第一个与最终输出相差不超过 2 nats 的块（PDF p. 14）。执行深度按 PDF p. 20 Table 2。</text>
+<text x="30" y="506" font-size="11" fill="#9ca3af" text-anchor="start">Deep Vanilla、Untied-2、Untied-Grow 的 20 / 24 / 36 是 PDF p. 13–14 正文的数；其余读自 Figure 6 左图。把两张表并排是本文的做法，论文没有这样对照。</text>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="k3a-ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="k3a-ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">K3 的一个混合块：序列、深度、宽度三条信息流各换一种走法</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 序列方向的 token 混合；绿 = 深度方向的 AttnRes 回读；黄 = 宽度方向的稀疏专家；灰 = 可被回读的旧表示。</text>
+
+<rect x="30" y="80" width="280" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="170" y="102" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">深度方向：可回读的来源</text>
+<rect x="50" y="120" width="240" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170" y="147" font-size="12" fill="#111827" text-anchor="middle">Token embedding（来源 0）</text>
+<rect x="50" y="178" width="240" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170" y="205" font-size="12" fill="#111827" text-anchor="middle">第 1 块汇总（约 12 层求和）</text>
+<rect x="50" y="236" width="240" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170" y="263" font-size="12" fill="#111827" text-anchor="middle">第 2 块汇总</text>
+<text x="170" y="305" font-size="14" fill="#9ca3af" text-anchor="middle">……</text>
+<rect x="50" y="320" width="240" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170" y="347" font-size="12" fill="#111827" text-anchor="middle">前一块汇总</text>
+<rect x="50" y="400" width="240" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="170" y="427" font-size="12" fill="#111827" text-anchor="middle">当前块内已走过层的部分和</text>
+<text x="170" y="468" font-size="11" fill="#9ca3af" text-anchor="middle">块间做完整注意力，块内只累加</text>
+
+<path d="M290 142 H336" fill="none" stroke="#5fa886" stroke-width="1.4"/>
+<path d="M290 200 H336" fill="none" stroke="#5fa886" stroke-width="1.4"/>
+<path d="M290 258 H336" fill="none" stroke="#5fa886" stroke-width="1.4"/>
+<path d="M290 342 H336" fill="none" stroke="#5fa886" stroke-width="1.4"/>
+<path d="M290 422 H336" fill="none" stroke="#5fa886" stroke-width="1.4"/>
+<path d="M336 142 V422" fill="none" stroke="#5fa886" stroke-width="1.4"/>
+<path d="M336 148 H378" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#k3a-ag)"/>
+<path d="M336 238 H378" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#k3a-ag)"/>
+<path d="M336 328 H378" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#k3a-ag)"/>
+<path d="M336 418 H378" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#k3a-ag)"/>
+
+<rect x="360" y="80" width="420" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="570" y="102" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">一个混合块（重复 23 次）</text>
+<rect x="380" y="120" width="170" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="465" y="143" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">KDA</text>
+<text x="465" y="163" font-size="11" fill="#6b7280" text-anchor="middle">固定大小的递归状态</text>
+<rect x="580" y="120" width="180" height="56" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="670" y="143" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Stable LatentMoE</text>
+<text x="670" y="163" font-size="11" fill="#6b7280" text-anchor="middle">896 选 16 + 2 共享</text>
+<rect x="380" y="210" width="170" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="465" y="233" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">KDA</text>
+<text x="465" y="253" font-size="11" fill="#6b7280" text-anchor="middle">固定大小的递归状态</text>
+<rect x="580" y="210" width="180" height="56" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="670" y="233" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Stable LatentMoE</text>
+<text x="670" y="253" font-size="11" fill="#6b7280" text-anchor="middle">896 选 16 + 2 共享</text>
+<rect x="380" y="300" width="170" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="465" y="323" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">KDA</text>
+<text x="465" y="343" font-size="11" fill="#6b7280" text-anchor="middle">固定大小的递归状态</text>
+<rect x="580" y="300" width="180" height="56" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="670" y="323" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Stable LatentMoE</text>
+<text x="670" y="343" font-size="11" fill="#6b7280" text-anchor="middle">896 选 16 + 2 共享</text>
+<rect x="380" y="390" width="170" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="465" y="413" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Gated MLA</text>
+<text x="465" y="433" font-size="11" fill="#6b7280" text-anchor="middle">全局回看，不加位置编码</text>
+<rect x="580" y="390" width="180" height="56" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="670" y="413" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Stable LatentMoE</text>
+<text x="670" y="433" font-size="11" fill="#6b7280" text-anchor="middle">896 选 16 + 2 共享</text>
+<path d="M550 148 H578" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#k3a-ar)"/>
+<path d="M550 238 H578" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#k3a-ar)"/>
+<path d="M550 328 H578" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#k3a-ar)"/>
+<path d="M550 418 H578" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#k3a-ar)"/>
+<path d="M670 176 V190 H465 V208" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#k3a-ar)"/>
+<path d="M670 266 V280 H465 V298" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#k3a-ar)"/>
+<path d="M670 356 V370 H465 V388" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#k3a-ar)"/>
+
+<rect x="810" y="100" width="290" height="104" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="826" y="126" font-size="14" fill="#111827" font-weight="700">序列：3 层 KDA + 1 层 MLA</text>
+<text x="826" y="150" font-size="11" fill="#6b7280">23 个块，主干末尾再加 1 层 MLA</text>
+<text x="826" y="170" font-size="11" fill="#6b7280">= 69 层 KDA + 24 层 MLA = 93 层</text>
+<text x="826" y="190" font-size="11" fill="#6b7280">KDA 状态不随长度涨，MLA 缓存会涨</text>
+<rect x="810" y="226" width="290" height="104" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="826" y="252" font-size="14" fill="#111827" font-weight="700">深度：Block AttnRes</text>
+<text x="826" y="276" font-size="11" fill="#6b7280">每层用可学习的伪查询给旧表示打分</text>
+<text x="826" y="296" font-size="11" fill="#6b7280">约 8 块 × 12 层，连 embedding 共 9 个来源</text>
+<text x="826" y="316" font-size="11" fill="#6b7280">要留的状态从 O(Ld) 降到 O(Nd)</text>
+<rect x="810" y="352" width="290" height="104" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="826" y="378" font-size="14" fill="#111827" font-weight="700">宽度：Stable LatentMoE</text>
+<text x="826" y="402" font-size="11" fill="#6b7280">路由专家在 3584 维潜空间里干活</text>
+<text x="826" y="422" font-size="11" fill="#6b7280">2 个共享专家保留 7168 全宽路径</text>
+<text x="826" y="442" font-size="11" fill="#6b7280">RMSNorm + SiTU-GLU + QB 负责稳住</text>
+
+<text x="30" y="516" font-size="11" fill="#9ca3af">据 PDF p. 3 Figure 2、p. 4–7 与 p. 11 Table 1 重画，是结构示意，不是实测耗时；输入端的视觉通路（MoonViT-V2）未画。</text>
+<text x="30" y="536" font-size="11" fill="#9ca3af">图中残差相加省略：每个子层前都经 AttnRes 取输入，箭头只表示先后。</text>
+</svg>

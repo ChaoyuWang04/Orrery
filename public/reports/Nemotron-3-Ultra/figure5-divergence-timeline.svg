@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 470" width="1120" height="470" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="470" fill="#ffffff"/>
+<text x="30.0" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">预训练的两次发散：第一次查清了，第二次靠提前退火绕过去</text>
+<text x="30.0" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = 原始运行；黄 = 回滚后恢复 FP32 梯度归约；绿 = 回滚到约 15T 后立即退火；红竖线 = 发散点。横轴是训练 Token（万亿）。</text>
+<line x1="200.0" y1="330" x2="1040.0" y2="330" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="200.0" y1="330" x2="200.0" y2="336" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="200.0" y="352" font-size="11" fill="#6b7280" text-anchor="middle">0T</text>
+<line x1="305.0" y1="330" x2="305.0" y2="336" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="305.0" y="352" font-size="11" fill="#6b7280" text-anchor="middle">2.5T</text>
+<line x1="410.0" y1="330" x2="410.0" y2="336" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="410.0" y="352" font-size="11" fill="#6b7280" text-anchor="middle">5T</text>
+<line x1="515.0" y1="330" x2="515.0" y2="336" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="515.0" y="352" font-size="11" fill="#6b7280" text-anchor="middle">7.5T</text>
+<line x1="620.0" y1="330" x2="620.0" y2="336" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="620.0" y="352" font-size="11" fill="#6b7280" text-anchor="middle">10T</text>
+<line x1="725.0" y1="330" x2="725.0" y2="336" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="725.0" y="352" font-size="11" fill="#6b7280" text-anchor="middle">12.5T</text>
+<line x1="830.0" y1="330" x2="830.0" y2="336" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="830.0" y="352" font-size="11" fill="#6b7280" text-anchor="middle">15T</text>
+<line x1="935.0" y1="330" x2="935.0" y2="336" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="935.0" y="352" font-size="11" fill="#6b7280" text-anchor="middle">17.5T</text>
+<line x1="1040.0" y1="330" x2="1040.0" y2="336" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="1040.0" y="352" font-size="11" fill="#6b7280" text-anchor="middle">20T</text>
+<rect x="200.0" y="78" width="630.0" height="22" rx="4" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="515.0" y="94" font-size="11" fill="#6b7280" text-anchor="middle">Phase 1 数据：偏多样性，约 15T</text>
+<rect x="830.0" y="78" width="210.0" height="22" rx="4" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="935.0" y="94" font-size="11" fill="#6b7280" text-anchor="middle">Phase 2：偏质量，5T</text>
+<text x="185.0" y="149" font-size="14" fill="#111827" text-anchor="end" font-weight="700">原始运行</text>
+<text x="185.0" y="209" font-size="14" fill="#111827" text-anchor="end" font-weight="700">回滚 + FP32 归约</text>
+<text x="185.0" y="269" font-size="14" fill="#111827" text-anchor="end" font-weight="700">提前退火，20T 收尾</text>
+<rect x="200.0" y="130" width="369.6" height="28" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="519.2" y="190" width="357.0" height="28" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="830.0" y="250" width="210.0" height="28" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="536.0" y1="126" x2="536.0" y2="166" stroke="#d9877a" stroke-width="2"/>
+<text x="536.0" y="120" font-size="11" fill="#d9877a" text-anchor="middle">发散 1：约 8T</text>
+<line x1="872.0" y1="186" x2="872.0" y2="226" stroke="#d9877a" stroke-width="2"/>
+<text x="872.0" y="180" font-size="11" fill="#d9877a" text-anchor="middle">发散 2：约 16T</text>
+<text x="368.0" y="149" font-size="11" fill="#6b7280" text-anchor="middle">输出层本地梯度累加从 FP32 降到 BF16</text>
+<text x="699.8" y="209" font-size="11" fill="#6b7280" text-anchor="middle">恢复 FP32 后稳定到约 16T</text>
+<text x="935.0" y="269" font-size="11" fill="#6b7280" text-anchor="middle">立即退火</text>
+<line x1="830.0" y1="218" x2="830.0" y2="250" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="185.0" y="391" font-size="14" fill="#111827" text-anchor="end" font-weight="700">同期征兆</text>
+<circle cx="515.0" cy="386" r="4" fill="#d9877a"/>
+<text x="515.0" y="408" font-size="11" fill="#6b7280" text-anchor="middle">7.5T 早期层残差范数抬头</text>
+<circle cx="662.0" cy="386" r="4" fill="#d9877a"/>
+<text x="654.0" y="380" font-size="11" fill="#6b7280" text-anchor="end">11T 残差尖刺</text>
+<circle cx="704.0" cy="386" r="4" fill="#d9877a"/>
+<text x="706.0" y="408" font-size="11" fill="#6b7280" text-anchor="start">12T 首层 MaxVio 约 12（开始时 4.8）</text>
+<text x="30.0" y="452" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 11 图 5、p. 12 正文与 p. 14 重画，是时间示意；各段起止位置读自图 5，不是报告给出的精确数字。</text>
+</svg>

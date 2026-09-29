@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30.0" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Hy3 的参数账：295B 几乎全在路由专家里，每个 Token 只用其中约 7%</text>
+<text x="30.0" y="54" font-size="13" fill="#6b7280" text-anchor="start">黄 = 路由专家；紫 = 注意力；绿 = 共享专家；灰 = 词嵌入、输出层与首层稠密 FFN。所有数都是本文按 config.json 推算。</text>
+<text x="186.0" y="110" font-size="14" fill="#111827" text-anchor="end" font-weight="700">总参数</text>
+<text x="186.0" y="128" font-size="11" fill="#6b7280" text-anchor="end">≈ 295.0B</text>
+<rect x="200.0" y="90" width="858.9" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="1058.9" y="90" width="18.1" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1077.0" y="90" width="4.5" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="1081.5" y="90" width="3.6" height="30" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="629.4" y="110" font-size="11" fill="#111827" text-anchor="middle">路由专家 286.3B：79 层 × 192 个，每个 3 × 4096 × 1536</text>
+<line x1="1079.1" y1="124" x2="1079.1" y2="150" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="1079.1" y="166" font-size="11" fill="#6b7280" text-anchor="end">注意力 6.0B，共享专家 1.5B，其余 1.2B</text>
+<text x="186.0" y="220" font-size="14" fill="#111827" text-anchor="end" font-weight="700">每 Token 激活</text>
+<text x="186.0" y="238" font-size="11" fill="#6b7280" text-anchor="end">≈ 20.7B</text>
+<rect x="200.0" y="200" width="35.8" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="235.8" y="200" width="18.1" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="253.9" y="200" width="4.5" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="258.4" y="200" width="3.6" height="30" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="272.0" y="220" font-size="11" fill="#6b7280" text-anchor="start">同一比例尺下的激活部分：路由专家只点亮 8/192</text>
+<line x1="200.0" y1="232" x2="200.0" y2="262" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="4 3"/>
+<line x1="262.0" y1="232" x2="1026.8" y2="262" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="186.0" y="282" font-size="14" fill="#111827" text-anchor="end" font-weight="700">激活部分放大</text>
+<text x="186.0" y="300" font-size="11" fill="#6b7280" text-anchor="end">比例尺 × 13</text>
+<rect x="200.0" y="262" width="477.2" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="677.2" y="262" width="241.6" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="918.8" y="262" width="59.6" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="978.4" y="262" width="48.4" height="30" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="438.6" y="282" font-size="11" fill="#111827" text-anchor="middle">8 个路由专家 × 79 层 11.9B</text>
+<text x="798.0" y="282" font-size="11" fill="#111827" text-anchor="middle">注意力 6.0B</text>
+<text x="186.0" y="372" font-size="14" fill="#111827" text-anchor="end" font-weight="700">MTP 层（另计）</text>
+<text x="186.0" y="390" font-size="11" fill="#6b7280" text-anchor="end">≈ 3.75B</text>
+<rect x="200.0" y="352" width="37.5" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="247.5" y="372" font-size="11" fill="#6b7280" text-anchor="start">1 层注意力 + 192 专家 MoE；每步草稿只激活约 0.28B，是主干的约 1/75</text>
+<rect x="200.0" y="410" width="860.0" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="630.0" y="432" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">295.0B + 3.75B = 298.8B，与权重文件张量总数 298,786,155,776 对得上</text>
+<text x="30.0" y="482" font-size="11" fill="#9ca3af" text-anchor="start">推算口径：SwiGLU 专家 3 个矩阵，GQA 64 查询头 / 8 KV 头，首层 FFN 稠密（first_k_dense_replace = 1），词嵌入与输出层不共享。模型卡只给 295B / 21B / 3.8B 三个数。</text>
+</svg>

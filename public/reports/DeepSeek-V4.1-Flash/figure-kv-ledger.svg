@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">两笔 KV 账：HBM 里的全局 KV 约 1/4，SSD 上的持久 KV 约 1/8</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">条长按比例画。绿 = 全局 KV（主 KV + 索引器 K）；黄 = 滑动窗口 KV。上半是每 Token 字节数，下半是持久层容量的相对份额。</text>
+<rect x="230" y="118" width="702.8000000000001" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="230" y="162" width="106.80000000000001" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="336.8" y="162" width="71.2" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="230" y="326" width="330" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="560" y="326" width="330" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="230" y="370" width="82.5" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="30" y="100" font-size="14" fill="#111827" text-anchor="start" font-weight="700">运行时全局 KV（常驻 HBM，每 Token 字节）</text>
+<text x="210" y="138" font-size="13" fill="#111827" text-anchor="end" font-weight="700">V4-Flash</text>
+<text x="942.8000000000001" y="138" font-size="12" fill="#111827" text-anchor="start">3514</text>
+<text x="210" y="182" font-size="13" fill="#111827" text-anchor="end" font-weight="700">V4.1-Flash</text>
+<text x="418.0" y="182" font-size="12" fill="#111827" text-anchor="start">890</text>
+<text x="230" y="212" font-size="11" fill="#6b7280" text-anchor="start">本文拆账（非报告原文）：每条目 = 主 KV 512 维 FP4（256 + 32 缩放 = 288 字节）+ 索引器 K 128 维（按 MXFP4 计 64 + 4 = 68 字节）= 356 字节</text>
+<text x="230" y="230" font-size="11" fill="#6b7280" text-anchor="start">编码器 3 个 Full 层、m = 2 → 1.5 条；解码器 1 个 Full 层、m = 1 → 1 条；2.5 × 356 = 890，与报告数字相同</text>
+<text x="283.4" y="182" font-size="11" fill="#374151" text-anchor="middle">编码器 534</text>
+<text x="372.40000000000003" y="182" font-size="11" fill="#374151" text-anchor="middle">解码器 356</text>
+<text x="30" y="308" font-size="14" fill="#111827" text-anchor="start" font-weight="700">持久 KV（SSD / 主机内存，相对份额）</text>
+<text x="210" y="346" font-size="13" fill="#111827" text-anchor="end" font-weight="700">V4-Flash</text>
+<text x="395.0" y="346" font-size="11" fill="#374151" text-anchor="middle">全局 KV</text>
+<text x="725.0" y="346" font-size="11" fill="#374151" text-anchor="middle">SWA KV，几乎占一半</text>
+<text x="900" y="346" font-size="12" fill="#111827" text-anchor="start">1</text>
+<text x="210" y="390" font-size="13" fill="#111827" text-anchor="end" font-weight="700">V4.1-Flash</text>
+<text x="322.5" y="390" font-size="12" fill="#111827" text-anchor="start">约 1/8 = 一半（SWA 退出持久层）× 1/4（全局 KV 本身变小）</text>
+<text x="230" y="424" font-size="12" fill="#6b7280" text-anchor="start">SWA KV 改放每台机器划出 10% 主机内存的分布式池，TTL 只有几分钟；缺失时走有界重放。全局 KV 在持久层保证至少 72 小时。</text>
+<text x="30" y="470" font-size="11" fill="#9ca3af" text-anchor="start">3514、890、约 1/4、约 1/8 与「SWA 几乎占一半」出自 PDF p. 1、p. 4–5、p. 19；FP4 格式出自 p. 14，层排布出自 p. 21–22。</text>
+<text x="30" y="488" font-size="11" fill="#9ca3af" text-anchor="start">持久层的份额是 V4 部署在典型负载下的容量占比，不是逐 Token 字节数；V4 的 3514 如何构成，本报告没有给。</text>
+</svg>

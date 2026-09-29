@@ -1,393 +1,328 @@
-# Hy3：295B MoE 开源卡上的规格、部署与产品侧数字
+# Hy3：一张 295B 开源模型卡，给了规格与成绩单，没给训练过程
 
-<!-- release-date: 2026-07-04 -->
+<!-- release-date: 2026-07-06 -->
 
-> 本文依据网页原件解读，不是 PDF 论文。主原件为 Hugging Face 模型卡 [tencent/Hy3](https://huggingface.co/tencent/Hy3)（英文 README 与中文 `README_CN.md`）以及 GitHub 仓库 [Tencent-Hunyuan/Hy3](https://github.com/Tencent-Hunyuan/Hy3)。访问日期：2026-09-15。正文按原件小节名引用（「Model Introduction」「Highlights」「Benchmark Appendix」「News」「Model Links」「Quick Start with Transformers / vLLM / SGLang」「Finetuning / RL / Quantization」等），不用页码。Benchmark Appendix 是整页图，数字凡只出现在图里的，一律标明读自哪张图。模型卡没有训练数据配比、预训练算力、超参表或消融；原件没写的不补成「报告写了」。Hy3 Preview（约 2026 年 4 月底）与正式 Hy3 是两套权重，下文分开。
+> 本文依据网页原件：Hugging Face 模型卡 [tencent/Hy3](https://huggingface.co/tencent/Hy3)（英文 `README.md` 与中文 `README_CN.md`）和 GitHub 仓库 [Tencent-Hunyuan/Hy3](https://github.com/Tencent-Hunyuan/Hy3) 的 README（两者正文一致），连同仓库里的 `config.json`、`chat_template.jinja`、`finetune/README.md` 与 `rl/README.md`。访问日期 2026-09-29。页面没有小节编号，下文按原文小节名引用，如「原文 Model Introduction 节」；成绩数字大多只出现在图里，引用时注明读自哪张图。官方没有发布技术报告。文中区分三件事：**原件明确写了什么**、**我们怎么解释或推算它**、**哪些是外部资料补充**。
 
-## 读前先钉住三件事
+## 阅读前先认识几个词
 
-第一，规格以模型卡为准，不要被索引里那句「20B 激活」带偏。英文卡开篇写的是 **295B total / 21B activated / 3.8B MTP**（Model Introduction）。中文卡同一句写成「总参数量 295B、激活参数 21B，并包含 3.8B 的 MTP 层参数」。GitHub README 同口径。后文凡写激活参数，一律用 21B。
-
-第二，这不是一篇训练论文。原件主体是：架构规格、产品侧评测叙事、部署配方、微调与强化学习脚本入口。没有 token 量、没有预训练 loss 曲线、没有专家负载消融、没有 MTP 接受率表。读完应能判断「能部署什么、官方声称赢在哪、哪些数字只出现在图里」，而不是复述一套没公开的训练故事。
-
-第三，发布日取正式 Hy3 权重首次对外可用日，不用 Hugging Face 仓库 `createdAt`。GitHub 仓库 `Tencent-Hunyuan/Hy3` 首次提交为 2026-07-04（提交说明 `init`，已含模型卡与资源）。Hugging Face 上 `model.safetensors.index.json` 标注 2026-07-04，其余分片多标 2026-07-05 至 2026-07-06。第三方新闻（InfoQ、AIHub 等）把「正式发布」写成 2026-07-06。本底稿 `release-date` 取 **2026-07-04**（权重首次出现在公开 Git 仓库），并在文末标明 7 月 6 日是官方新闻口径。Preview 是另一条线：腾讯官网稿 2026-04-24、混元公众号 2026-04-23。
+- **MoE（Mixture-of-Experts，混合专家）**：把前馈网络拆成很多个「专家」小网络，每个 Token 只让其中几个干活。总参数可以很大，单次计算量却不必同比增长。
+- **激活参数**：处理一个 Token 时真正参与计算的参数量。Hy3 总参数 295B，激活 21B。
+- **GQA（Grouped-Query Attention，分组查询注意力）**：多个查询头共用一份 Key 和 Value，用来缩小生成时要缓存的 KV。
+- **MTP（Multi-Token Prediction，多 Token 预测）**：额外挂一层，一次预测后面几个 Token，推理时当投机解码的草稿，由主模型并行验证。
+- **快慢思考**：同一套权重，靠请求里的 `reasoning_effort` 字段切换是否先写一段思维链。
+- **脚手架（scaffold / harness）**：把模型包成 Agent 的那层程序——给什么工具、多少轮、多长超时。同一个模型换脚手架，Agent 分数可以差很多。
 
 ## 一句话先说清
 
-Hy3 是腾讯 Hy Team 开源的指令模型：80 层 Transformer MoE，192 个 routed expert 每次 top-8，外加 1 个 shared expert，GQA（64 查询头 / 8 KV 头），词表 120832，上下文 256K（位置 262144），Apache 2.0。推理时激活约 21B，另挂 3.8B 的 MTP 层做推测解码。产品叙事强调：在 Hy3 Preview 之后，按 50 多个产品的反馈加了后训练；公开卖点是 Agent / 代码 / 办公，而不是再刷一套容易被刷的公开榜。
+Hy3 是腾讯混元团队开源的指令模型：295B 总参数、21B 激活参数，另有 3.8B 的 MTP 层，上下文 256K，Apache 2.0 许可（原文 Model Introduction 节、License 节）。
+
+它的模型卡是一份**规格说明书加一张成绩单**，不是一篇训练论文：
+
+- 讲清了架构尺寸、部署命令、微调与强化学习的脚本入口；
+- 给了一张 11 个模型、40 个基准的对比大表，外加几条产品侧的内部评测数字；
+- **没有**预训练数据、Token 量、算力、训练超参、消融，也没有技术报告。
+
+模型卡自己对这次发布的定位只有一句：4 月底发布 Hy3 Preview 后，从 50 多个产品收集反馈，用更高质量的数据扩大了后训练（原文 Model Introduction 节）。本文对照了两版的 `config.json`，除一个无关的 dtype 字段外逐项相同——正式版与 Preview 是**同一个架构、只换了后训练**。
+
+所以读这张卡，要回答的不是「它怎么训出来的」，而是三件事：
+
+1. 295B 与 21B 这两个数落在网络的哪里，部署要多大机器；
+2. 成绩单上哪些数是自报、哪些是自测对手、哪些是内部基准；
+3. 「只改后训练」换来了什么、没换来什么。
+
+## 先看全景：295B 放在哪，21B 用在哪
+
+![Hy3 的参数账：295B 中约 286B 是 79 层 × 192 个路由专家，每个 Token 只激活其中 8 个，加上注意力、共享专家与词嵌入约 20.7B；MTP 层另计约 3.75B，合计与权重文件总数一致。](/reports/Hy3/param-budget.svg)
 
-## 原件结构（我们怎么读）
+模型卡给的规格表（原文 Model Introduction 节）：
 
-英文卡目录（Table of Contents）依次是：Model Introduction、Highlights、Benchmark Appendix、News、Model Links、Quick Start with Transformers、vLLM、SGLang、Interactive Demo、Finetuning、Quantization、RL、Citation。中文卡对应：模型介绍、核心亮点、Benchmark 附录、新闻、模型链接、以及同一套部署与训练入口。GitHub README 与 HF 英文卡高度同构，部署命令略有空格差异，口径一致。
+| 项 | 值 |
+|---|---|
+| 总参数 / 激活参数 / MTP 层参数 | 295B / 21B / 3.8B |
+| 层数（不含 MTP） / MTP 层数 | 80 / 1 |
+| 注意力 | 64 个查询头，GQA 8 个 KV 头，每头 128 维 |
+| 隐藏维度 / FFN 中间维度 | 4096 / 13312 |
+| 专家 | 192 个，每 Token 激活 top-8 |
+| 上下文 / 词表 | 256K / 120832 |
+| 支持精度 | BF16 |
 
-下面按「原文写了什么 / 我们怎么解释 / 外部补充」三层走。外部补充单独成段，不混进「原文写了」。
+`config.json` 还多交代了几件表里没有的事：第 1 层是稠密 FFN（`first_k_dense_replace = 1`），其余 79 层是 MoE；每个专家的中间维是 1536，另有 1 个共享专家；路由用 sigmoid 打分并带逐专家偏置（`moe_router_use_sigmoid`、`moe_router_enable_expert_bias`），`rl/README.md` 明说这是「无辅助损失」的负载均衡，训练时不加均衡损失；注意力带 QK 归一化；RoPE 的 base 是 11158840；词嵌入与输出层不共享。
 
-## Model Introduction：规格与产品叙事
+上图的拆分是本文按这些配置推算的：
 
-原文写了什么。Hy3 由 Tencent Hy Team 开发。参数三件套：295B / 21B / 3.8B MTP。时间线：late April 先发 Hy3 Preview，收集 50+ 产品反馈，再用更高质量数据做后训练，然后推出正式 Hy3。能力句：在同规模模型上更好，并 rival 参数量大 2–5 倍的旗舰开源模型。四个方向：complex reasoning、coding、agentic workflows、in-house product evaluations。中文卡把「2-5x」写成「参数量大 2-5 倍的旗舰开源模型」。
+- **总量几乎全在路由专家里。** 每个专家是 3 个 $4096 \times 1536$ 的矩阵，79 层 × 192 个，约 286.3B，占 295B 的 97%。
+- **激活量是 21B 的来历。** 每个 Token 只点亮 8 个路由专家，约 11.9B；注意力 80 层约 6.0B；共享专家约 1.5B；词嵌入、输出层与首层 FFN 约 1.2B。合计约 20.7B，与卡上的 21B 吻合。
+- **MTP 另计。** 1 层注意力加 1 层 192 专家的 MoE，约 3.75B；每步草稿只激活约 0.28B，是主干的七十分之一左右。
+- **对账。** $295.0 + 3.75 \approx 298.8$B，与 Hugging Face 统计的权重张量总数 298,786,155,776 对得上。所以 295B 不含 MTP，托管页显示的约 299B 就是两者之和。
 
-我们怎么解释。这句话把「同规模开源 MoE」和「更大稠密/更大 MoE 旗舰」绑在一起，但模型卡没有给出「2–5x」对应哪些具体模型、也没有把参数量列成对照表。后文雷达图和图附录里出现的对照包括 MiniMax-M2.5、GLM-5、DeepSeek-V3.2、Kimi-K2.5、Qwen3.5-397B-A17B、GPT-5.2、Gemini-3-Pro、Claude-Opus-4.6、Grok-4.5、Qwen3-235B-A22B、Hunyuan-2.0、Hy3-Preview 等。其中若干闭源模型参数量并未公开，因此「2–5x」只能当宣传口径，不能当可复核的算术。
+这张账有一个实用推论：**部署看 295B，计算看 21B。** 显存要装下全部专家，每个 Token 的算力却只花在其中很小一部分上。
 
-原文没写的。预训练数据、tokenizer 训练、专家初始化、MTP 训练目标、后训练数据规模，全部缺席。不要用博客补。
+### 部署要多大机器
 
-## Highlights：六条卖点，数字必须钉在原文
+模型卡只写了一句：8 卡部署建议用 H20-3e 或显存更大的卡（原文 Deployment 节）。按上面的配置可以把这句话算清楚（本文算术）：
 
-Highlights 是模型卡里唯一成段给出产品数字的地方。中英文并列如下。
+- **权重**：约 298.8B 参数 × 2 字节 ≈ 598 GB（BF16）。SGLang 官方 cookbook 写的是「约 590GB」（外部补充）。
+- **KV Cache**：每个 Token 每层存 K、V 各 8 头 × 128 维，80 层共 $2 \times 8 \times 128 \times 80 = 163{,}840$ 个元素，BF16 下约 320 KB。一条 256K 的请求约 80 GiB。
+- **结论**：8 × H20-3e（141 GB）合计约 1128 GB，放下权重后还剩五百多 GB 给 KV；8 × H100（80 GB）合计 640 GB，放完权重只剩约 40 GB，连一条满长请求都装不下。vLLM 官方 recipe 也写明 8 × H100 或 A100 80GB 需要跨节点（外部补充）。
 
-### 复杂推理
+GQA 把 KV 头压到 8 个，是 256K 上下文能在单机上讨论的前提；如果是 64 个 KV 头的标准多头注意力，每 Token 缓存要大 8 倍。
 
-原文：数学、科学、代码推理全面提升；AIME 系列接近饱和。英文：「approaching saturation on the AIME series」。没有给出 AIME 分数的阿拉伯数字——数字在 Benchmark 图里。
+## 成绩单：一张 40 行的大表
 
-我们怎么解释。「接近饱和」在竞赛数学上通常意味着 90 分以上、多次取样已顶到评测噪声。没有取样次数、没有 pass@k，不能把它读成「已经做完数学」。后文图附录里 AIME 26 的 Hy3 为 93.3（读自 `assets/benchmark-appendix.png` 上半表），与「接近饱和」同方向，但仍是单点官方数。
+原文 Benchmark Appendix 节整节就是一张图（`assets/benchmark-appendix.png`），没有文字表格。下面把它转写成表。原图用星号标「我们自己测的」，这里改用 † 标出；带斜杠的格子原图就写着两个数，脚注没有解释两个数分别是什么。
 
-### 智能体工作流
+对照模型共 9 个，下表选 5 个最常被拿来比的，其余几列（GLM-5.1、DeepSeek-V4 flash、Seed-2.1 pro、Gemini-3.1-pro-preview）只在正文引用时给出。
 
-原文给了三条可引用数字：
+### 公开基准
 
-1. 270 名各领域专家盲测，综合 2.67/4，超过列出的所有开源模型（exceeding all listed open-source models）。
-2. 事实幻觉从 12.5% 降到 5.4%。
-3. SWE-Bench 系列随 scaffolding 波动大：官方自测与 OpenAI 公开数可差 10+ 个百分点；因此他们同时报官方脚手架与社区脚手架。
+| 分组 | 基准 | Preview | Hy3 | GLM-5.2 | DeepSeek-V4 pro | Qwen-3.7 Max | Claude-opus-4-8 | GPT-5.5 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| Agent 编程 | SWE-bench Multilingual | 68.3 | 75.8 | 83.0† | 76.2 | 78.3 | 84.4 | 77.3† |
+| | SWE-bench Verified | 74.4 | 78.0 | 84.2† | 80.6 | 80.4 | 88.6 | 84.4† |
+| | SWE-bench Pro | 46.0 | 57.9 | 62.1 | 55.4 | 60.6 | 69.2 | 58.6 |
+| | Terminal-Bench 2.1 | 58.0 | 71.7 | 81/77.3† | 64/60.5† | 75/71.5† | 85/85.4† | 84/79.8† |
+| | NL2repo | 35.3 | 45.6 | 48.9 | 41.5† | 47.2 | 69.7 | 50.7 |
+| | DeepSWE | 0.9 | 28.0 | 46.2/42.5† | 8.0/9.7† | 18.0/14.2† | 58.0/62.8† | 70.0/70.8† |
+| Agent 搜索 | BrowseComp | 67.1 | 84.2 | — | 83.4 | — | 84.3 | 84.4 |
+| | WideSearch | 67.8 | 76.4 | — | 75.7† | 72.3† | 72.9† | 80.0† |
+| | DeepSearchQA | 82.8 | 91.0 | — | 90.4† | 88.4† | 93.1 | 95.5† |
+| 工作型 Agent | MCP Atlas（公开集） | 66.1 | 79.1 | 76.8/82.6† | 73.6/79.7† | 76.4/79.6† | 82.2/84.1† | 81.6/82.9† |
+| | Toolathlon | 32.1 | 48.5 | 48.2/46.6† | 51.8/45.7† | 45.1† | 59.9 | 55.6 |
+| | Apex-Agent（pass@1） | 12.4 | 25.6 | 29.9† | 20.4† | 22.2† | 42.5 | 38.4 |
+| | ClawEval（pass^3） | 55.0 | 68.5 | 62.4† | 58.4/62.1† | 65.2 | 72.1† | 67.8† |
+| | WildClawBench（35 题，纯文本） | 45.3 | 53.6 | 59.2† | 50.5† | 41.5† | 58.4† | 63.2† |
+| | SkillsBench（79 题，纯文本） | 29.1 | 55.3 | 51.9† | 40.5† | 59.2/46.8† | 64.6† | 61.6† |
+| 科研 Agent | HLE（带工具，纯文本） | 35.4 | 53.2 | 54.7 | 48.2 | 53.5 | 57.9 | 52.2 |
+| 推理 | GPQA Diamond | 87.2 | 90.4 | 91.2 | 90.1 | 92.4 | 93.6 | 93.6 |
+| | HLE（无工具，纯文本） | 30.0 | 37.0 | 40.5 | 37.7 | 41.4 | 49.8 | 46.9† |
+| | FrontierScience-Research | 19.0 | 21.3 | 19.8† | 21.3† | 24.8† | 32.9† | 33.9 |
+| | FrontierScience-Olympiad | 70.0 | 74.8 | 72.5† | 70.0† | 74.3† | 74.3† | 73.8† |
+| | USAMO 2026 | 37.3 | 72.0 | 41.3† | 59.2† | 57.1† | 92.9† | 98.4† |
+| | MathArena Apex | 12.6 | 38.7 | 16.8† | 38.3 | 44.5 | — | 85.4† |
+| | ArxivMath | 46.1 | 52.2 | 44.2† | 56.4† | 56.0† | 71.8 | 71.5 |
+| | HorizonMath（pass@12） | 1.8 | 7.1 | 7.1† | 5.3† | 6.2† | — | 11.6† |
+| | PHYBench | 71.4 | 77.4 | 71.5† | 75.4† | 76.5† | 79.6† | 77.5† |
+| | CMT-Benchmark | 19.4 | 37.8 | 34.1† | 35.0† | 40.0† | 43.8† | 43.6† |
+| | IMOAnswerBench | 84.3 | 90.0 | 91.0 | 89.8 | 90.0 | 83.5 | 92.1† |
+| | SuperChem | 47.0 | 54.9 | 60.2† | 61.2† | 60.5† | 66.9† | 66.2† |
+| 上下文学习 | CL-bench | 22.8 | 23.8 | 23.1† | 18.1† | 18.4† | 24.8† | 27.8† |
+| | CL-bench life | 15.7 | 17.0 | 21.0† | 14.3† | 13.0† | 16.9† | 21.1† |
+| | AA-LCR | 66.3 | 73.4 | 73.4† | 71.3† | 70.2† | 72.2† | 76.4† |
 
-中文卡把幻觉写成「5.4%」，英文同样是 5.4%。没有给出 12.5% 的基线是哪一版模型（Preview？上一代 Hunyuan？）。只说「reduced from 12.5% to 5.4%」。
+### 腾讯内部基准
 
-我们怎么解释。2.67/4 是专家 Likert，不是自动榜。270 人、领域构成、题目集、是否对每个模型同一套题，模型卡都不写。它的论证力是「内部产品评测」，不是可复现基准。幻觉 12.5%→5.4% 同样没有评测集名字。SWE-Bench 那句反而更有信息量：作者自己承认脚手架能把分数打出 10 个百分点以上的洞，所以后文附录脚注花了大量篇幅规定每个任务用哪套 harness。读 Hy3 的代码智能体分数，必须连脚注一起读，否则「官方 73.4 vs 别人公开 60」可能只是脚手架不同。
+| 基准 | Preview | Hy3 | GLM-5.2 | Claude-opus-4-8 | GPT-5.5 |
+|---|---:|---:|---:|---:|---:|
+| Hy-Backend 2.0 | 12.2 | 25.0 | 30.4† | 38.9† | 38.7† |
+| Hy-SWE Max | 30.0 | 49.0 | 63.1† | 63.2† | 65.4† |
+| Hy-CompanyBench | 8.3 | 41.7 | 55.0† | 65.0† | 51.7† |
+| e-bench | 10.9 | 50.2 | 52.3† | 68.8† | 72.0† |
+| Hy-FinModelBench | 26.6 | 69.0 | 77.2† | 74.3† | 85.1† |
+| ProdBench（pass^3） | 10.3 | 23.0 | 21.4† | 27.8† | 21.4† |
+| Hy-SkillsWorld | 26.4 | 45.8 | 56.9† | 59.7† | 56.9† |
+| Hy-Euler pro（带工具） | 2.3 | 24.2 | 42.4† | 64.4† | 77.3† |
+| Hy-Math | 26.1 | 60.9 | 16.4† | — | 91.4† |
 
-### 指令遵循与办公
+（两张表均读自原文 Benchmark Appendix 节的图，† 为原图星号，即腾讯自测。）
 
-原文：指令遵循显著提升，能处理复杂办公任务，在内部基准接近闭源旗舰。没有办公基准的名字与分数。分数若存在，只在图里。
+### 这张表怎么读
 
-### 长上下文
+**第一，Preview → 正式版的增量分布很不均匀。** 增幅最大的几行都是 Agent 与难题：e-bench +39.3、Hy-FinModelBench +42.4、USAMO 2026 +34.7、Hy-CompanyBench +33.4、DeepSWE 从 0.9 到 28.0、MathArena Apex +26.1、SkillsBench +26.2。增幅最小的是知识与上下文学习：CL-bench +1.0、CL-bench life +1.3、FrontierScience-Research +2.3、GPQA Diamond +3.2、SWE-bench Verified +3.6（本文按表相减）。这与「架构不变、只加后训练」的叙事一致：后训练改的是**怎么用工具、怎么把长任务做完**，很少改变模型**知道多少**。
 
-原文：256K 上下文；MRCR 等长对话评测明显提升；输出更简洁，长程交互中复杂意图不衰减、不漂移。没有 MRCR 的阿拉伯数字——在图附录 Context Learning 段。
+**第二，和对手比，Hy3 在同尺寸里强，离闭源旗舰还有距离。** 公开基准里 Hy3 明显领先的是 BrowseComp（84.2，与 Claude-opus-4-8 的 84.3、GPT-5.5 的 84.4 持平，只低于 Seed-2.1 pro 的 86.2 与 Gemini-3.1-pro-preview 的 85.9）和 DeepSearchQA；仓库级编程（SWE-bench Verified 78.0 对 Claude 的 88.6）、Terminal-Bench 2.1、竞赛数学（USAMO 72.0 对 GPT-5.5 的 98.4†）和 HLE 仍有明显差距。和它明着比的开源对手 GLM-5.2，多数 Agent 行都在 Hy3 之上。
 
-读自 `assets/benchmark-appendix.png` 底部 Context Learning 表（本底稿读图）：CL-bench 上 Hy3 23.8、Hy3-Preview 22.8；CL-bench life 17.0 vs 15.7；AA-LCR 73.4 vs 66.3。带星号的闭源列是「我们自己测的」。脚注写：所有模型 reasoning effort 拉到最高档。
+模型卡说 Hy3「比肩参数量大 2–5 倍的旗舰开源模型」（原文 Model Introduction 节），但卡上没有列对手的参数量。作为外部补充：Nemotron-3-Ultra 一篇的对照表把 GLM-5.1 写作 744B-A40B、DeepSeek-V4-Pro 写作 1.6T-A49B，分别约是 295B 的 2.5 倍与 5.4 倍。
 
-### 原生工具调用与混合思考
+**第三，对手的分数大多是腾讯自测。** Agent 行里对照列几乎全带 †。脚注说所有模型的推理档位都拉到最高、SWE-Bench 系列用 SWE-agent 脚手架、Terminal-Bench 2.1 用 Terminus-2（超时 4 小时、16 核 CPU、32 GB 内存、最多 500 轮）、NL2Repo 用 Claude Code（250 轮、12000 秒）、MCP-Atlas 按 Scale 2026 年 4 月的方法以 Gemini 2.5 Pro 当裁判、ClawEval 用内部脚手架与 Gemini-3.5-flash 当裁判、Agent 搜索用内部脚手架（原图 Notes）。**同一套脚手架跑所有模型，公平是公平了，但这套脚手架是腾讯选的。**
 
-原文：内置工具调用；三种思考模式 `think_high` / `think_low` / `no_think`。中文卡同一套名字。采样建议在 Quick Start：temperature 0.9、top_p 1.0；思考模式通过 `chat_template_kwargs` 的 `reasoning_effort` 控制。英文 Transformers 示例里 `reasoning_effort` 取 `high` / `low` / `no_think`。
+**第四，斜杠两数没有解释。** Terminal-Bench 2.1、DeepSWE、MCP Atlas、Toolathlon 等行的对照格里常有「81/77.3」这样的两个数，Notes 里没有说明各是什么（比如官方报告值与自测值）。
 
-这里有一个原文内部的轻微不一致，先记矛盾再解释名词：Highlights 用 `think_high` / `think_low` / `no_think`；Transformers / vLLM 示例用 `reasoning_effort="high"|"low"|"no_think"`。SGLang 外部 cookbook（后文外部补充）明确说模板吃的是 `reasoning_effort`，不是别的家族常用的 `thinking` 开关，且 `reasoning_effort: max` 会被拒，要用 `high`。产品文档与代码接口不是同一套字符串，对接时以 chat template 实际字段为准。
+**第五，首页主图是这张大表的子集，挑数方式没有交代。** 原文 Stronger Agent Capabilities 节的主图（`assets/benchmark.png`）是 12 个小柱状图，每格只放 5 个对手，而且每格挑的对手不同。本文逐格对回大表，有三处要知道：
 
-### 推理性能
+- BrowseComp 那格标着 GLM 图标的是 79.3，在大表里是 GLM-5.1 的数（GLM-5.2 那格为空），而主图图例写的是 GLM5.2；
+- FrontierScience-Olympiad 那格 Hy3 的 74.8 看上去最高，但大表里 Gemini-3.1-pro-preview 是 79.0，没放进这格；Seed-2.1 pro 的格子写着「75/70.1」，主图取了 70.1；
+- SkillsBench 那格 Qwen3.7 Max 取了「59.2/46.8」里的 46.8，另一个数 59.2 高于 Hy3 的 55.3。
 
-原文只定性：MTP 加速解码，降低延迟、提高吞吐。没有 tokens/s、没有接受率。性能数字若出现，在外部 vLLM recipe 的 bench 输出里，不是模型卡正文。
+这些不是错数，但说明**只看首页主图会高估 Hy3 的相对位置**，要回到大表看全列。
 
-## Benchmark 主图：读自 `assets/benchmark.png`
+## 产品侧的数字：只有结论，没有评测集
 
-原文在 Model Introduction 之后放雷达/条形图 `assets/benchmark.png`，中文卡同一张。图本身是实测展示（官方自制对比图），不是示意动画。因分辨率高、缩略后部分柱顶数字难以无歧义读出，**凡无法从主图稳定读出的分数，改从 Benchmark Appendix 全表引用**，并标明来源图。
+模型卡最用力论证的其实不是榜单，而是「实用」。原文 Stronger Agent Capabilities 节说公开榜不能说明全部，于是：
 
-主图可读的结构（读图，非原文表格）：六宫格，标题分别为 Agentic Search、SWE-Bench Pro、LiveCodeBench v6、AIME 26、BrowseComp、Terminal Bench 2.0。对照模型图例包括 Hy3、MiniMax-M2.5、GLM-5、DeepSeek-V3.2、Kimi-K2.5、Qwen3.5-397B-A17B、GPT-5.2、Gemini-3-Pro、Claude-Opus-4.6、Grok-4.5、Qwen3-235B-A22B、Hunyuan-2.0、Hy3-Preview。Hy3 柱为紫色、Preview 为粉色。主图意图是「同屏对比开源与闭源」，精确分数以下一节附录表为准。
+- **270 位专家盲测**：用各自工作里的任务打分，Hy3 均分 2.67/4，GLM-5.1 为 2.51/4，前端开发、数据与存储、CI/CD 类优势最明显。
 
-## Benchmark Appendix：读自 `assets/benchmark-appendix.png`
+原文 More Reliable Product Experiences 节又给了三组内部数字：
 
-原文 Benchmark Appendix 整节就是一张大表图，没有 Markdown 表格。脚注在图底部。下面分数均为读图；带 `*` 的是原图表内标注「我们自己测的」。
+| 维度 | 之前 | 之后 |
+|---|---:|---:|
+| 幻觉率 | 12.5% | 5.4% |
+| 常识错误率 | 25.4% | 12.7% |
+| 多轮问题率（指代消解、省略还原、多轮约束继承） | 17.4% | 7.9% |
+| MRCR（长对话理解，只见于中文卡） | 42.9% | 75.1% |
 
-### 表头模型（从左到右，读图）
+以及跨脚手架稳定性：在 CodeBuddy、Cline、KiloCode 等脚手架上跑 SWE-bench Verified，英文卡写「accuracy variance」在 4% 以内，中文卡写「分数标准差」在 4 个百分点以内——两版用的统计量说法不同，也没有给出各脚手架的分数。
 
-开源侧：Hy3-Preview、Hy3、MiniMax-M2.5、GLM-5、DeepSeek-V3.2、Kimi-K2.5、Qwen3.5-397B-A17B。闭源侧：GPT-5.2、Gemini-3-Pro、Claude-Opus-4.6、Grok-4.5。表上另有 Qwen3-235B-A22B、Hunyuan-2.0 等列出现在部分行；不同裁切下最右几列可能被截断，引用时只写本底稿实际读到的格子。
+怎么看这些数：
 
-### Reasoning（读图上半）
+- 盲测只和 GLM-5.1 比，而大表里更强的 GLM-5.2 没有进盲测；2.67/4 是四分制里的中上，不是接近满分；专家构成、题目、每个模型是否同一套题都没写。
+- 幻觉、常识、多轮三组数都没有评测集名字，「之前」指 Preview 还是更早的模型也没写（从上下文推测是 Preview）。它们能说明「产品侧声称变好了」，不能对标任何公开榜。
+- 大表里没有 MRCR 这一行，75.1% 只有中文卡里一句话。
 
-AIME 25：Hy3-Preview 92.2，Hy3 94.4。AIME 26：89.0，93.3。HMMT Feb 25：87.9，91.4。HMMT Feb 26：81.5，85.8。CNMO 25：86.4，90.8。IMOAnswerBench：76.8，79.5。BeyondAIME：78.8，82.0。HLE-Text：24.8，28.5。GPQA-D：84.9，87.8。FrontierScience-Olympiad：41.0，51.0（部分对照列带 `*`）。
+## 快慢思考：一套权重，三个档位
 
-对照列（读图，不完全）：AIME 26 上 MiniMax-M2.5 88.5、GLM-5 90.4、DeepSeek-V3.2 88.4、Kimi-K2.5 88.6、Qwen3.5-397B-A17B 88.0；闭源 GPT-5.2 91.8*、Gemini-3-Pro 90.7*、Claude-Opus-4.6 91.2*、Grok-4.5 93.3*。GPQA-D 上 Hy3 87.8，闭源侧 GPT-5.2 92.4*、Gemini-3-Pro 91.9*、Claude-Opus-4.6 91.3*、Grok-4.5 93.2*。
+`reasoning_effort` 取 `no_think`、`low`、`high` 三个值（原文 Quickstart 节）。`chat_template.jinja` 里：没传这个字段时默认 `no_think`；传了别的值会直接报错；另有一个 `reasoning_toolcall_retry` 回退策略，会强制切到 `high`。推荐采样参数是 temperature 0.9、top_p 1.0。
 
-### Coding（读图）
+原件内部有一处说法不一致：Quickstart 与模板都以 `no_think` 为默认，`finetune/README.md` 却写「模型的默认输出是慢思考模式」。以模板为准，线上不传字段就是不思考。
 
-LiveCodeBench v6：Hy3-Preview 83.7，Hy3 86.2；MiniMax-M2.5 87.0，GLM-5 87.7，DeepSeek-V3.2 83.3，Kimi-K2.5 85.0，Qwen3.5-397B-A17B 83.5。OJBench 2026：75.1 vs 80.4（Preview vs Hy3）。FullStackBench2-Pass：48.9 vs 54.6。FullStackBench2-Fast：62.7 vs 66.0。
+这件事对读成绩单很重要：大表脚注说所有模型都拉到最高推理档位，那些分数对应的是 `high`；线上默认的 `no_think` 延迟与费用完全是另一档。拿 `no_think` 的速度配 `high` 的分数，是常见的误读。
 
-### Agentic Coding（读图中段，Hy3 列紫色高亮）
+## 部署：命令会过时，显存账不会
 
-SWE-Bench verified：Hy3-Preview 70.4，Hy3 73.4；MiniMax-M2.5 80.2，GLM-5 77.8，DeepSeek-V3.2 73.1，Kimi-K2.5 76.8，Qwen3.5-397B-A17B 72.0。闭源：GPT-5.2 80.0*，Gemini-3-Pro 76.2*，Claude-Opus-4.6 80.8*，Grok-4.5 74.6*。
+模型卡给了两套从源码安装的启动命令（原文 Deployment 节）：
 
-SWE-Bench multilingual：65.2 vs 68.7。SWE-Bench Pro：45.3 vs 54.1；MiniMax-M2.5 56.2，GLM-5 54.2，DeepSeek-V3.2 46.4。闭源 GPT-5.2 55.6*，Claude-Opus-4.6 64.1*。
+| | vLLM | SGLang |
+|---|---|---|
+| 并行 | `--tensor-parallel-size 8` | `--tp-size 8` |
+| 工具与推理解析器 | `hy_v3` | `hunyuan` |
+| MTP | `--speculative-config.method mtp`，草稿 2 个 Token | EAGLE，2 步、每步 top-1、3 个草稿 Token |
 
-Terminal-Bench 2.0：Hy3-Preview 47.5，Hy3 54.0；MiniMax-M2.5 57.5，GLM-5 54.0，DeepSeek-V3.2 46.4，Kimi-K2.5 50.8，Qwen3.5-397B-A17B 47.8。闭源 GPT-5.2 54.0*，Gemini-3-Pro 52.8*，Claude-Opus-4.6 59.3*，Grok-4.5 47.9*。
+两边解析器名字不同，是因为各引擎各自实现；SGLang 的 cookbook 解释了原因：正式版 tokenizer 给每个特殊符号加了统一后缀（如 `<tool_calls:TAG>`），解析器要在运行时从词表里查出真实符号，同一套解析器因此能同时服务没有后缀的 Preview 和有后缀的正式版（外部补充）。
 
-### Agentic Tool Use（读图）
+跟进模型卡链接的两份引擎文档（外部补充，不是模型卡正文）：
 
-MCP-Atlas-text：Hy3-Preview 62.2，Hy3 67.4；MiniMax-M2.5 64.2，GLM-5 61.6，DeepSeek-V3.2 58.2，Kimi-K2.5 60.6，Qwen3.5-397B-A17B 55.2。闭源 GPT-5.2 69.2*，Gemini-3-Pro 62.2*，Claude-Opus-4.6 75.2*，Grok-4.5 66.0*。
+- **vLLM recipe**：要求 vLLM 0.28.0 及以上，有专用镜像 `vllm/vllm-openai:hy3`；8 × H200、8 × H20-3e、8 张 AMD MI300X 系列可单机跑 BF16，8 × H100 或 A100 80GB 要跨节点；AMD 上需设 `VLLM_ROCM_USE_AITER_MOE=0` 避开 MoE 内核崩溃。它还给了一组 FP8 权重在 4 × GB300、输入 8192 输出 1024、并发 32 下的测量：输出吞吐 934.26 Token/秒，平均首 Token 延迟 2352.29 毫秒。这是引擎侧的数，不是模型卡的。
+- **SGLang cookbook**：BF16 权重约 590GB；默认 `no_think`；`reasoning_effort: max` 会被拒，要用 `high`。
 
-BD-Context：28.4 vs 32.1。BD-Agility：31.4 vs 35.2。
+量化只给了两样东西：独立的 FP8 权重仓 `tencent/Hy3-FP8`，以及指向腾讯压缩工具包 AngelSlim 的链接（原文 Quantization 节）。没有 FP8 相对 BF16 的掉分表。
 
-### Agentic Search（读图）
+## 微调与 RL：能复现的是脚本，不是分数
 
-BrowseComp：Hy3-Preview 64.2，Hy3 70.6；MiniMax-M2.5 77.0，GLM-5 68.2，DeepSeek-V3.2 67.6，Kimi-K2.5 74.9，Qwen3.5-397B-A17B 63.6。闭源 GPT-5.2 80.4*，Gemini-3-Pro 85.9*，Claude-Opus-4.6 72.3*，Grok-4.5 75.0*。
+### 微调（`finetune/README.md`）
 
-BrowseComp-zh：69.2 vs 75.8。Wide Search：72.6 vs 79.4。HLE-Search：29.4 vs 32.6。
+- **数据格式**：每条样本带 `reasoning_effort`，慢思考样本的思考内容放在 `reasoning_content` 字段里。
+- **硬件**：在序列长 4096、不开 ZeRO-3 offload 的测试条件下，LoRA 至少单机 8 卡、每卡 80GB；全量微调至少 4 机 32 卡。
+- **三条路径**：DeepSpeed 原生脚本、LLaMA-Factory、ms-swift 4.2.2。LLaMA-Factory 的 LoRA 默认 rank 64、alpha 128，学习率全量 $1\times10^{-5}$、LoRA $2\times10^{-4}$，全量可把 `cutoff_len` 设到 262144；ms-swift 的 LoRA 默认 rank 8、alpha 16，LoRA 学习率 $3\times10^{-4}$。两边默认值差 8 倍，是工具默认，不是架构建议。
+- **两个坑**：ms-swift 默认模板把 `<｜hy_eos｜>` 当字符串，会被切成多个 Token、生成停不下来，必须加载仓库里的补丁；训练加载时线性层 bias 缺失的警告可以忽略，但路由器的 `e_score_correction_bias` 是 buffer，加载失败不能忽略。
+- ZeRO-3 下 LoRA 权重不能在训练中合并，要离线执行合并脚本。
 
-### Agentic Computer Use（读图）
+### RL（`rl/README.md`）
 
-OSWorld-Verified：Hy3-Preview 62.1，Hy3 70.3。Windows Arena：36.4 vs 42.2。Android World：64.6 vs 70.8。
+这一页是**在 verl 框架上跑 GRPO 的社区配方**，不是 Hy3 自己的后训练记录：训练用 Megatron-LM（通过 Megatron-Bridge 在线转换权重），rollout 用 vLLM，默认数据是 DAPO-Math-17k、验证集是 AIME-2024。与 Hy3 相关的必需设置只有三条：开启逐专家偏置、偏置更新率设为 0（冻结）、不加负载均衡损失。
 
-### Instruction Following（读图）
+页面给了一次示例运行：128 张 H20，每步 128 个 prompt × 16 个采样，学习率 $1\times10^{-6}$，裁剪 0.2/0.28（dual-clip 常数 10），不加 KL，最大回复 8192 Token，温度 0.9。配图 `assets/rl-training.png` 是这次运行约 190 步的六条曲线：rollout 与训练的对数概率差始终低于 0.015、训练奖励从约 0.4 升到 0.7–0.8、验证准确率从约 0.84 升到约 0.877 后回落到约 0.86（读自该图）。页面说奖励和验证分「稳步增长」，但图上的验证曲线先跌后涨、末段回落，并不单调。
 
-IFEval：Hy3-Preview 93.2，Hy3 95.1。IFBench：70.6 vs 76.8。ComplexBench：82.4 vs 86.6。SysBench：80.2 vs 85.4。RoIF：78.6 vs 83.2。
-
-### Long Context（读图）
-
-AA-LCR 已见上。MRCR v2 8needle 128k：Hy3-Preview 42.1，Hy3 48.6。LongBench v2：48.2 vs 52.4。
-
-### 图注（读自附录图底部 Notes，原文英文）
-
-要点转写如下，这是理解代码智能体分数的前提，不是装饰。
-
-- 所有模型 reasoning effort 拉到最高档；带 `*` 的是官方自测。
-- SWE-Bench 系列（含 multilingual、Pro）用 SWE-agent scaffold；GPT-5.5 例外，用 CodeX scaffold。
-- Hy Backbone 2.0、Hy-SWE Max、Hy-CompanyBench 用 Claude Code scaffold；GPT-5.5 仍用 CodeX。
-- Terminal-Bench 2.0：Terminus-2，parser yes，agent timeout 4h，CPU 16 核，内存 32 GB，max episodes 500。
-- ProgramBench：mini-swe-agent，1000-turn / 6-hour，沙箱 8 CPU / 16 GB，网络隔离。
-- DeepSWE：mini-swe-agent，每任务 2 小时，2 CPU / 8 GB，网络隔离。
-- NL2Repo：Claude Code，250-turn，12000 秒超时，4 CPU / 32 GB，另加防 reward hacking 的 prompt 与工具监控。
-- SkillsBench：Claude Code，79 任务（自包含子集，排除多模态），3 次平均。
-- MCP-Atlas：按 Scale 2026 年 4 月方法，100 工具调用预算，去掉旧的 20-turn 上限，500 任务公开集，裁判 Gemini 2.5 Pro。
-- ProdBench：OpenClaw Harness。
-- WildClaw：OpenClaw Harness，text-only 35 条。
-- Claw Eval：内部 harness，20260325 版，105 条，裁判 Gemini-3.5-flash。
-- Agentic Search：内部 harness；BrowserComp 用 self-summary 做上下文管理。
-- FrontierScience-Olympiad：按 OpenAI FrontierScience 论文的 judge prompt 自评，裁判 gpt-oss-120b，高 reasoning effort。
-
-我们怎么解释。这张脚注等于承认：Agent 分数是「模型 × 脚手架 × 超时 × 裁判模型」的乘积。Hy3 在 SWE-Bench verified 上 73.4，低于 MiniMax-M2.5 的 80.2 与 Claude-Opus-4.6 的 80.8*，高于 Preview 的 70.4。作者在 Highlights 里预先打了预防针：换脚手架可以差 10 个点以上。因此不宜用单列 SWE 分数给「代码 Agent 第一」下定论。BrowseComp 上 Hy3 70.6，低于 MiniMax-M2.5 77.0 与 Gemini-3-Pro 85.9*，相对优势不在开放浏览，而在内部办公/指令/部分 Terminal 与 MCP-Atlas。AIME 26 上 Hy3 93.3 与 Grok-4.5 93.3* 持平，这是「接近饱和」的具体落点。
-
-原文没写的。没有标准差、没有多次 run、没有「去掉脚手架只比模型」。SkillsBench 写了 3 次平均，其他多数行没有。
-
-## News 与 Model Links
-
-News 原文：开源 Hy3 与 Hy3-FP8 权重，渠道 Hugging Face、ModelScope、GitCode、CNB。没有写日期。
-
-Model Links 表：Hy3 Instruct、Hy3-FP8，四列平台。HF 路径 `tencent/Hy3` 与 `tencent/Hy3-FP8`。
-
-Citation 给了 BibTeX，标题 `Hy3 Technical Report`，作者 `Tencent Hy Team`，year 2026，url 指向 HF。卡片上 **没有 arXiv 编号**。本底稿按仓库规则不编造论文号；检索时不要把别人博客里的编号抄进来。
-
-## 架构规格（从 config 与模型卡描述拼起来，标明来源）
-
-模型卡正文没有单独的「Architecture」节。下面这组数字来自 Hugging Face 模型页的 Models 规格条与仓库 `config.json`（2026-09-15 访问），属于原件附属文件，不是外部博客。
-
-- hidden size 4096，80 层，+1 层 MTP。
-- 192 routed experts，top-8；1 shared expert。
-- 词表 120832（模型卡表与 `config.json` 的 `vocab_size`）；max position 262144。
-- GQA：64 头 / 8 KV 头。
-- 激活函数 SwiGLU（HF 规格条写 SwiGLU）。
-- 权重约 616B 参数档的 safetensors 分片（HF 文件列表合计体积；本底稿不把体积换算成「训练算力」）。
-- 架构类名 `hy_v3`；license Apache 2.0。
-
-我们怎么解释。21B 激活 ≈ 每次 top-8 专家 + 共享专家 + 注意力/MLP 非专家部分；3.8B 是 MTP 草稿模块，不计入「每 token 21B」那句的日常说法，但算总部署显存。256K 是位置编码上限，不是「默认服务就开 256K」——vLLM/SGLang 配方里的上下文还受 KV cache 显存限制。
-
-## Quick Start：Transformers / vLLM / SGLang
-
-### Transformers
-
-原文给出 OpenAI 兼容客户端示例：`extra_body={"chat_template_kwargs": {"reasoning_effort": "no_think"}}`。推荐采样 temperature 0.9、top_p 1.0。系统提示示例是普通助手，没有强制工具 schema。
-
-### vLLM
-
-原文：vLLM 源码安装。启动命令：`--tensor-parallel-size 8`，`--tool-call-parser hy_v3`，`--reasoning-parser hy_v3`，`--enable-auto-tool-choice`。MTP 用 `--speculative-config.method mtp` 与 `--speculative-config.num_speculative_tokens 2`。建议 8 卡时用 H20-3e 或更大显存。
-
-注意：模型卡给的是源码安装命令。外部 vLLM Recipes（后文）写的是 vLLM 0.28.0+ 与 Docker 镜像 `vllm/vllm-openai:hy3`。以「你实际安装的引擎」为准，不要把模型卡命令和 recipe 版本合成一句。
-
-### SGLang
-
-原文：源码安装；`--tp-size 8`；`--tool-call-parser hunyuan` 与 `--reasoning-parser hunyuan`；推测解码用 EAGLE（`--speculative-algorithm EAGLE`，`--speculative-num-steps 2`）。外部 SGLang cookbook 也走 `hunyuan` / `auto`，因为正式版 tokenizer 给特殊符号加了后缀。部署时优先跟你用的引擎文档。
-
-### Interactive Demo
-
-原文链到内部 demo / OpenWebUI 一类入口（README 有 Demo 节）。本底稿不把演示站可用性当成模型能力证据。
-
-## Finetuning（跟进 `finetune/README_CN.md`）
-
-这是原件子页，不是外部博客。中文微调说明的硬信息：
-
-- 推荐 8×H20 或以上；全量微调 DeepSpeed ZeRO-3 + offload；LoRA 用 ZeRO-2 offload。
-- 自研脚本在 `train/`；另支持 LLaMA-Factory 与 ms-swift 4.2.2。
-- LLaMA-Factory：template `hy_v3`，`trust_remote_code: true`；全量学习率建议 `1.0e-5`，LoRA `2.0e-4`；LoRA rank 64、alpha 128、dropout 0.05，目标模块 `q_proj,k_proj,v_proj,o_proj`；全量 `cutoff_len` 可到 262144，LoRA 建议 8192。
-- ms-swift：LoRA rank 默认 8、alpha 16（与 LLaMA-Factory 默认不同）；学习率全量 `1.0e-5`、LoRA `3.0e-4`；必须加载 `hy_v3_swift_patches.py`，否则 `<｜hy_eos｜>` 会被切成多 token，生成停不住。
-- ZeRO-3 下 LoRA 不能在训练中合并，需离线 `merge_lora_weight.sh`。
-- 没有给出官方 SFT 数据集。
-
-我们怎么解释。微调文档证明官方把「能在自有数据上继续训」当成交付物，但完全没有「用什么数据训出 Highlights 里那些分数」。ms-swift 与 LLaMA-Factory 的 LoRA 默认 rank 差 8 倍，这是接口默认值不同，不是架构消融。
-
-## RL（跟进 `rl/README_CN.md` 与 `assets/rl-training.png`）
-
-原文子页：基于 verl 的强化学习配方；配套图 `assets/rl-training.png`。
-
-读图（实测训练曲线，不是示意）：三张子图，横轴 step 约 0–300。左：Reward Mean，多条颜色曲线从约 0.2–0.4 震荡上行到约 0.6–0.8 一带，晚期仍有大幅抖动。中：Response Length，从约 2k–4k token 升到约 8k–10k 再回落/分化。右：Entropy，整体从高位下降。图例模型名在缩略后无法无歧义读出每一条标签，本底稿只报告轴与趋势，不编造「哪条线是 Hy3」。
-
-子页文字（中文 RL README）给出工程向内容：环境、GRPO/类似策略的启动脚本、资源配比入口。它仍然没有：奖励模型结构、人类偏好数据量、KL 系数、与 Preview 的 RL 差异。Highlights 里 50+ 产品反馈如何进入奖励，这里也没有。
-
-我们怎么解释。能确认的是：正式 Hy3 的后训练包含一轮可绘图的 RL，奖励上升同时回复变长、熵下降，符合「多步 Agent / 长思维」的训练外观。不能从这张图反推数据配比，也不能把抖动解释成「训练失败」或「训练成功」——没有验证集对照。
-
-## Quantization
-
-原文：提供 Hy3-FP8；另指向 AngelSlim 做量化。没有量化校准集、没有 FP8 相对 BF16 的掉点表。外部 vLLM recipe 把 FP8 当作吞吐实验的默认权重，并提到 RedHatAI 的 NVFP4-FP8 社区量化，那不是腾讯原件。
-
-## 外部补充（明确不是模型卡正文）
-
-以下来自 2026-09-15 跟进的链接，用于部署判断，不当成「Hy3 报告写了」。
-
-**vLLM Recipes**（https://docs.vllm.ai/projects/recipes/en/latest/Tencent/Hy3.html）：引擎口径变成 vLLM 0.28.0+、PR #47433（HPC-Ops attention/MoE）。硬件：8×H200、8×H20-3e(141GB)、8×MI300X/MI355X 可单机 BF16；8×H100 80GB 装不下 BF16+KV，要多机 TP。采样在 recipe 里写成 temperature 0.9、top_p 1.0，与访问当日模型卡 Quickstart 一致。AMD 路径需 `VLLM_ROCM_USE_AITER_MOE=0` 以免 CK GEMM 崩溃。HPC-Ops 需单独编译 `Tencent/hpc-ops`。Recipe 给了一段 Hy3-FP8、TP4、4×GB300、MTP=2、并发 32、8192→1024 的 bench：输出约 934 tok/s，mean TTFT 2352 ms，P99 TTFT 14538 ms。这是引擎实验室数字，不是模型卡。
-
-**SGLang cookbook**（https://docs.sglang.io/cookbook/autoregressive/Tencent/Hy3.html）：BF16 权重约 590GB；H200 141GB 需 TP8 才是单机下限；B200 192GB 可用 TP4。正式版 tokenizer 给特殊符号加后缀（如 `<tool_calls:TAG>`），parser 要在运行时从词表解析（SGLang PR #29920）。`reasoning_effort` 才是模板开关；默认 `no_think`。
-
-**AngelSlim**：模型卡只点名，未在本底稿中展开量化算法。
-
-**Preview 官方新闻**（腾讯 2026-04-24）：Preview 已是 295B/21B/256K；产品侧 TTFT 降 54%、端到端短 47%、成功率 >99.99%；真实环境 495 步 Agent；日均 token 等数字属于 Preview 新闻，**不要记到正式 Hy3 头上**。
-
-**正式版第三方新闻**（InfoQ 2026-07-06）：API 定价输入 1 元/百万 tokens、输出 4 元、缓存命中 0.25 元；Preview 上线后日均 token 耗用增 20 倍。定价与用量不是模型卡正文。
-
-**本仓库 SGLang cookbook**（`projects/推理服务/sglang/docs/cookbook/autoregressive/Tencent/Hy3.mdx`）：若存在，只作部署备忘，不回写进「原文写了」。本次以线上 SGLang 文档为准。
-
-**Hugging Face 模型页 Evaluation results（访问日 2026-09-15，外部补充，不是附录读图）：** GPQA Diamond 90.4；SWE-Bench Verified 78；SWE-Bench Multilingual 75.8；HLE 53.2；Terminal Bench 2.1 71.7（带星）。这些数和附录表不是同一套脚手架。附录 SWE verified 读图是 Hy3 73.4、Preview 70.4；GPQA-D 读图是 87.8。HF 榜是第三方评测入口，附录是官方自制对照。两套都要保留，不要用 HF 榜去改写附录，也不要用附录去否认 HF 榜。模型卡正文只保证盲测 2.67/4 和幻觉 12.5%→5.4%；自动榜以附录脚注的 harness 为准。HF 页还显示模型体积约 299B params、Apache 2.0、架构类名 `hy_v3`；这和卡上 295B 三件套并存，299B 是托管页扫描值，不要拿去改官方 295B。词表以 `config.json` 的 120832 为准，不要写成 128256。GitHub 仓库 `created_at` 是 2026-07-02，可见提交从 7 月 5 日起；本篇仍取 2026-07-04 为权重首次对外日，7 月 6 日是新闻口径，三者不要混成一个日期。
+这张图能说明「Hy3 可以在 verl 上稳定地跑 GRPO」，不能说明官方后训练用了什么奖励、多少数据、多大算力。
 
 ## Preview 与正式版不要混
 
 | 项 | Hy3 Preview | 正式 Hy3 |
-| --- | --- | --- |
-| 公开时间 | 2026-04-23/24 官方稿 | 权重 2026-07-04 起；新闻 2026-07-06 |
-| 参数 | 新闻已写 295B / 21B / 256K | 模型卡 295B / 21B / 3.8B MTP |
-| 许可证 | 部分二手材料写社区许可；以当时仓库文件为准 | Apache 2.0 |
-| 权重仓 | `tencent/Hy3-preview` | `tencent/Hy3`、`Hy3-FP8` |
-| 后训练 | 重建基础设施后的第一发 | Preview 后 50+ 产品反馈 + 更高质量数据 |
-| Tokenizer | 无后缀特殊符号（SGLang 文档） | 特殊符号带后缀 |
+|---|---|---|
+| 公开时间 | 2026-04-23 | 2026-07-06 |
+| 架构 | 295B / 21B / 256K | 与 Preview 的 `config.json` 逐项相同 |
+| 许可证 | Tencent Hy Community License | Apache 2.0 |
+| 权重仓 | `tencent/Hy3-preview` | `tencent/Hy3`、`tencent/Hy3-FP8` |
+| tokenizer 特殊符号 | 无后缀 | 统一带后缀 |
 
-规格骨架在 Preview 就定了；正式版卖的是后训练与协议放松，不是突然多出来一个 295B。
+许可证与 tokenizer 两行来自 Preview 模型卡与 SGLang cookbook（外部补充）。所以 Preview 的许可证不能用正式版的 Apache 2.0 回溯覆盖，Preview 的模板与解析也不能假定直接套用正式版。
 
-## 未公开缺口（原件没有，禁止补）
+腾讯混元官方博客的发布文还给了几组产品数字（外部补充，不是模型卡正文）：WorkBuddy 内部测评里，相比 Preview，任务解决率从 72% 升到 90%、平均耗时缩短 34%；高频办公任务上 Token 消耗低于 GLM-5.2，文档处理省 47.4%、PPT 制作省 49.0%；API 价格为每百万 Token 输入 1 元、输出 4 元、缓存命中 0.25 元；以及「1 月底重建基础设施，4 月发布 Preview」的时间线。
 
-- 预训练 token 量、数据配比、语言比例、代码比例。
-- 训练算力、GPU 型号与时长、并行策略。
-- 专家路由算法细节、负载均衡损失、共享专家的消融。
-- MTP 的训练目标、推测步数与接受率（模型卡只说有 MTP）。
-- 270 专家盲测的问卷、题集、对照模型名单。
-- 幻觉 12.5%→5.4% 的评测集。
-- arXiv 技术报告编号（Citation 只有 HF URL）。
-- FP8 相对 BF16 的精度表。
-- 与 Hunyuan-2.0 的架构差分（附录里 Hunyuan-2.0 只是对照列）。
+## 模型卡没有公开的
 
-## 把 21B 激活说清楚：为什么不是索引里的 20B
+- 预训练 Token 量、数据配比、语言与代码比例；
+- 训练算力、GPU 型号与时长、并行策略；
+- 路由与负载均衡的训练细节（只能从配置看出是 sigmoid 路由加偏置）、共享专家与专家粒度的消融；
+- MTP 的训练目标与接受率，以及开 MTP 后的实际加速；
+- 后训练的数据规模、奖励设计、SFT 与 RL 各占多少；
+- 270 人盲测的题目与评分细则，幻觉、常识、多轮三组内部评测的数据集；
+- 大表里斜杠两数的含义；
+- FP8 相对 BF16 的精度表；
+- 技术报告。
 
-索引一行常写成「295B 总 / 20B 激活」。模型卡实测表和开篇句都是 21B。差 1B 不是四舍五入能糊弄过去的量级：在 MoE 里，激活量 = 被选中的专家参数 + 共享专家 + 非专家子层（注意力、路由、归一化、词嵌入在推理时的活动部分视统计口径而定）。官方把 MTP 的 3.8B 单独列，说明他们已经意识到「总参数 / 激活 / 草稿模块」必须拆开讲。面试里如果有人说「混元 3 代 20B」，应纠正为：卡上是 **21B activated**，另加 **3.8B MTP**，总数 **295B**。不要把 MTP 加进 21B，也不要把它从 295B 里偷偷减掉又不说明。
+## 最值得带回自己项目的四条
 
-MTP 的因果链是：解码阶段最大的墙是逐步采样，每步都要把 21B 激活跑一遍。若草稿模块能一次提出多个后续 token、再由主模型并行验证，墙钟时间可以掉下来。模型卡只完成了这条链的前半：声明有 MTP、vLLM 示例里 `num_speculative_tokens` 为 3。后半——接受率、在代码/中文/工具调用上的回退率——完全没有。因此「推理性能」Highlights 只能当方向，不能当 SLA。外部 recipe 把 MTP=2 用在 GB300 的 FP8 bench 上，那是另一套引擎数字，不能回填成模型卡结论。
+### 1. 读 MoE 规格，先分开「部署量」和「计算量」
 
-## 混合思考：同一套权重，三种延迟
+295B 决定要几张卡，21B 决定每个 Token 花多少算力，3.8B 的 MTP 另算。把三件套一起说，才不会在「这是个 20B 小模型」和「这要一千张卡」之间摇摆。
 
-原文把思考写成产品功能，而不是另发一个 reasoning 模型。因果链是：同一 295B 权重，通过模板字段切换是否写思维链、写多深；`no_think` 走直出，服务聊天与办公短答；`high` 走长链，服务数学与复杂 Agent。这样做的代价是：评测必须声明档位。附录脚注第一句就是所有模型都拉到最高 reasoning effort。若有人拿 `no_think` 的延迟去对比别人的 thinking 模型的分数，或反过来，都是错的。
+### 2. 从配置文件能推出模型卡没写的东西
 
-字段名分叉已经在前文记下。工程上更麻烦的是：工具调用与思考交织。vLLM recipe 写注册工具时要 `interleaved_thinking: true`，否则模型在两次工具之间不能再想。SGLang 示例里，思考内容进 `reasoning_content`，工具进 `tool_calls`，content 只留对用户说的话。模型卡 Transformers 示例没有走到工具循环。若只复制卡上的 Hello 示例，会以为 Hy3 只是聊天模型，丢掉它真正想卖的 Agent 面。
+一个 `config.json` 就能把 295B 拆到每一类矩阵、算出每 Token 的 KV 大小、判断哪种卡能单机部署，并和权重文件的参数总数对账。模型卡越简略，这一步越值钱。
 
-## 智能体分数怎么读才不会被脚手架骗
+### 3. 只改后训练，先涨的是 Agent 行为，不是知识
 
-Highlights 主动说 SWE-Bench 官方自测与 OpenAI 公开数可差 10+ 个百分点。附录 Notes 把这句话落实成一张「谁用哪套 harness」的清单。因果链是：代码智能体评测 = 模型 + 脚手架 + 超时 + 沙箱配额 + 裁判模型。Hy3 在 SWE-Bench verified 读图 73.4，低于 MiniMax-M2.5 的 80.2 和 Claude-Opus-4.6 的 80.8*，高于 Preview 的 70.4。Terminal-Bench 2.0 上 Hy3 与 GLM-5、GPT-5.2 都落在 54.0 一线。SWE-Bench Pro 上 Hy3 54.1，接近 MiniMax-M2.5 的 56.2，低于 Claude-Opus-4.6 的 64.1*。
+Preview 与正式版同一架构，增量集中在 Agent 与难题，GPQA、上下文学习几乎不动。做产品迭代时，如果手里只有后训练预算，应当预期它主要改变「会不会用工具、能不能坚持把任务做完」。
 
-把这三行放在一起，正式版相对 Preview 的增量是清楚的：verified +3.0，multilingual +3.5，Pro +8.8，Terminal-Bench 2.0 +6.5（均为读图相减，本底稿自算）。增量集中在更难的 Pro 与终端任务，而不是 verified 再刷两分。这与「Preview 之后按产品反馈加后训练」的叙事同方向：产品要的是仓库级补丁和终端操作，不是再刷一道已接近平台期的 verified。
+### 4. 成绩单要回到全表、回到脚注
 
-MCP-Atlas-text 上 Hy3 67.4，高于列出的多数开源对照，低于 Claude-Opus-4.6 的 75.2*。BrowseComp 上 70.6，开源里低于 MiniMax-M2.5 的 77.0 与 Kimi-K2.5 的 74.9。搜索浏览不是这条模型相对开源的领先项；工具调用与内部办公叙事才是。OSWorld-Verified 从 Preview 的 62.1 到正式版 70.3（读图），计算机使用也是后训练加分点。
+首页主图每格挑五个对手、斜杠两数取其一；对手分数多为自测；脚手架由发布方选。引用 Agent 分数时，要连同「哪个脚手架、谁测的、哪一档思考」一起引。
 
-270 专家盲测 2.67/4 无法与上述自动榜换算。Likert 4 分制的 2.67 大约是中等偏上，不是碾压。原文用它证明「超过列出的所有开源模型」，但「列出」的名单不在卡片里。引用时必须带「270 专家、综合 2.67/4、名单未公开」。
+## 用一张图重新串起全文
 
-幻觉 12.5%→5.4% 是相对降幅很大的内部数（12.5−5.4=7.1 个百分点，约 57% 相对下降，本底稿自算）。没有集名，就不能对标公开幻觉榜。只适合当「产品侧声称事实性变好」的证据。
+```mermaid
+flowchart TB
+    P["Hy3 Preview<br/>2026-04-23，295B/21B"] --> FB["50 多个产品的反馈"]
+    FB --> PT["更高质量的后训练数据<br/>扩大 RL 规模"]
+    P -->|"config.json 逐项相同"| H["Hy3 正式版<br/>2026-07-06，Apache 2.0"]
+    PT --> H
+    H --> S["规格：295B 在专家里<br/>21B 激活，3.8B MTP"]
+    H --> B["成绩单：40 行大表<br/>对手多为自测"]
+    H --> U["产品数字：盲测 2.67/4<br/>幻觉 12.5% 到 5.4%"]
+    H --> D["部署与脚本：vLLM、SGLang<br/>微调、verl GRPO 配方"]
+    B --> G["增量集中在 Agent 与难题<br/>知识类几乎不动"]
+```
 
-## 指令、办公、长上下文：卡上最虚的一块
+## 关键词回看
 
-Highlights 写指令遵循显著提升、复杂办公接近闭源旗舰，但正文没有办公任务名。附录 Instruction Following 段给出了可引用的自动榜：IFEval 95.1、IFBench 76.8、ComplexBench 86.6、SysBench 85.4、RoIF 83.2（均为 Hy3 读图）。相对 Preview 的增量大约 2–6 分。这些是指令遵循，不是「做出一份能交差的 PPT」。元宝新闻里的办公交付是产品层，不是模型卡。
+- **激活参数**：处理一个 Token 真正参与计算的参数；Hy3 是 21B，其中路由专家约 11.9B。
+- **路由专家 / 共享专家**：前者 192 个里每次选 8 个，后者每个 Token 都走；Hy3 有 1 个共享专家。
+- **无辅助损失负载均衡**：不加均衡损失，靠路由打分上的逐专家偏置调节负载；Hy3 的 RL 配方里把偏置冻结。
+- **GQA**：64 个查询头共用 8 组 KV，每 Token 缓存约 320 KB（BF16）。
+- **MTP**：挂在主干后的 1 层草稿模块，约 3.75B，每步草稿只激活约 0.28B。
+- **`reasoning_effort`**：`no_think`、`low`、`high` 三档，模板默认 `no_think`，成绩单用的是最高档。
+- **脚手架**：包裹模型的 Agent 程序；同一模型换脚手架分数会变，所以大表脚注逐项规定了脚手架。
+- **自测（†）**：发布方用自己的脚手架给对手跑的分数。
 
-长上下文官方强调 MRCR、意图不漂移。附录 Long Context：MRCR v2 8needle 128k 从 42.1 到 48.6；LongBench v2 从 48.2 到 52.4；AA-LCR 从 66.3 到 73.4。128k 针测仍低于 50 分后半，说明 256K 窗口「能塞进去」和「能在 128k 处稳健找回八根针」不是一回事。选型时不要把 max position 262144 读成「128k 任务已经做完」。
+## 最后的判断
 
-## 部署：模型卡命令会过时，硬件下限不会
+Hy3 的模型卡证明了三件事：腾讯把一个 295B、21B 激活的 MoE 以 Apache 2.0 开源，并同时给了 BF16 与 FP8 权重；这一版相对 Preview 只动了后训练，换来的是 Agent 与难题上的大幅提升；发布方愿意把脚手架配置写进脚注，而不是只报一个峰值。
 
-卡上 vLLM 给的是源码安装与 `hy_v3` parser；2026-09 的 recipe 已经是 0.28.0 与 HPC-Ops。SGLang 卡上写 `hunyuan` parser，cookbook 也走 `auto`/`hunyuan` 以消化后缀特殊符号。过时的是 flag，不过时的是显存。外部 cookbook 写 BF16 约 590GB 权重。8×80GB 装不下权重加 KV，这是算术不是口味。H200 / H20-3e 141GB ×8 才是单机 BF16 的讨论起点。FP8 与 NVFP4 是把这条下限往下搬的量化路径，掉点表原件没有。
+它证明不了的是：训练用了什么、花了多少；产品侧那些「之前 → 之后」的数字在公开数据上能否复现；以及在不是腾讯选的脚手架上，它和 GLM-5.2、Claude-opus-4-8 的真实差距。
 
-采样参数以访问当日模型卡为准：temperature 0.9、top_p 1.0。评测附录又把 reasoning effort 拉满，那是评测设定，不是在线默认。默认在 SGLang 文档里是 `no_think`。线上若直接开 `high`，延迟与费用会和模型卡 Hello 示例完全不是同一档。
+证据强度分三层：
 
-## 微调与 RL：能复现的是脚本，不能复现的是分数
+- **可核验的**：规格与配置（本文据此对上了权重文件的参数总数）、部署命令、微调与 RL 脚本。
+- **官方自报、可以对表的**：40 行大表，包括大量自测的对手分数。
+- **官方自报、无法对表的**：270 人盲测、幻觉与常识错误率、多轮问题率、MRCR，以及跨脚手架差异在 4% 以内。
 
-微调文档把 LLaMA-Factory 与 ms-swift 的学习率、LoRA rank、cutoff、ZeRO 级别写清楚了，还单独警告 ms-swift 必须打 `hy_v3_swift_patches.py`，否则结束符被切开。这说明正式 tokenizer 有坑，Preview 与正式版不能当同一个模板用。RL 文档基于 verl，曲线显示奖励上升、长度先升后分化、熵下降。没有奖励定义，就无法判断 0.6–0.8 的 Reward Mean 对应「任务成功率」还是「代理分数」。把这张图当成「RL 有效」可以；当成「所以盲测 2.67」不行，中间缺因果链。
+如果只带走一句：
 
-## 和 Hunyuan 家族怎么排
+> **一张模型卡里最可靠的是 `config.json`，最需要小心的是首页那张柱状图。**
 
-附录对照列出现 Hunyuan-2.0。模型卡没有写 Hy3 与 Hunyuan-2.0 的层数差异、是否同词表、是否同路由。Hy3 品牌从 Preview 起就用 Hy 而不是 Hunyuan 当仓名（`tencent/Hy3`），但 GitHub 组织仍是 `Tencent-Hunyuan`。对外沟通上这是混元系第三代旗舰语言 MoE；对读卡的人，只保证：不要把 HunyuanImage、HunyuanVideo、Hy3 当成同一套权重。图像模型另有解读稿，本底稿不跨家族借分数。
+## 资料与阅读边界
 
-## 许可与商用
+**原始依据**
 
-Apache 2.0 是正式版相对部分二手材料里 Preview「社区许可」的关键变化。卡片写 Apache-2.0。商用、再分发、改权重，按 Apache 条款，不按混元旧社区协议去脑补。Preview 当时的许可证以当时仓库文件为准，不要用正式版的 Apache 回溯覆盖 Preview 仓。
+- Hugging Face 模型卡 https://huggingface.co/tencent/Hy3 与 GitHub 仓库 https://github.com/Tencent-Hunyuan/Hy3，2026-09-29 访问。仓库最后一次改动在 2026-07-20（`config.json` 补了一个 dtype 字段），README 最后一次改动在 2026-07-17（加入 RL 一节），两张成绩图自 2026-07-06 首发起未变；GitHub README 与 Hugging Face 英文卡正文一致，只有相对链接写法不同。发布当天的首版英文卡措辞与现行版略有不同，例如曾写盲测收集了 312 份有效对比，现行版删去了这个数。
+- 页面没有标注发布日，也没有「技术报告待发布」之类的声明；截至访问日未找到官方技术报告。
 
-## 面试里可能被追问的三句话（判断，不是原文）
+**首发日证据**
 
-若问「Hy3 是不是 20B 小模型」：不是。总参数 295B，激活 21B，MTP 3.8B，80 层 top-8，192 专家。
+- [腾讯混元官方博客「Hy3 正式发布」](https://hunyuan.tencent.com/research/hy3) 署期 2026 年 7 月 6 日，写明当日以 Apache 2.0 在 GitHub、Hugging Face、ModelScope、AtomGit 开源并下调 API 价格；新华网等同日报道「7 月 6 日，腾讯混元 Hy3 正式发布」。
+- Hugging Face 权重仓的提交记录里，权重文件在 2026-07-04（UTC）上传，模型卡 `README.md` 与 `README_CN.md` 在 2026-07-06 才首次提交；GitHub 仓库的首个提交在 2026-07-05。按本库口径，权重仓会提前建好、发布当天才公开，7 月 4 日的文件上传只作预置旁证。因此 `release-date` 取 **2026-07-06**。
+- Hy3 Preview 的公开日 2026-04-23 取自新华网报道；它是另一个具名 checkpoint，不影响本文日期。
 
-若问「开源能不能打 Claude」：按附录，数学接近，SWE verified 与 BrowseComp 仍落后 Claude-Opus-4.6 自测列；办公与内部盲测是腾讯自己的场，外部无法复核。
+**跟进过的链接与取到的背景（均为外部补充）**
 
-若问「为什么没有论文」：Citation 只有 HF 上的 Technical Report 条目，无 arXiv 号。当前公开物就是模型卡、图、微调与 RL 脚本。按缺论文来准备，不要假装读过未挂出的技术报告。
-
-## 读完判断
-
-
-Hy3 的开源卡是一份**部署与规格说明书**，外加一张很密的内部评测海报。它证明三件事：第一，腾讯愿意把 295B MoE（21B 激活）放到 Apache 2.0 下，并同时给 BF16 与 FP8；第二，他们把 Agent 脚手架差异当成一等公民写进脚注，这比只报 SWE 高峰更诚实；第三，正式版相对 Preview 的公开增量，主要是后训练叙事加一张更满的表，而不是新架构论文。
-
-它证明不了的：训练是否「重建成功」、50 个产品反馈如何进数据、以及在公平脚手架下是否打得过 MiniMax-M2.5 / Claude-Opus-4.6。AIME 26 的 93.3 说明竞赛数学已经卷到天花板附近；BrowseComp 70.6 说明开放浏览不是这条模型的主战场。若面试或选型只问「开源 20B 激活能不能干活」，正确规格是 **21B 激活 + 3.8B MTP**，硬件下限按 BF16 约 590GB 权重来想，单机八卡起步是 H20-3e/H200 这一档，不是 80GB 卡。
-
-对写材料的人：不要把 Preview 新闻里的 54% TTFT、495 步、20 倍 token 写进正式 Hy3 的「原文数字」；不要把 vLLM 0.28 recipe 的 934 tok/s 写进模型卡；不要编 arXiv 号。
-
-## 附录其余行：读到的继续记，读不清的不编
-
-附录图极高，部分行在裁切后无法无歧义读出每一个对照列。下面只记本底稿已经读稳的格子；读不清的对照列宁可缺，不填「看起来像」。
-
-Reasoning 里 BeyondAIME、IMOAnswerBench、HLE-Text 给出的是 Hy3 相对 Preview 的抬升：BeyondAIME 78.8→82.0，IMOAnswerBench 76.8→79.5，HLE-Text 24.8→28.5（读图）。HLE-Text 仍在 30 分以下，说明「人类最后考试」文本子集对这条模型仍然很难；不要用 AIME 93.3 去暗示 HLE 也接近饱和。GPQA-D 87.8 对开源是第一档，对带星闭源列（92–93）仍有缺口。FrontierScience-Olympiad 41.0→51.0 的跳变比 AIME 更大，但该行脚注写明裁判是 gpt-oss-120b、judge prompt 来自 OpenAI 论文、且部分对照是自测。换裁判可能改排序。
-
-Coding 里 LiveCodeBench v6 正式版 86.2，略低于 MiniMax-M2.5 的 87.0 与 GLM-5 的 87.7，高于 DeepSeek-V3.2 的 83.3。OJBench 2026 80.4 相对 Preview 75.1 有约 5 分。FullStackBench2 的 Pass 与 Fast 两列同时涨，说明官方愿意报「能过」和「更快过」两套，而不是只留好看的一列。
-
-Agentic Computer Use 三行（OSWorld-Verified、Windows Arena、Android World）全部上涨，且 OSWorld 的 +8.2 是后训练里最显眼的桌面控制增量之一。这类任务极度依赖动作空间与环境封装，模型卡没有公开动作空间定义，分数只能当「官方同一套环境里 Preview vs Hy3」的相对量。
-
-Context Learning 段 CL-bench 23.8、life 17.0，绝对值低。低分不一定是模型差，也可能是基准本身难、或中文长程生活轨迹与英文主导的训练分布不匹配。原文没有讨论这一点，本底稿只标「绝对值低、相对 Preview 略升」。
-
-SkillsBench、ProdBench、WildClaw、Claw Eval、NL2Repo、DeepSWE、ProgramBench 等名字出现在 Notes 里，用于规定 harness，但主表对应行在多次裁切中未能稳定读出 Hy3 的阿拉伯数字。因此这些任务 **不在本底稿的分数表里**。只知道官方为它们选了 Claude Code 或 mini-swe-agent 或 OpenClaw。缺数字就写缺，不从主雷达图估。
-
-## 新闻层与模型卡层必须拆开
-
-腾讯 4 月 Preview 稿写 TTFT 降 54%、端到端短 47%、成功率 >99.99%、495 步 Agent。7 月第三方稿写 API 1/4/0.25 元价、Preview 后日均 token 增 20 倍。这些句子服务的是云 API 与元宝产品，不是 Apache 权重仓库。开源卡甚至没有定价表。若把「日均 20 倍」写进 Hy3 开源解读当能力证据，就是把销售漏斗当成学术结果。本底稿允许在「外部补充」里提及，不允许在 Highlights 复述里当成模型卡数字。
-
-同理，元宝「全面接入」是分发渠道。权重在 HF / ModelScope / GitCode / CNB，产品在元宝与腾讯云。面试问「Hy3 从哪下」应先答四个权重仓；问「用户从哪用」再答元宝与 API。两套答案不要焊成一句。
-
-## 和同代开源 MoE 的位置（判断）
-
-把附录开源列看成 2026 年中的一张快照：MiniMax-M2.5 在 SWE verified 与 BrowseComp 更强；GLM-5 在 LiveCodeBench 略强；Hy3 在 AIME 26、部分 Terminal 与 MCP-Atlas、以及相对 Preview 的全面抬升上更像样。Qwen3.5-397B-A17B 激活更小（名字里的 A17B），若干 Agent 行低于 Hy3。DeepSeek-V3.2 在这张表上不是每一行的高峰。这样读的价值不是排座次，而是避免「开源第一」这种模型卡自己都没写的话。模型卡写的是 rival 2–5x 旗舰、超过列出的开源（仅限盲测那句）。自动榜并没有让 Hy3 包办所有开源第一。
-
-闭源列大量带星，表示腾讯自测。自测可以控制脚手架公平，也可以控制提示词偏向。读者应同时保留两种怀疑：别人公开数可能脚手架更弱；腾讯自测可能提示词更熟。Highlights 已经承认第一种；第二种要读者自己留。
-
-## 写进材料时的禁用句
-
-不要写「20B 激活」。不要写「arXiv:xxxx.xxxxx」。不要写「预训练用了 N 万亿 token」。不要写「MTP 加速百分之几」。不要把 Preview 的 54% TTFT 接到正式版。不要把 vLLM 934 tok/s 写成模型卡。不要把 2.67/4 说成「接近满分」（满分 4 的 2.67 不是接近满分）。不要把 256K 说成「长上下文 SOTA」——MRCR 128k 仍在 48.6。不要把 Apache 2.0 写到 Preview 头上除非核对过 Preview 仓。
-
-## 本文方法学备注
-
-汉字计数按 Unicode 汉字范围统计。Benchmark 数字来自对 `benchmark.png` 与 `benchmark-appendix.png` 的读图；主图缩略后柱顶数字不稳定，分数以附录表为准。RL 图只报告趋势。跟进链接在 2026-09-15 抓取，引擎文档可能继续改 flag。
-
-## 因果链收束：后训练叙事能走到哪一步
-
-把卡片允许的因果链写完整，缺的环节停住。
-
-链一：Preview 公开 → 50+ 产品反馈 → 更高质量数据后训练 → 正式 Hy3 在附录几乎每一行高于 Preview。这一条卡片自己走完了，附录数字也同方向。缺的是反馈如何变成数据、多大规模、RL 与 SFT 各占多少。
-
-链二：MTP 模块 → 推测解码 → 降延迟。卡片只走了「有模块、有 vLLM 开关」。缺接受率，链在工程文档的 bench 才继续，且那是外部。
-
-链三：混合思考开关 → 评测拉满 effort → 分数可比。卡片与附录脚注走完了评测端。缺的是线上默认档位的官方 SLA。SGLang 文档说默认 `no_think`，那是外部。
-
-链四：脚手架方差大 → 同时报官方与社区脚手架。卡片在 Highlights 提出问题，附录 Notes 给出部分答案（SWE-agent、Claude Code、CodeX 例外）。缺的是同一模型换脚手架的对照表，所以「10+ 个百分点」仍然是作者陈述，不是表里的两列。
-
-链五：开源 Apache → 第三方引擎接入 → 可商用部署。卡片给了权重与 parser 名。引擎版本分叉证明接入是活的，也证明卡上命令会朽。硬件下限由权重体积决定，这条链不依赖新闻。
-
-读卡的人只要守住这五条链的「走到哪、停在哪」，就不会把 Hy3 写成一篇假论文，也不会把它写成只能聊两句的发布会稿。
-
-## 配置文件能确认、模型卡没写成节的细节
-
-`config.json` 与 HF 规格条还能确认几件正文没写成节的事：架构标识 `hy_v3`；RoPE 类位置编码把窗口拉到 262144；GQA 把 KV 头压到 8，这是 256K 能在八卡上讨论的前提之一，否则 KV 会先爆。共享专家为 1、routed 192、每次 8，路由稀疏度是 8/192，约 4.2% 的专家被点亮（本底稿自算）。这不等于计算量只有稠密模型的 4.2%，因为注意力与共享专家不走这个比例。21B 激活已经把非专家部分算进去了，不要再用 8/192 去乘 295B 得到「激活约 12B」那种错账。
-
-词表 120832（`config.json` 的 `vocab_size`）比常见 128k 词表略小。正式版特殊符号带后缀，是词表层面的不兼容，不是聊天模板换皮。Preview 权重不能假定能直接套正式版 parser。FP8 仓是独立 repo，不是同一仓的分支标签；拉错名字会拉到 BF16 分片。量化仓若来自 RedHatAI 等社区，精度与官方 FP8 不是同一承诺，掉点要另测。
-
-对「80 层 + 1 MTP」不要读成 81 层同等宽的主干。MTP 是挂在主干上的草稿头，训练目标与主干的 next-token 损失不是模型卡能证实的同一项。部署时关掉 MTP 仍然是 80 层 21B 激活的主模型；打开 MTP 才吃那 3.8B 与推测带宽。卡上的 295B 含不含 MTP，官方用三件套并列表述，已经避免了「总参数含糊」。读者只要每次都把三件套一起说，就不会在层数上吵错架。若还要和「索引一行 20B」对账：那是口误级四舍五入，材料里应删掉，改成与模型卡一致的 21B。同样不要把 3.8B MTP 说成「大约 4B」后就再参与加减，三件套是官方给定的三个数，不是让读者重算的作业。本底稿所有激活量讨论都以 21B 为准。
-
-访问当日仍无挂出的 arXiv PDF，因此训练细节的缺口不是「没读到」，而是「公开物里没有」。后续若官方补技术报告，应另开修订，而不是用博客预填。附录里未读稳的行（SkillsBench 等）尤其不能进索引。
-
-## 引用块里用过的原文章节名
-
-Model Introduction；Highlights（复杂推理 / 智能体 / 指令与办公 / 长上下文 / 工具与混合思考 / 推理性能）；Benchmark 主图；Benchmark Appendix 及 Notes；News；Model Links；Quick Start with Transformers；vLLM；SGLang；Interactive Demo；Finetuning；Quantization；RL；Citation。子页：`finetune/README_CN.md`、`rl/README_CN.md`。
+- 腾讯混元官方博客发布文：WorkBuddy 任务解决率与耗时、相对 GLM-5.2 的 Token 节省、API 价格、研发时间线。
+- [vLLM recipe](https://recipes.vllm.ai/tencent/Hy3)：引擎版本、硬件下限、AMD 环境变量、FP8 吞吐测量。
+- SGLang cookbook（本地 `projects/推理服务/sglang/docs/cookbook/autoregressive/Tencent/Hy3.mdx`，与模型卡所链线上版同源）：BF16 权重约 590GB、tokenizer 特殊符号后缀、`reasoning_effort` 的用法。
+- [Hy3-preview 模型卡](https://huggingface.co/tencent/Hy3-preview)：许可证为 Tencent Hy Community License；其 `config.json` 与正式版逐项相同。
+- [verl](https://github.com/volcengine/verl) 的 Hy3 GRPO 脚本、DAPO-Math-17k 与 AIME-2024 数据集：RL 页面示例运行的背景。
+- 对手模型的参数量取自 Nemotron-3-Ultra 一篇所依据报告的表 10。
+- 大表里的多数基准只在图上出现名字，模型卡没有逐个说明它们测什么；本文只转写分数与脚注，不替原件补定义。
+
+**本文做的推算与读图**
+
+- 参数拆分、KV 缓存大小、显存余量都是按 `config.json` 的算术；两张成绩表与主图的三处对照是本文读图所得；RL 曲线的数值是读图近似。

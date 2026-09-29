@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" width="1120" height="430" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="430" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Nemotron 3 Ultra 的 108 层：注意力只在中段出现，一共 12 层</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">绿 = Mamba-2；红 = 注意力；黄 = LatentMoE。虚线框是重复单元，右下角是重复次数；下方数字是本文按图 2 数出的层数。</text>
+<rect x="77" y="98" width="100" height="130" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="89" y="122" width="36" height="70" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="107.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">M2</text>
+<rect x="129" y="122" width="36" height="70" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="147.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">MoE</text>
+<text x="167" y="220" font-size="13" fill="#111827" text-anchor="end" font-weight="700">×3</text>
+<text x="127" y="256" font-size="11" fill="#6b7280" text-anchor="middle">2 × 3 = 6</text>
+<text x="127" y="90" font-size="11" fill="#9ca3af" text-anchor="middle">开头</text>
+<line x1="181" y1="163" x2="203" y2="163" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="207" y="98" width="706" height="130" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="560" y="90" font-size="11" fill="#9ca3af" text-anchor="middle">中段重复单元</text>
+<rect x="219" y="122" width="36" height="70" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="237.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">M2</text>
+<rect x="259" y="122" width="36" height="70" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="277.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">Attn</text>
+<rect x="299" y="122" width="36" height="70" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="317.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">MoE</text>
+<text x="277.0" y="256" font-size="11" fill="#6b7280" text-anchor="middle">3</text>
+<rect x="349" y="112" width="88" height="92" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="355" y="122" width="36" height="70" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="373.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">M2</text>
+<rect x="395" y="122" width="36" height="70" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="413.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">MoE</text>
+<text x="431" y="200" font-size="11" fill="#6b7280" text-anchor="end">×2</text>
+<text x="393" y="256" font-size="11" fill="#6b7280" text-anchor="middle">2 × 2 = 4</text>
+<rect x="451" y="122" width="36" height="70" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="469.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">M2</text>
+<rect x="491" y="122" width="36" height="70" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="509.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">Attn</text>
+<rect x="531" y="122" width="36" height="70" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="549.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">MoE</text>
+<text x="509.0" y="256" font-size="11" fill="#6b7280" text-anchor="middle">3</text>
+<rect x="581" y="112" width="88" height="92" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="587" y="122" width="36" height="70" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="605.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">M2</text>
+<rect x="627" y="122" width="36" height="70" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="645.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">MoE</text>
+<text x="663" y="200" font-size="11" fill="#6b7280" text-anchor="end">×3</text>
+<text x="625" y="256" font-size="11" fill="#6b7280" text-anchor="middle">2 × 3 = 6</text>
+<rect x="683" y="122" width="36" height="70" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="701.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">M2</text>
+<rect x="723" y="122" width="36" height="70" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="741.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">Attn</text>
+<rect x="763" y="122" width="36" height="70" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="781.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">MoE</text>
+<text x="741.0" y="256" font-size="11" fill="#6b7280" text-anchor="middle">3</text>
+<rect x="813" y="112" width="88" height="92" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="819" y="122" width="36" height="70" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="837.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">M2</text>
+<rect x="859" y="122" width="36" height="70" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="877.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">MoE</text>
+<text x="895" y="200" font-size="11" fill="#6b7280" text-anchor="end">×3</text>
+<text x="857" y="256" font-size="11" fill="#6b7280" text-anchor="middle">2 × 3 = 6</text>
+<text x="903" y="220" font-size="13" fill="#111827" text-anchor="end" font-weight="700">×4</text>
+<text x="560" y="282" font-size="11" fill="#6b7280" text-anchor="middle">每个单元 3 + 4 + 3 + 6 + 3 + 6 = 25 层，重复 4 次 = 100 层（含注意力 3 × 4 = 12 层）</text>
+<line x1="917" y1="163" x2="939" y2="163" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="943" y="98" width="100" height="130" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="955" y="122" width="36" height="70" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="973.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">M2</text>
+<rect x="995" y="122" width="36" height="70" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1013.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">MoE</text>
+<text x="1033" y="220" font-size="13" fill="#111827" text-anchor="end" font-weight="700">×1</text>
+<text x="993" y="256" font-size="11" fill="#6b7280" text-anchor="middle">2</text>
+<text x="993" y="90" font-size="11" fill="#9ca3af" text-anchor="middle">结尾</text>
+<rect x="160" y="310" width="800" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="560" y="336" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">6 + 100 + 2 = 108 层，与表 1 的 Total Layers 一致</text>
+<text x="560" y="358" font-size="11" fill="#6b7280" text-anchor="middle">按类型：Mamba-2 48 层，LatentMoE 48 层，注意力 12 层（64 个查询头共用 2 个 KV 头）</text>
+<text x="30" y="408" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 3 图 2 与 p. 4 表 1 重画；层数加总与分类计数是本文所做，报告只给了图与总层数。</text>
+</svg>
