@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 7：同样四条请求，四种调度谁在等</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 只有 Decode 的一步；黄 = 含整段 Prefill 的一步；绿 = Decode 加一个 Prefill 块；红括号 = 有人被迫停住。</text>
+<text x="30.0" y="74.0" font-size="13" fill="#6b7280" text-anchor="start">开始时 A、B 在解码，走完一步 C、D 到达。下标 d 是一步 Decode，p 是整段 Prefill，p1、p2 是切出的两块。</text>
+<line x1="225.0" y1="100.0" x2="1090.0" y2="100.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="1090.0" y="92.0" font-size="11" fill="#9ca3af" text-anchor="end">时间</text>
+<line x1="337.0" y1="106.0" x2="337.0" y2="560.0" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="4 4"/>
+<text x="343.0" y="118.0" font-size="11" fill="#9ca3af" text-anchor="start">C、D 到达</text>
+<text x="30.0" y="164.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">vLLM</text>
+<text x="30.0" y="182.0" font-size="11" fill="#6b7280" text-anchor="start">Prefill 优先，整批只放一种阶段</text>
+<rect x="225.0" y="172.0" width="112.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="281.0" y="193.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan></text>
+<rect x="337.0" y="172.0" width="218.3" height="34.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="446.1" y="193.0" font-size="12" fill="#111827" text-anchor="middle">C<tspan dy="3" font-size="9">p</tspan></text>
+<rect x="555.3" y="172.0" width="258.7" height="34.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="684.6" y="193.0" font-size="12" fill="#111827" text-anchor="middle">D<tspan dy="3" font-size="9">p</tspan></text>
+<rect x="814.0" y="172.0" width="125.7" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="876.9" y="193.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, C</tspan><tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, D</tspan><tspan dy="3" font-size="9">d</tspan></text>
+<path d="M339.0,169.0 L339.0,164.0 L812.0,164.0 L812.0,169.0" fill="none" stroke="#d9877a" stroke-width="1.6"/>
+<text x="575.5" y="158.0" font-size="11" fill="#b4574a" text-anchor="middle">A、B 的字停住：要等 C、D 两段 Prefill 跑完</text>
+<text x="30.0" y="264.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Orca</text>
+<text x="30.0" y="282.0" font-size="11" fill="#6b7280" text-anchor="start">Prefill 优先，可混批但 Prefill 不切</text>
+<rect x="225.0" y="272.0" width="112.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="281.0" y="293.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan></text>
+<rect x="337.0" y="272.0" width="490.7" height="34.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="582.4" y="293.0" font-size="12" fill="#111827" text-anchor="middle">C<tspan dy="3" font-size="9">p</tspan><tspan dy="-3">, D</tspan><tspan dy="3" font-size="9">p</tspan><tspan dy="-3">, A</tspan><tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan></text>
+<rect x="827.7" y="272.0" width="122.9" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="889.2" y="293.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, C</tspan><tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, D</tspan><tspan dy="3" font-size="9">d</tspan></text>
+<path d="M339.0,269.0 L339.0,264.0 L825.7,264.0 L825.7,269.0" fill="none" stroke="#d9877a" stroke-width="1.6"/>
+<text x="582.4" y="258.0" font-size="11" fill="#b4574a" text-anchor="middle">A、B 仍停住：这一步被整段 Prefill 撑长</text>
+<text x="950.6" y="322.0" font-size="11" fill="#9ca3af" text-anchor="middle">A 退出</text>
+<text x="30.0" y="364.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">FasterTransformer</text>
+<text x="30.0" y="382.0" font-size="11" fill="#6b7280" text-anchor="start">Decode 优先，请求级批处理</text>
+<rect x="225.0" y="372.0" width="112.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="281.0" y="393.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan></text>
+<rect x="337.0" y="372.0" width="112.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="393.0" y="393.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan></text>
+<rect x="449.0" y="372.0" width="112.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="505.0" y="393.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan></text>
+<rect x="561.1" y="372.0" width="112.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="617.1" y="393.0" font-size="12" fill="#111827" text-anchor="middle">B<tspan dy="3" font-size="9">d</tspan></text>
+<rect x="673.1" y="372.0" width="112.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="729.1" y="393.0" font-size="12" fill="#111827" text-anchor="middle">B<tspan dy="3" font-size="9">d</tspan></text>
+<rect x="785.1" y="372.0" width="292.7" height="34.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="931.4" y="393.0" font-size="12" fill="#111827" text-anchor="middle">C<tspan dy="3" font-size="9">p</tspan><tspan dy="-3">, D</tspan><tspan dy="3" font-size="9">p</tspan></text>
+<path d="M339.0,369.0 L339.0,364.0 L783.1,364.0 L783.1,369.0" fill="none" stroke="#d9877a" stroke-width="1.6"/>
+<text x="561.1" y="358.0" font-size="11" fill="#b4574a" text-anchor="middle">C、D 的 Prefill 停住：等 A、B 全部结束</text>
+<text x="561.1" y="422.0" font-size="11" fill="#9ca3af" text-anchor="middle">A 退出</text>
+<text x="785.1" y="422.0" font-size="11" fill="#9ca3af" text-anchor="middle">B 退出</text>
+<text x="30.0" y="464.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Sarathi-Serve</text>
+<text x="30.0" y="482.0" font-size="11" fill="#6b7280" text-anchor="start">无停顿组批，Prefill 切块</text>
+<rect x="225.0" y="472.0" width="112.0" height="34.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="281.0" y="493.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan></text>
+<rect x="337.0" y="472.0" width="120.0" height="34.0" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="397.0" y="493.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, C</tspan><tspan dy="3" font-size="9">p1</tspan></text>
+<rect x="457.0" y="472.0" width="120.7" height="34.0" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="517.3" y="493.0" font-size="12" fill="#111827" text-anchor="middle">A<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, B</tspan><tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, C</tspan><tspan dy="3" font-size="9">p2</tspan></text>
+<rect x="577.7" y="472.0" width="122.1" height="34.0" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="638.7" y="493.0" font-size="12" fill="#111827" text-anchor="middle">B<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, C</tspan><tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, D</tspan><tspan dy="3" font-size="9">p1</tspan></text>
+<rect x="699.8" y="472.0" width="120.7" height="34.0" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="760.2" y="493.0" font-size="12" fill="#111827" text-anchor="middle">B<tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, C</tspan><tspan dy="3" font-size="9">d</tspan><tspan dy="-3">, D</tspan><tspan dy="3" font-size="9">p2</tspan></text>
+<text x="577.7" y="522.0" font-size="11" fill="#9ca3af" text-anchor="middle">A 退出</text>
+<text x="820.5" y="522.0" font-size="11" fill="#9ca3af" text-anchor="middle">B 退出</text>
+<text x="30.0" y="575.0" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 6 Figure 7 重画，是机制示意，不是实测时间；方块长度按原图比例。原图文字把两块写成 p0、p1，图上标的是 p1、p2。</text>
+</svg>

@@ -100,7 +100,7 @@ flowchart TD
 
 三条容易被追问的补充:
 
-- **容量上限的账**。给每个专家设一个上限 $C = \mathrm{CF} \cdot TK/N$:$T$ 是这一批的 token 数,$TK/N$ 就是「完全均匀时每个专家该收到多少」,容量因子 $\mathrm{CF}$ 是在这个理想值上留的余量(ST-MoE 的训练取 1.25、评测取 2.0)。CF 小了溢出的 token 被丢掉、这一层只走残差旁路,质量掉;CF 大了缓冲全是 padding,算力和显存白花。**关键是它治标不治本**:容量只给热点封了个顶,router 的偏好一点没变。均衡做好之后这套基本退役,DeepSeek-V3 报告明说训练全程不丢任何 token。
+- **容量上限的账**。给每个专家设一个上限 $C = \mathrm{CF} \cdot TK/N$:$T$ 是这一批的 token 数,$TK/N$ 就是「完全均匀时每个专家该收到多少」,容量因子 $\mathrm{CF}$ 是在这个理想值上留的余量(ST-MoE 的训练取 1.25、评测取 2.0)。CF 小了溢出的 token 被丢掉、这一层只走残差旁路,质量掉;CF 大了缓冲全是 padding,算力和显存白花。**关键是它治标不治本**:容量只给热点封了个顶,router 的偏好一点没变。均衡做好之后这套基本退役,DeepSeek-V3 报告明说训练全程不丢任何 token。丢 token 的代价也不是"一点点":Slicing and Dicing 论文在锁住激活参数的小规模对照里,中低稀疏比上允许丢 token 的默认设置比块稀疏保证不丢的 dropless 交叉熵高约 0.2–0.5(从图上读),110M 激活时甚至全部差于稠密;只有专家多到每位都很空、很少溢出时,差距才自己消失。
 - **Sinkhorn 不等于均衡**。以本地 2026-04 的 Megatron-LM 快照为准,它的 Sinkhorn 路由分支是在软归一化之后**仍按 token 取 Top-K**,而且代码里直接断言这条路径不能同时开均衡损失。所以软分配再匀,硬路由后的实际计数还是要单独监控。
 - **哈希路由为什么只在最前面几层用**。DeepSeek-V4 把 V3 的 Dense 前缀换成了哈希 MoE:最前面 3 层用一张冻结的 token-id → expert-id 查表决定**选谁**,学出来的 gate 仍然负责给选中的专家**打分加权**。理由和 Dense 前缀是同一个——底层 token 表示还没分化,router 缺少可靠的分科依据,这时候用一张固定表既天然均匀又不会训崩;等表示分化开了,再交还给学出来的 router。
 
@@ -144,7 +144,7 @@ $c_i$ 是这一步专家 $i$ 实际收到的 token 数、$\bar{c}$ 是平均值:
 
 ### Kimi K3 的 Quantile Balancing:不再步进,直接解到位
 
-$\gamma$ 是这套方案里最后一个手调超参:小了适应慢,大了负载来回振荡。Kimi K3 在 896 选 16 的稀疏度下把它也去掉了——既然目标是「让专家 $i$ 恰好收到目标负载」,那就**直接把 $b_i$ 解到那个点**,而那个点正好是 router 打分间隔(margin)分布的一个分位数。做法是每步多取一名(Top-$(K{+}1)$),用第 $K{+}1$ 名的分数当每个专家必须跨过的门槛,再从这批 margin 里读出 $1 - K/N$ 分位点(专家总数 $N$ 里每个 token 挑 $K$ 个,均匀时每个专家本来就该跨过 $K/N$ 比例的 token)。
+$\gamma$ 是这套方案里最后一个手调超参:小了适应慢,大了负载来回振荡。而且它的合适取值跟专家数有关:Slicing and Dicing 照抄 DeepSeek-V3 的 $\gamma = 0.001$,专家总数不超过 128 时各种均衡设置难分高下,专家更多时偏置步进反而伤性能,作者的解释是这个步长对每位专家的路由分来说太粗,专家多时必须重调。Kimi K3 在 896 选 16 的稀疏度下把它也去掉了——既然目标是「让专家 $i$ 恰好收到目标负载」,那就**直接把 $b_i$ 解到那个点**,而那个点正好是 router 打分间隔(margin)分布的一个分位数。做法是每步多取一名(Top-$(K{+}1)$),用第 $K{+}1$ 名的分数当每个专家必须跨过的门槛,再从这批 margin 里读出 $1 - K/N$ 分位点(专家总数 $N$ 里每个 token 挑 $K$ 个,均匀时每个专家本来就该跨过 $K/N$ 比例的 token)。
 
 全局精确分位数算不起:margin 数以百万计,还散在各 rank 与梯度累积步上。K3 的工程解法是每个 rank 各建一个直方图,**一次 all-reduce 把 bin 计数加起来**,从合并后的计数里反读分位点——计数是可加的,所以不管 token 怎么切分,估出来的都是全局批次的分位数,精度只受 bin 宽度限制。推理时偏置冻结。
 
@@ -220,6 +220,7 @@ Switch 的论点是「同样算力预算下,把 K 压到 1、把专家数翻倍�
 | 不加均衡损失,还能怎么调负载? | 六(偏置只进 TopK) |
 | aux-loss-free 的偏置为什么不进门控权重? | 六 |
 | 容量因子、探索噪声、负载偏置分别解决什么问题? | 四(三者不能混为一谈) |
+| 补充题:容量因子下丢 token 的代价有多大?偏置均衡的步长能不能照抄? | 四(容量上限的账)+ 六(步长随专家数重调) |
 | Expert Choice 和 Sinkhorn 各自保证了什么、没保证什么? | 四 |
 | Top-1 和 Switch 的 Top-K 各有什么优势?K 开大能改善均衡吗? | 七(不能) |
 | 负载已经严重倾斜了,训练中怎么动态干预? | 七(四步排查顺序) |
@@ -243,6 +244,7 @@ Switch 的论点是「同样算力预算下,把 K 压到 1、把专家数翻倍�
 - DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models(细粒度切分 + 共享专家)— [arXiv:2401.06066](https://arxiv.org/abs/2401.06066)
 - Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts(偏置均衡原文)— [arXiv:2408.15664](https://arxiv.org/abs/2408.15664)
 - ReMoE: Fully Differentiable Mixture-of-Experts with ReLU Routing(ReLU 路由与自适应稀疏度)— [arXiv:2412.14711](https://arxiv.org/abs/2412.14711)
+- Slicing and Dicing: Configuring Optimal Mixtures of Experts(dropless 与丢 token 的对照、偏置步长随专家数失效)— [arXiv:2605.11689](https://arxiv.org/abs/2605.11689)
 - DeepSeek-V3 Technical Report(sigmoid 打分、$\gamma$ 与序列级均衡损失的具体系数、全程不丢 token)— [arXiv:2412.19437](https://arxiv.org/abs/2412.19437)
 - Nemotron 3 Super(LatentMoE:压维度,把省下的额度换成更多专家与更大 K)— [arXiv:2604.12374](https://arxiv.org/abs/2604.12374)
 - DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence(Sqrt(Softplus) 打分、前 3 层哈希 bootstrap)— [arXiv:2606.19348](https://arxiv.org/abs/2606.19348)

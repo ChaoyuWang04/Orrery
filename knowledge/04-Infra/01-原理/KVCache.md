@@ -167,6 +167,16 @@ fp16 → fp8/int8 让 $b$ 从 2 变 1,每 token 字节直接减半。好处**不
 
 同一个 system prompt、同一套 few-shot 模板、多轮对话里不变的历史——这些前缀在不同请求里**逐 token 完全相同**,K/V 自然也完全相同,没必要各算各的。把这些块留下来给后来的请求命中,省掉的是整段 prefill 的计算。自动发现公共前缀的数据结构见「RadixAttention」篇;把缓存下沉到 CPU 内存或远端存储做集群级共享,见开源解读模块的 LMCache 系列。
 
+**怎么判断"前缀相同"**:把 token 按块切开,每块算一个哈希,而且**每块的哈希把前一块的哈希也算进去**。这样一个块的哈希等于"它自己加上它前面的全部内容",相同哈希就意味着整段前缀相同;比对只能从第一块起连续命中,遇到第一个不同的块就停,后面即使内容碰巧一样也不算。Mooncake 的集群级缓存池就按这种哈希链做全局查找,块大小 512 个 token。
+
+**真实流量能复用多少**,Mooncake 开源的一小时 Kimi trace 给过一组实测:
+
+| 块容量(一个全局池) | 无限 | 100,000 | 50,000 | 10,000 | 1,000 |
+|---|---:|---:|---:|---:|---:|
+| LRU 命中率 | 0.51 | 0.51 | 0.50 | 0.40 | 0.30 |
+
+三个读法:命中率**有天花板**,容量无限也只有约一半;这份数据上 LRU 略好于 LFU,论文推测是请求有时间局部性;而且**超过一半的块从来没被用过,少数块被访问上万次**——热块必须复制到多台机器,否则读它的传输会堵成热点。复用率是场景的函数:同一篇论文说他们的"和论文对话"服务复用能到约 90%,他们的线上主力负载即使存储与 TTFT 都不设限,理论上最多也只能复用约 50%。
+
 ## 七、面试考点串联
 
 | 高频问法 | 本文哪一节 |
@@ -183,6 +193,7 @@ fp16 → fp8/int8 让 $b$ 从 2 变 1,每 token 字节直接减半。好处**不
 | block-size 大了/小了分别有什么影响?一般用多少? | 五(五维对照表;默认 16) |
 | 对 KV cache 做量化有什么好处? | 六(容量换吞吐的三层连锁) |
 | 多个请求共享同一个 system prompt 怎么省? | 六(前缀缓存) |
+| 补充题:前缀缓存怎么判断两个请求的前缀相同?真实流量上能命中多少? | 六(哈希链;实测命中率天花板约一半、过半块从未复用) |
 | 请系统性地列举并解释当前大语言模型推理过程中主流的KV（Key-Value）缓存优化方法，详细说明其核心原理、适用场景、性能影响及彼此之间的对比差异，结合实际部署需求分析不同方案的权衡与选择依据。 | 二、四、五、六 |
 
 延伸阅读顺序:本篇(是什么、多大、为什么慢)→ PagedAttention(怎么分页管)→ RadixAttention(怎么跨请求复用)→ KVCache量化(怎么压小)→ 显存管理与OOM(整体显存账)。
@@ -194,4 +205,5 @@ fp16 → fp8/int8 让 $b$ 从 2 变 1,每 token 字节直接减半。好处**不
 - Fast Transformer Decoding: One Write-Head is All You Need(MQA 原始论文,最早点明 KV 读取是 decode 的带宽瓶颈)— [arXiv:1911.02150](https://arxiv.org/abs/1911.02150)
 - Efficiently Scaling Transformer Inference(推理访存/延迟的解析模型,含 MQA 对长上下文的作用)— [arXiv:2211.05102](https://arxiv.org/abs/2211.05102)
 - SGLang: Efficient Execution of Structured Language Model Programs(RadixAttention 前缀复用)— [arXiv:2312.07104](https://arxiv.org/abs/2312.07104)
+- Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving(哈希链全局缓存池与真实 trace 命中率)— [arXiv:2407.00079](https://arxiv.org/abs/2407.00079)
 - vLLM 官方文档(block_size、前缀缓存、KV 卸载等配置口径)— https://docs.vllm.ai/

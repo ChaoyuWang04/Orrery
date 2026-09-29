@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<rect x="150.0" y="122.0" width="250.0" height="30.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="400.0" y="162.0" width="90.0" height="30.0" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="490.0" y="162.0" width="90.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<line x1="400.0" y1="204.0" x2="490.0" y2="204.0" stroke="#d9877a" stroke-width="2"/>
+<rect x="150.0" y="282.0" width="29.2" height="30.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="179.2" y="322.0" width="21.9" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="181.2" y="282.0" width="29.2" height="30.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="210.5" y="322.0" width="21.9" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="212.5" y="282.0" width="29.2" height="30.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="241.8" y="322.0" width="21.9" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="243.8" y="282.0" width="29.2" height="30.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="273.0" y="322.0" width="21.9" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="275.0" y="282.0" width="29.2" height="30.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="304.2" y="322.0" width="21.9" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="306.2" y="282.0" width="29.2" height="30.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="335.5" y="322.0" width="21.9" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="337.5" y="282.0" width="29.2" height="30.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="366.8" y="322.0" width="21.9" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="368.8" y="282.0" width="29.2" height="30.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="398.0" y="322.0" width="21.9" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="425.9" y="350.0" width="90.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<line x1="400.0" y1="392.0" x2="423.9" y2="392.0" stroke="#d9877a" stroke-width="2"/>
+<line x1="660.0" y1="320.0" x2="1080.0" y2="320.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="660.0" y1="260.0" x2="1080.0" y2="260.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="660.0" y1="200.0" x2="1080.0" y2="200.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="660.0" y1="140.0" x2="1080.0" y2="140.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="660.0" y1="102.0" x2="660.0" y2="380.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="660.0" y1="380.0" x2="1080.0" y2="380.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="765.0" y1="110.0" x2="765.0" y2="380.0" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="3 3"/>
+<polyline points="686.2,363.9 712.5,347.7 738.8,331.6 765.0,315.5 791.2,299.4 817.5,283.2 843.8,267.1 870.0,251.0 896.2,234.8 922.5,218.7 948.8,202.6 975.0,186.5 1001.2,170.3 1027.5,154.2 1053.8,138.1 1080.0,122.0" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<polyline points="686.2,372.1 712.5,364.2 738.8,356.3 765.0,348.4 791.2,340.4 817.5,332.5 843.8,324.6 870.0,316.7 896.2,308.8 922.5,300.9 948.8,293.0 975.0,285.1 1001.2,277.2 1027.5,269.3 1053.8,261.3 1080.0,253.4" fill="none" stroke="#6b7280" stroke-width="2.2"/>
+<polyline points="686.2,333.2 1080.0,330.8" fill="none" stroke="#d9877a" stroke-width="2.2" stroke-dasharray="6 4"/>
+<polyline points="686.2,351.2 1080.0,348.8" fill="none" stroke="#6b7280" stroke-width="2.2" stroke-dasharray="6 4"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 11 + 14：KV 逐层搬走，露在外面的只剩一小截</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">左：紫 = Prompt 计算，绿 = KV 搬运，黄 = 吐字（Token 迭代）；横向是时间。右：搬运暴露在关键路径上的时间。</text>
+<text x="40.0" y="108.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) 串行：算完再整份寄</text>
+<text x="275.0" y="142.0" font-size="11" fill="#111827" text-anchor="middle">Prompt 计算（第 1…L 层）</text>
+<text x="445.0" y="182.0" font-size="11" fill="#111827" text-anchor="middle">整份 KV</text>
+<text x="535.0" y="182.0" font-size="11" fill="#111827" text-anchor="middle">Token 迭代 1</text>
+<text x="138.0" y="141.0" font-size="12" fill="#111827" text-anchor="end">Prompt 机</text>
+<text x="138.0" y="181.0" font-size="12" fill="#111827" text-anchor="end">Token 机</text>
+<text x="445.0" y="222.0" font-size="11" fill="#9ca3af" text-anchor="middle">暴露：随 Prompt 长度线性涨</text>
+<text x="40.0" y="268.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 逐层：每层算完就异步 put 出去</text>
+<text x="470.9" y="370.0" font-size="11" fill="#111827" text-anchor="middle">Token 迭代 1</text>
+<text x="412.0" y="302.0" font-size="11" fill="#6b7280" text-anchor="start">每格 = 一层计算</text>
+<text x="138.0" y="301.0" font-size="12" fill="#111827" text-anchor="end">Prompt 机</text>
+<text x="138.0" y="336.0" font-size="12" fill="#111827" text-anchor="end">网络</text>
+<text x="138.0" y="369.0" font-size="12" fill="#111827" text-anchor="end">Token 机</text>
+<text x="400.0" y="410.0" font-size="11" fill="#9ca3af" text-anchor="middle">暴露：只剩最后一层之后的一小截</text>
+<text x="620.0" y="96.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Figure 14：暴露的搬运时间（ms）</text>
+<text x="652.0" y="384.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="652.0" y="324.0" font-size="11" fill="#9ca3af" text-anchor="end">10</text>
+<text x="652.0" y="264.0" font-size="11" fill="#9ca3af" text-anchor="end">20</text>
+<text x="652.0" y="204.0" font-size="11" fill="#9ca3af" text-anchor="end">30</text>
+<text x="652.0" y="144.0" font-size="11" fill="#9ca3af" text-anchor="end">40</text>
+<text x="660.0" y="396.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<text x="765.0" y="396.0" font-size="11" fill="#111827" text-anchor="middle">512</text>
+<text x="870.0" y="396.0" font-size="11" fill="#111827" text-anchor="middle">1024</text>
+<text x="975.0" y="396.0" font-size="11" fill="#111827" text-anchor="middle">1536</text>
+<text x="1080.0" y="396.0" font-size="11" fill="#111827" text-anchor="middle">2048</text>
+<text x="870.0" y="414.0" font-size="12" fill="#6b7280" text-anchor="middle">batch 内 Prompt Token 数</text>
+<text x="1076.0" y="114.0" font-size="11" fill="#d9877a" text-anchor="end" font-weight="700">A100 串行 约 43</text>
+<text x="1076.0" y="244.0" font-size="11" fill="#6b7280" text-anchor="end" font-weight="700">H100 串行 约 21</text>
+<text x="947.1" y="324.4" font-size="11" fill="#d9877a" text-anchor="middle">A100 逐层 约 8</text>
+<text x="947.1" y="366.0" font-size="11" fill="#6b7280" text-anchor="middle">H100 逐层 约 5</text>
+<text x="769.0" y="122.0" font-size="11" fill="#9ca3af" text-anchor="start">H100 上短于 512 走串行</text>
+<text x="30.0" y="470.0" font-size="12" fill="#6b7280" text-anchor="start">左按 PDF p.6 Figure 11 重画，是机制示意，块长不是实测时间。右读自 PDF p.9 Figure 14，线为读图近似：红 = A100，灰 = H100，实线串行，虚线逐层。</text>
+<text x="30.0" y="492.0" font-size="12" fill="#6b7280" text-anchor="start">逐层搬运要在每层做细粒度同步，短 Prompt 上可能拖慢 TTFT，而短 Prompt 的 KV 本来就小，所以 Splitwise 按 batch 的 Token 数二选一（PDF p.7）。</text>
+<text x="30.0" y="514.0" font-size="12" fill="#6b7280" text-anchor="start">相对 Prompt 计算本身，两种搬运的开销都小于 7%；H100 这对机器的 InfiniBand 带宽是 A100 的两倍，搬运也快约一倍（PDF p.9）。</text>
+</svg>

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#5fa886"/></marker>
+<marker id="ap" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#d4a24c"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<rect x="40.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="80.0" y1="126.0" x2="114.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="116.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="156.0" y1="126.0" x2="190.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="192.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="232.0" y1="126.0" x2="266.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="268.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="308.0" y1="126.0" x2="342.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="344.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="384.0" y1="126.0" x2="418.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="420.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="460.0" y1="126.0" x2="494.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="496.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="536.0" y1="126.0" x2="570.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="572.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="612.0" y1="126.0" x2="646.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="648.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="688.0" y1="126.0" x2="722.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="724.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="764.0" y1="126.0" x2="798.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="800.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="840.0" y1="126.0" x2="874.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="876.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="916.0" y1="126.0" x2="950.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="952.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="992.0" y1="126.0" x2="1026.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="1028.0" y="112.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<rect x="40.0" y="206.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<rect x="420.0" y="206.0" width="40.0" height="28.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<line x1="80.0" y1="220.0" x2="418.0" y2="220.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="40.0" y="306.0" width="44.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="114.0" y="306.0" width="70.0" height="30.0" rx="14" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="214.0" y="306.0" width="83.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="327.0" y="306.0" width="70.0" height="30.0" rx="14" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="427.0" y="306.0" width="44.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="501.0" y="306.0" width="70.0" height="30.0" rx="14" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="601.0" y="306.0" width="44.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="675.0" y="306.0" width="70.0" height="30.0" rx="14" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<line x1="84.0" y1="321.0" x2="112.0" y2="321.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="184.0" y1="321.0" x2="212.0" y2="321.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="297.0" y1="321.0" x2="325.0" y2="321.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="397.0" y1="321.0" x2="425.0" y2="321.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="471.0" y1="321.0" x2="499.0" y2="321.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="571.0" y1="321.0" x2="599.0" y2="321.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="645.0" y1="321.0" x2="673.0" y2="321.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="40.0" y="406.0" width="44.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="114.0" y="406.0" width="83.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="227.0" y="406.0" width="44.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="301.0" y="406.0" width="44.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="375.0" y="406.0" width="70.0" height="30.0" rx="14" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<line x1="84.0" y1="421.0" x2="112.0" y2="421.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="197.0" y1="421.0" x2="225.0" y2="421.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="271.0" y1="421.0" x2="299.0" y2="421.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="345.0" y1="421.0" x2="373.0" y2="421.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 4：约束把路走死之后，普通 FSM 仍一次一问，压缩 FSM 一步跳过</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 有限状态机的状态；黄 = 追加进序列的 Token；绿 = 一次模型前向（LLM decode）。例子是正则里的常量 {&quot;summary&quot;: &quot;，␣ 表示空格。</text>
+<text x="30.0" y="96.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) 普通 FSM：按字符建，14 个状态、13 条边，每条边只接受一个字符</text>
+<text x="60.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<text x="98.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">{</text>
+<text x="136.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<text x="174.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">&quot;</text>
+<text x="212.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">2</text>
+<text x="250.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">s</text>
+<text x="288.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">3</text>
+<text x="326.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">u</text>
+<text x="364.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">4</text>
+<text x="402.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">m</text>
+<text x="440.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">5</text>
+<text x="478.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">m</text>
+<text x="516.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">6</text>
+<text x="554.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">a</text>
+<text x="592.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">7</text>
+<text x="630.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">r</text>
+<text x="668.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">8</text>
+<text x="706.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">y</text>
+<text x="744.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">9</text>
+<text x="782.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">&quot;</text>
+<text x="820.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">10</text>
+<text x="858.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">:</text>
+<text x="896.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">11</text>
+<text x="934.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">␣</text>
+<text x="972.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">12</text>
+<text x="1010.0" y="120.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">&quot;</text>
+<text x="1048.0" y="131.0" font-size="12" fill="#111827" text-anchor="middle">13</text>
+<text x="30.0" y="190.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 压缩 FSM：单后继、单字符的边首尾相接，并成一条边</text>
+<text x="60.0" y="225.0" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<text x="440.0" y="225.0" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<text x="250.0" y="214.0" font-size="13" fill="#6b7280" text-anchor="middle" font-family="Menlo, Consolas, monospace">{&quot;summary&quot;:␣&quot;</text>
+<text x="490.0" y="225.0" font-size="11" fill="#9ca3af" text-anchor="start">这一段在约束下只有一种写法，状态机里却占了 13 步</text>
+<text x="30.0" y="290.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(c) 普通 FSM 解码：每追加一个 Token 就要一次前向</text>
+<text x="62.0" y="326.0" font-size="13" fill="#111827" text-anchor="middle" font-family="Menlo, Consolas, monospace">{&quot;</text>
+<text x="149.0" y="326.0" font-size="13" fill="#111827" text-anchor="middle">LLM 前向</text>
+<text x="255.5" y="326.0" font-size="13" fill="#111827" text-anchor="middle" font-family="Menlo, Consolas, monospace">summary</text>
+<text x="362.0" y="326.0" font-size="13" fill="#111827" text-anchor="middle">LLM 前向</text>
+<text x="449.0" y="326.0" font-size="13" fill="#111827" text-anchor="middle" font-family="Menlo, Consolas, monospace">&quot;:</text>
+<text x="536.0" y="326.0" font-size="13" fill="#111827" text-anchor="middle">LLM 前向</text>
+<text x="623.0" y="326.0" font-size="13" fill="#111827" text-anchor="middle" font-family="Menlo, Consolas, monospace">␣&quot;</text>
+<text x="710.0" y="326.0" font-size="13" fill="#111827" text-anchor="middle">LLM 前向</text>
+<text x="761.0" y="326.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">4 次前向</text>
+<text x="30.0" y="390.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(d) 压缩 FSM 解码：整段常量直接追加，只剩一次前向</text>
+<text x="62.0" y="426.0" font-size="13" fill="#111827" text-anchor="middle" font-family="Menlo, Consolas, monospace">{&quot;</text>
+<text x="155.5" y="426.0" font-size="13" fill="#111827" text-anchor="middle" font-family="Menlo, Consolas, monospace">summary</text>
+<text x="249.0" y="426.0" font-size="13" fill="#111827" text-anchor="middle" font-family="Menlo, Consolas, monospace">&quot;:</text>
+<text x="323.0" y="426.0" font-size="13" fill="#111827" text-anchor="middle" font-family="Menlo, Consolas, monospace">␣&quot;</text>
+<text x="410.0" y="426.0" font-size="13" fill="#111827" text-anchor="middle">LLM 前向</text>
+<text x="461.0" y="426.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">1 次前向</text>
+<text x="30.0" y="490.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p. 6 Figure 4 重画，是机制示意，不是实测时间。Token 的切法取自附录 B.2（PDF p. 18）：这段常量按该分词器只能切成 {&quot; · summary · &quot;: · ␣&quot;，</text>
+<text x="30.0" y="512.0" font-size="12" fill="#6b7280" text-anchor="start">不能随手切成 summa + ry。跳过之后要用原分词器把「已有文本 + 压缩边文本」重新分词，才能和下一次前向的输入对齐。</text>
+</svg>

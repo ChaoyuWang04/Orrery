@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<rect x="110.0" y="130.0" width="68.0" height="32.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="180.0" y="130.0" width="68.0" height="32.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="250.0" y="130.0" width="68.0" height="32.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="320.0" y="130.0" width="68.0" height="32.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="110.0" y="164.0" width="68.0" height="32.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="180.0" y="164.0" width="68.0" height="32.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="250.0" y="164.0" width="68.0" height="32.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="320.0" y="164.0" width="68.0" height="32.0" rx="2" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="110.0" y="198.0" width="68.0" height="32.0" rx="2" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="180.0" y="198.0" width="68.0" height="32.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="250.0" y="198.0" width="68.0" height="32.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="320.0" y="198.0" width="68.0" height="32.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="110.0" y="232.0" width="68.0" height="32.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="180.0" y="232.0" width="68.0" height="32.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="250.0" y="232.0" width="68.0" height="32.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="320.0" y="232.0" width="68.0" height="32.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="480.0" y="124.0" width="190.0" height="26.0" rx="0" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="480.0" y="150.0" width="190.0" height="32.0" rx="0" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<line x1="394.0" y1="146.0" x2="476.0" y2="166.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="480.0" y="182.0" width="190.0" height="32.0" rx="0" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<line x1="394.0" y1="180.0" x2="476.0" y2="198.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="480.0" y="214.0" width="190.0" height="32.0" rx="0" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<line x1="394.0" y1="214.0" x2="476.0" y2="230.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="480.0" y="246.0" width="190.0" height="32.0" rx="0" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="800.0" y="110.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="862.0" y="110.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="924.0" y="110.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="986.0" y="110.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="800.0" y="140.0" width="60.0" height="28.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="862.0" y="140.0" width="60.0" height="28.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="924.0" y="140.0" width="60.0" height="28.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="986.0" y="140.0" width="60.0" height="28.0" rx="2" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="800.0" y="170.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="862.0" y="170.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="924.0" y="170.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="986.0" y="170.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="800.0" y="200.0" width="60.0" height="28.0" rx="2" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="862.0" y="200.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="924.0" y="200.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="986.0" y="200.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="800.0" y="230.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="862.0" y="230.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="924.0" y="230.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="986.0" y="230.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="800.0" y="260.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="862.0" y="260.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="924.0" y="260.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="986.0" y="260.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="800.0" y="290.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="862.0" y="290.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="924.0" y="290.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="986.0" y="290.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="800.0" y="320.0" width="60.0" height="28.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="862.0" y="320.0" width="60.0" height="28.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="924.0" y="320.0" width="60.0" height="28.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="986.0" y="320.0" width="60.0" height="28.0" rx="2" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="800.0" y="350.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="862.0" y="350.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="924.0" y="350.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="986.0" y="350.0" width="60.0" height="28.0" rx="2" fill="#ffffff" stroke="#b9b9b9" stroke-width="1"/>
+<line x1="710.0" y1="166.0" x2="760.0" y2="334.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="710.0" y1="198.0" x2="760.0" y2="154.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="710.0" y1="230.0" x2="760.0" y2="214.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 6：逻辑块连续，物理块散放，中间只隔一张块表</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">黄 = 提示词 Token 的 KV，绿 = 生成 Token 的 KV，白 = 空槽。块大小取原图的 4；①②③ 是下方三步各自改动的位置。</text>
+<text x="110.0" y="114.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">请求 A 的逻辑 KV 块</text>
+<text x="100.0" y="152.0" font-size="11" fill="#6b7280" text-anchor="end">逻辑块 0</text>
+<text x="144.0" y="151.0" font-size="11" fill="#111827" text-anchor="middle">Four</text>
+<text x="214.0" y="151.0" font-size="11" fill="#111827" text-anchor="middle">score</text>
+<text x="284.0" y="151.0" font-size="11" fill="#111827" text-anchor="middle">and</text>
+<text x="354.0" y="151.0" font-size="11" fill="#111827" text-anchor="middle">seven</text>
+<text x="100.0" y="186.0" font-size="11" fill="#6b7280" text-anchor="end">逻辑块 1</text>
+<text x="144.0" y="185.0" font-size="11" fill="#111827" text-anchor="middle">years</text>
+<text x="214.0" y="185.0" font-size="11" fill="#111827" text-anchor="middle">ago</text>
+<text x="284.0" y="185.0" font-size="11" fill="#111827" text-anchor="middle">our</text>
+<text x="354.0" y="185.0" font-size="11" fill="#111827" text-anchor="middle">fathers</text>
+<text x="100.0" y="220.0" font-size="11" fill="#6b7280" text-anchor="end">逻辑块 2</text>
+<text x="144.0" y="219.0" font-size="11" fill="#111827" text-anchor="middle">brought</text>
+<text x="100.0" y="254.0" font-size="11" fill="#6b7280" text-anchor="end">逻辑块 3</text>
+<text x="480.0" y="116.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">块表</text>
+<text x="530.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">物理块号</text>
+<text x="625.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">已填数</text>
+<text x="530.0" y="171.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">7</text>
+<text x="625.0" y="171.0" font-size="12" fill="#111827" text-anchor="middle">4</text>
+<text x="678.0" y="171.0" font-size="12" fill="#d9877a" text-anchor="start" font-weight="700">①</text>
+<text x="530.0" y="203.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">1</text>
+<text x="625.0" y="203.0" font-size="12" fill="#111827" text-anchor="middle">3 → 4</text>
+<text x="678.0" y="203.0" font-size="12" fill="#d9877a" text-anchor="start" font-weight="700">①②</text>
+<text x="530.0" y="235.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">3</text>
+<text x="625.0" y="235.0" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<text x="678.0" y="235.0" font-size="12" fill="#d9877a" text-anchor="start" font-weight="700">③</text>
+<text x="530.0" y="267.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">–</text>
+<text x="625.0" y="267.0" font-size="12" fill="#111827" text-anchor="middle">–</text>
+<text x="800.0" y="96.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">GPU 显存里的物理 KV 块</text>
+<text x="792.0" y="130.0" font-size="11" fill="#6b7280" text-anchor="end">块 0</text>
+<text x="792.0" y="160.0" font-size="11" fill="#6b7280" text-anchor="end">块 1</text>
+<text x="830.0" y="159.0" font-size="11" fill="#111827" text-anchor="middle">years</text>
+<text x="892.0" y="159.0" font-size="11" fill="#111827" text-anchor="middle">ago</text>
+<text x="954.0" y="159.0" font-size="11" fill="#111827" text-anchor="middle">our</text>
+<text x="1016.0" y="159.0" font-size="11" fill="#111827" text-anchor="middle">fathers</text>
+<text x="792.0" y="190.0" font-size="11" fill="#6b7280" text-anchor="end">块 2</text>
+<text x="792.0" y="220.0" font-size="11" fill="#6b7280" text-anchor="end">块 3</text>
+<text x="830.0" y="219.0" font-size="11" fill="#111827" text-anchor="middle">brought</text>
+<text x="792.0" y="250.0" font-size="11" fill="#6b7280" text-anchor="end">块 4</text>
+<text x="792.0" y="280.0" font-size="11" fill="#6b7280" text-anchor="end">块 5</text>
+<text x="792.0" y="310.0" font-size="11" fill="#6b7280" text-anchor="end">块 6</text>
+<text x="792.0" y="340.0" font-size="11" fill="#6b7280" text-anchor="end">块 7</text>
+<text x="830.0" y="339.0" font-size="11" fill="#111827" text-anchor="middle">Four</text>
+<text x="892.0" y="339.0" font-size="11" fill="#111827" text-anchor="middle">score</text>
+<text x="954.0" y="339.0" font-size="11" fill="#111827" text-anchor="middle">and</text>
+<text x="1016.0" y="339.0" font-size="11" fill="#111827" text-anchor="middle">seven</text>
+<text x="792.0" y="370.0" font-size="11" fill="#6b7280" text-anchor="end">块 8</text>
+<text x="56.0" y="420.0" font-size="12" fill="#6b7280" text-anchor="start">① 提示词阶段：7 个 Token 只需要 2 个逻辑块，映射到物理块 7 和 1；前 4 个进块 0，后 3 个进块 1，留 1 个空位。这一步用常规注意力算子算。</text>
+<text x="56.0" y="444.0" font-size="12" fill="#6b7280" text-anchor="start">② 第一次解码：新 Token「fathers」正好落进块 1 的空位，块表只把已填数从 3 改成 4，不分配新块。</text>
+<text x="56.0" y="468.0" font-size="12" fill="#6b7280" text-anchor="start">③ 第二次解码：块 1 已满，开逻辑块 2，从空闲池拿物理块 3，把映射写进块表。</text>
+<text x="56.0" y="500.0" font-size="12" fill="#6b7280" text-anchor="start">块总是从左往右填满才开新块，所以一个请求的浪费封顶在最后一块之内。按 PDF p.6 Figure 6 与 §4.3 重画，块号和已填数取自原图，是机制示意。</text>
+</svg>

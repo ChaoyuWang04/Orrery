@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#5fa886"/></marker>
+<marker id="ap" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#d4a24c"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<line x1="110.0" y1="470.0" x2="1040.0" y2="470.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="422.5" x2="1040.0" y2="422.5" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="375.0" x2="1040.0" y2="375.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="327.5" x2="1040.0" y2="327.5" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="280.0" x2="1040.0" y2="280.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="232.5" x2="1040.0" y2="232.5" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="185.0" x2="1040.0" y2="185.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="137.5" x2="1040.0" y2="137.5" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="90.0" x2="1040.0" y2="90.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="110.0" y1="90.0" x2="110.0" y2="470.0" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="284.7" y1="90.0" x2="284.7" y2="470.0" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="459.5" y1="90.0" x2="459.5" y2="470.0" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="690.5" y1="90.0" x2="690.5" y2="470.0" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="865.3" y1="90.0" x2="865.3" y2="470.0" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="1040.0" y1="90.0" x2="1040.0" y2="470.0" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="110.0" y1="446.2" x2="1040.0" y2="446.2" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="5 4"/>
+<line x1="110.0" y1="90.0" x2="110.0" y2="470.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110.0" y1="470.0" x2="1040.0" y2="470.0" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="419.3,281.4 430.1,280.0 603.1,257.4 825.5,126.6 871.1,92.8 988.1,233.2" fill="none" stroke="#8f8bd8" stroke-width="2.4"/>
+<circle cx="419.3" cy="281.4" r="3.5" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<circle cx="430.1" cy="280.0" r="3.5" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<circle cx="603.1" cy="257.4" r="3.5" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<circle cx="825.5" cy="126.6" r="3.5" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<circle cx="871.1" cy="92.8" r="3.5" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<circle cx="988.1" cy="233.2" r="3.5" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<polyline points="271.8,365.3 430.1,371.2 550.6,364.8 603.1,389.5 768.9,398.3 825.5,404.7 988.1,419.2" fill="none" stroke="#5fa886" stroke-width="2.4"/>
+<circle cx="271.8" cy="365.3" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="430.1" cy="371.2" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="550.6" cy="364.8" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="603.1" cy="389.5" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="768.9" cy="398.3" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="825.5" cy="404.7" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="988.1" cy="419.2" r="3.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<polyline points="218.9,384.7 430.1,384.7 519.3,377.1 603.1,403.7 703.8,414.7 825.5,416.6 988.1,421.8" fill="none" stroke="#d4a24c" stroke-width="2.4"/>
+<circle cx="218.9" cy="384.7" r="3.5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<circle cx="430.1" cy="384.7" r="3.5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<circle cx="519.3" cy="377.1" r="3.5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<circle cx="603.1" cy="403.7" r="3.5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<circle cx="703.8" cy="414.7" r="3.5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<circle cx="825.5" cy="416.6" r="3.5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<circle cx="988.1" cy="421.8" r="3.5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<line x1="430.8" y1="470.0" x2="430.8" y2="476.0" stroke="#6b7280" stroke-width="1.4"/>
+<line x1="603.4" y1="470.0" x2="603.4" y2="476.0" stroke="#6b7280" stroke-width="1.4"/>
+<line x1="826.1" y1="470.0" x2="826.1" y2="476.0" stroke="#6b7280" stroke-width="1.4"/>
+<line x1="989.0" y1="470.0" x2="989.0" y2="476.0" stroke="#6b7280" stroke-width="1.4"/>
+<rect x="700.0" y="70.0" width="16.0" height="16.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<rect x="820.0" y="70.0" width="16.0" height="16.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="940.0" y="70.0" width="16.0" height="16.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 1：同一份成绩，MoE 少花几倍训练算力</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 域内验证困惑度；绿 = Pile 22 个子集平均困惑度；黄 = 六项零样本平均准确率。灰虚线 = 1 倍，即与 dense 持平。</text>
+<text x="100.0" y="474.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="100.0" y="426.5" font-size="11" fill="#9ca3af" text-anchor="end">2</text>
+<text x="100.0" y="379.0" font-size="11" fill="#9ca3af" text-anchor="end">4</text>
+<text x="100.0" y="331.5" font-size="11" fill="#9ca3af" text-anchor="end">6</text>
+<text x="100.0" y="284.0" font-size="11" fill="#9ca3af" text-anchor="end">8</text>
+<text x="100.0" y="236.5" font-size="11" fill="#9ca3af" text-anchor="end">10</text>
+<text x="100.0" y="189.0" font-size="11" fill="#9ca3af" text-anchor="end">12</text>
+<text x="100.0" y="141.5" font-size="11" fill="#9ca3af" text-anchor="end">14</text>
+<text x="100.0" y="94.0" font-size="11" fill="#9ca3af" text-anchor="end">16</text>
+<text x="110.0" y="490.0" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<text x="284.7" y="490.0" font-size="12" fill="#111827" text-anchor="middle">2</text>
+<text x="459.5" y="490.0" font-size="12" fill="#111827" text-anchor="middle">4</text>
+<text x="690.5" y="490.0" font-size="12" fill="#111827" text-anchor="middle">10</text>
+<text x="865.3" y="490.0" font-size="12" fill="#111827" text-anchor="middle">20</text>
+<text x="1040.0" y="490.0" font-size="12" fill="#111827" text-anchor="middle">40</text>
+<text x="430.8" y="508.0" font-size="11" fill="#6b7280" text-anchor="middle">dense 1.3B</text>
+<text x="603.4" y="508.0" font-size="11" fill="#6b7280" text-anchor="middle">dense 2.7B</text>
+<text x="826.1" y="508.0" font-size="11" fill="#6b7280" text-anchor="middle">dense 6.7B</text>
+<text x="989.0" y="508.0" font-size="11" fill="#6b7280" text-anchor="middle">dense 13B</text>
+<text x="575.0" y="532.0" font-size="12" fill="#6b7280" text-anchor="middle">横轴：dense 为达到该成绩花掉的训练 ZFLOPs（对数刻度）</text>
+<text x="100.0" y="78.0" font-size="11" fill="#6b7280" text-anchor="start">MoE 省下的倍数</text>
+<text x="722.0" y="83.0" font-size="12" fill="#111827" text-anchor="start">域内</text>
+<text x="842.0" y="83.0" font-size="12" fill="#111827" text-anchor="start">域外 Pile</text>
+<text x="962.0" y="83.0" font-size="12" fill="#111827" text-anchor="start">零样本 6 项</text>
+<text x="30.0" y="560.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p. 1 Figure 1 的矢量坐标逐点换算重画。圆点是原图折线的拐点，落在 dense 各档的训练成本或插值断点上；图上的曲线本身就是按对数插值算出来的估计。</text>
+<text x="30.0" y="580.0" font-size="12" fill="#6b7280" text-anchor="start">只有横轴下方标出的四档 dense 是真实训练过的模型；1.1T MoE 对上的是 6.7B dense（22.27 对 17.12 ZFLOPs，PDF p. 3 表 1）。</text>
+</svg>

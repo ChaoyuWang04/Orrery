@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 690" width="1120" height="690" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="690" fill="#ffffff"/>
+<line x1="90.0" y1="237.5" x2="510.0" y2="237.5" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90.0" y1="175.0" x2="510.0" y2="175.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90.0" y1="142.0" x2="90.0" y2="300.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="90.0" y1="300.0" x2="510.0" y2="300.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="90.0" y1="175.0" x2="510.0" y2="175.0" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="106.8" y="231.2" width="23.2" height="68.8" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="132.0" y="215.0" width="23.2" height="85.0" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="190.8" y="205.0" width="23.2" height="95.0" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="216.0" y="192.5" width="23.2" height="107.5" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="274.8" y="173.8" width="23.2" height="126.2" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="300.0" y="175.0" width="23.2" height="125.0" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="358.8" y="172.5" width="23.2" height="127.5" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="384.0" y="172.5" width="23.2" height="127.5" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="442.8" y="167.5" width="23.2" height="132.5" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="468.0" y="171.2" width="23.2" height="128.8" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<line x1="640.0" y1="237.5" x2="1060.0" y2="237.5" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="175.0" x2="1060.0" y2="175.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="142.0" x2="640.0" y2="300.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640.0" y1="300.0" x2="1060.0" y2="300.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640.0" y1="175.0" x2="1060.0" y2="175.0" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="656.8" y="238.8" width="23.2" height="61.2" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="682.0" y="245.0" width="23.2" height="55.0" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="740.8" y="240.0" width="23.2" height="60.0" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="766.0" y="241.2" width="23.2" height="58.8" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="824.8" y="238.8" width="23.2" height="61.2" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="850.0" y="241.2" width="23.2" height="58.8" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="908.8" y="237.5" width="23.2" height="62.5" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="934.0" y="240.0" width="23.2" height="60.0" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="992.8" y="235.0" width="23.2" height="65.0" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="1018.0" y="238.8" width="23.2" height="61.2" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<line x1="90.0" y1="514.3" x2="510.0" y2="514.3" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90.0" y1="468.6" x2="510.0" y2="468.6" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90.0" y1="422.9" x2="510.0" y2="422.9" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90.0" y1="392.0" x2="90.0" y2="560.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="90.0" y1="560.0" x2="510.0" y2="560.0" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="97.3" y="503.4" width="23.7" height="56.6" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="135.4" y="501.1" width="23.7" height="58.9" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="173.6" y="500.0" width="23.7" height="60.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="211.8" y="500.0" width="23.7" height="60.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="250.0" y="498.3" width="23.7" height="61.7" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="288.2" y="494.9" width="23.7" height="65.1" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="326.3" y="492.6" width="23.7" height="67.4" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="364.5" y="484.6" width="23.7" height="75.4" rx="0" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="402.7" y="470.9" width="23.7" height="89.1" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="440.9" y="444.6" width="23.7" height="115.4" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="479.1" y="411.4" width="23.7" height="148.6" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<line x1="640.0" y1="520.0" x2="1060.0" y2="520.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="480.0" x2="1060.0" y2="480.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="440.0" x2="1060.0" y2="440.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="400.0" x2="1060.0" y2="400.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="392.0" x2="640.0" y2="560.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640.0" y1="560.0" x2="1060.0" y2="560.0" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="647.3" y="472.0" width="23.7" height="88.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="685.4" y="471.2" width="23.7" height="88.8" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="723.6" y="470.4" width="23.7" height="89.6" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="761.8" y="472.0" width="23.7" height="88.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="800.0" y="472.0" width="23.7" height="88.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="838.2" y="472.0" width="23.7" height="88.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="876.3" y="472.0" width="23.7" height="88.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="914.5" y="470.4" width="23.7" height="89.6" rx="0" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="952.7" y="468.0" width="23.7" height="92.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="990.9" y="458.4" width="23.7" height="101.6" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="1029.1" y="420.0" width="23.7" height="140.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 8–9：Prompt 把功耗吃满，吐字只用一半、还不怕限功耗</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">上排读自 Figure 8（功耗按 TDP 归一）：红 = BLOOM-176B，紫 = Llama2-70B，灰虚线 = TDP。</text>
+<text x="30.0" y="74.0" font-size="13" fill="#6b7280" text-anchor="start">下排读自 Figure 9（逐档降低 GPU 功耗帽，batch 开到最大）：绿柱 = 延迟，黄柱 = 350W 那一档。</text>
+<text x="82.0" y="304.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="82.0" y="241.5" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<text x="82.0" y="179.0" font-size="11" fill="#9ca3af" text-anchor="end">1.0</text>
+<text x="132.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">512</text>
+<text x="216.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">1024</text>
+<text x="300.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">2048</text>
+<text x="384.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">4096</text>
+<text x="468.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">8192</text>
+<text x="90.0" y="124.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Prompt 阶段：batch 一大就顶到 TDP</text>
+<text x="90.0" y="140.0" font-size="11" fill="#6b7280" text-anchor="start">横轴：batch 内 Token 数；纵轴：归一化功耗</text>
+<text x="510.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="end">TDP</text>
+<text x="632.0" y="304.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="632.0" y="241.5" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<text x="632.0" y="179.0" font-size="11" fill="#9ca3af" text-anchor="end">1.0</text>
+<text x="682.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<text x="766.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<text x="850.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">4</text>
+<text x="934.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">8</text>
+<text x="1018.0" y="316.0" font-size="11" fill="#111827" text-anchor="middle">16</text>
+<text x="640.0" y="124.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">吐字阶段：batch 翻 16 倍，功耗仍在一半上下</text>
+<text x="640.0" y="140.0" font-size="11" fill="#6b7280" text-anchor="start">横轴：batch 内 Token 数；纵轴：归一化功耗</text>
+<text x="1060.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="end">TDP</text>
+<text x="82.0" y="564.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="82.0" y="518.3" font-size="11" fill="#9ca3af" text-anchor="end">4000</text>
+<text x="82.0" y="472.6" font-size="11" fill="#9ca3af" text-anchor="end">8000</text>
+<text x="82.0" y="426.9" font-size="11" fill="#9ca3af" text-anchor="end">12000</text>
+<text x="109.1" y="576.0" font-size="11" fill="#111827" text-anchor="middle">700</text>
+<text x="147.3" y="576.0" font-size="11" fill="#111827" text-anchor="middle">650</text>
+<text x="185.5" y="576.0" font-size="11" fill="#111827" text-anchor="middle">600</text>
+<text x="223.6" y="576.0" font-size="11" fill="#111827" text-anchor="middle">550</text>
+<text x="261.8" y="576.0" font-size="11" fill="#111827" text-anchor="middle">500</text>
+<text x="300.0" y="576.0" font-size="11" fill="#111827" text-anchor="middle">450</text>
+<text x="338.2" y="576.0" font-size="11" fill="#111827" text-anchor="middle">400</text>
+<text x="376.4" y="576.0" font-size="11" fill="#111827" text-anchor="middle">350</text>
+<text x="376.4" y="476.6" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">约 +33%</text>
+<text x="414.5" y="576.0" font-size="11" fill="#111827" text-anchor="middle">300</text>
+<text x="452.7" y="576.0" font-size="11" fill="#111827" text-anchor="middle">250</text>
+<text x="490.9" y="576.0" font-size="11" fill="#111827" text-anchor="middle">200</text>
+<text x="90.0" y="374.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Prompt 阶段：功耗帽一降，TTFT 就涨</text>
+<text x="90.0" y="390.0" font-size="11" fill="#6b7280" text-anchor="start">横轴：功耗帽（W）；纵轴：TTFT（ms）</text>
+<text x="632.0" y="564.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="632.0" y="524.0" font-size="11" fill="#9ca3af" text-anchor="end">25</text>
+<text x="632.0" y="484.0" font-size="11" fill="#9ca3af" text-anchor="end">50</text>
+<text x="632.0" y="444.0" font-size="11" fill="#9ca3af" text-anchor="end">75</text>
+<text x="632.0" y="404.0" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<text x="659.1" y="576.0" font-size="11" fill="#111827" text-anchor="middle">700</text>
+<text x="697.3" y="576.0" font-size="11" fill="#111827" text-anchor="middle">650</text>
+<text x="735.5" y="576.0" font-size="11" fill="#111827" text-anchor="middle">600</text>
+<text x="773.6" y="576.0" font-size="11" fill="#111827" text-anchor="middle">550</text>
+<text x="811.8" y="576.0" font-size="11" fill="#111827" text-anchor="middle">500</text>
+<text x="850.0" y="576.0" font-size="11" fill="#111827" text-anchor="middle">450</text>
+<text x="888.2" y="576.0" font-size="11" fill="#111827" text-anchor="middle">400</text>
+<text x="926.4" y="576.0" font-size="11" fill="#111827" text-anchor="middle">350</text>
+<text x="926.4" y="462.4" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">约 +2%</text>
+<text x="964.5" y="576.0" font-size="11" fill="#111827" text-anchor="middle">300</text>
+<text x="1002.7" y="576.0" font-size="11" fill="#111827" text-anchor="middle">250</text>
+<text x="1040.9" y="576.0" font-size="11" fill="#111827" text-anchor="middle">200</text>
+<text x="640.0" y="374.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">吐字阶段：帽到 350W，TBT 几乎不动</text>
+<text x="640.0" y="390.0" font-size="11" fill="#6b7280" text-anchor="start">横轴：功耗帽（W）；纵轴：TBT（ms）</text>
+<text x="30.0" y="620.0" font-size="12" fill="#6b7280" text-anchor="start">读自 PDF p.5 Figure 8、Figure 9，柱高为读图近似；两处百分比是 350W 相对 700W 的本文换算。</text>
+<text x="30.0" y="642.0" font-size="12" fill="#6b7280" text-anchor="start">原文结论：Prompt 阶段算力受限，功耗随 batch 涨到 TDP，对功耗帽很敏感；吐字阶段访存受限，功耗不随 batch 变，</text>
+<text x="30.0" y="664.0" font-size="12" fill="#6b7280" text-anchor="start">功耗帽降一半以上（700W 到 350W）几乎没有延迟代价（Insight VI）。HHcap 设计就建立在这张图上。</text>
+</svg>

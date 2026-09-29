@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<rect x="56.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="98.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="140.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="182.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="224.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="266.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="308.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="350.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="392.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="434.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="476.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="518.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="560.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="602.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="644.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="686.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="728.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="770.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="812.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="854.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="896.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="938.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="980.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="1022.0" y="120.0" width="40.0" height="34.0" rx="3" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<line x1="56.0" y1="162.0" x2="348.0" y2="162.0" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="350.0" y1="112.0" x2="390.0" y2="112.0" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="392.0" y1="162.0" x2="432.0" y2="162.0" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="434.0" y1="112.0" x2="516.0" y2="112.0" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="518.0" y1="162.0" x2="642.0" y2="162.0" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="644.0" y1="112.0" x2="726.0" y2="112.0" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="728.0" y1="162.0" x2="852.0" y2="162.0" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="854.0" y1="112.0" x2="894.0" y2="112.0" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="896.0" y1="112.0" x2="936.0" y2="112.0" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="938.0" y1="162.0" x2="1062.0" y2="162.0" stroke="#9ca3af" stroke-width="1.2"/>
+<rect x="56.0" y="330.0" width="1000.0" height="26.0" rx="2" fill="#ffffff" stroke="#cbd2d9" stroke-width="1"/>
+<rect x="56.0" y="330.0" width="4.4" height="26.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="60.4" y="330.0" width="1.2" height="26.0" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="61.4" y="330.0" width="994.6" height="26.0" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="56.0" y="396.0" width="250.0" height="26.0" rx="2" fill="#ffffff" stroke="#cbd2d9" stroke-width="1"/>
+<rect x="56.0" y="396.0" width="2.0" height="26.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="58.0" y="396.0" width="1.2" height="26.0" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="58.4" y="396.0" width="247.6" height="26.0" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="56.0" y="462.0" width="5.9" height="26.0" rx="2" fill="#ffffff" stroke="#cbd2d9" stroke-width="1"/>
+<rect x="56.0" y="462.0" width="4.4" height="26.0" rx="0" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="60.4" y="462.0" width="1.5" height="26.0" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 3：按最大长度整段预分配，一个请求的连续块里几乎全是空槽</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">黄 = 提示词的 KV，绿 = 已生成 / 本步生成的 KV，紫 = 预留（以后会用），红 = 内部碎片（永远不用），灰 = 外部碎片。</text>
+<text x="76.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">Four</text>
+<text x="118.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">score</text>
+<text x="160.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">and</text>
+<text x="202.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">seven</text>
+<text x="244.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">years</text>
+<text x="286.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">ago</text>
+<text x="328.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">our</text>
+<text x="370.0" y="141.0" font-size="10" fill="#111827" text-anchor="middle">fathers</text>
+<text x="412.0" y="141.0" font-size="10" fill="#111827" text-anchor="middle">brought</text>
+<text x="454.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">forth</text>
+<text x="496.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">eos</text>
+<text x="538.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">resv</text>
+<text x="580.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">…</text>
+<text x="622.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">resv</text>
+<text x="748.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">You</text>
+<text x="790.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">only</text>
+<text x="832.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">live</text>
+<text x="874.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">once</text>
+<text x="916.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">eos</text>
+<text x="958.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">resv</text>
+<text x="1000.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">…</text>
+<text x="1042.0" y="141.0" font-size="11" fill="#111827" text-anchor="middle">resv</text>
+<text x="202.0" y="178.0" font-size="11" fill="#6b7280" text-anchor="middle">请求 A 提示词的 7 个 KV</text>
+<text x="370.0" y="104.0" font-size="11" fill="#6b7280" text-anchor="middle">已生成</text>
+<text x="412.0" y="178.0" font-size="11" fill="#6b7280" text-anchor="middle">A 本步</text>
+<text x="475.0" y="104.0" font-size="11" fill="#6b7280" text-anchor="middle">2 槽预留</text>
+<text x="580.0" y="178.0" font-size="11" fill="#6b7280" text-anchor="middle">2038 槽永远用不到</text>
+<text x="580.0" y="192.0" font-size="11" fill="#6b7280" text-anchor="middle">（内部碎片）</text>
+<text x="685.0" y="104.0" font-size="11" fill="#6b7280" text-anchor="middle">外部碎片</text>
+<text x="790.0" y="178.0" font-size="11" fill="#6b7280" text-anchor="middle">B 提示词 3 个 KV</text>
+<text x="874.0" y="104.0" font-size="11" fill="#6b7280" text-anchor="middle">B 本步</text>
+<text x="916.0" y="104.0" font-size="11" fill="#6b7280" text-anchor="middle">1 槽预留</text>
+<text x="1000.0" y="178.0" font-size="11" fill="#6b7280" text-anchor="middle">507 槽永远用不到</text>
+<text x="1000.0" y="192.0" font-size="11" fill="#6b7280" text-anchor="middle">（内部碎片）</text>
+<text x="56.0" y="250.0" font-size="12" fill="#6b7280" text-anchor="start">请求 A 最大长度 2048，请求 B 最大长度 512；eos = 结束符，resv = 预留槽。示意按 PDF p.4 Figure 3 重画。</text>
+<text x="56.0" y="296.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">同一件事按比例画：一格宽度 = 一个 Token 槽</text>
+<text x="56.0" y="322.0" font-size="12" fill="#111827" text-anchor="start">现有系统 · 请求 A：整段预留 2048 槽，真正写了 KV 的不到 10 槽</text>
+<text x="56.0" y="388.0" font-size="12" fill="#111827" text-anchor="start">现有系统 · 请求 B：整段预留 512 槽，已写入 4 槽</text>
+<text x="56.0" y="454.0" font-size="12" fill="#111827" text-anchor="start">vLLM · 请求 A：按需拿 3 个 4 槽的块（Figure 6 的块大小），空位只在最后一块里</text>
+<text x="56.0" y="520.0" font-size="12" fill="#6b7280" text-anchor="start">左端那一丝绿色就是真正存了东西的部分。Orca 类系统里只有 20.4%–38.2% 的 KV 显存装着真实 Token，vLLM 是 96.3%（PDF p.2 Figure 2）。</text>
+</svg>

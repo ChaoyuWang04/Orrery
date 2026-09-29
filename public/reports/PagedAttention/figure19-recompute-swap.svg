@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<line x1="90.0" y1="283.3" x2="520.0" y2="283.3" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90.0" y1="206.7" x2="520.0" y2="206.7" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90.0" y1="130.0" x2="520.0" y2="130.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="90.0" y1="122.0" x2="90.0" y2="360.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="90.0" y1="360.0" x2="520.0" y2="360.0" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="295.0" y="130.0" width="119.5" height="230.0" rx="0" fill="#f5f6f8" stroke="#f5f6f8" stroke-width="1"/>
+<polyline points="106.0,304.8 155.8,303.3 205.5,303.3 255.2,301.0 305.0,301.0 354.8,300.2 404.5,301.0 454.2,301.0 504.0,300.2" fill="none" stroke="#5fa886" stroke-width="2.2"/>
+<polyline points="106.0,234.3 155.8,278.7 205.5,306.3 255.2,321.7 305.0,327.8 354.8,330.9 404.5,332.4 454.2,333.9 504.0,333.9" fill="none" stroke="#d4a24c" stroke-width="2.2" stroke-dasharray="6 4"/>
+<polyline points="106.0,275.7 155.8,306.3 205.5,321.7 255.2,329.3 305.0,332.4 354.8,333.9 404.5,334.7 454.2,335.5 504.0,335.5" fill="none" stroke="#8f8bd8" stroke-width="2.2" stroke-dasharray="6 4"/>
+<polyline points="106.0,149.9 155.8,223.5 205.5,266.5 255.2,287.9 305.0,300.2 354.8,304.8 404.5,307.9 454.2,309.4 504.0,309.4" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<line x1="640.0" y1="283.3" x2="1070.0" y2="283.3" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="206.7" x2="1070.0" y2="206.7" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="130.0" x2="1070.0" y2="130.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="122.0" x2="640.0" y2="360.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640.0" y1="360.0" x2="1070.0" y2="360.0" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="845.0" y="130.0" width="119.5" height="230.0" rx="0" fill="#f5f6f8" stroke="#f5f6f8" stroke-width="1"/>
+<polyline points="656.0,205.1 705.8,235.0 755.5,235.8 805.2,321.7 855.0,354.6 904.8,355.4 954.5,355.4 1004.2,348.5 1054.0,274.1" fill="none" stroke="#5fa886" stroke-width="2.2"/>
+<polyline points="656.0,163.7 705.8,209.0 755.5,222.0 805.2,317.8 855.0,354.6 904.8,355.4 954.5,354.6 1004.2,352.3 1054.0,309.4" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 19：块小时换出很贵，块大时重算反而略慢</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">绿 = 重算，红 = 换出再换回（swap in + out），黄虚线 = 只换入，紫虚线 = 只换出。横轴是块大小（对数刻度）。</text>
+<text x="82.0" y="364.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="82.0" y="287.3" font-size="11" fill="#9ca3af" text-anchor="end">50</text>
+<text x="82.0" y="210.7" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<text x="82.0" y="134.0" font-size="11" fill="#9ca3af" text-anchor="end">150</text>
+<text x="106.0" y="376.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<text x="155.8" y="376.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<text x="205.5" y="376.0" font-size="11" fill="#111827" text-anchor="middle">4</text>
+<text x="255.2" y="376.0" font-size="11" fill="#111827" text-anchor="middle">8</text>
+<text x="305.0" y="376.0" font-size="11" fill="#111827" text-anchor="middle">16</text>
+<text x="354.8" y="376.0" font-size="11" fill="#111827" text-anchor="middle">32</text>
+<text x="404.5" y="376.0" font-size="11" fill="#111827" text-anchor="middle">64</text>
+<text x="454.2" y="376.0" font-size="11" fill="#111827" text-anchor="middle">128</text>
+<text x="504.0" y="376.0" font-size="11" fill="#111827" text-anchor="middle">256</text>
+<text x="305.0" y="394.0" font-size="12" fill="#6b7280" text-anchor="middle">块大小（每块 Token 数）</text>
+<text x="90.0" y="104.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) 微基准：恢复一次要多久</text>
+<text x="90.0" y="120.0" font-size="11" fill="#6b7280" text-anchor="start">纵轴：时间（ms）</text>
+<text x="354.8" y="144.0" font-size="11" fill="#9ca3af" text-anchor="middle">16–64</text>
+<text x="114.0" y="153.9" font-size="11" fill="#d9877a" text-anchor="start" font-weight="700">约 137</text>
+<text x="114.0" y="320.8" font-size="11" fill="#5fa886" text-anchor="start" font-weight="700">约 36</text>
+<text x="504.0" y="292.2" font-size="11" fill="#5fa886" text-anchor="end" font-weight="700">重算约 39</text>
+<text x="504.0" y="325.4" font-size="11" fill="#d9877a" text-anchor="end" font-weight="700">换出约 33</text>
+<text x="632.0" y="364.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="632.0" y="287.3" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<text x="632.0" y="210.7" font-size="11" fill="#9ca3af" text-anchor="end">2</text>
+<text x="632.0" y="134.0" font-size="11" fill="#9ca3af" text-anchor="end">3</text>
+<text x="656.0" y="376.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<text x="705.8" y="376.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<text x="755.5" y="376.0" font-size="11" fill="#111827" text-anchor="middle">4</text>
+<text x="805.2" y="376.0" font-size="11" fill="#111827" text-anchor="middle">8</text>
+<text x="855.0" y="376.0" font-size="11" fill="#111827" text-anchor="middle">16</text>
+<text x="904.8" y="376.0" font-size="11" fill="#111827" text-anchor="middle">32</text>
+<text x="954.5" y="376.0" font-size="11" fill="#111827" text-anchor="middle">64</text>
+<text x="1004.2" y="376.0" font-size="11" fill="#111827" text-anchor="middle">128</text>
+<text x="1054.0" y="376.0" font-size="11" fill="#111827" text-anchor="middle">256</text>
+<text x="855.0" y="394.0" font-size="12" fill="#6b7280" text-anchor="middle">块大小（每块 Token 数）</text>
+<text x="640.0" y="104.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 端到端：OPT-13B、ShareGPT、同一请求率</text>
+<text x="640.0" y="120.0" font-size="11" fill="#6b7280" text-anchor="start">纵轴：归一化延迟（s/token）；红 = 换出</text>
+<text x="904.8" y="144.0" font-size="11" fill="#9ca3af" text-anchor="middle">16–64</text>
+<text x="30.0" y="440.0" font-size="12" fill="#6b7280" text-anchor="start">读自 PDF p.13 Figure 19，线为读图近似。(a) 块小时换出变成大量小块 CPU↔GPU 传输，吃不满 PCIe 带宽；重算不碰 KV 块，开销与块大小无关。</text>
+<text x="30.0" y="462.0" font-size="12" fill="#6b7280" text-anchor="start">块到 256 时重算约 39 ms、换出约 33 ms，重算约慢两成：原文「重算开销从不超过换出延迟的 20%」只能读成「最多比换出慢 20%」。</text>
+<text x="30.0" y="484.0" font-size="12" fill="#6b7280" text-anchor="start">(b) 原文结论：块大小 16–64 时两者端到端相当。两端抬头与 Figure 18b 的块大小曲线同形，原文没有单独解释这张子图的两端。</text>
+</svg>

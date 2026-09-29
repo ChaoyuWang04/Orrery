@@ -99,6 +99,13 @@ $$
 
 把这四条合起来就是一句可以直接说出口的话:**MoE 换来的是「同等质量下更低的每 token FLOPs」,不是「同一个请求更快返回」。**
 
+就连"同等质量下更省 FLOPs"这半句也有边界。Meta 2022 年的对照研究(Efficient Large Scale Language Modeling with Mixtures of Experts,隔层 top-2)量过四条:
+
+- **优势随预算收窄**:小预算时 MoE 用约 1/4 的算力就能追平稠密,大预算时缩到约 1/2。
+- **随领域变化**:和训练数据最像的域里相当于稠密花 8–16 倍算力,Pile 上只有 2–4 倍;离训练域很远的子集几乎没有优势,DM Mathematics 上最大的 MoE 只是勉强赢过对应稠密(困惑度 7.63 对 7.66)。
+- **全量微调是例外**:零样本、少样本上 MoE 都能用更少算力追平稠密,但照搬稠密的方式全量微调时,MoE 在 HellaSwag、PIQA、Winogrande 上反而掉点(207B MoE 的 HellaSwag 从零样本 70.5 掉到 42.2),涨的任务也只是接近对应稠密。作者猜只微调专家或非专家参数可能更合适,但没做。
+- **FLOPs 不等于卡时**:他们实测每张 A100 稠密跑到 160 TFLOP/s、MoE 只有 115,按这个吞吐折算的训练卡时,MoE 的优势要打折扣。
+
 ### 一个反直觉的点:并发越高,MoE 越不「省访存」
 
 decode 是访存受限的。batch 小时一步只点到少数几个专家,读的权重确实少;但 batch 一大,**这一步之内被点到的专家并集迅速逼近全部 $N$ 个**,这一层要读的权重就从「$k$ 份」涨向「$N$ 份」。好的一面是这些字节被更多 token 摊薄,坏的一面是显存带宽的绝对压力回到了「总参数」这个量级。
@@ -120,6 +127,16 @@ $$
 一手依据是 DeepSeekMoE:同等参数与算力下,把 $N$ 个专家切成 $mN$ 个、同时把 top-$k$ 放大到 $mk$,再隔离出共享专家,专家特化程度显著更高;论文给的对照是 DeepSeekMoE 2B 用少 1.5 倍的专家参数追平 GShard 2.9B。DeepSeek-V2 是这条路线的工程落地:单个专家的中间维度只有 1536,约为同规模稠密 FFN 的 1/8,每个 token 激活 2 共享 + 6 路由 = 8 个,**总算力刚好等于一个完整的稠密 FFN**。
 
 第二个好处更实际:**选错的代价变小了**。8 选 2 时 router 挑错一个,等于一半的专家算力浪费在不对口的大专家上;256 选 8 时挑错一个只丢掉八分之一,而且那一格本身就很小。
+
+### 细到哪里为止:反面证据
+
+"越细越好"不能外推到底。2026 年的 Slicing and Dicing 论文在 50M–300M 激活规模上扫了两千多个配置,每个配置都锁住激活参数($k \cdot g = 1$,$g$ 是专家宽度相对稠密 FFN 的比例),开着不丢 token 的 dropless 路由,看验证集交叉熵:
+
+- **加总参数单调变好**:同一档激活规模,专家加厚或加多,只要总参数在涨,损失就在降,稀疏比拉到 128 也没看到拐点。
+- **最优粒度基本不随总参数变细**:大多落在 $g = \tfrac18$–$\tfrac14$(论文的口诀是约 $\tfrac14$);$g = 1$ 即 top-1 时回退。意思是**同一档激活规模下,想多堆参数就加专家个数,不要继续把专家切碎**。
+- **只切细、不加总参数,反而输给稠密**:把一个 FFN 拆成 $n$ 份常开小块,总参与激活都不变,所有规模上都差于稠密。MoE 的收益主要来自那些不被激活的参数,而不是"拆成小块"这种结构本身。
+
+它和 DeepSeekMoE 不矛盾:DeepSeekMoE 是从 8、16 个大专家往细切,落点正在这个区间附近。边界也要记住:最大只到 300M 激活、约 20 个 token 每激活参数的短训练,更大规模上的最优粒度仍要自己量。
 
 ### 代价
 
@@ -147,6 +164,7 @@ $$
 
 - **Qwen 自己在两代之间改了主意**:Qwen3 235B 明确去掉共享专家(模型卡给的理由是优化服务效率),Qwen3-Next 与 Qwen3.5 又加了回来——说明这件事至今没有一边倒的答案;
 - **Grok 2.5 是中间态**:没有正式的共享专家,但有一条常开的 SwiGLU 路径,功能上等价;
+- **对照实验也不一边倒**:Slicing and Dicing 在锁住激活参数的前提下给最优配置加一位共享专家,50M–110M 上大多持平或略差,个别点略好。注意那套口径里共享专家是**从路由专家的激活额度里挖出来的**,比的是"把一块额度改成常开",不是"额外多加一位";而且只做到 110M 激活。DeepSeekMoE 的收益证据则来自关掉共享专家后损失的崩塌,两边问的不是同一个问题;
 - **LongCat 的「零专家」是反向设计**:512 个真专家之外另设 256 个什么也不做的恒等专家,router 选中它们等于宣布「这个 token 不需要额外计算」,变相实现了每 token 的动态计算量。共享专家是「人人必过的门诊」,零专家是「允许病人不看病直接回家」。
 
 ### 专家数与 Top-k 怎么选:没有通用最佳值
@@ -195,6 +213,8 @@ $$
 | MoE 为什么只拆 FFN,不拆注意力(补充题) | 一(分工、参数占比、工程代价) |
 | 为什么有些模型前几层仍用 Dense(补充题) | 一(dense 前缀) |
 | 细粒度专家好在哪?代价是什么(补充题) | 五(组合数 + 碎 GEMM 与稀薄梯度) |
+| 补充题:MoE 同等质量下省 FLOPs,这个优势有哪些边界? | 四(随预算收窄、随领域变化、全量微调例外、卡时打折) |
+| 专家是不是切得越细越好?MoE 的收益到底来自哪里(补充题) | 五(反面证据:最优粒度约 1/8–1/4;收益来自不激活的总参数) |
 | 共享专家解决什么问题?为什么有的模型不用(补充题) | 六(冗余、免通信、Qwen 两次改主意) |
 | 并发越高,MoE 的访存优势为什么会缩水(补充题) | 四(被点到的专家并集逼近全部) |
 
@@ -207,6 +227,8 @@ $$
 - Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity(top-1 路由、容量因子与丢弃策略)— [arXiv:2101.03961](https://arxiv.org/abs/2101.03961)
 - Mixtral of Experts(8 选 2,47B 总参数 / 13B 激活,开源 MoE 出圈之作)— [arXiv:2401.04088](https://arxiv.org/abs/2401.04088)
 - DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models(细粒度切分 + 共享专家隔离)— [arXiv:2401.06066](https://arxiv.org/abs/2401.06066)
+- Slicing and Dicing: Configuring Optimal Mixtures of Experts(50M–300M 激活上两千多次预训练,扫粒度、专家数、共享专家与路由)— [arXiv:2605.11689](https://arxiv.org/abs/2605.11689)
+- Efficient Large Scale Language Modeling with Mixtures of Experts(Meta 2022,MoE 与稠密在不同预算、领域、零样本与微调上的对照)— [arXiv:2112.10684](https://arxiv.org/abs/2112.10684)
 - MegaBlocks: Efficient Sparse Training with Mixture-of-Experts(块稀疏 kernel 执行不均匀的专家负载,去掉容量因子与丢 token)— [arXiv:2211.15841](https://arxiv.org/abs/2211.15841)
 - DeepSeek-V3 Technical Report(671B / 37B,1 共享 + 256 路由选 8,前 3 层稠密)— [arXiv:2412.19437](https://arxiv.org/abs/2412.19437)
 - DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence(Flash 284B / 13B、Pro 1.6T / 49B,均为 1 共享 + 路由专家选 6;沿用 DeepSeekMoE,无 MoE 单项消融)— [arXiv:2606.19348](https://arxiv.org/abs/2606.19348)
