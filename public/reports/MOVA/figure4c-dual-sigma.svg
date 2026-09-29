@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 630" width="1120" height="630" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="630" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Dual Sigma Shift：同一个进度 t，两种模态可以处在不同的噪声档位</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = shift 5（激进：视频全程，音频从 Phase 2 起）；黄 = shift 1（平缓：音频 Phase 1）。右图按原图 Figure 4(c) 的 20 个采样步重算。</text>
+<text x="100.0" y="88.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) σ = shift · t / (1 + (shift − 1) · t)</text>
+<line x1="100.0" y1="430.0" x2="480.0" y2="430.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="100.0" y1="110.0" x2="100.0" y2="430.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="100.0" y1="270.0" x2="480.0" y2="270.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="100.0" y1="110.0" x2="480.0" y2="110.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="100" y1="430" x2="480" y2="110" stroke="#d4a24c" stroke-width="2.2"/>
+<polyline points="100.0,430.0 106.3,405.0 112.7,382.9 119.0,363.3 125.3,345.8 131.7,330.0 138.0,315.7 144.3,302.7 150.7,290.9 157.0,280.0 163.3,270.0 169.7,260.8 176.0,252.2 182.3,244.3 188.7,236.9 195.0,230.0 201.3,223.5 207.7,217.5 214.0,211.8 220.3,206.5 226.7,201.4 233.0,196.7 239.3,192.2 245.7,187.9 252.0,183.8 258.3,180.0 264.7,176.3 271.0,172.9 277.3,169.5 283.7,166.4 290.0,163.3 296.3,160.4 302.7,157.7 309.0,155.0 315.3,152.4 321.7,150.0 328.0,147.6 334.3,145.4 340.7,143.2 347.0,141.1 353.3,139.1 359.7,137.1 366.0,135.3 372.3,133.4 378.7,131.7 385.0,130.0 391.3,128.4 397.7,126.8 404.0,125.2 410.3,123.8 416.7,122.3 423.0,120.9 429.3,119.6 435.7,118.2 442.0,117.0 448.3,115.7 454.7,114.5 461.0,113.3 467.3,112.2 473.7,111.1 480.0,110.0" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<line x1="290.0" y1="430.0" x2="290.0" y2="163.3" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="100.0" y1="163.3" x2="290.0" y2="163.3" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4 3"/>
+<circle cx="290.0" cy="163.3" r="4" fill="#8f8bd8"/>
+<text x="100.0" y="448.0" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="92.0" y="434.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="290.0" y="448.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.5</text>
+<text x="92.0" y="274.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<text x="480.0" y="448.0" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="92.0" y="114.0" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<text x="290.0" y="470.0" font-size="13" fill="#6b7280" text-anchor="middle">训练进度 t（均匀采样）</text>
+<text x="106.0" y="104.0" font-size="11" fill="#6b7280" text-anchor="start">实际噪声比例 σ</text>
+<text x="300.0" y="181.3" font-size="11" fill="#111827" text-anchor="start">t = 0.5 时 σ ≈ 0.83</text>
+<text x="640.0" y="88.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 20 个采样步上的配对（Figure 4(c) 重算）</text>
+<line x1="640.0" y1="430.0" x2="1020.0" y2="430.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640.0" y1="110.0" x2="640.0" y2="430.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640.0" y1="270.0" x2="1020.0" y2="270.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="830.0" y1="110.0" x2="830.0" y2="430.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="640.0" y1="110.0" x2="1020.0" y2="110.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="1020.0" y1="110.0" x2="1020.0" y2="430.0" stroke="#e5e7eb" stroke-width="1"/>
+<polyline points="1020.0,110.0 1015.8,113.5 1011.3,117.4 1006.3,121.6 1000.8,126.2 994.7,131.3 987.9,137.0 980.3,143.4 971.7,150.6 962.0,158.8 950.9,168.2 938.0,179.0 923.0,191.7 905.1,206.7 883.6,224.9 857.1,247.1 823.9,275.2 780.7,311.5 722.6,360.4 640.0,430.0" fill="none" stroke="#8f8bd8" stroke-width="1.8"/>
+<circle cx="1020.0" cy="110.0" r="3" fill="#8f8bd8"/>
+<circle cx="1015.8" cy="113.5" r="3" fill="#8f8bd8"/>
+<circle cx="1011.3" cy="117.4" r="3" fill="#8f8bd8"/>
+<circle cx="1006.3" cy="121.6" r="3" fill="#8f8bd8"/>
+<circle cx="1000.8" cy="126.2" r="3" fill="#8f8bd8"/>
+<circle cx="994.7" cy="131.3" r="3" fill="#8f8bd8"/>
+<circle cx="987.9" cy="137.0" r="3" fill="#8f8bd8"/>
+<circle cx="980.3" cy="143.4" r="3" fill="#8f8bd8"/>
+<circle cx="971.7" cy="150.6" r="3" fill="#8f8bd8"/>
+<circle cx="962.0" cy="158.8" r="3" fill="#8f8bd8"/>
+<circle cx="950.9" cy="168.2" r="3" fill="#8f8bd8"/>
+<circle cx="938.0" cy="179.0" r="3" fill="#8f8bd8"/>
+<circle cx="923.0" cy="191.7" r="3" fill="#8f8bd8"/>
+<circle cx="905.1" cy="206.7" r="3" fill="#8f8bd8"/>
+<circle cx="883.6" cy="224.9" r="3" fill="#8f8bd8"/>
+<circle cx="857.1" cy="247.1" r="3" fill="#8f8bd8"/>
+<circle cx="823.9" cy="275.2" r="3" fill="#8f8bd8"/>
+<circle cx="780.7" cy="311.5" r="3" fill="#8f8bd8"/>
+<circle cx="722.6" cy="360.4" r="3" fill="#8f8bd8"/>
+<circle cx="640.0" cy="430.0" r="3" fill="#8f8bd8"/>
+<polyline points="1020.0,110.0 1015.8,126.8 1011.3,143.7 1006.3,160.5 1000.8,177.4 994.7,194.2 987.9,211.1 980.3,227.9 971.7,244.7 962.0,261.6 950.9,278.4 938.0,295.3 923.0,312.1 905.1,328.9 883.6,345.8 857.1,362.6 823.9,379.5 780.7,396.3 722.6,413.2 640.0,430.0" fill="none" stroke="#d4a24c" stroke-width="1.8"/>
+<circle cx="1020.0" cy="110.0" r="3" fill="#d4a24c"/>
+<circle cx="1015.8" cy="126.8" r="3" fill="#d4a24c"/>
+<circle cx="1011.3" cy="143.7" r="3" fill="#d4a24c"/>
+<circle cx="1006.3" cy="160.5" r="3" fill="#d4a24c"/>
+<circle cx="1000.8" cy="177.4" r="3" fill="#d4a24c"/>
+<circle cx="994.7" cy="194.2" r="3" fill="#d4a24c"/>
+<circle cx="987.9" cy="211.1" r="3" fill="#d4a24c"/>
+<circle cx="980.3" cy="227.9" r="3" fill="#d4a24c"/>
+<circle cx="971.7" cy="244.7" r="3" fill="#d4a24c"/>
+<circle cx="962.0" cy="261.6" r="3" fill="#d4a24c"/>
+<circle cx="950.9" cy="278.4" r="3" fill="#d4a24c"/>
+<circle cx="938.0" cy="295.3" r="3" fill="#d4a24c"/>
+<circle cx="923.0" cy="312.1" r="3" fill="#d4a24c"/>
+<circle cx="905.1" cy="328.9" r="3" fill="#d4a24c"/>
+<circle cx="883.6" cy="345.8" r="3" fill="#d4a24c"/>
+<circle cx="857.1" cy="362.6" r="3" fill="#d4a24c"/>
+<circle cx="823.9" cy="379.5" r="3" fill="#d4a24c"/>
+<circle cx="780.7" cy="396.3" r="3" fill="#d4a24c"/>
+<circle cx="722.6" cy="413.2" r="3" fill="#d4a24c"/>
+<circle cx="640.0" cy="430.0" r="3" fill="#d4a24c"/>
+<text x="640.0" y="448.0" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="632.0" y="434.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="830.0" y="448.0" font-size="11" fill="#9ca3af" text-anchor="middle">500</text>
+<text x="632.0" y="274.0" font-size="11" fill="#9ca3af" text-anchor="end">500</text>
+<text x="1020.0" y="448.0" font-size="11" fill="#9ca3af" text-anchor="middle">1000</text>
+<text x="632.0" y="114.0" font-size="11" fill="#9ca3af" text-anchor="end">1000</text>
+<text x="830.0" y="470.0" font-size="13" fill="#6b7280" text-anchor="middle">视频 timestep（σ_v × 1000）</text>
+<text x="646.0" y="104.0" font-size="11" fill="#6b7280" text-anchor="start">音频 timestep（σ_a × 1000）</text>
+<text x="648.0" y="140.0" font-size="11" fill="#6b7280" text-anchor="start">原图标注：</text>
+<text x="648.0" y="156.0" font-size="11" fill="#6b7280" text-anchor="start">Normal, Unbalance Denoise</text>
+<text x="1014.0" y="404.0" font-size="11" fill="#6b7280" text-anchor="end">原图标注：</text>
+<text x="1014.0" y="420.0" font-size="11" fill="#6b7280" text-anchor="end">Disentangled, Balanced Denoise</text>
+<rect x="100.0" y="492.0" width="14.0" height="10.0" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="122.0" y="502.0" font-size="13" fill="#111827" text-anchor="start">shift = 5：更多训练样本落在高噪声一端</text>
+<rect x="100.0" y="514.0" width="14.0" height="10.0" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="122.0" y="524.0" font-size="13" fill="#111827" text-anchor="start">shift = 1：σ = t，不重新分配</text>
+<rect x="640.0" y="492.0" width="14.0" height="10.0" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="662.0" y="502.0" font-size="13" fill="#111827" text-anchor="start">v = 5, a = 1（Phase 1）</text>
+<rect x="640.0" y="514.0" width="14.0" height="10.0" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="662.0" y="524.0" font-size="13" fill="#111827" text-anchor="start">v = a = 5（Phase 2–3）</text>
+<text x="30.0" y="562.0" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 10 公式 (4) 与 p. 8 Figure 4(c) 重画。右图各点按 t_k = 1 − k/19（k = 0–19）代入公式重算，与原图点位吻合。</text>
+<text x="30.0" y="586.0" font-size="13" fill="#6b7280" text-anchor="start">报告 p. 10 印出的分母是 shift + t(1 − shift)，照它算 shift = 5 时 t > 5/9 就有 σ > 1；本图按官方代码的标准形式画，右图点位也只与标准形式吻合。</text>
+<text x="30.0" y="612.0" font-size="13" fill="#6b7280" text-anchor="start">原图把对角线（v = a = 5）标成 Unbalance，而 Phase 2–3 实际采用的正是它，正文对此没有交代。</text>
+</svg>

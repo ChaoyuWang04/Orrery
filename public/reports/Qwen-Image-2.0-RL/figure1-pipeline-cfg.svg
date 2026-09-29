@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker><marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker><marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker></defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">后训练全流程：奖励只在 RL 里出现，CFG 在哪一步开、哪一步关</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 生图（T2I）这一路；黄 = 编辑这一路；绿 = 合并与部署；红徽标 = 这一步用 CFG，灰徽标 = 这一步不用。</text>
+<rect x="30.0" y="250.0" width="110.0" height="56.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="85.0" y="274.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Qwen-Image-2.0</text>
+<text x="85.0" y="292.0" font-size="11" fill="#6b7280" text-anchor="middle">基座</text>
+<rect x="190.0" y="80.0" width="380.0" height="200.0" rx="8" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="206.0" y="104.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">T2I RL（全参数，GRPO 类框架）</text>
+<rect x="206.0" y="118.0" width="348.0" height="28.0" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="216.0" y="137.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">对齐奖励</text>
+<text x="300.0" y="137.0" font-size="11" fill="#6b7280" text-anchor="start">提示有没有被执行，先判物体与数量</text>
+<rect x="206.0" y="154.0" width="348.0" height="28.0" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="216.0" y="173.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">美学奖励</text>
+<text x="300.0" y="173.0" font-size="11" fill="#6b7280" text-anchor="start">构图、光照、纹理</text>
+<rect x="206.0" y="190.0" width="348.0" height="28.0" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="216.0" y="209.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">人像奖励</text>
+<text x="300.0" y="209.0" font-size="11" fill="#6b7280" text-anchor="start">五官比例、皮肤与头发质感、手指</text>
+<rect x="206.0" y="234.0" width="164.0" height="22.0" rx="11" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="288.0" y="249.0" font-size="11" fill="#111827" text-anchor="middle">rollout 40 步：CFG 开</text>
+<rect x="386.0" y="234.0" width="164.0" height="22.0" rx="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="468.0" y="249.0" font-size="11" fill="#111827" text-anchor="middle">策略更新：CFG 关</text>
+<rect x="190.0" y="320.0" width="380.0" height="164.0" rx="8" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="206.0" y="344.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">编辑 RL</text>
+<rect x="206.0" y="358.0" width="348.0" height="28.0" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="216.0" y="377.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">指令遵循奖励</text>
+<text x="314.0" y="377.0" font-size="11" fill="#6b7280" text-anchor="start">VLM 看原图、指令、结果三元组</text>
+<rect x="206.0" y="394.0" width="348.0" height="28.0" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="216.0" y="413.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">人脸身份奖励</text>
+<text x="314.0" y="413.0" font-size="11" fill="#6b7280" text-anchor="start">嵌入级打分器，补 VLM 看不出的漂移</text>
+<rect x="206.0" y="438.0" width="164.0" height="22.0" rx="11" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="288.0" y="453.0" font-size="11" fill="#111827" text-anchor="middle">rollout：CFG 开</text>
+<rect x="386.0" y="438.0" width="164.0" height="22.0" rx="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="468.0" y="453.0" font-size="11" fill="#111827" text-anchor="middle">策略更新：CFG 关</text>
+<line x1="140.0" y1="270.0" x2="188.0" y2="180.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="140.0" y1="286.0" x2="188.0" y2="400.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="610.0" y="160.0" width="120.0" height="44.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="670.0" y="187.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">T2I 教师</text>
+<rect x="610.0" y="380.0" width="120.0" height="44.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="670.0" y="407.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">编辑教师</text>
+<line x1="570.0" y1="182.0" x2="608.0" y2="182.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="570.0" y1="402.0" x2="608.0" y2="402.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="770.0" y="212.0" width="180.0" height="160.0" rx="8" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="860.0" y="238.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">OPD</text>
+<text x="860.0" y="258.0" font-size="11" fill="#6b7280" text-anchor="middle">学生从基座初始化</text>
+<text x="860.0" y="274.0" font-size="11" fill="#6b7280" text-anchor="middle">沿自己的轨迹逐点</text>
+<text x="860.0" y="290.0" font-size="11" fill="#6b7280" text-anchor="middle">匹配本任务教师的速度</text>
+<rect x="786.0" y="304.0" width="148.0" height="22.0" rx="11" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="860.0" y="319.0" font-size="11" fill="#111827" text-anchor="middle">教师预测：CFG 开</text>
+<rect x="786.0" y="336.0" width="148.0" height="22.0" rx="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="860.0" y="351.0" font-size="11" fill="#111827" text-anchor="middle">学生训练：CFG 关</text>
+<line x1="730.0" y1="182.0" x2="768.0" y2="250.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="730.0" y1="402.0" x2="768.0" y2="330.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="980.0" y="236.0" width="120.0" height="112.0" rx="8" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1040.0" y="262.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">统一部署模型</text>
+<text x="1040.0" y="282.0" font-size="11" fill="#6b7280" text-anchor="middle">生图 + 编辑</text>
+<text x="1040.0" y="298.0" font-size="11" fill="#6b7280" text-anchor="middle">不再依赖奖励模型</text>
+<rect x="990.0" y="312.0" width="100.0" height="22.0" rx="11" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1040.0" y="327.0" font-size="11" fill="#111827" text-anchor="middle">推理：CFG 接回</text>
+<line x1="950.0" y1="292.0" x2="978.0" y2="292.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30.0" y="530.0" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 2 Figure 1 与 p. 6–8 正文重画。奖励模型是远程 API 服务，只在 RL 阶段被调用；T2I 三路奖励按「对齐 → 美学 → 人像」逐层叠加。</text>
+<text x="30.0" y="554.0" font-size="13" fill="#6b7280" text-anchor="start">学习率、组大小 G、训练步数、CFG 强度、参与更新的时间步比例，报告全文都没有给数值。</text>
+<text x="30.0" y="582.0" font-size="11" fill="#9ca3af" text-anchor="start">图中奖励说明是对 PDF p. 5–6 各奖励评分细则的缩写。</text>
+</svg>

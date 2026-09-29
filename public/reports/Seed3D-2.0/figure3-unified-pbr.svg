@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">材质：从「先画 RGB 再反推」改成「一次出物理贴图」</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 生成模型；红 = 已把光照烤进颜色的中间结果；黄 = VLM 语义条件；绿 = 物理贴图输出；灰 = 输入条件。</text>
+<text x="360" y="90" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Seed3D 1.0：两棒级联</text>
+<text x="845" y="90" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Seed3D 2.0：一个统一 PBR 模型</text>
+<text x="30" y="140" font-size="14" fill="#111827" text-anchor="start" font-weight="700">条件</text>
+<text x="30" y="290" font-size="14" fill="#111827" text-anchor="start" font-weight="700">生成</text>
+<text x="30" y="452" font-size="14" fill="#111827" text-anchor="start" font-weight="700">输出</text>
+<line x1="20" y1="180" x2="1100" y2="180" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="20" y1="410" x2="1100" y2="410" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="602" y1="76" x2="602" y2="490" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="160" y="110" width="400" height="54" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="360" y="142" font-size="11" fill="#9ca3af" text-anchor="middle">1.0 的条件细节本 PDF 未展开</text>
+<rect x="160" y="192" width="400" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="360" y="215" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Seed3D-MV</text>
+<text x="360" y="234" font-size="11" fill="#6b7280" text-anchor="middle">先合成多视图 RGB</text>
+<rect x="210" y="266" width="300" height="46" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="360" y="286" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">中间多视图 RGB</text>
+<text x="360" y="303" font-size="11" fill="#6b7280" text-anchor="middle">光照与材质已混在一起</text>
+<rect x="160" y="334" width="400" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="360" y="357" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Seed3D-PBR</text>
+<text x="360" y="376" font-size="11" fill="#6b7280" text-anchor="middle">再从 RGB 反推材质，误差沿级联往下传</text>
+<line x1="360" y1="244" x2="360" y2="264" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="360" y1="312" x2="360" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="160" y="424" width="400" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="360" y="447" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">PBR 贴图</text>
+<text x="360" y="466" font-size="11" fill="#6b7280" text-anchor="middle">受 1.0 的低图像分辨率所限，细纹理与文字难保住</text>
+<line x1="360" y1="386" x2="360" y2="422" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="622" y="100" width="144" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="694" y="128" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">参考图</text>
+<text x="694" y="148" font-size="11" fill="#6b7280" text-anchor="middle">单张输入图</text>
+<rect x="776" y="100" width="144" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="848" y="128" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">法线与 CCM</text>
+<text x="848" y="148" font-size="11" fill="#6b7280" text-anchor="middle">由输入网格得到</text>
+<rect x="930" y="100" width="160" height="64" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1010" y="128" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VLM 材质描述</text>
+<text x="1010" y="148" font-size="11" fill="#6b7280" text-anchor="middle">SFT 阶段才加入</text>
+<line x1="694" y1="164" x2="694" y2="200" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="848" y1="164" x2="848" y2="200" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="1010" y1="164" x2="1010" y2="200" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="622" y="202" width="468" height="184" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="856" y="230" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MMDiT 双流 + MoE</text>
+<text x="856" y="252" font-size="11" fill="#6b7280" text-anchor="middle">沿用 1.0 的双流骨架，不再经过中间 RGB</text>
+<rect x="648" y="270" width="200" height="46" rx="6" fill="#ffffff" stroke="#8f8bd8"/>
+<text x="748" y="290" font-size="12" fill="#111827" text-anchor="middle">albedo 投影层</text>
+<text x="748" y="306" font-size="11" fill="#6b7280" text-anchor="middle">模态专属</text>
+<rect x="864" y="270" width="200" height="46" rx="6" fill="#ffffff" stroke="#8f8bd8"/>
+<text x="964" y="290" font-size="12" fill="#111827" text-anchor="middle">金属度—粗糙度投影层</text>
+<text x="964" y="306" font-size="11" fill="#6b7280" text-anchor="middle">模态专属</text>
+<text x="856" y="342" font-size="11" fill="#6b7280" text-anchor="middle">两种贴图在共享 DiT 块里联合建模</text>
+<text x="856" y="364" font-size="11" fill="#6b7280" text-anchor="middle">MoE 加大容量、按住激活计算，用来抬高生成分辨率</text>
+<rect x="622" y="424" width="224" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="734" y="447" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">多视图 albedo</text>
+<text x="734" y="466" font-size="11" fill="#6b7280" text-anchor="middle">去掉光照的固有色</text>
+<rect x="866" y="424" width="224" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="978" y="447" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">多视图金属度—粗糙度</text>
+<text x="978" y="466" font-size="11" fill="#6b7280" text-anchor="middle">换灯时由引擎重算高光</text>
+<line x1="734" y1="386" x2="734" y2="422" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="978" y1="386" x2="978" y2="422" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="516" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 5 Figure 3 与 §2.2、p. 6 VLM 条件、p. 9 §4.2 重画。CCM 本 PDF 未给定义。</text>
+<text x="30" y="540" font-size="13" fill="#9ca3af" text-anchor="start">生成分辨率、视角数、专家数与路由方式报告均未公开，图上不画。</text>
+</svg>

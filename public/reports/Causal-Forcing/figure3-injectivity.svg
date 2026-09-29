@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ard" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="540" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">ODE 初始化要学的是函数：同一张带噪帧只能对应一个干净答案</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 正在去噪的带噪帧；灰 = 只作条件的其他帧；绿 = 唯一的干净目标；红 = 互相冲突的目标，以及平方损失把它们平均出来的结果。</text>
+
+<rect x="16" y="70" width="352" height="404" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="384" y="70" width="352" height="404" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="752" y="70" width="352" height="404" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="192" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 双向教师 → 双向学生</text>
+<text x="192" y="116" font-size="11" fill="#6b7280" text-anchor="middle">标准 ODE 蒸馏，整段一起去噪</text>
+<text x="560" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) AR 教师 → AR 学生</text>
+<text x="560" y="116" font-size="11" fill="#6b7280" text-anchor="middle">Causal Forcing 的因果 ODE</text>
+<text x="928" y="96" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(c) 双向教师 → AR 学生</text>
+<text x="928" y="116" font-size="11" fill="#6b7280" text-anchor="middle">Self Forcing 的 ODE 初始化</text>
+
+<!-- (a) -->
+<text x="36" y="148" font-size="11" fill="#6b7280">输入：整段带噪视频</text>
+<rect x="40" y="158" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="112" y="158" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="184" y="158" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="256" y="158" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="72" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 1</text>
+<text x="144" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 2</text>
+<text x="216" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 3</text>
+<text x="288" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 4</text>
+<line x1="180" y1="204" x2="180" y2="280" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="190" y="246" font-size="11" fill="#6b7280">双向教师的流映射</text>
+<text x="36" y="302" font-size="11" fill="#6b7280">目标：整段干净视频</text>
+<rect x="40" y="312" width="64" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="112" y="312" width="64" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="184" y="312" width="64" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="256" y="312" width="64" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="72" y="337" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 1</text>
+<text x="144" y="337" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 2</text>
+<text x="216" y="337" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 3</text>
+<text x="288" y="337" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 4</text>
+<rect x="40" y="378" width="280" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="180" y="402" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">整段对整段，一一对应</text>
+<text x="180" y="422" font-size="11" fill="#6b7280" text-anchor="middle">视频级单射成立</text>
+<text x="192" y="460" font-size="11" fill="#9ca3af" text-anchor="middle">对应原文 Figure 3(a)</text>
+
+<!-- (b) -->
+<text x="404" y="148" font-size="11" fill="#6b7280">输入：干净历史 + 当前带噪帧</text>
+<rect x="408" y="158" width="64" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="480" y="158" width="64" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="552" y="158" width="64" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="624" y="158" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="440" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">历史 1</text>
+<text x="512" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">历史 2</text>
+<text x="584" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">历史 3</text>
+<text x="656" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 4</text>
+<line x1="656" y1="204" x2="656" y2="280" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="646" y="246" font-size="11" fill="#6b7280" text-anchor="end">AR 教师的流映射</text>
+<text x="404" y="302" font-size="11" fill="#6b7280">目标：当前帧的干净版本</text>
+<rect x="624" y="312" width="64" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="656" y="337" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 4</text>
+<rect x="408" y="378" width="280" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="548" y="402" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">教师与学生看见同样的东西</text>
+<text x="548" y="422" font-size="11" fill="#6b7280" text-anchor="middle">帧级单射成立，学生学得到这条流映射</text>
+<text x="560" y="460" font-size="11" fill="#9ca3af" text-anchor="middle">对应原文 Figure 3(b)</text>
+
+<!-- (c) -->
+<text x="772" y="148" font-size="11" fill="#6b7280">教师去噪帧 i 时，未来帧也在场</text>
+<rect x="772" y="158" width="60" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="840" y="158" width="70" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="802" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 i</text>
+<text x="875" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">未来 A</text>
+<line x1="914" y1="178" x2="968" y2="178" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="974" y="158" width="110" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1029" y="183" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">干净帧 A</text>
+<rect x="772" y="208" width="60" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="840" y="208" width="70" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="802" y="233" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 i</text>
+<text x="875" y="233" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">未来 B</text>
+<line x1="914" y1="228" x2="968" y2="228" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="974" y="208" width="110" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1029" y="233" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">干净帧 B</text>
+<text x="772" y="302" font-size="11" fill="#6b7280">学生只看见帧 i：一个输入，两个标签</text>
+<rect x="772" y="312" width="60" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="802" y="337" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 i</text>
+<line x1="838" y1="332" x2="968" y2="332" stroke="#d9877a" stroke-width="1.4" marker-end="url(#ard)"/>
+<text x="900" y="324" font-size="11" fill="#6b7280" text-anchor="middle">平方损失最优解</text>
+<rect x="974" y="312" width="110" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-dasharray="4 3"/>
+<text x="1029" y="330" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">A 与 B 的平均</text>
+<text x="1029" y="345" font-size="11" fill="#6b7280" text-anchor="middle">画面发糊</text>
+<rect x="776" y="378" width="308" height="56" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="930" y="402" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">同一输入对上多个答案</text>
+<text x="930" y="422" font-size="11" fill="#6b7280" text-anchor="middle">帧级单射被破坏，学到的是条件期望</text>
+<text x="928" y="460" font-size="11" fill="#9ca3af" text-anchor="middle">对应原文 Figure 3(c)</text>
+
+<text x="30" y="506" font-size="11" fill="#9ca3af">按 PDF p. 4 Figure 3、p. 5 式（5）与 Lemma 3.2 重画的机制示意。帧数与排布只为说明，不是实测；(c) 里的「平均」对应原文所说的条件期望解。</text>
+</svg>

@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">同一组表面：按里外符号抽，还是按「哪条棱被切开」抽</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">二维示意。绿 = 最终抽出的表面；红虚线 = 抽不出来的表面；灰点 = 被判为「里面」的格点；黄 = 被表面切开的格子棱；紫点 = 对偶顶点。</text>
+<text x="40" y="90" font-size="14" fill="#111827" text-anchor="start" font-weight="700">等值面场：先给每个格点定里外</text>
+<text x="40" y="108" font-size="11" fill="#6b7280" text-anchor="start">洪水填充从外面灌进来，灌不到的都算「里面」</text>
+<line x1="40.0" y1="408.0" x2="40.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="76.0" y1="408.0" x2="76.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="112.0" y1="408.0" x2="112.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="148.0" y1="408.0" x2="148.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="184.0" y1="408.0" x2="184.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="220.0" y1="408.0" x2="220.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="256.0" y1="408.0" x2="256.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="292.0" y1="408.0" x2="292.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="328.0" y1="408.0" x2="328.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="364.0" y1="408.0" x2="364.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="400.0" y1="408.0" x2="400.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="436.0" y1="408.0" x2="436.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="472.0" y1="408.0" x2="472.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="40.0" y1="408.0" x2="472.0" y2="408.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="40.0" y1="372.0" x2="472.0" y2="372.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="40.0" y1="336.0" x2="472.0" y2="336.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="40.0" y1="300.0" x2="472.0" y2="300.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="40.0" y1="264.0" x2="472.0" y2="264.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="40.0" y1="228.0" x2="472.0" y2="228.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="40.0" y1="192.0" x2="472.0" y2="192.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="40.0" y1="156.0" x2="472.0" y2="156.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="40.0" y1="120.0" x2="472.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<circle cx="112.0" cy="336.0" r="3" fill="#b9b9b9"/>
+<circle cx="112.0" cy="300.0" r="3" fill="#b9b9b9"/>
+<circle cx="112.0" cy="264.0" r="3" fill="#b9b9b9"/>
+<circle cx="112.0" cy="228.0" r="3" fill="#b9b9b9"/>
+<circle cx="112.0" cy="192.0" r="3" fill="#b9b9b9"/>
+<circle cx="148.0" cy="336.0" r="3" fill="#b9b9b9"/>
+<circle cx="148.0" cy="300.0" r="3" fill="#b9b9b9"/>
+<circle cx="148.0" cy="264.0" r="3" fill="#b9b9b9"/>
+<circle cx="148.0" cy="228.0" r="3" fill="#b9b9b9"/>
+<circle cx="148.0" cy="192.0" r="3" fill="#b9b9b9"/>
+<circle cx="184.0" cy="336.0" r="3" fill="#b9b9b9"/>
+<circle cx="184.0" cy="300.0" r="3" fill="#b9b9b9"/>
+<circle cx="184.0" cy="264.0" r="3" fill="#b9b9b9"/>
+<circle cx="184.0" cy="228.0" r="3" fill="#b9b9b9"/>
+<circle cx="184.0" cy="192.0" r="3" fill="#b9b9b9"/>
+<circle cx="220.0" cy="336.0" r="3" fill="#b9b9b9"/>
+<circle cx="220.0" cy="300.0" r="3" fill="#b9b9b9"/>
+<circle cx="220.0" cy="264.0" r="3" fill="#b9b9b9"/>
+<circle cx="220.0" cy="228.0" r="3" fill="#b9b9b9"/>
+<circle cx="220.0" cy="192.0" r="3" fill="#b9b9b9"/>
+<circle cx="256.0" cy="336.0" r="3" fill="#b9b9b9"/>
+<circle cx="256.0" cy="300.0" r="3" fill="#b9b9b9"/>
+<circle cx="256.0" cy="264.0" r="3" fill="#b9b9b9"/>
+<circle cx="256.0" cy="228.0" r="3" fill="#b9b9b9"/>
+<circle cx="256.0" cy="192.0" r="3" fill="#b9b9b9"/>
+<polyline points="86.8,361.2 281.2,361.2 281.2,166.8 86.8,166.8 86.8,361.2" fill="none" stroke="#5fa886" stroke-width="2.4"/>
+<polyline points="158.8,285.6 209.2,285.6 209.2,242.4 158.8,242.4 158.8,285.6" fill="none" stroke="#d9877a" stroke-width="2" stroke-dasharray="5 4"/>
+<polyline points="342.4,170.4 380.2,253.2 421.6,350.4" fill="none" stroke="#d9877a" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="184.0" y="215.4" font-size="11" fill="#d9877a" text-anchor="middle">内腔被填实</text>
+<text x="385.6" y="145.2" font-size="11" fill="#d9877a" text-anchor="middle">薄片两侧都是外面</text>
+<text x="600" y="90" font-size="14" fill="#111827" text-anchor="start" font-weight="700">O-Voxel：只问每条棱有没有被表面切开</text>
+<text x="600" y="108" font-size="11" fill="#6b7280" text-anchor="start">被切开的棱激活对偶面；开口端由边界项把顶点拉到边上</text>
+<line x1="600.0" y1="408.0" x2="600.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="636.0" y1="408.0" x2="636.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="672.0" y1="408.0" x2="672.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="708.0" y1="408.0" x2="708.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="744.0" y1="408.0" x2="744.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="780.0" y1="408.0" x2="780.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="816.0" y1="408.0" x2="816.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="852.0" y1="408.0" x2="852.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="888.0" y1="408.0" x2="888.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="924.0" y1="408.0" x2="924.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="960.0" y1="408.0" x2="960.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="996.0" y1="408.0" x2="996.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="1032.0" y1="408.0" x2="1032.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="600.0" y1="408.0" x2="1032.0" y2="408.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="600.0" y1="372.0" x2="1032.0" y2="372.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="600.0" y1="336.0" x2="1032.0" y2="336.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="600.0" y1="300.0" x2="1032.0" y2="300.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="600.0" y1="264.0" x2="1032.0" y2="264.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="600.0" y1="228.0" x2="1032.0" y2="228.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="600.0" y1="192.0" x2="1032.0" y2="192.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="600.0" y1="156.0" x2="1032.0" y2="156.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="600.0" y1="120.0" x2="1032.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="672.0" y1="372.0" x2="672.0" y2="336.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="708.0" y1="372.0" x2="708.0" y2="336.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="744.0" y1="372.0" x2="744.0" y2="336.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="780.0" y1="372.0" x2="780.0" y2="336.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="816.0" y1="372.0" x2="816.0" y2="336.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="816.0" y1="336.0" x2="852.0" y2="336.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="816.0" y1="300.0" x2="852.0" y2="300.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="816.0" y1="264.0" x2="852.0" y2="264.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="816.0" y1="228.0" x2="852.0" y2="228.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="816.0" y1="192.0" x2="852.0" y2="192.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="672.0" y1="192.0" x2="672.0" y2="156.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="708.0" y1="192.0" x2="708.0" y2="156.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="744.0" y1="192.0" x2="744.0" y2="156.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="780.0" y1="192.0" x2="780.0" y2="156.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="816.0" y1="192.0" x2="816.0" y2="156.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="636.0" y1="336.0" x2="672.0" y2="336.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="636.0" y1="300.0" x2="672.0" y2="300.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="636.0" y1="264.0" x2="672.0" y2="264.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="636.0" y1="228.0" x2="672.0" y2="228.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="636.0" y1="192.0" x2="672.0" y2="192.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="744.0" y1="300.0" x2="744.0" y2="264.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="744.0" y1="264.0" x2="780.0" y2="264.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="744.0" y1="264.0" x2="744.0" y2="228.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="708.0" y1="264.0" x2="744.0" y2="264.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="888.0" y1="192.0" x2="924.0" y2="192.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="924.0" y1="228.0" x2="960.0" y2="228.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="924.0" y1="228.0" x2="924.0" y2="192.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="924.0" y1="264.0" x2="960.0" y2="264.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="960.0" y1="336.0" x2="996.0" y2="336.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="960.0" y1="300.0" x2="996.0" y2="300.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="960.0" y1="300.0" x2="960.0" y2="264.0" stroke="#d4a24c" stroke-width="3"/>
+<line x1="659.4" y1="348.6" x2="690.0" y2="361.2" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="690.0" y1="361.2" x2="726.0" y2="361.2" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="726.0" y1="361.2" x2="762.0" y2="361.2" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="762.0" y1="361.2" x2="798.0" y2="361.2" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="798.0" y1="361.2" x2="828.6" y2="348.6" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="828.6" y1="348.6" x2="841.2" y2="318.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="841.2" y1="318.0" x2="841.2" y2="282.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="841.2" y1="282.0" x2="841.2" y2="246.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="841.2" y1="246.0" x2="841.2" y2="210.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="841.2" y1="210.0" x2="828.6" y2="179.4" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="659.4" y1="179.4" x2="690.0" y2="166.8" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="690.0" y1="166.8" x2="726.0" y2="166.8" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="726.0" y1="166.8" x2="762.0" y2="166.8" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="762.0" y1="166.8" x2="798.0" y2="166.8" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="798.0" y1="166.8" x2="828.6" y2="179.4" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="659.4" y1="348.6" x2="646.8" y2="318.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="646.8" y1="318.0" x2="646.8" y2="282.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="646.8" y1="282.0" x2="646.8" y2="246.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="646.8" y1="246.0" x2="646.8" y2="210.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="646.8" y1="210.0" x2="659.4" y2="179.4" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="731.4" y1="274.8" x2="756.6" y2="274.8" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="756.6" y1="274.8" x2="756.6" y2="253.2" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="731.4" y1="253.2" x2="756.6" y2="253.2" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="731.4" y1="274.8" x2="731.4" y2="253.2" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="918.1" y1="204.9" x2="902.4" y2="170.4" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="936.7" y1="246.0" x2="926.3" y2="222.9" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="918.1" y1="204.9" x2="926.3" y2="222.9" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="952.4" y1="281.8" x2="936.7" y2="246.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="981.6" y1="350.4" x2="967.8" y2="318.0" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="967.8" y1="318.0" x2="960.1" y2="299.8" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="952.4" y1="281.8" x2="960.1" y2="299.8" stroke="#5fa886" stroke-width="2.4"/>
+<circle cx="659.4" cy="348.6" r="3.6" fill="#8f8bd8"/>
+<circle cx="690.0" cy="361.2" r="3.6" fill="#8f8bd8"/>
+<circle cx="726.0" cy="361.2" r="3.6" fill="#8f8bd8"/>
+<circle cx="762.0" cy="361.2" r="3.6" fill="#8f8bd8"/>
+<circle cx="798.0" cy="361.2" r="3.6" fill="#8f8bd8"/>
+<circle cx="828.6" cy="348.6" r="3.6" fill="#8f8bd8"/>
+<circle cx="841.2" cy="318.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="841.2" cy="282.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="841.2" cy="246.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="841.2" cy="210.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="828.6" cy="179.4" r="3.6" fill="#8f8bd8"/>
+<circle cx="659.4" cy="179.4" r="3.6" fill="#8f8bd8"/>
+<circle cx="690.0" cy="166.8" r="3.6" fill="#8f8bd8"/>
+<circle cx="726.0" cy="166.8" r="3.6" fill="#8f8bd8"/>
+<circle cx="762.0" cy="166.8" r="3.6" fill="#8f8bd8"/>
+<circle cx="798.0" cy="166.8" r="3.6" fill="#8f8bd8"/>
+<circle cx="646.8" cy="318.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="646.8" cy="282.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="646.8" cy="246.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="646.8" cy="210.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="731.4" cy="274.8" r="3.6" fill="#8f8bd8"/>
+<circle cx="756.6" cy="274.8" r="3.6" fill="#8f8bd8"/>
+<circle cx="756.6" cy="253.2" r="3.6" fill="#8f8bd8"/>
+<circle cx="731.4" cy="253.2" r="3.6" fill="#8f8bd8"/>
+<circle cx="918.1" cy="204.9" r="3.6" fill="#8f8bd8"/>
+<circle cx="902.4" cy="170.4" r="3.6" fill="#8f8bd8"/>
+<circle cx="936.7" cy="246.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="926.3" cy="222.9" r="3.6" fill="#8f8bd8"/>
+<circle cx="952.4" cy="281.8" r="3.6" fill="#8f8bd8"/>
+<circle cx="981.6" cy="350.4" r="3.6" fill="#8f8bd8"/>
+<circle cx="967.8" cy="318.0" r="3.6" fill="#8f8bd8"/>
+<circle cx="960.1" cy="299.8" r="3.6" fill="#8f8bd8"/>
+<text x="744.0" y="215.4" font-size="11" fill="#5fa886" text-anchor="middle">内腔保留</text>
+<text x="945.6" y="145.2" font-size="11" fill="#5fa886" text-anchor="middle">开口薄片保留</text>
+<text x="30" y="468" font-size="13" fill="#6b7280" text-anchor="start">左：符号只在「里外交界」处变化。被外壳包住的内腔墙两侧都算里面，开口薄片两侧都算外面，两处都没有符号翻转，也就抽不出面。</text>
+<text x="30" y="492" font-size="13" fill="#6b7280" text-anchor="start">右：网格三角面直接和格子棱求交，得到交点与法向（Hermite 数据）。每个被切到的格子放一个对偶顶点，相邻顶点跨过被切的棱连起来。</text>
+<text x="30" y="516" font-size="13" fill="#6b7280" text-anchor="start">三维里，一条被切开的棱对应一张四边形，再按剖分权重切成两个三角形；每个活跃体素存对偶顶点、X/Y/Z 三条棱的相交标志和剖分权重。</text>
+<text x="30" y="556" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 3 Figure 3 与 p. 3–4 §3.1.1 自绘的机制示意，不是论文的样例。左栏是等值面场的一般做法；论文只写了它对开放面、非流形、封闭内腔受限，没有画这张对照。</text>
+<text x="30" y="580" font-size="13" fill="#9ca3af" text-anchor="start">图中对偶顶点按交点均值近似摆放；论文的做法是解带平面项、边界项与正则项的 QEF（式 2）。</text>
+</svg>

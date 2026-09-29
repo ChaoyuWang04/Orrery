@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" width="1120" height="700" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="700" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">MOVA 的非对称双塔：宽度、深度都不一样，Bridge 只接前 30 层</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 视频塔（Wan2.2 A14B）；黄 = 音频塔（1.3B）；绿 = Bridge 交叉注意力；灰 = 冻结、且不计入 32B 的部件。塔的宽度按隐藏维度比例画。</text>
+<rect x="190.0" y="76.0" width="200.0" height="32.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="290.0" y="97.0" font-size="13" fill="#111827" text-anchor="middle">视频噪声 + 首帧</text>
+<rect x="490.0" y="76.0" width="140.0" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="560.0" y="97.0" font-size="13" fill="#111827" text-anchor="middle">UMT5 文本编码</text>
+<rect x="665.0" y="76.0" width="160.0" height="32.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="745.0" y="97.0" font-size="13" fill="#111827" text-anchor="middle">音频噪声</text>
+<line x1="290.0" y1="108.0" x2="290.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="745.0" y1="108.0" x2="745.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="530.0" y1="108.0" x2="432.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="590.0" y1="108.0" x2="708.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="150" y="128" width="300" height="378" rx="6" fill="#f6f5fd" stroke="#8f8bd8" stroke-dasharray="5 4"/>
+<rect x="140" y="136" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="145" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="154" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="163" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="172" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="181" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="190" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="199" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="208" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="217" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="226" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="235" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="244" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="253" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="262" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="271" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="280" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="289" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="298" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="307" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="316" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="325" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="334" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="343" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="352" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="361" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="370" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="379" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="388" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="397" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="416" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="425" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="434" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="443" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="452" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="461" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="470" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="479" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="488" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="140" y="497" width="300" height="7" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="700" y="136" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="139.5" x2="700.0" y2="139.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="145" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="148.5" x2="700.0" y2="148.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="154" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="157.5" x2="700.0" y2="157.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="163" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="166.5" x2="700.0" y2="166.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="172" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="175.5" x2="700.0" y2="175.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="181" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="184.5" x2="700.0" y2="184.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="190" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="193.5" x2="700.0" y2="193.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="199" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="202.5" x2="700.0" y2="202.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="208" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="211.5" x2="700.0" y2="211.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="217" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="220.5" x2="700.0" y2="220.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="226" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="229.5" x2="700.0" y2="229.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="235" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="238.5" x2="700.0" y2="238.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="244" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="247.5" x2="700.0" y2="247.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="253" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="256.5" x2="700.0" y2="256.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="262" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="265.5" x2="700.0" y2="265.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="271" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="274.5" x2="700.0" y2="274.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="280" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="283.5" x2="700.0" y2="283.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="289" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="292.5" x2="700.0" y2="292.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="298" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="301.5" x2="700.0" y2="301.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="307" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="310.5" x2="700.0" y2="310.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="316" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="319.5" x2="700.0" y2="319.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="325" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="328.5" x2="700.0" y2="328.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="334" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="337.5" x2="700.0" y2="337.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="343" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="346.5" x2="700.0" y2="346.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="352" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="355.5" x2="700.0" y2="355.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="361" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="364.5" x2="700.0" y2="364.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="370" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="373.5" x2="700.0" y2="373.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="379" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="382.5" x2="700.0" y2="382.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="388" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="391.5" x2="700.0" y2="391.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="700" y="397" width="90" height="7" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="440.0" y1="400.5" x2="700.0" y2="400.5" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="495.0" y="236.0" width="150.0" height="58.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="570.0" y="260.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Bridge 2.6B</text>
+<text x="570.0" y="280.0" font-size="11" fill="#6b7280" text-anchor="middle">每层两块：V→A、A→V</text>
+<text x="128.0" y="262.0" font-size="14" fill="#111827" text-anchor="end" font-weight="700">层 1–30</text>
+<text x="128.0" y="282.0" font-size="11" fill="#6b7280" text-anchor="end">与音频逐层互看</text>
+<text x="128.0" y="456.0" font-size="14" fill="#111827" text-anchor="end" font-weight="700">层 31–40</text>
+<text x="128.0" y="476.0" font-size="11" fill="#6b7280" text-anchor="end">视频独自收尾</text>
+<text x="810.0" y="150.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">音频塔：30 层，宽 1536</text>
+<text x="810.0" y="170.0" font-size="11" fill="#6b7280" text-anchor="start">Wan2.1-1.3B 骨干，位置编码改成一维时间轴</text>
+<text x="810.0" y="188.0" font-size="11" fill="#6b7280" text-anchor="start">权重文件折合 ≈1.42B</text>
+<text x="810.0" y="330.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Bridge：视频第 i 层 ↔ 音频第 i 层</text>
+<text x="810.0" y="350.0" font-size="11" fill="#6b7280" text-anchor="start">i = 1–30；随机初始化；权重折合 ≈2.66B</text>
+<text x="810.0" y="368.0" font-size="11" fill="#6b7280" text-anchor="start">两个噪声专家共用这一份</text>
+<line x1="448.0" y1="470.0" x2="800.0" y2="470.0" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="810.0" y="452.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">视频塔：40 层，宽 5120</text>
+<text x="810.0" y="472.0" font-size="11" fill="#6b7280" text-anchor="start">高噪专家（t &gt; δ）与低噪专家（t &lt; δ）</text>
+<text x="810.0" y="490.0" font-size="11" fill="#6b7280" text-anchor="start">两套完整权重，各 ≈14.3B；每步只跑一套</text>
+<line x1="290.0" y1="506.0" x2="290.0" y2="524.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="745.0" y1="404.0" x2="745.0" y2="524.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="180.0" y="526.0" width="220.0" height="34.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="290.0" y="548.0" font-size="13" fill="#111827" text-anchor="middle">视频 VAE（Wan2.1，冻结）</text>
+<rect x="640.0" y="526.0" width="210.0" height="34.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="745.0" y="548.0" font-size="13" fill="#111827" text-anchor="middle">音频 VAE（DAC 风格，冻结）</text>
+<text x="30.0" y="604.0" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 3 Figure 2 重画。层数、宽度与「第 i 层对第 i 层」的配对取自官方权重配置与代码（外部补充，报告正文没写）。</text>
+<text x="30.0" y="628.0" font-size="13" fill="#6b7280" text-anchor="start">参数按官方权重文件大小以 bf16 折算：14.29 + 14.29 + 2.66 + 1.42 ≈ 32.7B；单步激活一套视频专家，≈ 18.4B。</text>
+<text x="30.0" y="652.0" font-size="13" fill="#6b7280" text-anchor="start">UMT5（折合 ≈5.7B）与两个 VAE 不在 32B 之内。</text>
+<text x="30.0" y="682.0" font-size="11" fill="#9ca3af" text-anchor="start">Text CrossAttn、Self-Attention、FFN 等块内结构两塔相同，图上不画。</text>
+</svg>

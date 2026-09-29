@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker><marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker><marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">OPD：在学生自己走出来的轨迹上，逐点对齐教师的速度</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">绿 = 学生沿自己的 ODE 走出的轨迹点与它预测的速度；紫 = 同一点上教师给出的速度；灰虚线 = 教师自己采样会走的路（不参与训练）。</text>
+<rect x="30.0" y="76.0" width="700.0" height="360.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<polyline points="100.0,390.0 220.0,297.3 340.0,213.7 460.0,147.3 580.0,104.7 700.0,90.0" fill="none" stroke="#b9b9b9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<polyline points="100.0,390.0 220.0,337.6 340.0,298.7 460.0,263.7 580.0,231.1 700.0,200.0" fill="none" stroke="#5fa886" stroke-width="1.2"/>
+<line x1="100.0" y1="390.0" x2="174.4" y2="357.5" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+<line x1="100.0" y1="390.0" x2="164.3" y2="340.4" stroke="#8f8bd8" stroke-width="2" marker-end="url(#ap)"/>
+<line x1="220.0" y1="337.6" x2="294.4" y2="313.5" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+<line x1="220.0" y1="337.6" x2="280.6" y2="288.2" stroke="#8f8bd8" stroke-width="2" marker-end="url(#ap)"/>
+<line x1="340.0" y1="298.7" x2="414.4" y2="277.0" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+<line x1="340.0" y1="298.7" x2="400.5" y2="250.3" stroke="#8f8bd8" stroke-width="2" marker-end="url(#ap)"/>
+<line x1="460.0" y1="263.7" x2="534.4" y2="243.5" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+<line x1="460.0" y1="263.7" x2="523.3" y2="219.7" stroke="#8f8bd8" stroke-width="2" marker-end="url(#ap)"/>
+<line x1="580.0" y1="231.1" x2="654.4" y2="211.8" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+<line x1="580.0" y1="231.1" x2="649.0" y2="197.2" stroke="#8f8bd8" stroke-width="2" marker-end="url(#ap)"/>
+<circle cx="100.0" cy="390.0" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="220.0" cy="337.6" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="340.0" cy="298.7" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="460.0" cy="263.7" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="580.0" cy="231.1" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="700.0" cy="200.0" r="5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="106.0" y="414.0" font-size="11" fill="#6b7280" text-anchor="middle">x_t0（噪声）</text>
+<text x="226.0" y="361.6" font-size="11" fill="#6b7280" text-anchor="middle">x_t1</text>
+<text x="346.0" y="322.7" font-size="11" fill="#6b7280" text-anchor="middle">x_t2</text>
+<text x="466.0" y="287.7" font-size="11" fill="#6b7280" text-anchor="middle">x_t3</text>
+<text x="586.0" y="255.1" font-size="11" fill="#6b7280" text-anchor="middle">x_t4</text>
+<text x="706.0" y="224.0" font-size="11" fill="#6b7280" text-anchor="middle">x_tN（出图）</text>
+<text x="340.0" y="400.0" font-size="11" fill="#111827" text-anchor="start">每个点上：紫箭头与绿箭头之差就是要压小的误差 ‖v_θ − v_θ*‖²</text>
+<text x="44.0" y="100.0" font-size="11" fill="#9ca3af" text-anchor="start">t = 1 → t ≈ 0（从左到右去噪）</text>
+<rect x="760.0" y="76.0" width="330.0" height="132.0" rx="8" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="776.0" y="102.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">损失（PDF p. 8 式 14）</text>
+<text x="776.0" y="126.0" font-size="13" fill="#111827" text-anchor="start">L_OPD = E[ Σ_n ‖v_θ(x_tn) − v_θ*(x_tn)‖² ]</text>
+<text x="776.0" y="150.0" font-size="11" fill="#6b7280" text-anchor="start">轨迹 x_t0 … x_tN 由学生自己采样并存下；</text>
+<text x="776.0" y="168.0" font-size="11" fill="#6b7280" text-anchor="start">每个点上学生去贴当前任务教师的速度，</text>
+<text x="776.0" y="186.0" font-size="11" fill="#6b7280" text-anchor="start">学的是在自己会走到的位置上改错。</text>
+<rect x="760.0" y="224.0" width="330.0" height="104.0" rx="8" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="776.0" y="250.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">多教师怎么选</text>
+<text x="776.0" y="272.0" font-size="11" fill="#6b7280" text-anchor="start">按样本的任务类型选：生图样本配 T2I 教师，</text>
+<text x="776.0" y="290.0" font-size="11" fill="#6b7280" text-anchor="start">编辑样本配编辑教师；只把当前教师放在</text>
+<text x="776.0" y="308.0" font-size="11" fill="#6b7280" text-anchor="start">GPU 上，其余卸到 CPU。</text>
+<rect x="760.0" y="344.0" width="330.0" height="92.0" rx="8" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="776.0" y="370.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">为什么是速度的平方误差</text>
+<text x="776.0" y="392.0" font-size="11" fill="#6b7280" text-anchor="start">附录 A：学生与教师出图分布的 W2 距离</text>
+<text x="776.0" y="410.0" font-size="11" fill="#6b7280" text-anchor="start">被轨迹上速度误差的积分乘一个只依赖</text>
+<text x="776.0" y="428.0" font-size="11" fill="#6b7280" text-anchor="start">教师 Lipschitz 常数的因子所界住。</text>
+<text x="30.0" y="480.0" font-size="13" fill="#6b7280" text-anchor="start">机制示意，据 PDF p. 8 式 (14) 与 p. 13 附录 A 重画；轨迹形状与箭头长度不是实测。</text>
+<text x="30.0" y="504.0" font-size="13" fill="#6b7280" text-anchor="start">教师预测时开 CFG、学生训练时不开，OPD 结束后再给学生接回 CFG（PDF p. 8）。</text>
+<text x="30.0" y="532.0" font-size="11" fill="#9ca3af" text-anchor="start">灰虚线只为说明「轨迹来自学生」：离线蒸馏会在教师自己的轨迹上监督，那条路学生部署时未必走得到。这一句是本文的解释。</text>
+</svg>

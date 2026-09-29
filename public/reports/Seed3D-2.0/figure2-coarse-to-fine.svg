@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">先长骨架，再从骨架借回坐标刻细节</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 生成网络（DiT）；绿 = VAE 编解码；黄 = Stage 1 留给 Stage 2 的两条先验；灰 = 输入与确定性几何步骤。</text>
+<text x="30" y="137" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Stage 1</text>
+<text x="30" y="477" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Stage 2</text>
+<rect x="130" y="100" width="210" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="235" y="126" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">图像 token + 噪声</text>
+<text x="235" y="146" font-size="11" fill="#6b7280" text-anchor="middle">单张输入图作条件</text>
+<rect x="380" y="100" width="210" height="64" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="485" y="126" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Stage 1 DiT</text>
+<text x="485" y="146" font-size="11" fill="#6b7280" text-anchor="middle">放大的 1.0 骨干，只管整体拓扑</text>
+<rect x="630" y="100" width="210" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="735" y="126" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VAE 解码</text>
+<text x="735" y="146" font-size="11" fill="#6b7280" text-anchor="middle">稀疏 512³ 网格上做 DMC</text>
+<rect x="880" y="100" width="210" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="985" y="126" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">粗网格</text>
+<text x="985" y="146" font-size="11" fill="#6b7280" text-anchor="middle">拓扑大体对，边角被磨平</text>
+<line x1="340" y1="132" x2="378" y2="132" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="590" y1="132" x2="628" y2="132" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="840" y1="132" x2="878" y2="132" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="880" y="220" width="210" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="985" y="246" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VAE 再编码</text>
+<text x="985" y="266" font-size="11" fill="#6b7280" text-anchor="middle">粗网格变回粗 latent</text>
+<rect x="630" y="220" width="210" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="735" y="246" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">GPU 体素化</text>
+<text x="735" y="266" font-size="11" fill="#6b7280" text-anchor="middle">再做一圈形态学膨胀</text>
+<line x1="1010" y1="164" x2="1010" y2="218" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="950,164 950,192 735,192 735,218" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="880" y="306" width="210" height="70" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="985" y="332" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">粗形状先验</text>
+<text x="985" y="352" font-size="11" fill="#6b7280" text-anchor="middle">粗 latent 部分加噪后送入</text>
+<text x="985" y="367" font-size="11" fill="#6b7280" text-anchor="middle">留住低频骨架，逼它只改细节</text>
+<rect x="630" y="306" width="210" height="70" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="735" y="332" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">体素位置编码</text>
+<text x="735" y="352" font-size="11" fill="#6b7280" text-anchor="middle">每个 latent token 锚到</text>
+<text x="735" y="367" font-size="11" fill="#6b7280" text-anchor="middle">一个空间位置，兼作占用先验</text>
+<line x1="985" y1="284" x2="985" y2="304" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="735" y1="284" x2="735" y2="304" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="735" y1="376" x2="735" y2="404" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="985,376 985,404 485,404 485,438" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="130" y="236" font-size="13" fill="#6b7280" text-anchor="start">粗网格同时变成两路信号：</text>
+<text x="130" y="262" font-size="13" fill="#6b7280" text-anchor="start">① 再编码成粗 latent，当结构锚；</text>
+<text x="130" y="288" font-size="13" fill="#6b7280" text-anchor="start">② 体素化加膨胀，给 token 坐标。</text>
+<text x="130" y="330" font-size="13" fill="#6b7280" text-anchor="start">Stage 2 于是只剩一件事：</text>
+<text x="130" y="356" font-size="13" fill="#6b7280" text-anchor="start">在骨架附近长出锐边与细表面。</text>
+<rect x="130" y="440" width="210" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="235" y="466" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">图像 token + 噪声</text>
+<text x="235" y="486" font-size="11" fill="#6b7280" text-anchor="middle">同一张输入图</text>
+<rect x="380" y="440" width="210" height="64" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="485" y="466" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Stage 2 DiT</text>
+<text x="485" y="486" font-size="11" fill="#6b7280" text-anchor="middle">从 Stage 1 权重初始化</text>
+<rect x="630" y="440" width="210" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="735" y="466" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VAE 解码</text>
+<text x="735" y="486" font-size="11" fill="#6b7280" text-anchor="middle">逐级剪掉查询点，最高 1536³</text>
+<rect x="880" y="440" width="210" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="985" y="466" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">精网格</text>
+<text x="985" y="486" font-size="11" fill="#6b7280" text-anchor="middle">QEM 减面，再 UV 展开</text>
+<line x1="340" y1="472" x2="378" y2="472" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="590" y1="472" x2="628" y2="472" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="840" y1="472" x2="878" y2="472" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="548" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 4 Figure 2、p. 5 两条先验、p. 9 训练课程与 p. 10 推理流程重画。机制示意，不含耗时。</text>
+<text x="30" y="572" font-size="13" fill="#9ca3af" text-anchor="start">512³ 与 1536³ 是推理时抽网格的分辨率；训练时的 256 → 4096 是 latent 序列长度，两套数字不要混。</text>
+</svg>

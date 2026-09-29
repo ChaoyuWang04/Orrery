@@ -288,10 +288,10 @@
 |---|---|---|
 | Video-DeltaNet | Berkeley | 视频扩散的混合注意力:局部 Softmax 加逐帧更新的双向线性记忆,分阶段对齐教师接进预训练模型,在 MiniMax H3 上实例化 |
 | Qwen-Image-2.0-RL | Alibaba | 在 Qwen-Image-2.0 上做 RLHF + on-policy 蒸馏;组合奖励模型、GRPO 框架与混合 CFG,最后用 OPD 合并 T2I 与编辑两条策略 |
-| World-Tracing | WorldLabs | 生成像素对齐的几何,超出可见范围 |
+| World-Tracing | WorldLabs | 每像素预测一叠相机系 3D 点:可见表面重建与遮挡补全同出一个张量 |
 | Seed3D-2.0 | ByteDance | 仿真可用的高保真 3D 生成,统一 PBR 模型(Seed) |
 | Causal-Forcing | ShengShu | 自回归扩散蒸馏的正确做法,实时交互视频(生数,与清华合作) |
-| MOVA | OpenMOSS | 音视频同步生成,非对称双塔 |
+| MOVA | OpenMOSS | 开源 32B 音视频同步生成:非对称双塔加 Bridge,逐处处理时间栅格、噪声进度与学习速度的不对称 |
 | TRELLIS-2 | Microsoft | 原生紧凑的结构化 3D 潜表示(O-Voxel) |
 | Adversarial-Flow-Models | ByteDance | 对抗式流模型(Seed) |
 | HunyuanVideo-1.5 | Tencent | 8.3B 视频 DiT,把成本压到单卡跑得动 |

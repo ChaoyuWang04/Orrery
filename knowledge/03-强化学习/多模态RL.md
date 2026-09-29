@@ -167,7 +167,7 @@ $$
 - 每个分量先在**当前策略采的一批样本上**估均值和标准差,做 z-score 或分位数归一,再加权。基准必须取当前策略的分布,而不是一组写死的常数——**策略一漂移,分量的动态范围就变了**,固定常数会悄悄改变实际权重。
 - 每个分量单独设上界裁剪防止某一维独占优势,并**各记一条曲线**:只看合成后的总均值时,一维塌了、另一维猛涨,均值可能纹丝不动。
 
-还要说死一条:**GRPO 的组内标准化救不了这件事。** 它标准化的是**合成完的那一个标量**,分量之间的相对权重在进组之前就已经定死;标准 GRPO 里既没有向量奖励也没有分段奖励(见 GRPO 篇)。
+还要说死一条:**GRPO 的组内标准化救不了这件事。** 它标准化的是**合成完的那一个标量**,分量之间的相对权重在进组之前就已经定死;标准 GRPO 里既没有向量奖励也没有分段奖励(见 GRPO 篇)。要救就得把标准化挪到合成之前:**每一路奖励先在同一提示组内各自减均值、除标准差,再按权重相加**。GDPO(2026)专为多奖励提出这种解耦标准化,Qwen-Image-2.0-RL 的生图与编辑 RL 都照此计算优势,并点明这样合成的奖励与各评分器的绝对尺度无关。
 
 ### 冲突怎么处理
 
@@ -258,3 +258,4 @@ $$
 - Human Preference Score v2: A Solid Benchmark for Evaluating Human Preferences of Text-to-Image Synthesis(HPD v2:43.3 万对图上的 79.8 万次选择)— [arXiv:2306.09341](https://arxiv.org/abs/2306.09341)
 - Pick-a-Pic: An Open Dataset of User Preferences for Text-to-Image Generation(PickScore)— [arXiv:2305.01569](https://arxiv.org/abs/2305.01569)
 - LAION improved-aesthetic-predictor(CLIP 特征 + MLP 的美学打分器)— https://github.com/christophschuhmann/improved-aesthetic-predictor
+- GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization — [arXiv:2601.05242](https://arxiv.org/abs/2601.05242)

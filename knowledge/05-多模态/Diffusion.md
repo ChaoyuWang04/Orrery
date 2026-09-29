@@ -43,7 +43,7 @@ $$
 
 有多浪费?Improved DDPM 直接量过:用 linear 调度训出来的模型,**反向过程跳过前 20% 也几乎不掉 FID**——说明这 200 步基本没干活。因为 linear 在高噪声端毁得太狠,网络在那里除了「输出一个大概的均值」没别的可学。
 
-还有一条工程上必须知道的:**分辨率变了,调度要跟着变**。因为分辨率越高,相邻像素越冗余,同样强度的噪声「毁容」效果越弱——1024×1024 上加到看不清的噪声量,放到 256×256 上早就糊成一片了。所以高分辨率训练要整体加重加噪(常叫 schedule shift),否则模型在高噪声端见不到真正的难样本。
+还有一条工程上必须知道的:**分辨率变了,调度要跟着变**。因为分辨率越高,相邻像素越冗余,同样强度的噪声「毁容」效果越弱——1024×1024 上加到看不清的噪声量,放到 256×256 上早就糊成一片了。所以高分辨率训练要整体加重加噪(常叫 schedule shift),否则模型在高噪声端见不到真正的难样本。流匹配里常见的写法来自 Stable Diffusion 3:把均匀采到的进度 $t$ 换成 $\sigma=\dfrac{s\,t}{1+(s-1)\,t}$,$s>1$ 时整条曲线往高噪声端鼓,$s=1$ 时不变。多模态联合生成还会给不同模态各配一个 $s$,例如音视频模型 MOVA 让视频与音频在同一进度下处于不同噪声档位。
 
 > 🖼️ 占位:linear 与 cosine 调度下 $\bar{\alpha}_t$ 随 $t$ 衰减的对比曲线,标出 linear 末段贴近 0 的那一段
 
@@ -214,3 +214,4 @@ flowchart TD
 - Progressive Distillation for Fast Sampling of Diffusion Models(v-prediction)— [arXiv:2202.00512](https://arxiv.org/abs/2202.00512)
 - DPM-Solver: A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps — [arXiv:2206.00927](https://arxiv.org/abs/2206.00927)
 - Common Diffusion Noise Schedules and Sample Steps are Flawed(零终端 SNR)— [arXiv:2305.08891](https://arxiv.org/abs/2305.08891)
+- Scaling Rectified Flow Transformers for High-Resolution Image Synthesis(Stable Diffusion 3,timestep shift)— [arXiv:2403.03206](https://arxiv.org/abs/2403.03206)
