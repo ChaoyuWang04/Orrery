@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 450" width="1120" height="450" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="450" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">一轮更新里，Future-KL 从 0 开始积累：第 1 个 mini-batch 的 f_t 恒为 1</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">灰 = 采样与旧策略概率（一轮只算一次）；紫 = 按顺序更新的 mini-batch；黄条 = 这一步里 πθ 离 πold 有多远（示意，只表示方向，不是实测）。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">我们的推导：据式 3 的定义、Table 2 的 512 题一轮与 64 题一个 mini-batch（PDF p. 8、p. 20），以及官方代码里 f_t 不回传梯度。</text>
+<rect x="30" y="110" width="200" height="120" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="130" y="140" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">πold 采样</text>
+<text x="130" y="168" font-size="11" fill="#6b7280" text-anchor="middle">512 题 × 16 条 = 8,192 条</text>
+<text x="130" y="188" font-size="11" fill="#6b7280" text-anchor="middle">每个 token 的 log πold</text>
+<text x="130" y="208" font-size="11" fill="#6b7280" text-anchor="middle">在更新前一次算好</text>
+<rect x="262" y="110" width="92" height="120" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="308.0" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 1 批</text>
+<text x="308.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">64 题</text>
+<text x="308.0" y="174" font-size="11" fill="#6b7280" text-anchor="middle">θ 已更新 0 次</text>
+<text x="308.0" y="210" font-size="11" fill="#6b7280" text-anchor="middle">f_t = 1</text>
+<rect x="366" y="110" width="92" height="120" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="412.0" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 2 批</text>
+<text x="412.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">64 题</text>
+<text x="412.0" y="174" font-size="11" fill="#6b7280" text-anchor="middle">θ 已更新 1 次</text>
+<rect x="382" y="209" width="60" height="13" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="470" y="110" width="92" height="120" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="516.0" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 3 批</text>
+<text x="516.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">64 题</text>
+<text x="516.0" y="174" font-size="11" fill="#6b7280" text-anchor="middle">θ 已更新 2 次</text>
+<rect x="486" y="204" width="60" height="18" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="574" y="110" width="92" height="120" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="620.0" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 4 批</text>
+<text x="620.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">64 题</text>
+<text x="620.0" y="174" font-size="11" fill="#6b7280" text-anchor="middle">θ 已更新 3 次</text>
+<rect x="590" y="199" width="60" height="23" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="678" y="110" width="92" height="120" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="724.0" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 5 批</text>
+<text x="724.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">64 题</text>
+<text x="724.0" y="174" font-size="11" fill="#6b7280" text-anchor="middle">θ 已更新 4 次</text>
+<rect x="694" y="194" width="60" height="28" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="782" y="110" width="92" height="120" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="828.0" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 6 批</text>
+<text x="828.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">64 题</text>
+<text x="828.0" y="174" font-size="11" fill="#6b7280" text-anchor="middle">θ 已更新 5 次</text>
+<rect x="798" y="189" width="60" height="33" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="886" y="110" width="92" height="120" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="932.0" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 7 批</text>
+<text x="932.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">64 题</text>
+<text x="932.0" y="174" font-size="11" fill="#6b7280" text-anchor="middle">θ 已更新 6 次</text>
+<rect x="902" y="184" width="60" height="38" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="990" y="110" width="92" height="120" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1036.0" y="136" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 8 批</text>
+<text x="1036.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">64 题</text>
+<text x="1036.0" y="174" font-size="11" fill="#6b7280" text-anchor="middle">θ 已更新 7 次</text>
+<rect x="1006" y="179" width="60" height="43" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<line x1="232" y1="170" x2="258" y2="170" stroke="#9ca3af" stroke-width="1.4"/>
+<polygon points="254,165 260,170 254,175" fill="#9ca3af"/>
+<rect x="30" y="262" width="520" height="130" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="46" y="290" font-size="14" fill="#111827" font-weight="700">第 1 批：πθ 就是 πold</text>
+<text x="46" y="316" font-size="13" fill="#6b7280">Δlog p 处处为 0，FutureKL 为 0，f_t = 1，</text>
+<text x="46" y="338" font-size="13" fill="#6b7280">这一批的更新和 DAPO 完全相同。</text>
+<text x="46" y="360" font-size="13" fill="#6b7280">8 个 mini-batch 里有 1 个不受 FIPO 影响（我们的计算）。</text>
+<rect x="570" y="262" width="520" height="130" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="586" y="290" font-size="14" fill="#111827" font-weight="700">第 k 批：偏移来自前面 k − 1 次更新</text>
+<text x="586" y="316" font-size="13" fill="#6b7280">那几次更新用的是别的题。它们把这条轨迹的后半段</text>
+<text x="586" y="338" font-size="13" fill="#6b7280">抬高了，说明刚学到的东西也支持这条路；压低了，</text>
+<text x="586" y="360" font-size="13" fill="#6b7280">说明这条路和刚学到的东西相冲。</text>
+<text x="30" y="426" font-size="11" fill="#9ca3af">DAPO 基线是 32 题一个 mini-batch、每轮 16 次更新（PDF p. 8）；FIPO 改成 64 题、8 次，更新次数减半也就减小了这里的累积偏移。示意图，不是论文原图。</text>
+</svg>

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">Future-KL：一个 token 的权重，由它身后那截轨迹被抬高还是被压低决定</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">绿 = 概率被抬高的 token（Δlog p &gt; 0）；红 = 被压低的；灰 = 重要性比超过 10、被掩码剔除；紫 = 距离衰减与计算步骤；黄 = 最终的影响权重 f_t。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">据 PDF p. 5–8 式 3–8 与 p. 20 Table 2 重画的机制示意；柱高是示意，不是实测。每格代表 4 个 token。</text>
+<text x="30" y="176" font-size="14" fill="#111827" font-weight="700">第一步</text>
+<text x="30" y="196" font-size="11" fill="#6b7280">每个位置的 Δlog p</text>
+<text x="30" y="212" font-size="11" fill="#6b7280">= 新策略 − 旧策略</text>
+<line x1="194" y1="200" x2="1064" y2="200" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="206" y="146.0" width="24" height="54.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="242" y="170.0" width="24" height="30.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="278" y="158.0" width="24" height="42.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="314" y="200" width="24" height="18.0" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="350" y="164.0" width="24" height="36.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="386" y="176.0" width="24" height="24.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="422" y="170" width="24" height="30" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="434.0" y="190" font-size="14" fill="#6b7280" text-anchor="middle">×</text>
+<rect x="458" y="170.0" width="24" height="30.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="494" y="200" width="24" height="24.0" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="530" y="182.0" width="24" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="566" y="164.0" width="24" height="36.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="602" y="200" width="24" height="12.0" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="638" y="176.0" width="24" height="24.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="674" y="188.0" width="24" height="12.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="710" y="200" width="24" height="30.0" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="746" y="182.0" width="24" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="782" y="188.0" width="24" height="12.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="818" y="200" width="24" height="18.0" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="854" y="176.0" width="24" height="24.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="890" y="200" width="24" height="12.0" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="926" y="182.0" width="24" height="18.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="962" y="188.0" width="24" height="12.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="998" y="200" width="24" height="18.0" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="1034" y="188.0" width="24" height="12.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="201" y="134" width="34" height="104" rx="6" fill="none" stroke="#8f8bd8" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="218.0" y="128" font-size="11" fill="#6b7280" text-anchor="middle">当前 token t</text>
+<text x="434.0" y="230" font-size="11" fill="#9ca3af" text-anchor="middle">撞上 Dual-Clip</text>
+<text x="434.0" y="244" font-size="11" fill="#9ca3af" text-anchor="middle">阈值，M_k = 0</text>
+<text x="30" y="296" font-size="14" fill="#111827" font-weight="700">第二步</text>
+<text x="30" y="316" font-size="11" fill="#6b7280">按距离衰减</text>
+<text x="30" y="332" font-size="11" fill="#6b7280">γ = 2^(−1/τ)，τ = 32</text>
+<line x1="194" y1="330" x2="1064" y2="330" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="206" y="270.0" width="24" height="60.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="242" y="275.0" width="24" height="55.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="278" y="279.5" width="24" height="50.5" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="314" y="283.7" width="24" height="46.3" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="350" y="287.6" width="24" height="42.4" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="386" y="291.1" width="24" height="38.9" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="422" y="294.3" width="24" height="35.7" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="458" y="297.3" width="24" height="32.7" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="494" y="300.0" width="24" height="30.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="530" y="302.5" width="24" height="27.5" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="566" y="304.8" width="24" height="25.2" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="602" y="306.9" width="24" height="23.1" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="638" y="308.8" width="24" height="21.2" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="674" y="310.5" width="24" height="19.5" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="710" y="312.2" width="24" height="17.8" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="746" y="313.6" width="24" height="16.4" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="782" y="315.0" width="24" height="15.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="818" y="316.2" width="24" height="13.8" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="854" y="317.4" width="24" height="12.6" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="890" y="318.4" width="24" height="11.6" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="926" y="319.4" width="24" height="10.6" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="962" y="320.3" width="24" height="9.7" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="998" y="321.1" width="24" height="8.9" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1034" y="321.8" width="24" height="8.2" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="218.0" y="348" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="506.0" y="348" font-size="11" fill="#6b7280" text-anchor="middle">0.5</text>
+<text x="794.0" y="348" font-size="11" fill="#6b7280" text-anchor="middle">0.25</text>
+<text x="218.0" y="364" font-size="11" fill="#9ca3af" text-anchor="middle">距离 0</text>
+<text x="506.0" y="364" font-size="11" fill="#9ca3af" text-anchor="middle">32 个 token 后</text>
+<text x="794.0" y="364" font-size="11" fill="#9ca3af" text-anchor="middle">64 个 token 后</text>
+<text x="992" y="364" font-size="11" fill="#9ca3af" text-anchor="middle">不是硬窗口，只是越远越轻</text>
+<rect x="200" y="420" width="200" height="96" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="300.0" y="446" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第三步：逐格相乘再求和</text>
+<text x="300.0" y="472" font-size="11" fill="#6b7280" text-anchor="middle">FutureKL_t = Σ M_k·γ^(k−t)·Δlog p_k</text>
+<text x="300.0" y="492" font-size="11" fill="#6b7280" text-anchor="middle">掩码格不参与；只看 t 之后</text>
+<rect x="430" y="420" width="190" height="96" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="525.0" y="446" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第四步：取指数</text>
+<text x="525.0" y="472" font-size="11" fill="#6b7280" text-anchor="middle">exp(FutureKL_t)</text>
+<text x="525.0" y="492" font-size="11" fill="#6b7280" text-anchor="middle">从对数域回到乘法域</text>
+<rect x="650" y="420" width="200" height="96" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="750.0" y="446" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第五步：裁剪成 f_t</text>
+<text x="750.0" y="472" font-size="11" fill="#6b7280" text-anchor="middle">32B：裁到 [1, 1.2]，只放大</text>
+<text x="750.0" y="492" font-size="11" fill="#6b7280" text-anchor="middle">7B：裁到 [0.8, 1.2]</text>
+<rect x="880" y="420" width="210" height="96" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="985.0" y="446" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第六步：乘回优势</text>
+<text x="985.0" y="472" font-size="11" fill="#6b7280" text-anchor="middle">Ã_t = Â · f_t</text>
+<text x="985.0" y="492" font-size="11" fill="#6b7280" text-anchor="middle">PPO 裁剪与 token 级平均不变</text>
+<line x1="400" y1="468" x2="424" y2="468" stroke="#9ca3af" stroke-width="1.4"/>
+<polygon points="424,463 430,468 424,473" fill="#9ca3af"/>
+<line x1="620" y1="468" x2="644" y2="468" stroke="#9ca3af" stroke-width="1.4"/>
+<polygon points="644,463 650,468 644,473" fill="#9ca3af"/>
+<line x1="850" y1="468" x2="874" y2="468" stroke="#9ca3af" stroke-width="1.4"/>
+<polygon points="874,463 880,468 874,473" fill="#9ca3af"/>
+<text x="30" y="456" font-size="14" fill="#111827" font-weight="700">汇总</text>
+<text x="30" y="476" font-size="11" fill="#6b7280">只改优势的大小，</text>
+<text x="30" y="492" font-size="11" fill="#6b7280">不改它的正负</text>
+<text x="30" y="560" font-size="13" fill="#6b7280">身后被整体抬高（FutureKL_t &gt; 0）时 f_t &gt; 1：答对的轨迹里这一步多拿奖励，答错的轨迹里这一步多挨罚。身后被整体压低时 f_t &lt; 1，但 32B 的下界是 1，这一半被关掉了。</text>
+<text x="30" y="584" font-size="13" fill="#6b7280">另有一条保护：优势为负、重要性比又过大的 token，f_t 重置为 1，避免过罚（PDF p. 8）。</text>
+<text x="30" y="612" font-size="11" fill="#9ca3af">示意图，不是论文原图。式 5 原文把条件写成 o&lt;t，按上下文应是 o&lt;k，图按后者画。</text>
+</svg>

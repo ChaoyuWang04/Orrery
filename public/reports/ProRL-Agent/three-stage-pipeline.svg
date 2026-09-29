@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" width="1120" height="700" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="700" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">按阶段分池：推理后端不再跟着「最慢的那一段」一起空等</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">黄 = INIT 起容器、装工具（等磁盘与网络）；绿 = RUN 多轮 agent 循环（等 LLM 推理）；紫 = EVAL 打分（毫秒到数分钟）；灰带 = 没有任何任务在 RUN。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">据 PDF p. 7–8 Listing 2 与第 3.3.1 节重画的机制示意；J1、J2 是任务编号，时长是示意，不是实测。</text>
+<rect x="30" y="98" width="1060" height="210" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="46" y="124" font-size="14" fill="#111827" font-weight="700">一个 worker 包到底</text>
+<text x="46" y="142" font-size="11" fill="#6b7280">每个 worker 顺序做完一个任务的三段，才接下一个</text>
+<rect x="200" y="156" width="80" height="106" fill="#eeeeee" stroke="none"/>
+<rect x="500" y="156" width="120" height="106" fill="#eeeeee" stroke="none"/>
+<text x="184" y="179" font-size="11" fill="#6b7280" text-anchor="end">worker 1</text>
+<rect x="200" y="160" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="240.0" y="179" font-size="11" fill="#111827" text-anchor="middle">J1</text>
+<rect x="280" y="160" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="390.0" y="179" font-size="11" fill="#111827" text-anchor="middle">J1</text>
+<rect x="500" y="160" width="200" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="600.0" y="179" font-size="11" fill="#111827" text-anchor="middle">J1 长测试</text>
+<rect x="700" y="160" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="740.0" y="179" font-size="11" fill="#111827" text-anchor="middle">J4</text>
+<rect x="780" y="160" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="890.0" y="179" font-size="11" fill="#111827" text-anchor="middle">J4</text>
+<rect x="1000" y="160" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="184" y="213" font-size="11" fill="#6b7280" text-anchor="end">worker 2</text>
+<rect x="200" y="194" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="240.0" y="213" font-size="11" fill="#111827" text-anchor="middle">J2</text>
+<rect x="280" y="194" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="390.0" y="213" font-size="11" fill="#111827" text-anchor="middle">J2</text>
+<rect x="500" y="194" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="540" y="194" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="580.0" y="213" font-size="11" fill="#111827" text-anchor="middle">J5</text>
+<rect x="620" y="194" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="730.0" y="213" font-size="11" fill="#111827" text-anchor="middle">J5</text>
+<rect x="840" y="194" width="200" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="940.0" y="213" font-size="11" fill="#111827" text-anchor="middle">J5 长测试</text>
+<text x="184" y="247" font-size="11" fill="#6b7280" text-anchor="end">worker 3</text>
+<rect x="200" y="228" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="240.0" y="247" font-size="11" fill="#111827" text-anchor="middle">J3</text>
+<rect x="280" y="228" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="390.0" y="247" font-size="11" fill="#111827" text-anchor="middle">J3</text>
+<rect x="500" y="228" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="540" y="228" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="580.0" y="247" font-size="11" fill="#111827" text-anchor="middle">J6</text>
+<rect x="620" y="228" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="730.0" y="247" font-size="11" fill="#111827" text-anchor="middle">J6</text>
+<rect x="840" y="228" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="880" y="228" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="920.0" y="247" font-size="11" fill="#111827" text-anchor="middle">J7</text>
+<rect x="960" y="228" width="110" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1015.0" y="247" font-size="11" fill="#111827" text-anchor="middle">J7</text>
+<text x="240" y="284" font-size="11" fill="#9ca3af" text-anchor="middle">大家都在起容器</text>
+<text x="560" y="284" font-size="11" fill="#9ca3af" text-anchor="middle">大家都在打分或起容器</text>
+<text x="560" y="299" font-size="11" fill="#9ca3af" text-anchor="middle">推理后端没活干</text>
+<rect x="30" y="322" width="1060" height="304" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="46" y="348" font-size="14" fill="#111827" font-weight="700">三条队列、三个池</text>
+<text x="46" y="366" font-size="11" fill="#6b7280">INIT 提前备好容器，RUN 池一空就接活，长测试只占 EVAL 池</text>
+<rect x="200" y="380" width="80" height="232" fill="#eeeeee" stroke="none"/>
+<text x="184" y="403" font-size="11" fill="#6b7280" text-anchor="end">INIT 池</text>
+<rect x="200" y="384" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="240.0" y="403" font-size="11" fill="#111827" text-anchor="middle">J1</text>
+<rect x="280" y="384" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="320.0" y="403" font-size="11" fill="#111827" text-anchor="middle">J3</text>
+<rect x="420" y="384" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="460.0" y="403" font-size="11" fill="#111827" text-anchor="middle">J4</text>
+<rect x="500" y="384" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="540.0" y="403" font-size="11" fill="#111827" text-anchor="middle">J6</text>
+<rect x="640" y="384" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="680.0" y="403" font-size="11" fill="#111827" text-anchor="middle">J7</text>
+<rect x="720" y="384" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="760.0" y="403" font-size="11" fill="#111827" text-anchor="middle">J9</text>
+<rect x="200" y="416" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="240.0" y="435" font-size="11" fill="#111827" text-anchor="middle">J2</text>
+<rect x="420" y="416" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="460.0" y="435" font-size="11" fill="#111827" text-anchor="middle">J5</text>
+<rect x="640" y="416" width="80" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="680.0" y="435" font-size="11" fill="#111827" text-anchor="middle">J8</text>
+<text x="184" y="467" font-size="11" fill="#6b7280" text-anchor="end">RUN 池</text>
+<rect x="280" y="448" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="390.0" y="467" font-size="11" fill="#111827" text-anchor="middle">J1</text>
+<rect x="500" y="448" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="610.0" y="467" font-size="11" fill="#111827" text-anchor="middle">J4</text>
+<rect x="720" y="448" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="830.0" y="467" font-size="11" fill="#111827" text-anchor="middle">J7</text>
+<rect x="940" y="448" width="130" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="280" y="480" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="390.0" y="499" font-size="11" fill="#111827" text-anchor="middle">J2</text>
+<rect x="500" y="480" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="610.0" y="499" font-size="11" fill="#111827" text-anchor="middle">J5</text>
+<rect x="720" y="480" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="830.0" y="499" font-size="11" fill="#111827" text-anchor="middle">J8</text>
+<rect x="940" y="480" width="130" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="360" y="512" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="470.0" y="531" font-size="11" fill="#111827" text-anchor="middle">J3</text>
+<rect x="580" y="512" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="690.0" y="531" font-size="11" fill="#111827" text-anchor="middle">J6</text>
+<rect x="800" y="512" width="220" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="910.0" y="531" font-size="11" fill="#111827" text-anchor="middle">J9</text>
+<text x="184" y="563" font-size="11" fill="#6b7280" text-anchor="end">EVAL 池</text>
+<rect x="500" y="544" width="200" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="600.0" y="563" font-size="11" fill="#111827" text-anchor="middle">J1 长测试</text>
+<rect x="720" y="544" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="940" y="544" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="500" y="576" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="580" y="576" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="720" y="576" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="800" y="576" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="940" y="576" width="40" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="200" y1="650" x2="1076" y2="650" stroke="#9ca3af" stroke-width="1.4"/>
+<polygon points="1076,645 1082,650 1076,655" fill="#9ca3af"/>
+<text x="1070" y="668" font-size="11" fill="#9ca3af" text-anchor="end">时间</text>
+<text x="30" y="690" font-size="11" fill="#9ca3af">RUN 一结束就先释放容器，再进 EVAL 队列（Listing 2 的 cleanup）；取消只打标记，worker 取到时跳过。示意图，不是论文原图。</text>
+</svg>

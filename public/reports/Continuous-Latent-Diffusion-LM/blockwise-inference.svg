@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 530" width="1120" height="530" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="530" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">Cola DLM 推理：前缀编成干净潜向量，之后一块一块从噪声运出来，再交给解码器写字</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">绿 = 干净潜向量（前缀或已运完）；黄 = 正在去噪的潜向量；灰 = 尚未开始；紫 = 文字 token。每块 16 个潜向量，这里只画 8 格。机制示意，按 Figure 1 与 p. 7、p. 19 重画。</text>
+<text x="30" y="92" font-size="14" fill="#111827" font-weight="700">① 潜空间：块间因果，块内一起去噪</text>
+<rect x="144" y="140" width="280" height="54" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="284" y="132" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">前缀块</text>
+<rect x="440" y="140" width="280" height="54" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="580" y="132" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">第一个生成块（混合区）</text>
+<rect x="736" y="140" width="280" height="54" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="876" y="132" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">下一个生成块</text>
+<rect x="150" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="184" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="218" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="252" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="286" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="320" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="354" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="388" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="446" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="480" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="514" y="150" width="30" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="548" y="150" width="30" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="582" y="150" width="30" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="616" y="150" width="30" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="650" y="150" width="30" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="684" y="150" width="30" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="742" y="150" width="30" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="776" y="150" width="30" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="810" y="150" width="30" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="844" y="150" width="30" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="878" y="150" width="30" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="912" y="150" width="30" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="946" y="150" width="30" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="980" y="150" width="30" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="30" y="172" font-size="11" fill="#6b7280">潜向量</text>
+<text x="284" y="214" font-size="11" fill="#6b7280" text-anchor="middle">编码器一次性把前缀编成干净条件</text>
+<text x="580" y="214" font-size="11" fill="#6b7280" text-anchor="middle">前缀尾巴落在这一块里，保持干净作条件，</text>
+<text x="580" y="230" font-size="11" fill="#6b7280" text-anchor="middle">只运未知的那几格（块内双向注意力）</text>
+<text x="876" y="214" font-size="11" fill="#6b7280" text-anchor="middle">等上一块运完才开始，以全部历史</text>
+<text x="876" y="230" font-size="11" fill="#6b7280" text-anchor="middle">干净块为条件；DiT 用 KV cache 缓存历史块</text>
+<line x1="420" y1="167" x2="438" y2="167" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="716" y1="167" x2="734" y2="167" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="272" font-size="14" fill="#111827" font-weight="700">② 条件解码器：把运好的潜向量还原成字</text>
+<rect x="548" y="292" width="30" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="582" y="292" width="30" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="616" y="292" width="30" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="650" y="292" width="30" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="684" y="292" width="30" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="30" y="311" font-size="11" fill="#6b7280">输出 token</text>
+<text x="736" y="303" font-size="11" fill="#6b7280">解码器以前缀和已生成的潜块为条件；编解码器都严格因果，</text>
+<text x="736" y="319" font-size="11" fill="#6b7280">主实验里一个潜向量对应一个 token（不压缩长度）</text>
+<text x="30" y="372" font-size="14" fill="#111827" font-weight="700">③ 生成 16 个 token 要走几个串行步</text>
+<text x="30" y="409" font-size="11" fill="#6b7280">自回归</text>
+<rect x="150" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="176" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="202" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="228" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="254" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="280" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="306" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="332" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="358" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="384" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="410" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="436" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="462" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="488" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="514" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="540" y="392" width="22" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="590" y="409" font-size="11" fill="#6b7280">每步写一个 token，16 步</text>
+<text x="30" y="455" font-size="11" fill="#6b7280">Cola DLM</text>
+<rect x="150" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="176" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="202" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="228" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="254" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="280" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="306" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="332" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="358" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-dasharray="4 3"/>
+<rect x="384" y="438" width="22" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-dasharray="4 3"/>
+<text x="590" y="455" font-size="11" fill="#6b7280">一整块 16 个潜向量一起去噪 8–10 次（虚线两格表示区间上沿）</text>
+<text x="30" y="500" font-size="11" fill="#9ca3af">这是串行深度的理想化计数：只数去噪迭代，解码器与块间切换的时间没有计入，原文也没有给墙钟时延实测。</text>
+</svg>
