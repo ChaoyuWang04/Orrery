@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" width="1120" height="440" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="440" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">重思考：并行想 K 条，只把答案交给总结模型，历史里只留总结答案</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = 系统提示与用户消息；紫 = 并行推理的思考过程；红 = 各条轨迹的答案；绿 = 总结模型的输出。</text>
+
+<text x="160" y="90" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">并行推理 · 第 1 轮</text>
+<rect x="30" y="102" width="260" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="160" y="124" font-size="13" fill="#111827" text-anchor="middle">系统提示 + 用户消息 1</text>
+<rect x="30" y="150" width="125" height="38" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="92" y="174" font-size="13" fill="#111827" text-anchor="middle">思考 1-1</text>
+<rect x="165" y="150" width="125" height="38" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="227" y="174" font-size="13" fill="#111827" text-anchor="middle">答案 1-1</text>
+<rect x="30" y="198" width="125" height="38" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="92" y="222" font-size="13" fill="#111827" text-anchor="middle">思考 1-2</text>
+<rect x="165" y="198" width="125" height="38" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="227" y="222" font-size="13" fill="#111827" text-anchor="middle">答案 1-2</text>
+<text x="160" y="258" font-size="13" fill="#6b7280" text-anchor="middle">……</text>
+<rect x="30" y="270" width="125" height="38" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="92" y="294" font-size="13" fill="#111827" text-anchor="middle">思考 1-K</text>
+<rect x="165" y="270" width="125" height="38" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="227" y="294" font-size="13" fill="#111827" text-anchor="middle">答案 1-K</text>
+<text x="30" y="332" font-size="11" fill="#6b7280">同一个思考模型并行采 K 条轨迹</text>
+
+<line x1="294" y1="180" x2="336" y2="180" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<text x="470" y="90" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">重思考 · 第 1 轮</text>
+<rect x="340" y="102" width="260" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="470" y="124" font-size="13" fill="#111827" text-anchor="middle">系统提示 + 用户消息 1</text>
+<rect x="340" y="150" width="260" height="58" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="470" y="174" font-size="13" fill="#111827" text-anchor="middle">答案 1-1、答案 1-2 …… 答案 1-K</text>
+<text x="470" y="196" font-size="11" fill="#6b7280" text-anchor="middle">按模板排好，只留答案，各条思考不带入</text>
+<line x1="470" y1="210" x2="470" y2="226" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="340" y="230" width="260" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="470" y="252" font-size="13" fill="#111827" text-anchor="middle">总结思考 1</text>
+<rect x="340" y="274" width="260" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="470" y="296" font-size="13" fill="#111827" text-anchor="middle">总结答案 1</text>
+<text x="340" y="332" font-size="11" fill="#6b7280">总结模型反思、聚合或精炼，输出格式与并行阶段一致</text>
+
+<line x1="604" y1="291" x2="636" y2="163" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<text x="770" y="90" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">并行推理 · 第 2 轮</text>
+<rect x="640" y="102" width="260" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="770" y="124" font-size="13" fill="#111827" text-anchor="middle">系统提示 + 用户消息 1</text>
+<rect x="640" y="146" width="260" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="770" y="168" font-size="13" fill="#111827" text-anchor="middle">总结答案 1</text>
+<rect x="640" y="190" width="260" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="770" y="212" font-size="13" fill="#111827" text-anchor="middle">用户消息 2</text>
+<line x1="770" y1="226" x2="770" y2="244" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="640" y="248" width="125" height="38" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="702" y="272" font-size="13" fill="#111827" text-anchor="middle">思考 2-k</text>
+<rect x="775" y="248" width="125" height="38" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="837" y="272" font-size="13" fill="#111827" text-anchor="middle">答案 2-k</text>
+<text x="640" y="310" font-size="11" fill="#6b7280">k = 1 … K，之后照第 1 轮再总结一次</text>
+
+<rect x="924" y="102" width="170" height="206" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="938" y="128" font-size="13" fill="#111827" font-weight="700">三条约定</text>
+<text x="938" y="154" font-size="11" fill="#6b7280">历史里只留总结答案，</text>
+<text x="938" y="172" font-size="11" fill="#6b7280">K 条思考与各自答案</text>
+<text x="938" y="190" font-size="11" fill="#6b7280">都不进下一轮上下文。</text>
+<text x="938" y="218" font-size="11" fill="#6b7280">思考模型与总结模型</text>
+<text x="938" y="236" font-size="11" fill="#6b7280">可共享参数，也可分开。</text>
+<text x="938" y="264" font-size="11" fill="#6b7280">总结阶段另加一段 RL，</text>
+<text x="938" y="282" font-size="11" fill="#6b7280">专练聚合与精炼。</text>
+
+<text x="30" y="376" font-size="13" fill="#6b7280">它不是投票：Figure 10 的例子里，总结模型先读「多数 thinker 用了一致且正确的方法」，再单独审视与高频答案不一致的那几条，</text>
+<text x="30" y="396" font-size="13" fill="#6b7280">最后给出 \boxed{149}。并行条数 K、总结提示模板与总结阶段 RL 的奖励，报告都没有给出。</text>
+<text x="30" y="426" font-size="11" fill="#9ca3af">据 PDF p. 16 Figure 10 与 p. 17 Figure 11 重画，只画到第 2 轮并行推理；是消息组织方式的示意，不含实测数据。</text>
+</svg>

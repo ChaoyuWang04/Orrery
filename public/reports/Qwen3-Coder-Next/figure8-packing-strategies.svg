@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 568" width="1120" height="568" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="568" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">四种打包方式：文档开头会不会被切到上一条样本里</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">每行两条等长训练样本。红 = 文档开头（Agent 轨迹的工具定义与调用格式写在这里）；黄 = 跨过样本边界的文档 C；白 = 其他文档；灰 = padding，不参与训练。</text>
+<text x="450" y="88" font-size="13" fill="#6b7280" text-anchor="middle">样本 n−1</text>
+<text x="880" y="88" font-size="13" fill="#6b7280" text-anchor="middle">样本 n</text>
+<text x="30" y="120" font-size="14" fill="#111827" font-weight="700">先拼接再切</text>
+<text x="30" y="140" font-size="11" fill="#9ca3af">concat-then-split</text>
+<rect x="250" y="104" width="180" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="250" y="104" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="346.0" y="126" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">A</text>
+<rect x="430" y="104" width="120" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="430" y="104" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="496.0" y="126" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">B</text>
+<rect x="550" y="104" width="100" height="34" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="550" y="104" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="606.0" y="126" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">C</text>
+<rect x="680" y="104" width="100" height="34" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="680" y="104" width="12" height="34" fill="#ffffff" stroke="#d9877a" stroke-dasharray="3 2"/>
+<text x="736.0" y="126" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">C（缺头）</text>
+<rect x="780" y="104" width="260" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="780" y="104" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="916.0" y="126" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">D</text>
+<rect x="1040" y="104" width="40" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="1040" y="104" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1066.0" y="126" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">E</text>
+<text x="250" y="162" font-size="12" fill="#6b7280">样本 n 从 C 的中段开始：C 开头的工具定义留在上一条样本里，这一条看不到（头部碎片）。</text>
+<text x="30" y="224" font-size="14" fill="#111827" font-weight="700">RLD</text>
+<text x="30" y="244" font-size="11" fill="#9ca3af">restart-last-document</text>
+<rect x="250" y="208" width="180" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="250" y="208" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="346.0" y="230" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">A</text>
+<rect x="430" y="208" width="120" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="430" y="208" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="496.0" y="230" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">B</text>
+<rect x="550" y="208" width="100" height="34" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="550" y="208" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="606.0" y="230" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">C</text>
+<rect x="680" y="208" width="200" height="34" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="680" y="208" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="786.0" y="230" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">C</text>
+<rect x="880" y="208" width="200" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="880" y="208" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="986.0" y="230" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">D</text>
+<text x="250" y="266" font-size="12" fill="#6b7280">C 在样本 n 从头重来，头部碎片消失；但样本 n−1 尾部的半截 C 还在，长文档的开头被多训几次。</text>
+<text x="30" y="328" font-size="14" fill="#111827" font-weight="700">PLD</text>
+<text x="30" y="348" font-size="11" fill="#9ca3af">pad-last-document</text>
+<rect x="250" y="312" width="180" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="250" y="312" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="346.0" y="334" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">A</text>
+<rect x="430" y="312" width="120" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="430" y="312" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="496.0" y="334" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">B</text>
+<rect x="550" y="312" width="100" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="600.0" y="334" font-size="11" fill="#6b7280" text-anchor="middle">padding</text>
+<rect x="680" y="312" width="200" height="34" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="680" y="312" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="786.0" y="334" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">C</text>
+<rect x="880" y="312" width="200" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="980.0" y="334" font-size="11" fill="#6b7280" text-anchor="middle">padding</text>
+<text x="250" y="370" font-size="12" fill="#6b7280">放不下的文档整篇挪到下一条，空位填 padding：没有碎片，但要多训 Token 才补得回有效训练量。</text>
+<text x="30" y="432" font-size="14" fill="#111827" font-weight="700">BFP（主实验采用）</text>
+<text x="30" y="452" font-size="11" fill="#9ca3af">best-fit-packing</text>
+<rect x="250" y="416" width="180" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="250" y="416" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="346.0" y="438" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">A</text>
+<rect x="430" y="416" width="200" height="34" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="430" y="416" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="536.0" y="438" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">C</text>
+<rect x="630" y="416" width="20" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="680" y="416" width="260" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="680" y="416" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="816.0" y="438" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">D</text>
+<rect x="940" y="416" width="120" height="34" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="940" y="416" width="12" height="34" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1006.0" y="438" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">B</text>
+<rect x="1060" y="416" width="20" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="250" y="474" font-size="12" fill="#6b7280">按长度装箱，谁放得下放谁：碎片与 padding 都接近零；比上下文还长的文档先按长度切块。</text>
+<text x="30" y="536" font-size="12" fill="#6b7280">为什么对 Agent 数据特别要紧：工具定义只出现在轨迹开头，切断后模型会在看不到格式约定的情况下学写工具调用（PDF p. 19）。</text>
+<text x="30" y="560" font-size="11" fill="#9ca3af">据 PDF p. 20 Figure 8 与附录 A.3 正文重画的机制示意；文档长度为示意，不是实测比例。</text>
+</svg>

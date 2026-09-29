@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="20" y="32" font-size="19" fill="#111827" font-weight="700">PPO 拿概率比给梯度加权；MIS-PO 只拿它决定这个样本留不留</text>
+<text x="20" y="54" font-size="13" fill="#6b7280">黄 = 连续权重；绿 = 留下，按 on-policy 更新（权重恒为 1）；红 = 被过滤（权重为 0）。比值 = 训练侧概率 ÷ 推理侧概率，图中数值是示意</text>
+<rect x="20" y="76" width="525" height="290" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="102" font-size="14" fill="#111827" font-weight="700">PPO 类：重要性采样</text>
+<line x1="34" y1="262" x2="531" y2="262" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="52" y="222" width="36" height="40" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="70" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a1</text>
+<text x="70" y="300" font-size="11" fill="#111827" text-anchor="middle">1.00</text>
+<rect x="114" y="223" width="36" height="39" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="132" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a2</text>
+<text x="132" y="300" font-size="11" fill="#111827" text-anchor="middle">0.97</text>
+<rect x="176" y="221" width="36" height="41" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="194" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a3</text>
+<text x="194" y="300" font-size="11" fill="#111827" text-anchor="middle">1.02</text>
+<rect x="238" y="158" width="36" height="104" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="256" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a4</text>
+<text x="256" y="300" font-size="11" fill="#111827" text-anchor="middle">2.60</text>
+<rect x="300" y="222" width="36" height="40" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="318" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a5</text>
+<text x="318" y="300" font-size="11" fill="#111827" text-anchor="middle">1.01</text>
+<rect x="362" y="222" width="36" height="40" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="380" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a6</text>
+<text x="380" y="300" font-size="11" fill="#111827" text-anchor="middle">0.99</text>
+<rect x="424" y="248" width="36" height="14" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="442" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a7</text>
+<text x="442" y="300" font-size="11" fill="#111827" text-anchor="middle">0.35</text>
+<rect x="486" y="221" width="36" height="41" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="504" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a8</text>
+<text x="504" y="300" font-size="11" fill="#111827" text-anchor="middle">1.03</text>
+<text x="36" y="326" font-size="11" fill="#6b7280">比值直接乘进梯度，柱高就是权重。长轨迹里偶发的极端比值（a4）</text>
+<text x="36" y="344" font-size="11" fill="#6b7280">会让梯度范数尖刺；截断能压住幅度，方差来源仍在。</text>
+<rect x="575" y="76" width="525" height="290" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="591" y="102" font-size="14" fill="#111827" font-weight="700">MIS-PO：Token 门</text>
+<line x1="589" y1="262" x2="1086" y2="262" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="607" y="222" width="36" height="40" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="625" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a1</text>
+<text x="625" y="300" font-size="11" fill="#111827" text-anchor="middle">1.00</text>
+<rect x="669" y="222" width="36" height="40" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="687" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a2</text>
+<text x="687" y="300" font-size="11" fill="#111827" text-anchor="middle">0.97</text>
+<rect x="731" y="222" width="36" height="40" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="749" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a3</text>
+<text x="749" y="300" font-size="11" fill="#111827" text-anchor="middle">1.02</text>
+<rect x="793" y="256" width="36" height="6" rx="2" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="811" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a4</text>
+<text x="811" y="300" font-size="11" fill="#111827" text-anchor="middle">2.60</text>
+<rect x="855" y="222" width="36" height="40" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="873" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a5</text>
+<text x="873" y="300" font-size="11" fill="#111827" text-anchor="middle">1.01</text>
+<rect x="917" y="222" width="36" height="40" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="935" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a6</text>
+<text x="935" y="300" font-size="11" fill="#111827" text-anchor="middle">0.99</text>
+<rect x="979" y="256" width="36" height="6" rx="2" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="997" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a7</text>
+<text x="997" y="300" font-size="11" fill="#111827" text-anchor="middle">0.35</text>
+<rect x="1041" y="222" width="36" height="40" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1059" y="282" font-size="11" fill="#6b7280" text-anchor="middle">a8</text>
+<text x="1059" y="300" font-size="11" fill="#111827" text-anchor="middle">1.03</text>
+<text x="591" y="326" font-size="11" fill="#6b7280">比值落在 [0.5, 2] 之外的 Token（a4、a7）直接不参与更新；</text>
+<text x="591" y="344" font-size="11" fill="#6b7280">其余 Token 一律按普通的「对数概率 × 优势」更新，不再乘比值。</text>
+<rect x="20" y="384" width="1080" height="104" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="410" font-size="14" fill="#111827" font-weight="700">MIS-PO：轨迹门，看整条轨迹逐 Token 比值的几何平均，界是 [0.996, 1.001]</text>
+<rect x="36" y="424" width="500" height="50" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="286" y="446" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">轨迹 A：几何平均 0.998</text>
+<text x="286" y="464" font-size="11" fill="#6b7280" text-anchor="middle">在界内，整条留下（其中出界的 Token 仍由 Token 门挡掉）</text>
+<rect x="584" y="424" width="500" height="50" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="834" y="446" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">轨迹 B：几何平均 0.992</text>
+<text x="834" y="464" font-size="11" fill="#6b7280" text-anchor="middle">整段系统性偏离，整条丢掉，一个 Token 都不用</text>
+<text x="20" y="510" font-size="11" fill="#9ca3af">机制示意，据 PDF p. 16–17 第 5.2.1 节与式 (2)、p. 19 的两组界画出；两条门同时作用，损失见正文。</text>
+</svg>

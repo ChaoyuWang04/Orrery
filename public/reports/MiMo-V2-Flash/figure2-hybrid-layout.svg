@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">MiMo-V2-Flash 的 48 层：8 个混合块，每块 5 层滑动窗口接 1 层全局；第 1 层换成全局 + 稠密 FFN</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">上排是注意力：黄 = 滑动窗口层（只看最近 128 个 Token），紫 = 全局层。下排是前馈：灰 = 稠密 FFN，绿 = MoE（256 个专家选 8 个，无共享专家）。</text>
+<rect x="100" y="86" width="17" height="34" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="100" y="126" width="17" height="34" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="119" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="119" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="138" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="138" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="157" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="157" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="176" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="176" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="195" y="86" width="17" height="34" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="195" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="213.0" y1="80" x2="213.0" y2="166" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="214" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="214" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="233" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="233" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="252" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="252" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="271" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="271" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="290" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="290" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="309" y="86" width="17" height="34" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="309" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="327.0" y1="80" x2="327.0" y2="166" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="328" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="328" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="347" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="347" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="366" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="366" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="385" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="385" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="404" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="404" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="423" y="86" width="17" height="34" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="423" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="441.0" y1="80" x2="441.0" y2="166" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="442" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="442" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="461" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="461" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="480" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="480" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="499" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="499" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="518" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="518" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="537" y="86" width="17" height="34" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="537" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="555.0" y1="80" x2="555.0" y2="166" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="556" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="556" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="575" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="575" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="594" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="594" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="613" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="613" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="632" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="632" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="651" y="86" width="17" height="34" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="651" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="669.0" y1="80" x2="669.0" y2="166" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="670" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="670" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="689" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="689" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="708" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="708" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="727" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="727" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="746" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="746" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="765" y="86" width="17" height="34" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="765" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="783.0" y1="80" x2="783.0" y2="166" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="784" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="784" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="803" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="803" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="822" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="822" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="841" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="841" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="860" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="860" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="879" y="86" width="17" height="34" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="879" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="897.0" y1="80" x2="897.0" y2="166" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="898" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="898" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="917" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="917" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="936" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="936" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="955" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="955" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="974" y="86" width="17" height="34" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="974" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="993" y="86" width="17" height="34" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="993" y="126" width="17" height="34" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="90.0" y="108.0" font-size="12" fill="#6b7280" text-anchor="end">注意力</text>
+<text x="90.0" y="148.0" font-size="12" fill="#6b7280" text-anchor="end">前馈</text>
+<text x="108.5" y="180.0" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="203.5" y="180.0" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="317.5" y="180.0" font-size="11" fill="#9ca3af" text-anchor="middle">12</text>
+<text x="1001.5" y="180.0" font-size="11" fill="#9ca3af" text-anchor="middle">48</text>
+<text x="96.0" y="198.0" font-size="11" fill="#9ca3af" text-anchor="start">层号（虚线分出 8 个混合块）</text>
+<text x="300.0" y="198.0" font-size="11" fill="#6b7280" text-anchor="start">合计 39 层滑动窗口、9 层全局；除第 1 层外都是 MoE（PDF p. 5–6、p. 10）。</text>
+<rect x="40" y="226" width="640" height="250" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="60.0" y="252.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">两类注意力层只差在「看多远」和「KV 头数」</text>
+<text x="60.0" y="282.0" font-size="12" fill="#6b7280" text-anchor="start"></text>
+<text x="210.0" y="282.0" font-size="12" fill="#d4a24c" text-anchor="start" font-weight="700">滑动窗口层（39 层）</text>
+<text x="450.0" y="282.0" font-size="12" fill="#8f8bd8" text-anchor="start" font-weight="700">全局层（9 层）</text>
+<text x="60.0" y="312.0" font-size="12" fill="#6b7280" text-anchor="start">可见范围</text>
+<text x="210.0" y="312.0" font-size="12" fill="#111827" text-anchor="start">最近 128 个 Token</text>
+<text x="450.0" y="312.0" font-size="12" fill="#111827" text-anchor="start">全部历史</text>
+<line x1="60" y1="292" x2="660" y2="292" stroke="#eeeeee" stroke-width="1"/>
+<text x="60.0" y="342.0" font-size="12" fill="#6b7280" text-anchor="start">查询头 / KV 头</text>
+<text x="210.0" y="342.0" font-size="12" fill="#111827" text-anchor="start">64 / 8</text>
+<text x="450.0" y="342.0" font-size="12" fill="#111827" text-anchor="start">64 / 4</text>
+<line x1="60" y1="322" x2="660" y2="322" stroke="#eeeeee" stroke-width="1"/>
+<text x="60.0" y="372.0" font-size="12" fill="#6b7280" text-anchor="start">每头维度（QK / V）</text>
+<text x="210.0" y="372.0" font-size="12" fill="#111827" text-anchor="start">192 / 128</text>
+<text x="450.0" y="372.0" font-size="12" fill="#111827" text-anchor="start">192 / 128</text>
+<line x1="60" y1="352" x2="660" y2="352" stroke="#eeeeee" stroke-width="1"/>
+<text x="60.0" y="402.0" font-size="12" fill="#6b7280" text-anchor="start">RoPE</text>
+<text x="210.0" y="402.0" font-size="12" fill="#111827" text-anchor="start">只作用于前 64 维，基频 10,000</text>
+<text x="450.0" y="402.0" font-size="12" fill="#111827" text-anchor="start">只作用于前 64 维，基频 64 万 → 500 万</text>
+<line x1="60" y1="382" x2="660" y2="382" stroke="#eeeeee" stroke-width="1"/>
+<text x="60.0" y="432.0" font-size="12" fill="#6b7280" text-anchor="start">sink 偏置</text>
+<text x="210.0" y="432.0" font-size="12" fill="#111827" text-anchor="start">每头一个可学习标量</text>
+<text x="450.0" y="432.0" font-size="12" fill="#111827" text-anchor="start">报告未区分；公开 config 里未开启</text>
+<line x1="60" y1="412" x2="660" y2="412" stroke="#eeeeee" stroke-width="1"/>
+<text x="60.0" y="462.0" font-size="11" fill="#6b7280" text-anchor="start">滑动窗口层的 KV 缓存最多存 128 个位置，所以随长度增长的缓存只来自 9 层全局层。</text>
+<rect x="710" y="226" width="370" height="250" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="730.0" y="252.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">MTP 头：给主模型打草稿</text>
+<rect x="750" y="270" width="290" height="48" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="895.0" y="290.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">输入：主模型隐状态 + Token embedding</text>
+<text x="895.0" y="308.0" font-size="11" fill="#6b7280" text-anchor="middle">embedding 与 LM Head 和主模型共享（图上标 tied）</text>
+<rect x="750" y="332" width="290" height="48" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="895.0" y="352.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">滑动窗口注意力</text>
+<text x="895.0" y="370.0" font-size="11" fill="#6b7280" text-anchor="middle">64 / 8 头，窗口 128</text>
+<rect x="750" y="394" width="290" height="48" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="895.0" y="414.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">稠密 FFN（不是 MoE）</text>
+<text x="895.0" y="432.0" font-size="11" fill="#6b7280" text-anchor="middle">每个 MTP 块 0.33B 参数</text>
+<text x="730.0" y="462.0" font-size="11" fill="#6b7280" text-anchor="start">预训练挂 1 个，后训练复制成 3 个联合训练（PDF p. 9）</text>
+<text x="30.0" y="508.0" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 5 Figure 2、p. 6 Table 1 与 p. 10 超参重画，是结构示意。「第 1 层替换掉第一个混合块里的第一层滑动窗口」是由 8 × 6 = 48 与 39 / 9 的层数推出的，</text>
+<text x="30.0" y="526.0" font-size="11" fill="#9ca3af" text-anchor="start">与官方权重 config 的 hybrid_layer_pattern 一致（外部补充）；同一份 config 里 sink 偏置只在滑动窗口层打开（add_full_attention_sink_bias 为 false），与报告的写法不同。</text>
+</svg>

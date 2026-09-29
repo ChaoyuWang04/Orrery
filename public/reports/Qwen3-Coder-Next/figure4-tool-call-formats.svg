@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" width="1120" height="430" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="430" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">同一次工具调用的两种写法：JSON 要把代码转义成一行，qwen3_coder 让代码原样落进参数</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">红 = JSON 里为了装下代码而多出来的转义符；绿 = 原样写出的多行代码。函数名与代码是本文虚构的示意，不是训练数据。</text>
+
+<rect x="30" y="76" width="520" height="250" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="46" y="100" font-size="14" fill="#111827" font-weight="700">JSON 调用（qwen2.5_coder 一栏的骨架）</text>
+<rect x="46" y="116" width="488" height="120" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="58" y="140" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">&lt;tool_call&gt;</text>
+<text x="58" y="160" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">{"name": "write_file", "arguments": {</text>
+<text x="72" y="180" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">"path": "app.py",</text>
+<text x="72" y="200" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">"content": "def greet(name):<tspan fill="#d9877a" font-weight="700">\n</tspan>    print(f<tspan fill="#d9877a" font-weight="700">\"</tspan>hi<tspan fill="#d9877a" font-weight="700">\"</tspan>)<tspan fill="#d9877a" font-weight="700">\n</tspan>"}}</text>
+<text x="58" y="222" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">&lt;/tool_call&gt;</text>
+<rect x="46" y="250" width="488" height="60" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="290" y="274" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">代码被压成一个字符串</text>
+<text x="290" y="296" font-size="11" fill="#6b7280" text-anchor="middle">换行写成 \n，引号写成 \"；补丁越长，转义越多，越容易写坏</text>
+
+<rect x="570" y="76" width="520" height="250" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="586" y="100" font-size="14" fill="#111827" font-weight="700">XML 调用（qwen3_coder 一栏的骨架）</text>
+<rect x="586" y="116" width="488" height="194" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="598" y="138" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">&lt;tool_call&gt;</text>
+<text x="598" y="156" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">&lt;function=write_file&gt;</text>
+<text x="598" y="174" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">&lt;parameter=path&gt;</text>
+<text x="598" y="192" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">app.py</text>
+<text x="598" y="210" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">&lt;/parameter&gt;</text>
+<text x="598" y="228" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">&lt;parameter=content&gt;</text>
+<text x="598" y="246" font-size="12" fill="#5fa886" font-family="Menlo, Consolas, monospace" font-weight="700" style="white-space:pre">def greet(name):</text>
+<text x="627" y="264" font-size="12" fill="#5fa886" font-family="Menlo, Consolas, monospace" font-weight="700" style="white-space:pre">print(f"hi")</text>
+<text x="598" y="282" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">&lt;/parameter&gt;</text>
+<text x="598" y="300" font-size="12" fill="#111827" font-family="Menlo, Consolas, monospace" style="white-space:pre">&lt;/function&gt; &lt;/tool_call&gt;</text>
+
+<text x="30" y="358" font-size="13" fill="#6b7280">qwen3_coder 是为「字符串很重的参数」设计的：模型直接吐出长代码，不必嵌套引号（PDF p. 8）。它只是训练时混用的 20 种模板之一，</text>
+<text x="30" y="378" font-size="13" fill="#6b7280">其余还有 JSON、Python 风格、TypeScript 接口、自然语言描述等（附录 Table 12）；目的不是换一种格式，而是让模型不依赖任何一种格式。</text>
+<text x="30" y="414" font-size="11" fill="#9ca3af">格式骨架据 PDF p. 7 Figure 4 的 qwen2.5_coder 与 qwen3_coder 两栏重画；报告没有做 XML 对 JSON 的单独消融。</text>
+</svg>
