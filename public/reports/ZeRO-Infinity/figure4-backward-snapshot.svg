@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ags" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="aps" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="ays" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 z" fill="#d4a24c"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">ZeRO-Infinity 的一次反向：参数分片上来、拼齐、算完，梯度再分片卸回</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">按 PDF p. 6 图 4 重画：两层模型、4 个数据并行 rank，正在做第 0 层的反向。紫 = 参数 P；黄 = 梯度 G；绿 = 优化器状态 A；灰 = 慢存储。</text>
+<rect x="250" y="74" width="840" height="96" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="270" y="94" font-size="11" fill="#9ca3af">GPU 之间的集合通信</text>
+<rect x="290" y="104" width="360" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="690" y="104" width="380" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="470" y="126" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">② All-Gather：四块 P0 分片拼成完整 P0</text>
+<text x="470" y="146" font-size="11" fill="#6b7280" text-anchor="middle">每张卡都拿到一整份第 0 层参数</text>
+<text x="880" y="126" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">③ Reduce-Scatter：G0 求和后按块分回</text>
+<text x="880" y="146" font-size="11" fill="#6b7280" text-anchor="middle">每张卡只留自己负责的那 1/4</text>
+<text x="30" y="200" font-size="13" fill="#111827" font-weight="700">1× 数据移动</text>
+<text x="30" y="216" font-size="11" fill="#6b7280">GPU ↔ GPU</text>
+<text x="30" y="296" font-size="13" fill="#111827" font-weight="700">1/DP 数据移动</text>
+<text x="30" y="312" font-size="11" fill="#6b7280">每卡只走自己的 PCIe</text>
+<text x="30" y="350" font-size="11" fill="#6b7280">每层的 P、G、A</text>
+<text x="30" y="366" font-size="11" fill="#6b7280">都切成 4 份，</text>
+<text x="30" y="382" font-size="11" fill="#6b7280">第 r 份只归 rank r</text>
+<rect x="250" y="222" width="180" height="46" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="340" y="242" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">GPU 0</text>
+<text x="340" y="260" font-size="11" fill="#6b7280" text-anchor="middle">完整 P0 → 反向 → G0</text>
+<rect x="250" y="322" width="180" height="120" rx="8" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="260" y="330" width="52" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="314" y="330" width="52" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="368" y="330" width="52" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="260" y="368" width="52" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="314" y="368" width="52" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="368" y="368" width="52" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="286" y="350" font-size="12" fill="#111827" text-anchor="middle">P0</text>
+<text x="340" y="350" font-size="12" fill="#111827" text-anchor="middle">G0</text>
+<text x="394" y="350" font-size="12" fill="#111827" text-anchor="middle">A0</text>
+<text x="286" y="388" font-size="12" fill="#111827" text-anchor="middle">P1</text>
+<text x="340" y="388" font-size="12" fill="#111827" text-anchor="middle">G1</text>
+<text x="394" y="388" font-size="12" fill="#111827" text-anchor="middle">A1</text>
+<text x="340" y="428" font-size="11" fill="#6b7280" text-anchor="middle">rank 0 的 CPU + NVMe</text>
+<line x1="286" y1="328" x2="286" y2="272" stroke="#8f8bd8" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="340" y1="270" x2="340" y2="326" stroke="#d4a24c" stroke-width="1.6" marker-end="url(#ay)"/>
+<text x="294" y="302" font-size="12" fill="#8f8bd8">①</text>
+<text x="348" y="302" font-size="12" fill="#d4a24c">④</text>
+<line x1="340" y1="218" x2="340" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ag)" marker-start="url(#ags)"/>
+<rect x="465" y="222" width="180" height="46" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="555" y="242" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">GPU 1</text>
+<text x="555" y="260" font-size="11" fill="#6b7280" text-anchor="middle">完整 P0 → 反向 → G0</text>
+<rect x="465" y="322" width="180" height="120" rx="8" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="475" y="330" width="52" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="529" y="330" width="52" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="583" y="330" width="52" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="475" y="368" width="52" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="529" y="368" width="52" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="583" y="368" width="52" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="501" y="350" font-size="12" fill="#111827" text-anchor="middle">P0</text>
+<text x="555" y="350" font-size="12" fill="#111827" text-anchor="middle">G0</text>
+<text x="609" y="350" font-size="12" fill="#111827" text-anchor="middle">A0</text>
+<text x="501" y="388" font-size="12" fill="#111827" text-anchor="middle">P1</text>
+<text x="555" y="388" font-size="12" fill="#111827" text-anchor="middle">G1</text>
+<text x="609" y="388" font-size="12" fill="#111827" text-anchor="middle">A1</text>
+<text x="555" y="428" font-size="11" fill="#6b7280" text-anchor="middle">rank 1 的 CPU + NVMe</text>
+<line x1="501" y1="328" x2="501" y2="272" stroke="#8f8bd8" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="555" y1="270" x2="555" y2="326" stroke="#d4a24c" stroke-width="1.6" marker-end="url(#ay)"/>
+<text x="509" y="302" font-size="12" fill="#8f8bd8">①</text>
+<text x="563" y="302" font-size="12" fill="#d4a24c">④</text>
+<line x1="555" y1="218" x2="555" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ag)" marker-start="url(#ags)"/>
+<rect x="680" y="222" width="180" height="46" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="770" y="242" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">GPU 2</text>
+<text x="770" y="260" font-size="11" fill="#6b7280" text-anchor="middle">完整 P0 → 反向 → G0</text>
+<rect x="680" y="322" width="180" height="120" rx="8" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="690" y="330" width="52" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="744" y="330" width="52" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="798" y="330" width="52" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="690" y="368" width="52" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="744" y="368" width="52" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="798" y="368" width="52" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="716" y="350" font-size="12" fill="#111827" text-anchor="middle">P0</text>
+<text x="770" y="350" font-size="12" fill="#111827" text-anchor="middle">G0</text>
+<text x="824" y="350" font-size="12" fill="#111827" text-anchor="middle">A0</text>
+<text x="716" y="388" font-size="12" fill="#111827" text-anchor="middle">P1</text>
+<text x="770" y="388" font-size="12" fill="#111827" text-anchor="middle">G1</text>
+<text x="824" y="388" font-size="12" fill="#111827" text-anchor="middle">A1</text>
+<text x="770" y="428" font-size="11" fill="#6b7280" text-anchor="middle">rank 2 的 CPU + NVMe</text>
+<line x1="716" y1="328" x2="716" y2="272" stroke="#8f8bd8" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="770" y1="270" x2="770" y2="326" stroke="#d4a24c" stroke-width="1.6" marker-end="url(#ay)"/>
+<text x="724" y="302" font-size="12" fill="#8f8bd8">①</text>
+<text x="778" y="302" font-size="12" fill="#d4a24c">④</text>
+<line x1="770" y1="218" x2="770" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ag)" marker-start="url(#ags)"/>
+<rect x="895" y="222" width="180" height="46" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="985" y="242" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">GPU 3</text>
+<text x="985" y="260" font-size="11" fill="#6b7280" text-anchor="middle">完整 P0 → 反向 → G0</text>
+<rect x="895" y="322" width="180" height="120" rx="8" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="905" y="330" width="52" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="959" y="330" width="52" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="1013" y="330" width="52" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="905" y="368" width="52" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="959" y="368" width="52" height="30" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="1013" y="368" width="52" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="931" y="350" font-size="12" fill="#111827" text-anchor="middle">P0</text>
+<text x="985" y="350" font-size="12" fill="#111827" text-anchor="middle">G0</text>
+<text x="1039" y="350" font-size="12" fill="#111827" text-anchor="middle">A0</text>
+<text x="931" y="388" font-size="12" fill="#111827" text-anchor="middle">P1</text>
+<text x="985" y="388" font-size="12" fill="#111827" text-anchor="middle">G1</text>
+<text x="1039" y="388" font-size="12" fill="#111827" text-anchor="middle">A1</text>
+<text x="985" y="428" font-size="11" fill="#6b7280" text-anchor="middle">rank 3 的 CPU + NVMe</text>
+<line x1="931" y1="328" x2="931" y2="272" stroke="#8f8bd8" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="985" y1="270" x2="985" y2="326" stroke="#d4a24c" stroke-width="1.6" marker-end="url(#ay)"/>
+<text x="939" y="302" font-size="12" fill="#8f8bd8">①</text>
+<text x="993" y="302" font-size="12" fill="#d4a24c">④</text>
+<line x1="985" y1="218" x2="985" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ag)" marker-start="url(#ags)"/>
+<rect x="16" y="458" width="1088" height="86" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="482" font-size="13" fill="#6b7280">① 每个 rank 只把自己那 1/4 的 P0 从慢存储经自己的 PCIe 搬上 GPU；四条链路同时在搬（PDF p. 8 带宽中心分区）。</text>
+<text x="36" y="504" font-size="13" fill="#6b7280">④ 反向后，每张卡把自己那 1/4 的梯度 G0 卸回慢存储。第 1 层此时还躺在慢存储里，等预取器按顺序把它请上来。</text>
+<text x="36" y="526" font-size="13" fill="#6b7280">A（优化器状态）这一步不动：全部梯度到齐后，才按 CPU 放得下的块从 NVMe 搬上来更新（PDF p. 7）。</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" width="1120" height="430" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="430" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">前向预取：算第 i 个算子时，后面三个算子的参数各走在不同的管段上</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">每列是一个时间片，每格写的是这一段管路此刻在搬哪个算子的参数。灰 = GPU 计算；紫 = 参数搬运；绿 = 5 号算子的参数一路走过的格子。</text>
+<text x="333.0" y="90" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">时间片 1</text>
+<text x="493.0" y="90" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">时间片 2</text>
+<text x="653.0" y="90" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">时间片 3</text>
+<text x="813.0" y="90" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">时间片 4</text>
+<text x="973.0" y="90" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">时间片 5</text>
+<text x="30" y="122" font-size="14" fill="#111827" font-weight="700">GPU 计算</text>
+<text x="30" y="138" font-size="11" fill="#6b7280">正在算的算子</text>
+<rect x="260" y="104" width="146" height="40" rx="5" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="333.0" y="129" font-size="12" fill="#111827" text-anchor="middle">算子 1</text>
+<rect x="420" y="104" width="146" height="40" rx="5" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="493.0" y="129" font-size="12" fill="#111827" text-anchor="middle">算子 2</text>
+<rect x="580" y="104" width="146" height="40" rx="5" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="653.0" y="129" font-size="12" fill="#111827" text-anchor="middle">算子 3</text>
+<rect x="740" y="104" width="146" height="40" rx="5" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="813.0" y="129" font-size="12" fill="#111827" text-anchor="middle">算子 4</text>
+<rect x="900" y="104" width="146" height="40" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="973.0" y="129" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">算子 5</text>
+<text x="30" y="174" font-size="14" fill="#111827" font-weight="700">gg-transfer</text>
+<text x="30" y="190" font-size="11" fill="#6b7280">GPU 间 All-Gather</text>
+<rect x="260" y="156" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="333.0" y="181" font-size="12" fill="#111827" text-anchor="middle">算子 2 的参数</text>
+<rect x="420" y="156" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="493.0" y="181" font-size="12" fill="#111827" text-anchor="middle">算子 3 的参数</text>
+<rect x="580" y="156" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="653.0" y="181" font-size="12" fill="#111827" text-anchor="middle">算子 4 的参数</text>
+<rect x="740" y="156" width="146" height="40" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="813.0" y="181" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">算子 5 的参数</text>
+<rect x="900" y="156" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="973.0" y="181" font-size="12" fill="#111827" text-anchor="middle">算子 6 的参数</text>
+<text x="30" y="226" font-size="14" fill="#111827" font-weight="700">cg-transfer</text>
+<text x="30" y="242" font-size="11" fill="#6b7280">CPU → GPU，走 PCIe</text>
+<rect x="260" y="208" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="333.0" y="233" font-size="12" fill="#111827" text-anchor="middle">算子 3 的参数</text>
+<rect x="420" y="208" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="493.0" y="233" font-size="12" fill="#111827" text-anchor="middle">算子 4 的参数</text>
+<rect x="580" y="208" width="146" height="40" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="653.0" y="233" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">算子 5 的参数</text>
+<rect x="740" y="208" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="813.0" y="233" font-size="12" fill="#111827" text-anchor="middle">算子 6 的参数</text>
+<rect x="900" y="208" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="973.0" y="233" font-size="12" fill="#111827" text-anchor="middle">算子 7 的参数</text>
+<text x="30" y="278" font-size="14" fill="#111827" font-weight="700">nc-transfer</text>
+<text x="30" y="294" font-size="11" fill="#6b7280">NVMe → CPU</text>
+<rect x="260" y="260" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="333.0" y="285" font-size="12" fill="#111827" text-anchor="middle">算子 4 的参数</text>
+<rect x="420" y="260" width="146" height="40" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="493.0" y="285" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">算子 5 的参数</text>
+<rect x="580" y="260" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="653.0" y="285" font-size="12" fill="#111827" text-anchor="middle">算子 6 的参数</text>
+<rect x="740" y="260" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="813.0" y="285" font-size="12" fill="#111827" text-anchor="middle">算子 7 的参数</text>
+<rect x="900" y="260" width="146" height="40" rx="5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="973.0" y="285" font-size="12" fill="#111827" text-anchor="middle">算子 8 的参数</text>
+<rect x="16" y="326" width="1088" height="88" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="350" font-size="13" fill="#6b7280">依据 PDF p. 8 第 6.2 节：执行第 i 个算子前，预取器可同时为 i+3、i+2、i+1 发起 nc、cg、gg 三段搬运，全部与第 i 个算子的计算并行。</text>
+<text x="36" y="372" font-size="13" fill="#6b7280">若串行去做，一个算子要等 nc + cg + gg 三段之和；叠起来之后，每个时间片只等最慢的那一段。</text>
+<text x="36" y="394" font-size="13" fill="#6b7280">反向对称：算第 i 个算子时，同时对 i+1 的梯度做 Reduce-Scatter，并把 i+2 已分好片的梯度卸到 CPU 或 NVMe。</text>
+</svg>

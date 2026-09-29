@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ap" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker></defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">参数在主机侧时：Broadcast 只点亮一条 PCIe，All-Gather 点亮全部</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 参数搬运，线越粗表示这条链路上搬的越多；灰虚线 = 闲置的 PCIe；灰框 = 主机侧 CPU 内存或 NVMe。以一台机器上 4 张卡示意。</text>
+<rect x="16" y="72" width="536" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="98" font-size="14" fill="#111827" font-weight="700">旧：整层参数归一个 rank</text>
+<text x="36" y="116" font-size="11" fill="#6b7280">ZeRO-3 / ZeRO-Offload 的做法</text>
+<rect x="42" y="132" width="484" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="284" y="157" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Broadcast：GPU 0 发给其余 3 张</text>
+<rect x="54" y="212" width="96" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="102" y="239" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">GPU 0</text>
+<rect x="176" y="212" width="96" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="224" y="239" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">GPU 1</text>
+<rect x="298" y="212" width="96" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="346" y="239" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">GPU 2</text>
+<rect x="420" y="212" width="96" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="468" y="239" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">GPU 3</text>
+<rect x="42" y="318" width="484" height="52" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="284" y="349" font-size="12" fill="#111827" text-anchor="middle">主机侧：CPU 内存 / NVMe</text>
+<line x1="102" y1="316" x2="102" y2="260" stroke="#8f8bd8" stroke-width="5" marker-end="url(#ap)"/>
+<text x="110" y="294" font-size="11" fill="#8f8bd8">整层 P</text>
+<line x1="224" y1="316" x2="224" y2="258" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="230" y="294" font-size="11" fill="#9ca3af">闲置</text>
+<line x1="346" y1="316" x2="346" y2="258" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="352" y="294" font-size="11" fill="#9ca3af">闲置</text>
+<line x1="468" y1="316" x2="468" y2="258" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="474" y="294" font-size="11" fill="#9ca3af">闲置</text>
+<line x1="102" y1="210" x2="102" y2="176" stroke="#8f8bd8" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="224" y1="174" x2="224" y2="208" stroke="#8f8bd8" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="346" y1="174" x2="346" y2="208" stroke="#8f8bd8" stroke-width="1.6" marker-end="url(#ap)"/>
+<line x1="468" y1="174" x2="468" y2="208" stroke="#8f8bd8" stroke-width="1.6" marker-end="url(#ap)"/>
+<text x="36" y="386" font-size="11" fill="#6b7280">主机到 GPU 的有效带宽 = 单条 PCIe：DGX-2 上即便 16 路数据并行，仍约 12 GB/s</text>
+<rect x="568" y="72" width="536" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="588" y="98" font-size="14" fill="#111827" font-weight="700">新：每个参数切到所有 rank</text>
+<text x="588" y="116" font-size="11" fill="#6b7280">ZeRO-Infinity 的带宽中心分区</text>
+<rect x="594" y="132" width="484" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="836" y="157" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">All-Gather：4 块 1/4 拼成每卡一份完整参数</text>
+<rect x="606" y="212" width="96" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="654" y="239" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">GPU 0</text>
+<rect x="728" y="212" width="96" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="776" y="239" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">GPU 1</text>
+<rect x="850" y="212" width="96" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="898" y="239" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">GPU 2</text>
+<rect x="972" y="212" width="96" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="1020" y="239" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">GPU 3</text>
+<rect x="594" y="318" width="484" height="52" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="836" y="349" font-size="12" fill="#111827" text-anchor="middle">主机侧：CPU 内存 / NVMe</text>
+<line x1="654" y1="316" x2="654" y2="260" stroke="#8f8bd8" stroke-width="2.4" marker-end="url(#ap)"/>
+<text x="662" y="294" font-size="11" fill="#8f8bd8">1/4</text>
+<line x1="776" y1="316" x2="776" y2="260" stroke="#8f8bd8" stroke-width="2.4" marker-end="url(#ap)"/>
+<text x="784" y="294" font-size="11" fill="#8f8bd8">1/4</text>
+<line x1="898" y1="316" x2="898" y2="260" stroke="#8f8bd8" stroke-width="2.4" marker-end="url(#ap)"/>
+<text x="906" y="294" font-size="11" fill="#8f8bd8">1/4</text>
+<line x1="1020" y1="316" x2="1020" y2="260" stroke="#8f8bd8" stroke-width="2.4" marker-end="url(#ap)"/>
+<text x="1028" y="294" font-size="11" fill="#8f8bd8">1/4</text>
+<line x1="646" y1="210" x2="646" y2="176" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="662" y1="174" x2="662" y2="208" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="768" y1="210" x2="768" y2="176" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="784" y1="174" x2="784" y2="208" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="890" y1="210" x2="890" y2="176" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="906" y1="174" x2="906" y2="208" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="1012" y1="210" x2="1012" y2="176" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<line x1="1028" y1="174" x2="1028" y2="208" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<text x="588" y="386" font-size="11" fill="#6b7280">有效带宽随数据并行度线性涨：单台 DGX-2 约 48 GB/s（CPU）/ 25 GB/s（NVMe）</text>
+<rect x="16" y="418" width="1088" height="84" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="442" font-size="13" fill="#6b7280">参数都在 GPU 上时，Broadcast 与 All-Gather 的通信体积相同，这一刀对纯 GPU 训练几乎没有差别（PDF p. 8）。</text>
+<text x="36" y="464" font-size="13" fill="#6b7280">参数在 CPU 或 NVMe 上时，瓶颈是主机到 GPU 的那一段：旧做法只有拥有者的 PCIe 在搬，新做法每条 PCIe 各搬 1/DP。</text>
+<text x="36" y="486" font-size="13" fill="#6b7280">再加节点继续线性涨：64 台 DGX-2 上，CPU 内存带宽超过 3 TB/s，NVMe 带宽超过 1.5 TB/s（PDF p. 8）。</text>
+</svg>

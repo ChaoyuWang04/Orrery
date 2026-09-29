@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">BERT 放大后要换残差的分叉点：从 LayerNorm 之后分出，改成之前分出</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">左：论文 Figure 7 的两种层结构（紫 = 子层，灰 = LayerNorm，粗灰线 = 残差捷径）。右：同图训练损失，红 = 752M 用 (a)，黄 = 336M 用 (a)，绿 = 752M 用 (b)。</text>
+<text x="30" y="73" font-size="13" fill="#6b7280" text-anchor="start">右图是读自原图的走势示意，不是原始数据点；纵轴对数刻度。依据 PDF p. 8，Figure 7。</text>
+<text x="150" y="110" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 原版 BERT</text>
+<text x="150" y="128" font-size="11" fill="#6b7280" text-anchor="middle">等价于 post-norm</text>
+<rect x="105" y="146" width="90" height="26" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="150.0" y="163.32" font-size="12" fill="#111827" text-anchor="middle">output</text>
+<circle cx="150" cy="200" r="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="150" y="205" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">+</text>
+<rect x="90" y="230" width="120" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="150.0" y="254.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">MLP</text>
+<rect x="90" y="294" width="120" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="150.0" y="313.32" font-size="12" fill="#111827" text-anchor="middle">LayerNorm</text>
+<circle cx="150" cy="364" r="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="150" y="369" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">+</text>
+<rect x="90" y="394" width="120" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="150.0" y="418.32" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Self-Attention</text>
+<rect x="90" y="458" width="120" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="150.0" y="477.32" font-size="12" fill="#111827" text-anchor="middle">LayerNorm</text>
+<rect x="105" y="522" width="90" height="26" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="150.0" y="539.32" font-size="12" fill="#111827" text-anchor="middle">input</text>
+<line x1="150" y1="522" x2="150" y2="490" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="458" x2="150" y2="436" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="394" x2="150" y2="376" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="354" x2="150" y2="326" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="294" x2="150" y2="272" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="230" x2="150" y2="212" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="150" y1="190" x2="150" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M150,446 L62,446 L62,364 L138,364" fill="none" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+<path d="M150,282 L62,282 L62,200 L138,200" fill="none" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+<text x="150" y="578" font-size="11" fill="#6b7280" text-anchor="middle">捷径带的是归一化后的值</text>
+<text x="380" y="110" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) 重排后</text>
+<text x="380" y="128" font-size="11" fill="#6b7280" text-anchor="middle">pre-norm</text>
+<rect x="335" y="146" width="90" height="26" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="380.0" y="163.32" font-size="12" fill="#111827" text-anchor="middle">output</text>
+<circle cx="380" cy="200" r="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="380" y="205" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">+</text>
+<rect x="320" y="230" width="120" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="380.0" y="254.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">MLP</text>
+<rect x="320" y="294" width="120" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="380.0" y="313.32" font-size="12" fill="#111827" text-anchor="middle">LayerNorm</text>
+<circle cx="380" cy="364" r="10" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="380" y="369" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">+</text>
+<rect x="320" y="394" width="120" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="380.0" y="418.32" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Self-Attention</text>
+<rect x="320" y="458" width="120" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="380.0" y="477.32" font-size="12" fill="#111827" text-anchor="middle">LayerNorm</text>
+<rect x="335" y="522" width="90" height="26" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="380.0" y="539.32" font-size="12" fill="#111827" text-anchor="middle">input</text>
+<line x1="380" y1="522" x2="380" y2="490" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="380" y1="458" x2="380" y2="436" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="380" y1="394" x2="380" y2="376" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="380" y1="354" x2="380" y2="326" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="380" y1="294" x2="380" y2="272" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="380" y1="230" x2="380" y2="212" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="380" y1="190" x2="380" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M380,506 L292,506 L292,364 L368,364" fill="none" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+<path d="M380,342 L292,342 L292,200 L368,200" fill="none" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+<text x="380" y="578" font-size="11" fill="#6b7280" text-anchor="middle">捷径绕过 LayerNorm，主干直通</text>
+<line x1="580" y1="520.0" x2="1070" y2="520.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="572" y="524.0" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<line x1="580" y1="396.7" x2="1070" y2="396.7" stroke="#e5e7eb" stroke-width="1"/>
+<text x="572" y="400.7" font-size="11" fill="#9ca3af" text-anchor="end">2</text>
+<line x1="580" y1="273.3" x2="1070" y2="273.3" stroke="#e5e7eb" stroke-width="1"/>
+<text x="572" y="277.3" font-size="11" fill="#9ca3af" text-anchor="end">4</text>
+<line x1="580" y1="150.0" x2="1070" y2="150.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="572" y="154.0" font-size="11" fill="#9ca3af" text-anchor="end">8</text>
+<line x1="580" y1="140" x2="580" y2="520" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="580" y1="520" x2="1070" y2="520" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="580.0" y="538" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="678.0" y="538" font-size="11" fill="#9ca3af" text-anchor="middle">100</text>
+<text x="776.0" y="538" font-size="11" fill="#9ca3af" text-anchor="middle">200</text>
+<text x="874.0" y="538" font-size="11" fill="#9ca3af" text-anchor="middle">300</text>
+<text x="972.0" y="538" font-size="11" fill="#9ca3af" text-anchor="middle">400</text>
+<text x="1070.0" y="538" font-size="11" fill="#9ca3af" text-anchor="middle">500</text>
+<text x="825.0" y="558" font-size="11" fill="#6b7280" text-anchor="middle">迭代数（×1000）</text>
+<text x="550" y="134" font-size="11" fill="#6b7280" text-anchor="start">训练损失</text>
+<polyline points="581.0,173.8 584.9,313.0 589.8,364.2 604.5,405.8 629.0,430.9 678.0,445.5 776.0,462.7 874.0,473.3 972.0,480.3 1070.0,487.6" fill="none" stroke="#d4a24c" stroke-width="2.4"/>
+<polyline points="581.0,173.8 584.9,336.8 589.8,383.8 604.5,423.5 629.0,447.9 678.0,466.6 776.0,487.6 874.0,499.8 972.0,508.0 1070.0,513.0" fill="none" stroke="#5fa886" stroke-width="2.4"/>
+<polyline points="581.0,173.8 584.9,324.5 589.8,371.8 604.5,413.4 629.0,438.6 678.0,455.1 776.0,473.3 799.5,476.1 800.5,171.2 834.8,168.7 874.0,168.7 903.4,163.9" fill="none" stroke="#d9877a" stroke-width="2.4"/>
+<text x="916.3" y="167.87188327520414" font-size="11" fill="#d9877a" text-anchor="start">752M·(a)：约 22 万步跳到 7 上下</text>
+<line x1="860" y1="270" x2="890" y2="270" stroke="#d9877a" stroke-width="2.4"/>
+<text x="898" y="274" font-size="11" fill="#111827" text-anchor="start">752M，结构 (a)</text>
+<line x1="860" y1="292" x2="890" y2="292" stroke="#d4a24c" stroke-width="2.4"/>
+<text x="898" y="296" font-size="11" fill="#111827" text-anchor="start">336M，结构 (a)</text>
+<line x1="860" y1="314" x2="890" y2="314" stroke="#5fa886" stroke-width="2.4"/>
+<text x="898" y="318" font-size="11" fill="#111827" text-anchor="start">752M，结构 (b)：全程稳定、最低</text>
+</svg>

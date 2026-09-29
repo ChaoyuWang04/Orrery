@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 530" width="1120" height="530" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="530" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">ZeRO-DP 三级分区：一张卡上还剩多少模型状态</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">每条是一张卡上的模型状态，条长按 GB 等比例画。紫 = FP16 参数；黄 = FP16 梯度；绿 = 优化器状态；红虚线 = 单卡 32 GB 显存。</text>
+
+<text x="488" y="82" font-size="11" fill="#d9877a">单卡 32 GB（V100）</text>
+
+<rect x="280" y="106" width="94.5" height="40" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="374.5" y="106" width="94.5" height="40" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="469" y="106" width="567" height="40" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="327" y="130" font-size="11" fill="#111827" text-anchor="middle">参数 15 GB</text>
+<text x="422" y="130" font-size="11" fill="#111827" text-anchor="middle">梯度 15 GB</text>
+<text x="500" y="130" font-size="11" fill="#111827">优化器状态 90 GB（FP32 参数 + 动量 + 方差，K = 12）</text>
+<text x="30" y="114" font-size="14" fill="#111827" font-weight="700">基线数据并行</text>
+<text x="30" y="132" font-size="11" fill="#6b7280">(2 + 2 + K)Ψ = 120 GB</text>
+<text x="30" y="148" font-size="11" fill="#9ca3af">通信 2Ψ</text>
+
+<rect x="280" y="196" width="94.5" height="40" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="374.5" y="196" width="94.5" height="40" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="469" y="196" width="8.9" height="40" rx="2" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="327" y="220" font-size="11" fill="#111827" text-anchor="middle">参数 15 GB</text>
+<text x="422" y="220" font-size="11" fill="#111827" text-anchor="middle">梯度 15 GB</text>
+<text x="500" y="214" font-size="11" fill="#6b7280">优化器状态摊成 1/64，只剩 1.4 GB；</text>
+<text x="500" y="230" font-size="11" fill="#6b7280">合计 31.4 GB，贴着 32 GB 线，激活已经没地方放</text>
+<text x="30" y="204" font-size="14" fill="#111827" font-weight="700">P_os 切优化器状态</text>
+<text x="30" y="222" font-size="11" fill="#6b7280">2Ψ + 2Ψ + KΨ/N_d = 31.4 GB</text>
+<text x="30" y="238" font-size="11" fill="#9ca3af">通信 2Ψ，与基线相同</text>
+
+<rect x="280" y="286" width="94.5" height="40" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="374.5" y="286" width="1.5" height="40" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="376" y="286" width="8.9" height="40" rx="2" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="327" y="310" font-size="11" fill="#111827" text-anchor="middle">参数 15 GB</text>
+<text x="500" y="304" font-size="11" fill="#6b7280">梯度也只剩 1/64（0.23 GB）；</text>
+<text x="500" y="320" font-size="11" fill="#6b7280">合计 16.6 GB，剩下的几乎全是那份复制的 FP16 参数</text>
+<text x="30" y="294" font-size="14" fill="#111827" font-weight="700">P_os+g 再切梯度</text>
+<text x="30" y="312" font-size="11" fill="#6b7280">2Ψ + (2 + K)Ψ/N_d = 16.6 GB</text>
+<text x="30" y="328" font-size="11" fill="#9ca3af">通信 2Ψ，与基线相同</text>
+
+<rect x="280" y="376" width="1.5" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="281.5" y="376" width="1.5" height="40" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="283" y="376" width="8.9" height="40" rx="2" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="500" y="394" font-size="11" fill="#6b7280">参数也切开：三样都只剩 1/64；</text>
+<text x="500" y="410" font-size="11" fill="#6b7280">合计 1.9 GB，随 N_d 线性下降</text>
+<text x="30" y="384" font-size="14" fill="#111827" font-weight="700">P_os+g+p 再切参数</text>
+<text x="30" y="402" font-size="11" fill="#6b7280">(2 + 2 + K)Ψ/N_d = 1.9 GB</text>
+<text x="30" y="418" font-size="11" fill="#9ca3af">通信 3Ψ，基线的 1.5 倍</text>
+
+<line x1="481.6" y1="86" x2="481.6" y2="420" stroke="#d9877a" stroke-width="1.4" stroke-dasharray="5 4"/>
+
+<rect x="16" y="438" width="1088" height="76" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="464" font-size="13" fill="#6b7280">例子取自 PDF p. 3 图 1 与 p. 10–11：Ψ = 7.5B 参数，N_d = 64 路数据并行，混合精度 Adam 的 K = 12。</text>
+<text x="36" y="490" font-size="13" fill="#6b7280">切开的份额在 64 张卡上互不重叠，拼起来仍是一份完整的 120 GB：显存没有消失，只是不再每卡复制一份。</text>
+</svg>

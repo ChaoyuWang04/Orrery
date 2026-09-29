@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 472" width="1120" height="472" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="472" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">GPipe 图 2 重画：按层切成 4 段后，只切层会空转，切成微批才让 4 张卡同时干活</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 前向 F；绿 = 反向 B；黄 = 整个 mini-batch 结束后的同步更新；白底 = 空转。行从上到下是 Device 3 到 Device 0，与原图同向。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">格子长短照原图比例（反向画得比前向长约 1.3 倍），是机制示意，不是实测时间；两幅的横轴不是同一比例。</text>
+<rect x="16.0" y="86.0" width="1088.0" height="172.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30.0" y="106.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 朴素模型并行：整份 mini-batch 走完 F0→F3，再走完 B3→B0</text>
+<text x="30.0" y="123.0" font-size="11" fill="#6b7280" text-anchor="start">层与层有依赖，同一时刻只有 1 张卡在算，其余 3 张在等</text>
+<text x="108.0" y="152.0" font-size="11" fill="#6b7280" text-anchor="end">Device 3</text>
+<rect x="120.0" y="136.0" width="660.0" height="24.0" rx="3" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="312.0" y="136.0" width="64.0" height="24.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="344.0" y="152.0" font-size="11" fill="#111827" text-anchor="middle">F</text>
+<rect x="376.0" y="136.0" width="86.0" height="24.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="419.0" y="152.0" font-size="11" fill="#111827" text-anchor="middle">B</text>
+<rect x="720.0" y="136.0" width="60.0" height="24.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="750.0" y="152.0" font-size="10" fill="#111827" text-anchor="middle">Update</text>
+<text x="108.0" y="180.0" font-size="11" fill="#6b7280" text-anchor="end">Device 2</text>
+<rect x="120.0" y="164.0" width="660.0" height="24.0" rx="3" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="248.0" y="164.0" width="64.0" height="24.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="280.0" y="180.0" font-size="11" fill="#111827" text-anchor="middle">F</text>
+<rect x="462.0" y="164.0" width="86.0" height="24.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="505.0" y="180.0" font-size="11" fill="#111827" text-anchor="middle">B</text>
+<rect x="720.0" y="164.0" width="60.0" height="24.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="750.0" y="180.0" font-size="10" fill="#111827" text-anchor="middle">Update</text>
+<text x="108.0" y="208.0" font-size="11" fill="#6b7280" text-anchor="end">Device 1</text>
+<rect x="120.0" y="192.0" width="660.0" height="24.0" rx="3" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="184.0" y="192.0" width="64.0" height="24.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="216.0" y="208.0" font-size="11" fill="#111827" text-anchor="middle">F</text>
+<rect x="548.0" y="192.0" width="86.0" height="24.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="591.0" y="208.0" font-size="11" fill="#111827" text-anchor="middle">B</text>
+<rect x="720.0" y="192.0" width="60.0" height="24.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="750.0" y="208.0" font-size="10" fill="#111827" text-anchor="middle">Update</text>
+<text x="108.0" y="236.0" font-size="11" fill="#6b7280" text-anchor="end">Device 0</text>
+<rect x="120.0" y="220.0" width="660.0" height="24.0" rx="3" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="120.0" y="220.0" width="64.0" height="24.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="152.0" y="236.0" font-size="11" fill="#111827" text-anchor="middle">F</text>
+<rect x="634.0" y="220.0" width="86.0" height="24.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="677.0" y="236.0" font-size="11" fill="#111827" text-anchor="middle">B</text>
+<rect x="720.0" y="220.0" width="60.0" height="24.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="750.0" y="236.0" font-size="10" fill="#111827" text-anchor="middle">Update</text>
+<text x="800.0" y="180.0" font-size="11" fill="#6b7280" text-anchor="start">每张卡只在 2 格里有活：</text>
+<text x="800.0" y="198.0" font-size="11" fill="#6b7280" text-anchor="start">加卡买到的是「塞得下」，</text>
+<text x="800.0" y="216.0" font-size="11" fill="#6b7280" text-anchor="start">不是并行</text>
+<rect x="16.0" y="272.0" width="1088.0" height="184.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30.0" y="292.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(c) GPipe：mini-batch 切成 M = 4 个微批，F(k,m) 里 k 是分区、m 是微批</text>
+<text x="30.0" y="309.0" font-size="11" fill="#6b7280" text-anchor="start">先做完全部微批的前向（下标递增），再做全部反向（下标递减），最后四卡一起更新；中间那块白底就是气泡</text>
+<text x="108.0" y="339.0" font-size="11" fill="#6b7280" text-anchor="end">Device 3</text>
+<rect x="120.0" y="322.0" width="781.0" height="26.0" rx="3" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="259.0" y="322.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="281.0" y="339.0" font-size="11" fill="#111827" text-anchor="middle">F3,0</text>
+<rect x="305.0" y="322.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="327.0" y="339.0" font-size="11" fill="#111827" text-anchor="middle">F3,1</text>
+<rect x="351.0" y="322.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="373.0" y="339.0" font-size="11" fill="#111827" text-anchor="middle">F3,2</text>
+<rect x="397.0" y="322.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="419.0" y="339.0" font-size="11" fill="#111827" text-anchor="middle">F3,3</text>
+<rect x="443.0" y="322.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="471.5" y="339.0" font-size="11" fill="#111827" text-anchor="middle">B3,3</text>
+<rect x="502.0" y="322.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="530.5" y="339.0" font-size="11" fill="#111827" text-anchor="middle">B3,2</text>
+<rect x="561.0" y="322.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="589.5" y="339.0" font-size="11" fill="#111827" text-anchor="middle">B3,1</text>
+<rect x="620.0" y="322.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="648.5" y="339.0" font-size="11" fill="#111827" text-anchor="middle">B3,0</text>
+<rect x="856.0" y="322.0" width="44.0" height="26.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="878.0" y="339.0" font-size="10" fill="#111827" text-anchor="middle">Upd</text>
+<text x="108.0" y="369.0" font-size="11" fill="#6b7280" text-anchor="end">Device 2</text>
+<rect x="120.0" y="352.0" width="781.0" height="26.0" rx="3" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="213.0" y="352.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="235.0" y="369.0" font-size="11" fill="#111827" text-anchor="middle">F2,0</text>
+<rect x="259.0" y="352.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="281.0" y="369.0" font-size="11" fill="#111827" text-anchor="middle">F2,1</text>
+<rect x="305.0" y="352.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="327.0" y="369.0" font-size="11" fill="#111827" text-anchor="middle">F2,2</text>
+<rect x="351.0" y="352.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="373.0" y="369.0" font-size="11" fill="#111827" text-anchor="middle">F2,3</text>
+<rect x="502.0" y="352.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="530.5" y="369.0" font-size="11" fill="#111827" text-anchor="middle">B2,3</text>
+<rect x="561.0" y="352.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="589.5" y="369.0" font-size="11" fill="#111827" text-anchor="middle">B2,2</text>
+<rect x="620.0" y="352.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="648.5" y="369.0" font-size="11" fill="#111827" text-anchor="middle">B2,1</text>
+<rect x="679.0" y="352.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="707.5" y="369.0" font-size="11" fill="#111827" text-anchor="middle">B2,0</text>
+<rect x="856.0" y="352.0" width="44.0" height="26.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="878.0" y="369.0" font-size="10" fill="#111827" text-anchor="middle">Upd</text>
+<text x="108.0" y="399.0" font-size="11" fill="#6b7280" text-anchor="end">Device 1</text>
+<rect x="120.0" y="382.0" width="781.0" height="26.0" rx="3" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="167.0" y="382.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="189.0" y="399.0" font-size="11" fill="#111827" text-anchor="middle">F1,0</text>
+<rect x="213.0" y="382.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="235.0" y="399.0" font-size="11" fill="#111827" text-anchor="middle">F1,1</text>
+<rect x="259.0" y="382.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="281.0" y="399.0" font-size="11" fill="#111827" text-anchor="middle">F1,2</text>
+<rect x="305.0" y="382.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="327.0" y="399.0" font-size="11" fill="#111827" text-anchor="middle">F1,3</text>
+<rect x="561.0" y="382.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="589.5" y="399.0" font-size="11" fill="#111827" text-anchor="middle">B1,3</text>
+<rect x="620.0" y="382.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="648.5" y="399.0" font-size="11" fill="#111827" text-anchor="middle">B1,2</text>
+<rect x="679.0" y="382.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="707.5" y="399.0" font-size="11" fill="#111827" text-anchor="middle">B1,1</text>
+<rect x="738.0" y="382.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="766.5" y="399.0" font-size="11" fill="#111827" text-anchor="middle">B1,0</text>
+<rect x="856.0" y="382.0" width="44.0" height="26.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="878.0" y="399.0" font-size="10" fill="#111827" text-anchor="middle">Upd</text>
+<text x="108.0" y="429.0" font-size="11" fill="#6b7280" text-anchor="end">Device 0</text>
+<rect x="120.0" y="412.0" width="781.0" height="26.0" rx="3" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="121.0" y="412.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="143.0" y="429.0" font-size="11" fill="#111827" text-anchor="middle">F0,0</text>
+<rect x="167.0" y="412.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="189.0" y="429.0" font-size="11" fill="#111827" text-anchor="middle">F0,1</text>
+<rect x="213.0" y="412.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="235.0" y="429.0" font-size="11" fill="#111827" text-anchor="middle">F0,2</text>
+<rect x="259.0" y="412.0" width="44.0" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="281.0" y="429.0" font-size="11" fill="#111827" text-anchor="middle">F0,3</text>
+<rect x="620.0" y="412.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="648.5" y="429.0" font-size="11" fill="#111827" text-anchor="middle">B0,3</text>
+<rect x="679.0" y="412.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="707.5" y="429.0" font-size="11" fill="#111827" text-anchor="middle">B0,2</text>
+<rect x="738.0" y="412.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="766.5" y="429.0" font-size="11" fill="#111827" text-anchor="middle">B0,1</text>
+<rect x="797.0" y="412.0" width="57.0" height="26.0" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="825.5" y="429.0" font-size="11" fill="#111827" text-anchor="middle">B0,0</text>
+<rect x="856.0" y="412.0" width="44.0" height="26.0" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="878.0" y="429.0" font-size="10" fill="#111827" text-anchor="middle">Upd</text>
+<text x="461.5" y="429.0" font-size="11" fill="#6b7280" text-anchor="middle">空转（Bubble）</text>
+<text x="925.0" y="336.0" font-size="11" fill="#6b7280" text-anchor="start">每张卡 8 格计算之外，</text>
+<text x="925.0" y="354.0" font-size="11" fill="#6b7280" text-anchor="start">空着 3 格前向 + 3 格反向：</text>
+<text x="925.0" y="372.0" font-size="11" fill="#6b7280" text-anchor="start">正是 K−1 = 3 段灌满与排空。</text>
+<text x="925.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="start">空转占比 = (K−1)/(M+K−1)，</text>
+<text x="925.0" y="414.0" font-size="11" fill="#6b7280" text-anchor="start">这里 3/7 ≈ 43%；M 越大越薄</text>
+</svg>
