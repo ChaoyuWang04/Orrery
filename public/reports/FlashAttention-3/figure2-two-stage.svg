@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 470" width="1120" height="470" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="470" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 2：同一个 warpgroup 内部，本轮的 softmax 与上一轮的 PV 重叠</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">上半按 PDF p. 6 Figure 2 重画（理想化示意，块宽只表示先后）；下半是 Algorithm 2 主循环第 8–16 行。数字是迭代序号 j。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">绿 = WGMMA 矩阵乘；黄 = softmax；灰 = 等待与缓冲管理。</text>
+<text x="32.0" y="122.0" font-size="13" fill="#111827" text-anchor="start">WGMMA0（QKᵀ）</text>
+<rect x="190.0" y="100.0" width="32.0" height="34.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="206.0" y="122.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="278.4" y="100.0" width="32.0" height="34.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="294.4" y="122.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="366.8" y="100.0" width="32.0" height="34.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="382.8" y="122.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="516.4" y="100.0" width="32.0" height="34.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="532.4" y="122.0" font-size="11" fill="#111827" text-anchor="middle">N−1</text>
+<text x="32.0" y="172.0" font-size="13" fill="#111827" text-anchor="start">softmax</text>
+<rect x="224.0" y="150.0" width="83.0" height="34.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="265.5" y="172.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="312.4" y="150.0" width="86.4" height="34.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="355.6" y="172.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="400.8" y="150.0" width="83.0" height="34.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="442.3" y="172.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="550.4" y="150.0" width="86.4" height="34.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="593.6" y="172.0" font-size="11" fill="#111827" text-anchor="middle">N−1</text>
+<text x="32.0" y="222.0" font-size="13" fill="#111827" text-anchor="start">WGMMA1（PV）</text>
+<rect x="312.4" y="200.0" width="32.0" height="34.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="328.4" y="222.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="400.8" y="200.0" width="32.0" height="34.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="416.8" y="222.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="550.4" y="200.0" width="32.0" height="34.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="566.4" y="222.0" font-size="11" fill="#111827" text-anchor="middle">N−2</text>
+<rect x="638.8" y="200.0" width="32.0" height="34.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="654.8" y="222.0" font-size="11" fill="#111827" text-anchor="middle">N−1</text>
+<text x="492.6" y="194.0" font-size="11" fill="#6b7280" text-anchor="middle">……</text>
+<line x1="190.0" y1="250.0" x2="686.4" y2="250.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="686.4" y="268.0" font-size="11" fill="#9ca3af" text-anchor="end">时间</text>
+<text x="720.0" y="120.0" font-size="11" fill="#9ca3af" text-anchor="start">第 1 轮的 softmax 进行时，</text>
+<text x="720.0" y="138.0" font-size="11" fill="#9ca3af" text-anchor="start">第 0 轮的 PV 已经发出、在 Tensor Core 上跑。</text>
+<text x="720.0" y="160.0" font-size="11" fill="#9ca3af" text-anchor="start">代价：寄存器里要多放一份 S_next，</text>
+<text x="720.0" y="178.0" font-size="11" fill="#9ca3af" text-anchor="start">即 Bᵣ × B_c × 4 字节（PDF p. 7）。</text>
+<rect x="16.0" y="288.0" width="1088.0" height="166.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="32.0" y="314.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Algorithm 2 主循环（PDF p. 6）</text>
+<rect x="32.0" y="330.0" width="344.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="44.0" y="355.0" font-size="11" fill="#111827" text-anchor="start">1. 发出 S_next = Qᵢ Kⱼᵀ，不等</text>
+<rect x="392.0" y="330.0" width="344.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="404.0" y="355.0" font-size="11" fill="#111827" text-anchor="start">2. 发出 Oᵢ += P̃_cur Vⱼ₋₁，不等</text>
+<rect x="752.0" y="330.0" width="344.0" height="40.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="764.0" y="355.0" font-size="11" fill="#111827" text-anchor="start">3. 等 Qᵢ Kⱼᵀ 完成</text>
+<rect x="32.0" y="384.0" width="344.0" height="40.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="44.0" y="409.0" font-size="11" fill="#111827" text-anchor="start">4. 用 S_next 算 mᵢ、P̃_next、ℓᵢ</text>
+<rect x="392.0" y="384.0" width="344.0" height="40.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="404.0" y="409.0" font-size="11" fill="#111827" text-anchor="start">5. 等 P̃_cur Vⱼ₋₁ 完成，再缩放 Oᵢ</text>
+<rect x="752.0" y="384.0" width="344.0" height="40.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="764.0" y="409.0" font-size="11" fill="#111827" text-anchor="start">6. 释放缓冲格；S_next 拷成 S_cur</text>
+<text x="32.0" y="446.0" font-size="11" fill="#6b7280" text-anchor="start">第 2 步发出的 PV 属于上一轮，第 4 步的 softmax 属于本轮；两者之间没有数据依赖，于是能同时跑。</text>
+</svg>

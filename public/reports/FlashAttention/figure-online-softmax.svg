@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 470" width="1120" height="470" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="470" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">在线 softmax：分两块算，结果与一次算完完全相同</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">玩具例子，本文自拟，不是论文数字：一行 4 个分数 [1, 3 | 2, 5]，对应的值 v = [10, 20 | 30, 40]，头维取 1。递推按 PDF p. 4 的分解式与 Algorithm 1 第 10–12 行。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">黄 = 只看到第 1 块时的局部结果；绿 = 第 2 块到来后的合并；灰 = 一次看完整行的参照答案。</text>
+<rect x="16.0" y="100.0" width="1088.0" height="96.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="32.0" y="126.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">参照：一次算完整行</text>
+<rect x="32.0" y="140.0" width="250.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="157.0" y="166.0" font-size="11" fill="#111827" text-anchor="middle">m = max(1, 3, 2, 5) = 5</text>
+<rect x="300.0" y="140.0" width="360.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="480.0" y="166.0" font-size="11" fill="#111827" text-anchor="middle">权重 e^(x−5) = 0.018, 0.135, 0.050, 1.000</text>
+<rect x="678.0" y="140.0" width="170.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="763.0" y="166.0" font-size="11" fill="#111827" text-anchor="middle">ℓ = 1.203</text>
+<rect x="866.0" y="140.0" width="222.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="977.0" y="166.0" font-size="11" fill="#111827" text-anchor="middle">O = Σ 权重 × v ÷ ℓ = 36.88</text>
+<rect x="16.0" y="212.0" width="340.0" height="240.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="32.0" y="238.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">只看到第 1 块 [1, 3]</text>
+<rect x="32.0" y="254.0" width="308.0" height="40.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="186.0" y="278.0" font-size="11" fill="#111827" text-anchor="middle">局部最大值 m₁ = 3</text>
+<rect x="32.0" y="302.0" width="308.0" height="40.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="186.0" y="326.0" font-size="11" fill="#111827" text-anchor="middle">局部权重 e^(x−3) = 0.135, 1.000</text>
+<rect x="32.0" y="350.0" width="308.0" height="40.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="186.0" y="374.0" font-size="11" fill="#111827" text-anchor="middle">局部和 ℓ₁ = 1.135</text>
+<rect x="32.0" y="398.0" width="308.0" height="40.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="186.0" y="422.0" font-size="11" fill="#111827" text-anchor="middle">局部输出 O₁ = (1.35 + 20) ÷ 1.135 = 18.81</text>
+<line x1="360.0" y1="330.0" x2="392.0" y2="330.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="396.0" y="212.0" width="708.0" height="240.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="412.0" y="238.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">第 2 块 [2, 5] 到来：只用 m₁、ℓ₁、O₁ 三个数就能合并</text>
+<rect x="412.0" y="254.0" width="330.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="577.0" y="278.0" font-size="11" fill="#111827" text-anchor="middle">新最大值 m = max(3, 5) = 5</text>
+<rect x="758.0" y="254.0" width="330.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="923.0" y="278.0" font-size="11" fill="#111827" text-anchor="middle">旧结果的缩放因子 e^(m₁−m) = e^(−2) = 0.135</text>
+<rect x="412.0" y="302.0" width="330.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="577.0" y="326.0" font-size="11" fill="#111827" text-anchor="middle">第 2 块权重 e^(x−5) = 0.050, 1.000</text>
+<rect x="758.0" y="302.0" width="330.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="923.0" y="326.0" font-size="11" fill="#111827" text-anchor="middle">ℓ = 0.135 × 1.135 + 1.050 = 1.203</text>
+<rect x="412.0" y="350.0" width="676.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="750.0" y="374.0" font-size="11" fill="#111827" text-anchor="middle">O = (ℓ₁ × 0.135 × O₁ + 0.050 × 30 + 1.000 × 40) ÷ ℓ = (2.89 + 41.49) ÷ 1.203 = 36.88</text>
+<text x="412.0" y="414.0" font-size="11" fill="#6b7280" text-anchor="start">与上方参照一致：旧块不必重读，只要每行多存 m、ℓ 两个数。</text>
+<text x="412.0" y="432.0" font-size="11" fill="#6b7280" text-anchor="start">代价是每来一块，旧的 O 都要按 e^(m₁−m) 重缩放、再按新 ℓ 归一化一次。</text>
+</svg>

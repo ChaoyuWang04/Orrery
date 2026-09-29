@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">循环顺序换过来之后：O 留在片上，除法只做一次</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">左按第一代 Algorithm 1 重画，右按 PDF p. 6 Algorithm 1（FlashAttention-2 前向）重画，是机制示意。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = HBM 读写；绿 = Tensor Core 上的矩阵乘；黄 = 非矩阵乘的逐元素运算（指数、缩放、除法）。</text>
+<rect x="16.0" y="90.0" width="536.0" height="412.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="32.0" y="116.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">第一代：外层 K、V，内层 Q</text>
+<text x="32.0" y="136.0" font-size="11" fill="#6b7280" text-anchor="start">一个线程块负责一个 (batch, 头)，Q 的各行块在内层轮流进出</text>
+<text x="32.0" y="168.0" font-size="11" fill="#111827" text-anchor="start">for j = 1 … T_c（外层）</text>
+<rect x="60.0" y="180.0" width="476.0" height="34.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="72.0" y="202.0" font-size="11" fill="#111827" text-anchor="start">读 Kⱼ、Vⱼ</text>
+<text x="524.0" y="202.0" font-size="11" fill="#6b7280" text-anchor="end">每块只读 1 次</text>
+<text x="60.0" y="236.0" font-size="11" fill="#111827" text-anchor="start">for i = 1 … T_r（内层）</text>
+<rect x="88.0" y="248.0" width="448.0" height="34.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="100.0" y="270.0" font-size="11" fill="#111827" text-anchor="start">读 Oᵢ、ℓᵢ、mᵢ（连同 Qᵢ）</text>
+<text x="524.0" y="270.0" font-size="11" fill="#6b7280" text-anchor="end">每轮外层都读</text>
+<rect x="88.0" y="288.0" width="448.0" height="34.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="100.0" y="310.0" font-size="11" fill="#111827" text-anchor="start">Sᵢⱼ = Qᵢ Kⱼᵀ；P̃ᵢⱼ Vⱼ</text>
+<rect x="88.0" y="328.0" width="448.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="100.0" y="350.0" font-size="11" fill="#111827" text-anchor="start">旧 Oᵢ 乘回 ℓᵢ，缩放，再除以新 ℓ</text>
+<text x="524.0" y="350.0" font-size="11" fill="#6b7280" text-anchor="end">每块都除一次</text>
+<rect x="88.0" y="368.0" width="448.0" height="34.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="100.0" y="390.0" font-size="11" fill="#111827" text-anchor="start">写回 Oᵢ、ℓᵢ、mᵢ</text>
+<text x="524.0" y="390.0" font-size="11" fill="#6b7280" text-anchor="end">每轮外层都写</text>
+<text x="32.0" y="470.0" font-size="11" fill="#9ca3af" text-anchor="start">Oᵢ 在 HBM 与片上之间往返 T_c 次；反向要存 m、ℓ 两个向量。</text>
+<rect x="568.0" y="90.0" width="536.0" height="412.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="584.0" y="116.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">第二代：外层 Q，内层 K、V</text>
+<text x="584.0" y="136.0" font-size="11" fill="#6b7280" text-anchor="start">每个 Q 行块彼此独立，可以各分给一个线程块</text>
+<text x="584.0" y="168.0" font-size="11" fill="#111827" text-anchor="start">for i = 1 … T_r（外层，可并行）</text>
+<rect x="612.0" y="180.0" width="476.0" height="34.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="624.0" y="202.0" font-size="11" fill="#111827" text-anchor="start">读 Qᵢ；片上初始化 Oᵢ = 0、ℓᵢ = 0、mᵢ = −∞</text>
+<text x="1076.0" y="202.0" font-size="11" fill="#6b7280" text-anchor="end">每块只读 1 次</text>
+<text x="612.0" y="236.0" font-size="11" fill="#111827" text-anchor="start">for j = 1 … T_c（内层）</text>
+<rect x="640.0" y="248.0" width="448.0" height="34.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="652.0" y="270.0" font-size="11" fill="#111827" text-anchor="start">读 Kⱼ、Vⱼ</text>
+<rect x="640.0" y="288.0" width="448.0" height="34.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="652.0" y="310.0" font-size="11" fill="#111827" text-anchor="start">Sᵢⱼ = Qᵢ Kⱼᵀ；P̃ᵢⱼ Vⱼ</text>
+<rect x="640.0" y="328.0" width="448.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="652.0" y="350.0" font-size="11" fill="#111827" text-anchor="start">只按 e^(m旧 − m新) 缩放未归一化的 Oᵢ</text>
+<text x="1076.0" y="350.0" font-size="11" fill="#6b7280" text-anchor="end">不做除法</text>
+<rect x="612.0" y="368.0" width="476.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="624.0" y="390.0" font-size="11" fill="#111827" text-anchor="start">循环结束：Oᵢ 除以 ℓᵢ 一次；Lᵢ = mᵢ + log ℓᵢ</text>
+<text x="1076.0" y="390.0" font-size="11" fill="#6b7280" text-anchor="end">只除一次</text>
+<rect x="612.0" y="408.0" width="476.0" height="34.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="624.0" y="430.0" font-size="11" fill="#111827" text-anchor="start">写回 Oᵢ 与 logsumexp Lᵢ</text>
+<text x="1076.0" y="430.0" font-size="11" fill="#6b7280" text-anchor="end">每块只写 1 次</text>
+<text x="584.0" y="494.0" font-size="11" fill="#9ca3af" text-anchor="start">反向只需存一个向量 L，而不是 m、ℓ 两个。</text>
+</svg>

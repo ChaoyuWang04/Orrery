@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">正交旋转：长度不变，把一根「钉子」摊到所有通道上</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">红 = 离群通道上的大值 α；紫 = 其余通道（近似标准高斯）。左：Figure 3 的二维版本；右：同一个向量旋转前后逐通道的样子。</text>
+<rect x="16.0" y="80.0" width="300.0" height="340.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<line x1="70.0" y1="370.0" x2="290.0" y2="370.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="70.0" y1="370.0" x2="70.0" y2="120.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="296.0" y="374.0" font-size="11" fill="#9ca3af" text-anchor="start">通道 1</text>
+<text x="64.0" y="114.0" font-size="11" fill="#9ca3af" text-anchor="start">通道 2</text>
+<line x1="70" y1="370" x2="70" y2="170" stroke="#d9877a" stroke-width="3"/>
+<text x="80.0" y="176.0" font-size="12" fill="#111827" text-anchor="start">x = (0, α)</text>
+<line x1="70" y1="370" x2="211.4" y2="228.6" stroke="#8f8bd8" stroke-width="3"/>
+<text x="219.4" y="232.6" font-size="12" fill="#111827" text-anchor="start">y = Qx</text>
+<text x="219.4" y="248.6" font-size="12" fill="#111827" text-anchor="start">= (α/√2, α/√2)</text>
+<path d="M 100.0 200.0 Q 140.0 210.0 156.0 214.6" fill="none" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+<text x="124.0" y="196.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">Q</text>
+<text x="36.0" y="406.0" font-size="12" fill="#111827" text-anchor="start">最大分量从 α 降到 α/√2，长度不变。</text>
+<rect x="332.0" y="80.0" width="380.0" height="340.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="522.0" y="104.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">旋转前：x = α·e_i + z</text>
+<line x1="352.0" y1="316.0" x2="692.0" y2="316.0" stroke="#9ca3af" stroke-width="1"/>
+<rect x="353.0" y="315.0" width="6.5" height="1.0" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="361.5" y="302.5" width="6.5" height="13.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="370.0" y="316.0" width="6.5" height="10.1" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="378.5" y="305.3" width="6.5" height="10.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="387.0" y="316.0" width="6.5" height="2.8" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="395.5" y="316.0" width="6.5" height="2.8" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="404.0" y="295.5" width="6.5" height="20.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="412.5" y="314.3" width="6.5" height="1.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="421.0" y="316.0" width="6.5" height="0.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="429.5" y="308.1" width="6.5" height="7.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="438.0" y="303.8" width="6.5" height="12.2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="446.5" y="316.0" width="6.5" height="0.3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="455.0" y="309.6" width="6.5" height="6.4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="463.5" y="316.0" width="6.5" height="10.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="472.0" y="316.0" width="6.5" height="4.0" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="480.5" y="316.0" width="6.5" height="4.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="489.0" y="316.0" width="6.5" height="14.4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="497.5" y="316.0" width="6.5" height="16.3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="506.0" y="316.0" width="6.5" height="17.6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="514.5" y="316.0" width="6.5" height="2.6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="523.0" y="316.0" width="6.5" height="1.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="531.5" y="316.0" width="6.5" height="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="540.0" y="315.3" width="6.5" height="0.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="548.5" y="118.0" width="6.5" height="198.0" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="557.0" y="316.0" width="6.5" height="14.4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="565.5" y="316.0" width="6.5" height="0.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="574.0" y="313.4" width="6.5" height="2.6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="582.5" y="307.9" width="6.5" height="8.1" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="591.0" y="316.0" width="6.5" height="9.1" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="599.5" y="316.0" width="6.5" height="4.3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="608.0" y="316.0" width="6.5" height="21.8" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="616.5" y="316.0" width="6.5" height="5.4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="625.0" y="316.0" width="6.5" height="23.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="633.5" y="316.0" width="6.5" height="15.3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="642.0" y="304.1" width="6.5" height="11.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="650.5" y="316.0" width="6.5" height="23.8" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="659.0" y="307.4" width="6.5" height="8.6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="667.5" y="312.5" width="6.5" height="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="676.0" y="316.0" width="6.5" height="3.4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="684.5" y="311.0" width="6.5" height="5.0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="522.0" y="360.0" font-size="11" fill="#9ca3af" text-anchor="middle">通道编号 →（示意，D 取 40）</text>
+<rect x="728.0" y="80.0" width="380.0" height="340.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="918.0" y="104.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">旋转后：y = Qx，Q·e_i = 1/√D</text>
+<line x1="748.0" y1="316.0" x2="1088.0" y2="316.0" stroke="#9ca3af" stroke-width="1"/>
+<rect x="749.0" y="283.9" width="6.5" height="32.1" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="757.5" y="278.3" width="6.5" height="37.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="766.0" y="292.1" width="6.5" height="23.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="774.5" y="296.0" width="6.5" height="20.0" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="783.0" y="296.1" width="6.5" height="19.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="791.5" y="300.3" width="6.5" height="15.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="800.0" y="290.1" width="6.5" height="25.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="808.5" y="298.1" width="6.5" height="17.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="817.0" y="278.1" width="6.5" height="37.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="825.5" y="309.8" width="6.5" height="6.2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="834.0" y="301.4" width="6.5" height="14.6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="842.5" y="299.9" width="6.5" height="16.1" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="851.0" y="312.2" width="6.5" height="3.8" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="859.5" y="269.1" width="6.5" height="46.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="868.0" y="315.6" width="6.5" height="0.4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="876.5" y="292.7" width="6.5" height="23.3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="885.0" y="295.3" width="6.5" height="20.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="893.5" y="271.7" width="6.5" height="44.3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="902.0" y="311.0" width="6.5" height="5.0" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="910.5" y="278.0" width="6.5" height="38.0" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="919.0" y="297.5" width="6.5" height="18.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="927.5" y="291.3" width="6.5" height="24.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="936.0" y="296.8" width="6.5" height="19.2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="944.5" y="282.7" width="6.5" height="33.3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="953.0" y="301.9" width="6.5" height="14.1" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="961.5" y="290.5" width="6.5" height="25.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="970.0" y="285.8" width="6.5" height="30.2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="978.5" y="269.7" width="6.5" height="46.3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="987.0" y="315.6" width="6.5" height="0.4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="995.5" y="273.1" width="6.5" height="42.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1004.0" y="279.4" width="6.5" height="36.6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1012.5" y="294.8" width="6.5" height="21.2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1021.0" y="286.3" width="6.5" height="29.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1029.5" y="294.6" width="6.5" height="21.4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1038.0" y="271.8" width="6.5" height="44.2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1046.5" y="287.3" width="6.5" height="28.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1055.0" y="291.9" width="6.5" height="24.1" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1063.5" y="292.1" width="6.5" height="23.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1072.0" y="291.8" width="6.5" height="24.2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1080.5" y="291.5" width="6.5" height="24.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="918.0" y="360.0" font-size="11" fill="#9ca3af" text-anchor="middle">通道编号 →（示意，D 取 40）</text>
+<text x="356.0" y="388.0" font-size="12" fill="#111827" text-anchor="start">峰度 ≈ D − 4（附录 G，取 α = D）</text>
+<text x="356.0" y="406.0" font-size="12" fill="#111827" text-anchor="start">‖x‖∞² / ‖x‖₂² ≈ 1</text>
+<text x="752.0" y="388.0" font-size="12" fill="#111827" text-anchor="start">峰度 = 3（附录 H）</text>
+<text x="752.0" y="406.0" font-size="12" fill="#111827" text-anchor="start">‖y‖∞² / ‖y‖₂² ≈ 1/D，ℓ2 范数不变</text>
+<text x="30.0" y="452.0" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 6 Figure 3 与附录 G–H（p. 21–25）重画。柱高是示意，不是实测激活；α 在论文训练的模型里实测大于 D（附录 Table 9）。</text>
+<text x="30.0" y="470.0" font-size="11" fill="#9ca3af" text-anchor="start">旋转后每个通道都分到 α/√D 的均匀抬升，离群值没有消失，而是不再压在某一个坐标轴上。</text>
+</svg>

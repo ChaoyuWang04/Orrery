@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 420" width="1120" height="420" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="420" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 1：两个 warpgroup 打乒乓，一个做 softmax 时另一个占着 Tensor Core</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">按 PDF p. 5 Figure 1 重画，是理想化的机制示意：三种块画成等宽，数字是迭代序号。论文说实际调度没有这么整齐。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">绿 = WGMMA 矩阵乘（GEMM0 = QKᵀ，GEMM1 = PV）；黄 = softmax。两个 warpgroup 的先后由 bar.sync 屏障强制。</text>
+<text x="32.0" y="145.0" font-size="13" fill="#111827" text-anchor="start">warpgroup 1</text>
+<rect x="201.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="231.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">GEMM0</text>
+<text x="231.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 0 轮</text>
+<rect x="263.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="293.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">softmax</text>
+<text x="293.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 0 轮</text>
+<rect x="325.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="355.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">GEMM1</text>
+<text x="355.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 0 轮</text>
+<rect x="387.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="417.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">GEMM0</text>
+<text x="417.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 1 轮</text>
+<rect x="449.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="479.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">softmax</text>
+<text x="479.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 1 轮</text>
+<rect x="573.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="603.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">GEMM1</text>
+<text x="603.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 1 轮</text>
+<rect x="635.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="665.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">GEMM0</text>
+<text x="665.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 2 轮</text>
+<rect x="697.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="727.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">softmax</text>
+<text x="727.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 2 轮</text>
+<rect x="821.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="851.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">GEMM1</text>
+<text x="851.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 2 轮</text>
+<rect x="883.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="913.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">GEMM0</text>
+<text x="913.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 3 轮</text>
+<rect x="945.0" y="120.0" width="60.0" height="40.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="975.0" y="138.0" font-size="11" fill="#111827" text-anchor="middle">softmax</text>
+<text x="975.0" y="153.0" font-size="11" fill="#6b7280" text-anchor="middle">第 3 轮</text>
+<text x="32.0" y="205.0" font-size="13" fill="#111827" text-anchor="start">warpgroup 2</text>
+<rect x="263.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="293.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">GEMM0</text>
+<text x="293.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 0 轮</text>
+<rect x="325.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="355.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">softmax</text>
+<text x="355.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 0 轮</text>
+<rect x="449.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="479.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">GEMM1</text>
+<text x="479.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 0 轮</text>
+<rect x="511.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="541.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">GEMM0</text>
+<text x="541.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 1 轮</text>
+<rect x="573.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="603.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">softmax</text>
+<text x="603.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 1 轮</text>
+<rect x="697.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="727.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">GEMM1</text>
+<text x="727.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 1 轮</text>
+<rect x="759.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="789.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">GEMM0</text>
+<text x="789.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 2 轮</text>
+<rect x="821.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="851.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">softmax</text>
+<text x="851.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 2 轮</text>
+<rect x="945.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="975.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">GEMM1</text>
+<text x="975.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 2 轮</text>
+<rect x="1007.0" y="180.0" width="60.0" height="40.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1037.0" y="198.0" font-size="11" fill="#111827" text-anchor="middle">GEMM0</text>
+<text x="1037.0" y="213.0" font-size="11" fill="#6b7280" text-anchor="middle">第 3 轮</text>
+<text x="32.0" y="283.0" font-size="13" fill="#111827" text-anchor="start">Tensor Core 上是谁</text>
+<rect x="201.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="231.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="263.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="293.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG2</text>
+<rect x="325.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="355.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="387.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="417.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="449.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="479.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG2</text>
+<rect x="511.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="541.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG2</text>
+<rect x="573.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="603.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="635.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="665.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="697.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="727.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG2</text>
+<rect x="759.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="789.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG2</text>
+<rect x="821.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="851.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="883.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="913.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG1</text>
+<rect x="945.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="975.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG2</text>
+<rect x="1007.0" y="258.0" width="60.0" height="30.0" rx="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1037.0" y="277.0" font-size="11" fill="#111827" text-anchor="middle">WG2</text>
+<line x1="200.0" y1="310.0" x2="1068.0" y2="310.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="1068.0" y="328.0" font-size="11" fill="#9ca3af" text-anchor="end">时间</text>
+<text x="32.0" y="366.0" font-size="11" fill="#6b7280" text-anchor="start">稳定段每 4 格里：Tensor Core 4 格全满（两个 warpgroup 各 2 格），每个 warpgroup 的 softmax 占 1 格，正好落在对方做矩阵乘的时候。</text>
+<text x="32.0" y="386.0" font-size="11" fill="#6b7280" text-anchor="start">实测：头维 128、序列 8192 的 FP16 前向，乒乓调度把吞吐从约 570 提到 620–640 TFLOPs/s（PDF p. 5）。</text>
+</svg>

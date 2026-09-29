@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">一个线程块里分出两种 warpgroup：一个只管搬，其余只管算</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">按 PDF p. 3–5 第 2.2、3.1 节与 Algorithm 1、p. 16 Algorithm 3 重画，是机制示意。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = TMA 异步搬数（HBM → 共享内存）；绿 = Tensor Core 上的 WGMMA 矩阵乘；黄 = softmax 等非矩阵乘运算；灰 = 共享内存里的环形缓冲；红 = 对 HBM 的原子加。</text>
+<rect x="16.0" y="100.0" width="300.0" height="300.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="32.0" y="126.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">生产者 warpgroup</text>
+<text x="32.0" y="146.0" font-size="11" fill="#6b7280" text-anchor="start">先让出寄存器（setmaxnreg）</text>
+<rect x="32.0" y="162.0" width="268.0" height="40.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="166.0" y="179.0" font-size="11" fill="#111827" text-anchor="middle">发起 TMA：读 Qᵢ</text>
+<text x="166.0" y="194.0" font-size="11" fill="#6b7280" text-anchor="middle">完成后通知消费者</text>
+<rect x="32.0" y="214.0" width="268.0" height="52.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="166.0" y="237.0" font-size="11" fill="#111827" text-anchor="middle">for j：等第 (j mod s) 格被用完</text>
+<text x="166.0" y="252.0" font-size="11" fill="#6b7280" text-anchor="middle">再发起 TMA 读 Kⱼ、Vⱼ 进这一格</text>
+<text x="32.0" y="290.0" font-size="11" fill="#6b7280" text-anchor="start">TMA 是异步的专用搬数单元，</text>
+<text x="32.0" y="308.0" font-size="11" fill="#6b7280" text-anchor="start">发起读取不用等别的读取完成；</text>
+<text x="32.0" y="326.0" font-size="11" fill="#6b7280" text-anchor="start">只需要一个线程就能发起。</text>
+<text x="32.0" y="360.0" font-size="11" fill="#9ca3af" text-anchor="start">缓冲前 s 轮装填时不用等（PDF p. 4）。</text>
+<rect x="332.0" y="100.0" width="300.0" height="300.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="348.0" y="126.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">s 格环形缓冲（共享内存）</text>
+<rect x="422.0" y="162.0" width="110.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="477.0" y="188.0" font-size="11" fill="#111827" text-anchor="middle">K₀ V₀</text>
+<rect x="492.0" y="222.0" width="110.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="547.0" y="248.0" font-size="11" fill="#111827" text-anchor="middle">K₁ V₁</text>
+<rect x="422.0" y="282.0" width="110.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="477.0" y="308.0" font-size="11" fill="#111827" text-anchor="middle">K₂ V₂</text>
+<rect x="352.0" y="222.0" width="110.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="407.0" y="248.0" font-size="11" fill="#111827" text-anchor="middle">K₃ V₃</text>
+<text x="348.0" y="386.0" font-size="11" fill="#6b7280" text-anchor="start">图里 s = 4；格数由共享内存决定。</text>
+<polyline points="532.0,206.0 547.0,206.0 547.0,222.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="547.0,266.0 547.0,304.0 532.0,304.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="422.0,304.0 407.0,304.0 407.0,266.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="407.0,222.0 407.0,184.0 422.0,184.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="316.0" y1="240.0" x2="346.0" y2="240.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="618.0" y1="240.0" x2="648.0" y2="240.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="648.0" y="100.0" width="456.0" height="300.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="664.0" y="126.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">消费者 warpgroup（1 个或多个）</text>
+<text x="664.0" y="146.0" font-size="11" fill="#6b7280" text-anchor="start">多拿寄存器（setmaxnreg），只做计算</text>
+<rect x="664.0" y="162.0" width="424.0" height="34.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="876.0" y="183.0" font-size="11" fill="#111827" text-anchor="middle">Sᵢ = Qᵢ Kⱼᵀ（SS-GEMM：两个操作数都来自共享内存）</text>
+<rect x="664.0" y="204.0" width="424.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="876.0" y="225.0" font-size="11" fill="#111827" text-anchor="middle">行最大值、指数、行和；按 e^(m旧 − m新) 缩放 Oᵢ</text>
+<rect x="664.0" y="246.0" width="424.0" height="34.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="876.0" y="267.0" font-size="11" fill="#111827" text-anchor="middle">Oᵢ += P̃ᵢ Vⱼ（RS-GEMM：P̃ 在寄存器，V 在共享内存）</text>
+<rect x="664.0" y="288.0" width="424.0" height="34.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="876.0" y="309.0" font-size="11" fill="#111827" text-anchor="middle">释放第 (j mod s) 格给生产者</text>
+<text x="664.0" y="346.0" font-size="11" fill="#6b7280" text-anchor="start">WGMMA 是 Hopper 的 warpgroup 级异步矩阵乘，</text>
+<text x="664.0" y="364.0" font-size="11" fill="#6b7280" text-anchor="start">可以直接从共享内存取操作数（PDF p. 3）。</text>
+<text x="664.0" y="388.0" font-size="11" fill="#9ca3af" text-anchor="start">循环结束：Oᵢ 除以 ℓᵢ，算 Lᵢ，写回 HBM。</text>
+<rect x="16.0" y="416.0" width="1088.0" height="128.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="32.0" y="442.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">反向多一个角色：dQ 写手（PDF p. 16，Algorithm 3）</text>
+<rect x="32.0" y="458.0" width="300.0" height="52.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="182.0" y="481.0" font-size="11" fill="#111827" text-anchor="middle">生产者</text>
+<text x="182.0" y="496.0" font-size="11" fill="#6b7280" text-anchor="middle">TMA 读 Kⱼ、Vⱼ，再逐块读 Qᵢ、dOᵢ</text>
+<rect x="348.0" y="458.0" width="420.0" height="52.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="558.0" y="481.0" font-size="11" fill="#111827" text-anchor="middle">消费者</text>
+<text x="558.0" y="496.0" font-size="11" fill="#6b7280" text-anchor="middle">重算 S、P；算 dP、dS；累加 dVⱼ、dKⱼ；算本地 dQᵢ 写进共享内存</text>
+<rect x="784.0" y="458.0" width="304.0" height="52.0" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="936.0" y="481.0" font-size="11" fill="#111827" text-anchor="middle">dQ 写手（一个 warp）</text>
+<text x="936.0" y="496.0" font-size="11" fill="#6b7280" text-anchor="middle">用信号量把本地 dQᵢ 原子加到 HBM</text>
+<line x1="768.0" y1="484.0" x2="784.0" y2="484.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="32.0" y="532.0" font-size="11" fill="#6b7280" text-anchor="start">许多线程块写同一个 dQ 位置会有竞争；交给单独的 warp，其余 warp 不必停下来等，可以接着做下一次矩阵乘。</text>
+</svg>

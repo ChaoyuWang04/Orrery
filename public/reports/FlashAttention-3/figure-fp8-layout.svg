@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="540" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">FP8 的两道布局关：寄存器里「谁拿哪几列」对不上，V 的连续方向也对不上</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">左按 PDF p. 7 Figure 3、Figure 4 与 p. 19–20 附录 B.7 重画，只画第 0 行的前 16 列；右按 p. 4、p. 7 与附录 B.8 整理。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">绿、紫、黄、红分别是线程 T0、T1、T2、T3；格子里的字母是该线程寄存器里的第几个元素。灰 = 其余说明。</text>
+<rect x="16.0" y="90.0" width="540.0" height="432.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="32.0" y="116.0" font-size="13" fill="#111827" text-anchor="start">第一个 WGMMA 的 FP32 累加器（S）</text>
+<text x="32.0" y="132.0" font-size="11" fill="#6b7280" text-anchor="start">每 2 列一格，4 个线程轮流拿，8 列后再轮一遍</text>
+<rect x="32.0" y="144.0" width="58.0" height="40.0" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="61.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">T0</text>
+<text x="61.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">d0 d1</text>
+<rect x="94.0" y="144.0" width="58.0" height="40.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="123.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">T1</text>
+<text x="123.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">d0 d1</text>
+<rect x="156.0" y="144.0" width="58.0" height="40.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="185.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">T2</text>
+<text x="185.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">d0 d1</text>
+<rect x="218.0" y="144.0" width="58.0" height="40.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="247.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">T3</text>
+<text x="247.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">d0 d1</text>
+<rect x="280.0" y="144.0" width="58.0" height="40.0" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="309.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">T0</text>
+<text x="309.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">d4 d5</text>
+<rect x="342.0" y="144.0" width="58.0" height="40.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="371.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">T1</text>
+<text x="371.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">d4 d5</text>
+<rect x="404.0" y="144.0" width="58.0" height="40.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="433.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">T2</text>
+<text x="433.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">d4 d5</text>
+<rect x="466.0" y="144.0" width="58.0" height="40.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="495.0" y="161.0" font-size="11" fill="#111827" text-anchor="middle">T3</text>
+<text x="495.0" y="176.0" font-size="11" fill="#6b7280" text-anchor="middle">d4 d5</text>
+<text x="32.0" y="236.0" font-size="13" fill="#111827" text-anchor="start">第二个 WGMMA 要的 FP8 操作数（P）</text>
+<text x="32.0" y="252.0" font-size="11" fill="#6b7280" text-anchor="start">每个线程拿连续 4 列</text>
+<rect x="32.0" y="264.0" width="58.0" height="40.0" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="61.0" y="281.0" font-size="11" fill="#111827" text-anchor="middle">T0</text>
+<text x="61.0" y="296.0" font-size="11" fill="#6b7280" text-anchor="middle">a0 a1</text>
+<rect x="94.0" y="264.0" width="58.0" height="40.0" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="123.0" y="281.0" font-size="11" fill="#111827" text-anchor="middle">T0</text>
+<text x="123.0" y="296.0" font-size="11" fill="#6b7280" text-anchor="middle">a2 a3</text>
+<rect x="156.0" y="264.0" width="58.0" height="40.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="185.0" y="281.0" font-size="11" fill="#111827" text-anchor="middle">T1</text>
+<text x="185.0" y="296.0" font-size="11" fill="#6b7280" text-anchor="middle">a0 a1</text>
+<rect x="218.0" y="264.0" width="58.0" height="40.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="247.0" y="281.0" font-size="11" fill="#111827" text-anchor="middle">T1</text>
+<text x="247.0" y="296.0" font-size="11" fill="#6b7280" text-anchor="middle">a2 a3</text>
+<rect x="280.0" y="264.0" width="58.0" height="40.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="309.0" y="281.0" font-size="11" fill="#111827" text-anchor="middle">T2</text>
+<text x="309.0" y="296.0" font-size="11" fill="#6b7280" text-anchor="middle">a0 a1</text>
+<rect x="342.0" y="264.0" width="58.0" height="40.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="371.0" y="281.0" font-size="11" fill="#111827" text-anchor="middle">T2</text>
+<text x="371.0" y="296.0" font-size="11" fill="#6b7280" text-anchor="middle">a2 a3</text>
+<rect x="404.0" y="264.0" width="58.0" height="40.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="433.0" y="281.0" font-size="11" fill="#111827" text-anchor="middle">T3</text>
+<text x="433.0" y="296.0" font-size="11" fill="#6b7280" text-anchor="middle">a0 a1</text>
+<rect x="466.0" y="264.0" width="58.0" height="40.0" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="495.0" y="281.0" font-size="11" fill="#111827" text-anchor="middle">T3</text>
+<text x="495.0" y="296.0" font-size="11" fill="#6b7280" text-anchor="middle">a2 a3</text>
+<line x1="280.0" y1="190.0" x2="280.0" y2="222.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="32.0" y="346.0" font-size="11" fill="#6b7280" text-anchor="start">S 要先降成 FP8 才能当第二个矩阵乘的输入，</text>
+<text x="32.0" y="364.0" font-size="11" fill="#6b7280" text-anchor="start">可同一列数据在两种布局里属于不同的线程。</text>
+<text x="32.0" y="388.0" font-size="11" fill="#6b7280" text-anchor="start">附录 B.7 的做法：先用 byte_perm 在线程内重排字节，</text>
+<text x="32.0" y="406.0" font-size="11" fill="#6b7280" text-anchor="start">再用 shfl_sync 在每 4 个线程之间交换，</text>
+<text x="32.0" y="424.0" font-size="11" fill="#6b7280" text-anchor="start">最后按线程号再做一次 byte_perm。</text>
+<text x="32.0" y="456.0" font-size="11" fill="#9ca3af" text-anchor="start">FP16 时也有这一步类型转换，Algorithm 1 里把它省略了；</text>
+<text x="32.0" y="474.0" font-size="11" fill="#9ca3af" text-anchor="start">FP8 的难处在于两种布局不一致（PDF p. 7）。</text>
+<rect x="572.0" y="90.0" width="532.0" height="432.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="588.0" y="116.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">V 要在核内转置</text>
+<rect x="588.0" y="132.0" width="500.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="838.0" y="151.0" font-size="11" fill="#111827" text-anchor="middle">FP8 WGMMA 只接受 k-major 操作数</text>
+<text x="838.0" y="166.0" font-size="11" fill="#6b7280" text-anchor="middle">即沿收缩维 K 连续；FP16 两种都接受（PDF p. 4）</text>
+<rect x="588.0" y="186.0" width="500.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="838.0" y="205.0" font-size="11" fill="#111827" text-anchor="middle">QKᵀ 的收缩维是头维：Q、K 沿头维连续，没问题</text>
+<text x="838.0" y="220.0" font-size="11" fill="#6b7280" text-anchor="middle">这正是它们在 HBM 里的通常存法</text>
+<rect x="588.0" y="240.0" width="500.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="838.0" y="259.0" font-size="11" fill="#111827" text-anchor="middle">PV 的收缩维是序列维：V 必须沿序列连续</text>
+<text x="838.0" y="274.0" font-size="11" fill="#6b7280" text-anchor="middle">而 V 通常沿头维连续，TMA 又不能改连续方向</text>
+<rect x="588.0" y="294.0" width="500.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="838.0" y="313.0" font-size="11" fill="#111827" text-anchor="middle">生产者 warpgroup 用 LDSM / STSM 在共享内存里转置 V</text>
+<text x="838.0" y="328.0" font-size="11" fill="#6b7280" text-anchor="middle">转置用单独的缓冲，FP8 省下的共享内存正好够（附录 B.8）</text>
+<line x1="838.0" y1="176.0" x2="838.0" y2="186.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="838.0" y1="230.0" x2="838.0" y2="240.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="838.0" y1="284.0" x2="838.0" y2="294.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="588.0" y="366.0" font-size="11" fill="#6b7280" text-anchor="start">LDSM / STSM 的转置版本拆不开打包的 8 位元素，</text>
+<text x="588.0" y="384.0" font-size="11" fill="#6b7280" text-anchor="start">中间要再用 byte_perm 重排；这会打乱 V 的行序，</text>
+<text x="588.0" y="402.0" font-size="11" fill="#6b7280" text-anchor="start">于是消费者一侧同步调整 P 的列序，</text>
+<text x="588.0" y="420.0" font-size="11" fill="#6b7280" text-anchor="start">利用 PV = colperm(P) · rowperm(V) 保持结果不变。</text>
+<text x="588.0" y="456.0" font-size="11" fill="#9ca3af" text-anchor="start">转置放在生产者里做，因为这两条指令很省寄存器，</text>
+<text x="588.0" y="474.0" font-size="11" fill="#9ca3af" text-anchor="start">生产者让出寄存器之后仍然执行得了（PDF p. 20）。</text>
+</svg>

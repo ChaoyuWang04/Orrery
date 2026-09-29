@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">附录 F：换一组坐标量峰度，大方向还在，只是不再贴着坐标轴</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">GPT2-350M 每层输出（加进残差流的那一份）的峰度，纵轴对数。灰 = 基线模型在原坐标下；紫 = 两剂药模型在原坐标 X、</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">OrthoAdam 的基 XQ、XQᵀ 下；黄 = 两剂药模型在自身奇异向量基 XV 下。曲线是从原图读出的示意值。</text>
+<line x1="110.0" y1="420.0" x2="1000.0" y2="420.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="424.0" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<line x1="110.0" y1="326.1" x2="1000.0" y2="326.1" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="330.1" font-size="11" fill="#9ca3af" text-anchor="end">10</text>
+<line x1="110.0" y1="232.1" x2="1000.0" y2="232.1" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="236.1" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<line x1="110.0" y1="138.2" x2="1000.0" y2="138.2" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="142.2" font-size="11" fill="#9ca3af" text-anchor="end">1000</text>
+<line x1="110.0" y1="104.0" x2="110.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110.0" y1="420.0" x2="1000.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="110.0" y="438.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.0</text>
+<text x="288.0" y="438.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.2</text>
+<text x="466.0" y="438.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.4</text>
+<text x="644.0" y="438.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.6</text>
+<text x="822.0" y="438.0" font-size="11" fill="#9ca3af" text-anchor="middle">0.8</text>
+<text x="1000.0" y="438.0" font-size="11" fill="#9ca3af" text-anchor="middle">1.0</text>
+<text x="555.0" y="458.0" font-size="12" fill="#6b7280" text-anchor="middle">归一化层深</text>
+<polyline points="145.6,177.7 182.7,167.3 219.8,186.0 256.9,174.6 294.1,137.0 331.2,136.6 368.3,137.0 405.4,137.4 442.5,170.8 479.6,153.9 516.7,143.4 553.8,139.8 591.0,139.8 628.1,151.6 665.2,147.3 702.3,141.6 739.4,138.2 776.5,137.4 813.6,137.0 850.7,138.6 887.9,139.8 925.0,190.1 962.1,215.6 999.2,277.4" fill="none" stroke="#b9b9b9" stroke-width="2.2"/>
+<polyline points="145.6,139.8 182.7,139.4 219.8,139.4 256.9,139.2 294.1,139.2 331.2,138.6 368.3,139.2 405.4,138.6 442.5,139.8 479.6,138.6 516.7,138.6 553.8,138.8 591.0,139.0 628.1,139.2 665.2,139.4 702.3,139.2 739.4,139.2 776.5,139.4 813.6,138.8 850.7,139.6 887.9,139.8 925.0,140.1 962.1,140.3 999.2,140.1" fill="none" stroke="#d4a24c" stroke-width="2.2"/>
+<polyline points="145.6,372.5 182.7,375.2 219.8,372.5 256.9,373.8 294.1,375.2 331.2,375.2 368.3,373.8 405.4,375.2 442.5,373.8 479.6,375.2 516.7,373.8 553.8,373.8 591.0,373.8 628.1,375.2 665.2,373.8 702.3,373.8 739.4,372.5 776.5,370.1 813.6,368.9 850.7,365.5 887.9,358.6 925.0,361.5 962.1,362.4 999.2,363.4" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<polyline points="145.6,375.2 182.7,373.8 219.8,373.8 256.9,371.3 294.1,373.8 331.2,376.6 368.3,372.5 405.4,375.2 442.5,375.2 479.6,375.2 516.7,373.8 553.8,378.0 591.0,378.0 628.1,373.8 665.2,376.6 702.3,373.8 739.4,375.2 776.5,376.6 813.6,375.2 850.7,376.6 887.9,375.2 925.0,376.6 962.1,376.6 999.2,378.0" fill="none" stroke="#8f8bd8" stroke-width="2.2" stroke-dasharray="5 4"/>
+<text x="555.0" y="125.5" font-size="12" fill="#111827" text-anchor="middle">两剂药模型，奇异向量基 XV（黄）</text>
+<text x="377.0" y="193.1" font-size="12" fill="#111827" text-anchor="middle">基线模型，原坐标 X（灰）</text>
+<text x="555.0" y="356.5" font-size="12" fill="#111827" text-anchor="middle">两剂药模型：原坐标 X（紫实线）与 OrthoAdam 基 XQ、XQᵀ（紫虚线，两条几乎重合）</text>
+<text x="1010.0" y="142.2" font-size="11" fill="#9ca3af" text-anchor="start">≈ 10³</text>
+<text x="1010.0" y="379.2" font-size="11" fill="#9ca3af" text-anchor="start">≈ 3</text>
+<text x="30.0" y="486.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p. 20 Figure 6 重画。奇异向量基是「最能把能量集中起来」的那组坐标，它给出一个模型输出峰度的上限参照；</text>
+<text x="30.0" y="506.0" font-size="12" fill="#6b7280" text-anchor="start">我们的读法：两剂药模型在这组坐标下仍有约 10³ 的峰度，层输出里仍有少数占主导的方向，只是不再对齐某个通道。</text>
+</svg>

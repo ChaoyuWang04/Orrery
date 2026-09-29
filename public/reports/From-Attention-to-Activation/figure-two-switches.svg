@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Table 2（GPT2-130M）：两个开关各管一段，只有一起开才回到高斯</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">黄 = 首位置隐藏状态的峰度；紫 = 其余位置的峰度（各层平均，纵轴对数）。灰虚线 = 高斯分布的峰度 3。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">柱下第二行是「首 Token 是最常被看的键」的 (查询, 头) 占比。</text>
+<line x1="110.0" y1="420.0" x2="1060.0" y2="420.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="424.0" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<line x1="110.0" y1="320.0" x2="1060.0" y2="320.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="324.0" font-size="11" fill="#9ca3af" text-anchor="end">10</text>
+<line x1="110.0" y1="220.0" x2="1060.0" y2="220.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="224.0" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<line x1="110.0" y1="120.0" x2="1060.0" y2="120.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="102.0" y="124.0" font-size="11" fill="#9ca3af" text-anchor="end">1000</text>
+<line x1="110.0" y1="110.0" x2="110.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110.0" y1="420.0" x2="1060.0" y2="420.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="110.0" y1="372.3" x2="1060.0" y2="372.3" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="1056.0" y="366.3" font-size="11" fill="#9ca3af" text-anchor="end">高斯 = 3</text>
+<text x="60" y="270.0" font-size="12" fill="#6b7280" text-anchor="middle" transform="rotate(-90 60 270.0)">峰度（对数）</text>
+<rect x="158.8" y="148.8" width="64.0" height="271.2" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="190.8" y="142.8" font-size="12" fill="#111827" text-anchor="middle">514.9</text>
+<rect x="234.8" y="204.9" width="64.0" height="215.1" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="266.8" y="198.9" font-size="12" fill="#111827" text-anchor="middle">141.5</text>
+<text x="228.8" y="442.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">基线</text>
+<text x="228.8" y="462.0" font-size="12" fill="#6b7280" text-anchor="middle">首 Token 最常被看：52.7%</text>
+<rect x="396.2" y="195.6" width="64.0" height="224.4" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="428.2" y="189.6" font-size="12" fill="#111827" text-anchor="middle">175.4</text>
+<rect x="472.2" y="204.1" width="64.0" height="215.9" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="504.2" y="198.1" font-size="12" fill="#111827" text-anchor="middle">144.2</text>
+<text x="466.2" y="442.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">只换 softmax-1</text>
+<text x="466.2" y="462.0" font-size="12" fill="#6b7280" text-anchor="middle">首 Token 最常被看：2.4%</text>
+<rect x="633.8" y="155.0" width="64.0" height="265.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="665.8" y="149.0" font-size="12" fill="#111827" text-anchor="middle">446.4</text>
+<rect x="709.8" y="289.5" width="64.0" height="130.5" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="741.8" y="283.5" font-size="12" fill="#111827" text-anchor="middle">20.2</text>
+<text x="703.8" y="442.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">只换 OrthoAdam</text>
+<text x="703.8" y="462.0" font-size="12" fill="#6b7280" text-anchor="middle">首 Token 最常被看：42.4%</text>
+<rect x="871.2" y="319.6" width="64.0" height="100.4" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="903.2" y="313.6" font-size="12" fill="#111827" text-anchor="middle">10.1</text>
+<rect x="947.2" y="333.7" width="64.0" height="86.3" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="979.2" y="327.7" font-size="12" fill="#111827" text-anchor="middle">7.3</text>
+<text x="941.2" y="442.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">两者都用</text>
+<text x="941.2" y="462.0" font-size="12" fill="#6b7280" text-anchor="middle">首 Token 最常被看：1.9%</text>
+<rect x="830.0" y="86.0" width="16.0" height="16.0" rx="3" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="852.0" y="99.0" font-size="12" fill="#111827" text-anchor="start">首位置峰度</text>
+<rect x="950.0" y="86.0" width="16.0" height="16.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="972.0" y="99.0" font-size="12" fill="#111827" text-anchor="start">其余位置峰度</text>
+<text x="30.0" y="500.0" font-size="12" fill="#6b7280" text-anchor="start">据 PDF p. 8 Table 2 的 GPT2-130M 四行重画。softmax-1 单独就压掉了首位置的大半峰度，却几乎不动其余位置；</text>
+<text x="30.0" y="520.0" font-size="12" fill="#6b7280" text-anchor="start">OrthoAdam 单独把其余位置压到 20 左右，首位置仍在 400 以上。首位置那个最极端的离群值，同时挂在两个开关上。</text>
+</svg>

@@ -99,8 +99,8 @@
 | From-Attention-to-Activation | Huawei | 首 token 注意力集中与激活离群值的成因,OrthoAdam 消除(诺亚方舟) |
 | FlashAttention-3 | Stanford | 异步与低精度(依据 NeurIPS 2024 正式版) |
 | FlashAttention-2 | Stanford | 并行与工作划分改进 |
-| FlashAttention | Stanford | IO 感知的精确注意力:多算 FLOP 换少搬字节 |
-| Transformer | Google | 注意力机制的出处:Attention Is All You Need(2017) |
+| FlashAttention | Stanford | IO 感知的精确注意力:多算 FLOP 换少搬字节(依据 NeurIPS 2022 正式版) |
+| Transformer | Google | Attention Is All You Need(2017):完全基于注意力、去掉循环与卷积的编码器—解码器架构 |
 | Hybrid-Architectures-for-LM | Meta | 线性与全注意力混合配比的系统性消融,41 页(FAIR 与 KAIST,arXiv 2510.04800) |
 | LongCat-Sparse-Attention | Meituan | 跨层索引的流式感知块稀疏注意力;同线还有 ZigZag(arXiv 2608.01662) |
 | RePo | Sakana | 上下文重定位:用检索替代 KV 复用(ICML 2026,arXiv 2512.14391) |

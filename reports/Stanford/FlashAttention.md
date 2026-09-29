@@ -1,741 +1,395 @@
-# FlashAttention：一行数学都没改，只改了数据在显存和缓存之间怎么走
+# FlashAttention：注意力慢在搬数据，不在算
 
 <!-- release-date: 2022-05-20 -->
 
-> 本文依据 **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness**（Tri Dao、Daniel Y. Fu、Stefano Ermon、Atri Rudra、Christopher Ré），即 arXiv:2205.14135v2，PDF 封面日期 2022 年 6 月 24 日，共 34 页（正文 10 页、参考文献 6 页、附录 A–E 共 18 页）。**页码均指 PDF 本身的页码**，不是论文小节号。全文严格区分三层：**论文明确写了什么**（带页码）、**我们如何理解它**（标注「本文的理解」「本文推算」）、**外部资料补充**（给链接并标明是补充）。
+> 本文依据 **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness**（Tri Dao、Daniel Y. Fu、Stefano Ermon、Atri Rudra、Christopher Ré）的 NeurIPS 2022 正式版，即会议论文加附录的完整版，共 35 页（正文 p. 1–10，参考文献 p. 10–15，NeurIPS 自查表 p. 16，附录 A–E p. 17–35）。对应的 arXiv 编号是 2205.14135。页码均指这份 PDF 自身的页码。文中会区分三件事：**论文明确写了什么**、**我们怎么解释它**、**哪些是外部资料或本文推算**。
 
-## 先看一组反常的数字
+## 读前先把几个词说成人话
 
-论文第 6 页有一张很小的表，是全文最值得先看的东西。同一个任务（GPT-2 medium，序列长 1024，头维 64，16 个头，batch 64，A100），标准注意力实现和 FlashAttention 的对比是：
+这篇论文写给做系统的人。下面这些词记住，后面就能顺着读。
 
-| 指标 | 标准注意力 | FlashAttention |
+- **注意力（attention）**：对每个查询 $Q$，先和所有键 $K$ 打分得到 $S=QK^\top$，按行做 softmax 得到权重 $P$，再对值 $V$ 加权求和得到 $O=PV$。序列长 $N$、头维 $d$ 时，$S$ 和 $P$ 都是 $N\times N$ 的大矩阵。
+- **HBM（high bandwidth memory，高带宽显存）**：平时说「显卡有 40 GB 显存」的那 40 GB。容量大，相对慢。
+- **SRAM（片上存储）**：贴着计算单元的一小块高速存储，在 GPU 上就是每个 SM 的共享内存（shared memory）。容量小得多，快得多。
+- **SM（streaming multiprocessor，流式多处理器）**：GPU 上的一个计算核心。A100 有 108 个（PDF p. 3）。
+- **kernel（内核）**：一次派到 GPU 上执行的程序。它从 HBM 读输入，算完，把输出写回 HBM（PDF p. 3）。
+- **IO**：本文所有「IO」都指 HBM 与 SRAM 之间的读写，不是磁盘。
+- **受访存限制（memory-bound）与受算力限制（compute-bound）**：一个操作的耗时主要由读写多少字节决定，还是由算多少次决定。逐元素操作（dropout、激活）和归约（softmax、求和、norm）属于前者，大矩阵乘属于后者（PDF p. 3）。
+- **算子融合（kernel fusion）**：几个操作作用在同一份输入上时，读一次、连着做完、写一次，而不是每做一步都回一趟 HBM（PDF p. 3）。
+
+FlashAttention 系列后面还有三代，站内各有一篇（FlashAttention-2、FlashAttention-3、FlashAttention-4）。本篇只讲 2022 年这一篇论文写了什么。
+
+## 先讲矛盾：大家在省 FLOP，瓶颈却在搬字节
+
+2022 年，Transformer 想吃更长的上下文，最大的障碍是注意力：时间和显存都随序列长度平方增长（PDF p. 1）。
+
+当时的主流思路是**近似注意力**：稀疏化、低秩分解，或两者结合，把计算量压到线性或接近线性。问题是，很多这类方法在墙钟时间上并不比标准注意力快，也就没有被广泛采用（PDF p. 1）。
+
+论文给的诊断很直接：这些方法盯的是浮点运算次数（FLOP），而 FLOP 与墙钟时间不一定挂钩；它们忽略了访存的开销（PDF p. 1）。
+
+标准注意力到底在搬什么？论文把它写成三步（Algorithm 0，PDF p. 4）：
+
+1. 从 HBM 分块读 $Q$、$K$，算 $S=QK^\top$，把 $S$ 写回 HBM；
+2. 从 HBM 读 $S$，算 $P=\mathrm{softmax}(S)$，把 $P$ 写回 HBM；
+3. 从 HBM 读 $P$、$V$，算 $O=PV$，把 $O$ 写回 HBM。
+
+$S$ 和 $P$ 都是 $N\times N$。GPT-2 里 $N=1024$、$d=64$，$N$ 远大于 $d$（PDF p. 4）。于是这三步的读写量由两个 $N\times N$ 矩阵的一写一读主导。softmax 本身又是受访存限制的操作，大量访存直接变成慢。训练时再叠上对 $S$ 的掩码、对 $P$ 的 dropout，每一步都是一趟 HBM 往返（PDF p. 4）。
+
+为什么不直接融合？编译器已经能自动融合许多逐元素操作，Megatron 也把掩码和 softmax 融在了一起（PDF p. 3–4）。但论文指出，**训练时中间结果还要留给反向用**，所以即便融合了，也得把 $N\times N$ 的中间矩阵写回 HBM，朴素融合的收益就被抵掉了（PDF p. 3）。
+
+矛盾于是很清楚：
+
+> 注意力的数学不必改，要改的是数据在 HBM 与 SRAM 之间怎么走。能不能一次都不把 $N\times N$ 的矩阵写回 HBM，同时前向、反向都算得精确？
+
+论文把这个原则叫做 **IO 感知（IO-aware）**：设计算法时把不同层级存储之间的读写当成一等成本来算（PDF p. 1–2）。
+
+## 一句话先说清
+
+FlashAttention 是一个**精确**的注意力算法。它用两个老技巧把注意力写成**一个 CUDA 内核**：
+
+1. **分块（tiling）**：把 $Q$、$K$、$V$ 切成小块搬进 SRAM，一块一块地算 softmax，边算边合并，从不写出完整的 $S$、$P$；
+2. **重算（recomputation）**：前向只存输出 $O$ 和每行两个统计量，反向需要 $S$、$P$ 时在片上重新算出来，而不是从 HBM 读回。
+
+代价是反向要多做一遍矩阵乘，FLOP 反而变多了；收益是 HBM 读写大幅减少，于是更快、显存随序列长度线性增长（PDF p. 2）。论文还证明了它的 HBM 访问量是 $\Theta(N^2d^2M^{-1})$（$M$ 是 SRAM 大小），而且对所有 $M$ 而言，没有精确算法能在渐近意义上做得更少（PDF p. 5–6）。
+
+一张小表把全篇论点压成了三行（PDF p. 6，Figure 2 左；GPT-2 medium 规模的一层注意力，序列长 1024，头维 64，16 个头，batch 64，带 key padding 掩码、不带 dropout，A100）：
+
+| 前向 + 反向 | 标准注意力 | FlashAttention |
 |---|---:|---:|
-| 计算量 GFLOPs | 66.6 | **75.2** |
-| HBM 读写量（GB） | 40.3 | **4.4** |
-| 前向 + 反向耗时（ms） | 41.7 | **7.3** |
+| 浮点运算（GFLOPs） | 66.6 | 75.2 |
+| HBM 读写（GB） | 35.3 | 4.4 |
+| 运行时间（ms） | 35.1 | 11.7 |
 
-（PDF p.6，Figure 2 左）
+**我们怎么解释它。** FLOP 多了约 13%，HBM 读写少了约 8 倍，时间快了 3 倍。决定快慢的是第二行，不是第一行。这就是标题说的「多算 FLOP 换少搬字节」。
 
-请注意第一行：FlashAttention 的**浮点运算量更多**，多了大约 13%。它没有跳过任何一次乘加，反而额外多算了一遍东西。可是它快了 5.7 倍。
+### 一条阅读路线
 
-唯一变小的是中间那一行：搬运的数据从 40.3 GB 掉到 4.4 GB，少了大约 9 倍。
+1. **p. 2 Figure 1、p. 3 第 2.1 节**：存储层级和受访存限制的概念。
+2. **p. 4 第 3.1 节与 p. 5 Algorithm 1**：分块、在线 softmax、重算、融合。
+3. **p. 5–6 Theorem 2、Proposition 3、Figure 2**：IO 复杂度与下界，以及「HBM 访问才是运行时间主因」的实测。
+4. **p. 6 第 3.3 节**：块稀疏扩展。
+5. **p. 7–9 第 4 节**：端到端训练、长上下文、注意力基准。
+6. 附录 **B（p. 17–21）** 是反向传播与和 Rabe、Staats 算法的对比；**E（p. 25–35）** 是各项实验细节、与 Apex FMHA 的对比和完整基准表。
 
-这张表就是整篇论文的论点：**在这个场景里，决定快慢的不是算了多少次，而是搬了多少字节。** 一旦承认这件事，你会得到一个不改任何数学定义、却快好几倍的注意力实现。
+## 先看全景：一层循环套一层循环，全在片上
 
-## 读之前只要三个词
+![A100 的存储层级从上到下是约 20 MB、19 TB/s 的 SRAM，40 GB、1.5 TB/s 的 HBM 和 CPU 内存；FlashAttention 外层循环按列取 K、V 块，内层循环按行取 Q、O 块，N×N 的分数块只在片上出现；按这个顺序数下来，K、V 只读一遍，Q、O 读写 T_c 遍，HBM 访问量是 Θ(N²d²/M)。](/reports/FlashAttention/figure1-tiling.svg)
 
-这篇论文假定读者熟悉 GPU 编程。如果不熟，先记住三个词就够了，后面会逐个展开。
+图左的层级数字来自 PDF p. 2–3：A100 有 108 个 SM，每个 192 KB 片上 SRAM，估计带宽约 19 TB/s；HBM 40–80 GB，带宽 1.5–2.0 TB/s。SRAM 比 HBM 快一个数量级，容量却小好几个数量级（PDF p. 3）。图上「约 20 MB」是全卡合计；单个 SM 只有 192 KB，这才是一个线程块能用的量（本文换算：$192\ \text{KB}\times 108\approx 20.7\ \text{MB}$）。
 
-- **Kernel（核函数）**：一次派发到 GPU 上执行的程序。它从显存把数据读进来，算完，再把结果写回显存。论文原话是「Each kernel loads inputs from HBM to registers and SRAM, computes, then writes outputs to HBM」（PDF p.3）。
-- **HBM（High Bandwidth Memory，高带宽显存）**：就是大家平时说的「显卡有多少 G 显存」的那个 G。容量大、相对慢。
-- **SRAM（Static Random-Access Memory，片上静态缓存）**：贴在计算单元旁边的一小块超快缓存。容量小得可怜，快得离谱。
+中间和右边是 Algorithm 1 的形状。两件事要记住：
 
-论文里的 **IO** 指的就是 HBM 和 SRAM 之间的读写，不是硬盘读写。
+- **循环顺序是「外层 $K$、$V$，内层 $Q$」**。外层每取一块 $K_j$、$V_j$，内层就把 $Q$ 的所有行块扫一遍（PDF p. 5，Algorithm 1 第 5–8 行）。这个顺序决定了 $O$ 要被反复读写，也决定了下面 IO 复杂度的数法。后来的 FlashAttention-2 把它倒了过来，见那一篇。
+- **$N\times N$ 的 $S$、$P$ 从不离开片上**。一次只存在一块 $B_r\times B_c$，算完就丢。
 
-## 第一层矛盾：瓶颈不在算力，在搬运
+块多大由 SRAM 决定：$B_c=\lceil M/4d\rceil$，$B_r=\min(\lceil M/4d\rceil, d)$（PDF p. 5，Algorithm 1 第 1 行）。附录的推导说得更直白：$K_j$、$V_j$、$Q_i$、$O_i$ 各块要装得下，$S_{ij}$ 这块 $B_r\times B_c$ 也要装得下（PDF p. 23）。
 
-### GPU 的存储层级差多少
+## 核心设计一：分块，靠在线 softmax 把 softmax 拆开
 
-论文第 3 页给了 A100 的具体参数，第 2 页的 Figure 1 左边画成了一个金字塔：
+### 旧问题：softmax 要看完整行才能归一化
 
-| 层级 | 带宽 | 容量 |
-|---|---|---|
-| GPU SRAM（片上） | 约 19 TB/s | 20 MB |
-| GPU HBM（显存） | 1.5 TB/s | 40 GB |
-| CPU DRAM（主存） | 12.8 GB/s | 大于 1 TB |
+矩阵乘天然可以分块。softmax 不行：每个元素要除以整行指数之和，看不完整行就不知道分母。论文的说法是「softmax 把 $K$ 的各列耦合在一起」（PDF p. 4）。
 
-（PDF p.2，Figure 1 左）
+### 新设计：多存两个统计量，边走边合并
 
-正文的说法更细一点：A100 有 40–80 GB 的 HBM，带宽 1.5–2.0 TB/s；每个流多处理器（Streaming Multiprocessor，SM）有 192 KB 片上 SRAM，全卡共 108 个 SM，SRAM 带宽估计在 19 TB/s 左右（PDF p.3）。
-
-这里有一个容易卡住的地方：正文说「192 KB 每 SM」，图里却写「20 MB」。**本文的换算**：$192\ \text{KB}\times 108 \approx 20.7\ \text{MB}$，图上写的是全卡加起来的总量，正文写的是单个 SM 能用的量。真正约束算法的是后者——一个 kernel 里的一个线程块只能用它自己那块 SRAM，不能把全卡的 20 MB 当成一整片。
-
-论文自己把这个层级关系概括成一句话：「The on-chip SRAM is an order of magnitude faster than HBM but many orders of magnitude smaller in size」（PDF p.3）。快一个数量级，小好几个数量级。
-
-### 算术强度：判断一个操作到底卡在哪
-
-论文用 **arithmetic intensity**（算术强度）这个指标来分类，定义是「每访问一字节内存，做了多少次算术运算」（PDF p.3）。按它把操作分成两类：
-
-1. **Compute-bound（受算力限制）**：耗时由运算次数决定，访存时间小得多。典型例子是内维很大的矩阵乘、通道数很多的卷积。
-2. **Memory-bound（受访存限制）**：耗时由访存次数决定，计算时间小得多。典型例子是逐元素操作（激活、dropout）和规约操作（求和、softmax、各种 norm）。
-
-（PDF p.3）
-
-请注意第二类里出现了 **softmax**。注意力的核心恰恰是一个巨大的 softmax。
-
-而且论文在开头就点明了一个趋势：「compute speed has out-paced memory speed」——算力增长比访存带宽增长快，所以 Transformer 里大多数操作**越来越**被访存卡住（PDF p.2、p.3）。这不是一个会自己变好的问题，硬件迭代反而在放大它。
-
-### 标准注意力实现到底在搬什么
-
-先把定义写清楚。给定 $\mathbf{Q},\mathbf{K},\mathbf{V}\in\mathbb{R}^{N\times d}$，其中 $N$ 是序列长度，$d$ 是头维，要算的输出是 $\mathbf{O}\in\mathbb{R}^{N\times d}$：
+对一段向量 $x$，数值稳定的 softmax 要先减最大值（PDF p. 4）：
 
 $$
-\mathbf{S}=\mathbf{Q}\mathbf{K}^\top\in\mathbb{R}^{N\times N},\qquad \mathbf{P}=\operatorname{softmax}(\mathbf{S})\in\mathbb{R}^{N\times N},\qquad \mathbf{O}=\mathbf{P}\mathbf{V}\in\mathbb{R}^{N\times d}
+m(x)=\max_i x_i,\qquad f(x)=\bigl[e^{x_1-m(x)},\dots,e^{x_B-m(x)}\bigr],\qquad \ell(x)=\sum_i f(x)_i
 $$
 
-softmax 是逐行做的。符号说明：$\mathbf{S}$ 是原始注意力分数矩阵，$\mathbf{P}$ 是归一化后的注意力权重矩阵，两者都是 $N\times N$ 的方阵（PDF p.4）。
+$m$ 是这一段的最大值，$\ell$ 是减掉最大值后的指数和，softmax 就是 $f(x)/\ell(x)$。
 
-关键在于 $N$ 和 $d$ 的量级差距。论文举的例子是 GPT-2：$N=1024$，$d=64$（PDF p.4）。输入 $\mathbf{Q},\mathbf{K},\mathbf{V}$ 各自只有 $N\times d$ 那么大，而中间的 $\mathbf{S}$ 和 $\mathbf{P}$ 是 $N\times N$。在这个例子里，中间矩阵比输入大 16 倍；序列拉到 8192 时，就大 128 倍。
-
-论文把标准实现写成了 Algorithm 0，只有四步（PDF p.4）：
-
-1. 从 HBM 分块读入 $\mathbf{Q},\mathbf{K}$，算出 $\mathbf{S}=\mathbf{Q}\mathbf{K}^\top$，**把 $\mathbf{S}$ 写回 HBM**；
-2. 从 HBM 读回 $\mathbf{S}$，算 $\mathbf{P}=\operatorname{softmax}(\mathbf{S})$，**把 $\mathbf{P}$ 写回 HBM**；
-3. 从 HBM 分块读入 $\mathbf{P}$ 和 $\mathbf{V}$，算 $\mathbf{O}=\mathbf{P}\mathbf{V}$，把 $\mathbf{O}$ 写回 HBM；
-4. 返回 $\mathbf{O}$。
-
-数一数就明白了：那个 $N\times N$ 的大矩阵被完整地写回显存两次、读出来两次。而它本来只是一个中间产物，最终结果 $\mathbf{O}$ 只有 $N\times d$。
-
-论文还提到，实际实现里通常还有别的逐元素操作作用在这个大矩阵上——比如作用在 $\mathbf{S}$ 上的 mask、作用在 $\mathbf{P}$ 上的 dropout——每一个都要再把大矩阵读一遍写一遍，把问题进一步放大（PDF p.4）。
-
-把两种实现放在一起看，差别只有一件事：那个 $N\times N$ 的矩阵到底落在哪一层存储上。
-
-```mermaid
-flowchart LR
-    Q[Q K V 在 HBM] --> S[标准实现：N×N 的 S 与 P<br/>反复写回 HBM 再读出]
-    S --> O1[O 写回 HBM]
-    Q --> T[FlashAttention：N×N 只以小块<br/>形式短暂存在于 SRAM]
-    T --> O2[O 写回 HBM<br/>另存 m 与 l 共 O of N]
-```
-
-这张图是**机制示意**，依据 PDF p.4 的 Algorithm 0 与 p.5 的 Algorithm 1 重画，不代表实测时间。两条路径算出的 $\mathbf{O}$ 在数学上完全相同——变的只是中间产物停留在哪里。
-
-第 2 页 Figure 1 右边把这件事画成了一根柱子：PyTorch 实现的 GPT-2 注意力大约 15 ms，从下往上分成 Matmul、Mask、Softmax、Dropout、Matmul 五段；FlashAttention 那根柱子是一个矮得多的融合 kernel。论文说这里的加速比是 **7.6×**（PDF p.2，Figure 1 右）。
-
-### 为什么「算子融合」不够
-
-减少访存最常规的手段叫 **kernel fusion**（算子融合）：如果多个操作作用在同一份输入上，就只从 HBM 读一次，而不是每个操作各读一次。编译器已经能自动融合很多逐元素操作（PDF p.3）。
-
-但论文紧接着写了一句限制，这句话是整个方案的起点：
-
-> 在模型训练的语境下，中间值**仍然**需要写回 HBM，以便反向传播使用，这削弱了朴素算子融合的效果。（PDF p.3–4，本文转述）
-
-也就是说：推理时你可以把整条链融成一个 kernel，中间量算完就扔。但训练时反向传播要用 $\mathbf{S}$ 和 $\mathbf{P}$ 求梯度，所以就算前向融合了，还是得把 $N\times N$ 的东西存下来。融合解决不了训练。
-
-于是论文把要攻克的技术难点写成了两条（PDF p.2）：
-
-1. **在看不到完整输入的情况下完成 softmax 规约**——因为一次装不进 SRAM；
-2. **不为反向传播保存那个巨大的中间注意力矩阵**。
-
-这两条分别对应下面两个技巧：tiling 和 recomputation。论文特别强调它们都是「well-established techniques」，不是新发明（PDF p.2）。这篇论文的新意不在于发明了新算子，而在于**换了一把尺子去衡量注意力算法好不好**。
-
-## 换一把尺子：IO 感知
-
-论文的核心主张只有一句：过去的高效注意力方法都在优化 FLOP，而 FLOP 和墙钟时间不一定相关。
-
-原话是：「One main reason is that they focus on FLOP reduction (which may not correlate with wall-clock speed) and tend to ignore overheads from memory access (IO)」（PDF p.2）。
-
-论文给的诊断很直接：很多近似注意力方法把复杂度降到了线性或接近线性，却**没有在真实机器上跑得更快**，因此也没有被广泛采用（PDF p.2）。这在第 8 页的 LRA 表里能看到实证：Linformer 的理论复杂度是线性的，实测加速比 2.5×，只比精确的 FlashAttention 的 2.4× 高一点点，而精度掉了 4.4 个点（59.3 → 54.9）。
-
-**IO-aware**（IO 感知）就是把「读写了多少字节」当成和 FLOP 同等重要的一等指标去分析和优化。论文明确说这个思路在计算机科学里历史悠久：数据库 join、图像处理、数值线性代数都早就这么做了，它只是把这条经验搬进深度学习（PDF p.2；附录 A 进一步串起了 I/O 复杂度、working set 模型、data locality、Roofline 模型这条线索，PDF p.17）。
-
-论文也顺带指出了一个现实障碍：PyTorch、TensorFlow 这类常见的 Python 接口，**不允许对访存做细粒度控制**（PDF p.2）。所以这套东西最后必须落到手写 CUDA——这一点在限制那一节会变成代价，后面会讲。
-
-## 技巧一：tiling —— 不写出完整矩阵，也能算对 softmax
-
-### 为什么 softmax 不能直接切块
-
-矩阵乘法天然可以分块：算 $\mathbf{O}$ 的第 $i$ 行只需要 $\mathbf{P}$ 的第 $i$ 行和整个 $\mathbf{V}$，块与块之间可以独立算完再相加。
-
-softmax 不行。论文的说法是「Softmax couples columns of $\mathbf{K}$」（PDF p.4）——softmax 把 $\mathbf{K}$ 的各列耦合在一起了。
-
-具体卡在哪：softmax 的分母是**整行**的求和。
+两段拼起来时，不必回头重算，只用两段各自的 $m$、$\ell$ 就能合并（PDF p. 4）：
 
 $$
-\operatorname{softmax}(x)_i=\frac{e^{x_i}}{\sum_j e^{x_j}}
-$$
-
-你要算第一个块的最终权重，就得知道这一行**所有**块的指数和。可你还没算到后面的块。看起来必须先把整行凑齐。
-
-### 先解决数值稳定：为什么要减最大值
-
-在写递推之前，先看论文实际使用的、带数值稳定处理的 softmax 定义（PDF p.4）。对向量 $x\in\mathbb{R}^B$：
-
-$$
-m(x):=\max_i x_i,\qquad f(x):=\left[e^{x_1-m(x)}\ \ \cdots\ \ e^{x_B-m(x)}\right],\qquad \ell(x):=\sum_i f(x)_i,\qquad \operatorname{softmax}(x):=\frac{f(x)}{\ell(x)}
-$$
-
-符号解释：
-- $m(x)$ 是这一段里的最大值；
-- $f(x)$ 是每个元素减掉最大值之后再取指数，所以每一项都落在 $(0,1]$；
-- $\ell(x)$ 是这些指数的和，也就是 softmax 的分母。
-
-为什么要减 $m(x)$？因为 $e^{x}$ 在 $x$ 稍大时就会溢出。FP16 能表示的最大值大约是 65504，$e^{12}$ 就已经超过 16 万了。减掉最大值之后，最大的那一项恰好等于 $e^0=1$，其余都更小，永远不会溢出。分子分母同时乘以 $e^{-m(x)}$，softmax 的值不变。
-
-这一步不是 FlashAttention 的发明，是 softmax 的标准写法。但它会让下面的递推多出一个修正因子，先讲清楚可以少绕一圈。
-
-### 递推：把两段拼起来
-
-现在把一行拆成前后两段 $x^{(1)},x^{(2)}\in\mathbb{R}^B$，拼起来是 $x=\left[x^{(1)}\ x^{(2)}\right]\in\mathbb{R}^{2B}$。论文给出的合并规则是（PDF p.5）：
-
-$$
-m(x)=\max\!\left(m(x^{(1)}),\,m(x^{(2)})\right)
-$$
-
-$$
+m(x)=\max\bigl(m(x^{(1)}),\,m(x^{(2)})\bigr),\qquad
 \ell(x)=e^{m(x^{(1)})-m(x)}\,\ell(x^{(1)})+e^{m(x^{(2)})-m(x)}\,\ell(x^{(2)})
 $$
 
-第一行没什么可说的：两段的最大值取更大的那个，就是全段的最大值。
+旧段的指数和按「旧最大值与新最大值之差」缩一次，加上新段的，就是整段的指数和。论文注明这种聚合方式叫代数聚合（algebraic aggregation），技术本身来自早先的 softmax 缩放文献（PDF p. 4）。
 
-第二行是关键。$\ell(x^{(1)})$ 是**用旧的最大值 $m(x^{(1)})$ 为基准**算出来的指数和；现在基准换成了更大的 $m(x)$，所以要把它换算到新基准上，乘以 $e^{m(x^{(1)})-m(x)}$。因为新基准更大，这个指数是负的，因子小于等于 1，相当于把旧账按新汇率折算。
+![一行 4 个分数 [1, 3 | 2, 5] 分两块处理：第 1 块得到局部最大值 3、局部和 1.135、局部输出 18.81；第 2 块到来后用缩放因子 e^(−2) 合并，得到 ℓ = 1.203、O = 36.88，与一次算完整行的结果相同。](/reports/FlashAttention/figure-online-softmax.svg)
 
-**本文的理解**：把它想成记账换单位。前半段你按「元」记了一笔总额，后半段发现数字太大得改按「万元」记。要把两笔加起来，得先把前半段的总额除以 10000。$e^{m_{\text{old}}-m_{\text{new}}}$ 就是那个换算率。论文脚注把这类做法叫 **algebraic aggregation**（代数聚合），出处是数据库领域的 data cube 论文（PDF p.5，脚注 2）。
-
-论文把结论概括成一句：「if we keep track of some extra statistics $(m(x), \ell(x))$, we can compute softmax one block at a time」（PDF p.5）。只要额外记住两个标量——**当前见过的最大值**和**当前累积的指数和**——就可以一块一块地做 softmax，最后结果和一次性做完全一致。
-
-这就是为什么 FlashAttention 是**精确**的，不是近似。它不是丢掉了远处的注意力，也不是低秩逼近，它只是换了一个求和顺序。
-
-### 算法主体：两层循环
-
-有了递推，就可以写出完整算法了。论文的 Algorithm 1（PDF p.5）是这样组织的：
-
-**块大小**先按 SRAM 容量定死：
+图里是本文自拟的小例子，不是论文数字。输出 $O$ 的更新也是同一个思路：Algorithm 1 第 12 行把旧的 $O_i$ 先乘回旧分母 $\ell_i$、再乘缩放因子 $e^{m_i-m_i^{\text{new}}}$，加上新块的 $\tilde P_{ij}V_j$，最后除以新分母 $\ell_i^{\text{new}}$（PDF p. 5）：
 
 $$
-B_c=\left\lceil\frac{M}{4d}\right\rceil,\qquad B_r=\min\!\left(\left\lceil\frac{M}{4d}\right\rceil,\ d\right)
+O_i \leftarrow \mathrm{diag}(\ell_i^{\text{new}})^{-1}\Bigl(\mathrm{diag}(\ell_i)\,e^{m_i-m_i^{\text{new}}}\,O_i+e^{\tilde m_{ij}-m_i^{\text{new}}}\,\tilde P_{ij}V_j\Bigr)
 $$
 
-其中 $M$ 是 SRAM 大小，$B_c$ 是 $\mathbf{K},\mathbf{V}$ 的分块行数，$B_r$ 是 $\mathbf{Q},\mathbf{O}$ 的分块行数。**本文的说明**：分母里的 4 来自「SRAM 里要同时放下大约四块东西」（$\mathbf{Q}_i,\mathbf{K}_j,\mathbf{V}_j,\mathbf{O}_i$），论文没有单独论证这个常数；附录 C 的证明只需要 $B_c=\Theta(M/d)$ 这个量级，常数 $1/4$ 是实现上的取值（PDF p.23–24）。$B_r$ 还要额外对 $d$ 取 min，是为了让 $B_r\times B_c$ 的分数块也装得下。
+这里 $\tilde m_{ij}$、$\tilde P_{ij}$ 是新块自己的行最大值和未归一化指数。**每处理一块，$O_i$ 都是一个已经归一化好的正确中间结果**。附录 C 用对外层循环次数的归纳法证明了最终输出等于 $\mathrm{softmax}(QK^\top)V$（PDF p. 21–22）。
 
-**初始化**：在 HBM 里开好 $\mathbf{O}=(0)_{N\times d}$、$\ell=(0)_N$、$m=(-\infty)_N$。$m$ 初始化成负无穷，这样第一次比较时任何真实分数都会赢。
+### 收益与代价
 
-**外层循环遍历 $\mathbf{K},\mathbf{V}$ 的块，内层循环遍历 $\mathbf{Q}$ 的块**：
+收益：只要每行多存 $m$、$\ell$ 两个数（$O(N)$ 额外显存），整行 softmax 就能一块一块算完，$N\times N$ 的矩阵不必出现（PDF p. 5，Theorem 1）。
 
-```mermaid
-flowchart TB
-    A[外层循环 j：把 K_j, V_j 从 HBM 载入 SRAM] --> B[内层循环 i：把 Q_i, O_i, l_i, m_i 载入 SRAM]
-    B --> C[片上算 S_ij = Q_i K_j 转置]
-    C --> D[片上取行最大值、算 exp、算行和]
-    D --> E[片上用换算因子合并新旧 m 与 l]
-    E --> F[把更新后的 O_i, l_i, m_i 写回 HBM]
-    F --> B
-    F --> A
-```
+代价在图里写着：每来一块，旧的 $O_i$ 都要重缩放、再按新分母归一化一次。这些是逐元素的非矩阵乘运算，而且 $O_i$、$\ell_i$、$m_i$ 每次内层迭代都要从 HBM 读进、写回（Algorithm 1 第 8、12、13 行）。论文没有把这当成问题；把这笔账算清楚的是下一代 FlashAttention-2。
 
-这张图是**机制示意**，依据 PDF p.5 的 Algorithm 1 与 p.2 的 Figure 1 左图重画，箭头表示控制流，不表示实测时间。原图用红色箭头表示外层循环、蓝色箭头表示内层循环。
+### 可迁移启发
 
-从头到尾，那个 $N\times N$ 的 $\mathbf{S}$ 和 $\mathbf{P}$ **从来没有在 HBM 里完整出现过**。只有 $B_r\times B_c$ 的小块在 SRAM 里短暂存在，用完即弃。
+一个归约如果能写成「局部统计量 + 合并规则」，就可以流式计算、不必物化全体。softmax 的合并规则只需要最大值和指数和两个数；log-sum-exp、方差（Welford）、top-k 都能照这个模式拆。判断标准是：合并时是否只依赖各段的少量汇总，而不依赖段内明细。
 
-### 输出是怎么增量更新的
+## 核心设计二：重算，反向多做矩阵乘反而更快
 
-Algorithm 1 第 12 行是全篇最密的一行（PDF p.5）：
+### 旧问题：反向要用 $S$、$P$
 
-$$
-\mathbf{O}_i\leftarrow\operatorname{diag}\!\left(\ell_i^{\text{new}}\right)^{-1}\left(\operatorname{diag}(\ell_i)\,e^{m_i-m_i^{\text{new}}}\,\mathbf{O}_i+e^{\tilde m_{ij}-m_i^{\text{new}}}\,\tilde{\mathbf{P}}_{ij}\mathbf{V}_j\right)
-$$
+注意力的反向需要 $P$ 来算 $dV=P^\top dO$，需要 $P$ 和 $dP$ 来算 $dS$，再由 $dS$ 得到 $dQ$、$dK$（PDF p. 18–19）。标准实现的做法是前向把 $P$ 存进 HBM，反向读回来（PDF p. 20，Algorithm 3）。这就是 $O(N^2)$ 显存和大量访存的来源。
 
-上下标太多，拆成两步就清楚了。
+梯度检查点（gradient checkpointing）是减显存的常见办法，但论文说，已知的实现都要拿速度换显存（PDF p. 4–5）。
 
-**第一步，把旧结果还原成没归一化的样子。** 存在 HBM 里的 $\mathbf{O}_i$ 是已经除过 $\ell_i$ 的，现在乘回 $\operatorname{diag}(\ell_i)$，得到未归一化的累加和；再乘 $e^{m_i-m_i^{\text{new}}}$，把它换算到新的最大值基准上。
+### 新设计：前向只存 $O$、$m$、$\ell$ 和随机数状态
 
-**第二步，把新块的贡献加进来，再统一除以新分母。** $\tilde{\mathbf{P}}_{ij}\mathbf{V}_j$ 是当前块的未归一化贡献，$e^{\tilde m_{ij}-m_i^{\text{new}}}$ 同样是换算因子；两项相加之后，整体除以新的 $\ell_i^{\text{new}}$。
+前向结束时，只把输出 $O$、每行的 $m$ 与 $\ell$、以及 dropout 用的伪随机数生成器状态写回 HBM（PDF p. 19，Algorithm 2 第 19 行）。反向时，每读进一块 $Q_i$、$K_j$，就在片上重算 $S_{ij}$，用存下的 $m_i$、$\ell_i$ 直接得到已归一化的 $P_{ij}$，再按同一个种子重新生成 dropout 掩码（PDF p. 20–21，Algorithm 4）。
 
-其中 $\tilde m_{ij}$ 是当前小块的行最大值，$m_i^{\text{new}}=\max(m_i,\tilde m_{ij})$ 是更新后的全局行最大值。$\operatorname{diag}(\cdot)$ 表示把向量摊成对角矩阵，作用是让每一行用自己的标量做缩放。
+论文指出反向的两个细节（PDF p. 20）：
 
-论文在附录 C 用对 $j$ 的数学归纳法证明了这个更新的正确性：每次外层循环结束后，HBM 里的 $m^{(j)},\ell^{(j)},\mathbf{O}^{(j)}$ 都恰好等于「只考虑前 $jB_c$ 列时的行最大值、行指数和、注意力输出」；当 $j=T_c$ 时就得到 $\operatorname{softmax}(\mathbf{QK}^\top)\mathbf{V}$（PDF p.22–23）。
+1. **不存 $N\times N$ 的 dropout 掩码**，只存随机数状态，反向再生成一遍；
+2. **softmax 梯度里的行和换一种算法**。$dS$ 需要 $D_i=P_{i:}^\top dP_{i:}$，这要对长度 $N$ 的两行做点积，一次装不进 SRAM。论文用代数把它改写成 $D_i=dO_i^\top O_i$，只是两个长度 $d$ 的向量点积（PDF p. 18、p. 20）。
 
-**Theorem 1** 把这件事写成了正式结论：Algorithm 1 返回 $\mathbf{O}=\operatorname{softmax}(\mathbf{QK}^\top)\mathbf{V}$，用 $O(N^2d)$ 次 FLOP，并且**除输入输出外只需要 $O(N)$ 的额外内存**（PDF p.5）。那个 $O(N)$ 就是 $\ell$ 和 $m$ 两个长度为 $N$ 的向量。
+反向的循环顺序与前向相同：外层 $K_j$、$V_j$，内层 $Q_i$。$dK_j$、$dV_j$ 在片上累加，外层每转完一圈写回一次；$dQ_i$ 则每次内层迭代都读出、加上 $dS_{ij}K_j$、写回 HBM（PDF p. 21，Algorithm 4 第 21 行）。反向的 HBM 访问量与前向同阶，也是 $\Theta(N^2d^2M^{-1})$（PDF p. 20，Theorem 5）。
 
-这是本文的第二个收益，容易被加速比盖过去：显存占用从随序列长度平方增长，变成线性增长。
+### 为什么多算反而更快
 
-## 技巧二：recomputation —— 反向时重算，反而更快
+回到开头那张表：75.2 对 66.6 GFLOPs，多出来的就是反向重算 $S$、$P$ 的两次矩阵乘（PDF p. 6）。矩阵乘在 GPU 上便宜，从 HBM 读一个 $N\times N$ 矩阵贵。拿便宜的换贵的，所以更快。
 
-### 反向传播的老问题
+论文把这种重算看作一种**选择性梯度检查点**，区别在于它不牺牲速度（PDF p. 4–5）。
 
-反向传播要算 $\mathbf{Q},\mathbf{K},\mathbf{V}$ 的梯度，通常需要用到前向的 $\mathbf{S}$ 和 $\mathbf{P}$（PDF p.5）。标准做法就是前向存下来、反向读回来——这正是前面说的、让算子融合失效的原因。
+### 和 Rabe、Staats 的算法差在哪
 
-FlashAttention 的做法是：**前向只存 $\mathbf{O}$ 和两个 softmax 统计量 $(m,\ell)$，反向时从 SRAM 里的 $\mathbf{Q},\mathbf{K},\mathbf{V}$ 块重新算出 $\mathbf{S}$ 和 $\mathbf{P}$**（PDF p.5）。
+同期 Rabe 与 Staats 也提出了「注意力不需要 $O(N^2)$ 显存」的算法。附录 B.5 列了三处不同（PDF p. 20–21）：
 
-### 为什么重算反而更快
+| | Rabe 与 Staats | FlashAttention |
+|---|---|---|
+| 目标 | 减少**显存峰值** | 减少**访存次数**，显存峰值随之下降 |
+| 块间怎么传信息 | 每块存一份临时输出和统计量，最后统一合并 | 每处理一块就增量更新唯一一份输出 |
+| 反向 | 梯度检查点，重算注意力矩阵和各块临时输出 | 解析推导反向，只重算注意力矩阵 |
+| 速度 | 与标准注意力相当或略慢 | 比标准注意力快 2–4 倍 |
 
-这是全篇最反直觉的一点，也是最值得记住的一点。
+**我们怎么解释它。** 「省显存」和「省访存」是两个目标。省访存必然省显存（访存 $A$ 次的算法，显存需求不超过 $A$），反过来不成立（PDF p. 20）。只盯显存峰值的算法可以很慢；盯访存的算法两样都拿到。
 
-论文自己把它和 **gradient checkpointing**（梯度检查点）作了对比，原话大意是：梯度检查点一直被用来降低峰值显存，但据作者所知，**所有实现都是拿速度换内存**；而 FlashAttention 的重算即便多花了 FLOP，反向传播反而**变快**了，因为 HBM 访问变少了（PDF p.5）。
+### 可迁移启发
 
-因果链是这样的：
+先问「重算一样东西」和「从远处读回它」哪个贵。算力比带宽涨得快的硬件上，前者越来越常赢。前提是重算所需的输入本来就在近处（这里是已经搬进 SRAM 的 $Q_i$、$K_j$），以及只存少量能让重算变便宜的汇总量（这里是 $m$、$\ell$）。
 
-1. 旧问题：反向要读 $N\times N$ 的 $\mathbf{S},\mathbf{P}$，这是 $\Theta(N^2)$ 次 HBM 访问；
-2. 新设计：不存它们，只存 $O(N)$ 的统计量，反向时在片上重算；
-3. 工作机制：重算所需的 $\mathbf{Q}_i,\mathbf{K}_j,\mathbf{V}_j$ 块**本来就要为了算梯度而载入 SRAM**，重算是在已有数据上多做几次矩阵乘，不产生新的 HBM 流量；
-4. 收益：多出来的 FLOP 是「便宜的」，省掉的 HBM 访问是「贵的」，净收益为正；
-5. 代价：FLOP 总量上升约 13%（66.6 → 75.2 GFLOPs，PDF p.6）。在 memory-bound 场景这笔交易划算；如果哪天注意力变成 compute-bound，这笔账要重算。
+## 核心设计三：融合成一个内核
 
-Figure 2 左的三行数字就是这条因果链的完整证据（PDF p.6）。
+分块之后，整个注意力（矩阵乘、可选的掩码、softmax、可选的 dropout、矩阵乘）可以写进一个 CUDA 内核：从 HBM 读输入，片上做完全部步骤，只把结果写回 HBM（PDF p. 5）。前面说的「融合在训练时不管用」，在这里因为重算而管用了：反向不需要前向写出任何 $N\times N$ 的中间量。
 
-### 反向传播里的两个具体技巧
-
-附录 B.4 列了两条实现层面的观察，都很实用（PDF p.20）：
-
-**第一，不存 dropout mask。** dropout mask 和注意力矩阵一样大，是 $O(N^2)$。FlashAttention 前向时把**伪随机数生成器的状态**存下来（Algorithm 2 第 1 行，PDF p.20），反向时用同一个状态重新生成一模一样的 mask。$O(N^2)$ 变成 $O(1)$。
-
-**第二，把一个长度 $N$ 的规约换成长度 $d$ 的点积。** softmax 的梯度需要一个中间量 $D_i=\mathbf{P}_{i:}^\top d\mathbf{P}_{i:}$，直接算要对两个长度为 $N$ 的向量做规约，而它们不一定装得进 SRAM。论文的式 (4) 给了一个恒等式（PDF p.19）：
-
-$$
-D_i=\mathbf{P}_{i:}^\top d\mathbf{P}_{i:}=\sum_j\frac{e^{q_i^\top k_j}}{L_i}\,do_i^\top v_j=do_i^\top\sum_j\frac{e^{q_i^\top k_j}}{L_i}v_j=do_i^\top o_i
-$$
-
-符号：$q_i,k_j,v_j$ 分别是 $\mathbf{Q},\mathbf{K},\mathbf{V}$ 的列向量，$L_i=\sum_j e^{q_i^\top k_j}$ 是 softmax 分母，$o_i$ 是输出的第 $i$ 列，$do_i$ 是它的梯度。
-
-推导只用了一步：把与 $j$ 无关的 $do_i^\top$ 提到求和号外面，剩下的求和恰好就是式 (2) 定义的 $o_i$。于是一个长度 $N$ 的规约变成了两个长度 $d$ 的向量点积。$N=8192$、$d=64$ 时，这是 128 倍的差距。
-
-**本文的评价**：这是一次纯代数化简，不需要任何硬件知识，却直接决定了这个 kernel 能不能写出来。值得记住的模式是——当一个中间量装不进快速缓存时，先看它能不能被代数地重写成一个更小的量，再去考虑分块。
-
-附录 B.4 的 Algorithm 4 是完整的反向算法（PDF p.21），结构和前向对称：外层循环 $\mathbf{K},\mathbf{V}$ 块，内层循环 $\mathbf{Q},\mathbf{O},d\mathbf{O},d\mathbf{Q}$ 块。**Theorem 5** 给出反向的 IO 复杂度，和前向完全一样（PDF p.21）。
-
-### 和 Rabe & Staats 的区别
-
-附录 B.5 专门比较了同期一篇相关工作（Rabe & Staats，*Self-attention Does Not Need $O(n^2)$ Memory*），三条差异说得很清楚（PDF p.21）：
-
-1. **目标不同**：对方优化的是**总显存占用**（峰值需要多少 GB），FlashAttention 优化的是**访存次数**（读写了多少次）。因为访存次数才是运行时间的主要决定因素，结果是 FlashAttention 比标准注意力快 2–4 倍，而 Rabe & Staats 的速度与标准注意力持平或略慢。两者在省显存上都有效。
-2. **块间信息传递方式不同**：对方给每个块保留一份临时输出，最后统一合并，$K$ 个块就要 $K$ 份输出；FlashAttention 每处理完一个块就增量更新输出，只需要一份。
-3. **反向实现不同**：对方用梯度检查点重算注意力矩阵**和**每块的临时输出；FlashAttention 解析地推导了反向公式，只重算注意力矩阵，不重算临时输出。
-
-**本文的理解**：第一条是这篇论文最有教学价值的区分——「省内存」和「省访存」是两个不同的目标，前者不自动带来后者。论文顺带指出反过来是成立的：如果一个操作产生 $A$ 次访存，它的总内存需求最多也就是 $A$（PDF p.21）。省访存必然省内存，反之不然。
+实现的起点是 NVIDIA Apex 的 FMHA 代码（PDF p. 10，致谢；p. 28）。FMHA 是当时 MLPerf 上几乎所有 BERT 提交用的注意力内核，只支持头维 64、只在 A100 上跑、序列不超过 512，而且前向会把注意力矩阵写回 HBM 供反向用（PDF p. 28）。FlashAttention 在它上面加了分块和重算，于是支持到 64K 长的序列、头维 16/32/64/128、当时的 Turing 与 Ampere 全系显卡（PDF p. 28）。
 
 ## IO 复杂度：这篇论文的理论骨架
 
-前面都是工程。这一节是论文之所以能进 NeurIPS 主会的原因：它把「少搬数据」变成了一个可以证明的复杂度结论。
+### 两个量级
 
-### 两个式子在说什么
-
-**Theorem 2**（PDF p.6）：设 $N$ 是序列长度，$d$ 是头维，$M$ 是 SRAM 大小，且 $d\le M\le Nd$。那么
-
-- 标准注意力（Algorithm 0）需要 $\Theta(Nd+N^2)$ 次 HBM 访问；
-- FlashAttention（Algorithm 1）需要 $\Theta(N^2d^2M^{-1})$ 次 HBM 访问。
-
-先读左边这个。$\Theta(Nd+N^2)$：$Nd$ 是读入 $\mathbf{Q},\mathbf{K},\mathbf{V}$ 和写出 $\mathbf{O}$ 的必要开销；$N^2$ 来自那个中间矩阵的两写两读。因为 $N\gg d$，$N^2$ 项占绝对主导。**这一项完全是浪费**——它搬运的是一个用完就扔的中间产物。
-
-再读右边。$N^2d^2M^{-1}$ 里的 $M$ 在**分母**上：SRAM 越大，访存越少。这是全篇最重要的一个结构性事实——它说明这个算法的性能直接由片上缓存容量决定，换硬件会换来不同的加速比。
-
-### 这个式子是怎么来的
-
-论文给了一段简洁的推导（PDF p.6，完整证明在 p.23–24）：
-
-1. 给定 SRAM 大小 $M$，每次可以载入大小为 $\Theta(M)$ 的 $\mathbf{K},\mathbf{V}$ 块，所以 $\mathbf{K},\mathbf{V}$ 的每个元素**只被载入一次**；
-2. 对每一个 $\mathbf{K},\mathbf{V}$ 块，都要把整个 $\mathbf{Q}$ 和 $\mathbf{O}$ 过一遍，也就是做 $T_c$ 趟；
-3. 块大小约束是 $B_cd=O(M)$、$B_rd=O(M)$、$B_rB_c=O(M)$，于是 $B_c=\Theta(M/d)$；
-4. 趟数 $T_c=N/B_c=\Theta(Nd/M)$；
-5. 每趟载入 $\Theta(Nd)$ 个元素，总访存量是
+论文的主定理（PDF p. 5，Theorem 2）：序列长 $N$、头维 $d$、SRAM 大小 $M$，且 $d\le M\le Nd$ 时，
 
 $$
-\Theta(NdT_c)=\Theta\!\left(Nd\cdot\frac{Nd}{M}\right)=\Theta\!\left(\frac{N^2d^2}{M}\right)
+\text{标准注意力：}\ \Theta(Nd+N^2),\qquad \text{FlashAttention：}\ \Theta\!\left(\frac{N^2d^2}{M}\right)
 $$
 
-**本文的理解**：这个结构值得单独记一下。$\mathbf{K},\mathbf{V}$ 只读一次，$\mathbf{Q},\mathbf{O}$ 读 $T_c$ 次——所以循环顺序不是随便定的。把 $\mathbf{K},\mathbf{V}$ 放外层，是因为它们在内层被复用；如果反过来，被重复读的就换成了 $\mathbf{K},\mathbf{V}$，复杂度形式一样但常数和实现难度不同。（顺带说一句：后续代际对这个循环顺序做了改动，但那属于 FlashAttention-2 的内容，本站尚未解读，本文不展开。）
+HBM 访问次数。前者里的 $N^2$ 来自把 $S$、$P$ 各写一遍、读一遍（PDF p. 22）。后者的数法在全景图右下角：$K$、$V$ 每个元素只读一遍；外层循环转 $T_c=N/B_c$ 圈，每圈把 $Q$、$O$ 全读写一遍，合计 $\Theta(NdT_c)$；而 $B_c=\Theta(M/d)$，代进去就是 $\Theta(N^2d^2/M)$（PDF p. 22–23）。
 
-### 代入真实数字
+两者之比大约是 $M/d^2$。论文说，$d$ 取 64–128、$M$ 约 100 KB 时，$d^2$ 比 $M$ 小很多倍，所以 HBM 访问少很多倍（PDF p. 5）。
 
-论文说：$d$ 的典型值是 64–128，$M$ 大约 100 KB，所以 $d^2$ 比 $M$ 小很多倍，FlashAttention 的 HBM 访问量因此比标准实现少很多倍（PDF p.6）。
+**本文推算**：$d=64$ 时 $d^2=4096$ 个元素；$M$ 约 100 KB，按 FP16 每元素 2 字节约合 5 万个元素，比值约 12。$d=128$ 时 $d^2=16384$，比值只剩约 3。**头维加倍，理论收益降到约四分之一**。这与附录的实测方向一致：头维 128 时加速比明显变小，只能用更小的块（PDF p. 29）。
 
-两个复杂度的比值大致是 $N^2 \big/ (N^2d^2/M)=M/d^2$。摘要和引言给出的实测上界是「**最多少 9 倍**」，依据是 Figure 2（PDF p.2）；Figure 2 左的实测值 $40.3/4.4=9.2$，对得上（PDF p.6）。
+### 下界：这已经到头了
 
-**这里要说清分母**：9× 是在「GPT-2 medium，$N=1024$，$d=64$，16 头，batch 64，A100」这一个配置下测的 HBM 读写量之比，不是普适常数。$d$ 变大、$M$ 变小，比值都会掉。
+论文还证明，不存在对所有 $M\in[d,Nd]$ 都只需 $o(N^2d^2M^{-1})$ 次 HBM 访问的精确注意力算法（PDF p. 6，Proposition 3）。证明很短：取 $M=\Theta(Nd)$ 时，这个量级退化成 $\Theta(Nd)$，而输入输出本身就有 $Nd$ 大，至少得读写这么多（PDF p. 23）。
 
-### 下界：这个结果已经到头了吗
+**我们怎么解释它。** 这个下界只在「对所有 $M$ 成立」的意义上是紧的，不是说在某个固定 $M$ 下常数已经最优。论文自己也把以 $M$ 为参数的更细下界留作未来工作（PDF p. 6）。
 
-**Proposition 3**（PDF p.6）：在 $d\le M\le Nd$ 的范围内，**不存在**一个算法能对**所有** $M$ 都做到 $o(N^2d^2M^{-1})$ 次 HBM 访问来计算精确注意力。
+### 实测：HBM 访问是主因，但有拐点
 
-证明只有几行，很漂亮（PDF p.24）：假设存在这样的算法。取 $M=\Theta(Nd)$ 这个特例，代进去得到访存量是 $o(N^2d^2/(Nd))=o(Nd)$。但输入 $\mathbf{Q},\mathbf{K},\mathbf{V}$ 和输出 $\mathbf{O}$ 本身就有 $Nd$ 那么大，而且一开始就在 HBM 里——任何算出精确注意力的算法至少得把它们读一遍写一遍，也就是至少 $\Omega(Nd)$ 次访问。矛盾。
+Figure 2 中图（PDF p. 6）固定序列长 1024、头维 64、16 头、batch 64，只改 $B_c$。块越大，HBM 访问越少，前向时间随之下降；块超过 256 之后，时间不再降，瓶颈换成了算术运算等其他因素，而且更大的块也装不进 SRAM（PDF p. 6）。
 
-**这个结论意味着什么，要说准确。** 它说的是：**没有办法在整个 $M$ 区间上一致地打败 $N^2d^2/M$**。它**没有**说 FlashAttention 在每一个具体的 $M$ 上都是最优的。论文自己也承认了这个局限：这类「在 $M$ 的某个子区间上成立的下界」在流式算法文献里很常见，而「以 $M$ 为参数的参数化复杂度下界」被留作未来工作（PDF p.6）。摘要里那句「optimal for a range of SRAM sizes」——**对一段 SRAM 尺寸范围最优**——用词是准确的，不能读成「全局最优」。
+这张图的曲线没有标数值，只能读出趋势。它要证明的判断是：在 FlashAttention 的范围内，访存量是运行时间的第一决定因素，但优化到一定程度，瓶颈会移走。
 
-### 块越大越好，但有拐点
+### 可迁移启发
 
-Figure 2 中间那张图测的是块大小 $B_c$ 从 64 变到 512 时，HBM 访问量和前向耗时怎么变（PDF p.6）。
+给算法做 IO 分析时，先写出「每个输入被读几遍」。外层循环的对象只读一遍，内层循环的对象读「外层圈数」遍；外层圈数由片上能放多大的块决定。这套数法对任何「两个大矩阵互相作用、中间结果很大」的计算都适用。
 
-结论有两半：块越大，趟数越少，HBM 访问越少，耗时下降；但**超过 256 之后耗时不再下降**，因为瓶颈转移到了别的地方（比如算术运算本身）。而且块再大就装不进 SRAM 了。
+## 扩展：块稀疏 FlashAttention
 
-**本文的理解**：这张小图其实是整套理论的自我检验。如果耗时无限跟着 HBM 访问下降，说明模型太简单；它在某处触底，恰好说明「memory-bound」是一个**有边界的**判断，不是一句口号。优化到一定程度，操作会从 memory-bound 变成 compute-bound，这时该换别的手段了。
+![左：块稀疏掩码以块为单位，64 块里只有 16 块非零，只读这些块；中：HBM 访问量是 Θ(Nd + N²d²M⁻¹·s)，s 是非零块比例；右（本文推演）：同样保留四分之一的位置，但按单个位置散开挑，64 块全被碰到，s 接近 100%。](/reports/FlashAttention/figure-block-sparse.svg)
 
-## Block-sparse FlashAttention：论文里唯一的近似
+论文把 FlashAttention 当作底层原语，演示近似注意力怎样才能真快起来（PDF p. 6）。给定一个块形式的掩码：对某组块大小 $B_r$、$B_c$，掩码在每个 $B_r\times B_c$ 块内取值相同。算法与 Algorithm 1 完全一样，只是跳过零块（PDF p. 6；p. 24，Algorithm 5）。
 
-到这里为止，所有东西都是精确的。§3.3 是论文里唯一引入近似的部分，也是理解它和后来稀疏注意力工作关系的关键（PDF p.6–7）。
+HBM 访问量变成 $\Theta(Nd+N^2d^2M^{-1}s)$，$s$ 是非零块比例（PDF p. 6，Proposition 4）。大的那一项直接乘上 $s$。序列很长时，$s$ 常取 $N^{-1/2}$ 或 $N^{-1}\log N$，访问量相应降到 $\Theta(N\sqrt N)$ 或 $\Theta(N\log N)$（PDF p. 6）。下游实验用的是固定的蝶形（butterfly）稀疏模式（PDF p. 6）。Figure 2 右图（序列长 4K）显示运行时间随非零块比例成比例下降（PDF p. 6）。
 
-### 它要求什么
+**我们怎么解释它。** 图右是本文的推演，不是论文内容：稀疏选择如果不按块对齐，被选中的位置散在各块里，几乎每块都至少有一个，$s$ 就接近 1，访存一点没省。Proposition 4 里的 $s$ 数的是块，不是位置。**跳过工作的粒度，必须和搬数据的粒度一致。**
 
-给定输入和一个 mask 矩阵 $\tilde{\mathbf{M}}\in\{0,1\}^{N\times N}$，要计算
+块稀疏版的质量与速度见下文 LRA 与 Path-256 两节。它是全篇唯一改变模型定义的地方；FlashAttention 本体是精确的。
 
-$$
-\mathbf{S}=\mathbf{Q}\mathbf{K}^\top,\qquad \mathbf{P}=\operatorname{softmax}\!\left(\mathbf{S}\odot\mathbb{1}_{\tilde{\mathbf{M}}}\right),\qquad \mathbf{O}=\mathbf{P}\mathbf{V}
-$$
+## 实验：先看清每个加速比的分母
 
-其中 $(\mathbf{S}\odot\mathbb{1}_{\tilde{\mathbf{M}}})_{kl}$ 在 $\tilde M_{kl}=1$ 时等于 $S_{kl}$，在 $\tilde M_{kl}=0$ 时等于 $-\infty$（取 $-\infty$ 是为了让 softmax 之后权重恰好为 0）。
+论文里的加速比从 15% 到 7.6 倍都有，分母各不相同。按「端到端训练」「长上下文带来的质量」「注意力层基准」三类读。
 
-接着是这一节最重要的一句话，论文用的是「**We require**」：
+### 端到端训练：同样的模型，更快训完
 
-> 我们**要求** $\tilde{\mathbf{M}}$ 具有块形式：存在块大小 $B_r,B_c$，使得对所有 $k,l$，$\tilde M_{k,l}=M_{ij}$，其中 $i=\lfloor k/B_r\rfloor$，$j=\lfloor l/B_c\rfloor$，$\mathbf{M}\in\{0,1\}^{N/B_r\times N/B_c}$。（PDF p.6，本文转述）
+| 任务 | 对照 | 结果 | 出处 |
+|---|---|---|---|
+| BERT-large，序列 512，训到 MLM 准确率 72.0% | NVIDIA 的 MLPerf 1.1 记录实现 | 17.4 ± 1.4 分钟对 20.0 ± 1.5 分钟，快 15% | PDF p. 7，Table 1 |
+| 同上 | HuggingFace 实现 | 55.6 ± 3.9 分钟，FlashAttention 快 3.2 倍 | PDF p. 25，Table 7 |
+| GPT-2 small，序列 1K，OpenWebText | HuggingFace / Megatron-LM | 9.5 / 4.7 / 2.7 天，困惑度都是 18.2 | PDF p. 7，Table 2 |
+| GPT-2 medium，同上 | HuggingFace / Megatron-LM | 21.0 / 11.5 / 6.9 天，困惑度都是 14.2 | PDF p. 7，Table 2 |
+| LRA 五个任务，序列 1K–4K | 标准注意力 | 快 2.4 倍，平均准确率 59.8 对 59.3 | PDF p. 8，Table 3 |
+| ViT-base，ImageNet 300 个 epoch | timm 实现 | 19.5 小时对 29.1 小时，快 1.5 倍，top-1 都是 81.8% | PDF p. 27，Table 9 |
 
-翻译成人话：**稀疏模式必须以整块为单位。** 你可以决定「第 3 个 query 块不看第 7 个 key 块」，但不能决定「第 400 个 token 单独跳过第 913 个 token」。
+BERT 的设置照搬 MLPerf 1.1 参考实现：LAMB 优化器、学习率 $3.75\times10^{-3}$、batch 448、至多 7100 步，8 张 A100-80GB，10 次取平均；同 batch 下显存从 58 GB 降到 32 GB（PDF p. 25）。GPT-2 用 Megatron-LM 的配方：有效 batch 512、AdamW、small 学习率 $6\times10^{-4}$、medium $1.5\times10^{-4}$、权重衰减 0.1、400K 步，8 张 A100-40GB；small 在同 batch 下显存从 39 GB 降到 11 GB（PDF p. 25）。验证困惑度曲线与 HuggingFace 几乎重合（PDF p. 26，Figure 4），这是「精确」的端到端证据。GPT-2 small 从 1 卡扩到 8 卡，对 HuggingFace 的加速保持在 3.7–3.5 倍（PDF p. 26，Table 8）。
 
-有了这个要求，算法本身几乎不用改：Algorithm 5 和前向算法完全相同，只是在内层循环加一个 `if M_ij ≠ 0 then`，为 0 的块直接跳过（PDF p.7、p.25）。
+**我们怎么解释它。** 端到端加速比比注意力层的小，因为 MLP、嵌入、优化器都没变快。BERT 序列只有 512，注意力占比低，对手又是已经融合过的 MLPerf 实现，所以只有 15%；GPT-2 对 HuggingFace 能到 3 倍以上，是因为 HuggingFace 的注意力没有融合。
 
-### 收益有多大
+### 长上下文：快出来的时间换成更长的序列
 
-**Proposition 4**（PDF p.7）：block-sparse FlashAttention 需要
+**GPT-2 加长上下文**（PDF p. 8，Table 4，GPT-2 small，8 张 A100）：
 
-$$
-\Theta\!\left(Nd+\frac{N^2d^2}{M}s\right)
-$$
-
-次 HBM 访问，其中 $s$ 是块稀疏 mask 中**非零块**的比例。
-
-也就是说，稀疏比例直接乘在那个大项上。论文举例：长序列时 $s$ 常取 $N^{-1/2}$ 或 $N^{-1}\log N$，对应的 IO 复杂度就是 $\Theta(N\sqrt{N})$ 或 $\Theta(N\log N)$（PDF p.7）。
-
-下游实验用的是固定的 **butterfly**（蝶形）稀疏模式，理由是butterfly 矩阵及其乘积已被证明能表达任意结构化稀疏（PDF p.7；附录 A 补充了这条线索，PDF p.17）。附录 A 还给了一个有意思的说法：block-sparse FlashAttention 可以看成注意力语境下的一张「固定彩票」——稀疏模式在训练全程写死，结果在 LRA 上几乎和稠密版一样好（PDF p.17）。
-
-Figure 2 右验证了这条比例关系：非零块比例从 20% 涨到 60%，耗时线性上升（序列长 4K，PDF p.6）。
-
-### 边界在哪
-
-必须说清楚：**block-sparse FlashAttention 是近似方法，FlashAttention 本体不是。** 前者会改变模型定义，后者不会。
-
-论文自己的实验也显示了这个代价。LRA 上 block-sparse 版平均 59.6，稠密版 59.8，标准 Transformer 59.3——基本持平（PDF p.8，Table 3）。但在 Path-X 上，稠密 FlashAttention 拿到 61.4，block-sparse 只有 56.0（PDF p.9，Table 6）。它换来的是能跑到 64K，从而在 Path-256 上拿到 63.1，而稠密版根本跑不到那个长度。
-
-**这是一个典型的取舍，不是免费加速。**
-
-## 实验：加速比一定要写清分母
-
-论文报了很多个加速比，数字从 1.3× 到 9× 都有。它们的对照物和场景完全不同，混着用会得出错误印象。下面这张表是**本文按论文各处口径整理的**，每一行都注明了分母。
-
-| 加速比 | 测的是什么 | 对照实现 | 配置 | 页码 |
-|---|---|---|---|---|
-| **15%** | BERT-large 端到端训练时间 | Nvidia MLPerf 1.1 记录 | 序列 512，8×A100，10 次平均 | p.7，Table 1 |
-| **3.0–3.5×** | GPT-2 端到端训练时间 | HuggingFace | 序列 1K，8×A100 | p.8，Table 2 |
-| **1.7–1.8×** | GPT-2 端到端训练时间 | Megatron-LM | 序列 1K，8×A100 | p.8，Table 2 |
-| **2.4×** | LRA 端到端训练时间 | 标准注意力 | 序列 1K–4K，5 个任务几何平均 | p.8，Table 3；p.27 |
-| **2.8×** | LRA 端到端（block-sparse） | 标准注意力 | 同上 | p.8，Table 3 |
-| **7.6×** | 注意力这一层的耗时 | PyTorch 注意力 | GPT-2，含 dropout 与 mask 的融合 kernel | p.2，Figure 1 右 |
-| **5.7×** | 注意力层前向+反向耗时 | 标准注意力 | GPT-2 medium，$N$=1024，$d$=64，16 头，batch 64，A100 | p.6，Figure 2 左（41.7→7.3 ms） |
-| **9.2×** | HBM 读写量之比 | 标准注意力 | 同上（40.3→4.4 GB） | p.6，Figure 2 左 |
-| **最多 3×** | 注意力层前向+反向耗时 | PyTorch 注意力 | 序列 128–2K，batch 16，8 头，$d$=64，单张 A100 40GB，带 dropout 与 padding mask | p.10；p.30–31 |
-| **2–4×** | 注意力层耗时 | PyTorch 注意力 | A100，batch 8，$d$=64，12 头 | p.28，Figure 5 |
-| **最多 3×** | 注意力层耗时 | PyTorch 注意力 | A100，**$d$=128**，batch 16，12 头，**因果 mask** | p.29，Figure 6 |
-| **2.5–4.5×** | 注意力层耗时 | PyTorch 注意力 | RTX 3090，batch 12，12 头 | p.29，Figure 7 |
-| **最多 20×** | 显存占用之比 | 精确注意力基线 | 单张 A100 40GB | p.10，Figure 3 右 |
-| **2×** | 显存占用之比 | Linformer | 序列 64K | p.10，Figure 3 右 |
-
-几条必须点出来的事：
-
-**第一，端到端和注意力层差好几倍。** 注意力层快 3–7 倍，端到端只快 1.7–3.5 倍。原因很朴素：注意力只是模型的一部分，MLP、embedding、优化器步都没变快。Amdahl 定律在这里完全生效。BERT-large 那个 15% 尤其要注意——序列只有 512，注意力占比小，所以整体收益有限。
-
-**第二，同一张 A100 上，不同形状的加速比可以差一半。** §4.3 的基准测试（batch 16，8 头）给出「最多 3×」，附录 Figure 5（batch 8，12 头）给出 2–4×。同一个算法、同一块卡，只是 batch 和头数不同。（**本文观察**，两组数字分别来自 PDF p.10、p.30–31 与 p.28。）
-
-**第三，头维 $d$ 变大，收益会掉。** 论文解释得很直接：$d$ 变大后每块占用更多 SRAM，只能用更小的块，趟数变多（PDF p.29）。这正是 $\Theta(N^2d^2M^{-1})$ 里 $d$ 是**平方**的实际后果。$d=128$ 时如果没有因果 mask，Figure 6 显示在 2048 长度上加速比甚至掉到接近 1×（**本文从图上读数**，论文正文没有给数值，PDF p.29）。
-
-**第四，SRAM 更小的卡收益更少。** T4 的 SRAM 比 A100 小，块只能开得更小，加速比明显下降。论文明说这「与 §3.2 的 IO 复杂度分析一致」（PDF p.29）——这是理论被硬件差异反向验证的一个例子，比单纯堆数字有价值。
-
-**第五，一处需要提醒读者的排版问题。** **本文比对了 Figure 7（RTX 3090）与 Figure 8 下半张（T4，仅前向）**，两图的柱高、图例、坐标完全一致（PDF p.29、p.30）。这看起来像是排版时复用了同一张图片，论文正文没有说明。另外 Figure 7 的图标题写的是「GTX 3090」，正文写的是「RTX 3090」（PDF p.29）。引用 T4 的 forward-only 数字时应该谨慎。
-
-### 和 Apex FMHA 的对比：一个很诚实的表
-
-附录 E.4 是全篇最诚实的一节（PDF p.27–28）。作者说明：项目起步时 Apex FMHA 是他们所知最快的注意力实现，MLPerf 1.1 上几乎所有 BERT 提交都在用它；FlashAttention 就是**以 FMHA 的代码为起点**做的（致谢里也写了，PDF p.10）。
-
-Table 7 的对比（A100-SXM4-40GB，batch 64，16 头，$d$=64，带 mask 和 dropout，单位 ms）：
-
-| 方法 | 128 | 256 | 512 |
+| 实现 | 上下文 | 困惑度 | 训练时间（相对 Megatron） |
 |---|---:|---:|---:|
-| Apex FMHA 前向 | 0.10 | 0.29 | 1.14 |
-| FlashAttention 前向 | **0.08** | **0.22** | **0.81** |
-| Apex FMHA 反向 | **0.17** | **0.52** | **1.81** |
-| FlashAttention 反向 | 0.20 | 0.53 | 2.00 |
-| Apex FMHA 前+反 | **0.27** | 0.81 | 2.95 |
-| FlashAttention 前+反 | 0.28 | **0.75** | **2.81** |
+| Megatron-LM | 1K | 18.2 | 4.7 天（1.0 倍） |
+| FlashAttention | 1K | 18.2 | 2.7 天（1.7 倍） |
+| FlashAttention | 2K | 17.7 | 3.0 天（1.6 倍） |
+| FlashAttention | 4K | 17.2 | 3.6 天（1.3 倍） |
 
-（PDF p.28，Table 7）
+4K 上下文仍比 Megatron 的 1K 快 30%（PDF p. 8）。正文与摘要都说困惑度好 0.7；按这一版的表，18.2 到 17.2 是 1.0，文字与表对不上（见文末边界一节）。
 
-结论：FlashAttention 前向略快，**反向略慢**——因为它前向不存注意力矩阵，反向要重算。总体上，序列 128 时慢约 4%，256 时快 8%，512 时快 5%（PDF p.28）。
+**长文档分类**（PDF p. 8，Table 5，micro F1）：在预训练 RoBERTa 上重复位置编码来拉长序列。MIMIC-III（重症监护出院小结）从 512 的 52.8 升到 16K 的 57.1，高 4.3；ECtHR（欧洲人权法院案例）从 512 的 72.2 升到 8K 的 80.7，高 8.5，16K 时反而是 79.2（PDF p. 8）。摘要里的「6.4 个点」是这两个增幅的平均。作者把两个数据集的差别归因于分布偏移：MIMIC-III 是专业医疗文本，对文档长度的分布变化更敏感（PDF p. 8）。
 
-**这几乎是打平。** 论文没有掩饰这一点，而是解释了真正的差异在别处：FMHA 只支持头维 64、只能在 A100 上跑、序列不能超过 512，而且前向要把注意力矩阵写回 HBM，所以基本不省显存；FlashAttention 支持头维 16/32/64/128、当时所有 Turing 和 Ampere 架构的卡、序列可以到 64K（PDF p.28）。
+**Path-X 与 Path-256**（PDF p. 8，Table 6）：判断一张黑白图里两个点是否由路径相连，图像逐像素喂给模型，Path-X 是 $128\times128$（序列 16K），Path-256 是 $256\times256$（序列 64K）。此前所有 Transformer 要么显存不够，要么只有随机水平（PDF p. 8）。FlashAttention 在 Path-X 上做到 61.4；块稀疏版把序列拉到 64K，在 Path-256 上做到 63.1（块稀疏版在 Path-X 上是 56.0）。做法是先在 Path-64 上预训练，再把位置编码按空间插值迁移过去（PDF p. 8）；附录补充说 Path-X 额外再微调 200 个 epoch，带来约 4 个点，之后开始过拟合（PDF p. 27）。
 
-**本文的理解**：这一节告诉我们，「7.6×」那个数字的对照物是**没有融合的 PyTorch 实现**。跟一个已经手工融合过的高质量 kernel 比，FlashAttention 在短序列上的速度优势几乎不存在。它的真正贡献是把这种性能**扩展到了长序列和更多配置**，同时省下显存。评估任何 kernel 优化时，选谁当基线决定了你能得到什么结论。
+**我们怎么解释它。** 这一节才是「IO 感知」的真正价值：它不只让同样的事更快，还让原本跑不起来的序列长度能训。Path-X 的 61.4 离满分很远，但它是「长度够了才有能力」的直接证据。
 
-## 长上下文换来的模型质量
+### LRA：近似注意力的速度优势在短序列上并不存在
 
-论文的第二类主张不是「更快」，而是「因为更快更省，所以能训更长的上下文，因此模型更好」。
-
-### 同样的时间，更长的上下文
-
-Table 4 是这个论点最干净的证据（PDF p.8）：
-
-| 实现 | 上下文长度 | OpenWebText 困惑度 | 训练时间 |
-|---|---:|---:|---|
-| GPT-2 small · Megatron-LM | 1k | 18.2 | 4.7 天（1.0×） |
-| GPT-2 small · FlashAttention | 1k | 18.2 | 2.7 天（1.7×） |
-| GPT-2 small · FlashAttention | 2k | 17.6 | 3.0 天（1.6×） |
-| GPT-2 small · FlashAttention | 4k | **17.5** | 3.6 天（1.3×） |
-
-读法：把上下文从 1k 拉到 4k，FlashAttention 仍然比 Megatron 的 1k 快 **30%**，同时困惑度好了 **0.7**（18.2 → 17.5）。（PDF p.8）
-
-**这才是这篇论文对建模的真正贡献。** 不是「同样的模型跑得快」，而是「同样的预算能买到更长的上下文，长上下文本身值 0.7 困惑度」。
-
-一个需要注意的细节：Table 2 里 GPT-2 medium 三种实现的困惑度是 HuggingFace 14.2、Megatron 14.3、FlashAttention 14.3（PDF p.8）。论文正文说「achieves the same perplexity as the other two implementations, as we do not change the model definition」（PDF p.8）。**本文的理解**：Theorem 1 保证的是**数学上**精确，不保证**浮点上**逐位一致——求和顺序变了，最后一位就可能不同。Figure 4 的验证困惑度曲线几乎完全重合（PDF p.27），可以支持「数值稳定性与基线相当」，但不能读成「逐位相同」。
-
-### 长文档分类
-
-在 MIMIC-III（ICU 出院小结）和 ECtHR（欧洲人权法院案件）两个数据集上，用预训练的 RoBERTa，把位置编码重复延展后训更长序列（PDF p.9）。数据本身很长：MIMIC 平均 2395 token、最长 14562；ECtHR 平均 2197、最长 49392（PDF p.9）。
-
-| 序列长度 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 |
-|---|---:|---:|---:|---:|---:|---:|
-| MIMIC-III | 52.8 | 50.7 | 51.7 | 54.6 | 56.4 | **57.1** |
-| ECtHR | 72.2 | 74.3 | 77.1 | 78.6 | **80.7** | 79.2 |
-
-（PDF p.9，Table 5，指标是 micro $F_1$）
-
-摘要里那个「6.4 points of lift」是怎么来的？MIMIC 从 512 到 16384 提升 4.3 分，ECtHR 从 512 到 8192 提升 8.5 分，**两者的平均正好是 6.4**（**本文推算**，数据来自 PDF p.9）。
-
-必须诚实地指出：**这两条曲线都不单调。** MIMIC 从 512 到 1024 反而**掉了** 2.1 分；ECtHR 在 8192 达到峰值，16384 时又掉回 79.2。论文自己也说，两个数据集的差异可能来自「细微的分布偏移」，MIMIC 是专业医学文本，可能对文档长度的分布变化更敏感（PDF p.9）。
-
-正确的说法是「**更长的上下文在这两个任务上有明显收益，但不是越长越好**」，不是「长度和性能正相关」。
-
-### Path-X 与 Path-256
-
-这是论文最有戏剧性的结果。Path-X 和 Path-256 是 LRA 里专门测长程依赖的任务：判断一张 128×128（或 256×256）黑白图里两个点之间有没有通路，图像**逐像素**喂给 Transformer，所以序列长度分别是 16K 和 64K（PDF p.9）。
-
-在此之前，所有 Transformer 要么显存爆掉，要么只能达到随机水平（PDF p.9）。
-
-| 模型 | Path-X | Path-256 |
+| 模型 | 平均准确率 | 相对标准注意力的速度 |
 |---|---:|---:|
-| Transformer / Linformer / Linear Attention / Performer / Local Attention / Reformer / SMYRF | ✗ | ✗ |
-| FlashAttention | **61.4** | ✗ |
-| Block-sparse FlashAttention | 56.0 | **63.1** |
+| 标准 Transformer | 59.3 | — |
+| FlashAttention | 59.8 | 2.4 倍 |
+| 块稀疏 FlashAttention | 59.6 | 2.8 倍 |
+| Linformer | 54.9 | 2.5 倍 |
+| Linear Attention | 59.6 | 2.3 倍 |
+| Performer | 58.9 | 1.8 倍 |
+| Local Attention | 56.0 | 1.7 倍 |
+| Reformer | 57.6 | 1.3 倍 |
+| Smyrf | 57.9 | 1.7 倍 |
 
-（PDF p.9，Table 6）
+数据取自 PDF p. 8 Table 3，速度是五个任务墙钟加速的几何平均（PDF p. 26）。作者注明 LRA 准确率对调参高度敏感，他们复现的基线比原始对比报告的更好（PDF p. 7）。这张表支撑的判断是：精确的 FlashAttention 已经比大多数近似方法快，块稀疏版比所有测过的近似方法都快。
 
-这是第一个在 Path-X 上超过随机水平的 Transformer，而且**仅仅靠把序列长度提到 16K 就做到了**——没有改架构（PDF p.9）。block-sparse 版进一步做到 64K，成为作者所知第一个在 Path-256 上超过随机的序列模型。
+### 注意力层基准：3 倍、20 倍，以及交叉点
 
-三个必须补上的边界：
+主文 Figure 3 画的是单张 A100-40GB、带 dropout 和 padding 掩码时的运行时间与显存（PDF p. 9）；具体数字在附录的全量表里。基准设置是 8 个头、头维 64、batch 16，FP16，100 次取平均（PDF p. 31）。
 
-1. **随机水平是 50%**（二分类）。61.4% 是「超过随机」，不是「解决了这个任务」。论文用词一直是 "better-than-chance" / "non-random"，很克制。
-2. **训练流程不简单**：先在 Path-64 上预训练 200 epoch，取 checkpoint，把位置编码在空间上按网格复制上采样，再在下游任务上微调 200 epoch。Path-X 还要**再多微调 200 epoch**，论文注明这额外的一轮「给 FlashAttention 的 Path-X 大约加了 4 个点，但之后模型开始过拟合」（PDF p.27）。也就是说 61.4 里有大约 4 个点来自这一轮额外微调。
-3. **Path-256 比 Path-X 分数更高不代表更难**：论文脚注解释，Path-256 序列更长但路径相对更短，所以更容易拿高分（PDF p.9，脚注 4）。不要把 63.1 > 61.4 读成「更长的序列效果更好」。
+前向 + 反向运行时间（毫秒，带 dropout 与掩码，PDF p. 32，Table 16）：
 
-### 注意力层的基准测试
+| 序列长 | 128 | 512 | 1024 | 2048 | 4096 | 16384 | 65536 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| PyTorch 注意力 | 0.84 | 2.35 | 8.29 | 31.75 | 124.19 | — | — |
+| Megatron | 0.87 | 1.33 | 4.21 | 16.50 | — | — | — |
+| Linformer | 1.57 | 1.55 | 1.60 | 4.19 | 8.04 | 30.92 | — |
+| FlashAttention | 0.43 | 0.95 | 2.55 | 9.56 | 37.49 | 586.61 | 9341.30 |
+| 块稀疏 FlashAttention | 0.44 | 0.45 | 0.89 | 1.95 | 4.12 | 16.60 | 64.11 |
 
-§4.3 和附录 E.6 用单张 A100 40GB，8 个头、头维 64、batch 16，扫描序列长度做了完整对比（PDF p.9–10、p.30）。附录里有 14 张表（Table 8–21），覆盖 dropout / masking 的四种组合（PDF p.31–34）。
+显存（MB，前向 + 反向，不带 dropout 与掩码，PDF p. 35，Table 26）：
 
-结论有三条（PDF p.10）：
+| 序列长 | 1024 | 4096 | 16384 | 65536 |
+|---|---:|---:|---:|---:|
+| PyTorch 注意力 | 1184 | 17024 | — | — |
+| Linformer | 287 | 1652 | 6572 | 26252 |
+| FlashAttention | 209 | 836 | 3344 | 13376 |
 
-1. FlashAttention 的耗时仍然**随序列长度平方增长**（它没有改复杂度），但比精确注意力基线快很多，最多比 PyTorch 快 3×；
-2. 很多近似/稀疏方法的耗时随长度**线性**增长，所以必然会在某处反超。论文给出的交叉点是**序列长度 512 到 1024 之间**（PDF p.10，Figure 3 左也标出了 "Crossover Points"）；
-3. block-sparse FlashAttention 比作者所知的所有精确、稀疏、近似实现都快，在所有测过的长度上。
+「—」表示表中没有数：每个基线都加长序列直到显存不够，Megatron 的实现不支持 2048 以上（PDF p. 31）。读这两张表要知道三件事：
 
-显存方面（Figure 3 右，PDF p.10）：FlashAttention 和 block-sparse 版显存占用相同，**随序列长度线性增长**；比精确注意力基线最多省 20×；除 Linformer 外所有算法在 64K 之前就在 A100 上 OOM，而 FlashAttention 在 64K 时仍比 Linformer 省 2×。
+1. **「最多快 3 倍」对的是 PyTorch 实现**，在 1K–4K 上是 3.2–3.3 倍（本文按表推算）。对 Megatron 那种已经把掩码和 softmax 融在一起的实现，差距小一些。
+2. **「显存省 20 倍」对的也是精确注意力基线**：4096 时 17024 MB 对 836 MB。FlashAttention 的显存随序列长度线性增长，到 64K 仍只要约 13 GB，是唯一能跑到 64K 的 Linformer 的一半左右（PDF p. 9）。
+3. **交叉点**：近似方法的时间随序列线性增长，FlashAttention 仍是平方增长。论文说两者的曲线在 512 到 1024 之间开始交叉（PDF p. 9）；表里 Linformer 在 1024 时已经更快。块稀疏版在所有长度上都比所有测过的方法快（PDF p. 9）。
 
-Table 21 给了具体数字（MB）：序列 65536 时 FlashAttention 用 13376 MB，Linformer 用 26252 MB；PyTorch 在 4096 时已经要 17024 MB，8192 就跑不动了（PDF p.34）。
+### 和手工融合过的 Apex FMHA 比：几乎打平
 
-**那个「交叉点在 512–1024」值得单独记住。** 它意味着：在 2022 年常见的 1K 上下文场景里，精确注意力 + 好 kernel 打得过大部分近似方法；近似方法的理论优势要到更长的序列才兑现。这解释了为什么这篇论文之后，「先把精确注意力的 kernel 写好」成了业界默认动作，而不是继续堆近似方案。
+FMHA 只支持 512 以内的序列，所以只能在短序列上比（PDF p. 28，Table 12，A100-40GB，batch 64，16 头，头维 64，带掩码与 dropout）：
 
-## 论文自己承认的限制
+| 毫秒 | 128 | 256 | 512 |
+|---|---:|---:|---:|
+| Apex FMHA 前向 + 反向 | 0.27 | 0.81 | 2.95 |
+| FlashAttention 前向 + 反向 | 0.28 | 0.75 | 2.81 |
 
-§5 只有三段，但每一段都很重要（PDF p.10）。
+前向 FlashAttention 略快，反向略慢，因为它前向不存注意力矩阵、反向要重算（PDF p. 28）。整体上 128 慢约 4%，256 快约 8%，512 快约 5%（PDF p. 28）。
 
-**第一，必须写 CUDA。** 原话是：每一种新的注意力实现都要写一个新的 CUDA kernel；这要求用比 PyTorch 低级得多的语言写算法，需要大量工程投入；而且实现**未必能跨 GPU 架构迁移**。论文希望未来能有一种方法，让人用高级语言（比如 PyTorch）写注意力算法，再编译成 IO 感知的 CUDA 实现——类似图像处理领域的 Halide（PDF p.10）。
+**我们怎么解释它。** 7.6 倍（PDF p. 2，Figure 1 右，GPT-2 的注意力计算）对的是没有融合的 PyTorch。跟一个已经手工融合的内核比，短序列上几乎没有速度优势。FlashAttention 真正的贡献是把融合内核的速度**延伸到长序列**，并且省下显存。
 
-**本文的评价**：这一段是全文对后来影响最大的一句「未解决问题」。它直接预告了 Triton、TileLang 这类 kernel DSL 的价值主张。而在论文自己的时间点上，这是一个实打实的门槛：论文提出的算法很优雅，但复现它需要 CUDA 能力。
+另一处对照是自动融合（PDF p. 27，Table 11，batch 64、序列 1024、16 头、头维 64）：PyTorch eager 35.1 ms，NVFuser 29.7，Functorch 的 AOT 编译 30.4，TVM 30.0，Megatron 25.9，FlashAttention 11.7。当时的编译器能融合逐元素操作，但融合不出这种「分块 + 在线归约 + 重算」的结构。
 
-**第二，IO 感知应该扩展到注意力之外。** 注意力是 Transformer 里最吃访存的计算，但**每一层**都要碰 HBM（PDF p.10）。附录 D.2 举了两个方向：稀疏 MLP 层（很多稀疏 MLP 反而是 memory-bound 的，加速比常常和稀疏度不成正比），以及核方法（$N\times N$ 的核矩阵同样是两个 $d\ll N$ 向量的函数，KeOps 库已经证明了减少读写能加速核运算）（PDF p.25–26）。
+### 不同显卡上的加速比
 
-**第三，多卡 IO 分析是空白。** 论文说得很明确：他们的实现「在单张 GPU 上、在常数因子意义下是最优的」，但注意力计算可以跨多卡并行；用多张卡会给 IO 分析**加一层**——除了 SRAM 和 HBM，还有其他 GPU 的 HBM（PDF p.10、p.25–26）。论文只把这条列为未来工作，**没有给任何多卡结果**。
+附录 E.8 给了对 PyTorch 注意力的加速比（PDF p. 29–30）：A100、头维 64 时一般 2–4 倍，开 dropout 和掩码时更多，因为这些操作也被融合了；头维 128 时收益变小，但因果掩码下仍能到 3 倍，因为一半的块被整块跳过；RTX 3090 上 2.5–4.5 倍，比 A100 高，因为它的显存带宽更低（约 900 GB/s 对 1.5 TB/s）；T4 的 SRAM 更小、块只能开得更小，加速比更低，这与 IO 复杂度分析一致（PDF p. 29）。
 
-**读者需要留下的判断**：这篇论文的所有实验都是单卡注意力层或单节点 8 卡训练。它没有回答长序列跨卡切分时怎么做 IO 优化。这个空白在后来的上下文并行工作里才被填上。
+附录 E.7 还有一张 Nsight Compute 的 roofline 图（PDF p. 28，Figure 5，batch 16、序列 512、16 头、头维 64），作者的结论是前向离硬件上限仍有空间。
 
-### 还有哪些没写
+## 论文承认的限制
 
-除了论文自己列的三条，**本文按报告地图核对后**，还应该提醒读者注意这些缺口：
+第 5 节写了三条（PDF p. 9–10）：
 
-- **没有推理/解码场景的实验。** 全文所有实验都是训练（前向+反向）或注意力层的前向+反向基准。唯一一处 forward-only 的数据是 T4 那张图（PDF p.30），而且如前所述那张图存在复用嫌疑。自回归解码时每步只有一个 query，算术强度和这里完全不同，本文不能替论文外推。
-- **没有 KV Cache 相关内容。** 这篇论文的时间点早于 KV Cache 成为主要瓶颈的时期，全文没有讨论。
-- **没有多头之外的注意力变体。** MQA、GQA 都还没出现在这篇论文里。
-- **没有精度消融。** 实验用 FP16（BERT 用 Apex AMP O2，GPT-2 用 PyTorch AMP），但没有对比不同精度下的数值行为，只有 Figure 4 的困惑度曲线作为间接证据（PDF p.26–27）。
-- **没有 tensor core 利用率、MFU 之类的硬件效率指标。** 论文只报墙钟时间和 HBM GB 数。
-- **块大小常数 4 没有论证。** 如前所述，$B_c=\lceil M/(4d)\rceil$ 里的 4 只是取值，论文没解释。
+- **要手写 CUDA**。每种注意力变体都要写一个新的 CUDA 内核，比 PyTorch 低级得多，工程量大，而且不一定能跨 GPU 架构迁移。作者希望有一种办法，用高级语言写注意力、自动编译成 IO 感知的实现。
+- **IO 感知不止于注意力**。注意力是 Transformer 里最吃访存的，但每一层都要碰 HBM；附录 D.2 提到稀疏 MLP 和核方法也能照此处理（PDF p. 24–25）。
+- **多 GPU**。单卡上的实现在常数意义上是最优的，但跨卡还有一层存储层级（其他 GPU 的 HBM），留作未来工作（PDF p. 9–10；p. 24）。
 
-## 和已发布的 [NSA](/reports/DeepSeek/NSA) 篇接上：三处交叉核实
+## 论文之后
 
-本站刚发布的 NSA 解读把 FlashAttention 当作效率对照基线，也在批评已有稀疏方法时反复用到 FlashAttention 的访存前提。读完原文后，逐条核实如下。
+以下是外部补充，不是 PDF 内容。
 
-### 一、「精确注意力，靠访存优化而非近似」——准确
-
-NSA 篇的记述完全对得上原文，而且**说得还偏保守**。
-
-证据链：论文标题里就有 "Exact Attention"（PDF p.1）；Theorem 1 明确写出算法返回 $\mathbf{O}=\operatorname{softmax}(\mathbf{Q}\mathbf{K}^\top)\mathbf{V}$（PDF p.5）；正文说「we do not change the model definition」（PDF p.8）；机制上确实是把 $\mathbf{K},\mathbf{V}$ 分块搬进 SRAM、在片上完成计算、只把 $N\times d$ 的输出写回 HBM（PDF p.5，Algorithm 1）。
-
-「偏保守」在于：FlashAttention 不只是「不做近似」，它实际上**多做了计算**去换少搬数据——75.2 vs 66.6 GFLOPs（PDF p.6）。这比「不近似」更强，方向也相反于大多数效率工作。
-
-需要补一句边界：**同一篇论文里的 block-sparse FlashAttention 是近似方法**（PDF p.6–7），它会改变模型定义。NSA 篇讨论的对象是 FlashAttention 本体，表述没有问题，但读者应该知道这个区分。
-
-**结论：准确，无需修正。**
-
-### 二、「硬性前提：内存访问必须是连续的、按块的」——方向对，但原文不是这样表述的
-
-这一条需要展开说，因为它是三条里唯一存在措辞落差的。
-
-**FlashAttention 原文里没有任何一句话说「内存访问必须是连续的」。** 逐页核对后，与这个说法相关的只有三处，分量各不相同：
-
-**第一处，块大小约束，来自 SRAM 容量而非连续性。** 附录 C 的推导是 $B_cd=O(M)$、$B_rd=O(M)$、$B_rB_c=O(M)$（PDF p.23）。这三个条件说的是「块要装得进 SRAM」，是**容量**约束。它决定了块能开多大，没有对访存的连续性提任何要求。
-
-**第二处，也是最接近 NSA 说法的一处：block-sparse 扩展对 mask 的形式要求。** 论文用「We require」明确写道，mask 必须具有块形式（PDF p.6，原文见上文 §Block-sparse 一节）。这是**硬性要求**，但它约束的是**稀疏模式**，不是内存访问；而且它只出现在 block-sparse 扩展里，不是 FlashAttention 本体的前提。
-
-**第三处，Proposition 4 的复杂度形式。** $\Theta(Nd+N^2d^2M^{-1}s)$ 里的 $s$ 是**非零块**的比例（PDF p.7）。这一条是真正有力的证据——它在数学上解释了为什么按 token 选择拿不到收益。
-
-**本文的推算**（论文没有写这一步）：如果你按单个 token 而不是按块做稀疏选择，被选中的 token 会散落在各个块里。只要一个 $B_r\times B_c$ 块里存在**任意一个**被选中的位置，这个块就不是零块，就必须整块载入。选得越散，非零块比例 $s$ 越接近 1，Proposition 4 里的加速因子就越接近消失——**计算上你确实跳过了很多位置，访存上你一个块都没省下**。
-
-所以：
-
-- NSA 篇的**实质论断是对的**，而且能从 Proposition 4 直接推出来；
-- 但把它记成「FlashAttention 有一个**硬性前提**：内存访问必须是连续的、按块的」，**是把原文的两条较弱陈述（block-sparse 的 mask 块形式要求 + SRAM 容量约束）加上硬件常识合成出来的更强表述**；
-- 论文自己写在 Limitations 里的硬性门槛是**完全另一件事**：必须为每种新注意力手写 CUDA kernel，且未必跨架构可迁移（PDF p.10）。
-
-更准确的说法应该是：**FlashAttention 的收益建立在「以整块为单位跳过计算」之上——这是 Proposition 4 的直接推论；论文对 block-sparse 扩展明确要求 mask 具有块形式，但从未把「内存访问必须连续」写成 FlashAttention 本身的前提条件。**
-
-**结论：NSA 篇的技术判断成立，但「硬性前提」这个措辞比原文强。** 本文不建议改动 NSA 篇——它是在自己的论证语境里做工程概括，且结论正确；本文在这里把原文的确切位置与分量交代清楚，供两篇对照阅读。是否调整措辞由主维护者决定。
-
-### 三、「Triton 版 NSA 内核对 Triton 版 FlashAttention-2」——本篇原文用的是手写 CUDA
-
-**FlashAttention（第一代）的官方实现是手写 CUDA，全文没有出现过 Triton。**
-
-论文的原话：「We implement FlashAttention in CUDA to achieve fine-grained control over memory access and fuse all the attention operations into one GPU kernel」（PDF p.2）；「Tiling enables us to implement our algorithm in one CUDA kernel」（PDF p.4）；限制一节把「必须写 CUDA」列为首要门槛（PDF p.10）；致谢说明实现以 NVIDIA Apex 的 FMHA 代码为起点（PDF p.10）。
-
-所以 NSA 篇说的「Triton 版 FlashAttention-2」指的是**后续代际的一个 Triton 重实现**，既不是本篇，也不是本篇的官方实现。两者之间没有矛盾——NSA 篇的记述是关于它自己的实验设置，是准确的。
-
-而且 NSA 选择「同后端对比」的理由，恰恰能被本篇佐证：本篇论文正是因为用了手写 CUDA 才拿到那些数字，如果拿 Triton 内核去和手写 CUDA 比，编译器差异会和算法差异混在一起。NSA 篇「跨后端比速度容易把编译器差异当成算法收益」的说法，与本篇 §5 承认的「实现未必跨架构可迁移」是同一类担忧。
-
-至于**本篇自己的性能口径**：全部是墙钟时间和 HBM 读写字节数，没有 FLOPs/s、没有 MFU、没有跨后端对比。端到端加速比对照 HuggingFace / Megatron-LM / Nvidia MLPerf 1.1 提交；注意力层加速比对照 PyTorch 注意力实现和 Apex FMHA。完整分母见上文那张表。
-
-**结论：准确，无需修正。** 补充一条给读者：把两篇串起来读时要记住，FA-1 是 CUDA，NSA 的对照基线是 FA-2 的 Triton 版，中间隔了一个代际和一次重实现。本站尚未解读 FlashAttention-2 与 FlashAttention-3，本文不描述它们的具体设计。
-
-## 这篇论文把自己放在什么位置
-
-附录 A 的 Related Work 值得单独读一段，因为它交代了作者的自我定位（PDF p.17）。
-
-**它不认为 IO 感知是新概念。** 论文明说「优化快慢存储读写的广义概念在计算机科学里历史悠久，而且有很多名字」，并把自己最直接地挂在 Aggarwal 与 Vitter 的 I/O 复杂度分析传统上；同时点名了 working set 模型、data locality、Roofline 的算术强度模型、可扩展性分析和标准的计算机体系结构教材。它的原话是希望这项工作能鼓励社区把这些想法用到深度学习栈的更多地方（PDF p.17）。
-
-**它把 block-sparse 挂在结构化矩阵这条线上。** butterfly 稀疏模式之所以被选中，是因为 butterfly 矩阵及其乘积已被证明能以接近最优的运行时和参数量表达任意结构化矩阵。论文同时指出结构化矩阵长期存在的困境：理论上高效，却难以转化成墙钟加速，因为稠密无约束矩阵乘的实现被优化得太好了——这个现象叫 **hardware lottery**（硬件彩票）（PDF p.17）。
-
-**本文的理解**：这段自述其实是整篇论文的价值观声明。作者认为「理论上更省」和「实际上更快」之间的鸿沟才是真问题，而这个鸿沟的成因是硬件与实现，不是数学。FlashAttention 是这个价值观的正面例子——它一点数学都没省，全部收益来自把实现对准硬件；block-sparse FlashAttention 则是它的推论——把稀疏做成硬件喜欢的形状，稀疏才真的能兑现。
-
-关于高效 Transformer 的既有工作，论文的分类是：哈希类稀疏近似（Reformer、Smyrf）、低秩近似（Performer）、两者结合（Longformer、BigBird、Scatterbrain、Long-short transformer、Combiner）、沿序列维压缩、以及跨段复用状态（Transformer-XL、Compressive Transformer）；另有一条完全替换注意力的路线（HiPPO/S4、LambdaNetworks、AFT、FLASH）（PDF p.17）。**FlashAttention 不在这些框里的任何一格**——它不改变注意力算什么，只改变怎么算。这是它能被几乎所有模型无痛采用的根本原因。
+- FlashAttention-2（2023）保留了分块与重算，把循环顺序换成外层 $Q$、内层 $K$、$V$，把 softmax 的除法推迟到循环末尾，并沿序列长度并行，见 FlashAttention-2 一篇。之后 FlashAttention-3 面向 H100，FlashAttention-4 面向 B200，各有一篇。
+- 块稀疏这条线在后来的可训练稀疏注意力里得到呼应。站内 NSA 一篇记录了 NSA 论文的判断：按单个 Token 挑选的稀疏方法要零散读 KV，用不上 FlashAttention 依赖的连续、分块读取，只能退回低利用率实现；NSA 因此按块选择，并让同一 GQA 组的头共用一套块。这与本篇 Proposition 4 里「$s$ 数的是块」是同一个道理。
 
 ## 可迁移启发
 
-### 1. 先量一量，再决定优化什么
-
-这篇论文最值钱的动作不是 tiling，是**先去数有多少字节在动**。Figure 2 左那三行数字（FLOPs、HBM GB、ms）应该成为任何性能工作的标准第一步。
-
-判据很简单：算一下算术强度——运算次数除以访存字节数——再和硬件的临界比值对比。高于临界值是 compute-bound，该优化计算；低于是 memory-bound，优化计算等于白干（PDF p.3）。
-
-**这条对非 GPU 场景同样成立。** 数据管线、后端服务、数据库查询，都有各自版本的「算得快但搬得慢」。
-
-### 2. 「省内存」和「省访存」是两个目标
-
-论文在附录 B.5 把这个区分讲得最清楚：Rabe & Staats 优化峰值显存，速度和标准注意力持平；FlashAttention 优化访存次数，快 2–4 倍（PDF p.21）。
-
-而且方向是单向的：**省访存必然省内存，省内存不必然省访存。** 挑优化目标时，先问清楚你到底想要哪一个。
-
-### 3. 重算不总是拿速度换内存
-
-梯度检查点的默认心智模型是「省显存，牺牲速度」。FlashAttention 展示了一个反例：当重算的输入**已经在快速缓存里**、而被替代的读取来自慢速存储时，重算是**双赢**的（PDF p.5）。
-
-判断标准是：重算引入的额外访存是多少？如果是零（数据本来就在手边），那这笔交易只有好处。这条可以直接迁移到任何「缓存 vs 重算」的决策上。
-
-### 4. 装不下的时候，先看能不能代数地缩小它
-
-$D_i=\mathbf{P}_{i:}^\top d\mathbf{P}_{i:}=do_i^\top o_i$（PDF p.19，式 4）这一步没有用到任何硬件知识，只是把一个求和号挪了个位置，却把长度 $N$ 的规约变成了长度 $d$ 的点积。
-
-遇到「这个中间量太大装不下」时，**先花十分钟找恒等式，再花三天写分块**。
-
-### 5. 稀疏的单位必须和硬件的搬运单位对齐
-
-Proposition 4 里那个 $s$ 是**非零块**的比例，不是非零元素的比例（PDF p.7）。这一条决定了后来一整代稀疏注意力工作的形态：想要真实加速，选择粒度就得是块。
-
-**更一般的原则**：任何「跳过一部分工作」的优化，收益上限由**跳过的单位**和**硬件的最小搬运单位**是否对齐决定。数据库跳过整个 page 才省 IO，跳过 page 里的几行不省。
-
-### 6. 优化会把瓶颈推走，而不是消灭它
-
-Figure 2 中间那张图显示块大小超过 256 后耗时不再下降（PDF p.6）；§4.3 显示近似方法在 512–1024 处反超（PDF p.10）；Figure 6 显示 $d=128$ 时收益大幅缩水（PDF p.29）。
-
-三处都在说同一件事：**每个优化都有它的适用区间。** 报告性能结论时把区间写出来，比报一个最大值有用得多。
-
-### 7. 基线选择决定结论
-
-7.6× 的对照是未融合的 PyTorch；对照已经手工融合的 Apex FMHA 时，短序列上基本打平甚至略慢（PDF p.28）。论文没有藏这个表，反而用它把真正的贡献说清楚了——不是「更快」，是「把这种性能扩展到了更长序列和更多配置，还省显存」。
-
-**写自己的性能报告时，把最强的那个基线也放进表里。**
-
-## 用一张图串起全文
-
-```mermaid
-flowchart TB
-    A[矛盾：注意力实现受访存限制<br/>N×N 中间矩阵在 HBM 上反复往返] --> B[换尺子：用 HBM 读写次数<br/>而不是 FLOP 来衡量算法]
-    B --> C[Tiling 加 online softmax<br/>不写出完整矩阵也能算对]
-    B --> D[Recomputation<br/>反向重算而不是读回]
-    C --> E[IO 复杂度从 Θ N平方<br/>降到 Θ N平方 d平方 除以 M]
-    D --> E
-    E --> F[精确不变：更快、显存线性、<br/>能训到 64K]
-    E --> G[Block-sparse 扩展：<br/>按整块跳过，收益乘以稀疏率 s]
-```
-
-这张图是**论证结构示意**，依据 PDF p.2–7 的 §1 至 §3 重画，箭头表示推理依赖而非数据流，图中不含实测数据。要注意最下面两个出口的性质不同：左边那条仍是精确注意力，右边那条（block-sparse）是近似方法。
+1. **先量瓶颈在哪一层存储。** 算力比带宽涨得快，受访存限制的操作越来越多。优化前先算「搬了多少字节」，而不是「算了多少次」。
+2. **能流式合并的归约，就不要物化全体。** 找到只依赖少量统计量的合并规则，大矩阵就可以一块一块算。
+3. **重算不一定是拿速度换显存。** 当重算的输入就在片上、而被重算的东西在远处时，重算更快。
+4. **融合要把训练算进去。** 推理融合容易，训练融合要解决「中间结果给反向用」的问题；重算正是为此。
+5. **稀疏要以搬运单位为单位。** 按块跳过才省访存，按位置跳过只省 FLOP。
+6. **优化会把瓶颈推走，而不是消灭。** 块大到 256 以后瓶颈就不在 HBM 了；后面三代都在追这个移走的瓶颈。
+7. **看加速比先看分母。** 对 PyTorch 的 7.6 倍，对手工融合内核只剩打平；端到端又只剩 15% 到 3.5 倍。
 
 ## 关键词回看
 
-- **IO-aware（IO 感知）**：把 HBM 与 SRAM 之间的读写次数当成一等指标去分析和优化算法，而不是只看 FLOP。
-- **HBM**：显卡上容量大、相对慢的显存。A100 上 40–80 GB、1.5–2.0 TB/s。
-- **SRAM**：贴在计算单元旁的片上缓存。A100 上每个 SM 192 KB、全卡约 20 MB、约 19 TB/s。
-- **Arithmetic intensity（算术强度）**：每访问一字节内存做多少次运算。用来判断一个操作是 compute-bound 还是 memory-bound。
-- **Memory-bound（受访存限制）**：耗时由访存次数决定。softmax、dropout、各种 norm 都属于这一类。
-- **Kernel fusion（算子融合）**：把多个作用于同一输入的操作合成一个 kernel，只读一次。训练时因为要保存反向所需的中间量而效果受限。
-- **Tiling（分块）**：把 $\mathbf{Q},\mathbf{K},\mathbf{V}$ 切成能装进 SRAM 的小块，配合 online softmax 的递推，在不写出完整 $N\times N$ 矩阵的前提下算出精确结果。
-- **Online softmax**：只额外记住「当前最大值 $m$」和「当前指数和 $\ell$」两个统计量，就能一块一块地完成 softmax 规约。
-- **Recomputation（重算）**：反向传播时不读存好的注意力矩阵，而是从 SRAM 里的输入块重新算一遍。多花 FLOP，少搬数据，净收益为正。
-- **IO 复杂度**：标准注意力 $\Theta(Nd+N^2)$，FlashAttention $\Theta(N^2d^2M^{-1})$，block-sparse 版 $\Theta(Nd+N^2d^2M^{-1}s)$。
-- **Block-sparse mask（块稀疏掩码）**：稀疏模式必须以 $B_r\times B_c$ 的整块为单位。这是 block-sparse 扩展的明确要求。
-- **Path-X / Path-256**：LRA 里逐像素喂图、序列长 16K / 64K 的长程依赖任务，此前所有 Transformer 都只能达到随机水平。
-
-## 最后的判断
-
-哪些结论有实验支持：
-
-- 注意力实现是 memory-bound 的（Figure 2 左：FLOP 更多但快 5.7 倍，PDF p.6）；
-- tiling + recomputation 能在不改数学定义的前提下大幅减少 HBM 访问（40.3 → 4.4 GB，PDF p.6）；
-- 显存占用从平方降到线性（Figure 3 右、Table 21，PDF p.10、p.34）；
-- 端到端训练确实变快，且加速比明显小于注意力层（PDF p.7–8）；
-- 更长上下文带来的质量提升是真的，且非单调（Table 4、Table 5，PDF p.8–9）；
-- Path-X / Path-256 的突破是真的，但含约 4 点来自额外微调（PDF p.9、p.27）。
-
-哪些是有证明但要读准范围：
-
-- Theorem 2 的两个复杂度是渐进结论，常数被隐去；实测比值 9.2× 只对应一个具体配置（PDF p.6）；
-- Proposition 3 的下界说的是「不存在算法在整个 $M$ 区间上一致更优」，不是「FlashAttention 处处最优」；论文自己把参数化下界列为未来工作（PDF p.6）。
-
-哪些只是作者的观察或方向性判断：
-
-- 「IO 感知可以推广到注意力之外的每一层」是希望，附录 D.2 只给了设想，没有实验（PDF p.10、p.25–26）；
-- 「多卡 IO 分析」完全没有结果（PDF p.10）；
-- 「需要一个 Halide 式的高级语言」是提出的需求，不是本文的贡献（PDF p.10）。
-
-哪些细节没有公开或本文无法核实：
-
-- 块大小公式里常数 4 的来源；
-- 推理/解码场景下的表现；
-- 精度（FP16 vs FP32）的独立消融；
-- Figure 7 与 Figure 8 下半张为何完全一致（**本文观察**，PDF p.29–30）。
-
-如果只带走一句话：
-
-> **当一个操作卡在搬运而不是计算上时，正确的优化方向不是让它少算，而是让它少搬——哪怕为此要多算一点。**
-
-这句话不需要 GPU 才能用。它只需要你先去量一量，数据到底在哪里、动了多少次。
+- **IO 感知**：把 HBM 与 SRAM 之间的读写当一等成本来设计算法。
+- **分块（tiling）**：$Q$、$K$、$V$ 切块搬进 SRAM，$N\times N$ 的 $S$、$P$ 只在片上逐块出现。
+- **在线 softmax**：每行多存最大值 $m$ 和指数和 $\ell$，新块到来时按 $e^{m_{\text{旧}}-m_{\text{新}}}$ 缩放旧结果再合并。
+- **重算（recomputation）**：前向只存 $O$、$m$、$\ell$ 和随机数状态，反向在片上重算 $S$、$P$；FLOP 多了，访存少了。
+- **$D_i=dO_i^\top O_i$**：把长度 $N$ 的行和改写成长度 $d$ 的点积，反向因此能分块。
+- **$\Theta(N^2d^2M^{-1})$**：FlashAttention 前向、反向的 HBM 访问量；标准实现是 $\Theta(Nd+N^2)$。
+- **Proposition 3**：对所有 SRAM 大小都更少访存的精确算法不存在。
+- **块稀疏 FlashAttention**：跳过零块，访存乘上非零块比例 $s$。
+- **外层 $K$、$V$，内层 $Q$**：第一代的循环顺序，决定了 $O$ 被反复读写。
 
 ## 资料与阅读边界
 
-- **原始依据**：本地 `papers/Stanford/FlashAttention.pdf`，即 arXiv:2205.14135v2，34 页，PDF 封面日期 2022-06-24。本文所有页码指 PDF 页码。
-- **arXiv 官方页**：[arXiv:2205.14135](https://arxiv.org/abs/2205.14135)。版本历史只有两版：v1 于 2022-05-27 提交，v2 于 2022-06-23 提交。**本地 PDF 就是最新的 v2，无需替换。**
-- **NeurIPS 2022 官方页**：[Advances in Neural Information Processing Systems 35, pp. 16344–16359](https://proceedings.neurips.cc/paper_files/paper/2022/hash/67d57c32e20fd0a7a302cb81d36e40d5-Abstract-Conference.html)。这是正式发表版本的出处，本文未逐页比对会议版与 arXiv v2 的差异。
-- **官方代码仓库**：[Dao-AILab/flash-attention](https://github.com/Dao-AILab/flash-attention)。论文脚注给出的地址是 `HazyResearch/flash-attention`（PDF p.3，脚注 1），该地址现已重定向到 Dao-AILab 组织下，提交历史相同。
-- **`release-date` 依据**：取 **2022-05-20**，即官方仓库根提交（commit `1fcbe6f`，提交信息 "First release"，作者 Tri Dao）的文件提交时间。该提交无父提交，一次性加入 33 个文件、10800 行，包含 `csrc/stream_attn/` 下完整的 CUDA 内核实现。这早于 arXiv v1（2022-05-27）七天，是能查到的最早官方公开事件。仓库 `created_at` 为 2022-05-19，按流程规定不作为首发日采信。
-- **署名与归属**：论文由斯坦福大学计算机系（Tri Dao、Daniel Y. Fu、Stefano Ermon、Christopher Ré）与纽约州立大学布法罗分校计算机系（Atri Rudra）联合完成（PDF p.1），工作出自 Christopher Ré 的 Hazy Research 组。按本站流程，同一系列放在同一目录，故置于 `Stanford/`。
-- **实现起点**：论文致谢说明实现以 [NVIDIA Apex 的 FMHA 代码](https://github.com/NVIDIA/apex/tree/master/apex/contrib/csrc/fmha)为起点（PDF p.10）。
-- **后续代际**：`papers/Stanford/` 下另有 FlashAttention-2 与 FlashAttention-3 的原件，**本站尚未解读**。本文只在必要处指出「后续代际存在」，不描述它们的任何具体设计——那需要读完各自原文才能写。
-- **跨篇对照**：本文第「和已发布的 NSA 篇接上」一节涉及 [NSA](/reports/DeepSeek/NSA) 的三处记述。本文只核实并说明 FlashAttention 原文的确切表述，不修改 NSA 篇。
+### 版本与首发日
+
+- 依据版本：NeurIPS 2022 正式发表的完整版（主文与附录合在一份 PDF，35 页），出处是 [NeurIPS 2022 论文页](https://proceedings.neurips.cc/paper_files/paper/2022/hash/67d57c32e20fd0a7a302cb81d36e40d5-Abstract-Conference.html)。arXiv 上的最新版是 [2205.14135v2](https://arxiv.org/abs/2205.14135)（2022-06-23），早于会议定稿。两版正文结构相同，会议版在附录里多了与 Rabe、Staats 的对比（B.5）、ViT 实验（E.4）、与自动融合的对比（E.5）和 roofline 分析（E.7），Figure 2 左与 Table 2、Table 4 的若干数字也有更新。本文数字一律以会议版为准。
+- `release-date` 取 **2022-05-20**：官方仓库 [Dao-AILab/flash-attention](https://github.com/Dao-AILab/flash-attention)（论文脚注写的是旧地址 HazyResearch/flash-attention，PDF p. 2）的根提交「First release」时间是 2022-05-20，早于 arXiv v1（2022-05-27）。FlashAttention 是一项技术而不是对外提供的模型，按技术首次官方公开日取。
+- 署名与归属：斯坦福大学计算机系与纽约州立大学布法罗分校（PDF p. 1）。后续代际换了署名机构，按「同一系列放同一目录」与本篇同放 `Stanford/`。
+
+### 论文里对不上的地方
+
+- **困惑度提升**：摘要与第 4 节写「困惑度好 0.7」，Table 4 的 4K 一行是 17.2，比 1K 的 18.2 好 1.0（PDF p. 1、p. 7–8）。
+- **HBM 访问少多少倍**：引言写「最多少 9 倍」（PDF p. 2），Figure 2 左的数字是 35.3 GB 对 4.4 GB，约 8 倍（PDF p. 6）。
+- **与 Megatron 的加速**：第 4 节开头写 1.8 倍，Table 2 的标题写「最多 1.7 倍」，表里 small 是 1.74 倍、medium 是 1.67 倍（PDF p. 7）。
+- **T4 前向图**：Figure 9 下半张（T4 仅前向）的柱高与 Figure 8（RTX 3090）逐根相同（PDF p. 30），像是排版时复用了同一张图，论文没有说明。
+
+这几处都不影响核心结论，但引用具体数字时要注意。
+
+### 论文覆盖了、本文覆盖了的部分
+
+摘要与第 1 节；第 2 节硬件与标准注意力；第 3.1 节分块、在线 softmax、重算、融合与 Algorithm 1；第 3.2 节 Theorem 1–2、Proposition 3 与 Figure 2；第 3.3 节块稀疏与 Proposition 4；第 4 节 Table 1–6 与 Figure 3；第 5 节限制；附录 A 相关工作的定位；附录 B 前向、反向推导、Algorithm 2–4、Theorem 5 与 B.5 对比；附录 C 证明思路；附录 D 块稀疏算法与扩展方向；附录 E 的训练设置、Table 7–12、Figure 4–9 与全量基准表 Table 16、Table 26。
+
+### 外部资料补充（不是 PDF 原文）
+
+- 论文之后的 FlashAttention-2、FlashAttention-3、FlashAttention-4，以及 NSA 的相关判断，见「论文之后」一节；站内对应篇目为 FlashAttention-2、FlashAttention-3、FlashAttention-4、NSA。
+- 官方代码仓库：[Dao-AILab/flash-attention](https://github.com/Dao-AILab/flash-attention)。
+
+### 原文没有公开、本文也不补的缺口
+
+- 论文不报 FLOPs/s 或硬件利用率，所有速度都是墙钟时间或加速比；FlashAttention 本身离 A100 峰值还差多少，要到 FlashAttention-2 那一篇才有数字；
+- Figure 2 中图与 Figure 6–9 的柱高、曲线没有标注数值，本文只转述论文的文字结论；
+- CUDA 内核的具体实现（线程块与 warp 如何分工、块大小怎么选）论文只给了公式级的块大小，没有给实现细节；
+- 头维超过 128 的情况没有测。

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 3：线程块里的 4 个 warp 怎么分活，决定了要不要经过共享内存对账</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">按 PDF p. 9 Figure 3 与第 3.3 节重画，前向，一个线程块 4 个 warp。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 所有 warp 都读的整块；黄 = 切给不同 warp 的片；红 = 必须经共享内存写出、同步、再相加的步骤；绿 = 各 warp 直接写出。</text>
+<rect x="16.0" y="96.0" width="536.0" height="388.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="32.0" y="122.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">第一代：split-K，切 K 和 V</text>
+<text x="46.0" y="182.0" font-size="11" fill="#6b7280" text-anchor="start">Q</text>
+<rect x="46.0" y="192.0" width="70.0" height="150.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="81.0" y="271.0" font-size="11" fill="#111827" text-anchor="middle">warp 1–4</text>
+<text x="146.0" y="144.0" font-size="11" fill="#6b7280" text-anchor="start">Kᵀ</text>
+<rect x="146.0" y="152.0" width="60.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="176.0" y="171.0" font-size="11" fill="#111827" text-anchor="middle">warp 1</text>
+<rect x="210.0" y="152.0" width="60.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="240.0" y="171.0" font-size="11" fill="#111827" text-anchor="middle">warp 2</text>
+<rect x="274.0" y="152.0" width="60.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="304.0" y="171.0" font-size="11" fill="#111827" text-anchor="middle">warp 3</text>
+<rect x="338.0" y="152.0" width="60.0" height="30.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="368.0" y="171.0" font-size="11" fill="#111827" text-anchor="middle">warp 4</text>
+<text x="426.0" y="182.0" font-size="11" fill="#6b7280" text-anchor="start">V</text>
+<rect x="426.0" y="192.0" width="70.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="461.0" y="213.0" font-size="11" fill="#111827" text-anchor="middle">warp 1</text>
+<rect x="426.0" y="230.0" width="70.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="461.0" y="251.0" font-size="11" fill="#111827" text-anchor="middle">warp 2</text>
+<rect x="426.0" y="268.0" width="70.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="461.0" y="289.0" font-size="11" fill="#111827" text-anchor="middle">warp 3</text>
+<rect x="426.0" y="306.0" width="70.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="461.0" y="327.0" font-size="11" fill="#111827" text-anchor="middle">warp 4</text>
+<rect x="146.0" y="202.0" width="252.0" height="40.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="272.0" y="219.0" font-size="11" fill="#111827" text-anchor="middle">每个 warp 得到 QKᵀ 的一列片</text>
+<text x="272.0" y="234.0" font-size="11" fill="#6b7280" text-anchor="middle">再乘自己那片 V</text>
+<rect x="146.0" y="256.0" width="252.0" height="40.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="272.0" y="273.0" font-size="11" fill="#111827" text-anchor="middle">4 份部分和，都是完整形状的 O</text>
+<text x="272.0" y="288.0" font-size="11" fill="#6b7280" text-anchor="middle">每份只加了 1/4 的 K</text>
+<rect x="146.0" y="310.0" width="252.0" height="40.0" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="272.0" y="327.0" font-size="11" fill="#111827" text-anchor="middle">写进共享内存 → 同步 → 相加</text>
+<text x="272.0" y="342.0" font-size="11" fill="#6b7280" text-anchor="middle">这就是 split-K 的对账开销</text>
+<line x1="272.0" y1="242.0" x2="272.0" y2="256.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="272.0" y1="296.0" x2="272.0" y2="310.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="32.0" y="384.0" font-size="11" fill="#6b7280" text-anchor="start">第一代把 K、V 切给 4 个 warp，Q 大家共用。</text>
+<text x="32.0" y="404.0" font-size="11" fill="#6b7280" text-anchor="start">每个 warp 只看到一部分键，算出的输出只是部分和，</text>
+<text x="32.0" y="424.0" font-size="11" fill="#6b7280" text-anchor="start">必须写到共享内存、同步、再加起来（PDF p. 9）。</text>
+<text x="32.0" y="460.0" font-size="11" fill="#9ca3af" text-anchor="start">一个线程块一般 4 或 8 个 warp；图里取 4 个（PDF p. 9）。</text>
+<rect x="568.0" y="96.0" width="536.0" height="388.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="584.0" y="122.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">第二代：切 Q</text>
+<text x="598.0" y="182.0" font-size="11" fill="#6b7280" text-anchor="start">Q</text>
+<rect x="598.0" y="192.0" width="70.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="633.0" y="213.0" font-size="11" fill="#111827" text-anchor="middle">warp 1</text>
+<rect x="598.0" y="230.0" width="70.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="633.0" y="251.0" font-size="11" fill="#111827" text-anchor="middle">warp 2</text>
+<rect x="598.0" y="268.0" width="70.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="633.0" y="289.0" font-size="11" fill="#111827" text-anchor="middle">warp 3</text>
+<rect x="598.0" y="306.0" width="70.0" height="34.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="633.0" y="327.0" font-size="11" fill="#111827" text-anchor="middle">warp 4</text>
+<text x="698.0" y="144.0" font-size="11" fill="#6b7280" text-anchor="start">Kᵀ</text>
+<rect x="698.0" y="152.0" width="252.0" height="30.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="824.0" y="171.0" font-size="11" fill="#111827" text-anchor="middle">warp 1–4</text>
+<text x="978.0" y="182.0" font-size="11" fill="#6b7280" text-anchor="start">V</text>
+<rect x="978.0" y="192.0" width="70.0" height="150.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1013.0" y="271.0" font-size="11" fill="#111827" text-anchor="middle">warp 1–4</text>
+<rect x="698.0" y="202.0" width="252.0" height="40.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="824.0" y="219.0" font-size="11" fill="#111827" text-anchor="middle">每个 warp 得到 QKᵀ 的一行片</text>
+<text x="824.0" y="234.0" font-size="11" fill="#6b7280" text-anchor="middle">再乘共用的整块 V</text>
+<rect x="698.0" y="256.0" width="252.0" height="40.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="824.0" y="273.0" font-size="11" fill="#111827" text-anchor="middle">直接就是 O 的对应几行</text>
+<text x="824.0" y="288.0" font-size="11" fill="#6b7280" text-anchor="middle">已经看过全部键，不缺东西</text>
+<rect x="698.0" y="310.0" width="252.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="824.0" y="327.0" font-size="11" fill="#111827" text-anchor="middle">各自写出，不经共享内存对账</text>
+<text x="824.0" y="342.0" font-size="11" fill="#6b7280" text-anchor="middle">warp 之间不需要通信</text>
+<line x1="824.0" y1="242.0" x2="824.0" y2="256.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="824.0" y1="296.0" x2="824.0" y2="310.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="584.0" y="384.0" font-size="11" fill="#6b7280" text-anchor="start">第二代把 Q 切给 4 个 warp，K、V 大家共用。</text>
+<text x="584.0" y="404.0" font-size="11" fill="#6b7280" text-anchor="start">softmax 按行归一化，一个 warp 手里的行是完整的，</text>
+<text x="584.0" y="424.0" font-size="11" fill="#6b7280" text-anchor="start">所以不需要任何 warp 间通信（PDF p. 9）。</text>
+<text x="584.0" y="460.0" font-size="11" fill="#9ca3af" text-anchor="start">反向同样避开 split-K，但因依赖更复杂，仍需一些同步（PDF p. 9）。</text>
+</svg>

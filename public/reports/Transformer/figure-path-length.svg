@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 630" width="1120" height="630" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="630" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Table 1 的三种层：位置 1 的信息要走几步才能到位置 8</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 从位置 1 到位置 8 实际走的那条路；灰 = 同一层里其他的连接。每一行是一种层，自下而上是层的堆叠。</text>
+<text x="40.0" y="134.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">循环层</text>
+<text x="40.0" y="152.0" font-size="11" fill="#6b7280" text-anchor="start">要走 7 步，且只能一步一步算</text>
+<circle cx="400.0" cy="140.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="492.0" cy="140.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="584.0" cy="140.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="676.0" cy="140.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="768.0" cy="140.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="860.0" cy="140.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="952.0" cy="140.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="1044.0" cy="140.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="412" y1="140" x2="478" y2="140" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="504" y1="140" x2="570" y2="140" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="596" y1="140" x2="662" y2="140" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="688" y1="140" x2="754" y2="140" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="780" y1="140" x2="846" y2="140" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="872" y1="140" x2="938" y2="140" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="964" y1="140" x2="1030" y2="140" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<text x="400.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="492.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<text x="584.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="middle">3</text>
+<text x="676.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="768.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="860.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="952.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<text x="1044.0" y="170.0" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="40.0" y="324.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">卷积层</text>
+<text x="40.0" y="342.0" font-size="11" fill="#6b7280" text-anchor="start">核宽 k = 2 的空洞卷积要叠 3 层，路径长 O(log_k n)</text>
+<circle cx="400.0" cy="390.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="492.0" cy="390.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="584.0" cy="390.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="676.0" cy="390.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="768.0" cy="390.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="860.0" cy="390.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="952.0" cy="390.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="1044.0" cy="390.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="400.0" cy="340.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="492.0" cy="340.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="584.0" cy="340.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="676.0" cy="340.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="768.0" cy="340.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="860.0" cy="340.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="952.0" cy="340.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="1044.0" cy="340.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="400.0" cy="290.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="492.0" cy="290.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="584.0" cy="290.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="676.0" cy="290.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="768.0" cy="290.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="860.0" cy="290.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="952.0" cy="290.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="1044.0" cy="290.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="400.0" cy="240.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="492.0" cy="240.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="584.0" cy="240.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="676.0" cy="240.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="768.0" cy="240.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="860.0" cy="240.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="952.0" cy="240.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="1044.0" cy="240.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="400.0" y1="379.0" x2="492.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="492.0" y1="379.0" x2="492.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="492.0" y1="379.0" x2="584.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="584.0" y1="379.0" x2="584.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="584.0" y1="379.0" x2="676.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="676.0" y1="379.0" x2="676.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="676.0" y1="379.0" x2="768.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="768.0" y1="379.0" x2="768.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="768.0" y1="379.0" x2="860.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="860.0" y1="379.0" x2="860.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="860.0" y1="379.0" x2="952.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="952.0" y1="379.0" x2="952.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="952.0" y1="379.0" x2="1044.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="1044.0" y1="379.0" x2="1044.0" y2="351.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="400.0" y1="329.0" x2="584.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="584.0" y1="329.0" x2="584.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="492.0" y1="329.0" x2="676.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="676.0" y1="329.0" x2="676.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="584.0" y1="329.0" x2="768.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="768.0" y1="329.0" x2="768.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="676.0" y1="329.0" x2="860.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="860.0" y1="329.0" x2="860.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="768.0" y1="329.0" x2="952.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="952.0" y1="329.0" x2="952.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="860.0" y1="329.0" x2="1044.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="1044.0" y1="329.0" x2="1044.0" y2="301.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="400.0" y1="279.0" x2="768.0" y2="251.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="768.0" y1="279.0" x2="768.0" y2="251.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="492.0" y1="279.0" x2="860.0" y2="251.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="860.0" y1="279.0" x2="860.0" y2="251.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="584.0" y1="279.0" x2="952.0" y2="251.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="952.0" y1="279.0" x2="952.0" y2="251.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="676.0" y1="279.0" x2="1044.0" y2="251.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="1044.0" y1="279.0" x2="1044.0" y2="251.0" stroke="#e5e7eb" stroke-width="1"/>
+<line x1="400" y1="379" x2="492" y2="351" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="492" y1="329" x2="676" y2="301" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<line x1="676" y1="279" x2="1044" y2="251" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<circle cx="400.0" cy="390.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="492.0" cy="340.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="676.0" cy="290.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="1044.0" cy="240.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="400.0" y="420.0" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="492.0" y="420.0" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<text x="584.0" y="420.0" font-size="11" fill="#9ca3af" text-anchor="middle">3</text>
+<text x="676.0" y="420.0" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="768.0" y="420.0" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="860.0" y="420.0" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="952.0" y="420.0" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<text x="1044.0" y="420.0" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="40.0" y="504.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">自注意力层</text>
+<text x="40.0" y="522.0" font-size="11" fill="#6b7280" text-anchor="start">1 步直达，整层可以同时算</text>
+<circle cx="400.0" cy="540.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="400.0" y="570.0" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<circle cx="492.0" cy="540.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="492.0" y="570.0" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<circle cx="584.0" cy="540.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="584.0" y="570.0" font-size="11" fill="#9ca3af" text-anchor="middle">3</text>
+<circle cx="676.0" cy="540.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="676.0" y="570.0" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<circle cx="768.0" cy="540.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="768.0" y="570.0" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<circle cx="860.0" cy="540.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="860.0" y="570.0" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<circle cx="952.0" cy="540.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="952.0" y="570.0" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<circle cx="1044.0" cy="540.0" r="11" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1044.0" y="570.0" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<circle cx="400.0" cy="540.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="1044.0" cy="540.0" r="11" fill="#ecebfb" stroke="#8f8bd8"/>
+<path d="M 400 528 Q 722.0 460 1040 526" fill="none" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ar)"/>
+<text x="722.0" y="476.0" font-size="11" fill="#6b7280" text-anchor="middle">代价：每层要算 n × n 个打分</text>
+<text x="30.0" y="620.0" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p. 6 Table 1 与 p. 6–7 第 4 节的路径长度论证画的示意；卷积行按论文提到的空洞卷积画，连续核要叠 O(n/k) 层。</text>
+</svg>
