@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">Command A 的层：三层看近处，一层看全局</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 滑动窗口注意力（带 RoPE）；绿 = 全注意力（不带位置编码）；灰 = SwiGLU 的 MLP。两种注意力都用 GQA，注意力与 MLP 并行。</text>
+<text x="40" y="120" font-size="14" fill="#111827" font-weight="700">第 1 层</text>
+<rect x="120" y="96" width="220" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="230.0" y="119.0" font-size="12" fill="#111827" text-anchor="middle">滑动窗口注意力</text>
+<rect x="356" y="96" width="150" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="431.0" y="119.0" font-size="12" fill="#111827" text-anchor="middle">MLP</text>
+<text x="40" y="168" font-size="14" fill="#111827" font-weight="700">第 2 层</text>
+<rect x="120" y="144" width="220" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="230.0" y="167.0" font-size="12" fill="#111827" text-anchor="middle">滑动窗口注意力</text>
+<rect x="356" y="144" width="150" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="431.0" y="167.0" font-size="12" fill="#111827" text-anchor="middle">MLP</text>
+<text x="40" y="216" font-size="14" fill="#111827" font-weight="700">第 3 层</text>
+<rect x="120" y="192" width="220" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="230.0" y="215.0" font-size="12" fill="#111827" text-anchor="middle">滑动窗口注意力</text>
+<rect x="356" y="192" width="150" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="431.0" y="215.0" font-size="12" fill="#111827" text-anchor="middle">MLP</text>
+<text x="40" y="264" font-size="14" fill="#111827" font-weight="700">第 4 层</text>
+<rect x="120" y="240" width="220" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="230.0" y="263.0" font-size="12" fill="#111827" text-anchor="middle">全注意力</text>
+<rect x="356" y="240" width="150" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="431.0" y="263.0" font-size="12" fill="#111827" text-anchor="middle">MLP</text>
+<text x="120" y="306" font-size="11" fill="#9ca3af">……按 3:1 重复</text>
+<text x="40" y="344" font-size="14" fill="#111827" font-weight="700">第 N 层</text>
+<rect x="120" y="320" width="220" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="230.0" y="343.0" font-size="12" fill="#111827" text-anchor="middle">全注意力</text>
+<rect x="356" y="320" width="150" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="431.0" y="343.0" font-size="12" fill="#111827" text-anchor="middle">MLP</text>
+<text x="40" y="382" font-size="11" fill="#9ca3af">输入与输出词嵌入共享（词表 255,000），全模型无 bias</text>
+<rect x="560" y="84" width="530" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="580" y="112" font-size="14" fill="#111827" font-weight="700">每层要为已读 Token 缓存多少 Key/Value</text>
+<text x="580" y="146" font-size="12" fill="#6b7280">上下文 L 只比窗口 W 长一点</text>
+<text x="580" y="176" font-size="12" fill="#111827">滑动窗口层</text>
+<rect x="700" y="160" width="90" height="24" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="800" y="177" font-size="11" fill="#6b7280">只存最近 W 个</text>
+<text x="580" y="210" font-size="12" fill="#111827">全注意力层</text>
+<rect x="700" y="194" width="130" height="24" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="840" y="211" font-size="11" fill="#6b7280">存全部 L 个</text>
+<text x="580" y="262" font-size="12" fill="#6b7280">上下文 L 远长于窗口 W</text>
+<text x="580" y="292" font-size="12" fill="#111827">滑动窗口层</text>
+<rect x="700" y="276" width="90" height="24" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="800" y="293" font-size="11" fill="#6b7280">只存最近 W 个</text>
+<text x="580" y="326" font-size="12" fill="#111827">全注意力层</text>
+<rect x="700" y="310" width="300" height="24" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1010" y="327" font-size="11" fill="#6b7280">存全部 L 个</text>
+<text x="580" y="398" font-size="11" fill="#9ca3af">四层里三层的缓存封顶在 W，所以上下文越长，整体缓存相对全注意力模型省得越多</text>
+<text x="30" y="452" font-size="13" fill="#6b7280">据 PDF p. 3 Figure 2 与正文重画。报告没有给层数 N 与窗口大小 W，右侧条长只示意比例关系，不是实测。</text>
+<text x="30" y="476" font-size="13" fill="#6b7280">实测的缓存占比（相对 Llama 3.3 70B 等）见正文下表，出自 PDF p. 34。</text>
+</svg>

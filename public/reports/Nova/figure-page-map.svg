@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 410" width="1120" height="410" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="410" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">48 页的报告，讲模型本体的只有 p. 3 的一段话</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">一格一页，按该页主体内容着色；半格表示一页里两节各占一半。绿 = 模型是什么（规格与功能）；紫 = 评测结果与评测口径；</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">红 = Responsible AI；黄 = 训练基础设施；灰 = 封面、目录、参考文献、定性示例与署名。</text>
+<rect x="56" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="65.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 1</text>
+<rect x="77" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="98" y="200" width="19" height="56" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="119" y="200" width="19" height="56" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="140" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="149.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 5</text>
+<rect x="161" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="182" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="203" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="224" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="245" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="254.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 10</text>
+<rect x="266" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="287" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="308" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="329" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="350" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="359.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 15</text>
+<rect x="371" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="392" y="200" width="9" height="56" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="402" y="200" width="9" height="56" rx="2" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="413" y="200" width="19" height="56" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="434" y="200" width="19" height="56" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="455" y="200" width="19" height="56" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="464.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 20</text>
+<rect x="476" y="200" width="9" height="56" rx="2" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="486" y="200" width="9" height="56" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="497" y="200" width="19" height="56" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="518" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="539" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="560" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="569.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 25</text>
+<rect x="581" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="602" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="623" y="200" width="19" height="56" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="644" y="200" width="19" height="56" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="665" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="674.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 30</text>
+<rect x="686" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="707" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="728" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="749" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="770" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="779.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 35</text>
+<rect x="791" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="812" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="833" y="200" width="19" height="56" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="854" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="875" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="884.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 40</text>
+<rect x="896" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="917" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="938" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="959" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="980" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="989.5" y="272" font-size="11" fill="#9ca3af" text-anchor="middle">p. 45</text>
+<rect x="1001" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1022" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1043" y="200" width="19" height="56" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="96" y="198" width="23" height="60" rx="4" fill="none" stroke="#111827" stroke-width="1.6"/>
+<path d="M98,188 L98,178 L138,178 L138,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="118.0" y="150" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">模型是什么</text>
+<text x="118.0" y="167" font-size="11" fill="#6b7280" text-anchor="middle">§1</text>
+<path d="M140,188 L140,178 L401,178 L401,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="270.5" y="150" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">评测结果</text>
+<text x="270.5" y="167" font-size="11" fill="#6b7280" text-anchor="middle">§2–4</text>
+<path d="M402,188 L402,178 L485,178 L485,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="443.5" y="150" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">Responsible AI</text>
+<text x="443.5" y="167" font-size="11" fill="#6b7280" text-anchor="middle">§5</text>
+<path d="M518,188 L518,178 L621,178 L621,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="569.5" y="150" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">参考文献</text>
+<text x="569.5" y="167" font-size="11" fill="#6b7280" text-anchor="middle"></text>
+<path d="M665,188 L665,178 L852,178 L852,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="758.5" y="150" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">每个基准的提示词</text>
+<text x="758.5" y="167" font-size="11" fill="#6b7280" text-anchor="middle">附录 B</text>
+<path d="M854,188 L854,178 L1062,178 L1062,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="958.0" y="150" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">定性示例与署名</text>
+<text x="958.0" y="167" font-size="11" fill="#6b7280" text-anchor="middle">附录 C–D</text>
+<path d="M486,290 L486,300 L516,300 L516,290" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="501.0" y="322" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">训练基础设施</text>
+<text x="501.0" y="339" font-size="11" fill="#6b7280" text-anchor="middle">§6</text>
+<path d="M623,290 L623,300 L663,300 L663,290" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="643.0" y="322" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">Canvas 功能</text>
+<text x="643.0" y="339" font-size="11" fill="#6b7280" text-anchor="middle">附录 A</text>
+<path d="M107.5,258 L107.5,312" fill="none" stroke="#111827" stroke-width="1.4"/>
+<text x="115.5" y="322" font-size="12" fill="#111827">架构、数据、后训练：共一段话</text>
+<text x="115.5" y="339" font-size="11" fill="#6b7280">没有参数量、层数、Token 数与超参</text>
+<text x="30" y="392" font-size="11" fill="#9ca3af">据 PDF 目录（p. 2）与逐页内容归类。§1.2 另有一段讲 Canvas 与 Reel 是潜在扩散模型（p. 4）；§6 训练基础设施约一页半（p. 21–22）。</text>
+</svg>

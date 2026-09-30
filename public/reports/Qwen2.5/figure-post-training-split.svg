@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker><marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker><marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker></defs>
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">后训练分两路：有标准答案的走离线 DPO，靠偏好判断的走在线 GRPO</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">绿 = 程序可判定的信号（执行反馈、答案匹配）；紫 = 奖励模型给的信号；黄 = SFT 数据与训练；灰 = 模型检查点。</text>
+<rect x="30" y="210" width="120" height="124" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="42" y="234" font-size="14" font-weight="700" fill="#111827">Base 模型</text>
+<text x="42" y="254" font-size="11" fill="#6b7280">18T Token 预训练</text>
+<rect x="180" y="210" width="220" height="124" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="192" y="234" font-size="14" font-weight="700" fill="#111827">SFT</text>
+<text x="192" y="254" font-size="11" fill="#6b7280">超过 100 万条，九个方向</text>
+<text x="192" y="270" font-size="11" fill="#6b7280">2 个 epoch，序列 32,768</text>
+<text x="192" y="286" font-size="11" fill="#6b7280">学习率 7×10⁻⁶ 降到 7×10⁻⁷</text>
+<rect x="430" y="210" width="240" height="124" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="442" y="234" font-size="14" font-weight="700" fill="#111827">离线 RL：DPO</text>
+<text x="442" y="254" font-size="11" fill="#6b7280">数学、代码、指令遵循、逻辑推理</text>
+<text x="442" y="270" font-size="11" fill="#6b7280">约 15 万对，训练 1 个 epoch</text>
+<text x="442" y="286" font-size="11" fill="#6b7280">Online Merging Optimizer</text>
+<text x="442" y="302" font-size="11" fill="#6b7280">学习率 7×10⁻⁷</text>
+<rect x="700" y="210" width="240" height="124" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="712" y="234" font-size="14" font-weight="700" fill="#111827">在线 RL：GRPO</text>
+<text x="712" y="254" font-size="11" fill="#6b7280">奖励模型按六条标准打分</text>
+<text x="712" y="270" font-size="11" fill="#6b7280">每个查询采样 8 条回答</text>
+<text x="712" y="286" font-size="11" fill="#6b7280">奖励方差高的查询先训</text>
+<text x="712" y="302" font-size="11" fill="#6b7280">全局 batch 2048</text>
+<rect x="970" y="210" width="120" height="124" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="982" y="234" font-size="14" font-weight="700" fill="#111827">Instruct 模型</text>
+<text x="982" y="254" font-size="11" fill="#6b7280">0.5B–72B 与</text>
+<text x="982" y="270" font-size="11" fill="#6b7280">Turbo、Plus</text>
+<path d="M150,272.0 L178,272.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M400,272.0 L428,272.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M670,272.0 L698,272.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M940,272.0 L968,272.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="180" y="100" width="490" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="192" y="124" font-size="14" font-weight="700" fill="#111827">校验流水线：执行反馈 + 答案匹配</text>
+<text x="192" y="144" font-size="11" fill="#6b7280">SFT 阶段建好，用来筛 SFT 数据；离线 RL 直接复用，给重采样的回答判正负例</text>
+<path d="M290,164 L290,208" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<path d="M550,164 L550,208" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<rect x="560" y="384" width="530" height="78" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="572" y="408" font-size="14" font-weight="700" fill="#111827">奖励模型</text>
+<text x="572" y="428" font-size="11" fill="#6b7280">查询：开源数据 + 更复杂的自有查询集；同一查询集也用于 GRPO</text>
+<text x="572" y="444" font-size="11" fill="#6b7280">回答：SFT、DPO、RL 各阶段检查点，用不同温度采样；偏好对人工 + 自动标注</text>
+<path d="M820,384 L820,336" fill="none" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<path d="M550,334 L550,358 L640,358 L640,382" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="430" y="376" font-size="11" fill="#9ca3af">DPO 数据也并入奖励模型训练</text>
+<text x="30" y="488" font-size="11" fill="#9ca3af">据 PDF p. 4–7 重画。报告给的分工理由：离线 RL 负责「有标准答案、但奖励模型难评」的能力；在线 RL 借奖励模型察觉细微质量差别。</text>
+</svg>

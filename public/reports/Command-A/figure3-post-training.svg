@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">后训练：两次「分头训专家、再按权重合并」，最后抛光</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = 单个模型；紫 = 并行训练的领域专家；绿 = 线性合并得到的 Soup；黄 = 抛光阶段。</text>
+<rect x="30" y="191" width="130" height="90" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="95.0" y="222.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Instruct</text>
+<text x="95.0" y="240.0" font-size="11" fill="#6b7280" text-anchor="middle">SFT 后再做偏好</text>
+<text x="95.0" y="258.0" font-size="11" fill="#6b7280" text-anchor="middle">选 SRPO 那版</text>
+<rect x="190" y="86" width="160" height="300" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="270" y="106" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">6 个 SFT 专家</text>
+<rect x="200" y="118" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="270" y="138" font-size="12" fill="#111827" text-anchor="middle">Code</text>
+<rect x="200" y="156" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="270" y="176" font-size="12" fill="#111827" text-anchor="middle">Safety</text>
+<rect x="200" y="194" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="270" y="214" font-size="12" fill="#111827" text-anchor="middle">RAG</text>
+<rect x="200" y="232" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="270" y="252" font-size="12" fill="#111827" text-anchor="middle">Math</text>
+<rect x="200" y="270" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="270" y="290" font-size="12" fill="#111827" text-anchor="middle">Multilingual</text>
+<rect x="200" y="308" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="270" y="328" font-size="12" fill="#111827" text-anchor="middle">Long-Context</text>
+<text x="270" y="374" font-size="11" fill="#6b7280" text-anchor="middle">各自的数据与超参</text>
+<rect x="385" y="196" width="110" height="80" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="440.0" y="222.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">SFT Soup</text>
+<text x="440.0" y="240.0" font-size="11" fill="#6b7280" text-anchor="middle">线性合并</text>
+<text x="440.0" y="258.0" font-size="11" fill="#6b7280" text-anchor="middle">权重人工搜索</text>
+<rect x="525" y="86" width="160" height="300" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="605" y="106" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">6 个 RL 专家</text>
+<rect x="535" y="118" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="605" y="138" font-size="12" fill="#111827" text-anchor="middle">Code</text>
+<rect x="535" y="156" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="605" y="176" font-size="12" fill="#111827" text-anchor="middle">Safety</text>
+<rect x="535" y="194" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="605" y="214" font-size="12" fill="#111827" text-anchor="middle">RAG</text>
+<rect x="535" y="232" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="605" y="252" font-size="12" fill="#111827" text-anchor="middle">Math</text>
+<rect x="535" y="270" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="605" y="290" font-size="12" fill="#111827" text-anchor="middle">Multilingual</text>
+<rect x="535" y="308" width="140" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="605" y="328" font-size="12" fill="#111827" text-anchor="middle">Long-Context</text>
+<text x="605" y="374" font-size="11" fill="#6b7280" text-anchor="middle">可验证奖励或偏好对</text>
+<rect x="720" y="196" width="110" height="80" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="775.0" y="231.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">RL Soup</text>
+<text x="775.0" y="249.0" font-size="11" fill="#6b7280" text-anchor="middle">再合并一次</text>
+<rect x="860" y="166" width="130" height="140" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="925.0" y="204.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">抛光</text>
+<text x="925.0" y="222.0" font-size="11" fill="#6b7280" text-anchor="middle">best-of-N SFT</text>
+<text x="925.0" y="240.0" font-size="11" fill="#6b7280" text-anchor="middle">离线偏好 SRPO</text>
+<text x="925.0" y="258.0" font-size="11" fill="#6b7280" text-anchor="middle">在线 RLHF CoPG</text>
+<text x="925.0" y="276.0" font-size="11" fill="#6b7280" text-anchor="middle">两者乒乓交替</text>
+<rect x="1010" y="206" width="90" height="60" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1055.0" y="240.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Command A</text>
+<line x1="160" y1="236" x2="188" y2="236" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="350" y1="236" x2="383" y2="236" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="495" y1="236" x2="523" y2="236" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="685" y1="236" x2="718" y2="236" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="830" y1="236" x2="858" y2="236" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="990" y1="236" x2="1008" y2="236" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="428" font-size="13" fill="#6b7280">据 PDF p. 5 Figure 3 与 p. 5–6、p. 15–17 正文重画。专家名单按正文（p. 6）；原图画了 7 个专家框，多一个 Instruction-Following，</text>
+<text x="30" y="452" font-size="13" fill="#6b7280">并把 Math 写作 Math &amp; Reasoning、RAG 写作 RAG, Tool Use &amp; Agents。所有专家都从同一个 Instruct 模型初始化（p. 16）。</text>
+<text x="30" y="476" font-size="13" fill="#6b7280">RL 阶段按领域选算法：数学与代码用可验证奖励，安全与多语言用偏好对（p. 6）。合并只花很少算力，每次合并后的评测才是瓶颈（p. 17）。</text>
+</svg>

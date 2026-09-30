@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">PTS 的二分：平的段整段跳过，只往答对概率跳变的那段里钻</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">黑线 = 走到该 Token 后的答对概率；黄 = 两端差值够大、继续切；灰 = 差值小于阈值、停下；红 = 找到的枢轴 Token。</text>
+<text x="40" y="88" font-size="11" fill="#9ca3af">答对概率 1</text>
+<text x="40" y="168" font-size="11" fill="#9ca3af">答对概率 0</text>
+<line x1="140" y1="164" x2="1036" y2="164" stroke="#cbd2d9" stroke-width="1"/>
+<polyline points="140,140.0 672.0,140.0 672.0,92.0 1036,92.0" fill="none" stroke="#111827" stroke-width="2"/>
+<text x="682.0" y="120.0" font-size="11" fill="#6b7280">吐出 t10 后从 0.3 跳到 0.9</text>
+<rect x="142" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="168.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t1</text>
+<rect x="198" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="224.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t2</text>
+<rect x="254" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="280.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t3</text>
+<rect x="310" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="336.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t4</text>
+<rect x="366" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="392.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t5</text>
+<rect x="422" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="448.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t6</text>
+<rect x="478" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="504.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t7</text>
+<rect x="534" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="560.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t8</text>
+<rect x="590" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="616.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t9</text>
+<rect x="646" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="672.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t10</text>
+<rect x="702" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="728.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t11</text>
+<rect x="758" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="784.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t12</text>
+<rect x="814" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="840.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t13</text>
+<rect x="870" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="896.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t14</text>
+<rect x="926" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="952.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t15</text>
+<rect x="982" y="178" width="52" height="24" rx="4" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="1008.0" y="194" font-size="11" fill="#6b7280" text-anchor="middle">t16</text>
+<text x="40" y="246" font-size="14" fill="#111827" font-weight="700">第 0 层</text>
+<rect x="142" y="226" width="892" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="588.0" y="245" font-size="11" fill="#111827" text-anchor="middle">两端差 0.6，切</text>
+<text x="40" y="294" font-size="14" fill="#111827" font-weight="700">第 1 层</text>
+<rect x="142" y="274" width="388" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="336.0" y="293" font-size="11" fill="#111827" text-anchor="middle">两端都是 0.3，停</text>
+<rect x="534" y="274" width="500" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="784.0" y="293" font-size="11" fill="#111827" text-anchor="middle">差 0.6，切</text>
+<text x="40" y="342" font-size="14" fill="#111827" font-weight="700">第 2 层</text>
+<rect x="534" y="322" width="220" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="644.0" y="341" font-size="11" fill="#111827" text-anchor="middle">差 0.6，切</text>
+<rect x="758" y="322" width="276" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="896.0" y="341" font-size="11" fill="#111827" text-anchor="middle">平，停</text>
+<text x="40" y="390" font-size="14" fill="#111827" font-weight="700">第 3 层</text>
+<rect x="534" y="370" width="108" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="588.0" y="389" font-size="11" fill="#111827" text-anchor="middle">停</text>
+<rect x="646" y="370" width="108" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="700.0" y="389" font-size="11" fill="#111827" text-anchor="middle">切</text>
+<text x="40" y="438" font-size="14" fill="#111827" font-weight="700">第 4 层</text>
+<rect x="646" y="418" width="52" height="30" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="672.0" y="437" font-size="11" fill="#111827" text-anchor="middle">枢轴</text>
+<rect x="702" y="418" width="52" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="728.0" y="437" font-size="11" fill="#111827" text-anchor="middle">停</text>
+<rect x="140" y="472" width="896" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="156" y="494" font-size="14" fill="#111827" font-weight="700">产出一条单 Token 的 DPO 样本</text>
+<text x="156" y="514" font-size="11" fill="#6b7280">查询 = 题目 + t1…t9；接受 = 让答对概率上升的单个 Token，拒绝 = 让它下降的单个 Token，两者都从估概率时已采的补全里挑</text>
+<text x="30" y="584" font-size="13" fill="#6b7280">机制示意，依据 PDF p. 13 Figure 4 伪代码与 p. 14 正文重画。Token 数、切分位置与概率值都是演示用的虚构数，不是实测。</text>
+<text x="30" y="608" font-size="13" fill="#6b7280">切分点取累计 Token 对数概率的中点，所以第 1 层停在 t7 而不是 t8；每次比较都要采样补全再交给判定器判对错。</text>
+</svg>
