@@ -403,7 +403,7 @@
 | R-Zero | Tencent | 部件:任务/课程。challenger 与 solver 共进化,ICLR 2026(腾讯西雅图 AI Lab) |
 | GEPA | Berkeley | 部件:Prompt。反思式提示词进化,ICLR 2026 Oral(UC Berkeley 主导,Stanford、Databricks、MIT 等合作) |
 | SEAL | MIT | 部件:模型权重。让模型自己生成「自编辑」(合成训练数据与更新设置)来微调自身权重,NeurIPS 2025 |
-| Darwin-Godel-Machine | Sakana | 部件:harness。agent 改写自身代码 + 基准存档做开放式进化,ICLR 2026(UBC 主导,Sakana 合作) |
+| Darwin-Godel-Machine | UBC | 部件:harness。agent 改写自身代码 + 基准存档做开放式进化,ICLR 2026(UBC 主导,Sakana 合作) |
 | Alita | Princeton | 部件:工具/技能库。最小预定义,自己造 MCP 工具(普林斯顿主导,清华、上交等合作) |
 | AlphaEvolve | Google | 部件:算子/infra。进化搜索出的 kernel 反过来加速训练它自己的模型;原件是白皮书,同文上了 arXiv:2506.13131 |
 | Absolute-Zero | Tsinghua | 部件:任务/课程。零外部数据,出题者与解题者自博弈(BIGAI 合作) |
