@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">接触、支撑、平面支撑：每种代价都是「拿 j 的表面点去查 i 的有向距离」</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = 物件 i，提供有向距离 Dᵢ（内部为负）；紫 = 物件 j，在它表面均匀采点；红点 = 计入代价的点；黄带 = 离 i 表面 σ 以内。二维示意。</text>
+<rect x="16" y="72" width="256" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="288" y="72" width="256" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="560" y="72" width="256" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="832" y="72" width="256" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="56" y="192" width="110" height="110" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<circle cx="186" cy="247" r="48" fill="#ecebfb" fill-opacity="0.85" stroke="#8f8bd8" stroke-width="1"/>
+<circle cx="234.0" cy="247.0" r="3" fill="#8f8bd8"/>
+<circle cx="230.3" cy="265.4" r="3" fill="#8f8bd8"/>
+<circle cx="219.9" cy="280.9" r="3" fill="#8f8bd8"/>
+<circle cx="204.4" cy="291.3" r="3" fill="#8f8bd8"/>
+<circle cx="186.0" cy="295.0" r="3" fill="#8f8bd8"/>
+<circle cx="167.6" cy="291.3" r="3" fill="#8f8bd8"/>
+<circle cx="152.1" cy="280.9" r="3" fill="#d9877a"/>
+<circle cx="141.7" cy="265.4" r="3" fill="#d9877a"/>
+<circle cx="138.0" cy="247.0" r="3" fill="#d9877a"/>
+<circle cx="141.7" cy="228.6" r="3" fill="#d9877a"/>
+<circle cx="152.1" cy="213.1" r="3" fill="#d9877a"/>
+<circle cx="167.6" cy="202.7" r="3" fill="#8f8bd8"/>
+<circle cx="186.0" cy="199.0" r="3" fill="#8f8bd8"/>
+<circle cx="204.4" cy="202.7" r="3" fill="#8f8bd8"/>
+<circle cx="219.9" cy="213.1" r="3" fill="#8f8bd8"/>
+<circle cx="230.3" cy="228.6" r="3" fill="#8f8bd8"/>
+<rect x="308" y="192" width="90" height="110" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<circle cx="490" cy="247" r="40" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<circle cx="530.0" cy="247.0" r="3" fill="#8f8bd8"/>
+<circle cx="527.0" cy="262.3" r="3" fill="#8f8bd8"/>
+<circle cx="518.3" cy="275.3" r="3" fill="#8f8bd8"/>
+<circle cx="505.3" cy="284.0" r="3" fill="#8f8bd8"/>
+<circle cx="490.0" cy="287.0" r="3" fill="#8f8bd8"/>
+<circle cx="474.7" cy="284.0" r="3" fill="#8f8bd8"/>
+<circle cx="461.7" cy="275.3" r="3" fill="#8f8bd8"/>
+<circle cx="453.0" cy="262.3" r="3" fill="#8f8bd8"/>
+<circle cx="450.0" cy="247.0" r="3" fill="#d9877a"/>
+<circle cx="453.0" cy="231.7" r="3" fill="#8f8bd8"/>
+<circle cx="461.7" cy="218.7" r="3" fill="#8f8bd8"/>
+<circle cx="474.7" cy="210.0" r="3" fill="#8f8bd8"/>
+<circle cx="490.0" cy="207.0" r="3" fill="#8f8bd8"/>
+<circle cx="505.3" cy="210.0" r="3" fill="#8f8bd8"/>
+<circle cx="518.3" cy="218.7" r="3" fill="#8f8bd8"/>
+<circle cx="527.0" cy="231.7" r="3" fill="#8f8bd8"/>
+<line x1="399" y1="247" x2="446" y2="247" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="3 3"/>
+<rect x="590" y="262" width="196" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="650" y="302" width="12" height="60" rx="2" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="714" y="302" width="12" height="60" rx="2" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="640" y="202" width="96" height="34" rx="4" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<circle cx="648.0" cy="236" r="3" fill="#8f8bd8"/>
+<circle cx="661.3" cy="236" r="3" fill="#8f8bd8"/>
+<circle cx="674.6" cy="236" r="3" fill="#8f8bd8"/>
+<circle cx="687.9" cy="236" r="3" fill="#d9877a"/>
+<circle cx="701.2" cy="236" r="3" fill="#8f8bd8"/>
+<circle cx="714.5" cy="236" r="3" fill="#8f8bd8"/>
+<circle cx="727.8" cy="236" r="3" fill="#8f8bd8"/>
+<line x1="688" y1="241" x2="688" y2="258" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="852" y="298" width="216" height="14" rx="0" fill="#fdf1dc" stroke="none"/>
+<rect x="852" y="312" width="216" height="30" rx="0" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="892" y="212" width="130" height="70" rx="10" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<circle cx="920" cy="292" r="12" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<circle cx="920" cy="304" r="3" fill="#d9877a"/>
+<circle cx="994" cy="292" r="12" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<circle cx="994" cy="304" r="3" fill="#d9877a"/>
+<circle cx="957" cy="282" r="3" fill="#8f8bd8"/>
+<text x="32" y="100" font-size="14" fill="#111827" text-anchor="start" font-weight="700">接触：穿透时推开</text>
+<text x="32" y="120" font-size="11" fill="#9ca3af" text-anchor="start">式 9 的第一项</text>
+<text x="32" y="392" font-size="11" fill="#6b7280" text-anchor="start">j 上落进 i 内部的点：Dᵢ &lt; 0</text>
+<text x="32" y="412" font-size="11" fill="#6b7280" text-anchor="start">代价 = 这些点的平均穿透深度</text>
+<text x="32" y="432" font-size="11" fill="#6b7280" text-anchor="start">反方向 i → j 再算一遍，相加</text>
+<text x="32" y="452" font-size="11" fill="#6b7280" text-anchor="start">两件物件都跟着优化</text>
+<text x="304" y="100" font-size="14" fill="#111827" text-anchor="start" font-weight="700">接触：分开时拉拢</text>
+<text x="304" y="120" font-size="11" fill="#9ca3af" text-anchor="start">式 9 的第二项</text>
+<text x="304" y="392" font-size="11" fill="#6b7280" text-anchor="start">完全分开时，所有点 Dᵢ &gt; 0</text>
+<text x="304" y="412" font-size="11" fill="#6b7280" text-anchor="start">代价 = 最近那个点的距离</text>
+<text x="304" y="432" font-size="11" fill="#6b7280" text-anchor="start">一旦碰上，这一项归零</text>
+<text x="304" y="452" font-size="11" fill="#6b7280" text-anchor="start">保证至少有一处接触</text>
+<text x="576" y="100" font-size="14" fill="#111827" text-anchor="start" font-weight="700">支撑：只动上面那件</text>
+<text x="576" y="120" font-size="11" fill="#9ca3af" text-anchor="start">式 10</text>
+<text x="576" y="392" font-size="11" fill="#6b7280" text-anchor="start">i 支撑 j：i 视为静止，只动 j</text>
+<text x="576" y="412" font-size="11" fill="#6b7280" text-anchor="start">代价 = |j 表面点里最小的 Dᵢ|</text>
+<text x="576" y="432" font-size="11" fill="#6b7280" text-anchor="start">悬空（正）和压入（负）都罚</text>
+<text x="576" y="452" font-size="11" fill="#6b7280" text-anchor="start">多件东西竖直码放时用</text>
+<text x="848" y="100" font-size="14" fill="#111827" text-anchor="start" font-weight="700">平面支撑：贴住地面</text>
+<text x="848" y="120" font-size="11" fill="#9ca3af" text-anchor="start">式 11</text>
+<text x="848" y="392" font-size="11" fill="#6b7280" text-anchor="start">地面、墙这类平面支撑再加一项</text>
+<text x="848" y="412" font-size="11" fill="#6b7280" text-anchor="start">只取在 i 外侧、距离不到 σ 的点</text>
+<text x="848" y="432" font-size="11" fill="#6b7280" text-anchor="start">代价 = 它们的平均距离</text>
+<text x="848" y="452" font-size="11" fill="#6b7280" text-anchor="start">补「车只重建出两个轮子」这类残缺</text>
+<text x="111" y="184" font-size="12" fill="#6b7280" text-anchor="middle">i</text>
+<text x="216" y="188" font-size="12" fill="#6b7280" text-anchor="middle">j</text>
+<text x="353" y="184" font-size="12" fill="#6b7280" text-anchor="middle">i</text>
+<text x="490" y="196" font-size="12" fill="#6b7280" text-anchor="middle">j</text>
+<text x="424" y="237" font-size="11" fill="#9ca3af" text-anchor="middle">最近距离</text>
+<text x="760" y="196" font-size="11" fill="#6b7280" text-anchor="middle">j（书）</text>
+<text x="760" y="340" font-size="11" fill="#6b7280" text-anchor="middle">i（桌子，静止）</text>
+<text x="957" y="202" font-size="11" fill="#6b7280" text-anchor="middle">j（车身）</text>
+<text x="960" y="364" font-size="11" fill="#6b7280" text-anchor="middle">i（地面）</text>
+<text x="1064" y="294" font-size="12" fill="#d4a24c" text-anchor="end">σ</text>
+</svg>

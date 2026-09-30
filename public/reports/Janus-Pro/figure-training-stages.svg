@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">从 Janus 到 Janus-Pro：架构不动，把「学像素依赖」挪进冻结主干的 Stage I</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">黄 = ImageNet 类别名当提示；绿 = 正常文生图数据；紫 = 多模态理解数据；灰 = 纯文本；虚线框 = 本报告没给数。条长按比例画。</text>
+<text x="400" y="88" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Janus</text>
+<text x="880" y="88" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Janus-Pro</text>
+<rect x="20" y="100" width="1080" height="124" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="40" y="130" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Stage I</text>
+<text x="40" y="150" font-size="11" fill="#6b7280" text-anchor="start">主干冻结</text>
+<text x="40" y="166" font-size="11" fill="#6b7280" text-anchor="start">只训两个适配器</text>
+<text x="40" y="182" font-size="11" fill="#6b7280" text-anchor="start">与图像头</text>
+<rect x="190" y="136" width="420" height="36" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="400" y="159" font-size="13" fill="#6b7280" text-anchor="middle">步数较短，原值与配比本报告未给</text>
+<rect x="670" y="136" width="105" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="722" y="159" font-size="12" fill="#111827" text-anchor="middle">理解 1</text>
+<rect x="775" y="136" width="315" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="932" y="159" font-size="12" fill="#111827" text-anchor="middle">生成 3：在 ImageNet 上练足</text>
+<text x="670" y="198" font-size="11" fill="#6b7280" text-anchor="start">加长到 20K 步。主干不动，也学会了像素依赖（p. 4）</text>
+<rect x="20" y="236" width="1080" height="124" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="40" y="266" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Stage II</text>
+<text x="40" y="286" font-size="11" fill="#6b7280" text-anchor="start">统一预训练</text>
+<text x="40" y="302" font-size="11" fill="#6b7280" text-anchor="start">除两个视觉编码器</text>
+<text x="40" y="318" font-size="11" fill="#6b7280" text-anchor="start">外全部更新</text>
+<text x="190" y="262" font-size="11" fill="#6b7280" text-anchor="start">文生图那部分步数怎么分：</text>
+<rect x="190" y="272" width="280" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="330" y="295" font-size="12" fill="#111827" text-anchor="middle">66.67%：ImageNet 类别名</text>
+<rect x="470" y="272" width="140" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="540" y="295" font-size="12" fill="#111827" text-anchor="middle">正常文生图</text>
+<text x="190" y="334" font-size="11" fill="#6b7280" text-anchor="start">全模型更新的昂贵阶段，三分之二花在热身上</text>
+<text x="670" y="262" font-size="11" fill="#6b7280" text-anchor="start">文生图那部分步数怎么分：</text>
+<rect x="670" y="272" width="420" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="880" y="295" font-size="12" fill="#111827" text-anchor="middle">全部是稠密描述的正常文生图，丢掉 ImageNet</text>
+<text x="670" y="334" font-size="11" fill="#6b7280" text-anchor="start">配比 2:3:5；设定 360K 步，270K 步早停；真实与合成美学图 1:1</text>
+<rect x="20" y="372" width="1080" height="124" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="40" y="402" font-size="14" fill="#111827" text-anchor="start" font-weight="700">Stage III</text>
+<text x="40" y="422" font-size="11" fill="#6b7280" text-anchor="start">监督微调</text>
+<text x="40" y="438" font-size="11" fill="#6b7280" text-anchor="start">再解冻理解编码器</text>
+<text x="190" y="398" font-size="11" fill="#6b7280" text-anchor="start">理解 : 纯文本 : 文生图 = 7 : 3 : 10</text>
+<rect x="190" y="408" width="147" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="263" y="431" font-size="12" fill="#111827" text-anchor="middle">35%</text>
+<rect x="337" y="408" width="63" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="368" y="431" font-size="12" fill="#111827" text-anchor="middle">15%</text>
+<rect x="400" y="408" width="210" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="505" y="431" font-size="12" fill="#111827" text-anchor="middle">50%</text>
+<text x="670" y="398" font-size="11" fill="#6b7280" text-anchor="start">理解 : 纯文本 : 文生图 = 5 : 1 : 4</text>
+<rect x="670" y="408" width="210" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="775" y="431" font-size="12" fill="#111827" text-anchor="middle">50%</text>
+<rect x="880" y="408" width="42" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="901" y="431" font-size="12" fill="#111827" text-anchor="middle">10%</text>
+<rect x="922" y="408" width="168" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1006" y="431" font-size="12" fill="#111827" text-anchor="middle">40%</text>
+<text x="670" y="470" font-size="11" fill="#6b7280" text-anchor="start">1B 跑 80K 步，7B 跑 40K 步；文生图略减，换理解</text>
+<text x="30" y="528" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 3–4 第 2.2 节与 p. 5 Table 2 绘制；百分比由配比换算。数据与规模的改动同时发生，三处改动没有分开测。</text>
+</svg>

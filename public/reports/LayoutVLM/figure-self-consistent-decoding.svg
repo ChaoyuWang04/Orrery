@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 590" width="1120" height="590" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="590" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">自洽解码：拿 VLM 自己写的初值，去筛它自己写的关系</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">示意小例子。灰 = 物体与物理项；绿 = 在初值上已成立、保留进优化；红 = 在初值上不成立、丢弃；黄 = 不参与筛选、直接保留。</text>
+
+<rect x="20" y="72" width="330" height="430" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="185" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">① 数值初值 p̂（俯视）</text>
+<text x="185" y="118" font-size="11" fill="#6b7280" text-anchor="middle">VLM 写出的每件东西的位置与朝向</text>
+<text x="45" y="139" font-size="11" fill="#9ca3af" text-anchor="start">房间边界；左边是墙 wall_1</text>
+<rect x="45" y="145" width="280" height="240" rx="2" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="47" y="220" width="22" height="90" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="70" y1="265" x2="96" y2="265" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="50" y="328" font-size="11" fill="#6b7280" text-anchor="start">bookcase</text>
+<rect x="145" y="240" width="80" height="50" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="185" y="269" font-size="12" fill="#111827" text-anchor="middle">table</text>
+<rect x="170" y="190" width="30" height="30" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="185" y1="188" x2="185" y2="164" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="208" y="210" font-size="11" fill="#6b7280" text-anchor="start">chair_1</text>
+<rect x="170" y="316" width="30" height="30" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="185" y1="314" x2="185" y2="294" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="208" y="336" font-size="11" fill="#6b7280" text-anchor="start">chair_0</text>
+<text x="35" y="412" font-size="11" fill="#6b7280" text-anchor="start">箭头 = 物体的朝前方向</text>
+<text x="35" y="432" font-size="11" fill="#6b7280" text-anchor="start">chair_0 在桌子一侧、面朝桌子</text>
+<text x="35" y="452" font-size="11" fill="#6b7280" text-anchor="start">chair_1 离桌子也近，但背对桌子</text>
+<text x="35" y="472" font-size="11" fill="#6b7280" text-anchor="start">bookcase 贴着左墙、面朝房内</text>
+
+<line x1="351" y1="290" x2="368" y2="290" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="370" y="72" width="440" height="430" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="590" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">② 同一次输出里的关系 R，逐条在 p̂ 上求值</text>
+<text x="590" y="118" font-size="11" fill="#6b7280" text-anchor="middle">L(p̂) ≤ ε 记为成立；ε 的数值原文没有给</text>
+<rect x="390" y="135" width="400" height="46" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="402" y="155" font-size="13" fill="#111827" text-anchor="start">distance(chair_0, table, 0.5, 1.5)</text>
+<text x="402" y="172" font-size="11" fill="#6b7280" text-anchor="start">初值距离落在区间里 → 成立，保留</text>
+<rect x="390" y="193" width="400" height="46" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="402" y="213" font-size="13" fill="#111827" text-anchor="start">point_towards(chair_0, table)</text>
+<text x="402" y="230" font-size="11" fill="#6b7280" text-anchor="start">初值已经面朝桌子 → 成立，保留</text>
+<rect x="390" y="251" width="400" height="46" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="402" y="271" font-size="13" fill="#111827" text-anchor="start">point_towards(chair_1, table)</text>
+<text x="402" y="288" font-size="11" fill="#6b7280" text-anchor="start">初值背对桌子 → 不成立，丢弃，优化时不再出现</text>
+<rect x="390" y="309" width="400" height="46" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="402" y="329" font-size="13" fill="#111827" text-anchor="start">against_wall(bookcase, wall_1)</text>
+<text x="402" y="346" font-size="11" fill="#6b7280" text-anchor="start">初值已贴墙、背朝墙 → 成立，保留</text>
+<rect x="390" y="367" width="400" height="46" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="402" y="387" font-size="13" fill="#111827" text-anchor="start">on_top_of(lamp, side_table)</text>
+<text x="402" y="404" font-size="11" fill="#6b7280" text-anchor="start">附录 A.3：叠放关系不参与筛选，直接保留（① 中未画出）</text>
+<text x="385" y="440" font-size="11" fill="#9ca3af" text-anchor="start">附录 A.3 另有一条简化：每个资产至多留一条朝向关系，</text>
+<text x="385" y="458" font-size="11" fill="#9ca3af" text-anchor="start">point_towards 与 align_with 二选一。</text>
+
+<line x1="791" y1="158" x2="843" y2="190" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="791" y1="216" x2="843" y2="195" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="791" y1="332" x2="843" y2="205" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="791" y1="390" x2="843" y2="215" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="830" y="72" width="270" height="430" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="965" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">③ 进入可微优化的目标</text>
+<rect x="845" y="135" width="240" height="105" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="857" y="160" font-size="14" fill="#111827" text-anchor="start" font-weight="700">语义项 L_semantic</text>
+<text x="857" y="182" font-size="11" fill="#6b7280" text-anchor="start">只累加保留下来的 4 条关系</text>
+<text x="857" y="199" font-size="11" fill="#6b7280" text-anchor="start">在当前位姿 p 上的损失</text>
+<text x="857" y="223" font-size="11" fill="#9ca3af" text-anchor="start">PDF p. 5 式 (1)</text>
+<text x="965" y="258" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">+</text>
+<rect x="845" y="268" width="240" height="105" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="857" y="293" font-size="14" fill="#111827" text-anchor="start" font-weight="700">物理项 L_physics</text>
+<text x="857" y="315" font-size="11" fill="#6b7280" text-anchor="start">每一对物体的 3D 有向包围盒</text>
+<text x="857" y="332" font-size="11" fill="#6b7280" text-anchor="start">上的 Distance-IoU，防穿模</text>
+<text x="857" y="356" font-size="11" fill="#9ca3af" text-anchor="start">PDF p. 5 式 (2)</text>
+<text x="845" y="400" font-size="11" fill="#6b7280" text-anchor="start">Adam，400 步；每 100 步</text>
+<text x="845" y="417" font-size="11" fill="#6b7280" text-anchor="start">把物体投影回房间边界</text>
+<text x="845" y="434" font-size="11" fill="#9ca3af" text-anchor="start">附录 A.2，PDF p. 14</text>
+<text x="845" y="464" font-size="11" fill="#6b7280" text-anchor="start">没有任何一项要求 chair_1 转身：</text>
+<text x="845" y="481" font-size="11" fill="#6b7280" text-anchor="start">优化只替它修穿模和出界</text>
+
+<text x="30" y="532" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 5 式 (1)–(2) 与附录 A.2–A.3（PDF p. 13–15）画的机制示意；物体、关系和数值是虚构的小例子，不是论文里的场景。</text>
+<text x="30" y="556" font-size="13" fill="#9ca3af" text-anchor="start">反过来也成立（我们的解释）：初值把椅子摆错了边，「同侧」那条关系会在这一步被滤掉；作者把偶发失败归于初值不佳（PDF p. 9）。</text>
+</svg>

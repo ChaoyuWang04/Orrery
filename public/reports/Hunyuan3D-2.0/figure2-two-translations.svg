@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 470" width="1120" height="470" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="470" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Hunyuan3D 2.0：同一张图用两次，几何译成一维 token，纹理译成二维多视图</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">绿 = 输入图；紫 = 几何段的学习模块（在 token 序列上工作）；黄 = 纹理段的学习模块（在二维图像上工作）；灰 = 不学习的几何算法；白 = 产物。</text>
+<text x="188" y="92" font-size="13" fill="#6b7280" text-anchor="start">第一段 · 出白模：3D 形状 → 一条无坐标的 token 序列</text>
+<text x="632" y="290" font-size="13" fill="#6b7280" text-anchor="start">第二段 · 上色：给白模画多视图，再烤回 UV 贴图</text>
+<rect x="40" y="104" width="124" height="252" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="102" y="222" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">输入图</text>
+<text x="102" y="242" font-size="11" fill="#6b7280" text-anchor="middle">单张，图生 3D</text>
+<rect x="188" y="104" width="124" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="250" y="128" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">DINOv2 Giant</text>
+<text x="250" y="147" font-size="11" fill="#6b7280" text-anchor="middle">白底居中，518 × 518</text>
+<rect x="336" y="104" width="124" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="398" y="128" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Hunyuan3D-DiT</text>
+<text x="398" y="147" font-size="11" fill="#6b7280" text-anchor="middle">流匹配，欧拉 N 步</text>
+<rect x="484" y="104" width="124" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="546" y="128" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">形状 latent</text>
+<text x="546" y="147" font-size="11" fill="#6b7280" text-anchor="middle">最长 3072 个 token</text>
+<rect x="632" y="104" width="124" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="694" y="128" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VAE 解码器</text>
+<text x="694" y="147" font-size="11" fill="#6b7280" text-anchor="middle">每个格点一个 SDF</text>
+<rect x="780" y="104" width="124" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="842" y="128" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Marching Cubes</text>
+<text x="842" y="147" font-size="11" fill="#6b7280" text-anchor="middle">抽出三角网格</text>
+<rect x="928" y="104" width="124" height="56" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="990" y="128" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">白模</text>
+<text x="990" y="147" font-size="11" fill="#6b7280" text-anchor="middle">有形状，没颜色</text>
+<line x1="164" y1="132" x2="186" y2="132" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="312" y1="132" x2="334" y2="132" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="460" y1="132" x2="482" y2="132" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="608" y1="132" x2="630" y2="132" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="756" y1="132" x2="778" y2="132" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="904" y1="132" x2="926" y2="132" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="336" y="196" width="272" height="48" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="472" y="217" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">选视角，渲染法线图与坐标图</text>
+<text x="472" y="235" font-size="11" fill="#6b7280" text-anchor="middle">几何条件，与视角无关的规范坐标系</text>
+<polyline points="990,160 990,220 610,220" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="398" y1="244" x2="398" y2="298" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="188" y="300" width="124" height="56" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="250" y="324" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">去光照</text>
+<text x="250" y="343" font-size="11" fill="#6b7280" text-anchor="middle">拆掉参考图的光影</text>
+<rect x="336" y="300" width="124" height="56" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="398" y="324" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Paint 多视图</text>
+<text x="398" y="343" font-size="11" fill="#6b7280" text-anchor="middle">SD2 上微调</text>
+<rect x="484" y="300" width="124" height="56" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="546" y="324" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">单图超分</text>
+<text x="546" y="343" font-size="11" fill="#6b7280" text-anchor="middle">每个视角各跑一次</text>
+<rect x="632" y="300" width="124" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="694" y="324" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">UV 烘焙</text>
+<text x="694" y="343" font-size="11" fill="#6b7280" text-anchor="middle">多视图反投影</text>
+<rect x="780" y="300" width="124" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="842" y="324" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">补洞</text>
+<text x="842" y="343" font-size="11" fill="#6b7280" text-anchor="middle">距离倒数加权插值</text>
+<rect x="928" y="300" width="124" height="56" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="990" y="324" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">带纹理资产</text>
+<text x="990" y="343" font-size="11" fill="#6b7280" text-anchor="middle">一张颜色贴图</text>
+<line x1="164" y1="328" x2="186" y2="328" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="312" y1="328" x2="334" y2="328" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="460" y1="328" x2="482" y2="328" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="608" y1="328" x2="630" y2="328" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="756" y1="328" x2="778" y2="328" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="904" y1="328" x2="926" y2="328" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="394" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 4 Figure 2 与 p. 3 第 2 节重画，只表示模块连接，不含耗时与规模。两段解耦：Paint 也能给美术手工建的模上色。</text>
+<text x="30" y="418" font-size="13" fill="#6b7280" text-anchor="start">同一张图，几何段取 DINOv2 特征，纹理段取去光照后的 VAE 特征；各模块细节见后文三张图。</text>
+<text x="30" y="450" font-size="11" fill="#9ca3af" text-anchor="start">推理步数 N、Marching Cubes 格点分辨率、最终贴图分辨率报告都没有给。</text>
+</svg>

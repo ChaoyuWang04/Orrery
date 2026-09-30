@@ -311,7 +311,7 @@
 | FirePlace | Google | LLM 常识加几何约束做 3D 物体摆放(CVPR 2025 highlight;DeepMind) |
 | CAST | ShanghaiTech | 单张 RGB 做组件对齐的 3D 场景重建(SIGGRAPH 2025 Best Paper) |
 | Janus-Pro | DeepSeek | 解耦视觉编码:看图和画图不共用一只眼睛 |
-| Hunyuan3D-2.0 | Tencent | 高分辨率带纹理 3D 资产生成 |
+| Hunyuan3D-2.0 | Tencent | 先出白模再上色:几何压成无坐标 token 做流匹配,纹理交给冻结锚定的多视图扩散再烘焙 |
 | LayoutVLM | Stanford | VLM 可微优化 3D 布局(CVPR 2025) |
 | TRELLIS | Microsoft | 结构化 3D 潜表示,一套潜变量出多种 3D 格式 |
 | Video-3D-LLM | CUHK | 把 3D 场景当视频,位置感知表示(CVPR 2025) |

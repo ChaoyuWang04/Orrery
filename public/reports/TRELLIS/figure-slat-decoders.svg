@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">SLAT：一个活跃格上的一条向量，三种解码器各自展开成不同的 3D 格式</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 活跃体素与它的潜向量；白 = 空格，不进网络；绿 / 黄 / 红 = 高斯、辐射场、网格三种输出。左栏是二维切片示意，尺寸取自附录 A.2（PDF p. 15）。</text>
+<rect x="16" y="76" width="340" height="520" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="376" y="76" width="728" height="160" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="376" y="250" width="728" height="160" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="376" y="424" width="728" height="160" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="5 4"/>
+<rect x="60" y="150" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="92" y="150" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="124" y="150" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="156" y="150" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="188" y="150" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="220" y="150" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="252" y="150" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="284" y="150" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="60" y="182" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="92" y="182" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="124" y="182" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="156" y="182" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="188" y="182" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="220" y="182" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="252" y="182" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="284" y="182" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="60" y="214" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="92" y="214" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="124" y="214" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="156" y="214" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="188" y="214" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="220" y="214" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="252" y="214" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="284" y="214" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="60" y="246" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="92" y="246" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="124" y="246" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="156" y="246" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="188" y="246" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="220" y="246" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="252" y="246" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="2.6"/>
+<rect x="284" y="246" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="60" y="278" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="92" y="278" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="124" y="278" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="156" y="278" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="188" y="278" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="220" y="278" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="252" y="278" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="284" y="278" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="60" y="310" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="92" y="310" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="124" y="310" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="156" y="310" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="188" y="310" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="220" y="310" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="252" y="310" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="284" y="310" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="60" y="342" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="92" y="342" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="124" y="342" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="156" y="342" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="188" y="342" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="220" y="342" width="32" height="32" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="252" y="342" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="284" y="342" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="60" y="374" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="92" y="374" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="124" y="374" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="156" y="374" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="188" y="374" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="220" y="374" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="252" y="374" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="284" y="374" width="32" height="32" rx="0" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<ellipse cx="188" cy="278" rx="81.6" ry="81.6" fill="none" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="36" y="104" font-size="14" fill="#111827" text-anchor="start" font-weight="700">SLAT：只在表面穿过的格子上放向量</text>
+<text x="36" y="124" font-size="11" fill="#9ca3af" text-anchor="start">虚线圈 = 物体表面；它穿过的格子才是活跃体素</text>
+<text x="36" y="440" font-size="14" fill="#111827" text-anchor="start" font-weight="700">64³ = 262,144 个格子</text>
+<text x="36" y="464" font-size="11" fill="#6b7280" text-anchor="start">平均只有 L ≈ 20K 个活跃，约占 7.6%</text>
+<text x="36" y="488" font-size="11" fill="#6b7280" text-anchor="start">每个活跃格存两样东西：</text>
+<text x="36" y="510" font-size="11" fill="#6b7280" text-anchor="start">坐标 pᵢ：哪些格子非空，管粗几何</text>
+<text x="36" y="532" font-size="11" fill="#6b7280" text-anchor="start">向量 zᵢ（8 维）：细形状与外观</text>
+<text x="36" y="560" font-size="11" fill="#9ca3af" text-anchor="start">7.6% 由 20K / 262,144 算得，原文只写 L ≪ N³</text>
+<path d="M286,262.0 C324,262.0 340,156 370,156" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M286,262.0 C324,262.0 340,330 370,330" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M286,262.0 C324,262.0 340,504 370,504" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="396" y="110" font-size="14" fill="#111827" text-anchor="start" font-weight="700">高斯解码器</text>
+<text x="396" y="132" font-size="11" fill="#6b7280" text-anchor="start">输出：3D 高斯</text>
+<text x="396" y="154" font-size="11" fill="#9ca3af" text-anchor="start">与编码器端到端一起训</text>
+<rect x="590" y="92" width="40" height="40" rx="0" fill="none" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="590" y="132" width="40" height="40" rx="0" fill="none" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="590" y="172" width="40" height="40" rx="0" fill="none" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="630" y="92" width="40" height="40" rx="0" fill="none" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="630" y="132" width="40" height="40" rx="0" fill="none" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="630" y="172" width="40" height="40" rx="0" fill="none" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="670" y="92" width="40" height="40" rx="0" fill="none" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="670" y="132" width="40" height="40" rx="0" fill="none" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="670" y="172" width="40" height="40" rx="0" fill="none" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="630" y="132" width="40" height="40" rx="0" fill="none" stroke="#8f8bd8" stroke-width="2"/>
+<ellipse cx="626.9" cy="155.9" rx="5.8" ry="4.0" transform="rotate(113 626.9 155.9)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="611.8" cy="109.2" rx="8.2" ry="3.1" transform="rotate(42 611.8 109.2)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="693.6" cy="149.4" rx="8.2" ry="3.7" transform="rotate(115 693.6 149.4)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="619.3" cy="163.9" rx="8.3" ry="3.8" transform="rotate(133 619.3 163.9)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="665.1" cy="113.6" rx="7.8" ry="4.0" transform="rotate(54 665.1 113.6)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="608.7" cy="184.2" rx="6.4" ry="4.3" transform="rotate(158 608.7 184.2)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="668.8" cy="189.1" rx="6.0" ry="4.5" transform="rotate(80 668.8 189.1)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="688.3" cy="185.3" rx="4.5" ry="2.8" transform="rotate(39 688.3 185.3)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="691.0" cy="146.4" rx="7.1" ry="3.3" transform="rotate(91 691.0 146.4)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="640.0" cy="138.9" rx="6.9" ry="4.0" transform="rotate(163 640.0 138.9)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="666.0" cy="189.7" rx="8.3" ry="5.0" transform="rotate(121 666.0 189.7)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="620.4" cy="183.7" rx="8.8" ry="4.8" transform="rotate(102 620.4 183.7)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="668.8" cy="126.6" rx="8.2" ry="3.9" transform="rotate(51 668.8 126.6)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<ellipse cx="611.6" cy="183.1" rx="8.9" ry="2.7" transform="rotate(144 611.6 183.1)" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="650" y="228" font-size="11" fill="#9ca3af" text-anchor="middle">中心只能落在本格 ±1 格内</text>
+<text x="750" y="116" font-size="14" fill="#111827" text-anchor="start" font-weight="700">每格解出 K = 32 个高斯</text>
+<text x="750" y="140" font-size="11" fill="#6b7280" text-anchor="start">每个高斯：偏移 o、颜色、尺度、不透明度、旋转</text>
+<text x="750" y="162" font-size="11" fill="#6b7280" text-anchor="start">位置 = pᵢ + tanh(o)，tanh 把偏移压进 (−1, 1)</text>
+<text x="750" y="184" font-size="11" fill="#6b7280" text-anchor="start">尺度下限 9×10⁻⁴，屏幕空间滤波方差 0.1</text>
+<text x="750" y="206" font-size="11" fill="#6b7280" text-anchor="start">网络直接预测高斯，原版的分裂与剪枝用不上，</text>
+<text x="750" y="224" font-size="11" fill="#6b7280" text-anchor="start">改用体积正则与不透明度正则防退化</text>
+<text x="396" y="284" font-size="14" fill="#111827" text-anchor="start" font-weight="700">辐射场解码器</text>
+<text x="396" y="306" font-size="11" fill="#6b7280" text-anchor="start">输出：辐射场</text>
+<text x="396" y="328" font-size="11" fill="#9ca3af" text-anchor="start">冻住编码器后单独训</text>
+<rect x="590" y="266" width="120" height="120" rx="0" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<line x1="605.0" y1="266" x2="605.0" y2="386" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="590" y1="281.0" x2="710" y2="281.0" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="620.0" y1="266" x2="620.0" y2="386" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="590" y1="296.0" x2="710" y2="296.0" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="635.0" y1="266" x2="635.0" y2="386" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="590" y1="311.0" x2="710" y2="311.0" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="650.0" y1="266" x2="650.0" y2="386" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="590" y1="326.0" x2="710" y2="326.0" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="665.0" y1="266" x2="665.0" y2="386" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="590" y1="341.0" x2="710" y2="341.0" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="680.0" y1="266" x2="680.0" y2="386" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="590" y1="356.0" x2="710" y2="356.0" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="695.0" y1="266" x2="695.0" y2="386" stroke="#d4a24c" stroke-width="0.6"/>
+<line x1="590" y1="371.0" x2="710" y2="371.0" stroke="#d4a24c" stroke-width="0.6"/>
+<rect x="590" y="266" width="120" height="120" rx="0" fill="none" stroke="#8f8bd8" stroke-width="2"/>
+<text x="650" y="402" font-size="11" fill="#9ca3af" text-anchor="middle">本格内一块 8³ 小体积</text>
+<text x="750" y="290" font-size="14" fill="#111827" text-anchor="start" font-weight="700">每格 4 组向量，拼成一块 8³ 小体积</text>
+<text x="750" y="314" font-size="11" fill="#6b7280" text-anchor="start">x、y、z 三个方向各 16×8，颜色与密度 16×4</text>
+<text x="750" y="336" font-size="11" fill="#6b7280" text-anchor="start">秩 16 的 CP 分解，还原成 8×8×8×4</text>
+<text x="750" y="358" font-size="11" fill="#6b7280" text-anchor="start">按 pᵢ 拼回去：64 × 8 = 512，得到 512³ 辐射场</text>
+<text x="750" y="380" font-size="11" fill="#6b7280" text-anchor="start">自写 CUDA 渲染器：排序、光线行进、积分</text>
+<text x="750" y="398" font-size="11" fill="#6b7280" text-anchor="start">与 CP 重建融进同一个 kernel</text>
+<text x="396" y="458" font-size="14" fill="#111827" text-anchor="start" font-weight="700">网格解码器</text>
+<text x="396" y="480" font-size="11" fill="#6b7280" text-anchor="start">输出：三角网格</text>
+<text x="396" y="502" font-size="11" fill="#9ca3af" text-anchor="start">冻住编码器后单独训</text>
+<rect x="590" y="440" width="120" height="120" rx="0" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<line x1="620.0" y1="440" x2="620.0" y2="560" stroke="#d9877a" stroke-width="0.8"/>
+<line x1="590" y1="470.0" x2="710" y2="470.0" stroke="#d9877a" stroke-width="0.8"/>
+<line x1="650.0" y1="440" x2="650.0" y2="560" stroke="#d9877a" stroke-width="0.8"/>
+<line x1="590" y1="500.0" x2="710" y2="500.0" stroke="#d9877a" stroke-width="0.8"/>
+<line x1="680.0" y1="440" x2="680.0" y2="560" stroke="#d9877a" stroke-width="0.8"/>
+<line x1="590" y1="530.0" x2="710" y2="530.0" stroke="#d9877a" stroke-width="0.8"/>
+<polyline points="594,540 620,524 648,510 674,484 694,470 707,446" fill="none" stroke="#111827" stroke-width="1.6"/>
+<rect x="590" y="440" width="120" height="120" rx="0" fill="none" stroke="#8f8bd8" stroke-width="2"/>
+<text x="650" y="576" font-size="11" fill="#9ca3af" text-anchor="middle">本格细分成 4³，黑线为抽出的面</text>
+<text x="750" y="464" font-size="14" fill="#111827" text-anchor="start" font-weight="700">两次稀疏卷积上采样：64³ → 256³</text>
+<text x="750" y="488" font-size="11" fill="#6b7280" text-anchor="start">每个细格：45 个 FlexiCubes 参数 + 8 个顶点有向距离</text>
+<text x="750" y="510" font-size="11" fill="#6b7280" text-anchor="start">另预测顶点颜色与法线，共享顶点取各格平均</text>
+<text x="750" y="532" font-size="11" fill="#6b7280" text-anchor="start">空格的有向距离置 1.0，在 256³ 上抽 0 等值面</text>
+<text x="750" y="554" font-size="11" fill="#6b7280" text-anchor="start">损失 = 几何 + 0.1 × 颜色 + 正则，</text>
+<text x="750" y="572" font-size="11" fill="#6b7280" text-anchor="start">渲染掩膜、深度、法线与颜色图来算</text>
+<text x="30" y="624" font-size="11" fill="#9ca3af" text-anchor="start">三个解码器共用同一种 Transformer 骨架，只换输出层（PDF p. 4）。高斯分支撑开潜空间，另两支在冻住的编码器上从头训（PDF p. 5）。</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Hunyuan3D-Paint：冻住的参考网当锚，三路注意力并排相加</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = 冻结的原 SD2.1 权重；黄 = 新加并参与训练；绿 = 几何与视角条件；紫 = 去光照后的参考图；白 = 图上未标或张量。</text>
+<rect x="20" y="72" width="1080" height="300" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="40" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">生成分支的一个块（每个视角各一份）</text>
+<rect x="40" y="130" width="200" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="140" y="154" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">噪声 latent 拼接</text>
+<text x="140" y="172" font-size="11" fill="#6b7280" text-anchor="middle">法线图、坐标图的 VAE 特征</text>
+<text x="140" y="186" font-size="11" fill="#6b7280" text-anchor="middle">按通道拼在一起</text>
+<rect x="40" y="220" width="200" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="140" y="247" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">加宽输入通道的 Conv-In</text>
+<line x1="140" y1="194" x2="140" y2="218" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="276" y="140" width="80" height="170" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="316" y="230" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">ResBlock</text>
+<polyline points="240,242 258,242 258,226 274,226" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="420" y="116" width="260" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="550" y="138" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">多视图注意力 · λ_mv</text>
+<text x="550" y="157" font-size="11" fill="#6b7280" text-anchor="middle">和同批其他视角对齐</text>
+<rect x="420" y="198" width="260" height="52" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="550" y="220" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">原自注意力</text>
+<text x="550" y="239" font-size="11" fill="#6b7280" text-anchor="middle">保持单张图自身结构</text>
+<rect x="420" y="280" width="260" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="550" y="302" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">参考注意力 · λ_ref</text>
+<text x="550" y="321" font-size="11" fill="#6b7280" text-anchor="middle">读取参考图的特征缓存</text>
+<polyline points="356,225 388,225 388,142 418,142" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="356" y1="225" x2="418" y2="225" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="388,225 388,306 418,306" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<circle cx="760" cy="224" r="18" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="760" y="230" font-size="18" fill="#6b7280" text-anchor="middle">+</text>
+<polyline points="680,142 760,142 760,204" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="680" y1="224" x2="740" y2="224" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="680,306 760,306 760,244" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="820" y="140" width="80" height="170" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="860" y="230" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">ResBlock</text>
+<line x1="778" y1="224" x2="818" y2="224" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="930" y="116" width="150" height="72" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1005" y="140" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">相机嵌入</text>
+<text x="1005" y="158" font-size="11" fill="#6b7280" text-anchor="middle">44 个预设视角</text>
+<text x="1005" y="174" font-size="11" fill="#6b7280" text-anchor="middle">各有一个整数编号</text>
+<polyline points="1005,116 1005,106 620,106 620,114" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="20" y="392" width="1080" height="190" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="40" y="418" font-size="14" fill="#111827" text-anchor="start" font-weight="700">参考分支（整条冻结）</text>
+<rect x="40" y="440" width="200" height="64" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="140" y="464" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">去光照后的参考图</text>
+<text x="140" y="482" font-size="11" fill="#6b7280" text-anchor="middle">原始 VAE 特征，不加噪</text>
+<rect x="290" y="440" width="390" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="485" y="464" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">原 SD2.1 的 U-Net，timestep = 0</text>
+<text x="485" y="483" font-size="11" fill="#6b7280" text-anchor="middle">不跟着训练，始终用见过真实照片的那套权重读图</text>
+<line x1="240" y1="472" x2="288" y2="472" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="550,440 550,380 700,380 700,306 682,306" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="712" y="376" font-size="11" fill="#6b7280" text-anchor="start">每个自注意力之前抓一份特征缓存</text>
+<text x="730" y="464" font-size="13" fill="#6b7280" text-anchor="start">共享权重的参考网会跟着渲染数据漂；</text>
+<text x="730" y="486" font-size="13" fill="#6b7280" text-anchor="start">冻住后它成了一根不动的桩（p. 8）。</text>
+<text x="40" y="540" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 7 Figure 5 右半与 p. 8 式 4 重画。输出 = 原自注意力 + λ_ref · 参考注意力 + λ_mv · 多视图注意力；两个 λ 的取值报告没给。</text>
+<text x="40" y="564" font-size="11" fill="#9ca3af" text-anchor="start">冻结与训练按原图的雪花与火焰标记着色；原图两个 ResBlock 一个标火焰、一个标雪花，正文没解释，这里留白。</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">ShapeVAE：边角单独采样、单独做 FPS，查询名额才不会被摊平</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = 均匀采样那一路；黄 = 边角重要性采样那一路；紫 = 可学习的注意力层；白 = 张量；虚线框 = 本文推演，报告没有做这个对照。</text>
+<rect x="20" y="72" width="540" height="508" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="40" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">编码：一张网格 → M′+N′ 个 token</text>
+<rect x="44" y="116" width="230" height="52" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="159" y="138" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">均匀点云 P_u</text>
+<text x="159" y="157" font-size="11" fill="#6b7280" text-anchor="middle">按面积撒 M 个点，带法向</text>
+<rect x="306" y="116" width="230" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="421" y="138" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">重要性点云 P_i</text>
+<text x="421" y="157" font-size="11" fill="#6b7280" text-anchor="middle">在边和角上多撒，N 个点</text>
+<rect x="44" y="196" width="230" height="46" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="159" y="216" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">FPS → 查询 Q_u</text>
+<text x="159" y="233" font-size="11" fill="#6b7280" text-anchor="middle">M′ 个，只在这一路里铺开</text>
+<rect x="306" y="196" width="230" height="46" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="421" y="216" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">FPS → 查询 Q_i</text>
+<text x="421" y="233" font-size="11" fill="#6b7280" text-anchor="middle">N′ 个，边角名额保住</text>
+<line x1="159" y1="168" x2="159" y2="194" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="421" y1="168" x2="421" y2="194" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="44" y="270" width="492" height="50" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="290" y="291" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">拼接后加傅里叶编码与线性投影</text>
+<text x="290" y="310" font-size="11" fill="#6b7280" text-anchor="middle">全部点 P（M+N 个）作键值，全部查询 Q（M′+N′ 个）作查询</text>
+<line x1="159" y1="242" x2="159" y2="268" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="421" y1="242" x2="421" y2="268" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="120" y="344" width="340" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="290" y="369" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">交叉注意力 × 1：点压进查询</text>
+<rect x="120" y="400" width="340" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="290" y="425" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">自注意力 × 8</text>
+<rect x="120" y="456" width="340" height="52" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="290" y="478" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">latent token 序列</text>
+<text x="290" y="497" font-size="11" fill="#6b7280" text-anchor="middle">预测均值与方差；长度训练时随机，最长 3072</text>
+<line x1="290" y1="320" x2="290" y2="342" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="290" y1="384" x2="290" y2="398" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="290" y1="440" x2="290" y2="454" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="40" y="540" font-size="11" fill="#9ca3af" text-anchor="start">token 的顺序来自 FPS 挑点的顺序，与空间位置没有固定对应。</text>
+<text x="40" y="560" font-size="11" fill="#9ca3af" text-anchor="start">层数 8 与 16 只画在图里，正文只说「若干层」。</text>
+<rect x="580" y="72" width="520" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="600" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">解码：token → SDF → 网格</text>
+<rect x="640" y="116" width="400" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="840" y="141" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">投影回宽度 d，自注意力 × 16</text>
+<rect x="640" y="176" width="400" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="840" y="198" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">交叉注意力：规则网格点作查询</text>
+<text x="840" y="217" font-size="11" fill="#6b7280" text-anchor="middle">H × W × D 个格点各问一次「我离表面多远」</text>
+<rect x="640" y="248" width="400" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="840" y="273" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">每个格点一个 SDF 值</text>
+<rect x="640" y="308" width="400" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="840" y="333" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Marching Cubes 抽出三角网格</text>
+<line x1="840" y1="156" x2="840" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="840" y1="228" x2="840" y2="246" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="840" y1="288" x2="840" y2="306" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="600" y="386" font-size="11" fill="#6b7280" text-anchor="start">训练：在随机空间点与表面点上算 SDF 的 MSE，加 γ 倍 KL（式 1）。</text>
+<polyline points="460,482 570,482 570,136 638,136" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="580" y="432" width="520" height="148" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="600" y="458" font-size="14" fill="#111827" text-anchor="start" font-weight="700">反事实：两路先拼起来再做一次 FPS</text>
+<text x="600" y="484" font-size="13" fill="#6b7280" text-anchor="start">FPS 每次挑离已选点最远的点，天然把查询铺匀。</text>
+<text x="600" y="506" font-size="13" fill="#6b7280" text-anchor="start">边角上刻意加密的点彼此挨得近，大多会被跳过，</text>
+<text x="600" y="528" font-size="13" fill="#6b7280" text-anchor="start">查询名额又按面积分回光滑大面，重要性采样白做。</text>
+<text x="600" y="560" font-size="11" fill="#9ca3af" text-anchor="start">报告只在 Figure 3 图注里强调「分开做」，没有给这组对照。</text>
+</svg>

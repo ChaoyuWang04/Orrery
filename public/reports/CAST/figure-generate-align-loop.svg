@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker><marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">物件生成与对齐互相喂：先只看图长出形状，再一轮轮把可见点云接进来</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 物件生成器；黄 = 对齐生成器；绿 = 部分点云；灰 = 固定的编码、解码与闭式计算。按式 4–7（PDF p. 7–8）重画，是机制示意。</text>
+<rect x="40" y="96" width="236" height="118" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="440" y="96" width="236" height="118" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="840" y="96" width="236" height="118" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="40" y="316" width="236" height="118" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="340" y="316" width="236" height="118" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="640" y="316" width="216" height="118" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="900" y="316" width="180" height="118" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<line x1="278" y1="155.0" x2="436" y2="155.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="678" y1="155.0" x2="836" y2="155.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="278" y1="375.0" x2="336" y2="375.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="578" y1="375.0" x2="636" y2="375.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="858" y1="375.0" x2="896" y2="375.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M500,216 L500,254 L458.0,254 L458.0,312" fill="none" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="510" y="248" font-size="11" fill="#6b7280" text-anchor="start">几何潜变量 z⁽ᵏ⁾</text>
+<path d="M748.0,314 L748.0,278 L626,278 L626,218" fill="none" stroke="#5fa886" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#ag)"/>
+<text x="760.0" y="264" font-size="11" fill="#6b7280" text-anchor="start">下一轮点云条件 p⁽ᵏ⁺¹⁾</text>
+<text x="760.0" y="282" font-size="11" fill="#6b7280" text-anchor="start">条件强度 β 从 0 逐步加到 1</text>
+<text x="158.0" y="122" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">掩码图像 + 遮挡掩码</text>
+<text x="158.0" y="144" font-size="11" fill="#6b7280" text-anchor="middle">DINOv2 按 MAE 方式编码</text>
+<text x="158.0" y="162" font-size="11" fill="#6b7280" text-anchor="middle">被挡住的 token 换成 [mask]</text>
+<text x="158.0" y="180" font-size="11" fill="#6b7280" text-anchor="middle">得到图像条件 c</text>
+<text x="558.0" y="122" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">物件生成器</text>
+<text x="558.0" y="144" font-size="11" fill="#6b7280" text-anchor="middle">潜空间扩散，出几何潜变量 z⁽ᵏ⁾</text>
+<text x="558.0" y="162" font-size="11" fill="#6b7280" text-anchor="middle">条件：c，以及 β⁽ᵏ⁾ 加权的 p⁽ᵏ⁾</text>
+<text x="558.0" y="180" font-size="11" fill="#6b7280" text-anchor="middle">点云经交叉注意力注入</text>
+<text x="958.0" y="122" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VAE 解码</text>
+<text x="958.0" y="144" font-size="11" fill="#6b7280" text-anchor="middle">z 解成 SDF，移动立方体抽面</text>
+<text x="958.0" y="162" font-size="11" fill="#6b7280" text-anchor="middle">网格坐在规范空间 [−1, 1]³</text>
+<text x="958.0" y="180" font-size="11" fill="#6b7280" text-anchor="middle">朝向与大小是「摆正」的</text>
+<text x="158.0" y="342" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">场景点云 q</text>
+<text x="158.0" y="364" font-size="11" fill="#6b7280" text-anchor="middle">MoGe 估出、按掩码切下</text>
+<text x="158.0" y="382" font-size="11" fill="#6b7280" text-anchor="middle">只覆盖看得见的表面</text>
+<text x="158.0" y="400" font-size="11" fill="#6b7280" text-anchor="middle">坐标在场景空间</text>
+<text x="458.0" y="342" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">对齐生成器</text>
+<text x="458.0" y="364" font-size="11" fill="#6b7280" text-anchor="middle">点云扩散 Transformer</text>
+<text x="458.0" y="382" font-size="11" fill="#6b7280" text-anchor="middle">q 与带噪样本沿通道拼成 N×6</text>
+<text x="458.0" y="400" font-size="11" fill="#6b7280" text-anchor="middle">z 经交叉注意力注入</text>
+<text x="748.0" y="342" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">规范点云 p⁽ᵏ⁺¹⁾</text>
+<text x="748.0" y="364" font-size="11" fill="#6b7280" text-anchor="middle">q 搬进规范空间后的样子</text>
+<text x="748.0" y="382" font-size="11" fill="#6b7280" text-anchor="middle">与 q 逐点对应</text>
+<text x="748.0" y="400" font-size="11" fill="#6b7280" text-anchor="middle">贴着生成出的网格</text>
+<text x="990.0" y="342" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Umeyama</text>
+<text x="990.0" y="364" font-size="11" fill="#6b7280" text-anchor="middle">由 q 与 p 闭式求出</text>
+<text x="990.0" y="382" font-size="11" fill="#6b7280" text-anchor="middle">缩放、旋转、平移</text>
+<text x="990.0" y="400" font-size="11" fill="#6b7280" text-anchor="middle">即相似变换</text>
+<text x="30" y="474" font-size="11" fill="#9ca3af" text-anchor="start">第 0 轮：p⁽⁰⁾ 设为 q，β⁽⁰⁾ = 0，点云条件不起作用，物件生成器只凭掩码图像出形状（PDF p. 7–8）。</text>
+<text x="30" y="496" font-size="11" fill="#9ca3af" text-anchor="start">之后每轮：对齐生成器拿新的 z 把 q 翻译成规范空间的 p，p 以更大的 β 回灌生成器，几何被拉向照片里的尺度与轮廓。</text>
+<text x="30" y="518" font-size="11" fill="#9ca3af" text-anchor="start">停止：相似变换的变化低于阈值，或达到最大轮数；阈值、轮数与 β 日程原文都没有给出。</text>
+<text x="30" y="540" font-size="11" fill="#9ca3af" text-anchor="start">对称物体可能对应多个合理的 p：对齐生成器采多组噪声，汇总各自求出的变换，挑最一致的一个（PDF p. 7）。</text>
+</svg>

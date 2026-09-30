@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Hunyuan3D-DiT：FLUX 式的先双流、后单流，形状 token 不加位置编码</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 形状 token；绿 = 图像条件 token；黄 = 只由 timestep 产生的调制；灰 = 两种 token 共用的运算。</text>
+<rect x="20" y="72" width="330" height="410" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="40" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">整体</text>
+<rect x="36" y="112" width="92" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="82" y="134" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">timestep</text>
+<text x="82" y="152" font-size="11" fill="#6b7280" text-anchor="middle">MLP → 调制</text>
+<rect x="138" y="112" width="92" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="184" y="134" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">输入图</text>
+<text x="184" y="152" font-size="11" fill="#6b7280" text-anchor="middle">DINOv2 → 线性</text>
+<rect x="240" y="112" width="96" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="288" y="134" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">带噪形状</text>
+<text x="288" y="152" font-size="11" fill="#6b7280" text-anchor="middle">线性，无位置编码</text>
+<rect x="138" y="196" width="198" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="237" y="223" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">双流块 × 16</text>
+<rect x="138" y="264" width="198" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="237" y="291" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">单流块 × 32</text>
+<rect x="138" y="332" width="198" height="52" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="237" y="354" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">归一化、调制、线性</text>
+<text x="237" y="372" font-size="11" fill="#6b7280" text-anchor="middle">只输出形状部分</text>
+<rect x="138" y="408" width="198" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="237" y="430" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">预测速度 u</text>
+<text x="237" y="448" font-size="11" fill="#6b7280" text-anchor="middle">指向干净形状的方向</text>
+<line x1="184" y1="164" x2="184" y2="194" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="288" y1="164" x2="288" y2="194" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="237" y1="240" x2="237" y2="262" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="237" y1="308" x2="237" y2="330" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="237" y1="384" x2="237" y2="406" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="82,164 82,358 136,358" fill="none" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="82" y1="218" x2="136" y2="218" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="82" y1="286" x2="136" y2="286" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="370" y="72" width="380" height="410" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="390" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">双流块：各有各的参数，只在注意力汇合</text>
+<rect x="400" y="116" width="150" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="475" y="141" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">形状 token</text>
+<rect x="580" y="116" width="150" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="655" y="141" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">图像 token</text>
+<rect x="400" y="176" width="150" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="475" y="198" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">自己的 QKV</text>
+<text x="475" y="216" font-size="11" fill="#6b7280" text-anchor="middle">调制 + QK-Norm</text>
+<rect x="580" y="176" width="150" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="655" y="198" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">自己的 QKV</text>
+<text x="655" y="216" font-size="11" fill="#6b7280" text-anchor="middle">调制 + QK-Norm</text>
+<rect x="400" y="248" width="330" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="565" y="275" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">一次联合注意力：两种 token 互相看</text>
+<rect x="400" y="312" width="150" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="475" y="334" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">自己的 MLP</text>
+<text x="475" y="352" font-size="11" fill="#6b7280" text-anchor="middle">门控残差</text>
+<rect x="580" y="312" width="150" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="655" y="334" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">自己的 MLP</text>
+<text x="655" y="352" font-size="11" fill="#6b7280" text-anchor="middle">门控残差</text>
+<line x1="475" y1="156" x2="475" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="655" y1="156" x2="655" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="475" y1="228" x2="475" y2="246" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="655" y1="228" x2="655" y2="246" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="475" y1="292" x2="475" y2="310" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="655" y1="292" x2="655" y2="310" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="390" y="400" font-size="13" fill="#6b7280" text-anchor="start">浅层：两种模态统计差别最大，</text>
+<text x="390" y="422" font-size="13" fill="#6b7280" text-anchor="start">各用各的投影与 MLP，只借注意力交换信息。</text>
+<text x="390" y="458" font-size="11" fill="#9ca3af" text-anchor="start">为什么先双流后单流，报告没有论证，也没做配比消融。</text>
+<rect x="770" y="72" width="330" height="410" rx="8" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="790" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">单流块：拼成一条序列</text>
+<rect x="800" y="116" width="270" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="935" y="141" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">形状 + 图像 token 拼接，调制</text>
+<rect x="800" y="184" width="125" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="862" y="212" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">注意力支路</text>
+<text x="862" y="234" font-size="11" fill="#6b7280" text-anchor="middle">线性、QK-Norm、</text>
+<text x="862" y="252" font-size="11" fill="#6b7280" text-anchor="middle">注意力</text>
+<rect x="945" y="184" width="125" height="92" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1007" y="212" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">前馈支路</text>
+<text x="1007" y="234" font-size="11" fill="#6b7280" text-anchor="middle">线性、GELU</text>
+<rect x="800" y="304" width="270" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="935" y="329" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">合并后线性，门控残差</text>
+<line x1="862" y1="156" x2="862" y2="182" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="1007" y1="156" x2="1007" y2="182" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="862" y1="276" x2="862" y2="302" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="1007" y1="276" x2="1007" y2="302" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="790" y="380" font-size="13" fill="#6b7280" text-anchor="start">两条支路并行，不是先后串联。</text>
+<text x="790" y="402" font-size="13" fill="#6b7280" text-anchor="start">正文把它写成 spatial attention 与</text>
+<text x="790" y="424" font-size="13" fill="#6b7280" text-anchor="start">channel attention 并行，图上是这两条支路。</text>
+<text x="30" y="514" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 6 Figure 4 与第 3.2 节重画。层数 16 与 32 只出现在图里；图注说明橙色块无可学习参数、蓝色块可训练。</text>
+<text x="30" y="538" font-size="13" fill="#6b7280" text-anchor="start">调制只用 timestep：图像条件不进调制，只靠注意力进来。</text>
+</svg>

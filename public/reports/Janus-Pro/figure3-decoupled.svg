@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Janus-Pro：一个自回归主干，两条互不相通的视觉入口</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 理解路径（连续语义特征）；黄 = 生成路径（离散图像 ID）；灰 = 两边共用；白 = 输入与输出。</text>
+<text x="60" y="82" font-size="13" fill="#6b7280" text-anchor="start">看图：输出文字</text>
+<text x="600" y="82" font-size="13" fill="#6b7280" text-anchor="start">画图：输出图像</text>
+<rect x="250" y="94" width="260" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="380" y="119" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文字回答</text>
+<rect x="600" y="94" width="200" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="700" y="119" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">图像 384 × 384</text>
+<rect x="250" y="156" width="260" height="46" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="380" y="176" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">LLM 自带的文本预测头</text>
+<text x="380" y="193" font-size="11" fill="#6b7280" text-anchor="middle">再经文本反分词</text>
+<rect x="600" y="156" width="200" height="46" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="700" y="176" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VQ 解码器</text>
+<text x="700" y="193" font-size="11" fill="#6b7280" text-anchor="middle">ID 序列还原成像素</text>
+<rect x="830" y="156" width="240" height="46" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="950" y="176" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">随机初始化的图像头</text>
+<text x="950" y="193" font-size="11" fill="#6b7280" text-anchor="middle">预测下一个图像 ID</text>
+<line x1="380" y1="156" x2="380" y2="136" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="700" y1="156" x2="700" y2="136" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="830" y1="179" x2="802" y2="179" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="60" y="230" width="1010" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="565" y="254" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">同一个自回归 Transformer：DeepSeek-LLM 1.5B 或 7B</text>
+<text x="565" y="274" font-size="11" fill="#6b7280" text-anchor="middle">图像特征、图像 ID 的码本向量与文本拼成一条序列，上下文 4096</text>
+<line x1="380" y1="230" x2="380" y2="204" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="950" y1="230" x2="950" y2="204" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="60" y="314" width="220" height="46" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="170" y="334" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">理解适配器</text>
+<text x="170" y="351" font-size="11" fill="#6b7280" text-anchor="middle">两层 MLP</text>
+<rect x="310" y="314" width="200" height="46" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="410" y="342" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文本分词器</text>
+<rect x="600" y="314" width="200" height="46" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="700" y="342" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文本分词器</text>
+<rect x="830" y="314" width="240" height="46" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="950" y="334" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">生成适配器</text>
+<text x="950" y="351" font-size="11" fill="#6b7280" text-anchor="middle">两层 MLP，按 ID 取码本向量</text>
+<line x1="170" y1="314" x2="170" y2="288" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="410" y1="314" x2="410" y2="288" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="700" y1="314" x2="700" y2="288" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="950" y1="314" x2="950" y2="288" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="1070,179 1096,179 1096,337 1072,337" fill="none" stroke="#d4a24c" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ay)"/>
+<rect x="60" y="384" width="220" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="170" y="405" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">SigLIP-L/16-384</text>
+<text x="170" y="424" font-size="11" fill="#6b7280" text-anchor="middle">图文对齐训练，留语义</text>
+<rect x="830" y="384" width="240" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="950" y="405" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">VQ 编码器（LlamaGen）</text>
+<text x="950" y="424" font-size="11" fill="#6b7280" text-anchor="middle">码本 16384，下采样 16 倍</text>
+<line x1="170" y1="384" x2="170" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="950" y1="384" x2="950" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="60" y="460" width="220" height="52" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="170" y="481" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">输入图像</text>
+<text x="170" y="500" font-size="11" fill="#6b7280" text-anchor="middle">长边缩到 384，短边灰色补齐</text>
+<rect x="310" y="460" width="200" height="52" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="410" y="490" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文字问题</text>
+<rect x="600" y="460" width="200" height="52" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="700" y="490" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文字提示</text>
+<rect x="830" y="460" width="240" height="52" rx="6" fill="#ffffff" stroke="#cbd2d9"/>
+<text x="950" y="481" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">目标图像（仅训练）</text>
+<text x="950" y="500" font-size="11" fill="#6b7280" text-anchor="middle">短边缩到 384，长边裁掉</text>
+<line x1="170" y1="460" x2="170" y2="438" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="410" y1="460" x2="410" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="700" y1="460" x2="700" y2="362" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="950" y1="460" x2="950" y2="438" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="546" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 3 Figure 3、第 2.1 节与 p. 5 第 3.1 节重画。黄色虚线：推理时每步预测的 ID 接回生成适配器，逐个吐出整张图。</text>
+<text x="30" y="570" font-size="13" fill="#6b7280" text-anchor="start">一张图 (384 ÷ 16)² = 576 个 ID，是本文按报告参数算的；编码器与适配器两边都不共享，只在主干的序列里相遇。</text>
+</svg>

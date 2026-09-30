@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">最大覆盖抽帧：每次挑「新看见最多」的那一帧，而不是按时间等距掐</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">示意小例子。灰条 = 一帧能看见的体素范围；黄 = 均匀抽样选中；紫 = 贪心选中（数字为挑选顺序）；绿 = 已覆盖的体素；红 = 漏看的体素。</text>
+<text x="300" y="86" font-size="13" fill="#111827" text-anchor="start" font-weight="700">一段扫描的 12 帧，各自看见场景 16 个体素中的哪一段（示意成一行）</text>
+<text x="990" y="86" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">均匀</text>
+<text x="1060" y="86" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">贪心</text>
+<line x1="300" y1="96" x2="300" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="340" y1="96" x2="340" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="380" y1="96" x2="380" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="420" y1="96" x2="420" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="460" y1="96" x2="460" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="500" y1="96" x2="500" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="540" y1="96" x2="540" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="580" y1="96" x2="580" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="620" y1="96" x2="620" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="660" y1="96" x2="660" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="700" y1="96" x2="700" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="740" y1="96" x2="740" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="780" y1="96" x2="780" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="820" y1="96" x2="820" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="860" y1="96" x2="860" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="900" y1="96" x2="900" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<line x1="940" y1="96" x2="940" y2="386" stroke="#f1f3f5" stroke-width="1"/>
+<text x="286" y="113" font-size="12" fill="#111827" text-anchor="end">f1</text>
+<rect x="302" y="100" width="116" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="983" y="101" width="14" height="14" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="286" y="137" font-size="12" fill="#111827" text-anchor="end">f2</text>
+<rect x="302" y="124" width="156" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="286" y="161" font-size="12" fill="#111827" text-anchor="end">f3</text>
+<rect x="342" y="148" width="156" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="286" y="185" font-size="12" fill="#111827" text-anchor="end">f4</text>
+<rect x="302" y="172" width="236" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="983" y="173" width="14" height="14" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="1060" cy="180" r="9" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1060" y="184" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<text x="286" y="209" font-size="12" fill="#111827" text-anchor="end">f5</text>
+<rect x="382" y="196" width="156" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="286" y="233" font-size="12" fill="#111827" text-anchor="end">f6</text>
+<rect x="382" y="220" width="156" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="286" y="257" font-size="12" fill="#111827" text-anchor="end">f7</text>
+<rect x="422" y="244" width="156" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="983" y="245" width="14" height="14" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="286" y="281" font-size="12" fill="#111827" text-anchor="end">f8</text>
+<rect x="422" y="268" width="156" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="286" y="305" font-size="12" fill="#111827" text-anchor="end">f9</text>
+<rect x="502" y="292" width="276" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="1060" cy="300" r="9" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1060" y="304" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<text x="286" y="329" font-size="12" fill="#111827" text-anchor="end">f10</text>
+<rect x="662" y="316" width="156" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="983" y="317" width="14" height="14" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="286" y="353" font-size="12" fill="#111827" text-anchor="end">f11</text>
+<rect x="742" y="340" width="196" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="1060" cy="348" r="9" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1060" y="352" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="286" y="377" font-size="12" fill="#111827" text-anchor="end">f12</text>
+<rect x="822" y="364" width="116" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="246" y1="102" x2="246" y2="282" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="246" y1="102" x2="254" y2="102" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="246" y1="282" x2="254" y2="282" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="30" y="170" font-size="11" fill="#6b7280" text-anchor="start">f1–f8：扫描者在门口</text>
+<text x="30" y="187" font-size="11" fill="#6b7280" text-anchor="start">一带来回停留，8 帧</text>
+<text x="30" y="204" font-size="11" fill="#6b7280" text-anchor="start">看的几乎是同一块</text>
+<text x="30" y="426" font-size="13" fill="#111827" text-anchor="start" font-weight="700">均匀抽 4 帧</text>
+<text x="30" y="444" font-size="11" fill="#6b7280" text-anchor="start">f1、f4、f7、f10</text>
+<text x="286" y="430" font-size="11" fill="#6b7280" text-anchor="end">覆盖 11 / 16，约 69%</text>
+<rect x="302" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="342" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="382" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="422" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="462" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="502" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="542" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="582" y="412" width="36" height="26" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="622" y="412" width="36" height="26" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="662" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="702" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="742" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="782" y="412" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="822" y="412" width="36" height="26" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="862" y="412" width="36" height="26" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="902" y="412" width="36" height="26" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="955" y="430" font-size="11" fill="#6b7280" text-anchor="start">漏了中部和最里侧</text>
+<text x="30" y="484" font-size="13" fill="#111827" text-anchor="start" font-weight="700">贪心 3 帧</text>
+<text x="30" y="502" font-size="11" fill="#6b7280" text-anchor="start">f9 → f4 → f11</text>
+<text x="286" y="488" font-size="11" fill="#6b7280" text-anchor="end">覆盖 16 / 16</text>
+<rect x="302" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="342" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="382" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="422" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="462" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="502" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="542" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="582" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="622" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="662" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="702" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="742" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="782" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="822" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="862" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="902" y="470" width="36" height="26" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="955" y="488" font-size="11" fill="#6b7280" text-anchor="start">第 3 帧后已达阈值，停</text>
+<text x="30" y="313" font-size="11" fill="#6b7280" text-anchor="start">f9 一帧看见 7 个体素，贪心先挑它</text>
+<line x1="30" y1="396" x2="1090" y2="396" stroke="#e5e7eb" stroke-width="1"/>
+<text x="30" y="556" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 3 §3.1 与 Algorithm 1 画的机制示意，帧与体素都是虚构的小例子，不是 ScanNet 的真实扫描。</text>
+<text x="30" y="580" font-size="13" fill="#9ca3af" text-anchor="start">真实做法：每帧深度反投影到全局坐标、离散成体素，按新增覆盖贪心挑帧；帧数到预算 K 或覆盖率过阈值就停（MC* 取 95%、至多 32 帧）。</text>
+</svg>
