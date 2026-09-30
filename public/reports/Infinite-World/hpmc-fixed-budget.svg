@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 690" width="1120" height="690" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="690" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">HPMC：历史再长，送进 DiT 的压缩记忆都封顶在 T_max = 20</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">紫 = 未压缩的历史潜变量；绿 = 压缩器 f_φ（同一个网络，和 DiT 一起训）；灰 = 局部压缩的中间结果；黄 = 送进 DiT 的 z_com。条长按时间长度等比例画。</text>
+<rect x="16" y="76" width="1088" height="130" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="102" font-size="14" fill="#111827" text-anchor="start" font-weight="700">模式 1 · 短历史：L ≤ k · T_max = 4 × 20 = 80 时，直接压一次</text>
+<rect x="60.0" y="132" width="200.0" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="160.0" y="151" font-size="11" fill="#6b7280" text-anchor="middle">历史 z_1:L，L ≤ 80</text>
+<line x1="266.0" y1="147" x2="306.0" y2="147" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="310.0" y="132" width="170.0" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="395.0" y="151" font-size="11" fill="#6b7280" text-anchor="middle">f_φ：时间维压成 1/4</text>
+<line x1="486.0" y1="147" x2="526.0" y2="147" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="530.0" y="132" width="50.0" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="592.0" y="151" font-size="11" fill="#6b7280" text-anchor="start">z_com：L/4 ≤ 20 个位置（式 1）</text>
+<text x="36.0" y="190" font-size="11" fill="#9ca3af" text-anchor="start">L 超过 80 之后，直接压缩的输出会随 L 线性变长，所以要切到模式 2。</text>
+<rect x="16" y="222" width="1088" height="432" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36.0" y="248" font-size="14" fill="#111827" text-anchor="start" font-weight="700">模式 2 · 长历史：先按窗口局部压，再拼起来全局压一次（式 2）</text>
+<rect x="60.0" y="276" width="700.0" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="772.0" y="295" font-size="11" fill="#6b7280" text-anchor="start">历史 z_1:L（示意 L = 280）</text>
+<rect x="60.0" y="320" width="160.0" height="14" rx="3" fill="#ffffff" stroke="#8f8bd8" stroke-dasharray="4 3"/>
+<rect x="195.0" y="330" width="160.0" height="14" rx="3" fill="#ffffff" stroke="#8f8bd8" stroke-dasharray="4 3"/>
+<rect x="330.0" y="320" width="160.0" height="14" rx="3" fill="#ffffff" stroke="#8f8bd8" stroke-dasharray="4 3"/>
+<rect x="465.0" y="330" width="160.0" height="14" rx="3" fill="#ffffff" stroke="#8f8bd8" stroke-dasharray="4 3"/>
+<rect x="600.0" y="320" width="160.0" height="14" rx="3" fill="#ffffff" stroke="#8f8bd8" stroke-dasharray="4 3"/>
+<text x="772.0" y="332" font-size="11" fill="#6b7280" text-anchor="start">N = 5 个重叠窗口，各宽 W = 64</text>
+<text x="772.0" y="348" font-size="11" fill="#6b7280" text-anchor="start">步长 S 随 L 调整，整段都被盖住</text>
+<line x1="140.0" y1="336" x2="140.0" y2="386" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="114.0" y="390" width="52.0" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="140.0" y="406" font-size="11" fill="#6b7280" text-anchor="middle">f_φ</text>
+<line x1="140.0" y1="416" x2="140.0" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="120.0" y="446" width="40.0" height="22" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="275.0" y1="346" x2="275.0" y2="386" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="249.0" y="390" width="52.0" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="275.0" y="406" font-size="11" fill="#6b7280" text-anchor="middle">f_φ</text>
+<line x1="275.0" y1="416" x2="275.0" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="255.0" y="446" width="40.0" height="22" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="410.0" y1="336" x2="410.0" y2="386" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="384.0" y="390" width="52.0" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="410.0" y="406" font-size="11" fill="#6b7280" text-anchor="middle">f_φ</text>
+<line x1="410.0" y1="416" x2="410.0" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="390.0" y="446" width="40.0" height="22" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="545.0" y1="346" x2="545.0" y2="386" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="519.0" y="390" width="52.0" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="545.0" y="406" font-size="11" fill="#6b7280" text-anchor="middle">f_φ</text>
+<line x1="545.0" y1="416" x2="545.0" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="525.0" y="446" width="40.0" height="22" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="680.0" y1="336" x2="680.0" y2="386" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="654.0" y="390" width="52.0" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="680.0" y="406" font-size="11" fill="#6b7280" text-anchor="middle">f_φ</text>
+<line x1="680.0" y1="416" x2="680.0" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="660.0" y="446" width="40.0" height="22" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="772.0" y="406" font-size="11" fill="#6b7280" text-anchor="start">局部压缩：每个窗口各自压成 1/4</text>
+<text x="772.0" y="462" font-size="11" fill="#6b7280" text-anchor="start">每段 64 / 4 = 16（按 k = 4 推算）</text>
+<line x1="140.0" y1="470" x2="342.5" y2="506" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="275.0" y1="470" x2="376.2" y2="506" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="410.0" y1="470" x2="410.0" y2="506" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="545.0" y1="470" x2="443.8" y2="506" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="680.0" y1="470" x2="477.5" y2="506" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="310.0" y="510" width="200.0" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="410.0" y="527" font-size="11" fill="#6b7280" text-anchor="middle">拼接：5 × 16 = 80</text>
+<line x1="410.0" y1="538" x2="410.0" y2="554" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="315.0" y="558" width="190.0" height="26" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="410.0" y="575" font-size="11" fill="#6b7280" text-anchor="middle">f_φ 全局压缩（同一个网络）</text>
+<line x1="410.0" y1="586" x2="410.0" y2="600" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="385.0" y="604" width="50.0" height="26" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="447.0" y="621" font-size="11" fill="#6b7280" text-anchor="start">z_com：80 / 4 = 20 = T_max，与历史长度无关</text>
+<text x="36.0" y="678" font-size="11" fill="#9ca3af" text-anchor="start">N、W、T_max、k 取自 PDF p.4–6；16 与 80 是按 k = 4 推算的中间长度，报告没写。报告把 W 与「最多 320」的单位写作帧，没说明是不是潜变量帧。</text>
+</svg>

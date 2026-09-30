@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">式 2 怎么把「对、省、听话」收成一个数：组内归一化，点乘偏好，答错归零</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">玩具例子：同一道题的一组 4 条轨迹（论文的 rollout batch 是 8）；用户偏好「尽量用本地检索、尽量省钱」。黄 = 工具调用次数，绿 = 答对，紫 = 成本与时延（取负）。</text>
+<text x="30" y="104" font-size="14" fill="#111827" text-anchor="start" font-weight="700">① 每条轨迹一行向量 Mτ</text>
+<rect x="80" y="106" width="56" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="108.0" y="125" font-size="11" fill="#111827" text-anchor="middle">本地检索</text>
+<rect x="140" y="106" width="56" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="168.0" y="125" font-size="11" fill="#111827" text-anchor="middle">网页搜索</text>
+<rect x="200" y="106" width="56" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="228.0" y="125" font-size="11" fill="#111827" text-anchor="middle">GPT-5</text>
+<rect x="260" y="106" width="56" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="288.0" y="125" font-size="11" fill="#111827" text-anchor="middle">答对</text>
+<rect x="320" y="106" width="56" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="348.0" y="125" font-size="11" fill="#111827" text-anchor="middle">−成本 $</text>
+<rect x="380" y="106" width="56" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="408.0" y="125" font-size="11" fill="#111827" text-anchor="middle">−时延 分</text>
+<text x="68" y="165" font-size="13" fill="#111827" text-anchor="end">τ1</text>
+<rect x="80" y="144" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="108.0" y="165" font-size="12" fill="#111827" text-anchor="middle">2</text>
+<rect x="140" y="144" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="168.0" y="165" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<rect x="200" y="144" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="228.0" y="165" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="260" y="144" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="288.0" y="165" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="320" y="144" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="348.0" y="165" font-size="12" fill="#111827" text-anchor="middle">-0.30</text>
+<rect x="380" y="144" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="408.0" y="165" font-size="12" fill="#111827" text-anchor="middle">-5</text>
+<text x="68" y="205" font-size="13" fill="#111827" text-anchor="end">τ2</text>
+<rect x="80" y="184" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="108.0" y="205" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<rect x="140" y="184" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="168.0" y="205" font-size="12" fill="#111827" text-anchor="middle">2</text>
+<rect x="200" y="184" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="228.0" y="205" font-size="12" fill="#111827" text-anchor="middle">2</text>
+<rect x="260" y="184" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="288.0" y="205" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="320" y="184" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="348.0" y="205" font-size="12" fill="#111827" text-anchor="middle">-0.80</text>
+<rect x="380" y="184" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="408.0" y="205" font-size="12" fill="#111827" text-anchor="middle">-12</text>
+<text x="68" y="245" font-size="13" fill="#111827" text-anchor="end">τ3</text>
+<rect x="80" y="224" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="108.0" y="245" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="140" y="224" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="168.0" y="245" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="200" y="224" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="228.0" y="245" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<rect x="260" y="224" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="288.0" y="245" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<rect x="320" y="224" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="348.0" y="245" font-size="12" fill="#111827" text-anchor="middle">-0.05</text>
+<rect x="380" y="224" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="408.0" y="245" font-size="12" fill="#111827" text-anchor="middle">-2</text>
+<text x="68" y="285" font-size="13" fill="#111827" text-anchor="end">τ4</text>
+<rect x="80" y="264" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="108.0" y="285" font-size="12" fill="#111827" text-anchor="middle">3</text>
+<rect x="140" y="264" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="168.0" y="285" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<rect x="200" y="264" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="228.0" y="285" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<rect x="260" y="264" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="288.0" y="285" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="320" y="264" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="348.0" y="285" font-size="12" fill="#111827" text-anchor="middle">-0.10</text>
+<rect x="380" y="264" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="408.0" y="285" font-size="12" fill="#111827" text-anchor="middle">-3</text>
+<line x1="448" y1="220" x2="518" y2="220" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="484" y="206" font-size="11" fill="#9ca3af" text-anchor="middle">逐列</text>
+<text x="484" y="244" font-size="11" fill="#9ca3af" text-anchor="middle">min–max</text>
+<text x="524" y="104" font-size="14" fill="#111827" text-anchor="start" font-weight="700">② 组内逐列归一化到 0–1，再点乘偏好 P</text>
+<rect x="544" y="106" width="56" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="572.0" y="125" font-size="11" fill="#111827" text-anchor="middle">本地检索</text>
+<rect x="604" y="106" width="56" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="632.0" y="125" font-size="11" fill="#111827" text-anchor="middle">网页搜索</text>
+<rect x="664" y="106" width="56" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="692.0" y="125" font-size="11" fill="#111827" text-anchor="middle">GPT-5</text>
+<rect x="724" y="106" width="56" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="752.0" y="125" font-size="11" fill="#111827" text-anchor="middle">答对</text>
+<rect x="784" y="106" width="56" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="812.0" y="125" font-size="11" fill="#111827" text-anchor="middle">−成本 $</text>
+<rect x="844" y="106" width="56" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="872.0" y="125" font-size="11" fill="#111827" text-anchor="middle">−时延 分</text>
+<text x="954" y="125" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">· P</text>
+<text x="1044" y="125" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">R（答错归零）</text>
+<rect x="544" y="144" width="56" height="32" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="572.0" y="165" font-size="12" fill="#111827" text-anchor="middle">0.67</text>
+<rect x="604" y="144" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="632.0" y="165" font-size="12" fill="#9ca3af" text-anchor="middle">0</text>
+<rect x="664" y="144" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="692.0" y="165" font-size="12" fill="#9ca3af" text-anchor="middle">0.50</text>
+<rect x="724" y="144" width="56" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="752.0" y="165" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="784" y="144" width="56" height="32" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="812.0" y="165" font-size="12" fill="#111827" text-anchor="middle">0.67</text>
+<rect x="844" y="144" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="872.0" y="165" font-size="12" fill="#9ca3af" text-anchor="middle">0.70</text>
+<text x="954" y="165" font-size="13" fill="#111827" text-anchor="middle">2.33</text>
+<rect x="1004" y="144" width="80" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="1044" y="165" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">2.33</text>
+<rect x="544" y="184" width="56" height="32" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="572.0" y="205" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<rect x="604" y="184" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="632.0" y="205" font-size="12" fill="#9ca3af" text-anchor="middle">1</text>
+<rect x="664" y="184" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="692.0" y="205" font-size="12" fill="#9ca3af" text-anchor="middle">1</text>
+<rect x="724" y="184" width="56" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="752.0" y="205" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="784" y="184" width="56" height="32" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="812.0" y="205" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<rect x="844" y="184" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="872.0" y="205" font-size="12" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="954" y="205" font-size="13" fill="#111827" text-anchor="middle">1</text>
+<rect x="1004" y="184" width="80" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="1044" y="205" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">1</text>
+<rect x="544" y="224" width="56" height="32" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="572.0" y="245" font-size="12" fill="#111827" text-anchor="middle">0.33</text>
+<rect x="604" y="224" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="632.0" y="245" font-size="12" fill="#9ca3af" text-anchor="middle">0.50</text>
+<rect x="664" y="224" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="692.0" y="245" font-size="12" fill="#9ca3af" text-anchor="middle">0</text>
+<rect x="724" y="224" width="56" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="752.0" y="245" font-size="12" fill="#111827" text-anchor="middle">0</text>
+<rect x="784" y="224" width="56" height="32" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="812.0" y="245" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="844" y="224" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="872.0" y="245" font-size="12" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="954" y="245" font-size="13" fill="#111827" text-anchor="middle">1.33</text>
+<rect x="1004" y="224" width="80" height="32" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.4"/>
+<text x="1044" y="245" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">0</text>
+<rect x="544" y="264" width="56" height="32" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="572.0" y="285" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="604" y="264" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="632.0" y="285" font-size="12" fill="#9ca3af" text-anchor="middle">0</text>
+<rect x="664" y="264" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="692.0" y="285" font-size="12" fill="#9ca3af" text-anchor="middle">0</text>
+<rect x="724" y="264" width="56" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="752.0" y="285" font-size="12" fill="#111827" text-anchor="middle">1</text>
+<rect x="784" y="264" width="56" height="32" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="812.0" y="285" font-size="12" fill="#111827" text-anchor="middle">0.93</text>
+<rect x="844" y="264" width="56" height="32" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="872.0" y="285" font-size="12" fill="#9ca3af" text-anchor="middle">0.90</text>
+<text x="954" y="285" font-size="13" fill="#111827" text-anchor="middle">2.93</text>
+<rect x="1004" y="264" width="80" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="1044" y="285" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">2.93</text>
+<text x="532" y="331" font-size="13" fill="#111827" text-anchor="end" font-weight="700">P</text>
+<rect x="544" y="310" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="572.0" y="331" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">1</text>
+<rect x="604" y="310" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="632.0" y="331" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">0</text>
+<rect x="664" y="310" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="692.0" y="331" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">0</text>
+<rect x="724" y="310" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="752.0" y="331" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">1</text>
+<rect x="784" y="310" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="812.0" y="331" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">1</text>
+<rect x="844" y="310" width="56" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="872.0" y="331" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">0</text>
+<text x="918" y="331" font-size="11" fill="#6b7280" text-anchor="start">偏好向量：只有 1 的列计分，彩色格</text>
+<rect x="30" y="390" width="1060" height="176" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="50" y="422" font-size="13" fill="#111827" text-anchor="start">τ3 最便宜、最快，归一化后成本与时延两格都是满分 1，点积 1.33；但它答错了，门一关，R = 0。</text>
+<text x="50" y="452" font-size="13" fill="#111827" text-anchor="start">τ4 答对、只用本地检索、花得也少，R = 2.93 最高；τ2 调了两次 GPT-5，最贵最慢，R = 1。</text>
+<text x="50" y="482" font-size="13" fill="#111827" text-anchor="start">网页搜索与 GPT-5 的偏好是 0：多调它们不扣分，只是拿不到分。「避开某个工具」只能靠别的列相对变差来体现。</text>
+<text x="50" y="512" font-size="13" fill="#111827" text-anchor="start">「答对」一列若全组都对，最大值等于最小值，这一列按论文规定置 0，不再区分。</text>
+<text x="50" y="542" font-size="13" fill="#111827" text-anchor="start">最后 GRPO 在组内把 R 标准化成优势：本例约为 τ4 +1.20、τ1 +0.67、τ2 −0.50、τ3 −1.37。</text>
+<text x="30" y="600" font-size="12" fill="#9ca3af" text-anchor="start">机制示意，数字为示意用的假设值，不是论文数据。规则据 PDF p. 4 式 1–3：逐列组内 min–max，常数列置 0，点乘 P，答错则 R = 0。</text>
+</svg>

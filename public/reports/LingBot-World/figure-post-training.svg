@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 580" width="1120" height="580" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="580" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">后训：把双向 MoE 教师改成块因果、少步的学生</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 教师侧（只打分）；绿 = 学生侧（被训练）；黄 = 真实视频进入的唯一入口；灰 = 被丢掉的部分。机制示意，依据 PDF p.11–13 与 Figure 6。</text>
+
+<rect x="16" y="72" width="500" height="490" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="266" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">注意力掩码：行 = 当前块，列 = 被看的块</text>
+<text x="266" y="118" font-size="11" fill="#6b7280" text-anchor="middle">填色格 = 允许注意；每格是一个时间块，块里有若干帧</text>
+
+<text x="136" y="148" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">中训教师：全双向</text>
+<rect x="56" y="162" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="96" y="162" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="136" y="162" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="176" y="162" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="56" y="202" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="96" y="202" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="136" y="202" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="176" y="202" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="56" y="242" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="96" y="242" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="136" y="242" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="176" y="242" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="56" y="282" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="96" y="282" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="136" y="282" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="176" y="282" width="40" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="136" y="344" font-size="11" fill="#6b7280" text-anchor="middle">第 1 块也要看第 4 块：</text>
+<text x="136" y="360" font-size="11" fill="#6b7280" text-anchor="middle">未来没生成，就一帧也出不来</text>
+
+<text x="396" y="148" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">学生：块因果</text>
+<rect x="316" y="162" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="356" y="162" width="40" height="40" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="396" y="162" width="40" height="40" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="436" y="162" width="40" height="40" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="316" y="202" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="356" y="202" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="396" y="202" width="40" height="40" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="436" y="202" width="40" height="40" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="316" y="242" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="356" y="242" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="396" y="242" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="436" y="242" width="40" height="40" fill="#ffffff" stroke="#b9b9b9"/>
+<rect x="316" y="282" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="356" y="282" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="396" y="282" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="436" y="282" width="40" height="40" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="396" y="344" font-size="11" fill="#6b7280" text-anchor="middle">对角格：块内仍然双向</text>
+<text x="396" y="360" font-size="11" fill="#6b7280" text-anchor="middle">右上空白：看不到未来的块</text>
+
+<text x="266" y="398" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">推理时逐块往前滚</text>
+<rect x="46" y="414" width="100" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="96" y="440" font-size="11" fill="#6b7280" text-anchor="middle">块 i−2：缓存</text>
+<rect x="156" y="414" width="100" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="206" y="440" font-size="11" fill="#6b7280" text-anchor="middle">块 i−1：缓存</text>
+<rect x="266" y="414" width="100" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="316" y="440" font-size="11" fill="#111827" text-anchor="middle">块 i：新算</text>
+<rect x="376" y="414" width="110" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="431" y="440" font-size="11" fill="#9ca3af" text-anchor="middle">块 i+1：等按键</text>
+<text x="266" y="490" font-size="11" fill="#6b7280" text-anchor="middle">旧块的键和值（KV 缓存）留着复用，新块只算新 token；</text>
+<text x="266" y="508" font-size="11" fill="#6b7280" text-anchor="middle">下一块的动作可以在上一块生成完之后才给</text>
+<text x="266" y="540" font-size="11" fill="#9ca3af" text-anchor="middle">块数与每块帧数报告都没给，这里的 4 块只是示意</text>
+
+<rect x="532" y="72" width="572" height="490" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="818" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">学生从哪几路信号补课</text>
+<text x="818" y="118" font-size="11" fill="#6b7280" text-anchor="middle">箭头指向被更新的一方</text>
+
+<rect x="552" y="136" width="250" height="60" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="677" y="160" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">真分数网络</text>
+<text x="677" y="180" font-size="11" fill="#6b7280" text-anchor="middle">中训得到的 MoE 教师，冻结</text>
+
+<rect x="834" y="136" width="250" height="60" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="959" y="160" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">假分数网络</text>
+<text x="959" y="180" font-size="11" fill="#6b7280" text-anchor="middle">用学生视频上的扩散损失更新</text>
+
+<rect x="834" y="222" width="250" height="60" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="959" y="246" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">GAN 分类头 D</text>
+<text x="959" y="266" font-size="11" fill="#6b7280" text-anchor="middle">判别损失只更新它，不回传进假分数网络</text>
+<line x1="959" y1="196" x2="959" y2="222" stroke="#9ca3af" stroke-width="1.4"/>
+
+<rect x="552" y="316" width="250" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="677" y="342" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">学生生成器</text>
+<text x="677" y="362" font-size="11" fill="#6b7280" text-anchor="middle">从高噪声专家初始化，少步采样</text>
+
+<line x1="677" y1="196" x2="677" y2="312" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="690" y="244" font-size="11" fill="#6b7280">DMD：沿两者之差</text>
+<text x="690" y="260" font-size="11" fill="#6b7280">（真 − 假）更新学生</text>
+<polyline points="870,196 870,212 677,212" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="959,282 959,348 806,348" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="872" y="336" font-size="11" fill="#6b7280">对抗项：骗过 D</text>
+
+<rect x="834" y="400" width="250" height="60" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="959" y="424" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">自滚动训练</text>
+<text x="959" y="444" font-size="11" fill="#6b7280" text-anchor="middle">历史换成自己生成的帧，只对最近 K 步反传</text>
+<polyline points="834,430 677,430 677,384" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="552" y="480" width="250" height="60" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="677" y="504" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">低噪声专家</text>
+<text x="677" y="524" font-size="11" fill="#6b7280" text-anchor="middle">不进学生；高频细节靠 GAN 项补</text>
+
+<text x="959" y="496" font-size="11" fill="#9ca3af" text-anchor="middle">因果适配阶段先用式 2 训：</text>
+<text x="959" y="512" font-size="11" fill="#9ca3af" text-anchor="middle">每块独立噪声时刻，外加时刻 0 的干净帧</text>
+</svg>

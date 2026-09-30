@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 525" width="1120" height="525" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="525" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">DreamZero 的闭环节拍：约束从「算完才能动」变成「当前块用完前算完」</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">紫 = 模型在推理；灰 = 机器人在执行动作块；红 = 机器人停着等动作。横轴按比例画，1 格 = 1 秒。</text>
+<text x="30" y="96" font-size="14" fill="#111827" font-weight="700">① 朴素串行：单卡一块约 5.7 秒，推理期间机器人不动</text>
+<text x="178" y="125" font-size="11" fill="#6b7280" text-anchor="end">推理</text>
+<text x="178" y="159" font-size="11" fill="#6b7280" text-anchor="end">机器人</text>
+<rect x="350.0" y="108" width="570.0" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="635.0" y="125" font-size="11" fill="#6b7280" text-anchor="middle">推理下一块，约 5.7 秒</text>
+<rect x="190.0" y="142" width="160.0" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="270.0" y="159" font-size="11" fill="#6b7280" text-anchor="middle">执行块 1</text>
+<rect x="350.0" y="142" width="570.0" height="26" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="635.0" y="159" font-size="11" fill="#6b7280" text-anchor="middle">块 1 用完，停住等待</text>
+<rect x="920.0" y="142" width="160.0" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1000.0" y="159" font-size="11" fill="#6b7280" text-anchor="middle">执行块 2</text>
+<text x="30" y="206" font-size="14" fill="#111827" font-weight="700">② 只改成异步：推理和执行并行，但 5.7 秒远长于 1.6 秒的块</text>
+<text x="178" y="235" font-size="11" fill="#6b7280" text-anchor="end">推理</text>
+<text x="178" y="269" font-size="11" fill="#6b7280" text-anchor="end">机器人</text>
+<rect x="190.0" y="218" width="570.0" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="475.0" y="235" font-size="11" fill="#6b7280" text-anchor="middle">按最新观测推理块 2</text>
+<rect x="760.0" y="218" width="330.0" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="925.0" y="235" font-size="11" fill="#6b7280" text-anchor="middle">推理块 3……</text>
+<rect x="190.0" y="252" width="160.0" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="270.0" y="269" font-size="11" fill="#6b7280" text-anchor="middle">执行块 1</text>
+<rect x="350.0" y="252" width="410.0" height="26" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="555.0" y="269" font-size="11" fill="#6b7280" text-anchor="middle">块 1 用完，停住</text>
+<rect x="760.0" y="252" width="160.0" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="840.0" y="269" font-size="11" fill="#6b7280" text-anchor="middle">执行块 2</text>
+<rect x="920.0" y="252" width="170.0" height="26" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1005.0" y="269" font-size="11" fill="#6b7280" text-anchor="middle">停住</text>
+<text x="30" y="316" font-size="14" fill="#111827" font-weight="700">③ 异步 + 38 倍提速：约 150ms 出一块，机器人一直有动作可执行</text>
+<text x="178" y="345" font-size="11" fill="#6b7280" text-anchor="end">推理</text>
+<text x="178" y="379" font-size="11" fill="#6b7280" text-anchor="end">机器人</text>
+<rect x="191.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="206.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="221.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="236.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="251.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="266.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="281.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="296.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="311.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="326.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="341.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="356.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="371.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="386.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="401.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="416.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="431.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="446.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="461.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="476.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="491.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="506.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="521.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="536.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="551.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="566.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="581.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="596.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="611.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="626.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="641.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="656.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="671.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="686.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="701.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="716.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="731.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="746.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="761.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="776.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="791.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="806.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="821.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="836.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="851.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="866.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="881.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="896.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="911.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="926.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="941.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="956.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="971.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="986.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1001.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1016.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1031.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1046.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1061.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1076.0" y="328" width="14.0" height="26" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="190.0" y="362" width="900.0" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="640.0" y="379" font-size="11" fill="#6b7280" text-anchor="middle">控制器始终执行最新那一块里、对应当前时刻的动作，不再停顿</text>
+<line x1="205.0" y1="402" x2="365.0" y2="402" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="205.0" y1="396" x2="205.0" y2="408" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="365.0" y1="396" x2="365.0" y2="408" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="377.0" y="406" font-size="11" fill="#9ca3af">一块动作覆盖 1.6 秒（48 步 × 30Hz），下一块约 150ms 后就到，远早于它用完</text>
+<line x1="190" y1="452" x2="1090" y2="452" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="190" y1="452" x2="190" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="190" y="472" font-size="11" fill="#6b7280" text-anchor="middle">0 秒</text>
+<line x1="290" y1="452" x2="290" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="290" y="472" font-size="11" fill="#6b7280" text-anchor="middle">1 秒</text>
+<line x1="390" y1="452" x2="390" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="390" y="472" font-size="11" fill="#6b7280" text-anchor="middle">2 秒</text>
+<line x1="490" y1="452" x2="490" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="490" y="472" font-size="11" fill="#6b7280" text-anchor="middle">3 秒</text>
+<line x1="590" y1="452" x2="590" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="590" y="472" font-size="11" fill="#6b7280" text-anchor="middle">4 秒</text>
+<line x1="690" y1="452" x2="690" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="690" y="472" font-size="11" fill="#6b7280" text-anchor="middle">5 秒</text>
+<line x1="790" y1="452" x2="790" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="790" y="472" font-size="11" fill="#6b7280" text-anchor="middle">6 秒</text>
+<line x1="890" y1="452" x2="890" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="890" y="472" font-size="11" fill="#6b7280" text-anchor="middle">7 秒</text>
+<line x1="990" y1="452" x2="990" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="990" y="472" font-size="11" fill="#6b7280" text-anchor="middle">8 秒</text>
+<line x1="1090" y1="452" x2="1090" y2="458" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="1090" y="472" font-size="11" fill="#6b7280" text-anchor="middle">9 秒</text>
+<text x="30" y="492" font-size="11" fill="#9ca3af">5.7 秒、约 150ms、48 步 × 30Hz 取自 PDF p.8–9；新块何时接管，报告只写「控制器总执行当前时刻最新的动作」（PDF p.23）。</text>
+<text x="30" y="510" font-size="11" fill="#9ca3af">图中节拍是示意，不是实测时间线。</text>
+</svg>

@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Context Forcing：教师看到的，必须正好是学生当时能看到的</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">每格是一个 chunk（16 帧）。黄 = 作为条件的历史块；紫 = 学生这一轮自滚生成的 4 块；红 = 只有教师看得到、学生看不到的块；白 = 这一步不用；灰 = 还没生成。</text>
+<text x="314" y="96" font-size="11" fill="#9ca3af" text-anchor="end">chunk 下标</text>
+<text x="352.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="404.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="456.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<text x="508.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">3</text>
+<text x="560.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="612.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="664.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="716.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<text x="768.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="820.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">9</text>
+<text x="872.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">10</text>
+<text x="924.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">11</text>
+<text x="536" y="112" font-size="11" fill="#9ca3af" text-anchor="middle">真实历史 x0…x7（从数据采样，j = 8）</text>
+<text x="820.0" y="112" font-size="11" fill="#9ca3af" text-anchor="middle">学生自滚的 x8…x11</text>
+<rect x="20" y="124" width="1080" height="236" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="150" font-size="14" fill="#111827" text-anchor="start" font-weight="700">① 学生（自回归，少步）</text>
+<text x="36" y="170" font-size="11" fill="#6b7280" text-anchor="start">逐块生成，每块先重构自己的记忆 C_i</text>
+<text x="36" y="186" font-size="11" fill="#6b7280" text-anchor="start">（时间近的 + 空间相关的），</text>
+<text x="36" y="202" font-size="11" fill="#6b7280" text-anchor="start">只看 C_i，看不到未来</text>
+<text x="314" y="168" font-size="12" fill="#6b7280" text-anchor="end">生成 x8 时</text>
+<rect x="330" y="140" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="352.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">0</text>
+<rect x="382" y="140" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="404.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">1</text>
+<rect x="434" y="140" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="456.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">2</text>
+<rect x="486" y="140" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="508.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">3</text>
+<rect x="538" y="140" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="560.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">4</text>
+<rect x="590" y="140" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="612.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">5</text>
+<rect x="642" y="140" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="664.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">6</text>
+<rect x="694" y="140" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="716.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">7</text>
+<rect x="746" y="140" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="768.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">8</text>
+<rect x="798" y="140" width="44" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="820.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">9</text>
+<rect x="850" y="140" width="44" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="872.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">10</text>
+<rect x="902" y="140" width="44" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="924.0" y="167.0" font-size="13" fill="#111827" text-anchor="middle">11</text>
+<text x="314" y="222" font-size="12" fill="#6b7280" text-anchor="end">生成 x9 时</text>
+<rect x="330" y="194" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="352.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">0</text>
+<rect x="382" y="194" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="404.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">1</text>
+<rect x="434" y="194" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="456.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">2</text>
+<rect x="486" y="194" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="508.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">3</text>
+<rect x="538" y="194" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="560.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">4</text>
+<rect x="590" y="194" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="612.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">5</text>
+<rect x="642" y="194" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="664.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">6</text>
+<rect x="694" y="194" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="716.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">7</text>
+<rect x="746" y="194" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="768.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">8</text>
+<rect x="798" y="194" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="820.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">9</text>
+<rect x="850" y="194" width="44" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="872.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">10</text>
+<rect x="902" y="194" width="44" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="924.0" y="221.0" font-size="13" fill="#111827" text-anchor="middle">11</text>
+<text x="314" y="276" font-size="12" fill="#6b7280" text-anchor="end">生成 x10 时</text>
+<rect x="330" y="248" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="352.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">0</text>
+<rect x="382" y="248" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="404.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">1</text>
+<rect x="434" y="248" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="456.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">2</text>
+<rect x="486" y="248" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="508.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">3</text>
+<rect x="538" y="248" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="560.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">4</text>
+<rect x="590" y="248" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="612.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">5</text>
+<rect x="642" y="248" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="664.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">6</text>
+<rect x="694" y="248" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="716.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">7</text>
+<rect x="746" y="248" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="768.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">8</text>
+<rect x="798" y="248" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="820.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">9</text>
+<rect x="850" y="248" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="872.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">10</text>
+<rect x="902" y="248" width="44" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="924.0" y="275.0" font-size="13" fill="#111827" text-anchor="middle">11</text>
+<text x="314" y="330" font-size="12" fill="#6b7280" text-anchor="end">生成 x11 时</text>
+<rect x="330" y="302" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="352.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">0</text>
+<rect x="382" y="302" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="404.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">1</text>
+<rect x="434" y="302" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="456.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">2</text>
+<rect x="486" y="302" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="508.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">3</text>
+<rect x="538" y="302" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="560.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">4</text>
+<rect x="590" y="302" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="612.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">5</text>
+<rect x="642" y="302" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="664.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">6</text>
+<rect x="694" y="302" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="716.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">7</text>
+<rect x="746" y="302" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="768.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">8</text>
+<rect x="798" y="302" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="820.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">9</text>
+<rect x="850" y="302" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="872.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">10</text>
+<rect x="902" y="302" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="924.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle">11</text>
+<rect x="20" y="374" width="1080" height="96" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="400" font-size="14" fill="#111827" text-anchor="start" font-weight="700">② Context Forcing 的教师</text>
+<text x="36" y="420" font-size="11" fill="#6b7280" text-anchor="start">条件 = C8 ∪ … ∪ C11 − {x8…x11}</text>
+<text x="36" y="436" font-size="11" fill="#6b7280" text-anchor="start">双向去噪这 4 块，给出 score</text>
+<rect x="330" y="398" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="352.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">0</text>
+<rect x="382" y="398" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="404.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">1</text>
+<rect x="434" y="398" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="456.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">2</text>
+<rect x="486" y="398" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="508.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">3</text>
+<rect x="538" y="398" width="44" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4"/>
+<text x="560.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">4</text>
+<rect x="590" y="398" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="612.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">5</text>
+<rect x="642" y="398" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="664.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">6</text>
+<rect x="694" y="398" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="716.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">7</text>
+<rect x="746" y="398" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="768.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">8</text>
+<rect x="798" y="398" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="820.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">9</text>
+<rect x="850" y="398" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="872.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">10</text>
+<rect x="902" y="398" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="924.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle">11</text>
+<rect x="20" y="484" width="1080" height="96" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="510" font-size="14" fill="#111827" text-anchor="start" font-weight="700">③ 普通蒸馏的双向教师</text>
+<text x="36" y="530" font-size="11" fill="#6b7280" text-anchor="start">整段可见，没有学生那套记忆</text>
+<text x="36" y="546" font-size="11" fill="#6b7280" text-anchor="start">p(x | C) 与学生对不上</text>
+<rect x="330" y="508" width="44" height="44" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.4"/>
+<text x="352.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">0</text>
+<rect x="382" y="508" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="404.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">1</text>
+<rect x="434" y="508" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="456.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">2</text>
+<rect x="486" y="508" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="508.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">3</text>
+<rect x="538" y="508" width="44" height="44" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.4"/>
+<text x="560.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">4</text>
+<rect x="590" y="508" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="612.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">5</text>
+<rect x="642" y="508" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="664.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">6</text>
+<rect x="694" y="508" width="44" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="716.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">7</text>
+<rect x="746" y="508" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="768.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">8</text>
+<rect x="798" y="508" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="820.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">9</text>
+<rect x="850" y="508" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="872.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">10</text>
+<rect x="902" y="508" width="44" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="924.0" y="535.0" font-size="13" fill="#111827" text-anchor="middle">11</text>
+<text x="30" y="612" font-size="12" fill="#9ca3af" text-anchor="start">机制示意，不是实测：各块的记忆集合是举例，报告没有给时间记忆长度 L 与空间记忆条数。据 PDF p. 10 式 5 与 Figure 7、p. 11 算法 1 重画。</text>
+</svg>

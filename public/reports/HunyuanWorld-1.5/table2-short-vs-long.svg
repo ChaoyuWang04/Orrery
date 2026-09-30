@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Table 2 的 PSNR：短程大家挤在一起，走远再走回来才拉开</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰点 = 短程 61 帧；紫点 = 长程 ≥ 250 帧往返（回程帧对去程帧）；连线长度 = 掉了多少。绿框两行是 WorldPlay 自己。按长程 PSNR 排序。</text>
+<line x1="330.0" y1="86" x2="330.0" y2="500" stroke="#e5e7eb" stroke-width="1"/>
+<text x="330.0" y="518" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<line x1="427.3" y1="86" x2="427.3" y2="500" stroke="#e5e7eb" stroke-width="1"/>
+<text x="427.3333333333333" y="518" font-size="11" fill="#9ca3af" text-anchor="middle">10</text>
+<line x1="524.7" y1="86" x2="524.7" y2="500" stroke="#e5e7eb" stroke-width="1"/>
+<text x="524.6666666666666" y="518" font-size="11" fill="#9ca3af" text-anchor="middle">12</text>
+<line x1="622.0" y1="86" x2="622.0" y2="500" stroke="#e5e7eb" stroke-width="1"/>
+<text x="622.0" y="518" font-size="11" fill="#9ca3af" text-anchor="middle">14</text>
+<line x1="719.3" y1="86" x2="719.3" y2="500" stroke="#e5e7eb" stroke-width="1"/>
+<text x="719.3333333333333" y="518" font-size="11" fill="#9ca3af" text-anchor="middle">16</text>
+<line x1="816.7" y1="86" x2="816.7" y2="500" stroke="#e5e7eb" stroke-width="1"/>
+<text x="816.6666666666666" y="518" font-size="11" fill="#9ca3af" text-anchor="middle">18</text>
+<line x1="914.0" y1="86" x2="914.0" y2="500" stroke="#e5e7eb" stroke-width="1"/>
+<text x="914.0" y="518" font-size="11" fill="#9ca3af" text-anchor="middle">20</text>
+<line x1="1011.3" y1="86" x2="1011.3" y2="500" stroke="#e5e7eb" stroke-width="1"/>
+<text x="1011.3333333333334" y="518" font-size="11" fill="#9ca3af" text-anchor="middle">22</text>
+<text x="695.0" y="540" font-size="12" fill="#6b7280" text-anchor="middle">PSNR（dB，越高越好）</text>
+<rect x="24" y="88" width="1080" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="310" y="113" font-size="13" fill="#111827" text-anchor="end">Ours（完整）</text>
+<line x1="862.4" y1="108" x2="1007.4" y2="108" stroke="#9ca3af" stroke-width="2"/>
+<circle cx="1007.4" cy="108" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="862.4" cy="108" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="850.4133333333334" y="112" font-size="11" fill="#6b7280" text-anchor="end">18.94</text>
+<text x="1019.4400000000002" y="112" font-size="11" fill="#6b7280" text-anchor="start">21.92</text>
+<rect x="24" y="134" width="1080" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="310" y="159" font-size="13" fill="#111827" text-anchor="end">Ours（无 Context Forcing）</text>
+<line x1="732.5" y1="154" x2="975.8" y2="154" stroke="#9ca3af" stroke-width="2"/>
+<circle cx="975.8" cy="154" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="732.5" cy="154" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="720.4733333333334" y="158" font-size="11" fill="#6b7280" text-anchor="end">16.27</text>
+<text x="987.8066666666666" y="158" font-size="11" fill="#6b7280" text-anchor="start">21.27</text>
+<text x="310" y="205" font-size="13" fill="#111827" text-anchor="end">Gen3C（显式 3D 记忆）</text>
+<line x1="688.7" y1="200" x2="995.8" y2="200" stroke="#9ca3af" stroke-width="2"/>
+<circle cx="995.8" cy="200" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="688.7" cy="200" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="676.6733333333333" y="204" font-size="11" fill="#6b7280" text-anchor="end">15.37</text>
+<text x="1007.76" y="204" font-size="11" fill="#6b7280" text-anchor="start">21.68</text>
+<text x="310" y="251" font-size="13" fill="#111827" text-anchor="end">VMem（面元记忆）</text>
+<line x1="562.1" y1="246" x2="912.5" y2="246" stroke="#9ca3af" stroke-width="2"/>
+<circle cx="912.5" cy="246" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="562.1" cy="246" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="550.14" y="250" font-size="11" fill="#6b7280" text-anchor="end">12.77</text>
+<text x="924.54" y="250" font-size="11" fill="#6b7280" text-anchor="start">19.97</text>
+<text x="310" y="297" font-size="13" fill="#111827" text-anchor="end">SEVA</text>
+<line x1="452.2" y1="292" x2="906.2" y2="292" stroke="#9ca3af" stroke-width="2"/>
+<circle cx="906.2" cy="292" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="452.2" cy="292" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="440.1533333333333" y="296" font-size="11" fill="#6b7280" text-anchor="end">10.51</text>
+<text x="918.2133333333334" y="296" font-size="11" fill="#6b7280" text-anchor="start">19.84</text>
+<text x="310" y="343" font-size="13" fill="#111827" text-anchor="end">CameraCtrl</text>
+<line x1="431.7" y1="338" x2="813.3" y2="338" stroke="#9ca3af" stroke-width="2"/>
+<circle cx="813.3" cy="338" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="431.7" cy="338" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="419.71333333333337" y="342" font-size="11" fill="#6b7280" text-anchor="end">10.09</text>
+<text x="825.26" y="342" font-size="11" fill="#6b7280" text-anchor="start">17.93</text>
+<text x="310" y="389" font-size="13" fill="#111827" text-anchor="end">GameCraft</text>
+<line x1="431.7" y1="384" x2="965.1" y2="384" stroke="#9ca3af" stroke-width="2"/>
+<circle cx="965.1" cy="384" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="431.7" cy="384" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="419.71333333333337" y="388" font-size="11" fill="#6b7280" text-anchor="end">10.09</text>
+<text x="977.1" y="388" font-size="11" fill="#6b7280" text-anchor="start">21.05</text>
+<text x="310" y="435" font-size="13" fill="#111827" text-anchor="end">Matrix-Game-2.0（实时）</text>
+<line x1="406.4" y1="430" x2="780.7" y2="430" stroke="#9ca3af" stroke-width="2"/>
+<circle cx="780.7" cy="430" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="406.4" cy="430" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="394.4066666666667" y="434" font-size="11" fill="#6b7280" text-anchor="end">9.57</text>
+<text x="792.6533333333334" y="434" font-size="11" fill="#6b7280" text-anchor="start">17.26</text>
+<text x="310" y="481" font-size="13" fill="#111827" text-anchor="end">ViewCrafter</text>
+<line x1="394.2" y1="476" x2="909.6" y2="476" stroke="#9ca3af" stroke-width="2"/>
+<circle cx="909.6" cy="476" r="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<circle cx="394.2" cy="476" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+<text x="382.24" y="480" font-size="11" fill="#6b7280" text-anchor="end">9.32</text>
+<text x="921.62" y="480" font-size="11" fill="#6b7280" text-anchor="start">19.91</text>
+<text x="30" y="584" font-size="12" fill="#9ca3af" text-anchor="start">据 PDF p. 13 Table 2 重画，数字为表中原值。只画 PSNR 一项；SSIM、LPIPS、Rdist、Tdist 见正文表格。</text>
+</svg>
