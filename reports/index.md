@@ -360,8 +360,8 @@
 | InternW0 | ShanghaiAILab | 物理世界模型:视频专家慢速预测未来、动作专家快速出动作的异步双专家结构,混合真机、仿真、第一人称与接触力数据预训练(上海 AI 实验室) |
 | WorldCrafter | Tencent | 视频世界模型的隐式 3D 感知记忆:按请求的相机视角把历史多视图观测压进固定数量的视角 token,不靠显式深度对应,单图或文本起步做分钟级流式探索 |
 | DexTouch-WM | HKUST | 人手与灵巧手共用一套触觉阵列与动作表示,让人类触觉交互数据监督同一个动作条件世界模型,联合预测未来 RGB 与双手触觉 |
-| JEPA-Anything | CUHK | 正交预测分解把 JEPA 的潜目标拆成互补因子分路学习再合并,同一套框架跑视觉、生物、临床、控制、分子动力学、物理场与天气七个领域 |
 | Real-Time-EXPO-FT | Stanford | VLA 推理延迟让观测过时:大 VLA 慢慢出动作块,轻量编辑策略按最新观测快速改动作,在此之上做 RL 微调 |
+| JEPA-Anything | CUHK | 正交预测分解把 JEPA 的潜目标拆成互补因子分路学习再合并,同一套框架跑视觉、生物、临床、控制、分子动力学、物理场与天气七个领域 |
 | Fugu | Sakana | 动态编排 agent 脚手架的编排器模型 |
 | AI-Co-Mathematician | Google | 数学研究的 agentic 工作台(DeepMind) |
 | HunyuanWorld-2.0 | Tencent | 重建、生成、模拟三合一的 3D 世界模型 |

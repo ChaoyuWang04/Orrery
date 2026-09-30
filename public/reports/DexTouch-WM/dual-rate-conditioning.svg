@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">双速率动作条件：同一串动作，按两种时间分辨率切给两个流</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">灰 = 每帧的位姿动作；紫 = 视频潜变量及其条件；黄 = 触觉潜变量及其条件；绿 = 第 0 步的干净上下文（不加噪，条件为 0）。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">机制示意，依据 PDF p. 3 式 (2)–(3)；只画前 8 帧，实际预测窗口长度报告没给。</text>
+<text x="30" y="132" font-size="14" fill="#111827" font-weight="700">视频流</text>
+<text x="30" y="152" font-size="11" fill="#6b7280">VAE 时间压缩 4 倍</text>
+<text x="30" y="252" font-size="14" fill="#111827" font-weight="700">动作 aₜ</text>
+<text x="30" y="272" font-size="11" fill="#6b7280">67 维，逐帧给出</text>
+<text x="30" y="372" font-size="14" fill="#111827" font-weight="700">触觉流</text>
+<text x="30" y="392" font-size="11" fill="#6b7280">逐帧，预测残差</text>
+<rect x="220" y="110" width="80" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="260" y="132" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">v₀</text>
+<text x="260" y="151" font-size="11" fill="#6b7280" text-anchor="middle">cᵛ₀ = 0</text>
+<rect x="315" y="110" width="365" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="497.5" y="132" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">第 1 个视频潜变量（压 4 帧）</text>
+<text x="497.5" y="151" font-size="11" fill="#6b7280" text-anchor="middle">条件 cᵛ₁ = φᵥ(a₁, …, a₄)，4 帧动作合成一个</text>
+<rect x="695" y="110" width="365" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="877.5" y="132" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">第 2 个视频潜变量（压 4 帧）</text>
+<text x="877.5" y="151" font-size="11" fill="#6b7280" text-anchor="middle">条件 cᵛ₂ = φᵥ(a₅, …, a₈)，4 帧动作合成一个</text>
+<text x="260" y="255" font-size="11" fill="#9ca3af" text-anchor="middle">初始观测</text>
+<rect x="319" y="232" width="72" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="355" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a₁</text>
+<line x1="355" y1="232" x2="355" y2="164" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="355" y1="268" x2="355" y2="348" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="414" y="232" width="72" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="450" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a₂</text>
+<line x1="450" y1="232" x2="450" y2="164" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="450" y1="268" x2="450" y2="348" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="509" y="232" width="72" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="545" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a₃</text>
+<line x1="545" y1="232" x2="545" y2="164" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="545" y1="268" x2="545" y2="348" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="604" y="232" width="72" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="640" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a₄</text>
+<line x1="640" y1="232" x2="640" y2="164" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640" y1="268" x2="640" y2="348" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="699" y="232" width="72" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="735" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a₅</text>
+<line x1="735" y1="232" x2="735" y2="164" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="735" y1="268" x2="735" y2="348" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="794" y="232" width="72" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="830" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a₆</text>
+<line x1="830" y1="232" x2="830" y2="164" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="830" y1="268" x2="830" y2="348" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="889" y="232" width="72" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="925" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a₇</text>
+<line x1="925" y1="232" x2="925" y2="164" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="925" y1="268" x2="925" y2="348" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="984" y="232" width="72" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1020" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a₈</text>
+<line x1="1020" y1="232" x2="1020" y2="164" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="1020" y1="268" x2="1020" y2="348" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="220" y="350" width="80" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="260" y="372" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">z₀</text>
+<text x="260" y="391" font-size="11" fill="#6b7280" text-anchor="middle">cˣ₀ = 0</text>
+<rect x="315" y="350" width="80" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="355" y="372" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">r̂₁</text>
+<text x="355" y="391" font-size="11" fill="#6b7280" text-anchor="middle">φₓ(a₁)</text>
+<rect x="410" y="350" width="80" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="450" y="372" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">r̂₂</text>
+<text x="450" y="391" font-size="11" fill="#6b7280" text-anchor="middle">φₓ(a₂)</text>
+<rect x="505" y="350" width="80" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="545" y="372" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">r̂₃</text>
+<text x="545" y="391" font-size="11" fill="#6b7280" text-anchor="middle">φₓ(a₃)</text>
+<rect x="600" y="350" width="80" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="640" y="372" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">r̂₄</text>
+<text x="640" y="391" font-size="11" fill="#6b7280" text-anchor="middle">φₓ(a₄)</text>
+<rect x="695" y="350" width="80" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="735" y="372" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">r̂₅</text>
+<text x="735" y="391" font-size="11" fill="#6b7280" text-anchor="middle">φₓ(a₅)</text>
+<rect x="790" y="350" width="80" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="830" y="372" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">r̂₆</text>
+<text x="830" y="391" font-size="11" fill="#6b7280" text-anchor="middle">φₓ(a₆)</text>
+<rect x="885" y="350" width="80" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="925" y="372" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">r̂₇</text>
+<text x="925" y="391" font-size="11" fill="#6b7280" text-anchor="middle">φₓ(a₇)</text>
+<rect x="980" y="350" width="80" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1020" y="372" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">r̂₈</text>
+<text x="1020" y="391" font-size="11" fill="#6b7280" text-anchor="middle">φₓ(a₈)</text>
+<text x="30" y="440" font-size="11" fill="#9ca3af">触觉流预测的是相对初始潜变量的残差 rₜ = zₜ − z₀，解码时把 z₀ 加回去（式 2）；z₀ 始终作为上下文可见。</text>
+<text x="30" y="462" font-size="11" fill="#9ca3af">两路条件都经 AdaLN 注入各自专家的时间步调制；动作里手腕与相机是相对第一帧的运动，手指关节是绝对角度（PDF p. 3）。</text>
+</svg>

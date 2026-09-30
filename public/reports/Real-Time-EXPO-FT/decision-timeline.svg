@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">同一段新动作，是按哪一帧画面定下来的</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">黄 = 大 VLA 生成候选动作块（慢）；紫 = 小编辑器修正并由 Q 函数挑选（快）；绿 = 机器人在执行动作；灰 = 机器人停着等。</text>
+<text x="30" y="72" font-size="13" fill="#6b7280">每行上半是计算，下半是机器人在做什么。按 PDF p. 5、p. 7、p. 17 画的示意，时间比例不是实测。</text>
+
+<line x1="260" y1="106" x2="260" y2="400" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="446" y1="106" x2="446" y2="400" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="264" y="100" font-size="11" fill="#6b7280">s<tspan baseline-shift="sub" font-size="9">t</tspan>：VLA 开始推理</text>
+<text x="450" y="100" font-size="11" fill="#6b7280">s<tspan baseline-shift="sub" font-size="9">t+d</tspan>：新动作块开始执行</text>
+
+<!-- row 1 -->
+<text x="30" y="140" font-size="14" fill="#111827" font-weight="700">EXPO-FT</text>
+<text x="30" y="158" font-size="11" fill="#6b7280">不感知延迟，按 d = 0 训练</text>
+<text x="252" y="136" font-size="11" fill="#9ca3af" text-anchor="end">计算</text>
+<text x="252" y="170" font-size="11" fill="#9ca3af" text-anchor="end">机器人</text>
+<rect x="260" y="118" width="186" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="353" y="136" font-size="11" fill="#111827" text-anchor="middle">候选、编辑、挑选都按 s<tspan baseline-shift="sub" font-size="9">t</tspan> 算</text>
+<rect x="260" y="152" width="186" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="353" y="170" font-size="11" fill="#111827" text-anchor="middle">停着等推理算完</text>
+<rect x="446" y="152" width="496" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="694" y="170" font-size="11" fill="#111827" text-anchor="middle">执行 C 步：动作是按 s<tspan baseline-shift="sub" font-size="9">t</tspan> 定的</text>
+
+<!-- row 2 -->
+<text x="30" y="240" font-size="14" fill="#111827" font-weight="700">EXPO-FT w/ RTC</text>
+<text x="30" y="258" font-size="11" fill="#6b7280">加上训练期 RTC 的前缀衔接</text>
+<text x="252" y="236" font-size="11" fill="#9ca3af" text-anchor="end">计算</text>
+<text x="252" y="270" font-size="11" fill="#9ca3af" text-anchor="end">机器人</text>
+<rect x="260" y="218" width="186" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="353" y="236" font-size="11" fill="#111827" text-anchor="middle">接前缀，全按 s<tspan baseline-shift="sub" font-size="9">t</tspan> 算</text>
+<rect x="260" y="252" width="186" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="353" y="270" font-size="11" fill="#111827" text-anchor="middle">执行上一块的前缀</text>
+<rect x="446" y="252" width="496" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="694" y="270" font-size="11" fill="#111827" text-anchor="middle">执行新块：不停顿，但动作仍是按 s<tspan baseline-shift="sub" font-size="9">t</tspan> 定的</text>
+<rect x="262" y="286" width="560" height="16" fill="#ffffff"/>
+<text x="266" y="298" font-size="11" fill="#9ca3af">这一行的编辑与挑选看 s<tspan baseline-shift="sub" font-size="9">t</tspan>，是按方法定义推断；论文只写它与本方法用同样的延迟与优化参数（PDF p. 17）</text>
+
+<!-- row 3 -->
+<text x="30" y="340" font-size="14" fill="#111827" font-weight="700">Real-Time EXPO-FT</text>
+<text x="30" y="358" font-size="11" fill="#6b7280">慢生成、快编辑</text>
+<text x="252" y="336" font-size="11" fill="#9ca3af" text-anchor="end">计算</text>
+<text x="252" y="370" font-size="11" fill="#9ca3af" text-anchor="end">机器人</text>
+<rect x="260" y="318" width="186" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="353" y="336" font-size="11" fill="#111827" text-anchor="middle">接前缀生成 N 个候选，看 s<tspan baseline-shift="sub" font-size="9">t</tspan></text>
+<rect x="446" y="318" width="22" height="28" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="476" y="336" font-size="11" fill="#111827">小编辑器按 s<tspan baseline-shift="sub" font-size="9">t+d</tspan> 修正每个候选，Q 函数在 2N 个里挑最高</text>
+<rect x="260" y="352" width="186" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="353" y="370" font-size="11" fill="#111827" text-anchor="middle">执行上一块的前缀</text>
+<rect x="446" y="352" width="496" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="694" y="370" font-size="11" fill="#111827" text-anchor="middle">执行新块：最后的修正与取舍看的是 s<tspan baseline-shift="sub" font-size="9">t+d</tspan></text>
+
+<!-- axis -->
+<line x1="260" y1="410" x2="1004" y2="410" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="260" y1="410" x2="260" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="322" y1="410" x2="322" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="384" y1="410" x2="384" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="446" y1="410" x2="446" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="508" y1="410" x2="508" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="570" y1="410" x2="570" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="632" y1="410" x2="632" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="694" y1="410" x2="694" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="756" y1="410" x2="756" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="818" y1="410" x2="818" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="880" y1="410" x2="880" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="942" y1="410" x2="942" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="1004" y1="410" x2="1004" y2="416" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="260" y="430" font-size="11" fill="#6b7280" text-anchor="middle">t</text>
+<text x="446" y="430" font-size="11" fill="#6b7280" text-anchor="middle">t+d</text>
+<text x="942" y="430" font-size="11" fill="#6b7280" text-anchor="middle">t+d+C</text>
+<text x="1012" y="414" font-size="11" fill="#6b7280">控制步</text>
+
+<text x="30" y="462" font-size="11" fill="#9ca3af">图中取 d = 3、C = 8 只为示意；真机 C = 8，d 为 3 或 5（PDF p. 16）。紫块画得很窄，因为论文把编辑按足够快处理，真机上它的耗时没有报告。</text>
+<text x="30" y="480" font-size="11" fill="#9ca3af">真机的 EXPO-FT 基线按 d = 0 训练和评估，同时承受 100 ms 真实推理延迟，直接用在 30 Hz 控制上会在块间停顿（PDF p. 7、p. 17）。</text>
+</svg>

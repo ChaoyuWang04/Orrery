@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/>
+    </marker>
+    <marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d4a24c"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+
+  <rect x="40" y="82" width="1040" height="78" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <rect x="40" y="200" width="1040" height="370" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+  <rect x="80" y="250" width="260" height="150" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <rect x="430" y="250" width="260" height="150" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <rect x="780" y="250" width="260" height="150" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+
+  <g stroke="#9ca3af" stroke-width="1.4" fill="none" marker-end="url(#ag)">
+    <line x1="210" y1="160" x2="210" y2="248"/>
+    <line x1="560" y1="160" x2="560" y2="248"/>
+    <line x1="910" y1="160" x2="910" y2="248"/>
+  </g>
+  <g stroke="#d4a24c" stroke-width="2" fill="none" marker-end="url(#ay)">
+    <polyline points="210,400 210,478 880,478 880,402"/>
+    <polyline points="560,400 560,452 950,452 950,402"/>
+  </g>
+  <g stroke="#d9877a" stroke-width="3">
+    <line x1="385" y1="262" x2="385" y2="388"/>
+    <line x1="735" y1="262" x2="735" y2="388"/>
+  </g>
+
+  <text x="20" y="34" font-size="19" font-weight="700" fill="#111827">Fugu-Ultra 的记忆边界：工作流之内隔离，工作流之间共享</text>
+  <text x="20" y="57" font-size="13" fill="#6b7280">灰＝以前工作流的工具调用记忆　绿＝工人各自的调用记录　黄＝access list 放行的通道　红＝本轮之内被挡住的视线。按 PDF p.8–9 文字重画，原文没有这张图</text>
+
+  <text x="560" y="114" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">跨工作流共享记忆：以前各轮工作流里发生过的工具调用</text>
+  <text x="560" y="140" font-size="11" fill="#6b7280" text-anchor="middle">每个工人都能读到，免得重复调同一批工具、重新发现同一批文件</text>
+
+  <text x="60" y="228" font-size="14" font-weight="700" fill="#111827">本轮工作流（例：三步，步 3 的 access list = [1, 2]）</text>
+
+  <text x="210" y="282" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">工人甲（步 1）</text>
+  <text x="210" y="310" font-size="11" fill="#6b7280" text-anchor="middle">上下文里只有自己的动作</text>
+  <text x="210" y="330" font-size="11" fill="#6b7280" text-anchor="middle">自己调工具、读反馈</text>
+  <text x="210" y="350" font-size="11" fill="#6b7280" text-anchor="middle">按分到的子任务找路</text>
+
+  <text x="560" y="282" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">工人乙（步 2）</text>
+  <text x="560" y="310" font-size="11" fill="#6b7280" text-anchor="middle">看不到甲的动作与输出</text>
+  <text x="560" y="330" font-size="11" fill="#6b7280" text-anchor="middle">不会被甲开的路带着走</text>
+  <text x="560" y="350" font-size="11" fill="#6b7280" text-anchor="middle">独立走自己的解法</text>
+
+  <text x="910" y="282" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">工人丙（步 3）</text>
+  <text x="910" y="310" font-size="11" fill="#6b7280" text-anchor="middle">access list 指到甲、乙</text>
+  <text x="910" y="330" font-size="11" fill="#6b7280" text-anchor="middle">看得到两人的动作与输出</text>
+  <text x="910" y="350" font-size="11" fill="#6b7280" text-anchor="middle">在此基础上汇总或接手</text>
+
+  <text x="385" y="418" font-size="11" fill="#9ca3af" text-anchor="middle">互不可见</text>
+  <text x="735" y="418" font-size="11" fill="#9ca3af" text-anchor="middle">只经 access list</text>
+
+  <text x="560" y="508" font-size="11" fill="#6b7280" text-anchor="middle">黄线：只有被 access list 指到的步骤，其动作与输出才进入下游工人的上下文</text>
+  <text x="560" y="540" font-size="11" fill="#9ca3af" text-anchor="middle">不隔离的后果：第一个碰环境的工人定下路线，后面的工人都沿着走，贡献变成冗余——报告称之为编排坍缩</text>
+</svg>

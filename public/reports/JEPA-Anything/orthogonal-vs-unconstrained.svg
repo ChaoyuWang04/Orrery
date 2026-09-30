@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 460" width="1120" height="460" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ap" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#8f8bd8"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="460" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">同样大小的预测误差，合成回来会不会被放大，取决于基之间夹多大角</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫色箭头 = 两个因子的基方向；绿色区域 = 因子坐标上的误差长度为 1 时，合成出的状态误差可能落到的范围。</text>
+<text x="30" y="72" font-size="13" fill="#6b7280">二维示意，按 PDF p. 7–8 的命题 1、推论 1 与 p. 29 的命题 2 画，不是实测数据。</text>
+
+<rect x="20" y="90" width="530" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="570" y="90" width="530" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="285" y="116" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 块间正交：OPF 的正交罚压出来的情形</text>
+<text x="285" y="134" font-size="11" fill="#6b7280" text-anchor="middle">两个方向互相垂直，条件数为 1</text>
+<text x="835" y="116" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) 不加约束的多头：两个方向几乎重合</text>
+<text x="835" y="134" font-size="11" fill="#6b7280" text-anchor="middle">两块在学差不多的东西，条件数很大</text>
+
+<!-- panel a -->
+<line x1="120" y1="340" x2="320" y2="340" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ap)"/>
+<line x1="120" y1="340" x2="120" y2="170" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ap)"/>
+<text x="330" y="344" font-size="13" fill="#111827">因子 1 的方向</text>
+<text x="128" y="166" font-size="13" fill="#111827">因子 2 的方向</text>
+<circle cx="390" cy="240" r="34" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="390" cy="240" r="3" fill="#111827"/>
+<text x="390" y="296" font-size="11" fill="#6b7280" text-anchor="middle">误差圆还是圆，半径不变</text>
+<text x="390" y="312" font-size="11" fill="#6b7280" text-anchor="middle">合成误差 = 坐标误差</text>
+<text x="285" y="410" font-size="11" fill="#9ca3af" text-anchor="middle">命题 1 与推论 1：切块不丢信息，合成误差的长度正好等于坐标误差的长度</text>
+
+<!-- panel b -->
+<line x1="640" y1="340" x2="840" y2="340" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ap)"/>
+<line x1="640" y1="340" x2="836" y2="306" stroke="#8f8bd8" stroke-width="2.2" marker-end="url(#ap)"/>
+<text x="848" y="352" font-size="13" fill="#111827">因子 1 的方向</text>
+<text x="846" y="304" font-size="13" fill="#111827">因子 2 的方向</text>
+<ellipse cx="960" cy="232" rx="22" ry="84" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<circle cx="960" cy="232" r="3" fill="#111827"/>
+<text x="800" y="200" font-size="11" fill="#6b7280" text-anchor="middle">两个方向都几乎照不到竖直方向</text>
+<text x="800" y="216" font-size="11" fill="#6b7280" text-anchor="middle">同样的坐标误差在这里被拉长</text>
+<text x="835" y="410" font-size="11" fill="#9ca3af" text-anchor="middle">两列完全重合时矩阵秩亏，竖直方向根本合成不回来</text>
+</svg>

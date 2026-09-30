@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" width="1120" height="700" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1120" height="700" fill="#ffffff"/>
+
+  <!-- 容器 -->
+  <rect x="20" y="72" width="1080" height="270" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+  <rect x="20" y="364" width="1080" height="316" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+  <!-- Fugu 行 -->
+  <rect x="40" y="130" width="170" height="110" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <rect x="240" y="130" width="170" height="110" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+  <rect x="440" y="130" width="160" height="110" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+  <rect x="630" y="130" width="160" height="110" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <rect x="820" y="130" width="260" height="110" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+
+  <!-- Fugu-Ultra 行 -->
+  <rect x="40" y="430" width="150" height="110" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <rect x="215" y="430" width="180" height="110" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+  <rect x="420" y="410" width="300" height="150" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <rect x="745" y="410" width="140" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <rect x="745" y="500" width="140" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <rect x="920" y="455" width="160" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <rect x="920" y="590" width="160" height="62" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+
+  <!-- 连线 -->
+  <g stroke="#9ca3af" stroke-width="1.4" fill="none" marker-end="url(#ah)">
+    <line x1="210" y1="185" x2="238" y2="185"/>
+    <line x1="410" y1="185" x2="438" y2="185"/>
+    <line x1="600" y1="185" x2="628" y2="185"/>
+    <line x1="790" y1="185" x2="818" y2="185"/>
+    <polyline points="950,240 950,292 125,292 125,242"/>
+    <line x1="190" y1="485" x2="213" y2="485"/>
+    <line x1="395" y1="485" x2="418" y2="485"/>
+    <line x1="720" y1="485" x2="743" y2="440"/>
+    <line x1="720" y1="485" x2="743" y2="528"/>
+    <line x1="885" y1="438" x2="918" y2="475"/>
+    <line x1="885" y1="528" x2="918" y2="493"/>
+    <line x1="1000" y1="511" x2="1000" y2="588"/>
+  </g>
+
+  <!-- 文字 -->
+  <text x="20" y="34" font-size="19" font-weight="700" fill="#111827">Fugu 与 Fugu-Ultra：同一个接口，两种编排粒度</text>
+  <text x="20" y="57" font-size="13" fill="#6b7280">紫＝编排器本身　黄＝编排器产出的决策　绿＝前沿工作模型　灰＝任务、状态与输出。按 PDF p.5–9 重画的机制示意，不是实测时序</text>
+
+  <text x="36" y="100" font-size="14" font-weight="700" fill="#111827">Fugu：每一轮只做一次选择（PDF p.5–7）</text>
+  <text x="125" y="162" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">交互状态 s_t</text>
+  <text x="125" y="188" font-size="11" fill="#6b7280" text-anchor="middle">任务 + 此前各轮记录</text>
+  <text x="125" y="206" font-size="11" fill="#6b7280" text-anchor="middle">工具调用与执行反馈</text>
+
+  <text x="325" y="162" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">编排器骨干</text>
+  <text x="325" y="188" font-size="11" fill="#6b7280" text-anchor="middle">一次前向，不解码</text>
+  <text x="325" y="206" font-size="11" fill="#6b7280" text-anchor="middle">只训奇异值尺度</text>
+
+  <text x="520" y="162" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">轻量选择头</text>
+  <text x="520" y="188" font-size="11" fill="#6b7280" text-anchor="middle">输入隐状态 h</text>
+  <text x="520" y="206" font-size="11" fill="#6b7280" text-anchor="middle">输出 L 个 logit</text>
+
+  <text x="710" y="162" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">选中 1 个工人</text>
+  <text x="710" y="188" font-size="11" fill="#6b7280" text-anchor="middle">按 logit 采样 a_t</text>
+  <text x="710" y="206" font-size="11" fill="#6b7280" text-anchor="middle">不分配角色</text>
+
+  <text x="950" y="162" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">该工人跑这一轮</text>
+  <text x="950" y="188" font-size="11" fill="#6b7280" text-anchor="middle">在 harness 里调工具、改文件</text>
+  <text x="950" y="206" font-size="11" fill="#6b7280" text-anchor="middle">环境反馈写回状态</text>
+
+  <text x="537" y="318" font-size="11" fill="#9ca3af" text-anchor="middle">进入下一轮 s_t+1 后重新选人；至多 B 轮，终局奖励 R 只记任务最后成没成（0 或 1）</text>
+
+  <text x="36" y="392" font-size="14" font-weight="700" fill="#111827">Fugu-Ultra：每题先写一张工作流，再按图执行（PDF p.7–9）</text>
+  <text x="115" y="462" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">用户查询 q</text>
+  <text x="115" y="488" font-size="11" fill="#6b7280" text-anchor="middle">多轮任务里</text>
+  <text x="115" y="506" font-size="11" fill="#6b7280" text-anchor="middle">附带共享记忆</text>
+
+  <text x="305" y="462" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">编排器</text>
+  <text x="305" y="488" font-size="11" fill="#6b7280" text-anchor="middle">自回归写出</text>
+  <text x="305" y="506" font-size="11" fill="#6b7280" text-anchor="middle">一段自然语言工作流</text>
+  <text x="305" y="524" font-size="11" fill="#6b7280" text-anchor="middle">GRPO 训练，不加 KL</text>
+
+  <text x="570" y="438" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">工作流（至多 5 步）</text>
+  <text x="440" y="468" font-size="11" fill="#6b7280">步 1：子任务甲 → 工人 2，access [ ]</text>
+  <text x="440" y="490" font-size="11" fill="#6b7280">步 2：子任务乙 → 工人 1，access [ ]</text>
+  <text x="440" y="512" font-size="11" fill="#6b7280">步 3：汇总 → 工人 3，access [1, 2]</text>
+  <text x="440" y="542" font-size="11" fill="#9ca3af">每步 = 子任务 + 工人编号 + access list</text>
+
+  <text x="815" y="436" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">步 1 · 工人 2</text>
+  <text x="815" y="454" font-size="11" fill="#6b7280" text-anchor="middle">独立作答</text>
+  <text x="815" y="526" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">步 2 · 工人 1</text>
+  <text x="815" y="544" font-size="11" fill="#6b7280" text-anchor="middle">独立作答</text>
+  <text x="1000" y="481" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">步 3 · 工人 3</text>
+  <text x="1000" y="499" font-size="11" fill="#6b7280" text-anchor="middle">读步 1、2 的结果</text>
+  <text x="1000" y="617" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">最后一步的输出</text>
+  <text x="1000" y="637" font-size="11" fill="#6b7280" text-anchor="middle">就是对外回答 o</text>
+
+  <text x="40" y="604" font-size="11" fill="#6b7280">奖励：解析不出工作流记 0；能执行但答错记 0.5；答对记 1</text>
+  <text x="40" y="624" font-size="11" fill="#6b7280">编排器也可以把自己列进工人池（PDF p.8）</text>
+  <text x="40" y="650" font-size="11" fill="#9ca3af">工人编号与 access list 由编排器逐题决定，拓扑因此可以是链、best-of-N 或树</text>
+</svg>
