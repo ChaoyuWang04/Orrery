@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 610" width="1120" height="610" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="610" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">条件空间的形状：16 步动作、4 帧未来、16 × 32 的条件</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">黄 = 未来观测与冻结的视觉模型；紫 = 可学习的查询；绿 = 条件 Oᶜ；灰 = VLM 与动作头。箭头是数据流向。</text>
+<text x="30" y="104" font-size="13" fill="#6b7280">预测地平线：16 步动作</text>
+<rect x="250" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="272.0" y="103" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="300" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="322.0" y="103" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="350" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="372.0" y="103" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<rect x="400" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="422.0" y="103" font-size="11" fill="#111827" text-anchor="middle">4</text>
+<rect x="450" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="472.0" y="103" font-size="11" fill="#111827" text-anchor="middle">5</text>
+<rect x="500" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="522.0" y="103" font-size="11" fill="#111827" text-anchor="middle">6</text>
+<rect x="550" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="572.0" y="103" font-size="11" fill="#111827" text-anchor="middle">7</text>
+<rect x="600" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="622.0" y="103" font-size="11" fill="#111827" text-anchor="middle">8</text>
+<rect x="650" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="672.0" y="103" font-size="11" fill="#111827" text-anchor="middle">9</text>
+<rect x="700" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="722.0" y="103" font-size="11" fill="#111827" text-anchor="middle">10</text>
+<rect x="750" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="772.0" y="103" font-size="11" fill="#111827" text-anchor="middle">11</text>
+<rect x="800" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="822.0" y="103" font-size="11" fill="#111827" text-anchor="middle">12</text>
+<rect x="850" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="872.0" y="103" font-size="11" fill="#111827" text-anchor="middle">13</text>
+<rect x="900" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="922.0" y="103" font-size="11" fill="#111827" text-anchor="middle">14</text>
+<rect x="950" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="972.0" y="103" font-size="11" fill="#111827" text-anchor="middle">15</text>
+<rect x="1000" y="86" width="44" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1022.0" y="103" font-size="11" fill="#111827" text-anchor="middle">16</text>
+<text x="30" y="146" font-size="13" fill="#6b7280">均匀采 4 帧未来观测</text>
+<rect x="250" y="126" width="194" height="30" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="302.0" y="130" width="90" height="22" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="347.0" y="145" font-size="11" fill="#111827" text-anchor="middle">未来帧 1</text>
+<rect x="450" y="126" width="194" height="30" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="502.0" y="130" width="90" height="22" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="547.0" y="145" font-size="11" fill="#111827" text-anchor="middle">未来帧 2</text>
+<rect x="650" y="126" width="194" height="30" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="702.0" y="130" width="90" height="22" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="747.0" y="145" font-size="11" fill="#111827" text-anchor="middle">未来帧 3</text>
+<rect x="850" y="126" width="194" height="30" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="902.0" y="130" width="90" height="22" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="947.0" y="145" font-size="11" fill="#111827" text-anchor="middle">未来帧 4</text>
+<text x="250" y="176" font-size="11" fill="#9ca3af">每 4 步动作对应 1 帧（附录 A 写「四分之一频率、均匀采样」，具体取哪一步报告没写）</text>
+<text x="30" y="214" font-size="14" fill="#111827" font-weight="700">第一阶段 World Guidance：未来帧当条件，全程可训练（冻结的只有视觉模型）</text>
+<rect x="30" y="226" width="180" height="96" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="42" y="250" font-size="14" fill="#111827" font-weight="700">冻结视觉模型</text>
+<text x="42" y="270" font-size="11" fill="#6b7280">DINOv2：逐帧取语义特征</text>
+<text x="42" y="287" font-size="11" fill="#6b7280">Wan VAE：当前帧打头，</text>
+<text x="42" y="304" font-size="11" fill="#6b7280">连同 4 帧编码时空特征</text>
+<rect x="250" y="226" width="180" height="96" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="262" y="250" font-size="14" fill="#111827" font-weight="700">投影后叠起</text>
+<text x="262" y="270" font-size="11" fill="#6b7280">两路特征投到 Q-Former</text>
+<text x="262" y="287" font-size="11" fill="#6b7280">的隐藏维，空间维展平，</text>
+<text x="262" y="304" font-size="11" fill="#6b7280">再堆成一串 token</text>
+<rect x="470" y="226" width="180" height="96" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="482" y="250" font-size="14" fill="#111827" font-weight="700">Q-Former 查询</text>
+<text x="482" y="270" font-size="11" fill="#6b7280">N = 16 个可学习 query</text>
+<text x="482" y="287" font-size="11" fill="#6b7280">交叉注意力，只问出</text>
+<text x="482" y="304" font-size="11" fill="#6b7280">与动作有关的部分</text>
+<rect x="690" y="226" width="180" height="96" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="702" y="250" font-size="14" fill="#111827" font-weight="700">条件 Oᶜ</text>
+<text x="702" y="270" font-size="11" fill="#6b7280">16 个向量，每个 32 维</text>
+<rect x="702" y="284" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="721" y="284" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="740" y="284" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="759" y="284" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="778" y="284" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="797" y="284" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="816" y="284" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="835" y="284" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="702" y="298" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="721" y="298" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="740" y="298" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="759" y="298" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="778" y="298" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="797" y="298" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="816" y="298" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="835" y="298" width="15" height="10" rx="2" fill="#ffffff" stroke="#5fa886"/>
+<rect x="910" y="226" width="180" height="96" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="922" y="250" font-size="14" fill="#111827" font-weight="700">DiT 动作头</text>
+<text x="922" y="270" font-size="11" fill="#6b7280">Oᶜ 进每个 DiT block，</text>
+<text x="922" y="287" font-size="11" fill="#6b7280">与 z 做交叉注意力；</text>
+<text x="922" y="304" font-size="11" fill="#6b7280">整流流去噪出动作</text>
+<line x1="210" y1="274.0" x2="246" y2="274.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="430" y1="274.0" x2="466" y2="274.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="650" y1="274.0" x2="686" y2="274.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="870" y1="274.0" x2="906" y2="274.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="780.0" y1="322" x2="780.0" y2="406" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+<text x="790.0" y="358" font-size="11" fill="#9ca3af">编码器冻结，Oᶜ 变成目标</text>
+<text x="30" y="398" font-size="14" fill="#111827" font-weight="700">第二阶段 World Inference：未来帧不再进动作头，VLM 自己预测 Oᶜ</text>
+<rect x="30" y="410" width="180" height="86" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="42" y="434" font-size="14" fill="#111827" font-weight="700">VLM 看当前帧</text>
+<text x="42" y="454" font-size="11" fill="#6b7280">指令 + 当前 RGB</text>
+<text x="42" y="471" font-size="11" fill="#6b7280">取输出的最后 4 个隐状态</text>
+<rect x="250" y="410" width="180" height="86" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="262" y="434" font-size="14" fill="#111827" font-weight="700">16 个新 query</text>
+<text x="262" y="454" font-size="11" fill="#6b7280">对这 4 个隐状态</text>
+<text x="262" y="471" font-size="11" fill="#6b7280">做交叉注意力</text>
+<rect x="470" y="410" width="180" height="86" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="482" y="434" font-size="14" fill="#111827" font-weight="700">投影到 32 维</text>
+<text x="482" y="454" font-size="11" fill="#6b7280">得到预测的 16 × 32</text>
+<rect x="690" y="410" width="180" height="86" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="702" y="434" font-size="14" fill="#111827" font-weight="700">余弦对齐</text>
+<text x="702" y="454" font-size="11" fill="#6b7280">损失 1 − cos，</text>
+<text x="702" y="471" font-size="11" fill="#6b7280">目标是冻结的 Oᶜ</text>
+<rect x="910" y="410" width="180" height="86" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="922" y="434" font-size="14" fill="#111827" font-weight="700">DiT 动作头</text>
+<text x="922" y="454" font-size="11" fill="#6b7280">只吃 z，</text>
+<text x="922" y="471" font-size="11" fill="#6b7280">不再看任何未来信息</text>
+<line x1="210" y1="453.0" x2="246" y2="453.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="430" y1="453.0" x2="466" y2="453.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="650" y1="453.0" x2="686" y2="453.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="120.0,496 120.0,518 1000.0,518 1000.0,500" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="450.0" y="512" font-size="11" fill="#9ca3af" text-anchor="middle">z（最后一个可学习 token 的输出）直接进动作头</text>
+<text x="30" y="588" font-size="13" fill="#6b7280">据 PDF p. 4 Figure 2、p. 13 附录 A 与 Figure 5 重画；16、4、32 均为报告写明的默认值，框的大小不代表参数量。</text>
+</svg>

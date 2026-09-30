@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">按视野重叠挑记忆：精确算体积交，或者撒点数一数</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">俯视示意。紫 = 当前查询视角的视锥；绿 = 候选记忆帧 A；黄 = 候选记忆帧 B；灰点 = 没落进候选视锥的采样点。</text>
+<rect x="16" y="72" width="528" height="380" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<polygon points="272.2,415.0 147.4,184.0 342.4,152.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4" fill-opacity="0.8"/>
+<polygon points="61.6,299.5 46.0,110.5 131.8,100.0" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4" fill-opacity="0.8"/>
+<polygon points="170.8,404.5 85.0,163.0 272.2,163.0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4" fill-opacity="0.55"/>
+<polygon points="212.7,304.8 147.4,184.0 271.8,163.9" fill="#5fa886" fill-opacity="0.35" stroke="#5fa886" stroke-width="1.4"/>
+<polygon points="109.6,163.0 97.4,197.8 85.0,163.0" fill="#d4a24c" fill-opacity="0.35" stroke="#d4a24c" stroke-width="1.4"/>
+<circle cx="170.8" cy="404.5" r="5" fill="#111827"/>
+<circle cx="272.20000000000005" cy="415.0" r="5" fill="#111827"/>
+<circle cx="61.6" cy="299.5" r="5" fill="#111827"/>
+<text x="170.8" y="428.5" font-size="11" fill="#6b7280" text-anchor="middle">当前相机</text>
+<text x="272.20000000000005" y="439.0" font-size="11" fill="#6b7280" text-anchor="middle">记忆帧 A 的相机</text>
+<text x="71.6" y="323.5" font-size="11" fill="#6b7280" text-anchor="middle">记忆帧 B</text>
+<rect x="576" y="72" width="528" height="380" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<polygon points="832.2,415.0 707.4,184.0 902.4,152.5" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4" fill-opacity="0.8"/>
+<polygon points="621.6,299.5 606.0,110.5 691.8,100.0" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4" fill-opacity="0.8"/>
+<polygon points="730.8,404.5 645.0,163.0 832.2,163.0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4" fill-opacity="0.55"/>
+<circle cx="708.8" cy="313.1" r="3.2" fill="#9ca3af"/>
+<circle cx="770.2" cy="167.7" r="3.2" fill="#9ca3af"/>
+<circle cx="682.2" cy="213.3" r="3.2" fill="#9ca3af"/>
+<circle cx="773.4" cy="190.7" r="3.2" fill="#5fa886"/>
+<circle cx="745.6" cy="350.1" r="3.2" fill="#9ca3af"/>
+<circle cx="781.1" cy="167.3" r="3.2" fill="#9ca3af"/>
+<circle cx="770.4" cy="231.3" r="3.2" fill="#5fa886"/>
+<circle cx="741.7" cy="254.2" r="3.2" fill="#9ca3af"/>
+<circle cx="704.2" cy="308.0" r="3.2" fill="#9ca3af"/>
+<circle cx="781.1" cy="194.0" r="3.2" fill="#5fa886"/>
+<circle cx="791.3" cy="207.0" r="3.2" fill="#5fa886"/>
+<circle cx="688.4" cy="167.1" r="3.2" fill="#9ca3af"/>
+<circle cx="718.5" cy="190.7" r="3.2" fill="#5fa886"/>
+<circle cx="792.4" cy="239.4" r="3.2" fill="#5fa886"/>
+<circle cx="694.3" cy="170.8" r="3.2" fill="#9ca3af"/>
+<circle cx="766.5" cy="192.2" r="3.2" fill="#5fa886"/>
+<circle cx="730.5" cy="290.4" r="3.2" fill="#9ca3af"/>
+<circle cx="754.2" cy="317.4" r="3.2" fill="#9ca3af"/>
+<circle cx="723.5" cy="344.5" r="3.2" fill="#9ca3af"/>
+<circle cx="677.0" cy="231.3" r="3.2" fill="#9ca3af"/>
+<circle cx="719.7" cy="306.6" r="3.2" fill="#9ca3af"/>
+<circle cx="771.7" cy="166.2" r="3.2" fill="#9ca3af"/>
+<circle cx="770.6" cy="275.9" r="3.2" fill="#5fa886"/>
+<circle cx="783.0" cy="245.2" r="3.2" fill="#5fa886"/>
+<circle cx="762.2" cy="236.4" r="3.2" fill="#5fa886"/>
+<circle cx="707.3" cy="234.4" r="3.2" fill="#9ca3af"/>
+<circle cx="708.6" cy="310.8" r="3.2" fill="#9ca3af"/>
+<circle cx="692.1" cy="251.8" r="3.2" fill="#9ca3af"/>
+<circle cx="694.4" cy="210.1" r="3.2" fill="#9ca3af"/>
+<circle cx="787.5" cy="177.5" r="3.2" fill="#5fa886"/>
+<circle cx="697.3" cy="240.1" r="3.2" fill="#9ca3af"/>
+<circle cx="674.0" cy="182.6" r="3.2" fill="#9ca3af"/>
+<circle cx="747.1" cy="201.5" r="3.2" fill="#5fa886"/>
+<circle cx="703.1" cy="262.6" r="3.2" fill="#9ca3af"/>
+<circle cx="720.7" cy="260.6" r="3.2" fill="#9ca3af"/>
+<circle cx="689.4" cy="242.1" r="3.2" fill="#9ca3af"/>
+<circle cx="674.6" cy="168.4" r="3.2" fill="#9ca3af"/>
+<circle cx="761.3" cy="227.5" r="3.2" fill="#5fa886"/>
+<circle cx="766.9" cy="242.2" r="3.2" fill="#5fa886"/>
+<circle cx="734.5" cy="361.2" r="3.2" fill="#9ca3af"/>
+<circle cx="704.4" cy="203.3" r="3.2" fill="#9ca3af"/>
+<circle cx="721.5" cy="277.7" r="3.2" fill="#9ca3af"/>
+<circle cx="649.9" cy="168.5" r="3.2" fill="#d4a24c"/>
+<circle cx="695.8" cy="234.9" r="3.2" fill="#9ca3af"/>
+<circle cx="704.3" cy="324.7" r="3.2" fill="#9ca3af"/>
+<circle cx="760.8" cy="247.4" r="3.2" fill="#5fa886"/>
+<circle cx="791.9" cy="252.7" r="3.2" fill="#5fa886"/>
+<circle cx="709.6" cy="313.2" r="3.2" fill="#9ca3af"/>
+<circle cx="723.6" cy="250.6" r="3.2" fill="#9ca3af"/>
+<circle cx="739.1" cy="339.8" r="3.2" fill="#9ca3af"/>
+<circle cx="720.9" cy="337.4" r="3.2" fill="#9ca3af"/>
+<circle cx="730.6" cy="216.2" r="3.2" fill="#5fa886"/>
+<circle cx="748.6" cy="337.7" r="3.2" fill="#9ca3af"/>
+<circle cx="791.6" cy="178.8" r="3.2" fill="#5fa886"/>
+<circle cx="678.1" cy="198.5" r="3.2" fill="#9ca3af"/>
+<circle cx="708.2" cy="257.1" r="3.2" fill="#9ca3af"/>
+<circle cx="704.1" cy="262.9" r="3.2" fill="#9ca3af"/>
+<circle cx="799.4" cy="193.4" r="3.2" fill="#5fa886"/>
+<circle cx="736.1" cy="323.6" r="3.2" fill="#9ca3af"/>
+<circle cx="726.3" cy="344.1" r="3.2" fill="#9ca3af"/>
+<circle cx="730.8" cy="404.5" r="5" fill="#111827"/>
+<circle cx="832.2" cy="415.0" r="5" fill="#111827"/>
+<circle cx="621.6" cy="299.5" r="5" fill="#111827"/>
+<text x="730.8" y="428.5" font-size="11" fill="#6b7280" text-anchor="middle">当前相机</text>
+<text x="832.2" y="439.0" font-size="11" fill="#6b7280" text-anchor="middle">记忆帧 A 的相机</text>
+<text x="631.6" y="323.5" font-size="11" fill="#6b7280" text-anchor="middle">记忆帧 B</text>
+<text x="440" y="130" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">CPU：精确重叠</text>
+<text x="440" y="152" font-size="11" fill="#6b7280" text-anchor="middle">交集体积 ÷ 查询视锥体积</text>
+<text x="440" y="170" font-size="11" fill="#6b7280" text-anchor="middle">（式 10，深色块是交集）</text>
+<text x="440" y="206" font-size="11" fill="#6b7280" text-anchor="middle">本图 A ≈ 0.36，B ≈ 0.02</text>
+<text x="1000" y="130" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">GPU：采样近似</text>
+<text x="1000" y="152" font-size="11" fill="#6b7280" text-anchor="middle">撒 N 个点，数落进候选的比例</text>
+<text x="1000" y="170" font-size="11" fill="#6b7280" text-anchor="middle">（式 11，不做三维求交）</text>
+<text x="1000" y="206" font-size="11" fill="#6b7280" text-anchor="middle">本图 N = 60：A 19/60，B 1/60</text>
+<text x="440" y="232" font-size="11" fill="#6b7280" text-anchor="middle">准，但候选越多越贵</text>
+<text x="1000" y="232" font-size="11" fill="#6b7280" text-anchor="middle">数值有误差，名次不变</text>
+<text x="30" y="484" font-size="11" fill="#9ca3af">机制示意：式 9–11 见 PDF p.10。报告只写 GPU 版是「基于采样的近似」，点撒在查询视锥里是本文按式 10 的归一化推断的读法。</text>
+<text x="30" y="502" font-size="11" fill="#9ca3af">图中两组数字是这张示意图自己的几何，不是报告数据；每个查询视角最终只取分数最高的一帧（式 9）。</text>
+</svg>
