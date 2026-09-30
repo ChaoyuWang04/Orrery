@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">Figure 3：容量因子定下每个专家有几个槽，槽少就溢出，槽多就空转</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">6 个 Token、3 个专家，实际派发是 3 : 2 : 1。绿 = 被专家处理；红 = 溢出，这一层只走残差；白 = 空槽，照样占计算与通信。</text>
+<rect x="16" y="72" width="536" height="420" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="284" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 容量因子 1.0</text>
+<text x="284" y="118" font-size="11" fill="#6b7280" text-anchor="middle">每个专家的槽数 = 6 ÷ 3 × 1.0 = 2</text>
+<rect x="40" y="140" width="150" height="150" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="115.0" y="160" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Expert 1 · Device 0</text>
+<rect x="48.0" y="176" width="64.0" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="80.0" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t2</text>
+<rect x="118.0" y="176" width="64.0" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="150.0" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t3</text>
+<text x="115.0" y="262" font-size="11" fill="#6b7280" text-anchor="middle">收到 3 个</text>
+<text x="115.0" y="280" font-size="11" fill="#d9877a" text-anchor="middle" font-weight="700">多出 1 个</text>
+<rect x="211" y="140" width="150" height="150" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="286.0" y="160" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Expert 2 · Device 1</text>
+<rect x="219.0" y="176" width="64.0" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="251.0" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t1</text>
+<rect x="289.0" y="176" width="64.0" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="321.0" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t5</text>
+<text x="286.0" y="262" font-size="11" fill="#6b7280" text-anchor="middle">收到 2 个</text>
+<rect x="382" y="140" width="150" height="150" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="457.0" y="160" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Expert 3 · Device 2</text>
+<rect x="390.0" y="176" width="64.0" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="422.0" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t6</text>
+<rect x="460.0" y="176" width="64.0" height="64" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="4 3"/>
+<text x="492.0" y="212" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<text x="457.0" y="262" font-size="11" fill="#6b7280" text-anchor="middle">收到 1 个</text>
+<rect x="54" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="89.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t1</text>
+<text x="89.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E2</text>
+<rect x="132" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="167.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t2</text>
+<text x="167.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E1</text>
+<rect x="210" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="245.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t3</text>
+<text x="245.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E1</text>
+<rect x="288" y="360" width="70" height="44" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="323.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t4</text>
+<text x="323.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E1</text>
+<rect x="366" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="401.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t5</text>
+<text x="401.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E2</text>
+<rect x="444" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="479.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t6</text>
+<text x="479.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E3</text>
+<line x1="323.0" y1="404" x2="323.0" y2="432" stroke="#d9877a" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+<text x="323.0" y="448" font-size="11" fill="#d9877a" text-anchor="middle" font-weight="700">t4 溢出：这一层跳过专家，只走残差</text>
+<text x="284" y="474" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">溢出 1 个；空槽 1 / 6</text>
+<text x="284" y="340" font-size="11" fill="#6b7280" text-anchor="middle">这一批 Token（下方小字是路由器选中的专家）</text>
+<rect x="568" y="72" width="536" height="420" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="836" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) 容量因子 1.5</text>
+<text x="836" y="118" font-size="11" fill="#6b7280" text-anchor="middle">每个专家的槽数 = 6 ÷ 3 × 1.5 = 3</text>
+<rect x="592" y="140" width="150" height="150" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="667.0" y="160" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Expert 1 · Device 0</text>
+<rect x="600.0" y="176" width="40.666666666666664" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="620.3333333333334" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t2</text>
+<rect x="646.6666666666666" y="176" width="40.666666666666664" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="667.0" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t3</text>
+<rect x="693.3333333333334" y="176" width="40.666666666666664" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="713.6666666666667" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t4</text>
+<text x="667.0" y="262" font-size="11" fill="#6b7280" text-anchor="middle">收到 3 个</text>
+<rect x="763" y="140" width="150" height="150" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="838.0" y="160" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Expert 2 · Device 1</text>
+<rect x="771.0" y="176" width="40.666666666666664" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="791.3333333333334" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t1</text>
+<rect x="817.6666666666666" y="176" width="40.666666666666664" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="838.0" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t5</text>
+<rect x="864.3333333333334" y="176" width="40.666666666666664" height="64" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="4 3"/>
+<text x="884.6666666666667" y="212" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<text x="838.0" y="262" font-size="11" fill="#6b7280" text-anchor="middle">收到 2 个</text>
+<rect x="934" y="140" width="150" height="150" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="1009.0" y="160" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">Expert 3 · Device 2</text>
+<rect x="942.0" y="176" width="40.666666666666664" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="962.3333333333334" y="212.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t6</text>
+<rect x="988.6666666666666" y="176" width="40.666666666666664" height="64" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="4 3"/>
+<text x="1009.0" y="212" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<rect x="1035.3333333333333" y="176" width="40.666666666666664" height="64" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="4 3"/>
+<text x="1055.6666666666665" y="212" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<text x="1009.0" y="262" font-size="11" fill="#6b7280" text-anchor="middle">收到 1 个</text>
+<rect x="606" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="641.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t1</text>
+<text x="641.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E2</text>
+<rect x="684" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="719.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t2</text>
+<text x="719.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E1</text>
+<rect x="762" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="797.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t3</text>
+<text x="797.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E1</text>
+<rect x="840" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="875.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t4</text>
+<text x="875.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E1</text>
+<rect x="918" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="953.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t5</text>
+<text x="953.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E2</text>
+<rect x="996" y="360" width="70" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1031.0" y="380.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">t6</text>
+<text x="1031.0" y="396.0" font-size="11" fill="#6b7280" text-anchor="middle">→ E3</text>
+<text x="836" y="448" font-size="11" fill="#6b7280" text-anchor="middle">没有溢出，但 9 个槽里空了 3 个</text>
+<text x="836" y="474" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">溢出 0 个；空槽 3 / 9</text>
+<text x="836" y="340" font-size="11" fill="#6b7280" text-anchor="middle">这一批 Token（下方小字是路由器选中的专家）</text>
+<text x="30" y="522" font-size="11" fill="#9ca3af" text-anchor="start">据 PDF p.6 Figure 3 的派发重画：每个专家槽数 =（本批 Token 数 ÷ 专家数）× 容量因子，式 (3) 在 p.7。</text>
+<text x="30" y="540" font-size="11" fill="#9ca3af" text-anchor="start">同一专家满员时谁被挤掉，按附录 F 伪代码（p.34）的先到先得；原图只画出溢出，没有指定是哪一个。</text>
+</svg>
