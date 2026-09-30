@@ -14,6 +14,7 @@
     "topics": "node scripts/topics.mjs",
     "hot100:sync": "node scripts/hot100-sync.mjs",
     "kb:lint": "node scripts/kb-lint.mjs",
+    "context:check": "node scripts/context-check.mjs",
     "reports:status": "node scripts/reports-status.mjs",
     "readings:status": "node scripts/readings-status.mjs",
     "papers:scan": "node scripts/papers-scan.mjs",
