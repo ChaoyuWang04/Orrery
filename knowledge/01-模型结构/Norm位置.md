@@ -122,6 +122,8 @@ $$
 
 Xiong 等人(ICML 2020)用平均场分析把它量化到初始化时刻:输出层附近参数的期望梯度范数,Post-LN 是 $\mathcal{O}(d\sqrt{\ln d})$——**与层数 $L$ 无关地大**;Pre-LN 是 $\mathcal{O}(d\sqrt{\ln d / L})$,**随深度按 $1/\sqrt{L}$ 变温和**。
 
+实证上常被引的一例来自 Megatron-LM(2019):752M 的 BERT 用原版结构(残差从 LayerNorm 之后分出,等价于 Post-LN)训到约 22 万步时 loss 突然跳回 7 左右、再没降下来,而 336M 的 BERT-large 用原版结构没事;把 LayerNorm 与残差的顺序重排成 Pre-LN 式后训练稳定、loss 更低,团队据此把 BERT 放大到 3.9B。口径要说准:这是单条训练曲线,没报多种子,论文也没说明两种结构是否分别调过学习率——按下文的公平验证标准,它是「Post-LN 放大后更易失稳」的一个案例,不是定论。
+
 ### warm-up:更稳不等于能省
 
 Post-LN 通常对 warm-up 更敏感,机制就是上面那条——初始化时输出层附近梯度大,学习率一上来就发散,只能先小步热身。Xiong 等人的实验里,Pre-LN 去掉 warm-up 也能拿到可比结果,还省了调参时间。
@@ -238,6 +240,7 @@ Norm 位置只是整体配方的一环,同样吃重的至少还有:
 - Group Normalization — [arXiv:1803.08494](https://arxiv.org/abs/1803.08494)
 - Root Mean Square Layer Normalization(RMSNorm,自报运行时下降 7%–64%)— [arXiv:1910.07467](https://arxiv.org/abs/1910.07467)
 - Attention Is All You Need(原始 Transformer,Post-LN)— [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)
+- Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism(752M BERT 原版结构失稳、重排成 Pre-LN 式后放大到 3.9B)— [arXiv:1909.08053](https://arxiv.org/abs/1909.08053)
 - On Layer Normalization in the Transformer Architecture(Pre/Post 梯度范数与 warm-up 分析)— [arXiv:2002.04745](https://arxiv.org/abs/2002.04745)
 - CogView: Mastering Text-to-Image Generation via Transformers(Sandwich-LN 与 FP16 稳定性)— [arXiv:2105.13290](https://arxiv.org/abs/2105.13290)
 - DeepNet: Scaling Transformers to 1,000 Layers(DeepNorm 的残差缩放与初始化)— [arXiv:2203.00555](https://arxiv.org/abs/2203.00555)

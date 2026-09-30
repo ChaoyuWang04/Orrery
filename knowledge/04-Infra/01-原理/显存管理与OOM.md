@@ -153,6 +153,8 @@ CUDA 的虚拟内存 API 把两件事拆开:**预留虚拟地址空间**(便宜,
 
 同一条思路的学术版是 GMLake:用虚拟地址把非连续的物理块"缝"成一整块交给上层,在 A100 上平均省下约 9 GB 显存、碎片率降约 15%。
 
+训练侧更早的一个对症做法是 ZeRO 论文里的 $M_D$。它把碎片归因到**长短寿命张量交错**:前向时激活检查点要活到反向,重算出来的激活用完即弃;反向时参数梯度要活到更新,激活梯度用完即弃。$M_D$ 按生命周期给长寿命的两类(检查点、参数梯度)**预分配连续缓冲**,产生时就拷进去,短寿命的留给分配器去切,长寿命张量就不再把空闲块钉死。论文观察到训练超大模型时,极端情况下还剩 30% 以上显存就因凑不出连续块而 OOM;$M_D$ 既找回这部分,也省掉分配器找连续块的时间。
+
 ### 推理侧:KV 那一项的碎片已经单独解决了
 
 分页把 KV cache 切成**固定大小**的块,块一样大就不存在"洞太小塞不进去",外部碎片由构造消失(见 PagedAttention 篇)。**所以推理引擎里的碎片主要不在 KV 上,而在激活和临时 buffer 上**——这条容易答反。
@@ -239,6 +241,7 @@ torch.cuda.memory._record_memory_history(enabled=None)   # 关录
 
 ## 相关文献
 
+- ZeRO: Memory Optimizations Toward Training Trillion Parameter Models(碎片导致剩 30% 以上显存仍 OOM,$M_D$ 按生命周期预分配连续缓冲)— [arXiv:1910.02054](https://arxiv.org/abs/1910.02054)
 - Training Deep Nets with Sublinear Memory Cost(重算换显存的奠基工作,$O(\sqrt{n})$ 与约 30% 额外时间)— [arXiv:1604.06174](https://arxiv.org/abs/1604.06174)
 - Reducing Activation Recomputation in Large Transformer Models(每层激活量公式 $sbh(34+5as/h)$、选择性重算)— [arXiv:2205.05198](https://arxiv.org/abs/2205.05198)
 - Efficient Memory Management for Large Language Model Serving with PagedAttention(分页消灭 KV 外部碎片)— [arXiv:2309.06180](https://arxiv.org/abs/2309.06180)

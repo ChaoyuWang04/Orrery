@@ -238,6 +238,6 @@ profiling 工具怎么用、trace 怎么抓,见 性能分析与Profiling 篇;这
 - DeepSeek-V3/R1 Inference System Overview(冗余专家、双 micro-batch 重叠、三处负载均衡)— https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md
 - Tutel: Adaptive Mixture-of-Experts at Scale(动态负载下的自适应并行与分层 all-to-all)— [arXiv:2206.03382](https://arxiv.org/abs/2206.03382)
 - MegaBlocks: Efficient Sparse Training with Mixture-of-Experts(块稀疏 kernel,去掉 capacity factor 与丢 token)— [arXiv:2211.15841](https://arxiv.org/abs/2211.15841)
-- GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding(MoE 分片与 all-to-all 的奠基)— [arXiv:2006.16668](https://arxiv.org/abs/2006.16668)
-- Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity(capacity factor 与丢弃策略的出处)— [arXiv:2101.03961](https://arxiv.org/abs/2101.03961)
+- GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding(MoE 分片与 all-to-all 的奠基;专家容量与溢出 token 走残差、按组给每个专家 $2N/(G \cdot E)$ 个名额的出处)— [arXiv:2006.16668](https://arxiv.org/abs/2006.16668)
+- Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity(capacity factor 这一名称与取值讨论;专家容量本身最早见于 GShard)— [arXiv:2101.03961](https://arxiv.org/abs/2101.03961)
 - vLLM Expert Parallel Deployment(all-to-all 后端清单:默认走 AllGather + ReduceScatter,DeepEP 高吞吐 / 低时延各自的 layout 与适用阶段)— https://docs.vllm.ai/en/latest/serving/expert_parallel_deployment/

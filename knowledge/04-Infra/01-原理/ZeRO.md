@@ -12,7 +12,7 @@ DP 的做法是每卡一份完整模型副本(DP / TP / PP / EP / SP 各切什�
 
 - **在相同数据、优化器与归约语义下,数学目标与 DDP 一致。** 分片本身没有改训练目标;但浮点归约顺序、精度及实现配置可能改变数值结果,不能保证收敛曲线逐点相同。切换 stage 后若效果异常,应检查这些具体差异;
 - **省显存的代价永远是通信。** 切走的东西迟早要凑回来,凑就是 all-gather。选哪一档,本质是在问"这一份凑回来的流量,值不值那点显存";
-- **它省不了激活。** 因为激活压根**不是冗余**:每卡吃的数据不同,算出来的激活各不相同,本来就没有重复副本可挤。
+- **它(三个 Stage,即 ZeRO-DP)省不了激活。** 因为数据并行各卡的激活压根**不是冗余**:每卡吃的数据不同,算出来的激活各不相同,本来就没有重复副本可挤。原论文另有一组 ZeRO-R 专治模型状态以外的显存,边界见第二节。
 
 顺带把和 TP 的界线划清:**TP 切的是计算**——每卡只算 $1/t$ 的矩阵乘,单卡 FLOP 真的降了;**ZeRO 切的是存储**——每卡照算全量,只是权重不在自己手上时要去借。所以 ZeRO 不降低每卡的算力需求,TP 才降低。
 
@@ -34,11 +34,13 @@ $$
 
 意思是:每个参数的训练态成本是 16 字节,其中 **12 字节全在优化器那一坨**。这就是那个总被直接甩出来的 $12\Psi$ 的确切来历——**Adam 的 fp32 三件套,一份主权重 + 两份动量,一人 4 字节**。它占 12/16 = 75%,是三大件里最重的行李,所以 ZeRO 第一刀就砍它。
 
-这是指定精度与 Adam 状态的账本,不是所有训练都固定每参数 16 字节。这个系数跟着优化器走:SGD with momentum 只有一份动量,$12$ 掉到 $8$;纯 bf16 训练(不留 master)更低,但会踩下面这个坑(优化器本身见 优化器 篇)。
+这是指定精度与 Adam 状态的账本,不是所有训练都固定每参数 16 字节。ZeRO-Infinity 论文就按每参数 20 字节算:在这 16 字节之外,优化器侧还多记一份 FP32 梯度。这个系数也跟着优化器走:SGD with momentum 只有一份动量,$12$ 掉到 $8$;纯 bf16 训练(不留 master)更低,但会踩下面这个坑(优化器本身见 优化器 篇)。
 
 **为什么非得留一份 fp32 master 权重?** bf16 只有 7 位尾数,相对精度约 $2^{-8} \approx 0.4\%$。训练后期学习率降下来,单步更新量常常不到权重的千分之几,直接在 bf16 上相加就被舍入抹平——**"加了等于没加",参数原地不动**。所以更新在 fp32 副本上做,做完再转回 bf16 参与下一轮前向。这 4 字节买的是"更新不丢失",不是冗余。
 
 **激活为什么不在 ZeRO 的射程内?** 就是上一节第三条:ZeRO 挤的是"同一份数据存了 $N$ 遍"的冗余,而激活各卡各不相同,没有冗余可挤。省激活得换手段——重算(activation checkpointing)与沿序列切分,见 显存管理与OOM 篇和 并行策略 篇。
+
+但这句话只对 ZeRO-DP 成立。原论文的 ZeRO-R 专治「剩余显存」(激活、临时缓冲、碎片),其中 **$P_a$** 针对的恰好是另一种激活冗余:模型并行(TP)组内各卡持有**同一份**激活副本。$P_a$ 把激活检查点在模型并行组内切开,反向重算前再 all-gather 拼回,必要时还能卸到 CPU。论文算例:100B 模型、MP 16、batch 32、序列 1024,每层存一份检查点每卡约 33 GB,切完约 2 GB。同组还有 $C_B$(临时缓冲用固定大小的融合缓冲,不随模型变大)和 $M_D$(检查点与梯度搬进预分配的连续缓冲治碎片,见 显存管理与OOM 篇)。所以准确的说法是:**ZeRO-DP 不省激活,ZeRO-R 能挤掉模型并行带来的那份激活冗余**;数据并行各卡各不相同的激活,仍得靠重算和沿序列切分。
 
 代入 7B:$7\times10^9\times16 = 112$ GB,一张 80 GB 卡连训练态都装不下,而且**这还没算激活**。完整的训练显存账(激活公式、临时 buffer、通信 buffer、碎片)见 显存管理与OOM 篇,本篇只负责三大件这三行。
 
@@ -65,6 +67,8 @@ $$
 参数也切成 $N$ 份,每卡常驻的只有自己那份。
 
 **凑回来的时机:需要本层参数时。** 按前向后立即释放的简化调度,前向算到哪一层,就把那层参数 all-gather 临时凑齐,算完立刻释放;反向求这一层的输入梯度还要再用一次权重($\partial L/\partial X = \partial L/\partial Y \cdot W^{\top}$),于是**再凑一次**。下一节的通信估算采用这种每层前后向各取回一次的调度;实际缓存与预取策略可以改变次数。
+
+「凑」的方式也有演变。原版 ZeRO-3 是每层参数归一个 rank 所有,要用时由它 **broadcast** 给其余卡,整个前向走下来总量等价于一次全模型 all-gather;把**每个参数**都切成 $N$ 片散到所有 rank、用时 **all-gather**,是 ZeRO-Infinity 的「带宽中心分区」引入的,PyTorch FSDP 也是这种切法。数据都在 GPU 上时两者通信量相同,几乎无差别;参数一旦卸载到 CPU/NVMe,差别就是决定性的(见第五节)。
 
 ```mermaid
 flowchart TD
@@ -118,7 +122,9 @@ Stage 3 那三份通信在跨节点场景很要命,ZeRO++ 对每一份各砍一�
 - **ZeRO-Offload** 把 fp32 优化器状态、fp16 梯度、以及**优化器更新这一步计算**整体搬到 CPU 内存,GPU 只留 fp16 参数和前向 / 反向;它复用的是 Stage 1/2 的分片机制。
 - **为什么挪它划算**,论文给的判据非常干净:前向 / 反向的计算量是 $O(\Psi B)$(随 batch 长),优化器更新只有 $O(\Psi)$(只随参数量)。**把复杂度低的那一步外包给慢设备,GPU 专心干重活**——所以论文直接划线:只有复杂度低于 $O(\Psi B)$ 的计算才值得下放。配上手写 SIMD + 多线程的 CPU Adam(比 PyTorch 的 CPU 实现快 5–6.4 倍),单张 32 GB V100 就能训 13B(原生 PyTorch 只到 1.4B),10B 模型上单卡还能跑出 40 TFLOPS。
 - **ZeRO-Infinity** 在 Stage 3 之上再加一层 NVMe:参数、梯度、优化器状态都能下放到 CPU 内存或硬盘,配一套以带宽为中心的分片与预取引擎。NVMe 负责存储,不是把优化器计算交给硬盘执行。论文自报单台 DGX-2 节点即可微调万亿参数级模型,512 张 V100 上跑到 25+ PFLOPS(约峰值的 40%)。
-- **代价是把瓶颈从 HBM 换成了 PCIe。** HBM 每秒几 TB,PCIe Gen4 ×16 单向约 32 GB/s、Gen5 约 64 GB/s,差着近两个数量级;NVMe 再低一档(单盘几 GB/s,靠多盘并联堆总带宽)。判据只有一条:**单步的 GPU 计算时间要长过这一步的传输时间**,传输才藏得住;batch 太小、序列太短就是 GPU 干等——仓库再大,进出货都挤在 PCIe 这条单车道上。
+- **代价是把瓶颈从 HBM 换成了 PCIe。** HBM 每秒几 TB,PCIe Gen4 ×16 单向约 32 GB/s、Gen5 约 64 GB/s,差着近两个数量级;NVMe 再低一档(单盘几 GB/s,靠多盘并联堆总带宽)。判据只有一条:**单步的 GPU 计算时间要长过这一步的传输时间**,传输才藏得住;batch 太小、序列太短就是 GPU 干等。
+- **「挤在 PCIe 单车道上」只对 ZeRO-Offload 准确。** Offload 的参数要先从 CPU 搬到拥有它的那张卡、再广播出去,每次只走一条 PCIe。Infinity 的带宽中心分区让每卡只从自己的 PCIe 取 $1/N$,再在 GPU 之间 all-gather,**聚合带宽随数据并行度线性增长**:论文在单台 DGX-2(PCIe Gen3)上,广播方式开 16 路 DP 也只有约 12 GB/s,all-gather 方式从 CPU / NVMe 分别到约 48 / 25 GB/s,多节点再线性往上加。
+- **三类数据要的带宽差着数量级**(论文按 DGX-2 估):参数与梯度要 70 GB/s 以上,可以和计算重叠;优化器状态在前反向之后集中更新、藏不住,要约 1.5 TB/s,比单卡 HBM 还高,只能靠所有卡或 CPU 并行更新、吃聚合带宽;激活检查点只要 1–4 GB/s,所以卸到 CPU 最便宜。
 - **什么时候值:** 卡不够、模型确实放不下、且不追吞吐(做实验、小规模微调)。**有卡就先加卡**——offload 买的是"能不能跑起来",不是"跑得更快"。
 
 ## 六、和其他并行怎么配:为什么工程上常常只上 ZeRO-1
@@ -157,6 +163,7 @@ ZeRO 分片的是数据并行组中的训练状态,TP 切层内计算,PP 切层�
 | Offload 与 Infinity 分别把什么搬到哪里,和 Stage 2/3 是什么关系? | 五、Offload:把哪一部分挪走,瓶颈换成什么 |
 | 什么时候 ZeRO-2 已经够用或更高效,什么时候值得上 ZeRO-3? | 七、选型:先算账,再选档 |
 | 为什么训练态不是总固定为每参数 16 字节,激活又怎么办? | 二、显存账:$16\Psi$ 里最重的是那 $12\Psi$ |
+| ZeRO 真的完全不省激活吗?ZeRO-R 管的是什么?(补充题) | 二、显存账(ZeRO-DP 与 ZeRO-R 的边界) |
 | 请说明如何理论估算在采用ZeRO-3策略微调Qwen2-72B这类超大规模模型时，单个GPU设备所需的显存容量，需涵盖模型参数、梯度、优化器状态等组成部分。 | 二、显存账:$16\Psi$ 里最重的是那 $12\Psi$ |
 
 
@@ -164,9 +171,9 @@ ZeRO 分片的是数据并行组中的训练状态,TP 切层内计算,PP 切层�
 
 ## 相关文献
 
-- ZeRO: Memory Optimizations Toward Training Trillion Parameter Models(三个 Stage、$16\Psi$ 与 1.5 倍通信的出处)— [arXiv:1910.02054](https://arxiv.org/abs/1910.02054)
+- ZeRO: Memory Optimizations Toward Training Trillion Parameter Models(三个 Stage、$16\Psi$ 与 1.5 倍通信的出处;ZeRO-R 的 $P_a$、$C_B$、$M_D$)— [arXiv:1910.02054](https://arxiv.org/abs/1910.02054)
 - ZeRO-Offload: Democratizing Billion-Scale Model Training(优化器状态与更新计算下放 CPU,$O(\Psi)$ 判据与 CPU Adam)— [arXiv:2101.06840](https://arxiv.org/abs/2101.06840)
-- ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning(CPU + NVMe 异构存储)— [arXiv:2104.07857](https://arxiv.org/abs/2104.07857)
+- ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning(CPU + NVMe 异构存储、带宽中心分区、三类数据的带宽需求)— [arXiv:2104.07857](https://arxiv.org/abs/2104.07857)
 - ZeRO++: Extremely Efficient Collective Communication for Giant Model Training(qwZ / hpZ / qgZ,通信量 $3M \to 0.75M$)— [arXiv:2306.10209](https://arxiv.org/abs/2306.10209)
 - PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel(ZeRO-3 思路的 PyTorch 原生实现)— [arXiv:2304.11277](https://arxiv.org/abs/2304.11277)
 - Megatron Core 文档 — Distributed Optimizer(按 ZeRO 论文对优化器状态分片,即 ZeRO-1)— https://docs.nvidia.com/megatron-core/developer-guide/latest/user-guide/features/dist_optimizer.html

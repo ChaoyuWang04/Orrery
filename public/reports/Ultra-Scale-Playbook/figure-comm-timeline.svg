@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 660" width="1120" height="660" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect width="1120" height="660" fill="#ffffff"/>
+<text x="40" y="38" font-size="19" font-weight="700" fill="#111827">一步训练里，通信藏在哪、露在哪</text>
+<text x="40" y="62" font-size="13" fill="#6b7280">紫 = 计算；绿 = 被计算盖住的通信；红 = 露在关键路径上的通信；白虚框 = 空转。每行上排是计算流，下排是通信流。</text>
+<text x="40" y="82" font-size="13" fill="#6b7280">按原文 Data Parallelism、ZeRO-3、Tensor Parallelism、Pipeline Parallelism 各节的时间线示意重画，块宽只示意先后，不是实测时长。</text>
+<rect x="30" y="104" width="1060" height="124" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="48" y="134" font-size="14" font-weight="700" fill="#111827">数据并行</text>
+<text x="48" y="154" font-size="11" fill="#6b7280">反向时按桶同步梯度</text>
+<text x="48" y="212" font-size="11" fill="#9ca3af">只有最后一个桶露出来</text>
+<rect x="250" y="118" width="150" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="325.0" y="141.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">反向 层 4</text>
+<rect x="410" y="118" width="150" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="485.0" y="141.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">反向 层 3</text>
+<rect x="570" y="118" width="150" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="645.0" y="141.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">反向 层 2</text>
+<rect x="730" y="118" width="150" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="805.0" y="141.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">反向 层 1</text>
+<rect x="415" y="166" width="140" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="485.0" y="189.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">桶 1 all-reduce</text>
+<rect x="575" y="166" width="140" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="645.0" y="189.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">桶 2 all-reduce</text>
+<rect x="735" y="166" width="140" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="805.0" y="189.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">桶 3 all-reduce</text>
+<rect x="890" y="118" width="70" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="925.0" y="141.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">等</text>
+<rect x="890" y="166" width="70" height="36" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="925.0" y="189.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">桶 4</text>
+<rect x="970" y="118" width="100" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1020.0" y="141.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">更新</text>
+<rect x="30" y="240" width="1060" height="124" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="48" y="270" font-size="14" font-weight="700" fill="#111827">ZeRO-3</text>
+<text x="48" y="290" font-size="11" fill="#6b7280">前向逐层拼参数，边算本层边取下一层</text>
+<text x="48" y="348" font-size="11" fill="#9ca3af">第一层的参数要先等；反向同理，还多一次 reduce-scatter</text>
+<rect x="250" y="254" width="100" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="300.0" y="277.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">等</text>
+<rect x="250" y="302" width="100" height="36" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="300.0" y="325.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">拼 层 1</text>
+<rect x="360" y="254" width="168" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="444.0" y="277.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">前向 层 1</text>
+<rect x="536" y="254" width="168" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="620.0" y="277.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">前向 层 2</text>
+<rect x="712" y="254" width="168" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="796.0" y="277.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">前向 层 3</text>
+<rect x="888" y="254" width="168" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="972.0" y="277.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">前向 层 4</text>
+<rect x="380" y="302" width="128" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="444.0" y="325.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">拼 层 2</text>
+<rect x="556" y="302" width="128" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="620.0" y="325.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">拼 层 3</text>
+<rect x="732" y="302" width="128" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="796.0" y="325.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">拼 层 4</text>
+<rect x="30" y="376" width="1060" height="124" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="48" y="406" font-size="14" font-weight="700" fill="#111827">张量并行</text>
+<text x="48" y="426" font-size="11" fill="#6b7280">一层里算完一块，就要先汇总再往下</text>
+<text x="48" y="484" font-size="11" fill="#9ca3af">all-reduce 的结果下一步马上要用，计算只能停下来等</text>
+<rect x="250" y="390" width="120" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="310.0" y="413.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">注意力块</text>
+<rect x="380" y="390" width="110" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="435.0" y="413.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">等</text>
+<rect x="380" y="438" width="110" height="36" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="435.0" y="461.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">all-reduce</text>
+<rect x="500" y="390" width="120" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="560.0" y="413.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">LayerNorm</text>
+<rect x="630" y="390" width="120" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="690.0" y="413.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">MLP 块</text>
+<rect x="760" y="390" width="110" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="815.0" y="413.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">等</text>
+<rect x="760" y="438" width="110" height="36" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="815.0" y="461.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">all-reduce</text>
+<rect x="880" y="390" width="120" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="940.0" y="413.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">LayerNorm</text>
+<rect x="30" y="512" width="1060" height="124" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="48" y="542" font-size="14" font-weight="700" fill="#111827">流水并行（中间一段）</text>
+<text x="48" y="562" font-size="11" fill="#6b7280">只在段与段之间传激活，通信小</text>
+<text x="48" y="620" font-size="11" fill="#9ca3af">真正的损失是开头结尾的空转，不是通信</text>
+<rect x="250" y="526" width="170" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="335.0" y="549.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">等上游</text>
+<rect x="430" y="526" width="72" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="466.0" y="549.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">前向</text>
+<rect x="510" y="526" width="72" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="546.0" y="549.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">前向</text>
+<rect x="590" y="526" width="72" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="626.0" y="549.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">反向</text>
+<rect x="670" y="526" width="72" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="706.0" y="549.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">前向</text>
+<rect x="750" y="526" width="72" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="786.0" y="549.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">反向</text>
+<rect x="830" y="526" width="72" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="866.0" y="549.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">反向</text>
+<rect x="910" y="526" width="170" height="36" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="995.0" y="549.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">等下游</text>
+<rect x="450" y="574" width="110" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="505.0" y="597.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">收发激活</text>
+<rect x="610" y="574" width="110" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="665.0" y="597.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">收发激活</text>
+<rect x="770" y="574" width="110" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="825.0" y="597.0" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">收发激活</text>
+</svg>

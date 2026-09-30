@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 590" width="1120" height="590" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="590" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">GShard 图 4 重画：einsum 两边的切分维对不上时，编译器插哪一种通信</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">绿 / 紫 / 黄 / 红 = 这一片放在卡 0 / 1 / 2 / 3 上；灰 = 没有切开的完整形状。D = 4，只画每个张量的两个维，机制示意。</text>
+<rect x="16" y="86" width="1088" height="156" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="16" y="254" width="1088" height="156" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="16" y="422" width="1088" height="156" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="110" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(a) 重新分片：MoE 的派发 einsum</text>
+<text x="30" y="130" font-size="11" fill="#6b7280" text-anchor="start">GSEC,GSM→EGCM。两个输入都按组 G 切，</text>
+<text x="30" y="146" font-size="11" fill="#6b7280" text-anchor="start">先在本卡做 batch 并行 einsum，</text>
+<text x="30" y="162" font-size="11" fill="#6b7280" text-anchor="start">结果仍按 G 切；再用一次 AllToAll</text>
+<text x="30" y="178" font-size="11" fill="#6b7280" text-anchor="start">把切分维从 G 换成 E。</text>
+<text x="30" y="202" font-size="11" fill="#111827" text-anchor="start">通信：AllToAll，随卡数约按 √D 涨</text>
+<rect x="360.0" y="128" width="21.0" height="84" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="370.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="381.0" y="128" width="21.0" height="84" rx="0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="391.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="402.0" y="128" width="21.0" height="84" rx="0" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="412.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="423.0" y="128" width="21.0" height="84" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="433.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="402.0" y="228" font-size="11" fill="#6b7280" text-anchor="middle">G</text>
+<text x="352" y="174.0" font-size="11" fill="#6b7280" text-anchor="end">E</text>
+<text x="402.0" y="120" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">GSEC</text>
+<text x="474" y="175.0" font-size="14" fill="#111827" text-anchor="middle">×</text>
+<rect x="520.0" y="128" width="21.0" height="84" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="530.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="541.0" y="128" width="21.0" height="84" rx="0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="551.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="562.0" y="128" width="21.0" height="84" rx="0" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="572.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="583.0" y="128" width="21.0" height="84" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="593.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="562.0" y="228" font-size="11" fill="#6b7280" text-anchor="middle">G</text>
+<text x="512" y="174.0" font-size="11" fill="#6b7280" text-anchor="end">M</text>
+<text x="562.0" y="120" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">GSM</text>
+<line x1="612" y1="170.0" x2="668" y2="170.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="690.0" y="128" width="21.0" height="84" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="700.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="711.0" y="128" width="21.0" height="84" rx="0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="721.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="732.0" y="128" width="21.0" height="84" rx="0" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="742.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="753.0" y="128" width="21.0" height="84" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="763.5" y="174.0" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="732.0" y="228" font-size="11" fill="#6b7280" text-anchor="middle">G</text>
+<text x="682" y="174.0" font-size="11" fill="#6b7280" text-anchor="end">E</text>
+<text x="732.0" y="120" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">EGCM 按 G 切</text>
+<line x1="782" y1="170.0" x2="880" y2="170.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="831" y="162.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">AllToAll</text>
+<rect x="910" y="128.0" width="84" height="21.0" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="952.0" y="142.5" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="910" y="149.0" width="84" height="21.0" rx="0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="952.0" y="163.5" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="910" y="170.0" width="84" height="21.0" rx="0" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="952.0" y="184.5" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="910" y="191.0" width="84" height="21.0" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="952.0" y="205.5" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="952.0" y="228" font-size="11" fill="#6b7280" text-anchor="middle">G</text>
+<text x="902" y="174.0" font-size="11" fill="#6b7280" text-anchor="end">E</text>
+<text x="952.0" y="120" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">EGCM 按 E 切</text>
+<text x="30" y="278" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(b) 累加部分和：沿收缩维切</text>
+<text x="30" y="298" font-size="11" fill="#6b7280" text-anchor="start">AB,BC→AC。两边都沿被求和掉的 B 切，</text>
+<text x="30" y="314" font-size="11" fill="#6b7280" text-anchor="start">每张卡只能算出一份完整形状的部分和，</text>
+<text x="30" y="330" font-size="11" fill="#6b7280" text-anchor="start">四份相加才是结果。</text>
+<text x="30" y="370" font-size="11" fill="#111827" text-anchor="start">通信：AllReduce，在 TPU 上随卡数约为常数</text>
+<rect x="360.0" y="296" width="21.0" height="84" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="370.5" y="342.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="381.0" y="296" width="21.0" height="84" rx="0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="391.5" y="342.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="402.0" y="296" width="21.0" height="84" rx="0" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="412.5" y="342.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="423.0" y="296" width="21.0" height="84" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="433.5" y="342.0" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="402.0" y="396" font-size="11" fill="#6b7280" text-anchor="middle">B</text>
+<text x="352" y="342.0" font-size="11" fill="#6b7280" text-anchor="end">A</text>
+<text x="402.0" y="288" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">A 矩阵</text>
+<text x="474" y="343.0" font-size="14" fill="#111827" text-anchor="middle">×</text>
+<rect x="520" y="296.0" width="84" height="21.0" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="562.0" y="310.5" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="520" y="317.0" width="84" height="21.0" rx="0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="562.0" y="331.5" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="520" y="338.0" width="84" height="21.0" rx="0" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="562.0" y="352.5" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="520" y="359.0" width="84" height="21.0" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="562.0" y="373.5" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="562.0" y="396" font-size="11" fill="#6b7280" text-anchor="middle">C</text>
+<text x="512" y="342.0" font-size="11" fill="#6b7280" text-anchor="end">B</text>
+<text x="562.0" y="288" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">B 矩阵</text>
+<line x1="612" y1="338.0" x2="668" y2="338.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="690" y="296" width="84" height="84" rx="2" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="732.0" y="396" font-size="11" fill="#6b7280" text-anchor="middle">C</text>
+<text x="682" y="342.0" font-size="11" fill="#6b7280" text-anchor="end">A</text>
+<text x="732.0" y="288" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">每卡一份部分和</text>
+<line x1="782" y1="338.0" x2="880" y2="338.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="831" y="330.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">AllReduce</text>
+<rect x="910" y="296" width="84" height="84" rx="2" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="952.0" y="396" font-size="11" fill="#6b7280" text-anchor="middle">C</text>
+<text x="902" y="342.0" font-size="11" fill="#6b7280" text-anchor="end">A</text>
+<text x="952.0" y="288" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">完整结果</text>
+<text x="30" y="446" font-size="14" fill="#111827" text-anchor="start" font-weight="700">(c) 循环里切片：两边沿各自的非收缩维切</text>
+<text x="30" y="466" font-size="11" fill="#6b7280" text-anchor="start">AB,BC→AC。A 按行切、B 按列切，本卡</text>
+<text x="30" y="482" font-size="11" fill="#6b7280" text-anchor="start">凑不出任何一块输出。复制一边要装得下；</text>
+<text x="30" y="498" font-size="11" fill="#6b7280" text-anchor="start">装不下就让 A 的行片沿环转 4 圈，每圈</text>
+<text x="30" y="514" font-size="11" fill="#6b7280" text-anchor="start">算出输出里的一块，全程没有完整大小的张量。</text>
+<text x="30" y="538" font-size="11" fill="#111827" text-anchor="start">通信：CollectivePermute，每卡 O(D)</text>
+<rect x="360" y="464.0" width="84" height="21.0" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="402.0" y="478.5" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="360" y="485.0" width="84" height="21.0" rx="0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="402.0" y="499.5" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="360" y="506.0" width="84" height="21.0" rx="0" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="402.0" y="520.5" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="360" y="527.0" width="84" height="21.0" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="402.0" y="541.5" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="402.0" y="564" font-size="11" fill="#6b7280" text-anchor="middle">B</text>
+<text x="352" y="510.0" font-size="11" fill="#6b7280" text-anchor="end">A</text>
+<text x="402.0" y="456" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">A 矩阵</text>
+<text x="474" y="511.0" font-size="14" fill="#111827" text-anchor="middle">×</text>
+<rect x="520.0" y="464" width="21.0" height="84" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="530.5" y="510.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="541.0" y="464" width="21.0" height="84" rx="0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="551.5" y="510.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="562.0" y="464" width="21.0" height="84" rx="0" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="572.5" y="510.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="583.0" y="464" width="21.0" height="84" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="593.5" y="510.0" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="562.0" y="564" font-size="11" fill="#6b7280" text-anchor="middle">C</text>
+<text x="512" y="510.0" font-size="11" fill="#6b7280" text-anchor="end">B</text>
+<text x="562.0" y="456" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">B 矩阵</text>
+<line x1="612" y1="506.0" x2="668" y2="506.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="690.0" y="464" width="21.0" height="84" rx="0" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="700.5" y="510.0" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="711.0" y="464" width="21.0" height="84" rx="0" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="721.5" y="510.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="732.0" y="464" width="21.0" height="84" rx="0" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="742.5" y="510.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="753.0" y="464" width="21.0" height="84" rx="0" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="763.5" y="510.0" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="732.0" y="564" font-size="11" fill="#6b7280" text-anchor="middle">C</text>
+<text x="682" y="510.0" font-size="11" fill="#6b7280" text-anchor="end">A</text>
+<text x="732.0" y="456" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">AC 按 C 切</text>
+<text x="800" y="456" font-size="11" fill="#111827" text-anchor="start" font-weight="700">卡 1 的视角：B 的第 1 列不动</text>
+<rect x="800" y="464" width="44" height="19" rx="2" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="822" y="478" font-size="11" fill="#111827" text-anchor="middle">A1</text>
+<text x="856" y="478" font-size="11" fill="#6b7280" text-anchor="start">第 0 圈：A1 × B1 → 输出第 1 行、第 1 列</text>
+<rect x="800" y="485" width="44" height="19" rx="2" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="822" y="499" font-size="11" fill="#111827" text-anchor="middle">A2</text>
+<text x="856" y="499" font-size="11" fill="#6b7280" text-anchor="start">第 1 圈：A2 × B1 → 输出第 2 行、第 1 列</text>
+<rect x="800" y="506" width="44" height="19" rx="2" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="822" y="520" font-size="11" fill="#111827" text-anchor="middle">A3</text>
+<text x="856" y="520" font-size="11" fill="#6b7280" text-anchor="start">第 2 圈：A3 × B1 → 输出第 3 行、第 1 列</text>
+<rect x="800" y="527" width="44" height="19" rx="2" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="822" y="541" font-size="11" fill="#111827" text-anchor="middle">A0</text>
+<text x="856" y="541" font-size="11" fill="#6b7280" text-anchor="start">第 3 圈：A0 × B1 → 输出第 0 行、第 1 列</text>
+<text x="800" y="564" font-size="11" fill="#6b7280" text-anchor="start">每圈结果写进第 1 列对应那一块（DynamicUpdateSlice）</text>
+</svg>

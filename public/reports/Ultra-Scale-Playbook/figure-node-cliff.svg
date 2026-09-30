@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect width="1120" height="500" fill="#ffffff"/>
+<text x="40" y="38" font-size="19" font-weight="700" fill="#111827">一出节点，吞吐就掉下悬崖</text>
+<text x="40" y="62" font-size="13" fill="#6b7280">绿 = 通信只在一台 8 卡节点内（NVLink）；红 = 跨节点（EFA）。条高按各自纵轴等比例画，条上数字是实测值。</text>
+<text x="40" y="82" font-size="13" fill="#6b7280">数据取自原文 Tensor Parallelism 与 Pipeline Parallelism 两节交互图表的底层数值（H100 集群，每节点 8 卡）。</text>
+<rect x="40" y="104" width="500" height="370" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="60" y="132" font-size="14" font-weight="700" fill="#111827">(a) 3B 模型只加张量并行：每卡吞吐</text>
+<text x="60" y="152" font-size="11" fill="#6b7280">单位 tokens/s/GPU；序列 4096</text>
+<line x1="64" y1="420" x2="520" y2="420" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="80" y="201.2" width="56" height="218.8" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="108.0" y="193.2" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">13,923</text>
+<text x="108.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">TP=2</text>
+<rect x="162" y="224.8" width="56" height="195.2" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="190.0" y="216.8" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">12,421</text>
+<text x="190.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">TP=4</text>
+<rect x="244" y="248.7" width="56" height="171.3" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="272.0" y="240.7" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">10,903</text>
+<text x="272.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">TP=8</text>
+<line x1="325.0" y1="172" x2="325.0" y2="420" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="331.0" y="184" font-size="11" fill="#9ca3af">超出一台节点</text>
+<rect x="350" y="321.8" width="56" height="98.2" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="378.0" y="313.8" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">6,246</text>
+<text x="378.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">TP=16</text>
+<rect x="432" y="386.3" width="56" height="33.7" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="460.0" y="378.3" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">2,146</text>
+<text x="460.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">TP=32</text>
+<rect x="580" y="104" width="500" height="370" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="600" y="132" font-size="14" font-weight="700" fill="#111827">(b) 256 MB all-reduce 的带宽随节点数</text>
+<text x="600" y="152" font-size="11" fill="#6b7280">单位 GB/s；多次测量的中位数</text>
+<line x1="604" y1="420" x2="1060" y2="420" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="620" y="211.5" width="40" height="208.5" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="640.0" y="203.5" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">436</text>
+<text x="640.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">1 节点</text>
+<line x1="675.0" y1="172" x2="675.0" y2="420" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="681.0" y="184" font-size="11" fill="#9ca3af">超出一台节点</text>
+<rect x="690" y="246.9" width="40" height="173.1" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="710.0" y="238.9" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">362</text>
+<text x="710.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">2</text>
+<rect x="752" y="343.5" width="40" height="76.5" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="772.0" y="335.5" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">160</text>
+<text x="772.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">4</text>
+<rect x="814" y="372.2" width="40" height="47.8" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="834.0" y="364.2" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">100</text>
+<text x="834.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">8</text>
+<rect x="876" y="379.3" width="40" height="40.7" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="896.0" y="371.3" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">85</text>
+<text x="896.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">16</text>
+<rect x="938" y="388.9" width="40" height="31.1" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="958.0" y="380.9" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">65</text>
+<text x="958.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">32</text>
+<rect x="1000" y="404.2" width="40" height="15.8" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="1020.0" y="396.2" font-size="12" font-weight="700" fill="#111827" text-anchor="middle">33</text>
+<text x="1020.0" y="440" font-size="12" fill="#6b7280" text-anchor="middle">64</text>
+</svg>

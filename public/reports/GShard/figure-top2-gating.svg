@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">GShard 算法 1 走一遍：一组 8 个 Token、4 个专家、每个专家容量 C = 4</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 第一轮写入的第一专家；绿 = 第二轮写入的第二专家；灰 = 第二专家被随机门放弃；红 = 专家已满、没写进去。</text>
+<text x="30" y="72" font-size="13" fill="#6b7280" text-anchor="start">数字是为演示编的，不是论文数据；C = 2S/E = 2 × 8 / 4 = 4 按论文的分组容量公式取。g1、g2 已按 g1 + g2 = 1 归一化。</text>
+<rect x="16" y="88" width="452" height="454" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="110" font-size="14" fill="#111827" text-anchor="start" font-weight="700">每个 Token 的 top-2 与随机门</text>
+<text x="30" y="127" font-size="11" fill="#6b7280" text-anchor="start">第二专家只在 2·g2 大于均匀随机数时才派发</text>
+<text x="44" y="152" font-size="11" fill="#111827" text-anchor="start" font-weight="700">Token</text>
+<text x="104" y="152" font-size="11" fill="#111827" text-anchor="start" font-weight="700">第一专家</text>
+<text x="188" y="152" font-size="11" fill="#111827" text-anchor="start" font-weight="700">第二专家</text>
+<text x="280" y="152" font-size="11" fill="#111827" text-anchor="start" font-weight="700">2·g2 对 随机数</text>
+<text x="380" y="152" font-size="11" fill="#111827" text-anchor="start" font-weight="700">结果</text>
+<rect x="36" y="166" width="50" height="30" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="61" y="186" font-size="11" fill="#111827" text-anchor="middle">t1</text>
+<rect x="96" y="166" width="76" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="134" y="186" font-size="11" fill="#111827" text-anchor="middle">E1 · 0.60</text>
+<rect x="180" y="166" width="84" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="222" y="186" font-size="11" fill="#111827" text-anchor="middle">E2 · 0.40</text>
+<text x="280" y="186" font-size="11" fill="#111827" text-anchor="start">0.80 > 0.35</text>
+<text x="380" y="186" font-size="11" fill="#111827" text-anchor="start">两位专家</text>
+<rect x="36" y="210" width="50" height="30" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="61" y="230" font-size="11" fill="#111827" text-anchor="middle">t2</text>
+<rect x="96" y="210" width="76" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="134" y="230" font-size="11" fill="#111827" text-anchor="middle">E1 · 0.70</text>
+<rect x="180" y="210" width="84" height="30" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="222" y="230" font-size="11" fill="#111827" text-anchor="middle">E3 · 0.30</text>
+<text x="280" y="230" font-size="11" fill="#111827" text-anchor="start">0.60 ≤ 0.72</text>
+<text x="380" y="230" font-size="11" fill="#111827" text-anchor="start">只走第一专家</text>
+<rect x="36" y="254" width="50" height="30" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="61" y="274" font-size="11" fill="#111827" text-anchor="middle">t3</text>
+<rect x="96" y="254" width="76" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="134" y="274" font-size="11" fill="#111827" text-anchor="middle">E1 · 0.80</text>
+<rect x="180" y="254" width="84" height="30" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="222" y="274" font-size="11" fill="#111827" text-anchor="middle">E4 · 0.20</text>
+<text x="280" y="274" font-size="11" fill="#111827" text-anchor="start">0.40 ≤ 0.90</text>
+<text x="380" y="274" font-size="11" fill="#111827" text-anchor="start">只走第一专家</text>
+<rect x="36" y="298" width="50" height="30" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="61" y="318" font-size="11" fill="#111827" text-anchor="middle">t4</text>
+<rect x="96" y="298" width="76" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="134" y="318" font-size="11" fill="#111827" text-anchor="middle">E1 · 0.55</text>
+<rect x="180" y="298" width="84" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="222" y="318" font-size="11" fill="#111827" text-anchor="middle">E2 · 0.45</text>
+<text x="280" y="318" font-size="11" fill="#111827" text-anchor="start">0.90 > 0.50</text>
+<text x="380" y="318" font-size="11" fill="#111827" text-anchor="start">两位专家</text>
+<rect x="36" y="342" width="50" height="30" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="61" y="362" font-size="11" fill="#111827" text-anchor="middle">t5</text>
+<rect x="96" y="342" width="76" height="30" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="134" y="362" font-size="11" fill="#111827" text-anchor="middle">E1 · 0.60</text>
+<rect x="180" y="342" width="84" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="222" y="362" font-size="11" fill="#111827" text-anchor="middle">E3 · 0.40</text>
+<text x="280" y="362" font-size="11" fill="#111827" text-anchor="start">0.80 > 0.10</text>
+<text x="380" y="362" font-size="11" fill="#111827" text-anchor="start">只走第二专家</text>
+<rect x="36" y="386" width="50" height="30" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="61" y="406" font-size="11" fill="#111827" text-anchor="middle">t6</text>
+<rect x="96" y="386" width="76" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="134" y="406" font-size="11" fill="#111827" text-anchor="middle">E2 · 0.90</text>
+<rect x="180" y="386" width="84" height="30" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="222" y="406" font-size="11" fill="#111827" text-anchor="middle">E4 · 0.10</text>
+<text x="280" y="406" font-size="11" fill="#111827" text-anchor="start">0.20 ≤ 0.60</text>
+<text x="380" y="406" font-size="11" fill="#111827" text-anchor="start">只走第一专家</text>
+<rect x="36" y="430" width="50" height="30" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="61" y="450" font-size="11" fill="#111827" text-anchor="middle">t7</text>
+<rect x="96" y="430" width="76" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="134" y="450" font-size="11" fill="#111827" text-anchor="middle">E3 · 0.50</text>
+<rect x="180" y="430" width="84" height="30" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="222" y="450" font-size="11" fill="#111827" text-anchor="middle">E2 · 0.50</text>
+<text x="280" y="450" font-size="11" fill="#111827" text-anchor="start">1.00 > 0.47</text>
+<text x="380" y="450" font-size="11" fill="#111827" text-anchor="start">两位专家</text>
+<rect x="36" y="474" width="50" height="30" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="61" y="494" font-size="11" fill="#111827" text-anchor="middle">t8</text>
+<rect x="96" y="474" width="76" height="30" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="134" y="494" font-size="11" fill="#111827" text-anchor="middle">E1 · 0.70</text>
+<rect x="180" y="474" width="84" height="30" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="222" y="494" font-size="11" fill="#111827" text-anchor="middle">E2 · 0.30</text>
+<text x="280" y="494" font-size="11" fill="#111827" text-anchor="start">0.60 > 0.20</text>
+<text x="380" y="494" font-size="11" fill="#111827" text-anchor="start">全溢出，走残差</text>
+<rect x="484" y="88" width="620" height="318" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="498" y="110" font-size="14" fill="#111827" text-anchor="start" font-weight="700">专家缓冲区：先按 Token 顺序写满第一专家，再写第二专家</text>
+<text x="498" y="127" font-size="11" fill="#6b7280" text-anchor="start">第二轮从第一轮用剩的位置开始排，所以第一选择永远优先</text>
+<text x="510" y="172" font-size="14" fill="#111827" text-anchor="start" font-weight="700">E1</text>
+<rect x="548" y="146" width="70" height="40" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="583" y="171" font-size="11" fill="#111827" text-anchor="middle">t1</text>
+<rect x="626" y="146" width="70" height="40" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="661" y="171" font-size="11" fill="#111827" text-anchor="middle">t2</text>
+<rect x="704" y="146" width="70" height="40" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="739" y="171" font-size="11" fill="#111827" text-anchor="middle">t3</text>
+<rect x="782" y="146" width="70" height="40" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="817" y="171" font-size="11" fill="#111827" text-anchor="middle">t4</text>
+<text x="870" y="164" font-size="11" fill="#111827" text-anchor="start">第一轮计数 c = 6</text>
+<text x="870" y="180" font-size="11" fill="#6b7280" text-anchor="start">第一轮就满：t5、t8 的第一选择溢出</text>
+<text x="510" y="234" font-size="14" fill="#111827" text-anchor="start" font-weight="700">E2</text>
+<rect x="548" y="208" width="70" height="40" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="583" y="233" font-size="11" fill="#111827" text-anchor="middle">t6</text>
+<rect x="626" y="208" width="70" height="40" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="661" y="233" font-size="11" fill="#111827" text-anchor="middle">t1</text>
+<rect x="704" y="208" width="70" height="40" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="739" y="233" font-size="11" fill="#111827" text-anchor="middle">t4</text>
+<rect x="782" y="208" width="70" height="40" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="817" y="233" font-size="11" fill="#111827" text-anchor="middle">t7</text>
+<text x="870" y="226" font-size="11" fill="#111827" text-anchor="start">第一轮计数 c = 1</text>
+<text x="870" y="242" font-size="11" fill="#6b7280" text-anchor="start">t8 的第二选择来时已满</text>
+<text x="510" y="296" font-size="14" fill="#111827" text-anchor="start" font-weight="700">E3</text>
+<rect x="548" y="270" width="70" height="40" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="583" y="295" font-size="11" fill="#111827" text-anchor="middle">t7</text>
+<rect x="626" y="270" width="70" height="40" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="661" y="295" font-size="11" fill="#111827" text-anchor="middle">t5</text>
+<rect x="704" y="270" width="70" height="40" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="739" y="295" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<rect x="782" y="270" width="70" height="40" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="817" y="295" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<text x="870" y="288" font-size="11" fill="#111827" text-anchor="start">第一轮计数 c = 1</text>
+<text x="870" y="304" font-size="11" fill="#6b7280" text-anchor="start">t5 靠第二专家接住</text>
+<text x="510" y="358" font-size="14" fill="#111827" text-anchor="start" font-weight="700">E4</text>
+<rect x="548" y="332" width="70" height="40" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="583" y="357" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<rect x="626" y="332" width="70" height="40" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="661" y="357" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<rect x="704" y="332" width="70" height="40" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="739" y="357" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<rect x="782" y="332" width="70" height="40" rx="4" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="817" y="357" font-size="11" fill="#9ca3af" text-anchor="middle">空</text>
+<text x="870" y="350" font-size="11" fill="#111827" text-anchor="start">第一轮计数 c = 0</text>
+<text x="870" y="366" font-size="11" fill="#6b7280" text-anchor="start">一个 Token 都没收到</text>
+<rect x="484" y="422" width="620" height="120" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="498" y="444" font-size="14" fill="#111827" text-anchor="start" font-weight="700">辅助损失看的是第一轮计数</text>
+<text x="498" y="466" font-size="11" fill="#6b7280" text-anchor="start">算法 1 第 13 行：aux = (1/E) · Σ (c_e / S) · m_e，c_e 在第一轮不论写没写进都加一。</text>
+<text x="498" y="484" font-size="11" fill="#6b7280" text-anchor="start">这里 c = (6, 1, 1, 0)：E1 被 6 个 Token 当成第一选择，它的平均门控 m_E1 会被压下去。</text>
+<text x="498" y="502" font-size="11" fill="#6b7280" text-anchor="start">c_e 来自 top-2，不可导；梯度只经可导的 m_e 走，c_e 充当「这个专家现在多挤」的权重。</text>
+<text x="498" y="520" font-size="11" fill="#6b7280" text-anchor="start">损失系数 k 的数值论文没有给出。</text>
+</svg>
