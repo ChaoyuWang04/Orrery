@@ -57,6 +57,17 @@ describe('活动文档', () => {
     expect(fs.readlinkSync(link)).toBe('../.claude/skills')
   })
 
+  // 全局守则与全局 skill 的真源在 global/,由 scripts/link-global.sh 链到用户级
+  it('全局层真源齐全,skill 名与目录名一致', () => {
+    expect(fs.existsSync(path.join(projectRoot, 'global/AGENTS.md'))).toBe(true)
+    expect(fs.existsSync(path.join(projectRoot, 'scripts/link-global.sh'))).toBe(true)
+    const skillsDir = path.join(projectRoot, 'global/skills')
+    for (const name of fs.readdirSync(skillsDir)) {
+      const skill = fs.readFileSync(path.join(skillsDir, name, 'SKILL.md'), 'utf8')
+      expect(skill, `global/skills/${name}`).toMatch(new RegExp(`^---\\nname: ${name}\\n`))
+    }
+  })
+
   it('入口统一为七个功能模块,运行设施不算模块', () => {
     const entryFiles = ['README.md', 'AGENTS.md', 'CLAUDE.md', 'docs/00-START.md']
     const entry = entryFiles

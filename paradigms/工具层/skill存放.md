@@ -1,11 +1,11 @@
-# 装一个 skill,让两边都能用
+# 装一个 skill 或一条全局指令,让两边都能用
 
-**现行做法**:skill 放 `.claude/skills/<名字>/SKILL.md`,`.agents/skills` 是指向 `.claude/skills` 的软链接。外部 skill 先完整读、不执行其中脚本,按本仓库手册改写后再放进来;规则与流程留在手册,skill 只装需要时才加载的操作细节。
+**现行做法**:先判范围:任何项目都成立、也都会用到的进 `global/`;只在本仓库成立的进 `AGENTS.md` 与 `.claude/skills/`;某类或某个外部项目的留在那个项目里,开源项目优先用上游自带的 skill(TensorRT-LLM、sglang、pytorch 都自带)。再判载体:每轮都要生效的写常驻指令,遇到才用的写 skill。真源只有一份:本仓库的 `.agents/skills` 软链到 `.claude/skills`;`global/` 由 `scripts/link-global.sh` 链到 `~/.claude/CLAUDE.md`、`~/.codex/AGENTS.md`、`~/.claude/skills/`、`~/.agents/skills/`。外部 skill 先完整读、不执行其中脚本,按本仓库手册改写后再放进来。
 
-**原则**:一份真源,两边读;按需加载的东西才适合做成 skill。
+**原则**:一份真源,两边读;全局层越薄越好,因为它在每个项目的每次会话里都占上下文。
 
-**Claude 与 Codex**:Claude Code 读 `.claude/skills/`;Codex 从当前目录到仓库根逐级扫 `.agents/skills/`,用户级在 `~/.agents/skills/`。
+**Claude 与 Codex**:Claude Code 读 `~/.claude/CLAUDE.md` 与 `~/.claude/skills/`,项目 skill 从启动目录往上找到仓库根的 `.claude/skills/`;Codex 读 `~/.codex/AGENTS.md` 与 `~/.agents/skills/`,项目 skill 从当前目录往上找 `.agents/skills/`。上游只带 `.claude/skills/` 的项目,Codex 看不到那些 skill。Claude Code 的云端会话与云端定时任务(routine)不读本机用户级目录。
 
-**本仓库落实在**:`.claude/skills/`、`.agents/skills`(软链接)
+**本仓库落实在**:`global/`、`scripts/link-global.sh`、`.claude/skills/`、`.agents/skills`(软链接)、`docs/12-范式库维护.md` 第五节
 
-**来源**:<https://learn.chatgpt.com/docs/build-skills>(原 developers.openai.com/codex/skills) · 核实于 2026-09-24
+**来源**:<https://code.claude.com/docs/en/skills>、<https://learn.chatgpt.com/docs/build-skills> · 核实于 2026-09-30
