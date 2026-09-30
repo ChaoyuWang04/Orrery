@@ -193,9 +193,9 @@
 | MT-GRPO | Huawei | 多任务 GRPO,按最差任务加权(诺亚方舟) |
 | AgentRL | Tsinghua | 多轮多任务 agentic RL 框架(THUDM,Z.ai 同源) |
 | MUA-RL | Meituan | 多轮用户交互的 agentic 工具使用 RL |
-| MemAgent | ByteDance | 多轮 RL 训练的记忆 agent 处理长上下文(Seed) |
 | WebSailor | Alibaba | 高不确定性 web agent 的数据合成与 RL(通义) |
 | SimpleTIR | ByteDance | 端到端多轮工具集成推理 RL,过滤 void turn 稳定训练(TikTok) |
+| MemAgent | ByteDance | 多轮 RL 训练的记忆 agent 处理长上下文(Seed) |
 | BalanceSFT | AntGroup | 工具调用 SFT 的数据均衡(Inclusion AI AWorld) |
 | ReTool | ByteDance | 代码解释器工具调用的 RL(Seed) |
 | ToolACE | Huawei | 函数调用数据合成,小模型上 BFCL 榜首 |

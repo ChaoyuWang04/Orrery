@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 720" width="860" height="720" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="860" height="720" fill="#ffffff"/>
+<text x="24" y="34" font-size="19" fill="#111827" font-weight="700">同一笔改单：基座先写库再问，训完先问再写库</text>
+<text x="24" y="58" font-size="13" fill="#6b7280">灰 = 只读查询；黄 = 智能体列选项或要确认；紫 = 用户发言；虚线 = 这一步被跳过</text>
+<text x="24" y="78" font-size="13" fill="#6b7280">红 = 未经确认的写库及其后果；绿 = 拿到确认后的写库与完成</text>
+<text x="340" y="114" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Qwen3-32B 非思考（基座）</text>
+<text x="680" y="114" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">MUA-RL-32B（训练后）</text>
+<text x="24" y="158" font-size="13" fill="#6b7280">认证身份</text>
+<text x="24" y="222" font-size="13" fill="#6b7280">查订单与变体</text>
+<text x="24" y="286" font-size="13" fill="#6b7280">列选项、报价</text>
+<text x="24" y="350" font-size="13" fill="#6b7280">用户选定</text>
+<text x="24" y="414" font-size="13" fill="#6b7280">报差价、要 yes</text>
+<text x="24" y="478" font-size="13" fill="#6b7280">写库（只准一次）</text>
+<text x="24" y="542" font-size="13" fill="#6b7280">写库之后</text>
+<text x="24" y="606" font-size="13" fill="#6b7280">结局</text>
+<rect x="180" y="130" width="320" height="46" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="340" y="150" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">编造邮箱查用户，失败</text>
+<text x="340" y="167" font-size="11" fill="#6b7280" text-anchor="middle">再改用姓名 + 邮编找到用户</text>
+<rect x="180" y="194" width="320" height="46" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="340" y="214" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">查订单、查耳机的全部变体</text>
+<text x="340" y="231" font-size="11" fill="#6b7280" text-anchor="middle">两次只读调用</text>
+<rect x="180" y="258" width="320" height="46" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="340" y="286" font-size="13" fill="#9ca3af" text-anchor="middle">跳过：没有列出可选款，也没报价</text>
+<rect x="180" y="322" width="320" height="46" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="340" y="350" font-size="13" fill="#9ca3af" text-anchor="middle">跳过：用户没机会选</text>
+<rect x="180" y="386" width="320" height="46" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="340" y="414" font-size="13" fill="#9ca3af" text-anchor="middle">跳过：没有要 yes</text>
+<rect x="180" y="450" width="320" height="46" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="340" y="470" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">自作主张改成 IPX4 的 $226.49 款</text>
+<text x="340" y="487" font-size="11" fill="#6b7280" text-anchor="middle">订单随即锁定为 pending (item modified)</text>
+<rect x="180" y="514" width="320" height="46" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="340" y="534" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">用户：我要无防水的那款</text>
+<text x="340" y="551" font-size="11" fill="#6b7280" text-anchor="middle">需求到这时才补全</text>
+<rect x="180" y="578" width="320" height="46" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="340" y="598" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第二次写库被拒，转人工</text>
+<text x="340" y="615" font-size="11" fill="#6b7280" text-anchor="middle">Non-pending order cannot be modified；r = 0</text>
+<line x1="340" y1="176" x2="340" y2="192" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="340" y1="240" x2="340" y2="256" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="340" y1="304" x2="340" y2="320" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="340" y1="368" x2="340" y2="384" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="340" y1="432" x2="340" y2="448" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="340" y1="496" x2="340" y2="512" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="340" y1="560" x2="340" y2="576" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="520" y="130" width="320" height="46" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="680" y="150" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">直接用姓名 + 邮编认证</text>
+<text x="680" y="167" font-size="11" fill="#6b7280" text-anchor="middle">用户第一句话里已经给了</text>
+<rect x="520" y="194" width="320" height="46" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="680" y="214" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">查订单、查耳机的全部变体</text>
+<text x="680" y="231" font-size="11" fill="#6b7280" text-anchor="middle">两次只读调用</text>
+<rect x="520" y="258" width="320" height="46" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="680" y="278" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">列出 3 款蓝色及价格</text>
+<text x="680" y="295" font-size="11" fill="#6b7280" text-anchor="middle">$232.49 / $226.49 / $242.92，原价 $256.67</text>
+<rect x="520" y="322" width="320" height="46" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="680" y="342" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">用户：选无防水的 $242.92 款</text>
+<text x="680" y="359" font-size="11" fill="#6b7280" text-anchor="middle">需求在写库之前补全</text>
+<rect x="520" y="386" width="320" height="46" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="680" y="406" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">差价 −$13.75 退回 PayPal，请回 yes</text>
+<text x="680" y="423" font-size="11" fill="#6b7280" text-anchor="middle">用户回复 yes 之后才动数据库</text>
+<rect x="520" y="450" width="320" height="46" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="680" y="470" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">改成无防水的 $242.92 款</text>
+<text x="680" y="487" font-size="11" fill="#6b7280" text-anchor="middle">唯一一次写库，一次写对</text>
+<rect x="520" y="578" width="320" height="46" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="680" y="598" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">任务完成</text>
+<text x="680" y="615" font-size="11" fill="#6b7280" text-anchor="middle">r = 1</text>
+<line x1="680" y1="176" x2="680" y2="192" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="680" y1="240" x2="680" y2="256" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="680" y1="304" x2="680" y2="320" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="680" y1="368" x2="680" y2="384" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="680" y1="432" x2="680" y2="448" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="680" y1="496" x2="680" y2="576" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="24" y="662" font-size="13" fill="#6b7280">据 PDF p. 21–24 附录 B 的两条轨迹重画，省略工具返回的 JSON；箭头是时间顺序。</text>
+<text x="24" y="686" font-size="13" fill="#6b7280">两边的每次工具调用都是合法 JSON，差别只在写库落在确认之前还是之后。</text>
+</svg>

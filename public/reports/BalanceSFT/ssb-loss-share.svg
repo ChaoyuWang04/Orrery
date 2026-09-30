@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 360" width="860" height="360" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="860" height="360" fill="#ffffff"/>
+<text x="24" y="32" font-size="19" fill="#111827" font-weight="700">SSB：两段先各自取平均，再用 α 分份额</text>
+<text x="24" y="54" font-size="13" fill="#6b7280">黄 = 思维链 token　紫 = 函数调用 token；条长 = 这一段在总损失里的份额</text>
+
+<rect x="12" y="70" width="836" height="112" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="190" y="112" width="588" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="778" y="112" width="52" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="28" y="96" font-size="14" fill="#111827" font-weight="700">标准 SFT：按 token 平均</text>
+<text x="28" y="137" font-size="11" fill="#6b7280">份额 = token 占比</text>
+<text x="484" y="137" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">思维链 350.74 token，约 91.9%</text>
+<text x="830" y="104" font-size="11" fill="#6b7280" text-anchor="end">调用 31.07 token，约 8.1%</text>
+<text x="190" y="172" font-size="11" fill="#9ca3af">每个 token 权重相同，约 1/382；调用写错一个参数名，只动总损失的零头</text>
+
+<rect x="12" y="196" width="836" height="112" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="190" y="238" width="448" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="638" y="238" width="192" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="28" y="222" font-size="14" fill="#111827" font-weight="700">SSB：α · 思维链平均 + (1 − α) · 调用平均，α 初值 0.7</text>
+<text x="28" y="263" font-size="11" fill="#6b7280">份额 = α 与 1 − α</text>
+<text x="414" y="263" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">思维链 70%</text>
+<text x="734" y="263" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">调用 30%</text>
+<text x="190" y="298" font-size="11" fill="#9ca3af">相对标准 SFT：每个调用 token 的权重约 ×3.7，每个思维链 token 约 ×0.76</text>
+
+<text x="24" y="332" font-size="11" fill="#9ca3af">token 数取自 PDF p. 3 Table 1 的均值，公式据 p. 3 式 2–3；份额与倍数是本文按均值推算的示意，单条样本各不相同。</text>
+<text x="24" y="350" font-size="11" fill="#9ca3af">α 训练后停在多少，论文没有报告；这里只画初值。</text>
+</svg>

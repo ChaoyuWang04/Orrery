@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 600" width="860" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="860" height="600" fill="#ffffff"/>
+<text x="24" y="34" font-size="19" fill="#111827" font-weight="700">同一条含空轮的轨迹，三种处理方式下梯度落在哪</text>
+<text x="24" y="58" font-size="13" fill="#6b7280">绿 = 有完整代码或最终答案的正常轮；灰 = 工具反馈（本来就掩码，不进损失）；红 = 空轮及之后的崩坏输出</text>
+<text x="24" y="78" font-size="13" fill="#6b7280">黄条 = 这段 token 收到负优势的梯度；虚线框 = 没有生成，或整条轨迹被移出 batch</text>
+<text x="40" y="116" font-size="14" fill="#111827" font-weight="700">① 朴素多轮：整条轨迹照常进损失</text>
+<text x="820" y="116" font-size="13" fill="#6b7280" text-anchor="end">AIME24 最高 20.8</text>
+<rect x="40" y="128" width="150" height="38" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="115" y="152" font-size="13" fill="#111827" text-anchor="middle">第 1 轮：推理 + 代码</text>
+<rect x="194" y="128" width="70" height="38" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="229" y="152" font-size="13" fill="#111827" text-anchor="middle">反馈</text>
+<rect x="268" y="128" width="150" height="38" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="343" y="152" font-size="13" fill="#111827" text-anchor="middle">第 2 轮：推理 + 代码</text>
+<rect x="422" y="128" width="70" height="38" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="457" y="152" font-size="13" fill="#111827" text-anchor="middle">反馈</text>
+<rect x="496" y="128" width="130" height="38" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="561" y="152" font-size="13" fill="#111827" text-anchor="middle">第 3 轮：空轮</text>
+<rect x="630" y="128" width="190" height="38" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="725" y="152" font-size="13" fill="#111827" text-anchor="middle">第 4 轮：崩成乱码</text>
+<rect x="40" y="172" width="150" height="8" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="268" y="172" width="150" height="8" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="496" y="172" width="130" height="8" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="630" y="172" width="190" height="8" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="40" y="204" font-size="12" fill="#6b7280">终端奖励为 0，负优势摊到每个模型 token：前两轮写对的也被罚，崩坏段的低概率 token 还会放大梯度。</text>
+<text x="40" y="256" font-size="14" fill="#111827" font-weight="700">② 遇空轮就停止生成，但这条轨迹照常进损失</text>
+<text x="820" y="256" font-size="13" fill="#6b7280" text-anchor="end">AIME24 最高 26.1</text>
+<rect x="40" y="268" width="150" height="38" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="115" y="292" font-size="13" fill="#111827" text-anchor="middle">第 1 轮：推理 + 代码</text>
+<rect x="194" y="268" width="70" height="38" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="229" y="292" font-size="13" fill="#111827" text-anchor="middle">反馈</text>
+<rect x="268" y="268" width="150" height="38" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="343" y="292" font-size="13" fill="#111827" text-anchor="middle">第 2 轮：推理 + 代码</text>
+<rect x="422" y="268" width="70" height="38" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="457" y="292" font-size="13" fill="#111827" text-anchor="middle">反馈</text>
+<rect x="496" y="268" width="130" height="38" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="561" y="292" font-size="13" fill="#111827" text-anchor="middle">第 3 轮：空轮</text>
+<rect x="630" y="268" width="190" height="38" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="725" y="292" font-size="13" fill="#9ca3af" text-anchor="middle">停止生成</text>
+<rect x="40" y="312" width="150" height="8" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="268" y="312" width="150" height="8" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="496" y="312" width="130" height="8" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="40" y="344" font-size="12" fill="#6b7280">崩坏段没了，但含空轮的轨迹几乎拿不到正奖励，前两轮仍被连坐。</text>
+<text x="40" y="396" font-size="14" fill="#111827" font-weight="700">③ SimpleTIR：含空轮的整条轨迹移出 batch</text>
+<text x="820" y="396" font-size="13" fill="#6b7280" text-anchor="end">AIME24 50.5</text>
+<rect x="32" y="402" width="796" height="62" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="40" y="412" width="150" height="38" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="115" y="436" font-size="13" fill="#111827" text-anchor="middle">第 1 轮：推理 + 代码</text>
+<rect x="194" y="412" width="70" height="38" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="229" y="436" font-size="13" fill="#111827" text-anchor="middle">反馈</text>
+<rect x="268" y="412" width="150" height="38" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="343" y="436" font-size="13" fill="#111827" text-anchor="middle">第 2 轮：推理 + 代码</text>
+<rect x="422" y="412" width="70" height="38" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="457" y="436" font-size="13" fill="#111827" text-anchor="middle">反馈</text>
+<rect x="496" y="412" width="130" height="38" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="561" y="436" font-size="13" fill="#111827" text-anchor="middle">第 3 轮：空轮</text>
+<text x="725" y="436" font-size="13" fill="#9ca3af" text-anchor="middle">停止生成</text>
+<text x="40" y="488" font-size="12" fill="#6b7280">这条轨迹不产生任何梯度，没有黄条；同一组里其余没有空轮的轨迹照常更新。</text>
+<text x="24" y="540" font-size="13" fill="#6b7280">据 PDF p. 6 Figure 4 与 p. 9 Table 2 重画，是机制示意；三个分数都是 Qwen2.5-7B 上的 AIME24。</text>
+<text x="24" y="564" font-size="13" fill="#6b7280">①② 训练不稳，Table 2 报的是 1000 个梯度步以内的最高分。黄条只表示收到负梯度，长度不代表大小。</text>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 620" width="860" height="620" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="860" height="620" fill="#ffffff"/>
+<text x="24" y="32" font-size="19" fill="#111827" font-weight="700">MemAgent：每一轮只看 8K，记忆靠整段覆盖往下传</text>
+<text x="24" y="54" font-size="13" fill="#6b7280">紫 = 问题　黄 = 文档块　绿 = 记忆　红 = 答案　灰 = 模板或空记忆</text>
+
+<rect x="12" y="70" width="836" height="104" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="150" y="104" width="600" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="750" y="104" width="40" height="34" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="28" y="96" font-size="14" fill="#111827" font-weight="700">对照：长上下文 LLM 一次读完</text>
+<text x="28" y="126" font-size="11" fill="#6b7280">一个窗口</text>
+<text x="450" y="126" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">整篇文档 c1 … cN（未按比例）</text>
+<text x="770" y="126" font-size="11" fill="#6b7280" text-anchor="middle">问题</text>
+<text x="150" y="160" font-size="11" fill="#9ca3af">窗口必须装得下整篇文档：注意力计算随长度平方涨，KV 缓存随长度线性涨</text>
+
+<rect x="12" y="188" width="836" height="372" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<rect x="150" y="250" width="80" height="34" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="230" y="250" width="80" height="34" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="310" y="250" width="391" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="701" y="250" width="80" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="781" y="250" width="9" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+
+<rect x="150" y="324" width="80" height="34" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="230" y="324" width="80" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="310" y="324" width="391" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="701" y="324" width="80" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="781" y="324" width="9" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+
+<rect x="150" y="420" width="80" height="34" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="230" y="420" width="80" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="310" y="420" width="391" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="701" y="420" width="80" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="781" y="420" width="9" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+
+<rect x="150" y="494" width="80" height="34" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="230" y="494" width="80" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="310" y="494" width="80" height="34" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+
+<polyline points="741,284 741,304 270,304 270,322" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<polyline points="741,358 741,400 270,400 270,418" fill="none" stroke="#5fa886" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#ag)"/>
+<polyline points="741,454 741,474 270,474 270,492" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+
+<text x="28" y="212" font-size="14" fill="#111827" font-weight="700">MemAgent：K 轮彼此独立的对话，再加 1 轮答题</text>
+<text x="190" y="240" font-size="11" fill="#6b7280" text-anchor="middle">1024</text>
+<text x="270" y="240" font-size="11" fill="#6b7280" text-anchor="middle">1024</text>
+<text x="505" y="240" font-size="11" fill="#6b7280" text-anchor="middle">5000</text>
+<text x="741" y="240" font-size="11" fill="#6b7280" text-anchor="middle">1024 输出</text>
+
+<text x="28" y="272" font-size="14" fill="#111827" font-weight="700">第 1 轮</text>
+<text x="190" y="272" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">问题</text>
+<text x="270" y="272" font-size="11" fill="#6b7280" text-anchor="middle">空记忆</text>
+<text x="505" y="272" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文档块 c1</text>
+<text x="741" y="272" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">记忆 m1</text>
+
+<text x="28" y="346" font-size="14" fill="#111827" font-weight="700">第 2 轮</text>
+<text x="190" y="346" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">问题</text>
+<text x="270" y="346" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">m1</text>
+<text x="505" y="346" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文档块 c2</text>
+<text x="741" y="346" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">记忆 m2</text>
+<text x="28" y="392" font-size="14" fill="#111827" font-weight="700">…</text>
+<text x="505" y="392" font-size="11" fill="#9ca3af" text-anchor="middle">新记忆整段替换旧记忆，长度始终不超过 1024</text>
+
+<text x="28" y="442" font-size="14" fill="#111827" font-weight="700">第 K 轮</text>
+<text x="190" y="442" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">问题</text>
+<text x="270" y="442" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">mK-1</text>
+<text x="505" y="442" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文档块 cK</text>
+<text x="741" y="442" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">记忆 mK</text>
+
+<text x="28" y="516" font-size="14" fill="#111827" font-weight="700">答题轮</text>
+<text x="190" y="516" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">问题</text>
+<text x="270" y="516" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">mK</text>
+<text x="350" y="516" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">答案</text>
+<text x="404" y="508" font-size="11" fill="#6b7280">不再读文档，只凭问题和最后一份记忆</text>
+<text x="404" y="524" font-size="11" fill="#6b7280">写出 boxed 答案；对错就是整条轨迹的奖励</text>
+<text x="150" y="548" font-size="11" fill="#9ca3af">下方四条按 token 数成比例；右端窄灰条是留给对话模板的余量，合计 8192</text>
+
+<text x="24" y="586" font-size="11" fill="#9ca3af">据 PDF p. 2 Figure 2、p. 6 窗口分配与 p. 17 Table 5 提示词重画，是机制示意，不是实测时间轴。</text>
+<text x="24" y="604" font-size="11" fill="#9ca3af">轮数 K 约等于文档长度除以 5000：512K 要 100 多轮（p. 8），3.5M 约 700 轮（本文按块长推算）。</text>
+</svg>

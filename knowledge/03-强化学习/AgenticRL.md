@@ -27,7 +27,7 @@ flowchart TD
 
 两条容易漏、但一漏就训不动的工程后果:
 
-- **观察 token 不是策略生成的,必须从损失里 mask 掉。** 一条 30 步的轨迹里工具返回的文本经常占大头,不 mask 等于让模型去拟合搜索引擎的输出。Search-R1 把这件事(retrieved token masking)直接写进方法,理由就是不这么做训练不稳。
+- **观察 token 不是策略生成的,必须从损失里 mask 掉。** 一条 30 步的轨迹里工具返回的文本经常占大头,不 mask 等于让模型去拟合搜索引擎的输出。Search-R1 把这件事(retrieved token masking)直接写进方法,理由就是不这么做训练不稳。**但 mask 只修了损失,没修条件分布**:工具返回是分布外的文本,模型在它之后接着生成,会采出概率极低的 token,梯度随之爆炸,整组负优势又把前面写对的轮次一起罚掉。SimpleTIR 的办法是把出现「空轮」(这一轮既没有完整代码块、也没有最终答案)的整条轨迹移出损失;只截断生成、不移出损失不管用,AIME24 上 26.1 对 50.5(SimpleTIR,arXiv:2509.02479 p. 4、p. 6、p. 9)。
 - **动作的粒度和梯度的粒度不是一回事。** 策略梯度仍然逐 token 走——策略只会输出 token;但奖励和优势的自然粒度是"一步"。这两层对不齐,正是第二节整节要处理的事。
 
 ### 部分可观测:state 到底该装什么
@@ -183,6 +183,8 @@ record = {
 
 **Workflow 产出的冷启动数据会不会把策略锁死在原有编排的行为分布里?** 会,而且后果直接落在 RL 上:策略初始熵低、探索半径小,采出来的轨迹高度同质,组内方差小、零方差组多。缓解方向是**冷启动只教格式与工具协议、不教固定路线**:混入不同步数、不同工具顺序的成功轨迹;RL 阶段用温度和放宽的裁剪上界保住熵(见 GRPO变体 篇);监控轨迹步数分布与工具调用序列的多样性,而不是只盯成功率。
 
+**冷启动会带进领域偏置,离训练域越远越明显**:在 TAU2 Telecom 上,Qwen3 8B、14B、32B 冷启动后分别从 19.1、29.9、24.8 掉到 9.0、23.5、19.3;接着做结果奖励的 RL,又回到 21.8、33.4、28.3(MUA-RL,arXiv:2508.18669 p. 8)。所以冷启动之后要看离训练域远的评测,别只看同域涨了多少。
+
 **教师越强不代表冷启动越安全。** 教师的交错思考与工具调用风格和学生差得远时,SFT 会直接打坏一个已经后训练过的学生:用 GLM-5.3 的终端任务轨迹去 SFT Qwen3.5-4B,Terminal-Bench 2.1 从 18.7 掉到 3.4,模型陷入重复思考与工具调用循环;27B 也从 49.4 掉到 45.8(Skill2Env,p. 10–11,风格不匹配是作者的推测)。冷启动前先用小规模 SFT 试一版,比过基座再放量。
 
 ## 四、系统与评测:rollout 要跑真实世界
@@ -269,4 +271,6 @@ record = {
 - Agent World Model: Infinity Synthetic Environments for Agentic Reinforcement Learning(训推上下文不一致的实测)— [arXiv:2602.10090](https://arxiv.org/abs/2602.10090)
 - DR-Venus: Towards Frontier Edge-Scale Deep Research Agents with Only 10K Open Data(回合级信息增益奖励)— [arXiv:2604.19859](https://arxiv.org/abs/2604.19859)
 - WebWorld: A Large-Scale World Model for Web Agent Training(学出来的网页世界模型:造数据与谄媚风险)— [arXiv:2602.14721](https://arxiv.org/abs/2602.14721)
+- SimpleTIR: End-to-End Reinforcement Learning for Multi-Turn Tool-Integrated Reasoning(按空轮移出整条轨迹)— [arXiv:2509.02479](https://arxiv.org/abs/2509.02479)
+- MUA-RL: Multi-turn User-interacting Agent Reinforcement Learning for agentic tool use(冷启动的领域偏置)— [arXiv:2508.18669](https://arxiv.org/abs/2508.18669)
 - ScienceIDE: Turning World's Scientific Codebase into Agent Learnable Environments(截断轨迹留基线、屏蔽梯度)— [arXiv:2609.19134](https://arxiv.org/abs/2609.19134)

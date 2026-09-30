@@ -36,7 +36,7 @@ DAPO 是一整套配方而不是单点改动,论文自报在 Qwen2.5-32B base �
 
 新设计:过采样,把准确率恰好为 0 或 1 的 prompt 直接滤掉,继续采直到凑满一个"全是中等难度"的 batch。消融里这是分数拉升最大的一条(42 → 50),因为它同时稳住了有效样本数和梯度尺度。
 
-代价很实在。**采样预算不再固定**:到训练后期,为了凑满一个 batch 可能要多采好几倍,论文的做法是允许采样轮数上浮。而且过滤等于**动态改写了训练集的难度分布**——太简单和太难的题被系统性排除,如果这些题本身重要,得靠 prompt 池设计补回来(池子怎么建见 GRPO 篇)。**多任务混训时,过滤还会改写任务配比**:零梯度率高的任务被系统性滤掉更多,调大它的权重也补不回来。3B 模型三任务混训中,算法给最弱的 ARC 分了约 0.80 的权重,过滤后它在 batch 里实际只占约 0.45;解法是在过滤之后按任务定配额,把实际占比拉回目标比例(MT-GRPO,arXiv:2602.05547 p. 22–25)。
+代价很实在。**采样预算不再固定**:到训练后期,为了凑满一个 batch 可能要多采好几倍,论文的做法是允许采样轮数上浮。而且过滤等于**动态改写了训练集的难度分布**——太简单和太难的题被系统性排除,如果这些题本身重要,得靠 prompt 池设计补回来(池子怎么建见 GRPO 篇)。**多任务混训时,过滤还会改写任务配比**:零梯度率高的任务被系统性滤掉更多,调大它的权重也补不回来。3B 模型三任务混训中,算法给最弱的 ARC 分了约 0.80 的权重,过滤后它在 batch 里实际只占约 0.45;解法是在过滤之后按任务定配额,把实际占比拉回目标比例(MT-GRPO,arXiv:2602.05547 p. 22–25)。另一种做法在优势层面动手:把每个任务在 batch 里的 token 级优势各自标准化成零均值、单位方差,难任务就不会被易任务的优势尺度盖过;去掉这一步,14B 五任务平均从 65.0 掉到 59.4(AgentRL,arXiv:2510.04206 p. 6、p. 8)。Agent RL 里补采一条轨迹很贵,还有一个更省的替代:不再补采新题,而是在同一个 batch 里**复制**组内有方差的样本填满空位,作者报告比 DAPO 的动态采样快约 2–3 倍(WebSailor 的 DUPO,arXiv:2507.02592 p. 7);代价是被复制的题在这一步权重翻倍。
 
 ### token 级损失:长回答在梯度里被摊薄
 
@@ -256,5 +256,7 @@ $\omega$ 失衡的两头:太小等于回到轨迹级;太大则单步的局部比
 - DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models(GRPO 原始提出)— [arXiv:2402.03300](https://arxiv.org/abs/2402.03300)
 - DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning — [arXiv:2501.12948](https://arxiv.org/abs/2501.12948)
 - Multi-Task GRPO: Reliable LLM Reasoning Across Tasks(过滤后按任务定配额)— [arXiv:2602.05547](https://arxiv.org/abs/2602.05547)
+- AgentRL: Scaling Agentic Reinforcement Learning with a Multi-Turn, Multi-Task Framework(按任务标准化优势)— [arXiv:2510.04206](https://arxiv.org/abs/2510.04206)
+- WebSailor: Navigating Super-human Reasoning for Web Agent(DUPO:batch 内复制代替补采)— [arXiv:2507.02592](https://arxiv.org/abs/2507.02592)
 - Stabilizing Reinforcement Learning with LLMs: Formulation and Practices(token 级目标是序列级目标的一阶近似,MoE 需路由重放)— [arXiv:2512.01374](https://arxiv.org/abs/2512.01374)
 - Defeating the Training-Inference Mismatch via FP16(两端改 FP16 缩小训推差异)— [arXiv:2510.26788](https://arxiv.org/abs/2510.26788)

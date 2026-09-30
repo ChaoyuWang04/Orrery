@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 560" width="860" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="860" height="560" fill="#ffffff"/>
+<text x="24" y="32" font-size="19" fill="#111827" font-weight="700">Multi-Conv DAPO：一条样本是一串独立对话，同一个优势发回每一轮</text>
+<text x="24" y="54" font-size="13" fill="#6b7280">黄 = 策略生成的文本　红框 = 用来算奖励的那一段　绿 = 奖励与优势</text>
+
+<rect x="12" y="70" width="836" height="150" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="130" y="104" width="330" height="30" rx="6" fill="#fdf1dc" stroke="#d9877a" stroke-width="2"/>
+<rect x="130" y="144" width="330" height="30" rx="6" fill="#fdf1dc" stroke="#d9877a" stroke-width="2"/>
+<rect x="520" y="104" width="70" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="520" y="144" width="70" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="650" y="104" width="70" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="650" y="144" width="70" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="462" y1="119" x2="516" y2="119" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="462" y1="159" x2="516" y2="159" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="592" y1="119" x2="646" y2="119" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="592" y1="159" x2="646" y2="159" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="28" y="94" font-size="14" fill="#111827" font-weight="700">常规 GRPO / DAPO：一条样本 = 一段连续回答</text>
+<text x="28" y="124" font-size="14" fill="#111827" font-weight="700">样本 1</text>
+<text x="28" y="164" font-size="14" fill="#111827" font-weight="700">样本 G</text>
+<text x="295" y="124" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">完整回答</text>
+<text x="295" y="164" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">完整回答</text>
+<text x="555" y="124" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">奖励</text>
+<text x="555" y="164" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">奖励</text>
+<text x="685" y="124" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">优势</text>
+<text x="685" y="164" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">优势</text>
+<text x="130" y="202" font-size="11" fill="#9ca3af">loss 按 (group, token) 两维求和；优势只回到这一段回答的 token 上</text>
+
+<rect x="12" y="236" width="836" height="258" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<rect x="130" y="300" width="80" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="222" y="300" width="80" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="380" y="300" width="80" height="30" rx="6" fill="#fdf1dc" stroke="#d9877a" stroke-width="2"/>
+<rect x="520" y="300" width="70" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="650" y="300" width="70" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="462" y1="315" x2="516" y2="315" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="592" y1="315" x2="646" y2="315" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="685,300 685,284 170,284 170,298" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="262" y1="284" x2="262" y2="298" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="420" y1="284" x2="420" y2="298" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+
+<rect x="130" y="400" width="80" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="222" y="400" width="80" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="380" y="400" width="80" height="30" rx="6" fill="#fdf1dc" stroke="#d9877a" stroke-width="2"/>
+<rect x="520" y="400" width="70" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="650" y="400" width="70" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<line x1="462" y1="415" x2="516" y2="415" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="592" y1="415" x2="646" y2="415" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<polyline points="685,400 685,384 170,384 170,398" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="262" y1="384" x2="262" y2="398" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<line x1="420" y1="384" x2="420" y2="398" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+
+<text x="28" y="260" font-size="14" fill="#111827" font-weight="700">Multi-Conv DAPO：一条样本 = 若干轮互不拼接的对话</text>
+<text x="28" y="320" font-size="14" fill="#111827" font-weight="700">样本 1</text>
+<text x="170" y="320" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">对话 1</text>
+<text x="262" y="320" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">对话 2</text>
+<text x="341" y="320" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">…</text>
+<text x="420" y="320" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">答题轮</text>
+<text x="555" y="320" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">奖励</text>
+<text x="685" y="320" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">优势</text>
+<text x="170" y="348" font-size="11" fill="#6b7280" text-anchor="middle">写记忆</text>
+<text x="262" y="348" font-size="11" fill="#6b7280" text-anchor="middle">写记忆</text>
+<text x="420" y="348" font-size="11" fill="#6b7280" text-anchor="middle">写答案</text>
+<text x="555" y="348" font-size="11" fill="#6b7280" text-anchor="middle">对 1，错 0</text>
+<text x="685" y="348" font-size="11" fill="#6b7280" text-anchor="middle">减组内均值</text>
+<text x="730" y="280" font-size="11" fill="#6b7280">同一个优势</text>
+<text x="730" y="294" font-size="11" fill="#6b7280">发回每一轮</text>
+<text x="28" y="370" font-size="14" fill="#111827" font-weight="700">…</text>
+
+<text x="28" y="420" font-size="14" fill="#111827" font-weight="700">样本 G</text>
+<text x="170" y="420" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">对话 1</text>
+<text x="262" y="420" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">对话 2</text>
+<text x="341" y="420" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">…</text>
+<text x="420" y="420" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">答题轮</text>
+<text x="555" y="420" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">奖励</text>
+<text x="685" y="420" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">优势</text>
+<text x="130" y="456" font-size="11" fill="#9ca3af">每条样本的轮数可以不同；每一轮的输入只有问题、上一轮记忆和当前块，不把前面的块拼回来</text>
+<text x="130" y="474" font-size="11" fill="#9ca3af">loss 按 (group, conversation, token) 三维求和，分母是整组所有对话的 token 总数</text>
+
+<text x="24" y="522" font-size="11" fill="#9ca3af">据 PDF p. 3 Figure 3 与 p. 4–5 式 1–2 重画。原图把参考模型、KL 与裁剪也画在同一条链上，这里省去。</text>
+<text x="24" y="540" font-size="11" fill="#9ca3af">优势只减组内均值、不除标准差（p. 4，沿用 Dr. GRPO）。</text>
+</svg>
