@@ -700,7 +700,7 @@ Table 4（PDF p. 15）：
 
 Table 5（PDF p. 15），灰色括号里是**非推理 SFT 之后、RL 之前**的分数：
 
-| 模型 | GPQA-Diamond<br/>（科学推理） | BFCL v3<br/>（智能体工具使用） | IFEval<br/>（strict prompt） | Arena-Hard |
+| 模型 | GPQA-Diamond（科学推理） | BFCL v3（智能体工具使用） | IFEval（strict prompt） | Arena-Hard |
 |---|---:|---:|---:|---:|
 | DeepSeek-V3 | 59.1 | 57.6 | **86.1** | 85.5 |
 | **rStar2-Agent-14B** | **60.9**（42.1） | **60.8**（63.1） | 83.4（83.7） | **86.6**（86.8） |

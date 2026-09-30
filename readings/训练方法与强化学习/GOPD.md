@@ -2,7 +2,7 @@
 
 <!-- release-date: 2026-02-12 -->
 
-**本文依据**：`Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation`，arXiv **2602.12125v2**（[cs.LG] 26 Feb 2026），17 页。作者 Wenkai Yang<sup>1,*</sup>、Weijie Liu<sup>2</sup>、Ruobing Xie<sup>2</sup>、Kai Yang<sup>2</sup>、Saiyong Yang<sup>2</sup>、Yankai Lin<sup>1,†</sup>；<sup>1</sup> Gaoling School of Artificial Intelligence, Renmin University of China；<sup>2</sup> LLM Department, Tencent。代码 https://github.com/RUCBM/G-OPD。原件首次公开日取 arXiv **v1** 提交日 **2026-02-12**（Submitted on 12 Feb 2026）；解读依据本地已核的 **v2**（17 页，`pdfinfo` Pages: 17）。文中数字都标 PDF 页码；标「外部补充」的段落不来自本文。MiniLLM、Rethinking-OPD 只在本文引用处作对照，不展开成专篇。
+**本文依据**：`Learning beyond Teacher: Generalized On-Policy Distillation with Reward Extrapolation`，arXiv **2602.12125v2**（[cs.LG] 26 Feb 2026），17 页。作者 Wenkai Yang$^{1,*}$、Weijie Liu$^{2}$、Ruobing Xie$^{2}$、Kai Yang$^{2}$、Saiyong Yang$^{2}$、Yankai Lin$^{1,\dagger}$；$^{1}$ Gaoling School of Artificial Intelligence, Renmin University of China；$^{2}$ LLM Department, Tencent。代码 https://github.com/RUCBM/G-OPD。原件首次公开日取 arXiv **v1** 提交日 **2026-02-12**（Submitted on 12 Feb 2026）；解读依据本地已核的 **v2**（17 页，`pdfinfo` Pages: 17）。文中数字都标 PDF 页码；标「外部补充」的段落不来自本文。MiniLLM、Rethinking-OPD 只在本文引用处作对照，不展开成专篇。
 
 ## 一句话
 

@@ -6,7 +6,7 @@
 
 ## 一句话
 
-人工写指令贵、少、而且容易写成「又一个 NLP 分类题」。Self-Instruct 让**同一个**未对齐语言模型自己造 instruction / input / output，滤掉重复和明显废样本，再拿这些合成数据去微调自己。vanilla GPT-3（`davinci`，175B）在 Super-NaturalInstructions 未见任务上 ROUGE-L 从 **6.8** 升到 **39.9**，绝对值 **+33.1** 个百分点，几乎贴上 InstructGPT<sub>001</sub> 的 **40.8**（PDF p.1、p.6 表 3）。另外放出约 **52K** 条合成指令，以及 **252** 条专家写的新任务评测（PDF p.2、p.7）。
+人工写指令贵、少、而且容易写成「又一个 NLP 分类题」。Self-Instruct 让**同一个**未对齐语言模型自己造 instruction / input / output，滤掉重复和明显废样本，再拿这些合成数据去微调自己。vanilla GPT-3（`davinci`，175B）在 Super-NaturalInstructions 未见任务上 ROUGE-L 从 **6.8** 升到 **39.9**，绝对值 **+33.1** 个百分点，几乎贴上 InstructGPT$_{\text{001}}$ 的 **40.8**（PDF p.1、p.6 表 3）。另外放出约 **52K** 条合成指令，以及 **252** 条专家写的新任务评测（PDF p.2、p.7）。
 
 ## 一、矛盾：指令微调卡在「人写不出足够多样的任务」
 
@@ -40,7 +40,7 @@ flowchart TB
 
 任务池一开始只有 **175** 条种子：作者与 UW 实验室同事新写，不参考现成数据集和本文测试集；附录写明 **25** 条分类、**150** 条非分类（PDF p.2、p.3、p.14）。每轮从池里抽 **8** 条当示例：**6** 条来自人工种子、**2** 条来自已生成任务，用来推多样性（PDF p.3）。
 
-生成结果再过滤，合格任务加回池。循环直到规模够大。最后用同一套数据微调**原来那个** GPT-3，得到 GPT3<sub>SELF-INST</sub>（PDF p.2）。
+生成结果再过滤，合格任务加回池。循环直到规模够大。最后用同一套数据微调**原来那个** GPT-3，得到 GPT3$_{\text{SELF-INST}}$（PDF p.2）。
 
 一条指令数据的形式（PDF p.3）：任务 $t$ 有自然语言指令 $I_t$，以及 $n_t \ge 1$ 个实例 $\{(X_{t,i}, Y_{t,i})\}$。模型应满足
 
@@ -108,7 +108,7 @@ few-shot 模板见表 5：列出 Task 1–8，让模型从 Task 9 往后续写�
 
 作者的判断是：指令大多像样，实例更吵；但多数仍格式对或半对，训练「听指令」仍然有用（PDF p.4）。好例子、坏例子分别在表 10、表 11（PDF p.4）。
 
-附录查询超参见表 4。2022 年 12 月 `davinci` completion 报价 **$0.02 / 1K tokens**，整份数据生成大约 **$600**；在全部生成数据上微调 GPT3<sub>SELF-INST</sub> 大约 **$338**（PDF p.14–15）。
+附录查询超参见表 4。2022 年 12 月 `davinci` completion 报价 **\$0.02 / 1K tokens**，整份数据生成大约 **\$600**；在全部生成数据上微调 GPT3$_{\text{SELF-INST}}$ 大约 **\$338**（PDF p.14–15）。
 
 ## 五、实验 1：SuperNI 零样本，绝对值 +33.1 个百分点
 
@@ -122,19 +122,19 @@ few-shot 模板见表 5：列出 Task 1–8，让模型从 Task 9 往后续写�
 | GPT-3 | 175B | 6.8 |
 | T0（未见 SuperNI 训练） | 11B | 33.1 |
 | GPT-3 + T0 训练 | 175B | 37.9 |
-| GPT3<sub>SELF-INST</sub>（本文） | 175B | 39.9 |
-| InstructGPT<sub>001</sub> | 175B | 40.8 |
-| T<sub>k</sub>-Instruct（见过 SuperNI 训练） | 11B | 46.0 |
+| GPT3$_{\text{SELF-INST}}$（本文） | 175B | 39.9 |
+| InstructGPT$_{\text{001}}$ | 175B | 40.8 |
+| T$_{k}$-Instruct（见过 SuperNI 训练） | 11B | 46.0 |
 | GPT-3 + SuperNI 训练 | 175B | 49.5 |
-| GPT3<sub>SELF-INST</sub> + SuperNI 训练 | 175B | 51.6 |
+| GPT3$_{\text{SELF-INST}}$ + SuperNI 训练 | 175B | 51.6 |
 
 读表时分三圈（PDF p.6）：
 
 1. vanilla GPT-3 几乎不能听指令：人工看会发现它常写无关、重复的文本，也不知道何时停。Self-Instruct 把它从 6.8 拉到 39.9，**+33.1**。
-2. 在「没专门为 SuperNI 训练」那一档，GPT3<sub>SELF-INST</sub> 超过 T0 和「GPT-3 微调 T0 数据」，并几乎贴上 InstructGPT<sub>001</sub>（40.8）。T0 / SuperNI 训练为省预算各采样 **50K** 实例，但覆盖全部指令，规模与合成数据可比；作者引用 Wang et al. 2022 与早期实验：减少每任务实例数不伤未见任务泛化（PDF p.6）。
+2. 在「没专门为 SuperNI 训练」那一档，GPT3$_{\text{SELF-INST}}$ 超过 T0 和「GPT-3 微调 T0 数据」，并几乎贴上 InstructGPT$_{\text{001}}$（40.8）。T0 / SuperNI 训练为省预算各采样 **50K** 实例，但覆盖全部指令，规模与合成数据可比；作者引用 Wang et al. 2022 与早期实验：减少每任务实例数不伤未见任务泛化（PDF p.6）。
 3. 在 SuperNI 训练数据上再叠一层合成数据，还能从 49.5 到 51.6。作者把 SuperNI 微调模型在自家评测集上更强，归因于指令风格和格式相近；Self-Instruct 仍是互补数据（PDF p.6）。
 
-T0 与 T<sub>k</sub>-Instruct 都用公开的 11B T5 最大版本（PDF p.5–6）。
+T0 与 T$_{k}$-Instruct 都用公开的 11B T5 最大版本（PDF p.5–6）。
 
 ## 六、实验 2：252 条专家写的新任务，人工评只差 5 个百分点
 
@@ -147,7 +147,7 @@ SuperNI 再全，也偏研究用 NLP、偏分类。作者子集先头脑风暴�
 - C：对得上指令，但内容有显著错误（例如先写出有效答案，再继续胡写）
 - D：无关或完全无效
 
-图 6：GPT3<sub>SELF-INST</sub> 明显超过用公开 T0 / SuperNI 数据微调的 GPT-3 变体。若把 B 也算有效，它只比 InstructGPT<sub>001</sub> 低 **5%** 绝对值。InstructGPT<sub>002</sub> / <sub>003</sub> 更强；作者猜测后续可用人工或奖励模型筛更好的生成，类似 Ouyang et al. 2022（PDF p.7）。四类评分的评分者间一致性 $\kappa=0.57$（PDF p.7）。
+图 6：GPT3$_{\text{SELF-INST}}$ 明显超过用公开 T0 / SuperNI 数据微调的 GPT-3 变体。若把 B 也算有效，它只比 InstructGPT$_{\text{001}}$ 低 **5%** 绝对值。InstructGPT$_{\text{002}}$ / $_{\text{003}}$ 更强；作者猜测后续可用人工或奖励模型筛更好的生成，类似 Ouyang et al. 2022（PDF p.7）。四类评分的评分者间一致性 $\kappa=0.57$（PDF p.7）。
 
 图 6 的柱是计数不是百分比，总分母是 252。正文只把「差 5 个百分点」和「大幅超过公开指令数据」写成结论；各档精确计数以原图为准（PDF p.7 图 6）。
 
@@ -158,14 +158,14 @@ SuperNI 再全，也偏研究用 NLP、偏分类。作者子集先头脑风暴�
 - 最小点 **175**：只用种子任务微调，约 **31.0%**
 - **800** 条约 **36.9%**
 - **6400** 与 **51200** 分别约 **43.7%**、**44.4%**
-- 用 InstructGPT<sub>003</sub> 重写全部实例的 output 再微调（作者称为对 003 的蒸馏），在 51200 附近约 **54.4%**，相对原合成输出大约再高 **10%**
+- 用 InstructGPT$_{\text{003}}$ 重写全部实例的 output 再微调（作者称为对 003 的蒸馏），在 51200 附近约 **54.4%**，相对原合成输出大约再高 **10%**
 
 作者观察：用户向 252 条上，增益在 **16K** 指令之后几乎平台，与 Wang et al. 2022 图 5 的数据缩放一致。在 SuperNI 上更早平台（大约数百条），因为新生成数据跟典型 NLP 任务不像（PDF p.8）。
 
 ## 八、和邻近工作差在哪（只写本文自己的边界）
 
 - 相对「针对某一任务造数据 / 增强」：Self-Instruct 不绑定 QA 或 NLI，目标是从零自举**新任务定义**（PDF p.8）。
-- 与并行的 Unnatural Instructions（Honovich et al. 2022a）：他们用 SuperNI 当种子、用 InstructGPT<sub>002</sub> 造数据，等于从已指令微调的模型蒸馏；本文只用 vanilla LM；流水线和模板也不同。作者认为两份数据互补（PDF p.8–9）。
+- 与并行的 Unnatural Instructions（Honovich et al. 2022a）：他们用 SuperNI 当种子、用 InstructGPT$_{\text{002}}$ 造数据，等于从已指令微调的模型蒸馏；本文只用 vanilla LM；流水线和模板也不同。作者认为两份数据互补（PDF p.8–9）。
 - 相对自训练：自训练通常假设已有目标任务和未标注例子；这里从零造多种任务（PDF p.9）。
 - 相对知识蒸馏：源和目标是**同一个**模型；蒸馏内容是「指令任务」（PDF p.9）。
 
@@ -197,9 +197,9 @@ Broader Impact 写到截稿时，中心想法已被若干后续工作采用，�
 - **指令微调（instruction tuning）**：用「任务说明 + 输入 → 输出」监督，让预训练模型听自然语言指令。
 - **种子任务（seed tasks）**：175 条人工写的起步任务，每条 1 指令 1 实例。
 - **Input-first / Output-first**：非分类先造输入；分类先造标签再造输入。
-- **GPT3<sub>SELF-INST</sub>**：用自己生成的约 52K 指令微调后的 `davinci`。
+- **GPT3$_{\text{SELF-INST}}$**：用自己生成的约 52K 指令微调后的 `davinci`。
 - **SuperNI**：Super-NaturalInstructions，本文零样本 NLP 评测床。
-- **InstructGPT<sub>001</sub>**：`text-davinci-001`，本文的主对照。
+- **InstructGPT$_{\text{001}}$**：`text-davinci-001`，本文的主对照。
 
 ## 参考资料
 

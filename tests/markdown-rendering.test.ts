@@ -157,6 +157,61 @@ describe('工具调用残片', () => {
   })
 })
 
+interface MdastNode {
+  type: string
+  value?: string
+  children?: MdastNode[]
+}
+
+/** 与页面同一套语法;代码块、行内代码、公式在 mdast 里各是独立节点,天然不会被当成 html */
+const syntaxParser = unified().use(remarkParse).use(remarkGfm).use(remarkMath)
+
+/**
+ * 页面没挂 rehype-raw,正文里的裸 HTML 标签会被原样显示成文字(表格里的 `<br/>`、上下标的 `<sub>`)。
+ * 注释不显示,`release-date` 就靠它,所以放行。
+ */
+function rawHtmlTags(source: string): string[] {
+  const found: string[] = []
+  const walk = (node: MdastNode) => {
+    if (node.type === 'html') {
+      const value = (node.value ?? '').trim()
+      if (!value.startsWith('<!--')) found.push(value)
+    }
+    node.children?.forEach(walk)
+  }
+  walk(syntaxParser.parse(source) as unknown as MdastNode)
+  return found
+}
+
+describe('Markdown 裸 HTML', () => {
+  it('认得出会被原样显示的标签', () => {
+    expect(rawHtmlTags('| 模型 | GPQA<br/>(科学推理) |\n|---|---|\n| a | 1 |')).toEqual(['<br/>'])
+    expect(rawHtmlTags('GPT3<sub>SELF-INST</sub> 的结果')).toEqual(['<sub>', '</sub>'])
+  })
+
+  it('不误报注释、代码、公式里的尖括号', () => {
+    expect(rawHtmlTags('# 标题\n\n<!-- release-date: 2025-02-19 -->\n')).toEqual([])
+    expect(rawHtmlTags('路径写作 `vllm/models/<model>/`。')).toEqual([])
+    expect(rawHtmlTags('```html\n<br/>\n```')).toEqual([])
+    expect(rawHtmlTags('VL-JEPA$_{\\text{BASE}}$ 与 $a < b$')).toEqual([])
+  })
+
+  it('全库正文不含裸 HTML 标签', { timeout: 15_000 }, () => {
+    const leaks: string[] = []
+
+    for (const root of contentRoots) {
+      for (const file of markdownFiles(path.join(projectRoot, root))) {
+        const found = rawHtmlTags(matter(fs.readFileSync(file, 'utf8')).content)
+        if (found.length === 0) continue
+        leaks.push(`${path.relative(projectRoot, file)}(${found.length} 处):${found.slice(0, 3).join(' ')}`)
+      }
+    }
+
+    // 修法见 docs/09-日常维护.md「踩过的雷」的裸 HTML 一条
+    expect(leaks).toEqual([])
+  })
+})
+
 describe('Markdown 窄屏渲染', () => {
   it('给宽表格提供局部横向滚动容器', () => {
     const renderer = fs.readFileSync(path.join(projectRoot, 'components/Markdown.tsx'), 'utf8')

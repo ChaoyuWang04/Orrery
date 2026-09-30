@@ -2,7 +2,7 @@
 
 <!-- release-date: 2021-12-20 -->
 
-**本文依据**：`High-Resolution Image Synthesis with Latent Diffusion Models`，arXiv:2112.10752v2 [cs.CV]（2022-04-13），45 页 letter。作者 Robin Rombach<sup>1</sup>*、Andreas Blattmann<sup>1</sup>*（同等贡献）、Dominik Lorenz<sup>1</sup>、Patrick Esser（Runway ML）、Björn Ommer<sup>1</sup>；机构<sup>1</sup> Ludwig Maximilian University of Munich & IWR, Heidelberg University, Germany。封面 GitHub：`https://github.com/CompVis/latent-diffusion`（PDF p. 1）。盘上 PDF 页眉写明 arXiv:2112.10752v2 [cs.CV] 13 Apr 2022。官方 arXiv：`https://arxiv.org/abs/2112.10752`。首发日取原件首次公开日，即 arXiv v1 提交日 **2021-12-20**，不因 v2 回写。封面与正文均未印本篇会议名；文中出现的 CVPR 均在参考文献里指他人工作，本文不补本篇会议名。文中数字都标 PDF 页码；标「外部补充」的段落不来自本文。本文只读这一份 PDF，不把后作里的 Stable Diffusion 产品线写进来。
+**本文依据**：`High-Resolution Image Synthesis with Latent Diffusion Models`，arXiv:2112.10752v2 [cs.CV]（2022-04-13），45 页 letter。作者 Robin Rombach$^{1*}$、Andreas Blattmann$^{1*}$（同等贡献）、Dominik Lorenz$^{1}$、Patrick Esser（Runway ML）、Björn Ommer$^{1}$；机构$^{1}$ Ludwig Maximilian University of Munich & IWR, Heidelberg University, Germany。封面 GitHub：`https://github.com/CompVis/latent-diffusion`（PDF p. 1）。盘上 PDF 页眉写明 arXiv:2112.10752v2 [cs.CV] 13 Apr 2022。官方 arXiv：`https://arxiv.org/abs/2112.10752`。首发日取原件首次公开日，即 arXiv v1 提交日 **2021-12-20**，不因 v2 回写。封面与正文均未印本篇会议名；文中出现的 CVPR 均在参考文献里指他人工作，本文不补本篇会议名。文中数字都标 PDF 页码；标「外部补充」的段落不来自本文。本文只读这一份 PDF，不把后作里的 Stable Diffusion 产品线写进来。
 
 ## 一句话
 

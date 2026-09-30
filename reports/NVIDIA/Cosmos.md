@@ -408,10 +408,10 @@ $414 / 34.8 = 11.9$ 倍，与报告说的「快 2 到 12 倍」一致（本文�
 
 | | 扩散路线 | 自回归路线 |
 |---|---|---|
-| 基座 | Cosmos-Predict1-7B-Text2World<br/>Cosmos-Predict1-14B-Text2World | Cosmos-Predict1-4B<br/>Cosmos-Predict1-12B |
-| 派生 | Cosmos-Predict1-7B-Video2World<br/>Cosmos-Predict1-14B-Video2World | Cosmos-Predict1-5B-Video2World<br/>Cosmos-Predict1-13B-Video2World |
-| 用的 tokenizer | Cosmos-Tokenize1-CV8×8×8-720p<br/>（连续） | Cosmos-Tokenize1-DV8×16×16-720p<br/>（离散） |
-| 配套增强件 | Cosmos-UpsamplePrompt1-12B-Text2World<br/>（提示词扩写） | Cosmos-Predict1-7B-Decoder-<br/>DV8×16×16ToCV8×8×8-720p<br/>（扩散解码器） |
+| 基座 | Cosmos-Predict1-7B-Text2World；Cosmos-Predict1-14B-Text2World | Cosmos-Predict1-4B；Cosmos-Predict1-12B |
+| 派生 | Cosmos-Predict1-7B-Video2World；Cosmos-Predict1-14B-Video2World | Cosmos-Predict1-5B-Video2World；Cosmos-Predict1-13B-Video2World |
+| 用的 tokenizer | Cosmos-Tokenize1-CV8×8×8-720p（连续） | Cosmos-Tokenize1-DV8×16×16-720p（离散） |
+| 配套增强件 | Cosmos-UpsamplePrompt1-12B-Text2World（提示词扩写） | Cosmos-Predict1-7B-Decoder-DV8×16×16ToCV8×8×8-720p（扩散解码器） |
 
 两条路线各有两个规模、每个规模各有一个 Video2World 派生版，一共八个模型，再加两个配套件。
 
