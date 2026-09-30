@@ -12,6 +12,12 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--dir", "site", "start", "-p", "3002"],
       "port": 3002
+    },
+    {
+      "name": "styleframes",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "3003", "--bind", "127.0.0.1", "--directory", "tmp/styleframes"],
+      "port": 3003
     }
   ]
 }
