@@ -101,6 +101,7 @@
 | FlashAttention-2 | Stanford | 并行与工作划分改进 |
 | FlashAttention | Stanford | IO 感知的精确注意力:多算 FLOP 换少搬字节(依据 NeurIPS 2022 正式版) |
 | Transformer | Google | Attention Is All You Need(2017):完全基于注意力、去掉循环与卷积的编码器—解码器架构 |
+| PISA | SJTU | 金字塔式 Top-K 逐层收窄候选的块稀疏注意力,选块复杂度从平方降到 O(N log N),配训练与推理的 Triton 内核 |
 | Hybrid-Architectures-for-LM | Meta | 线性与全注意力混合配比的系统性消融,41 页(FAIR 与 KAIST,arXiv 2510.04800) |
 | LongCat-Sparse-Attention | Meituan | 跨层索引的流式感知块稀疏注意力;同线还有 ZigZag(arXiv 2608.01662) |
 | RePo | Sakana | 上下文重定位:用检索替代 KV 复用(ICML 2026,arXiv 2512.14391) |
@@ -160,6 +161,8 @@
 | WizardLM | Microsoft | Evol-Instruct:让 LLM 自己把指令进化得更复杂 |
 | Constitutional-AI | Anthropic | 用原则和 AI 反馈替代人工有害性标注,RLAIF 的出处 |
 | InstructGPT | OpenAI | SFT → 奖励模型 → PPO 的三段式 RLHF 范式出处 |
+| OPD-before-RL | Fudan | 把在策略蒸馏当作 RL 前的准备阶段:同样的 RL 设置下,OPD 初始化的学生最终更好,且这份优势不能用 RL 前的 Pass@k 解释 |
+| Recursive-OPSD | Meta | 在策略自蒸馏里让拿到参考答案的教师随学生共同演化,并用更短的已验证改写压住回答变长、过度自我批评 |
 | Dr.GRPO | SeaAILab | 拆开 GRPO 的长度偏置与标准化偏置各自怎么毒害训练(arXiv 2503.20783) |
 | Jet-RL | NVIDIA | BF16 训练加 FP8 rollout 会崩,精度流要统一;与 FP16-Training-Inference-Mismatch 对着读(arXiv 2601.14243) |
 | RollArt | Alibaba | agentic RL 各阶段映射到最合适的硬件,省 1.35 到 2 倍(arXiv 2512.22560) |
@@ -272,6 +275,7 @@
 | Qwen2.5-Omni | Alibaba | Thinker-Talker 全模态架构的出处 |
 | Chameleon | Meta | 早期融合的混合模态基模,图文统一 token(FAIR) |
 | Flamingo | Google | 冻结视觉编码器 + 冻结 LM 的少样本视觉语言模型(DeepMind) |
+| TrackEverything | CMU | 把视频表示成世界坐标下持续去重的 3D 场景,表示规模随场景内容而非视频长度增长,在千帧以上的长视频里对所有点做稠密 3D 追踪 |
 | SenseNova-U1 | SenseTime | NEO-unify 架构统一多模态理解与生成;商汤此前两库零收录(arXiv 2605.12500) |
 | LongCat-Next | Meituan | 把各模态词法化为离散 token 的统一基模(arXiv 2603.27538) |
 | DeepSeek-OCR-2 | DeepSeek | 用视觉因果流做上下文压缩的下一代(arXiv 2601.20552) |
@@ -314,6 +318,7 @@
 | Transfusion | Meta | 一个模型同时做 next-token 与扩散 |
 | Stable-Diffusion-3 | StabilityAI | MMDiT + 校正流的文生图基模报告 |
 | FlexiCubes | NVIDIA | 可微等值面提取,基于梯度的网格优化 |
+| WanPE | Alibaba | 万相团队的 397B 视频提示词增强模型:从 105 万条真实视频反向构造分镜级计划,用 SC-GRPO 保住用户要求,并配 5 到 30 秒的人工标注评测集 |
 | Seedance-1.0 | ByteDance | 视频基模的质量、效率、可控性三角与蒸馏;1.5 pro 与 2.0 同系列并入(arXiv 2506.09113) |
 | Wan | Alibaba | 开源视频基模的规模、数据与算力配方(arXiv 2503.20314;判定档案只拒过 Wan 2.7 的无原件) |
 | Qwen-Image-2.0 | Alibaba | 图像基模的母体,库内只收了它的 RL 续作(arXiv 2605.10730) |
@@ -375,6 +380,8 @@
 | Cosmos | NVIDIA | Physical AI 的世界基础模型平台 |
 | Genie | Google | 无动作标注的纯视频里,学出可交互的潜动作 |
 | DreamerV3 | Google | 一套超参掌握多样控制任务(DeepMind,Nature) |
+| EmbodiedSWE | ByteDance | 让前沿 coding agent 写代码解长时程、接触丰富的灵巧操作仿真任务,再把单个解扩展成能监督通用机器人策略的数据 |
+| InternW0-Delta | ShanghaiAILab | 世界动作模型:把视频动态、视觉语言语义与几何运动先验并进同一框架出动作,在约 2.3 万小时的真机、UMI 与第一人称异构数据上预训练,数据工具、配方与权重全栈开源(上海 AI 实验室) |
 | Workspace-Models | MIT | 训练时用 VLM 标出任务相关的当前与历史信息,蒸馏成轻量的 workspace token,部署时代替观测喂给策略,不再在环调用 VLM |
 | MotionJEPA | Oxford | JEPA 偏好慢特征导致时间维坍塌:加一个预测差分图像嵌入的正则 DISReg,不需要动作标签也不做像素重建 |
 | InsertionWM | NVIDIA | 用 TD-MPC2 视觉世界模型做机器人插装:腕部深度图加本体感知,一个模型在 90 种零件上训练,对未见几何零样本成功率 56%,远高于无模型基线的 7% |
