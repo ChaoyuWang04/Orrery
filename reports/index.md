@@ -406,11 +406,11 @@
 | Darwin-Godel-Machine | UBC | 部件:harness。agent 改写自身代码 + 基准存档做开放式进化,ICLR 2026(UBC 主导,Sakana 合作) |
 | Alita | Princeton | 部件:工具/技能库。最小预定义,自己造 MCP 工具(普林斯顿主导,清华、上交等合作) |
 | AlphaEvolve | Google | 部件:算子/infra。进化搜索出的 kernel 反过来加速训练它自己的模型;原件是白皮书,同文上了 arXiv:2506.13131 |
-| Absolute-Zero | Tsinghua | 部件:任务/课程。零外部数据,出题者与解题者自博弈(BIGAI 合作) |
-| Agent-Workflow-Memory | CMU | 部件:记忆/经验。从轨迹里归纳可复用的工作流 |
-| ADAS | UBC | 部件:harness。外层 agent 用代码搜索内层 agent 系统(Meta/Vector 合作) |
-| Self-Rewarding-LM | Meta | 部件:模型权重。模型兼任奖励模型,自生成数据再训练 |
-| PromptBreeder | Google | 部件:Prompt。DeepMind,自指涉的提示词进化搜索 |
+| Absolute-Zero | Tsinghua | 部件:任务/课程。零外部数据,同一模型兼任出题与解题、代码执行器判分的自博弈,NeurIPS 2025 Spotlight(清华主导,BIGAI、Penn State 合作) |
+| Agent-Workflow-Memory | CMU | 部件:记忆/经验。从做对的轨迹里归纳带槽位的可复用工作流写进记忆,ICML 2025 |
+| ADAS | UBC | 部件:harness。元 agent 在代码空间里搜索内层 agent 的工作流,ICLR 2025(UBC 主导,Vector Institute 合作) |
+| Self-Rewarding-LM | Meta | 部件:模型权重。模型兼任裁判给自己的回答打分,取最高对最低做迭代 DPO,ICML 2024 |
+| PromptBreeder | Google | 部件:Prompt。DeepMind,任务提示与变异提示一起进化的自指涉提示词搜索,ICML 2024 |
 
 ## 可解释性与对齐
 

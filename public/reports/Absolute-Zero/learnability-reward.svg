@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="860" height="480" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="860" height="480" fill="#ffffff"/>
+<text x="40" y="38" font-size="19" fill="#111827" font-weight="700">出题奖励只奖「偶尔做对」的题，峰值不在 0.5</text>
+<text x="40" y="62" font-size="13" fill="#6b7280">横轴：同一道题让解题者采样 8 次的成功率；柱高：出题奖励（式 4）。绿 = 有奖励，红 = 奖励为 0，灰虚线 = 1 − r̄。</text>
+<line x1="90" y1="370" x2="800" y2="370" stroke="#eeeeee" stroke-width="1"/>
+<text x="82" y="374" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="90" y1="240.0" x2="800" y2="240.0" stroke="#eeeeee" stroke-width="1"/>
+<text x="82" y="244.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<line x1="90" y1="110" x2="800" y2="110" stroke="#eeeeee" stroke-width="1"/>
+<text x="82" y="114" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<text x="40" y="94" font-size="11" fill="#9ca3af">出题奖励</text>
+<line x1="130" y1="110" x2="770" y2="370" stroke="#b9b9b9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="105" y="366" width="50" height="4" rx="1" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.4"/>
+<text x="130" y="390" font-size="11" fill="#6b7280" text-anchor="middle">0/8</text>
+<rect x="185" y="142.5" width="50" height="227.5" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="210" y="390" font-size="11" fill="#6b7280" text-anchor="middle">1/8</text>
+<rect x="265" y="175.0" width="50" height="195.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="290" y="390" font-size="11" fill="#6b7280" text-anchor="middle">2/8</text>
+<rect x="345" y="207.5" width="50" height="162.5" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="370" y="390" font-size="11" fill="#6b7280" text-anchor="middle">3/8</text>
+<rect x="425" y="240.0" width="50" height="130.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="450" y="390" font-size="11" fill="#6b7280" text-anchor="middle">4/8</text>
+<rect x="505" y="272.5" width="50" height="97.5" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="530" y="390" font-size="11" fill="#6b7280" text-anchor="middle">5/8</text>
+<rect x="585" y="305.0" width="50" height="65.0" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="610" y="390" font-size="11" fill="#6b7280" text-anchor="middle">6/8</text>
+<rect x="665" y="337.5" width="50" height="32.5" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="690" y="390" font-size="11" fill="#6b7280" text-anchor="middle">7/8</text>
+<rect x="745" y="366" width="50" height="4" rx="1" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.4"/>
+<text x="770" y="390" font-size="11" fill="#6b7280" text-anchor="middle">8/8</text>
+<line x1="90" y1="370" x2="800" y2="370" stroke="#9ca3af" stroke-width="1.4"/>
+<circle cx="130" cy="110" r="5" fill="#ffffff" stroke="#d9877a" stroke-width="1.4"/>
+<text x="142" y="106" font-size="11" fill="#9ca3af">按 1 − r̄ 本该得 1，式 4 把「全错」截成 0</text>
+<text x="238" y="134" font-size="11" fill="#111827">最高 0.875：8 次里只对 1 次</text>
+<text x="462" y="232" font-size="11" fill="#111827">对一半只拿 0.5</text>
+<text x="130" y="412" font-size="11" fill="#d9877a">全错：没有学习信号</text>
+<text x="770" y="412" font-size="11" fill="#d9877a" text-anchor="end">全对：太容易</text>
+<text x="440" y="434" font-size="11" fill="#6b7280" text-anchor="middle">解题者成功率 r̄（G = 8 次采样的平均）</text>
+<text x="40" y="462" font-size="11" fill="#9ca3af">据原文式 4（PDF p. 5）与 Table 3 的 G = 8（PDF p. 23）画的机制示意，柱高是公式值，不是实测分布。</text>
+</svg>

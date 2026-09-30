@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" width="1120" height="430" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="430" fill="#ffffff"/>
+<text x="30" y="36" font-size="19" fill="#111827" font-weight="700">偏好对只取最高分对最低分：裁判打不出分差，整道题就作废</text>
+<text x="30" y="60" font-size="13" fill="#6b7280">每道新题采 4 条回答，每条让同一模型打 3 次分取平均。绿 = 选作「赢」，红 = 选作「输」，灰 = 丢弃。</text>
+<rect x="30" y="80" width="515" height="290" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="50" y="108" font-size="14" fill="#111827" font-weight="700">有 EFT 的裁判：主实验的 M1、M2</text>
+<rect x="50" y="124" width="475" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<text x="66" y="147" font-size="14" fill="#111827" font-weight="700">回答 A</text>
+<text x="140" y="146" font-size="11" fill="#6b7280">三次打分 5、4、4，平均约 4.3</text>
+<text x="510" y="147" font-size="14" fill="#111827" font-weight="700" text-anchor="end">赢</text>
+<rect x="50" y="170" width="475" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="66" y="193" font-size="14" fill="#111827" font-weight="700">回答 B</text>
+<text x="140" y="192" font-size="11" fill="#6b7280">三次打分 3、4、3，平均约 3.3</text>
+<text x="510" y="193" font-size="14" fill="#111827" font-weight="700" text-anchor="end">丢</text>
+<rect x="50" y="216" width="475" height="36" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.4"/>
+<text x="66" y="239" font-size="14" fill="#111827" font-weight="700">回答 C</text>
+<text x="140" y="238" font-size="11" fill="#6b7280">三次打分 2、3、2，平均约 2.3</text>
+<text x="510" y="239" font-size="14" fill="#111827" font-weight="700" text-anchor="end">输</text>
+<rect x="50" y="262" width="475" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="66" y="285" font-size="14" fill="#111827" font-weight="700">回答 D</text>
+<text x="140" y="284" font-size="11" fill="#6b7280">三次打分 4、4、3，平均约 3.7</text>
+<text x="510" y="285" font-size="14" fill="#111827" font-weight="700" text-anchor="end">丢</text>
+<text x="50" y="328" font-size="13" fill="#111827">这道题产出 1 对：A 赢、C 输，中间两条丢掉</text>
+<text x="50" y="350" font-size="11" fill="#6b7280">原文实测：AIFT(M1) 3964 对训 M2，AIFT(M2) 6942 对训 M3（PDF p. 6）</text>
+<rect x="575" y="80" width="515" height="290" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="595" y="108" font-size="14" fill="#111827" font-weight="700">无 EFT 的裁判：附录 A.3 的 M1′、M2′</text>
+<rect x="595" y="124" width="475" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="611" y="147" font-size="14" fill="#111827" font-weight="700">回答 A</text>
+<text x="685" y="146" font-size="11" fill="#6b7280">三次打分 4、4、4，平均 4.0</text>
+<text x="1055" y="147" font-size="14" fill="#111827" font-weight="700" text-anchor="end">丢</text>
+<rect x="595" y="170" width="475" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="611" y="193" font-size="14" fill="#111827" font-weight="700">回答 B</text>
+<text x="685" y="192" font-size="11" fill="#6b7280">格式不对，解析不出分数</text>
+<text x="1055" y="193" font-size="14" fill="#111827" font-weight="700" text-anchor="end">丢</text>
+<rect x="595" y="216" width="475" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="611" y="239" font-size="14" fill="#111827" font-weight="700">回答 C</text>
+<text x="685" y="238" font-size="11" fill="#6b7280">三次打分 4、4、4，平均 4.0</text>
+<text x="1055" y="239" font-size="14" fill="#111827" font-weight="700" text-anchor="end">丢</text>
+<rect x="595" y="262" width="475" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<text x="611" y="285" font-size="14" fill="#111827" font-weight="700">回答 D</text>
+<text x="685" y="284" font-size="11" fill="#6b7280">三次打分 4、4、4，平均 4.0</text>
+<text x="1055" y="285" font-size="14" fill="#111827" font-weight="700" text-anchor="end">丢</text>
+<text x="595" y="328" font-size="13" fill="#111827">最高分等于最低分，这道题一对也不产出</text>
+<text x="595" y="350" font-size="11" fill="#6b7280">原文实测：AIFT(M1′) 541 对，AIFT(M2′) 429 对（PDF p. 19）</text>
+<text x="30" y="405" font-size="11" fill="#9ca3af">据原文 2.3 节、3.1.3 节（PDF p. 3–4、p. 6）与附录 A.3（PDF p. 19）画的机制示意：单条回答的分数是虚构示例，只有底部的对数是原文数字。</text>
+</svg>

@@ -88,6 +88,8 @@ RM 要多大?InstructGPT 用 **6B RM 去评 175B 策略**,并明确说 175B 的 
 
 那为什么不直接当 RM?核心差别是**它有没有被主动优化**。评测是**被动**的:样本分布固定,judge 只要平均无偏,个别打偏会被平均掉;当 RM 就成了**被主动搜索的目标**——评测里"偏爱长答案"只是几个百分点的噪声,当奖励用会被放大成"越写越长"的 reward hacking。其次,RM 必须在**策略当前的分布上**准,而 judge 通常只在人类回答或基线模型输出上校准过,策略一漂移就进了没校准的区域。最后是成本:judge 只在评测时调用,RM 每步 rollout 都要调。也不是完全不能用,RLAIF 走的就是这条路(注意:换成 AI 反馈**没有自动消除评委偏差**,只是把人的偏差换成模型的偏差)。可行做法是:任务要有明确 rubric、把 judge 蒸馏成小模型压成本(见 蒸馏 篇)、用当前策略的新样本**周期性重训**、再配 KL 约束和可验证的终局锚点。前提是接受它会随训练退化,更新是常设动作而不是一次性配置。
 
+把策略本身当 judge 是这条路的极端形态。Self-Rewarding 让同一个模型给自己的多个回答按 5 分累加 rubric 打分,取最高分对最低分做迭代 DPO,三轮后 AlpacaEval 胜率从 9.94% 到 20.44%(Self-Rewarding-LM,p. 6–8)。它把上面几条风险都摆在了台面上:**judge 的 prompt 写法决定信号能不能用**,同一模型换成多项选择式打分,与人类成对判断的一致率只有 26.6%、相关系数为负,累加式是 65.1%(Self-Rewarding-LM,p. 18);**分数要拉得开才有偏好对**,不先训打分能力时,可用的偏好对只有 541 与 429 对,训过后是 3,964 与 6,942 对(Self-Rewarding-LM,p. 6、p. 19);**长度偏差会被放大**,平均回答长度从 1092 涨到 2552(Self-Rewarding-LM,p. 8)。只拿满分样本做 SFT 自训练则基本没有收益,有效的是成对偏好(Self-Rewarding-LM,p. 22)。
+
 ## 三、奖励设计与 Reward Hacking
 
 ### 训练奖励 ≠ RM 分
@@ -262,3 +264,4 @@ $$
 - ms-swift 自定义奖励函数文档 — https://github.com/modelscope/ms-swift/blob/main/docs/source_en/Instruction/GRPO/DeveloperGuide/reward_function.md
 - Step-Audio-R1.5 Technical Report(细则核对与两两比较合一的生成式奖励模型)— [arXiv:2604.25719](https://arxiv.org/abs/2604.25719)
 - WebGPT: Browser-assisted question-answering with human feedback(真实任务上 best-of-n 胜过 RL)— [arXiv:2112.09332](https://arxiv.org/abs/2112.09332)
+- Self-Rewarding Language Models(策略自当 judge 的迭代 DPO)— [arXiv:2401.10020](https://arxiv.org/abs/2401.10020)
