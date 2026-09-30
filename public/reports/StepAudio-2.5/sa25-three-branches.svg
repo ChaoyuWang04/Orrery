@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 590" width="1120" height="590" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="590" fill="#ffffff"/>
+<rect x="170" y="120" width="290" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2"/>
+<rect x="490" y="120" width="290" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2"/>
+<rect x="810" y="120" width="290" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2"/>
+<rect x="170" y="186" width="290" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="490" y="186" width="290" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="810" y="186" width="290" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="170" y="246" width="290" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="490" y="246" width="290" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="810" y="246" width="290" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="170" y="306" width="290" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="490" y="306" width="290" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="810" y="306" width="290" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<rect x="170" y="372" width="290" height="50" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<rect x="490" y="372" width="290" height="50" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="810" y="372" width="290" height="50" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="170" y="444" width="290" height="50" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="490" y="444" width="290" height="50" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="810" y="444" width="290" height="50" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<rect x="170" y="516" width="290" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2"/>
+<rect x="490" y="516" width="290" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2"/>
+<rect x="810" y="516" width="290" height="44" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2"/>
+<line x1="315.0" y1="164" x2="315.0" y2="184" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="315.0" y1="226" x2="315.0" y2="244" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="315.0" y1="286" x2="315.0" y2="304" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="315.0" y1="350" x2="315.0" y2="370" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="315.0" y1="422" x2="315.0" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="315.0" y1="494" x2="315.0" y2="514" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="635.0" y1="350" x2="635.0" y2="370" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="635.0" y1="422" x2="635.0" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="635.0" y1="494" x2="635.0" y2="514" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="955.0" y1="164" x2="955.0" y2="184" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="955.0" y1="226" x2="955.0" y2="244" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="955.0" y1="286" x2="955.0" y2="304" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="955.0" y1="350" x2="955.0" y2="370" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="955.0" y1="422" x2="955.0" y2="442" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="955.0" y1="494" x2="955.0" y2="514" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M 780 142 L 794 142 L 794 328 L 783 328" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="34" font-size="19" fill="#111827" text-anchor="start" font-weight="700">StepAudio 2.5：同一个底座，三个分支各自用到哪些部件</text>
+<text x="30" y="56" font-size="13" fill="#6b7280" text-anchor="start">绿＝共享底座里该分支实际用到的模块，灰虚线＝该分支去掉的模块，紫＝分支新增的结构，黄＝分支专属的后训练。</text>
+<text x="30" y="74" font-size="13" fill="#6b7280" text-anchor="start">按 PDF p.3–4 §2 与 Figure 1、p.5–6 §4、p.9–10 §5、p.12–14 §6 正文整理；Figure 1 把三个分支都画在完整栈下，TTS 实际不经过编码器与适配器。</text>
+<text x="30" y="147.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">输入</text>
+<text x="30" y="211.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">音频编码器</text>
+<text x="30" y="271.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">适配器</text>
+<text x="30" y="333.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">解码器</text>
+<text x="30" y="402.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">结构改动</text>
+<text x="30" y="474.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">后训练</text>
+<text x="30" y="543.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">输出</text>
+<text x="315.0" y="108" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">ASR · 识别</text>
+<text x="635.0" y="108" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">TTS · 合成</text>
+<text x="955.0" y="108" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Realtime · 实时对话</text>
+<text x="315.0" y="139.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">用户语音</text>
+<text x="315.0" y="155.0" font-size="11" fill="#6b7280" text-anchor="middle">短音频 ≤30 秒；长音频走 32K 上下文</text>
+<text x="635.0" y="139.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">文本 + 自然语言控制指令</text>
+<text x="635.0" y="155.0" font-size="11" fill="#6b7280" text-anchor="middle">零样本克隆的参考音如何输入，报告未写</text>
+<text x="955.0" y="139.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">用户语音 + 对话历史 + 人设</text>
+<text x="955.0" y="155.0" font-size="11" fill="#6b7280" text-anchor="middle">在轮级延迟约束下工作</text>
+<text x="315.0" y="203.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">音频编码器</text>
+<text x="315.0" y="219.0" font-size="11" fill="#6b7280" text-anchor="middle">冻结</text>
+<text x="635.0" y="203.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">去掉</text>
+<text x="635.0" y="219.0" font-size="11" fill="#6b7280" text-anchor="middle">不需要把声音读进来</text>
+<text x="955.0" y="203.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">音频编码器</text>
+<text x="955.0" y="219.0" font-size="11" fill="#6b7280" text-anchor="middle">冻结，架构不改</text>
+<text x="315.0" y="263.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">适配器</text>
+<text x="315.0" y="279.0" font-size="11" fill="#6b7280" text-anchor="middle">SFT 与联合校准时参与训练</text>
+<text x="635.0" y="270.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">去掉</text>
+<text x="955.0" y="263.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">适配器</text>
+<text x="955.0" y="279.0" font-size="11" fill="#6b7280" text-anchor="middle">架构不改</text>
+<text x="315.0" y="325.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">共享 LLM 解码器</text>
+<text x="315.0" y="341.0" font-size="11" fill="#6b7280" text-anchor="middle">文本 MoE 初始化，2.2T Token 续训</text>
+<text x="635.0" y="325.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">共享 LLM 解码器</text>
+<text x="635.0" y="341.0" font-size="11" fill="#6b7280" text-anchor="middle">音频 Token 当作一门新「语言」</text>
+<text x="955.0" y="325.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">共享 LLM 解码器</text>
+<text x="955.0" y="341.0" font-size="11" fill="#6b7280" text-anchor="middle">回复前先写显式内部推理</text>
+<text x="315.0" y="394.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">＋5 个 MTP 分支</text>
+<text x="315.0" y="410.0" font-size="11" fill="#6b7280" text-anchor="middle">一次前向提 6 个 Token，只收已校验前缀</text>
+<text x="635.0" y="394.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">无新增结构</text>
+<text x="635.0" y="410.0" font-size="11" fill="#6b7280" text-anchor="middle">合成退化为纯下一 Token 预测</text>
+<text x="955.0" y="394.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">无结构改动</text>
+<text x="955.0" y="410.0" font-size="11" fill="#6b7280" text-anchor="middle">差别全部落在数据与优化上</text>
+<text x="315.0" y="466.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">SFT → MTP 冻结对齐 → 联合校准</text>
+<text x="315.0" y="482.0" font-size="11" fill="#6b7280" text-anchor="middle">10 万小时短音频 + 5 万小时伪标注长音频</text>
+<text x="635.0" y="466.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">两级 SFT → RLHF</text>
+<text x="635.0" y="482.0" font-size="11" fill="#6b7280" text-anchor="middle">生成式奖励模型对照参考答案打分</text>
+<text x="955.0" y="466.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">渐进 SFT → PPO 式 RLHF</text>
+<text x="955.0" y="482.0" font-size="11" fill="#6b7280" text-anchor="middle">生成式奖励 + 评分细则，动态排练防遗忘</text>
+<text x="315.0" y="535.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">转写文本</text>
+<text x="315.0" y="551.0" font-size="11" fill="#6b7280" text-anchor="middle">RTF 0.0053</text>
+<text x="635.0" y="535.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">音频 Token</text>
+<text x="635.0" y="551.0" font-size="11" fill="#6b7280" text-anchor="middle">还原成波形的模块报告未写</text>
+<text x="955.0" y="535.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">先推理，再回复</text>
+<text x="955.0" y="551.0" font-size="11" fill="#6b7280" text-anchor="middle">延迟数字报告未给</text>
+</svg>

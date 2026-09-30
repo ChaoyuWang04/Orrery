@@ -187,7 +187,7 @@ FastSpeech 这条线的做法分三步:
 
 首包延迟依次花在:文本前端 → 等上游 LLM 吐够一句话(语音助手里往往这段最长)→ 声学模型出第一块 → 声码器出第一块。三处都要改造:
 
-1. **声学侧要能分块出结果**。自回归天然可以;非自回归和扩散要做成分块因果的,只看有限的右侧上下文。代价是**右上下文变短,块边界处的韵律预测会变差**——模型不知道后面还有什么,语调就不好提前铺垫
+1. **声学侧要能分块出结果**。自回归天然可以;非自回归和扩散要做成分块因果的,只看有限的右侧上下文。代价是**右上下文变短,块边界处的韵律预测会变差**——模型不知道后面还有什么,语调就不好提前铺垫。Kimi-Audio 的流式反 token 化器给了一个便宜的补法:flow matching 按块自回归,训练和推理都用块级因果掩码,更早的块连同它们的 mel 当 prompt;解第 $i$ 块时从下一块**借来前 $n$ 个 token 一起去噪,只保留属于本块的那段 mel**(报告举例 $n = 4$,在 12.5 Hz 下约 0.32 秒)。借看这一步不用重训,代价只是首块晚 $n$ 个 token;训练时还把块长在 0.5–3 秒之间随机,让模型见过各种切法
 2. **声码器要能流式**。卷积声码器的感受野会跨块,硬切会在接缝处出咔哒声。做法是块之间留重叠(多合成一点再交叉淡化),或者把卷积改成因果卷积
 3. **切句要按语义而不是按字数**。因为音高和时长在句内是连续演化的,在错误的位置切开,两块之间语调接不上,听起来像换了个人
 
@@ -246,3 +246,4 @@ FastSpeech 这条线的做法分三步:
 - Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis(SV2TTS)— [arXiv:1806.04558](https://arxiv.org/abs/1806.04558)
 - NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models — [arXiv:2403.03100](https://arxiv.org/abs/2403.03100)
 - CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models — [arXiv:2412.10117](https://arxiv.org/abs/2412.10117)
+- Kimi-Audio Technical Report(分块流式 flow matching 反 token 化与 look-ahead)— [arXiv:2504.18425](https://arxiv.org/abs/2504.18425)

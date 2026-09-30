@@ -1,0 +1,362 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 652" width="1120" height="652" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="652" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">声学延迟：同一帧的 8 层 token 错开几步，开口就要多等几步</text>
+<text x="30" y="56" font-size="13" fill="#6b7280">一行 = 同一个 Mimi 帧的一层 token，彩色格 = 它落在第几个时间步（一步 = 80 ms）。紫 = 语义层，黄 = 声学层，绿条 = 凑齐一帧的等待。</text>
+<rect x="20" y="76" width="530" height="262" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="102" font-size="14" fill="#111827" font-weight="700">(a) 逐层错一步</text>
+<text x="36" y="120" font-size="11" fill="#6b7280">[0,1,2,3,4,5,6,7]，MusicGen 式</text>
+<text x="76" y="148" font-size="11" fill="#6b7280" text-anchor="end">语义</text>
+<rect x="84" y="136" width="22" height="16" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="110" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="136" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="168" font-size="11" fill="#6b7280" text-anchor="end">声学 2</text>
+<rect x="84" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="156" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="136" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="188" font-size="11" fill="#6b7280" text-anchor="end">声学 3</text>
+<rect x="84" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="136" y="176" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="162" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="208" font-size="11" fill="#6b7280" text-anchor="end">声学 4</text>
+<rect x="84" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="136" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="196" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="188" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="228" font-size="11" fill="#6b7280" text-anchor="end">声学 5</text>
+<rect x="84" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="136" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="216" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="214" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="248" font-size="11" fill="#6b7280" text-anchor="end">声学 6</text>
+<rect x="84" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="136" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="236" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="240" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="268" font-size="11" fill="#6b7280" text-anchor="end">声学 7</text>
+<rect x="84" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="136" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="256" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="266" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="288" font-size="11" fill="#6b7280" text-anchor="end">声学 8</text>
+<rect x="84" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="136" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="276" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="95" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="121" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<text x="147" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">3</text>
+<text x="173" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="199" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="225" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="251" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<text x="277" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="188" y="324" font-size="11" fill="#9ca3af" text-anchor="middle">时间步</text>
+<text x="320" y="146" font-size="11" fill="#6b7280">凑齐这一帧：第 8 步</text>
+<rect x="320" y="154" width="160" height="20" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="488" y="168" font-size="14" fill="#111827" font-weight="700">640 ms</text>
+<text x="320" y="210" font-size="11" fill="#6b7280">各层接近条件独立，</text>
+<text x="320" y="228" font-size="11" fill="#6b7280">独立分类头就够用（表 5）</text>
+<rect x="570" y="76" width="530" height="262" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="586" y="102" font-size="14" fill="#111827" font-weight="700">(b) 声学统一晚两步</text>
+<text x="586" y="120" font-size="11" fill="#6b7280">[0,2,2,2,2,2,2,2]，Moshi 预训练</text>
+<text x="626" y="148" font-size="11" fill="#6b7280" text-anchor="end">语义</text>
+<rect x="634" y="136" width="22" height="16" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="660" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="712" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="136" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="168" font-size="11" fill="#6b7280" text-anchor="end">声学 2</text>
+<rect x="634" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="660" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="156" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="712" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="156" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="188" font-size="11" fill="#6b7280" text-anchor="end">声学 3</text>
+<rect x="634" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="660" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="176" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="712" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="176" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="208" font-size="11" fill="#6b7280" text-anchor="end">声学 4</text>
+<rect x="634" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="660" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="196" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="712" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="196" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="228" font-size="11" fill="#6b7280" text-anchor="end">声学 5</text>
+<rect x="634" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="660" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="216" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="712" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="216" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="248" font-size="11" fill="#6b7280" text-anchor="end">声学 6</text>
+<rect x="634" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="660" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="236" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="712" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="236" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="268" font-size="11" fill="#6b7280" text-anchor="end">声学 7</text>
+<rect x="634" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="660" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="256" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="712" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="256" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="288" font-size="11" fill="#6b7280" text-anchor="end">声学 8</text>
+<rect x="634" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="660" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="276" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="712" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="276" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="645" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="671" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<text x="697" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">3</text>
+<text x="723" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="749" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="775" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="801" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<text x="827" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="738" y="324" font-size="11" fill="#9ca3af" text-anchor="middle">时间步</text>
+<text x="870" y="146" font-size="11" fill="#6b7280">凑齐这一帧：第 3 步</text>
+<rect x="870" y="154" width="60" height="20" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="938" y="168" font-size="14" fill="#111827" font-weight="700">240 ms</text>
+<text x="870" y="210" font-size="11" fill="#6b7280">同一步里 7 层声学互相依赖，</text>
+<text x="870" y="228" font-size="11" fill="#6b7280">离不开 Depth Transformer</text>
+<rect x="20" y="354" width="530" height="262" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="380" font-size="14" fill="#111827" font-weight="700">(c) 声学统一晚一步</text>
+<text x="36" y="398" font-size="11" fill="#6b7280">[0,1,1,1,1,1,1,1]，Moshi 微调与部署</text>
+<text x="76" y="426" font-size="11" fill="#6b7280" text-anchor="end">语义</text>
+<rect x="84" y="414" width="22" height="16" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="110" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="136" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="446" font-size="11" fill="#6b7280" text-anchor="end">声学 2</text>
+<rect x="84" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="434" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="136" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="466" font-size="11" fill="#6b7280" text-anchor="end">声学 3</text>
+<rect x="84" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="454" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="136" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="486" font-size="11" fill="#6b7280" text-anchor="end">声学 4</text>
+<rect x="84" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="474" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="136" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="506" font-size="11" fill="#6b7280" text-anchor="end">声学 5</text>
+<rect x="84" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="494" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="136" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="526" font-size="11" fill="#6b7280" text-anchor="end">声学 6</text>
+<rect x="84" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="514" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="136" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="546" font-size="11" fill="#6b7280" text-anchor="end">声学 7</text>
+<rect x="84" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="534" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="136" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="76" y="566" font-size="11" fill="#6b7280" text-anchor="end">声学 8</text>
+<rect x="84" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="110" y="554" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="136" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="162" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="188" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="214" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="240" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="266" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="95" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="121" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<text x="147" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">3</text>
+<text x="173" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="199" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="225" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="251" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<text x="277" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="188" y="602" font-size="11" fill="#9ca3af" text-anchor="middle">时间步</text>
+<text x="320" y="424" font-size="11" fill="#6b7280">凑齐这一帧：第 2 步</text>
+<rect x="320" y="432" width="40" height="20" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="368" y="446" font-size="14" fill="#111827" font-weight="700">160 ms</text>
+<text x="320" y="488" font-size="11" fill="#6b7280">理论延迟 160 ms 的来源：</text>
+<text x="320" y="506" font-size="11" fill="#6b7280">80 ms 帧长 + 80 ms 声学延迟</text>
+<rect x="570" y="354" width="530" height="262" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="586" y="380" font-size="14" fill="#111827" font-weight="700">(d) 不错开</text>
+<text x="586" y="398" font-size="11" fill="#6b7280">[0,0,0,0,0,0,0,0]，Mimi 的下限</text>
+<text x="626" y="426" font-size="11" fill="#6b7280" text-anchor="end">语义</text>
+<rect x="634" y="414" width="22" height="16" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="660" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="712" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="414" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="446" font-size="11" fill="#6b7280" text-anchor="end">声学 2</text>
+<rect x="634" y="434" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="660" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="712" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="434" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="466" font-size="11" fill="#6b7280" text-anchor="end">声学 3</text>
+<rect x="634" y="454" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="660" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="712" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="454" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="486" font-size="11" fill="#6b7280" text-anchor="end">声学 4</text>
+<rect x="634" y="474" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="660" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="712" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="474" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="506" font-size="11" fill="#6b7280" text-anchor="end">声学 5</text>
+<rect x="634" y="494" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="660" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="712" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="494" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="526" font-size="11" fill="#6b7280" text-anchor="end">声学 6</text>
+<rect x="634" y="514" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="660" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="712" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="514" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="546" font-size="11" fill="#6b7280" text-anchor="end">声学 7</text>
+<rect x="634" y="534" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="660" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="712" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="534" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="626" y="566" font-size="11" fill="#6b7280" text-anchor="end">声学 8</text>
+<rect x="634" y="554" width="22" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="660" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="686" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="712" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="738" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="764" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="790" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="554" width="22" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="645" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">1</text>
+<text x="671" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">2</text>
+<text x="697" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">3</text>
+<text x="723" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="749" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">5</text>
+<text x="775" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">6</text>
+<text x="801" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<text x="827" y="586" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="738" y="602" font-size="11" fill="#9ca3af" text-anchor="middle">时间步</text>
+<text x="870" y="424" font-size="11" fill="#6b7280">凑齐这一帧：第 1 步</text>
+<rect x="870" y="432" width="20" height="20" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="898" y="446" font-size="14" fill="#111827" font-weight="700">80 ms</text>
+<text x="870" y="488" font-size="11" fill="#6b7280">8 层都要在同一步当场定，</text>
+<text x="870" y="506" font-size="11" fill="#6b7280">生成语音可懂度最差（表 6）</text>
+<text x="30" y="640" font-size="11" fill="#9ca3af">按 Moshi 论文式 4、表 5–6 与 PDF p.14、p.25–27 重画的机制示意；延迟 = (最大错位步数 + 1) × 80 ms，不是实测时延。</text>
+</svg>

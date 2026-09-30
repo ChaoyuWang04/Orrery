@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="540" fill="#ffffff"/>
+<rect x="250.00" y="110" width="105.00" height="34" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="250.00" y="200" width="134.40" height="34" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="384.40" y="200" width="84.00" height="34" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="468.40" y="200" width="33.60" height="34" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="502.00" y="200" width="16.80" height="34" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="250.00" y="290" width="420.00" height="34" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="670.00" y="290" width="157.50" height="34" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="827.50" y="290" width="126.00" height="34" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="953.50" y="290" width="47.25" height="34" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="1000.75" y="290" width="44.10" height="34" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="1044.85" y="290" width="31.50" height="34" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="1076.35" y="290" width="8.40" height="34" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="1084.75" y="290" width="5.25" height="34" fill="#ffffff" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 2"/>
+<rect x="250.00" y="400" width="105.00" height="34" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<rect x="355.00" y="400" width="25.83" height="34" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<rect x="380.83" y="400" width="13.02" height="34" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<rect x="393.85" y="400" width="3.78" height="34" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<rect x="397.63" y="400" width="2.52" height="34" fill="#ffffff" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="3 2"/>
+<rect x="400.15" y="400" width="37.80" height="34" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="437.95" y="400" width="15.75" height="34" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<rect x="453.70" y="400" width="6.30" height="34" fill="#fbe9e7" stroke="#d9877a" stroke-width="1"/>
+<path d="M 356.0 394 L 356.0 388 L 399.1 388 L 399.1 394" fill="none" stroke="#9ca3af" stroke-width="1.2"/>
+<path d="M 401.1 394 L 401.1 388 L 459.0 388 L 459.0 394" fill="none" stroke="#9ca3af" stroke-width="1.2"/>
+<text x="30.0" y="34" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Step-Audio 2 的四段续训：1.356T Token 花在哪里</text>
+<text x="30.0" y="56" font-size="13" fill="#6b7280" text-anchor="start">条长按 Token 数等比例画（同一比例尺）；灰＝文本，绿＝ASR，黄＝TTS，紫＝语音对话与文本—语音交错，红＝翻译，白虚线＝其他。</text>
+<text x="30.0" y="74" font-size="13" fill="#6b7280" text-anchor="start">数字全部来自 PDF p.7 §3.2；分组、排序与求和为本文整理。</text>
+<text x="30.0" y="125" font-size="14" fill="#111827" text-anchor="start" font-weight="700">① 对齐 100B</text>
+<text x="30.0" y="141" font-size="11" fill="#6b7280" text-anchor="start">只训适配器 · 8K 序列</text>
+<text x="30.0" y="215" font-size="14" fill="#111827" text-anchor="start" font-weight="700">② 稳住新词表 256B</text>
+<text x="30.0" y="231" font-size="11" fill="#6b7280" text-anchor="start">扩 6.6K 音频 Token · 16K 序列</text>
+<text x="317.2" y="221" font-size="11" fill="#111827" text-anchor="middle">文本 128B</text>
+<text x="426.4" y="221" font-size="11" fill="#111827" text-anchor="middle">TTS 80B</text>
+<text x="30.0" y="305" font-size="14" fill="#111827" text-anchor="start" font-weight="700">③ 主训练 800B</text>
+<text x="30.0" y="321" font-size="11" fill="#6b7280" text-anchor="start">学习率统一 2e-5</text>
+<text x="460.0" y="311" font-size="11" fill="#111827" text-anchor="middle">文本 400B</text>
+<text x="748.8" y="311" font-size="11" fill="#111827" text-anchor="middle">语音对话 150B</text>
+<text x="890.5" y="311" font-size="11" fill="#111827" text-anchor="middle">TTS 120B</text>
+<text x="30.0" y="415" font-size="14" fill="#111827" text-anchor="start" font-weight="700">④ 冷却 200B</text>
+<text x="30.0" y="431" font-size="11" fill="#6b7280" text-anchor="start">学习率 2e-5 → 5e-6</text>
+<text x="302.5" y="421" font-size="11" fill="#111827" text-anchor="middle">文本 100B</text>
+<text x="367.0" y="131" font-size="11" fill="#9ca3af" text-anchor="start">ASR 100B：音频编码器与 LLM 都冻结，训 12K 步</text>
+<text x="530.8" y="214" font-size="11" fill="#9ca3af" text-anchor="start">语音对话 32B · 句级交错续写 16B</text>
+<text x="530.8" y="230" font-size="11" fill="#9ca3af" text-anchor="start">四组学习率：LLM 2e-5，适配器与嵌入层 5e-5，输出层 4e-5</text>
+<text x="250.0" y="344" font-size="11" fill="#9ca3af" text-anchor="start">尾部小段依次为：句级交错续写 45B · ASR 42B · 文本到语音翻译 30B · 语音到文本翻译 8B · 语音到文本续写 5B</text>
+<text x="377.6" y="382" font-size="11" fill="#6b7280" text-anchor="middle">真实 43B</text>
+<text x="430.1" y="382" font-size="11" fill="#6b7280" text-anchor="middle">合成 57B</text>
+<text x="472.0" y="414" font-size="11" fill="#9ca3af" text-anchor="start">真实：方言与多语种 ASR 24.6B · TTS 12.4B · 语音到文本翻译 3.6B · 副语言理解 2.4B</text>
+<text x="472.0" y="430" font-size="11" fill="#9ca3af" text-anchor="start">合成：语音对话 36B · 句级交错对话 15B · 语音到语音翻译 6B（约 5 万说话人参考库）</text>
+<text x="30.0" y="482" font-size="11" fill="#9ca3af" text-anchor="start">合计：100 + 256 + 800 + 200 = 1356B = 1.356T，续训 21 天；卡数、卡型与算力报告未写。</text>
+<text x="30.0" y="500" font-size="11" fill="#9ca3af" text-anchor="start">其后还有 SFT：4B Token 文本与音频数据，训 1 个 epoch，学习率 1e-5 → 1e-6（PDF p.8）。</text>
+</svg>

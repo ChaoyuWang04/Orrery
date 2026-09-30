@@ -107,6 +107,8 @@ $$
 | ORM(结果奖励) | 整条回答好不好 | 信号稀疏,定位不到哪一步错 |
 | PRM(过程奖励) | 推理每一步靠不靠谱 | 需要可信步骤标注或验证,成本高 |
 
+「细则」与「偏好」也可以装进**同一个生成式评委**。Step-Audio-R1.5 的奖励模型读对话历史、策略回复和一条参考回复:这道题带评分细则,就逐条核对是否满足;不带,就退化成与参考回复两两比较。输出不是二元胜负,而是**分多个等级的相对偏好**,用来区分「略好」和「好得多」,再映射成标量奖励;StepAudio 2.5 的对话分支也用了「偏好比较 + 细则」这类双信号的生成式奖励。R1.5 报告还给了一条经验:两类监督要**放在同一次 RL 里联合优化**,分阶段先训一类再训另一类,后一阶段会冲掉前一阶段学到的行为。这条只是作者经验,报告没有给对照数字;参考回复从哪来、质量怎么控制也没公开,而它太弱会让奖励饱和、太强会让信号一直为负,是这种设计里的隐藏超参数。
+
 **但不是所有目标都该进这个加权和。** 线性加权只适合可以互相交换的软目标;合规、资金操作这类**不可违反**的条件必须做门控或约束——先拦截,再在可行答案里优化软目标,因为线性加权下一个足够大的有用性分**可以把安全违规抵消掉**。反方向也有坑:简单地给所有拒答加分,模型会学成"什么都拒绝"。所以安全侧的正确形态是**约束**(违反即否决),不是**奖励**(拒绝就加分)。Llama 2 干脆训了 Helpfulness 和 Safety **两个独立 RM** 再在 RL 阶段组合——这两个目标会互相拉扯,一个模型很难同时学好。
 
 ### Goodhart 与过优化定律:所以 RL 不能训到收敛
@@ -258,3 +260,4 @@ $$
 - Evaluating Large Language Models Trained on Code(Codex,pass@k 无偏估计)— [arXiv:2107.03374](https://arxiv.org/abs/2107.03374)
 - Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?(RL 与 pass@k 能力边界)— [arXiv:2504.13837](https://arxiv.org/abs/2504.13837)
 - ms-swift 自定义奖励函数文档 — https://github.com/modelscope/ms-swift/blob/main/docs/source_en/Instruction/GRPO/DeveloperGuide/reward_function.md
+- Step-Audio-R1.5 Technical Report(细则核对与两两比较合一的生成式奖励模型)— [arXiv:2604.25719](https://arxiv.org/abs/2604.25719)
