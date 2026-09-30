@@ -13,7 +13,7 @@ GRPO 把一道题采一组回答、用组内相对得分当优势,省掉了 crit
 | 零方差组 | 整组全对或全错,优势恒为 0,这批 rollout 白采 | DAPO 的动态采样 |
 | 长回答在梯度里被稀释 | 长 CoT 里的好模式学不进去、坏模式也罚不动 | DAPO 的 token 级损失 |
 | 两处归一化带来的偏置 | 错误回答越写越长;最没区分度的题权重最高 | Dr. GRPO |
-| token 级概率比的噪声 | 长序列上比率分布出尖峰;MoE 直接训崩 | GSPO |
+| token 级概率比的噪声 | 长序列上比率分布出尖峰;MoE 直接训崩 | GSPO;或保留 token 级目标,加训推 IS 修正、裁剪与路由重放(R2/R3) |
 | 整条轨迹共享一个优势 | 多轮任务里十步只错一步,十步同罚 | GiGPO |
 
 两条边界先说死。其一,**这些是 GRPO 的病,不是 PPO 的病**:PPO 的不稳主要来自 critic/GAE 的估计误差、多 epoch 复用后的策略陈旧和奖励噪声(见 PPO 篇),两套故障不能混着讲。其二,**时间线别搞反**:DeepSeek-R1 用 GRPO 家族是为了免掉同规模 critic,配的是可验证的准确性与格式奖励;下面四组改法全是 R1 之后的工作,**不能反向归因给 R1**。
@@ -210,7 +210,7 @@ $\omega$ 失衡的两头:太小等于回到轨迹级;太大则单步的局部比
 | 熵早期骤降,一组 rollout 高度同质 | 采样温度、prompt 多样性、复用轮数是否太多 | clip-higher |
 | 零方差组占比高且随训练上升 | prompt 池的难度分布 | 动态采样(采样预算会涨) |
 | 错误回答长度持续膨胀,正确回答不变 | 奖励里有无长度漏洞、截断怎么算分 | Dr. GRPO 去长度归一化 + 超长整形 |
-| 长序列比率分布出尖峰;MoE 训练发散 | 生成端与训练端 logprob 是否一致(见 RL框架对比 篇) | GSPO |
+| 长序列比率分布出尖峰;MoE 训练发散 | 生成端与训练端 logprob 是否一致(见 RL框架对比 篇) | 训推 IS 修正(token 级 TIS 或序列级 MIS),或两端改 FP16;MoE 再加路由重放。GSPO 不看推理端概率,修不了训推差异,BF16 下同样会中途崩 |
 | 熵还在掉,且 clip 掉的多为反思类低概率词;off-policy 复用轮数多 | 复用轮数是否过高、上界是否已经放宽过 | CISPO(改裁权重,不再开除 token) |
 | 多轮任务成功率停滞,失败集中在少数步骤 | 环境与奖励是否正确、轨迹长度分布 | GiGPO(前提:状态可判等) |
 
@@ -256,3 +256,5 @@ $\omega$ 失衡的两头:太小等于回到轨迹级;太大则单步的局部比
 - DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models(GRPO 原始提出)— [arXiv:2402.03300](https://arxiv.org/abs/2402.03300)
 - DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning — [arXiv:2501.12948](https://arxiv.org/abs/2501.12948)
 - Multi-Task GRPO: Reliable LLM Reasoning Across Tasks(过滤后按任务定配额)— [arXiv:2602.05547](https://arxiv.org/abs/2602.05547)
+- Stabilizing Reinforcement Learning with LLMs: Formulation and Practices(token 级目标是序列级目标的一阶近似,MoE 需路由重放)— [arXiv:2512.01374](https://arxiv.org/abs/2512.01374)
+- Defeating the Training-Inference Mismatch via FP16(两端改 FP16 缩小训推差异)— [arXiv:2510.26788](https://arxiv.org/abs/2510.26788)

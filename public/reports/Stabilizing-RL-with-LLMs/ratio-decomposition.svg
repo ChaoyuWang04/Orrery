@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 556" width="1120" height="556" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="556" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">一个 token 的 IS 权重，拆成两段差距，每个稳定技巧各守一段</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">紫 = 训推差异（同一份旧权重，两台引擎）；黄 = 策略陈旧度（同一台引擎，新旧两份权重）。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">灰条 = 某个技巧管到哪一段。机制示意，据 PDF p. 3–6 式 5–7 重画，不含实测数据。</text>
+
+<rect x="40" y="100" width="280" height="96" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="180" y="130" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">μ_old：推理引擎</text>
+<text x="180" y="154" font-size="11" fill="#6b7280" text-anchor="middle">rollout 时的旧策略，真正采出这批回答</text>
+<text x="180" y="174" font-size="11" fill="#6b7280" text-anchor="middle">MoE 专家：e^μ_old</text>
+
+<rect x="420" y="100" width="280" height="96" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="560" y="130" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">π_old：训练引擎</text>
+<text x="560" y="154" font-size="11" fill="#6b7280" text-anchor="middle">同一份旧权重，在训练引擎里重算一遍</text>
+<text x="560" y="174" font-size="11" fill="#6b7280" text-anchor="middle">MoE 专家：e^π_old</text>
+
+<rect x="800" y="100" width="280" height="96" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="940" y="130" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">π_θ：训练引擎</text>
+<text x="940" y="154" font-size="11" fill="#6b7280" text-anchor="middle">正在被更新的目标策略</text>
+<text x="940" y="174" font-size="11" fill="#6b7280" text-anchor="middle">MoE 专家：自然路由 e^π</text>
+
+<line x1="180" y1="196" x2="180" y2="462" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="560" y1="196" x2="560" y2="462" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="940" y1="196" x2="940" y2="462" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="4 4"/>
+
+<rect x="184" y="218" width="372" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="370" y="243" font-size="13" fill="#111827" text-anchor="middle">训推差异 = π_old / μ_old</text>
+<rect x="564" y="218" width="372" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="750" y="243" font-size="13" fill="#111827" text-anchor="middle">策略陈旧度 = π_θ / π_old</text>
+
+<text x="30" y="305" font-size="14" fill="#111827" font-weight="700">IS 权重</text>
+<rect x="184" y="284" width="752" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="560" y="305" font-size="12" fill="#111827" text-anchor="middle">π_θ / μ_old：两段一起纠正；外面包 stop-gradient，只当系数</text>
+
+<text x="30" y="353" font-size="14" fill="#111827" font-weight="700">裁剪</text>
+<rect x="564" y="332" width="372" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="750" y="353" font-size="12" fill="#111827" text-anchor="middle">r_t = π_θ / π_old：只看陈旧度</text>
+
+<text x="30" y="401" font-size="14" fill="#111827" font-weight="700">R2</text>
+<rect x="564" y="380" width="372" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="750" y="401" font-size="12" fill="#111827" text-anchor="middle">重放 e^π_old：压住陈旧度里的「换专家」</text>
+
+<text x="30" y="449" font-size="14" fill="#111827" font-weight="700">R3</text>
+<rect x="184" y="428" width="752" height="32" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="560" y="449" font-size="12" fill="#111827" text-anchor="middle">重放 e^μ_old：两段里的「换专家」一起压</text>
+
+<text x="30" y="500" font-size="13" fill="#6b7280">代价：R2 在第一个 mini-batch 等于没开，之后的 mini-batch 才改写目标策略；R3 从第一个 mini-batch 起就改写（PDF p. 5，Table 1）。</text>
+<text x="30" y="526" font-size="13" fill="#6b7280">去掉 IS 权重等于假设紫段恒为 1；加长度归一化等于给每条样本另乘 1/|y|。两种改法都让一阶近似不再成立（PDF p. 7）。</text>
+</svg>

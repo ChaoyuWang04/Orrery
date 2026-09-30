@@ -456,7 +456,7 @@ SP3O 的定位因此很清楚：不加续写、不换算法，只在 critic 的�
 - 官方仓库 [Dodojordi/SP3O](https://github.com/Dodojordi/SP3O)：基于 [THUDM/slime v0.2.4](https://github.com/THUDM/slime/tree/v0.2.4)；锚点到 token 的映射、预热期稠密监督与默认打开的 TIS 见 SP3O 一节的外部补充段。
 - 相关篇目：PPO、VinePPO（readings 库），DAPO、DeepSeekMath（reports 库）。VinePPO 是本文 MC 价值估计的直接来源（PDF p. 1、p. 3）。
 
-### 原文没有公开、本文也不补的缺口
+### 原文没有公开的缺口
 
 - FrozenLake 实验的 critic 网络、RL 算法、训练步数与超参；Figure 2c 中 Visits 曲线与局部对比指标的精确定义；
 - Figure 6a「迭代内更新幅度」与 Table 5「重复率」的计算方式；
