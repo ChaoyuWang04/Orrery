@@ -177,7 +177,7 @@ $$
 
 Routing Replay 的想法是在策略优化时固定路由，让 MoE 能像稠密模型一样被优化（PDF p. 4）。论文把它形式化成两种（PDF p. 5）：
 
-**Vanilla Routing Replay（R2）**，出自 GSPO 一篇：更新时重放**训练引擎**里 rollout 策略选中的专家 $e^{\pi}_{\text{old},t}$。陈旧度那一段的路由被对齐，训推那一段没动：
+**Vanilla Routing Replay（R2）**，做法来自 GSPO 一篇（那边只说缓存旧策略下激活的专家，没说在哪个引擎上取）；本篇把它形式化为更新时重放**训练引擎**里 rollout 策略选中的专家 $e^{\pi}_{\text{old},t}$。陈旧度那一段的路由被对齐，训推那一段没动：
 
 $$
 \frac{\pi^{\text{R2}}_\theta(y_t\mid x,y_{<t})}{\mu_{\theta_{\text{old}}}(y_t\mid x,y_{<t})}
@@ -388,7 +388,7 @@ flowchart TB
 
 **这是立场的调整，但不是「GSPO 被推翻」。** 本篇没有跑任何 GSPO 对比，只在脚注里说「当前裁剪策略已经工作得相当不错」。两篇对着的是同一个矛盾、同一类载体（都用 Qwen3-30B-A3B-Base 系的 MoE），给的是方向相反的答案。最实质的分歧在 Routing Replay：只读 GSPO 一篇，会得到「它是不该存在的补丁」；本篇说「在 token 级目标下它是必需品」。
 
-两篇都没回答的问题是：**用 GSPO 的序列级目标，离策略时还需不需要 Routing Replay？** GSPO 说不需要，但对照组是打了补丁的 GRPO；本篇没测。
+两篇都没回答的问题是：**用 GSPO 的序列级目标，离策略时还需不需要 Routing Replay？** GSPO 的主实验本身就在切 4 个 mini-batch 的离策略设置下、不带 Routing Replay 跑通了，但它没有做「GSPO 加 Routing Replay」的消融；本篇也没测。
 
 ### 与 FP16-Training-Inference-Mismatch：同一个问题的另一根杠杆
 

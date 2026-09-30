@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" width="1120" height="440" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="440" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">随机性注入在哪里：每个 token 掷一次骰子，还是整份参数抖一次</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">红 = 注入随机性的位置；灰 = 确定性计算；紫 = 本轮固定的参数；黄 = 整条回答只得一个分的奖励</text>
+<rect x="30" y="80" width="1060" height="150" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="50" y="106" font-size="14" fill="#111827" text-anchor="start" font-weight="700">策略梯度（PPO / GRPO）：在动作空间探索</text>
+<rect x="50" y="130" width="130" height="64" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="115" y="158" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">参数 θ</text>
+<text x="115" y="178" font-size="11" fill="#6b7280" text-anchor="middle">本轮不动</text>
+<line x1="180" y1="162" x2="214" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="220" y="142" width="60" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="250" y="166" font-size="11" fill="#6b7280" text-anchor="middle">抽样</text>
+<line x1="280" y1="162" x2="294" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="296" y="142" width="60" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="326" y="166" font-size="11" fill="#6b7280" text-anchor="middle">抽样</text>
+<line x1="356" y1="162" x2="370" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="372" y="142" width="60" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="402" y="166" font-size="11" fill="#6b7280" text-anchor="middle">抽样</text>
+<line x1="432" y1="162" x2="446" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="448" y="142" width="60" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="478" y="166" font-size="11" fill="#6b7280" text-anchor="middle">抽样</text>
+<line x1="508" y1="162" x2="522" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="524" y="142" width="60" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="554" y="166" font-size="11" fill="#6b7280" text-anchor="middle">抽样</text>
+<line x1="584" y1="162" x2="598" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="600" y="142" width="60" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="630" y="166" font-size="11" fill="#6b7280" text-anchor="middle">抽样</text>
+<line x1="660" y1="162" x2="674" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="676" y="142" width="60" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="706" y="166" font-size="11" fill="#6b7280" text-anchor="middle">抽样</text>
+<line x1="736" y1="162" x2="750" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="752" y="142" width="60" height="40" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="782" y="166" font-size="11" fill="#6b7280" text-anchor="middle">抽样</text>
+<text x="516" y="206" font-size="11" fill="#9ca3af" text-anchor="middle">一条回答的 L 个 token，逐个生成</text>
+<line x1="812" y1="162" x2="850" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="856" y="130" width="120" height="64" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="916" y="158" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">奖励 R</text>
+<text x="916" y="178" font-size="11" fill="#6b7280" text-anchor="middle">整条回答一个分</text>
+<text x="1033" y="156" font-size="11" fill="#6b7280" text-anchor="middle">随机性注入</text>
+<text x="1033" y="176" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">L 次</text>
+<rect x="30" y="250" width="1060" height="150" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="50" y="276" font-size="14" fill="#111827" text-anchor="start" font-weight="700">进化策略（ES）：在参数空间探索</text>
+<rect x="50" y="300" width="130" height="64" rx="6" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.2"/>
+<text x="115" y="328" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">θ + σε</text>
+<text x="115" y="348" font-size="11" fill="#6b7280" text-anchor="middle">每个成员抽一次</text>
+<line x1="180" y1="332" x2="214" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="220" y="312" width="60" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="250" y="336" font-size="11" fill="#6b7280" text-anchor="middle">贪心</text>
+<line x1="280" y1="332" x2="294" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="296" y="312" width="60" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="326" y="336" font-size="11" fill="#6b7280" text-anchor="middle">贪心</text>
+<line x1="356" y1="332" x2="370" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="372" y="312" width="60" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="402" y="336" font-size="11" fill="#6b7280" text-anchor="middle">贪心</text>
+<line x1="432" y1="332" x2="446" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="448" y="312" width="60" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="478" y="336" font-size="11" fill="#6b7280" text-anchor="middle">贪心</text>
+<line x1="508" y1="332" x2="522" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="524" y="312" width="60" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="554" y="336" font-size="11" fill="#6b7280" text-anchor="middle">贪心</text>
+<line x1="584" y1="332" x2="598" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="600" y="312" width="60" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="630" y="336" font-size="11" fill="#6b7280" text-anchor="middle">贪心</text>
+<line x1="660" y1="332" x2="674" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="676" y="312" width="60" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="706" y="336" font-size="11" fill="#6b7280" text-anchor="middle">贪心</text>
+<line x1="736" y1="332" x2="750" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="752" y="312" width="60" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="782" y="336" font-size="11" fill="#6b7280" text-anchor="middle">贪心</text>
+<text x="516" y="376" font-size="11" fill="#9ca3af" text-anchor="middle">一条回答的 L 个 token，逐个生成</text>
+<line x1="812" y1="332" x2="850" y2="332" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="856" y="300" width="120" height="64" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="916" y="328" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">奖励 R</text>
+<text x="916" y="348" font-size="11" fill="#6b7280" text-anchor="middle">整条回答一个分</text>
+<text x="1033" y="326" font-size="11" fill="#6b7280" text-anchor="middle">随机性注入</text>
+<text x="1033" y="346" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">1 次</text>
+<text x="30" y="424" font-size="11" fill="#9ca3af" text-anchor="start">机制示意，依据 PDF p. 4–5 实现细节第 5 条（贪心解码）与 p. 8 第 5 节的论证；不含实测数据。</text>
+</svg>

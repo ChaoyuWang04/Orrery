@@ -63,7 +63,7 @@ flowchart LR
 
 ### 4. 怎样处理长尾 rollout
 
-同步批次由最慢的轨迹决定何时结束。多轮工具、软件环境和长思维链会让差异更大。常见方法从动态批处理与长度平衡,逐步走向流式交付和 partial rollout。越往后吞吐潜力越大,离策偏差和恢复状态也越复杂。
+同步批次由最慢的轨迹决定何时结束。多轮工具、软件环境和长思维链会让差异更大。常见方法有动态批处理与长度平衡、流式交付、partial rollout(打断在途轨迹、换权重后重新 prefill 续写),以及取消全局权重同步点、让每条轨迹在开始时各自换版本且全程不混版本。后两条是并列的路线,不是先后:partial rollout 的代价是每次换版本都要重算前缀,Laminar 实测这部分平均占 rollout 时间的 24.1%;轨迹级异步不打断、不混版本,代价是陈旧度分布更宽、需要中继来广播权重(Laminar,EuroSys '26)。越往后走,离策偏差和恢复状态都越复杂。
 
 ### 5. 怎样管住版本与训推数值差异
 
@@ -231,3 +231,4 @@ NeMo-RL 将资源分配、进程隔离、控制协调和数据通信作为独立
 - AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning — [arXiv:2505.24298](https://arxiv.org/abs/2505.24298)
 - OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework — [arXiv:2405.11143](https://arxiv.org/abs/2405.11143)
 - Reinforcement Learning Optimization for Large-Scale Learning(ROLL) — [arXiv:2506.06122](https://arxiv.org/abs/2506.06122)
+- Laminar: A Scalable Asynchronous RL Post-Training Framework(EuroSys '26,轨迹级异步与 partial rollout 的代价对照)— [arXiv:2510.12633](https://arxiv.org/abs/2510.12633)

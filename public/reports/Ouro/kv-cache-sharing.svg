@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 470" width="1120" height="470" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="470" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">4 圈循环的 KV 缓存：处理 prompt 时每圈一份，生成时只留最后一圈</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">紫 = 各圈独立保存的 KV；绿 = 生成阶段保留的最后一圈 KV；黄 = 正在生成的新 token；虚线格 = 不再保存</text>
+<rect x="30" y="80" width="520" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="570" y="80" width="520" height="330" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="50" y="106" font-size="14" font-weight="700" fill="#111827">处理 prompt（prefill）</text>
+<text x="590" y="106" font-size="14" font-weight="700" fill="#111827">逐个生成（decode）</text>
+<text x="60" y="157" font-size="11" fill="#6b7280">第 1 圈</text>
+<text x="600" y="157" font-size="11" fill="#6b7280">第 1 圈</text>
+<text x="60" y="205" font-size="11" fill="#6b7280">第 2 圈</text>
+<text x="600" y="205" font-size="11" fill="#6b7280">第 2 圈</text>
+<text x="60" y="253" font-size="11" fill="#6b7280">第 3 圈</text>
+<text x="600" y="253" font-size="11" fill="#6b7280">第 3 圈</text>
+<text x="60" y="301" font-size="11" fill="#6b7280">第 4 圈</text>
+<text x="600" y="301" font-size="11" fill="#6b7280">第 4 圈</text>
+<text x="168" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">p1</text>
+<rect x="140" y="132" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="168" y="156" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="140" y="180" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="168" y="204" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="140" y="228" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="168" y="252" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="140" y="276" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="168" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="232" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">p2</text>
+<rect x="204" y="132" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="232" y="156" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="204" y="180" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="232" y="204" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="204" y="228" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="232" y="252" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="204" y="276" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="232" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="296" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">p3</text>
+<rect x="268" y="132" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="296" y="156" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="268" y="180" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="296" y="204" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="268" y="228" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="296" y="252" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="268" y="276" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="296" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="360" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">p4</text>
+<rect x="332" y="132" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="360" y="156" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="332" y="180" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="360" y="204" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="332" y="228" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="360" y="252" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="332" y="276" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="360" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="424" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">p5</text>
+<rect x="396" y="132" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="424" y="156" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="396" y="180" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="424" y="204" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="396" y="228" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="424" y="252" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="396" y="276" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="424" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="488" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">p6</text>
+<rect x="460" y="132" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="488" y="156" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="460" y="180" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="488" y="204" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="460" y="228" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="488" y="252" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<rect x="460" y="276" width="56" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.2"/>
+<text x="488" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="708" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">g1</text>
+<rect x="680" y="132" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="680" y="180" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="680" y="228" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="680" y="276" width="56" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="708" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="772" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">g2</text>
+<rect x="744" y="132" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="744" y="180" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="744" y="228" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="744" y="276" width="56" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="772" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="836" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">g3</text>
+<rect x="808" y="132" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="808" y="180" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="808" y="228" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="808" y="276" width="56" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="836" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="900" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">g4</text>
+<rect x="872" y="132" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="872" y="180" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="872" y="228" width="56" height="40" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1.2" stroke-dasharray="5 4"/>
+<rect x="872" y="276" width="56" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.2"/>
+<text x="900" y="300" font-size="11" fill="#6b7280" text-anchor="middle">KV</text>
+<text x="1010" y="126" font-size="11" fill="#9ca3af" text-anchor="middle">新 token</text>
+<rect x="960" y="132" width="100" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="1010" y="156" font-size="11" fill="#6b7280" text-anchor="middle">读绿行历史</text>
+<rect x="960" y="180" width="100" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="1010" y="204" font-size="11" fill="#6b7280" text-anchor="middle">读绿行历史</text>
+<rect x="960" y="228" width="100" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="1010" y="252" font-size="11" fill="#6b7280" text-anchor="middle">读绿行历史</text>
+<rect x="960" y="276" width="100" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.2"/>
+<text x="1010" y="300" font-size="11" fill="#6b7280" text-anchor="middle">读绿行历史</text>
+<text x="50" y="352" font-size="14" font-weight="700" fill="#111827">四圈各存一份，共 4 份</text>
+<text x="50" y="376" font-size="11" fill="#6b7280">每圈都在改写表示，复用别圈的缓存会明显掉分</text>
+<text x="590" y="352" font-size="14" font-weight="700" fill="#111827">历史 token 只存最后一圈，共 1 份</text>
+<text x="590" y="376" font-size="11" fill="#6b7280">换成只存第 1 圈则崩；四圈取平均也几乎无损</text>
+<text x="30" y="444" font-size="11" fill="#9ca3af">机制示意，依据 PDF p. 18 的文字与 Table 14，不是实测显存。生成阶段 prompt 段是否仍保留四份，原文没有写明。</text>
+</svg>

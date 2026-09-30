@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<rect x="16" y="72" width="1088" height="92" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="60" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="91" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="122" y="116" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="153" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="184" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="215" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="246" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="277" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="308" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="339" y="116" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="370" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="401" y="116" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="432" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="463" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="494" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="525" y="116" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="556" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="587" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="618" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="649" y="116" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="680" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="711" y="116" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="742" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="773" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="804" y="116" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="835" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="866" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="897" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="928" y="116" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="959" y="116" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="990" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="1021" y="116" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="16" y="200" width="664" height="150" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="36" y="262" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="67" y="262" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="98" y="262" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="129" y="262" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="160" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#5fa886" stroke-dasharray="3 3"/>
+<rect x="191" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#5fa886" stroke-dasharray="3 3"/>
+<rect x="222" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#5fa886" stroke-dasharray="3 3"/>
+<rect x="253" y="262" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="284" y="262" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="315" y="262" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="346" y="262" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="377" y="262" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="408" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d4a24c" stroke-dasharray="3 3"/>
+<rect x="439" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d4a24c" stroke-dasharray="3 3"/>
+<rect x="470" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d4a24c" stroke-dasharray="3 3"/>
+<rect x="501" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d4a24c" stroke-dasharray="3 3"/>
+<rect x="532" y="262" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="563" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d4a24c" stroke-dasharray="3 3"/>
+<rect x="594" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d4a24c" stroke-dasharray="3 3"/>
+<rect x="625" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d4a24c" stroke-dasharray="3 3"/>
+<rect x="696" y="200" width="408" height="150" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="716" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d9877a" stroke-dasharray="3 3"/>
+<rect x="747" y="262" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="778" y="262" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="809" y="262" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="840" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d9877a" stroke-dasharray="3 3"/>
+<rect x="871" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d9877a" stroke-dasharray="3 3"/>
+<rect x="902" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d9877a" stroke-dasharray="3 3"/>
+<rect x="933" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d9877a" stroke-dasharray="3 3"/>
+<rect x="964" y="262" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="995" y="262" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="1026" y="262" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="1057" y="262" width="26" height="26" rx="4" fill="#ffffff" stroke="#d9877a" stroke-dasharray="3 3"/>
+<rect x="16" y="386" width="1088" height="112" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="36" y="446" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="67" y="446" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="98" y="446" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="129" y="446" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="160" y="446" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="191" y="446" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="222" y="446" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="253" y="446" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="284" y="446" width="26" height="26" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="315" y="446" width="26" height="26" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="346" y="446" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="377" y="446" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="408" y="446" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="439" y="446" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="470" y="446" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="501" y="446" width="26" height="26" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<line x1="340" y1="166" x2="340" y2="196" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="900" y1="166" x2="900" y2="196" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="340" y1="352" x2="340" y2="382" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="900" y1="352" x2="900" y2="382" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">RoC：每题先采 32 条，答对的挑干净的一半，答错的原样抽一半</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">每个方块是一条多轮轨迹。绿 = 答对且没有工具错误；黄 = 答对但含工具错误或多余的 answer 标签；红 = 答错。虚线空心 = 被下采样丢掉。</text>
+<text x="36" y="96" font-size="14" fill="#111827" font-weight="700">① 旧策略对同一道题过采样 2G = 32 条（生成顺序）</text>
+<text x="1084" y="96" font-size="11" fill="#6b7280" text-anchor="end">示例：20 条答对（12 绿、8 黄），12 条答错</text>
+<text x="36" y="224" font-size="14" fill="#111827" font-weight="700">② 正例 20 条：按 p_total 反比的概率抽 10 条</text>
+<text x="36" y="242" font-size="11" fill="#6b7280">p_total = 工具错误率 p_err + 格式罚分 p_format；不调工具的轨迹 p_err 记 0.5</text>
+<text x="36" y="320" font-size="11" fill="#6b7280">左边罚分低、右边罚分高（按罚分排好只为看得清）</text>
+<text x="36" y="338" font-size="11" fill="#6b7280">是概率偏好不是硬截断：脏的仍可能被抽中</text>
+<text x="716" y="224" font-size="14" fill="#111827" font-weight="700">② 负例 12 条：不打分，均匀抽 6 条</text>
+<text x="716" y="242" font-size="11" fill="#6b7280">保住失败模式的多样性</text>
+<text x="716" y="320" font-size="11" fill="#6b7280">被截断的超长轨迹按答错处理，也在这一侧</text>
+<text x="36" y="410" font-size="14" fill="#111827" font-weight="700">③ 进入这次更新的 G = 16 条：10 条答对 + 6 条答错</text>
+<text x="36" y="428" font-size="11" fill="#6b7280">在这 16 条上做组内标准化算优势，再按 Clip-Higher（0.2 / 0.28）更新</text>
+<text x="552" y="458" font-size="14" fill="#111827" font-weight="700">答对占比 20/32 = 10/16</text>
+<text x="552" y="476" font-size="11" fill="#6b7280">正负比例不变，全对或全错的题仍然全对或全错；变的只是「哪几条答对的」</text>
+<text x="30" y="526" font-size="11" fill="#9ca3af">机制示意，依据 rStar2-Agent 第 2.2.3 节与式 4–7（PDF p. 7–8）与第 4.3 节 2G = 32、G = 16（PDF p. 12）；答对答错的条数与被抽中的位置是虚构的。</text>
+<text x="30" y="544" font-size="11" fill="#9ca3af">答错一侧论文写的是取 ⌊|O_neg|/2⌋ 条；奇数时余数落在哪一侧，论文没写。</text>
+</svg>
