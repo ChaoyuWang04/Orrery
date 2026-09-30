@@ -124,7 +124,7 @@ R_{\mathrm{bon}}(d) = d\,(\alpha_{\mathrm{bon}} - \beta_{\mathrm{bon}}\, d), \qq
 R_{\mathrm{RL}}(d) = d\,(\alpha_{\mathrm{RL}} - \beta_{\mathrm{RL}} \log d)
 $$
 
-两式都是"先升后降"的倒 U 形:best-of-n 的下降项是 $d$ 的一次项,RL 的是 $\log d$,即**同样走出去这么远,RL 掉得更慢**。论文还给出两条规律:代理 RM 越大、偏好数据越多,拐点来得越晚;策略模型越大,从优化里拿到的真实增益反而越小。工程结论只有一句:**RL 不能训到收敛,要在金标准掉头之前停。**
+两式都是"先升后降"的倒 U 形:best-of-n 的下降项是 $d$ 的一次项,RL 的是 $\log d$,即**同样走出去这么远,RL 掉得更慢**。论文还给出两条规律:代理 RM 越大、偏好数据越多,拐点来得越晚;策略模型越大,从优化里拿到的真实增益反而越小。工程结论只有一句:**RL 不能训到收敛,要在金标准掉头之前停**。真实任务上也见过同样的形状:WebGPT 在长答案问答上,175B 模型用 RM 做 best-of-64 选答案,相对 BC 基线被偏好 68%;用同一个 RM 做 PPO 只有 58%,再叠拒绝采样也几乎不再涨;作者还发现把 BC 基线仔细调好,就填上了原先看到的 BC 与 RL 之间的大部分差距(WebGPT,arXiv:2112.09332 p. 7–8)。
 
 > 🖼️ 占位:过优化剪刀差示意图——横轴为到初始策略的 KL 距离,代理 RM 分单调上升、金标准分先升后降的分叉曲线
 
@@ -261,3 +261,4 @@ $$
 - Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?(RL 与 pass@k 能力边界)— [arXiv:2504.13837](https://arxiv.org/abs/2504.13837)
 - ms-swift 自定义奖励函数文档 — https://github.com/modelscope/ms-swift/blob/main/docs/source_en/Instruction/GRPO/DeveloperGuide/reward_function.md
 - Step-Audio-R1.5 Technical Report(细则核对与两两比较合一的生成式奖励模型)— [arXiv:2604.25719](https://arxiv.org/abs/2604.25719)
+- WebGPT: Browser-assisted question-answering with human feedback(真实任务上 best-of-n 胜过 RL)— [arXiv:2112.09332](https://arxiv.org/abs/2112.09332)

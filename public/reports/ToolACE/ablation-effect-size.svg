@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 614" width="860" height="614" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="860" height="614" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">三条主张的证据有多硬：各组消融拉开的 Overall 分差</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 非直播子集上的分差；绿 = 完整 BFCL-v3 上的分差。两种分母不同，只在同色之间比较。</text>
+<text x="30" y="74" font-size="13" fill="#6b7280">分差是我们用原图柱顶数字与原表数字相减得到的；原文都是单次运行，没有误差条。</text>
+<line x1="320.0" y1="106" x2="320.0" y2="564" stroke="#e5e7eb" stroke-width="1"/>
+<text x="320.0" y="580" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<line x1="414.0" y1="106" x2="414.0" y2="564" stroke="#e5e7eb" stroke-width="1"/>
+<text x="414.0" y="580" font-size="11" fill="#9ca3af" text-anchor="middle">10</text>
+<line x1="508.0" y1="106" x2="508.0" y2="564" stroke="#e5e7eb" stroke-width="1"/>
+<text x="508.0" y="580" font-size="11" fill="#9ca3af" text-anchor="middle">20</text>
+<line x1="602.0" y1="106" x2="602.0" y2="564" stroke="#e5e7eb" stroke-width="1"/>
+<text x="602.0" y="580" font-size="11" fill="#9ca3af" text-anchor="middle">30</text>
+<text x="320.0" y="598" font-size="11" fill="#9ca3af">横轴：Overall 分差（分），柱越长说明这一刀对总分越要紧</text>
+<text x="30" y="112" font-size="14" fill="#111827" font-weight="700">同一条流水线内部切分：分母是非直播子集的 Overall（Figure 3–5，PDF p. 8）</text>
+<text x="30" y="130" font-size="11" fill="#9ca3af">复杂度三档各 6 万条，多样性三档各约 3 万条；校验三组的条数原文没给，层数越多条数越少</text>
+<text x="308" y="161" font-size="12" fill="#111827" text-anchor="end">双层校验：Final 对比完全不校验</text>
+<rect x="320" y="148" width="17.1" height="18" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="345.1" y="161" font-size="11" fill="#6b7280">+1.82（89.59 → 91.41）</text>
+<text x="308" y="193" font-size="12" fill="#111827" text-anchor="end">复杂度：中档对比最难档</text>
+<rect x="320" y="180" width="10.0" height="18" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="338.0" y="193" font-size="11" fill="#6b7280">+1.06（89.65 → 90.71）</text>
+<text x="308" y="225" font-size="12" fill="#111827" text-anchor="end">复杂度：中档对比最易档</text>
+<rect x="320" y="212" width="2.3" height="18" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="330.3" y="225" font-size="11" fill="#6b7280">+0.24（90.47 → 90.71）</text>
+<text x="308" y="257" font-size="12" fill="#111827" text-anchor="end">多样性：30 簇对比 6 簇</text>
+<rect x="320" y="244" width="2.2" height="18" rx="3" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="330.2" y="257" font-size="11" fill="#6b7280">+0.23（88.18 → 88.41）</text>
+<text x="30" y="300" font-size="14" fill="#111827" font-weight="700">换掉或抽掉一类数据：分母是完整 BFCL-v3 的 Overall（Table 6–8，PDF p. 17–18）</text>
+<text x="30" y="318" font-size="11" fill="#9ca3af">Table 6、7 每组都是 2.5 万条；Table 8 是全量流水线</text>
+<text x="308" y="349" font-size="12" fill="#111827" text-anchor="end">评估器：学生自己对比 Qwen-14B</text>
+<rect x="320" y="336" width="14.6" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="342.6" y="349" font-size="11" fill="#6b7280">+1.55（57.67 → 59.22）</text>
+<text x="308" y="381" font-size="12" fill="#111827" text-anchor="end">补回依赖调用样本</text>
+<rect x="320" y="368" width="2.1" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="330.1" y="381" font-size="11" fill="#6b7280">+0.22（57.97 → 58.19）</text>
+<text x="308" y="413" font-size="12" fill="#111827" text-anchor="end">补回嵌套参数样本</text>
+<rect x="320" y="400" width="9.4" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="337.4" y="413" font-size="11" fill="#6b7280">+1.00（57.19 → 58.19）</text>
+<text x="308" y="445" font-size="12" fill="#111827" text-anchor="end">补回并行调用样本</text>
+<rect x="320" y="432" width="71.3" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="399.3" y="445" font-size="11" fill="#6b7280">+7.59（50.60 → 58.19）</text>
+<text x="308" y="477" font-size="12" fill="#111827" text-anchor="end">补回多类型样本（拒绝、追问）</text>
+<rect x="320" y="464" width="145.5" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="473.5" y="477" font-size="11" fill="#6b7280">+15.48（42.71 → 58.19）</text>
+<text x="308" y="509" font-size="12" fill="#111827" text-anchor="end">xLAM 数据换成 ToolACE 数据</text>
+<rect x="320" y="496" width="166.2" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="494.2" y="509" font-size="11" fill="#6b7280">+17.68（40.51 → 58.19）</text>
+<text x="308" y="541" font-size="12" fill="#111827" text-anchor="end">ToolLLM 数据换成 ToolACE 数据</text>
+<rect x="320" y="528" width="312.9" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="640.9" y="541" font-size="11" fill="#6b7280">+33.29（24.90 → 58.19）</text>
+</svg>
