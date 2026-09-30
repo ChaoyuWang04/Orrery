@@ -67,7 +67,7 @@ $2$ 是 K 和 V 各一份,$b$ 是每个元素的字节数(fp16/bf16 是 2)。总
 | **GQA(8 个 Q 头共享一套 KV)** | **8** | **320 KiB** | 1× |
 | MQA(全部 Q 头共享一套) | 1 | 40 KiB | 1/8× |
 
-GQA 是**当前唯一被普遍采用的 KV 缩减手段**,而且它省的是"每 token 的单价",对显存和带宽同时生效。没有 GQA,长上下文推理在经济上根本不成立。
+GQA 是**最普遍、改动最小的 KV 缩减手段**,而且它省的是"每 token 的单价",对显存和带宽同时生效。没有 GQA,长上下文推理在经济上根本不成立。但它已不是唯一一条路:MLA 把 K/V 压成低维潜向量,混合架构把大部分层换成线性注意力或 Mamba 的定长状态,滑窗层的 KV 与序列长度无关(分别见「MLA」篇、「Hybrid注意力」篇、「SWA」篇);这类模型的缓存怎么记账见第六节末。
 
 ## 三、为什么 KV cache 是 decode 的带宽瓶颈
 
@@ -177,6 +177,22 @@ fp16 → fp8/int8 让 $b$ 从 2 变 1,每 token 字节直接减半。好处**不
 
 三个读法:命中率**有天花板**,容量无限也只有约一半;这份数据上 LRU 略好于 LFU,论文推测是请求有时间局部性;而且**超过一半的块从来没被用过,少数块被访问上万次**——热块必须复制到多台机器,否则读它的传输会堵成热点。复用率是场景的函数:同一篇论文说他们的"和论文对话"服务复用能到约 90%,他们的线上主力负载即使存储与 TTFT 都不设限,理论上最多也只能复用约 50%。
 
+### 混合架构:缓存拆成几笔账
+
+上面的算法默认每层都是全注意力、每个 token 一份 K/V。近期前沿模型混进了滑窗、线性注意力或 Mamba 层,缓存于是不止一种,**大小、寿命和复用方式各不相同,得分开记账**:
+
+| 缓存 | 大小 | 复用方式 | 近期做法 |
+|---|---|---|---|
+| 全局 KV(全注意力或压缩注意力层) | 随长度线性增长 | 按前缀长期复用 | DeepSeek-V4.1-Flash 运行时占 HBM,持久副本放 SSD、保 72 小时以上 |
+| 滑窗 KV | 每层只留最近一个窗口,与长度无关 | 只在活跃会话里几分钟有用 | DeepSeek-V4.1-Flash 移出持久层,放主机内存里的短 TTL 池 |
+| 线性注意力 / Mamba 状态 | 每请求一份定长状态,每步整份覆盖 | 只能在存过快照的位置续上 | Kimi K3、Nemotron 3 Ultra 在稀疏边界存快照 |
+
+三条结论:
+
+- **按寿命分层,丢了就近似重建**。V4 的部署里窗口 KV 占了持久缓存近一半,却只在会话内被复用几分钟;精确重建要重放"层数 × 窗口"那么多 token。DeepSeek-V4.1-Flash 改成只重放最近一个窗口(128 个 token)、接受近似状态,实测质量几乎不掉,窗口 KV 于是退出 SSD,持久 KV 降到 V4-Flash 的约 1/8(p. 4–5、p. 19–20、p. 22)。
+- **一个块池装两种缓存,粗页分配、细哈希命中**。Kimi K3 把 KDA 的定长状态和 MLA 的逐 token KV 放进同一个分页块池,页字节数统一,共用分配、引用计数与淘汰。状态太大,只能在稀疏边界存检查点;若哈希粒度跟物理块绑定,块被迫做到 1024–6144 token,短请求永远命中不了。于是物理块保持粗粒度,前缀哈希按 512 token 细切,状态检查点只落在哈希边界上(跨请求只留对话轮边界那些),命中点取两边都满足的最长边界(p. 23–24)——和第五节"哈希粒度与物理块解耦"是同一思路。
+- **状态没法按 token 截断,回滚与前缀复用都靠快照**。全注意力的投机解码被拒时截掉几个 token 的 KV 就行;Mamba 状态每步整份覆盖,早先的状态已不存在。Nemotron 3 Ultra 在每个草稿步给 SSM 状态拍快照用于回滚,同一机制每隔固定 token 数拍一次,就得到了 Mamba 原本没有的跨请求前缀缓存(p. 48)。
+
 ## 七、面试考点串联
 
 | 高频问法 | 本文哪一节 |
@@ -194,6 +210,7 @@ fp16 → fp8/int8 让 $b$ 从 2 变 1,每 token 字节直接减半。好处**不
 | 对 KV cache 做量化有什么好处? | 六(容量换吞吐的三层连锁) |
 | 多个请求共享同一个 system prompt 怎么省? | 六(前缀缓存) |
 | 补充题:前缀缓存怎么判断两个请求的前缀相同?真实流量上能命中多少? | 六(哈希链;实测命中率天花板约一半、过半块从未复用) |
+| 补充题:模型里混了滑窗层或 Mamba / 线性注意力层,KV 缓存和前缀缓存要怎么改? | 六(混合架构:按寿命分层、统一块池、状态快照) |
 | 请系统性地列举并解释当前大语言模型推理过程中主流的KV（Key-Value）缓存优化方法，详细说明其核心原理、适用场景、性能影响及彼此之间的对比差异，结合实际部署需求分析不同方案的权衡与选择依据。 | 二、四、五、六 |
 
 延伸阅读顺序:本篇(是什么、多大、为什么慢)→ PagedAttention(怎么分页管)→ RadixAttention(怎么跨请求复用)→ KVCache量化(怎么压小)→ 显存管理与OOM(整体显存账)。
@@ -207,3 +224,6 @@ fp16 → fp8/int8 让 $b$ 从 2 变 1,每 token 字节直接减半。好处**不
 - SGLang: Efficient Execution of Structured Language Model Programs(RadixAttention 前缀复用)— [arXiv:2312.07104](https://arxiv.org/abs/2312.07104)
 - Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving(哈希链全局缓存池与真实 trace 命中率)— [arXiv:2407.00079](https://arxiv.org/abs/2407.00079)
 - vLLM 官方文档(block_size、前缀缓存、KV 卸载等配置口径)— https://docs.vllm.ai/
+- DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression(全局 KV 与持久 KV 两笔账、SWA 有界重放;官方技术报告,无 arXiv 编号)— https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+- Kimi K3: Open Frontier Intelligence(KDA 状态与 MLA KV 共用块池、粗页细哈希的前缀缓存)— [arXiv:2607.24653](https://arxiv.org/abs/2607.24653)
+- Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning(SSM 状态快照用于回滚与前缀缓存)— [arXiv:2606.15007](https://arxiv.org/abs/2606.15007)

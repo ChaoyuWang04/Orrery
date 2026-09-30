@@ -44,7 +44,7 @@
 
 这条结论有一个立刻能用的方法论后果:**只看困惑度和常规基准调比例,一定会调错**,因为它们会告诉你 24:1 也挺好。Jamba 恰好踩在这个位置上:它的消融比较「注意力 : Mamba」的 1:3 与 1:7,在常规基准和 log-prob 上几乎没差别,于是选了更省的 1:7。这个结论本身没错,但**它看的正好是对比例最不敏感的那两类指标**。混合模型真正的验收指标是大海捞针类的精确检索。
 
-厂商侧的独立证据方向一致但更谨慎:Ling 的公开消融说更大的组(每组 8 层,即 7:1)只在**高 FLOPs 预算**下站得住,所以它的 16B 小模型用 4:1、104B 用 7:1。合起来读:**3:1 是稳的默认值,往 7:1 推需要更大的模型和更强的训练配方兜底。**
+厂商侧的独立证据方向一致但更谨慎:Ling 的公开消融说更大的组(每组 8 层,即 7:1)只在**高 FLOPs 预算**下站得住,所以它的 16B 小模型用 4:1、104B 用 7:1。Ling 2.6 沿用 7:1,但选比例的证据要看清:它在等 FLOPs 下比较组长 2 / 4 / 8 / 16 的 loss 曲线,实测点只落在约 $10^{18}$–$10^{20.5}$ FLOPs,四条几乎重合;「7:1 最好、15:1 明显退化」只出现在拟合外推到 $10^{24}$ 的那一段,而且比的是 loss,没有单独的检索消融。合起来读:**3:1 是稳的默认值,往 7:1 推需要更大的模型和更强的训练配方兜底,而支撑 7:1 的证据目前仍是外推。**
 
 ## 三、各家比例大表(跨路线)
 
@@ -57,10 +57,12 @@
 | Qwen3.6 35B-A3B | 线性 + softmax | 3:1 | 30 GDN + **10** | 门控注意力(GQA) | 20 KiB | 262k |
 | Kimi Linear 48B-A3B | 线性 + softmax | 3:1 | 20 KDA + **7** | 门控 MLA(NoPE) | **7.9 KiB** | 1M |
 | Ling 2.5 1T | 线性 + softmax | **7:1** | 70 Lightning + **10** | MLA | 11.2 KiB | — |
+| Ling 2.6 1T | 线性 + softmax | 7:1 | 70 Lightning + **10**(从 GQA 底座改造而来) | MLA | 同上 | 262k |
 | MiniMax-01 456B(已弃) | 线性 + softmax | 7:1 | 70 Lightning + **10** | GQA(组大小 8) | — | 1M 训 / 4M 推 |
 | Jamba(2024 先例) | SSM + softmax | 7:1 | 4 块 × 8 层,每块 **1** 层注意力 | MHA,**全模型不用位置编码** | — | 256k |
 | Nemotron 3 Nano 30B-A3B | SSM + softmax | ~4:1 | 23 Mamba-2 + **6**(另 23 MoE) | GQA | **6 KiB** | 1M |
 | Nemotron 3 Super 120B-A12B | SSM + softmax | 5:1 | 40 Mamba-2 + **8**(另 40 MoE) | GQA | 8 KiB | 1M |
+| Nemotron 3 Ultra 550B-A55B | SSM + softmax | 4:1 | 48 Mamba-2 + **12**(另 48 MoE,共 108 层) | GQA,64 Q : 2 KV | 12 KiB(按 config 推算) | 1M |
 | Gemma 3 27B | 滑窗 + 全局 | 5:1,窗口 1024 | 62 层里约 **10** 层全局 | GQA | 496 KiB(上界口径) | 128k |
 | GPT-OSS 120B | 滑窗 + 全局 | 1:1,窗口 128 | 18 滑窗 + **18** 全局 | GQA + sink | 72 KiB(上界口径) | 128k |
 | MiniMax M2.x 230B-A10B | **不混合(对照组)** | — | 62 层全 GQA | GQA | 248 KiB | 196k |
@@ -70,7 +72,7 @@
 读表四条:
 
 1. **3:1 是线性混合的事实标准**。Qwen 全系和 Kimi Linear 从不同的线性机制出发独立收敛到同一个比例,和上一节 72 模型对照给出的推荐区间对得上;
-2. **NVIDIA 走得最极端**。Nemotron 3 Super 的 88 层里只有 **8 层**是注意力(约 9%)。它敢这么做,和 NVIDIA 有自家推理栈、吃得下 Mamba 内核优化红利有关;
+2. **NVIDIA 走得最极端**。Nemotron 3 Super 的 88 层里只有 **8 层**是注意力(约 9%),Ultra 扩到 108 层也只放 12 层,KV 头还压到 2 个。它敢这么做,和 NVIDIA 有自家推理栈、吃得下 Mamba 内核优化红利有关;
 3. **Ling 2.5 用 7:1,激活参数却从 51B 涨到 63B**——它做了个不同的取舍:省下的缓存预算换成更宽的计算路径,「线性层多」和「激活参数多」是一枚硬币的两面;
 4. **Kimi Linear 两半都换了**:便宜的一半用遗忘门更细(每特征通道一个)的 KDA,贵的一半用门控 MLA 且不加位置编码。这个组合把 KV 压到 7.9 KiB/token,是表里 softmax 侧最省的设计。
 
@@ -98,7 +100,11 @@
 
 ### 另一条路:层内混合
 
-上面全是**层间**混合(整层要么便宜要么全局)。还有一条**层内**混合:同一层里一部分注意力头走滑窗、一部分走全局。它的吸引力是粒度更细,代价是 kernel 与并行切分都更复杂。MiniMax 在 M2 训练期试过层内滑窗混合并**明确失败**(见第六节),这是目前公开最硬的一条负面证据。
+上面全是**层间**混合(整层要么便宜要么全局)。还有一条**层内**混合:同一层里一部分注意力头走滑窗、一部分走全局。它的吸引力是粒度更细,代价是 kernel 与并行切分都更复杂。MiniMax 在 M2 训练期把层内、层间两种滑窗混合都试过,**所有变体都在检索与多跳上退步**(见第六节),这是目前公开最硬的一条负面证据。
+
+### 第三个旋钮:两种层不必同构
+
+便宜层与全局层可以分配不同的 Query 头预算。Laguna XS.2(滑窗 : 全局 = 3:1)给滑窗层 64 个 Query 头、全局层 48 个,KV 头都是 8;Step 3.5 Flash(同为 3:1)把滑窗层的 Query 头从 64 加到 96。一个说得通的读法是:滑窗层看得窄,多给几个头让它在窗口里多维持几种匹配关系,成本几乎不涨——KV 头没变,缓存也就没变。两家都只报了代理规模的消融,没有给出这条旋钮的一般规律。
 
 ## 五、配比的工程账:KV cache 几乎全由全局层贡献
 
@@ -128,6 +134,8 @@ $$
 - **比例在训练时定死,不能事后调**。哪层线性、哪层全局是结构超参,权重就是按这个结构训出来的;推理时没有「调档」一说,想换比例等于重训;
 - **1M 上下文那笔账仍然要算**。Kimi Linear 的 7.9 KiB/token 全部来自那 7 层门控 MLA,1M 上下文单条请求仍要约 7.9 GiB——比纯 GQA 小一到两个量级,但**没有消失**。混合改的是系数,不是量纲。
 
+「线性层贡献 0」只说它**不随长度涨**,不说它小。Nemotron 3 Ultra 报告:32 位的 Mamba 状态在 64K 以内比 FP8 的 KV cache 还大,短上下文时它既占显存又压着解码读带宽,所以他们先把状态降到 FP16 加随机舍入。
+
 工程上还有一笔隐性成本:推理引擎要同时管**两套缓存**(全局层走分页 KV cache、线性层走定长状态池),前缀复用逻辑也不一样。这条详见 线性注意力 篇,本篇只标记它是配比之外的固定开销。
 
 ## 六、反方证据:MiniMax 的掉头
@@ -147,16 +155,17 @@ $$
 
 ### 他们自己给的四条理由
 
-MiniMax 预训练负责人公开写过一篇复盘,按重要性排:
+MiniMax 预训练负责人公开写过一篇复盘,按重要性排(后来的 M2 技术报告把同样的理由正式写了一遍,并补上滑窗对照表):
 
 1. **评测有盲区,而且这是最贵的一条**。MiniMax-Text-01 时期,混合模型在 MMLU、BBH、MATH、LongBench 这类标准基准上和全注意力打平——**规模上去之后才暴露出复杂多跳推理的明显缺陷**。发现问题比解决问题更难。注意这正好推翻了他们自己在 01 报告里「混合反超纯 softmax」的结论,也和第二节「只看不敏感的指标会调错比例」是同一个病;
 2. **基建不成熟**。线性注意力的很多实现**训练时就是访存受限的**,不做极致 IO 优化就白扔算力;理论上线性胜过全注意力的交叉点只在几千 token,对今天的模型根本不算长——**卡住的是工程,不是理论**;
 3. **三个部署难题没解**:低精度状态存储(线性注意力对数值精度远比 softmax 敏感,低精度缓存很难做,见 KVCache量化 篇)、**前缀复用**(真实对话与 coding agent 流量的缓存命中率很高,而递推状态切不开,见 RadixAttention 篇)、**投机解码**(用高效注意力做 draft 仍是开放问题,见 投机解码 篇);
-4. **层内滑窗混合的实验失败了**。M2 训练期做过一版层内 Hybrid SWA,在两项多对一翻译评测上全注意力分别领先 15 和 17.6 分。
+4. **滑窗混合的实验失败了**。M2 训练期在多种比例、层内与层间两种排法上各继续预训练几千亿到上万亿 token,全部在检索、多跳推理、上下文学习上退步。M2 技术报告给了对照:预训练后 RULER 32K 两边都是 99,到 128K 全注意力领先(CWE 90 对 72,MQ 99 对 93),上下文学习型翻译 MTOB 两项分别领先 15 和 17.6 分;SFT 后超过 32K 的 agent 任务明显更差(SWE-verified 54.7 对 50.2,τ²-Bench telecom 32.5 对 21.0),32K 以内互有胜负。
 
-### 三条教训
+### 四条教训
 
 - **hybrid 不是免费午餐**。它买的是长上下文的吞吐与显存,卖的是一部分精确检索能力,外加训练与推理栈的复杂度;
+- **分界线在 32K 附近,别拿 32K 以内的对照下长上下文结论**。MiMo-V2-Flash 在 32B 稠密模型上做过反方向的对照:窗口 128、加可学习 sink 偏置的滑窗混合(正式模型用 5:1),RULER-32k 与全注意力同为 89.4,NoLiMa(51.2 对 49.7)与 MRCR(34.4 对 32.5)还略高;窗口放大到 512 反而更差(NoLiMa 38.5、MRCR 19.6)。但这组对照只延长到 32K。它和 MiniMax 的结论并不矛盾——MiniMax 的 RULER 在 32K 同样打平,拉开差距的是 128K 与 32K 以外的 agent 任务;
 - **目标上下文决定要不要混**。M2 系列上下文 196k,在这个长度上纯 GQA 的 248 KiB/token 还扛得住,架构简单换来的是训练稳定;
 - **架构选择和产品定位耦合**。MiniMax 主打 coding 和 agent——这类任务要在几十万 token 里精确定位某段代码,恰好踩在便宜层最弱的点上。
 
@@ -195,7 +204,8 @@ MiniMax 预训练负责人公开写过一篇复盘,按重要性排:
 | 调混合比例时只看困惑度和常规基准会出什么事 | 二(Jamba 消融的盲区)+ 六(MiniMax 的复盘) |
 | 两个都叫 hybrid 的模型,怎么判断谁更能扛长上下文 | 三 + 五(数全局层,再乘每层字节) |
 | 混合层怎么排?为什么要均匀交错、第一层为什么不放全局层 | 四 |
-| 层间混合和层内混合有什么区别?哪种是主流 | 四 + 六(层内的失败案例) |
+| 层间混合和层内混合有什么区别?哪种是主流 | 四 + 六(MiniMax 两种都试过、都退步) |
+| 滑窗混合在有的报告里不输全注意力、在有的报告里明显掉点,怎么看 | 六(看对照做到多长:32K 以内 vs 以外) |
 | 一个 hybrid 模型的 KV 预算怎么估?线性层要不要算进去 | 五(只数全局层,含验算表) |
 | 混合比例能不能在推理时调?为什么 | 五(结构超参,改了等于重训) |
 | MiniMax 为什么从线性混合掉头回全注意力?后来又怎么样了 | 六(四条理由 + M3 用稀疏回归) |
@@ -212,12 +222,16 @@ MiniMax 预训练负责人公开写过一篇复盘,按重要性排:
 - MiniMax-01: Scaling Foundation Models with Lightning Attention(7:1、80 层;自报混合反超纯 softmax)— [arXiv:2501.08313](https://arxiv.org/abs/2501.08313)
 - MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention(掉头前的最后一代)— [arXiv:2506.13585](https://arxiv.org/abs/2506.13585)
 - Why Did M2 End Up as a Full Attention Model?(掉头的第一手复盘,四条理由的出处)— https://www.minimax.io/news/why-did-m2-end-up-as-a-full-attention-model
-- The MiniMax-M2 Series(纯 GQA 62 层)— [arXiv:2605.26494](https://arxiv.org/abs/2605.26494)
+- The MiniMax-M2 Series(纯 GQA 62 层;滑窗混合对照表 2、表 3)— [arXiv:2605.26494](https://arxiv.org/abs/2605.26494)
 - MiniMax Sparse Attention(半年后用块级稀疏回归)— [arXiv:2606.13392](https://arxiv.org/abs/2606.13392)
 - Kimi Linear: An Expressive, Efficient Attention Architecture(3:1 KDA + 门控 MLA,自报优于全注意力)— [arXiv:2510.26692](https://arxiv.org/abs/2510.26692)
 - Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning(Ling 的比例消融与组长设定)— [arXiv:2510.19338](https://arxiv.org/abs/2510.19338)
-- Ling and Ring 2.6 Technical Report(7:1 Lightning + MLA 的延续)— [arXiv:2606.15079](https://arxiv.org/abs/2606.15079)
+- Ling and Ring 2.6 Technical Report(7:1 Lightning + MLA 的延续;比例靠 loss 曲线外推选出)— [arXiv:2606.15079](https://arxiv.org/abs/2606.15079)
 - Nemotron 3 Nano(23 Mamba-2 + 6 GQA)— [arXiv:2512.20848](https://arxiv.org/abs/2512.20848)
 - Nemotron 3 Super(40 Mamba-2 + 8 GQA,88 层里仅 9% 是注意力)— [arXiv:2604.12374](https://arxiv.org/abs/2604.12374)
+- Nemotron 3 Ultra(108 层里 12 层注意力;64K 以内 Mamba 状态大于 FP8 KV)— [arXiv:2606.15007](https://arxiv.org/abs/2606.15007)
+- MiMo-V2-Flash Technical Report(窗口 128 + sink 的 5:1 滑窗混合,32K 以内的对照)— [arXiv:2601.02780](https://arxiv.org/abs/2601.02780)
+- Laguna M.1/XS.2 Technical Report(3:1 滑窗混合,两种层分配不同 Query 头数)— [arXiv:2605.27605](https://arxiv.org/abs/2605.27605)
+- Step 3.5 Flash: Open Frontier-Level Intelligence with 11B Active Parameters(3:1 滑窗混合,滑窗层 Query 头 64 → 96)— [arXiv:2602.10604](https://arxiv.org/abs/2602.10604)
 - Qwen3-Next-80B-A3B 模型卡(3:1 层结构与注意力 config 的一手来源)— https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct
 - Sebastian Raschka, Hybrid Attention(各家配比与层数拆解的横向对照)— https://sebastianraschka.com/llm-architecture-gallery/hybrid-attention/

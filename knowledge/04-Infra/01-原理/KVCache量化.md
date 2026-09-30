@@ -13,7 +13,7 @@
 | 误差怎么传播 | 固定偏差,可离线补偿 | 当步即消 | **写进去就固化,污染此后所有步** |
 | scale 存在哪 | 打包进 checkpoint | 不用存 | **要和 KV 一起活到请求结束** |
 
-三条推论,后面所有设计都是它们的后果:**① 量化一次、反量化无数次**——一个 token 的 K/V 只量化一次,却要被后续几百上千步各读一遍,"量化那侧多花点、反量化那侧少花点"永远划算;**② 写进去的误差没有补救机会**——权重量化能用二阶信息补偿、激活量化错了下一步就翻篇,KV 一旦低精度落盘原始值就丢了;**③ scale 是一份必须跟着 KV 走的元数据**,要跟着块被分配、释放、前缀共享,甚至跨节点搬运(见 PD分离 篇),所以"scale 存在哪"是真问题、不是实现细节。
+三条推论,后面所有设计都是它们的后果:**① 量化一次、反量化无数次**——一个 token 的 K/V 只量化一次,却要被后续几百上千步各读一遍,"量化那侧多花点、反量化那侧少花点"永远划算;**② 写进去的误差没有补救机会**——权重量化能用二阶信息补偿、激活量化错了下一步就翻篇,KV 一旦低精度落盘原始值就丢了;**③ scale 是一份必须跟着 KV 走的元数据**,要跟着块被分配、释放、前缀共享,甚至跨节点搬运(见 PD分离 篇),所以"scale 存在哪"是真问题、不是实现细节。拿一个反例对照 ②:Mamba 的状态不是写一次读多次,而是**每步整份重写**,舍入误差逐步累积,就近舍入偏向哪边就一路偏下去;Nemotron 3 Ultra 报告在 Super 模型上模拟,FP16 就近舍入的状态缓存让平均准确率掉 1.07%、输出变长约 10%,换成随机舍入基本不掉(p. 45–46)。
 
 ## 二、K 和 V 为什么要分开:四重矛盾
 
@@ -44,7 +44,7 @@ $$
 
 ### 第三重:RoPE 会把通道结构抹匀
 
-RoPE 把 head_dim 上的通道**两两配对做旋转,旋转角随 token 位置变化**。于是 post-RoPE 的 K 里,同一个通道在不同位置上是两个原始通道的、随位置摆动的线性组合——per-channel scale 想抓的那个"跨 token 稳定的通道结构"正好被破坏。KVQuant 的解法是 **pre-RoPE 量化**:加 RoPE 之前就把 K 量化存下来,读出来反量化之后再补 RoPE。代价是读路径上多一步按绝对位置算的旋转;而 decode 侧本来就访存受限、算力闲着,**这是少见的"拿算力换精度"真划算的地方**。
+RoPE 把 head_dim 上的通道**两两配对做旋转,旋转角随 token 位置变化**。于是 post-RoPE 的 K 里,同一个通道在不同位置上是两个原始通道的、随位置摆动的线性组合——per-channel scale 想抓的那个"跨 token 稳定的通道结构"正好被破坏。KVQuant 的解法是 **pre-RoPE 量化**:加 RoPE 之前就把 K 量化存下来,读出来反量化之后再补 RoPE。代价是读路径上多一步按绝对位置算的旋转;而 decode 侧本来就访存受限、算力闲着,**这是少见的"拿算力换精度"真划算的地方**。但它不是必选项:DeepSeek-V4.1-Flash 给 FP4 主 KV 实测,pre-RoPE 只好一点点,还要给 decode 加开销,于是选在 RoPE 之后量化(p. 14)——划不划算要按自己的格式与粒度实测。
 
 ### 第四重:per-channel 的 scale 跨 token,而 decode 逐 token 追加
 
@@ -144,7 +144,7 @@ flowchart TD
 
 - **多少条**:**512 条**是行业默认(llm-compressor 的 KV 量化示例、TensorRT-LLM 的 `calib_size` 都用这个数),超过 1024 收益明显递减。道理不难:静态 scale 要估的只是**一个范围**、不是分布的全部形状,几百条足够把尾部探出来
 - **什么分布**:必须和线上任务同分布。这比权重量化更要命——权重量化的校准集只影响"补偿得准不准",KV 量化的校准集直接决定 scale 这个**唯一参数**
-- **长上下文样本必须专门放**:llm-compressor 的官方 KV 量化示例用 ultrachat 的 512 条对话、`max_seq_length = 2048`,而这套 scale 会被拿去服务 128K 的请求——**校准时见过的最长序列比部署时短了两个数量级**。第九节说的长上下文掉点,很大一部分出在这里,而不是位宽不够
+- **长上下文样本必须专门放**:llm-compressor 的官方 KV 量化示例用 ultrachat 的 512 条对话、`max_seq_length = 2048`,而这套 scale 会被拿去服务 128K 的请求——**校准时见过的最长序列比部署时短了两个数量级**。第九节说的长上下文掉点,很大一部分出在这里,而不是位宽不够。对照做法:Laguna XS.2 的 FP8 KV 直接拿 128 条长上下文 Agent 轨迹做 absmax 校准(p. 23)
 
 | 统计方式 | 做法 | 适用 |
 |---|---|---|
@@ -205,6 +205,7 @@ TP 按 head 切 attention(切法与通信算子见 并行策略 篇),每个 rank
 - **int8 为什么必须更细的粒度 + 离群处理**:均匀档位意味着"罩住最大值"和"分辨小值"是零和的,组里混进一个离群值其余值就全挤进头几档。所以 int8 KV 要么把组切小、要么把离群单独拎出来,这两条在第二、三节都是要付钱的。**int8 位宽和 fp8 一样,工程复杂度却高一个档次**——这才是 fp8 在 Hopper 之后成为默认答案的真正原因,不是"fp8 精度更高"
 - **E4M3 还是 E5M2**:KV 是前向激活、分布集中,不需要 5 位指数那么宽的量程,选 E4M3 换一位尾数;E5M2 的位置是"连 scale 都懒得给"的兜底
 - **int4 / fp4 要付什么**:元数据反噬(第三节表的后两行,压缩比远达不到名义值)、必须做离群处理(QServe 的 W4A8KV4 专门配了 SmoothAttention 把 KV4 精度找回来,Atom 走"离群通道重排 + 混合精度";SGLang 实验中的 fp4 KV 用 16 个元素共享一个指数的微缩放块,比 OCP MXFP4 规定的 32 还细一倍)、以及 4 bit 解包与非对齐访问带来的 kernel 复杂度
+- **只存不算的 KV,可以挑硬件不原生支持的格式**:DeepSeek-V4.1-Flash 的主 KV 用 FP4 只为省存储,读出来先反量化再算,所以选了实验里更准的 E2M1 + 每 16 通道一个 E4M3 scale(NVFP4 去掉第二级全局 scale——KV 幅度有界,训练中最大约 10,远在 448 × 6 = 2688 的量程内);索引器的 Q/K 要直接做矩阵乘,只能迁就硬件用 OCP 的 MXFP4;滑窗层的 KV 对量化更敏感,保留 FP8。主 KV 的 FP4 是后训练阶段用 QAT 练出来的,不是事后校准,存储比 FP8 近乎减半(p. 14)
 
 ### 哪些任务会掉点
 
@@ -255,3 +256,6 @@ TP 按 head 切 attention(切法与通信算子见 并行策略 篇),每个 rank
 - LLM Compressor — KV Cache 量化示例(512 条 ultrachat、`max_seq_length=2048`)— https://github.com/vllm-project/llm-compressor/tree/main/examples/quantization_kv_cache
 - SGLang 文档 — Quantized KV Cache(`--kv-cache-dtype`、校准参数 JSON、实验性 fp4)— https://docs.sglang.io/docs/advanced_features/quantized_kv_cache
 - TensorRT-LLM 文档 — Numerical Precision(INT8/FP8 KV cache 与 per-tensor/per-token/per-channel 的定义)— https://nvidia.github.io/TensorRT-LLM/reference/precision.html
+- DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression(FP4 主 KV 的格式选择、post-RoPE 量化、滑窗 KV 留 FP8;官方技术报告,无 arXiv 编号)— https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+- Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning(Mamba 状态缓存的随机舍入)— [arXiv:2606.15007](https://arxiv.org/abs/2606.15007)
+- Laguna M.1/XS.2 Technical Report(用长上下文 Agent 轨迹校准 FP8 KV)— [arXiv:2605.27605](https://arxiv.org/abs/2605.27605)

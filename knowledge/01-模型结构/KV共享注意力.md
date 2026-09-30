@@ -63,6 +63,15 @@ GQA 论文的另一半贡献:不必从头训。拿现成的 MHA checkpoint,把�
 
 但要注意反过来不成立:**不能在推理时把 MHA 直接无损改成 GQA**。共享 K/V 改变了模型函数本身,直接丢掉多余的 KV 头等于换了个模型,必须经过转换加继续训练才能用。
 
+### 同一思路往层维走:跨层共享
+
+第一节公式里的层数 $L$ 也能砍:让某些层不存自己的 KV,直接借前面层的。DeepSeek-V4.1-Flash 报告把缓存压缩拆成三个相乘的维度——**每条多大**(GQA 减头、MLA 压宽)、**序列上存几条**(V4 的 CSA / HCA 把若干 token 压成一条)、**层维上存几份**(跨层复用),并在层维上做了两件事:
+
+- **CED(因果编码器—解码器)**:前 $L/2$ 层当编码器;后 $L/2$ 层的全局 KV 不从本层隐状态算,而是用各层自己的投影矩阵从第 $L/2$ 层的出口直接投影出来。于是 prefill 只需跑前半层,计算量约减半;滑窗 KV 仍逐层自己算,因为它来自各层的隐状态。
+- **CSA2 的三种层模式**:Full 层自己存 KV、自己打分选 top-k;Reindex 层借最近 Full 层的 KV,但用本层的 query 重新打分、选出自己的 top-k;Reuse 层连选择结果一起借。三种模式都算自己的 Q 和滑窗 KV。
+
+**要点是把「存 KV」和「选 KV」拆开**:共享 KV 省存储,共享选择结果省打分;Reindex 让存储共享的同时选择仍可随层变化。和 FP4 缓存叠在一起,全局 KV 降到每 token 890 字节,约为 V4-Flash 的 1/4——这是多项改动的合并结果,而且 CED「性能与基线可比」、各模式的得失,报告都没给消融表。层维共享的前身是 YOCO(上半层共用下半层产出的 KV)与 CLA(相邻层共享 KV)。
+
 ## 四、数字:2026 年在役的 GQA 模型
 
 bf16 口径,KV/token 越小越好:
@@ -113,6 +122,7 @@ bf16 口径,KV/token 越小越好:
 | 这些机制在 prefill 和 decode 阶段的收益有什么不同 | 一(阶段表) |
 | 长上下文服务该选 MHA、GQA 还是 MLA | 四 + 五 |
 | 为什么 2026 年还有旗舰模型坚持纯 GQA | 五 |
+| 补充题:除了减 KV 头,还能从哪几个维度压 KV?跨层共享 KV 会丢什么 | 三(三个相乘的维度;存与选拆开;缺消融) |
 
 ## 相关文献
 
@@ -121,3 +131,6 @@ bf16 口径,KV/token 越小越好:
 - GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints(GQA 与 uptraining)— [arXiv:2305.13245](https://arxiv.org/abs/2305.13245)
 - Llama 2: Open Foundation and Fine-Tuned Chat Models(7B/13B 用 MHA,70B 用 GQA)— [arXiv:2307.09288](https://arxiv.org/abs/2307.09288)
 - The Llama 3 Herd of Models(GQA 大规模实践)— [arXiv:2407.21783](https://arxiv.org/abs/2407.21783)
+- Reducing Transformer Key-Value Cache Size with Cross-Layer Attention(CLA:相邻层共享 KV)— [arXiv:2405.12981](https://arxiv.org/abs/2405.12981)
+- You Only Cache Once: Decoder-Decoder Architectures for Language Models(YOCO:上半层共用下半层的 KV)— [arXiv:2405.05254](https://arxiv.org/abs/2405.05254)
+- DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression(CED 与 CSA2 的 Full / Reindex / Reuse,官方技术报告,无 arXiv 编号)— https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash

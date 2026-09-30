@@ -76,9 +76,9 @@ $$
 | DeepSeek-V3(2024) | 671B | 37B | 5.5% | 1 共享 + 256 路由,选 8 |
 | DeepSeek-V4-Flash | 284B | 13B | 4.6% | 1 共享 + 256 路由,选 6 |
 | DeepSeek-V4-Pro | 1.6T | 49B | 3.1% | 1 共享 + 384 路由,选 6 |
-| Kimi K3(约数) | 2.8T | 约 50B | 约 1.8% | 896 选 16 |
+| Kimi K3 | 2.78T | 104B | 3.7% | 2 共享 + 896 路由,选 16(潜空间) |
 
-两年多时间,激活占比从 28% 一路压到 2% 以下。但这张表只能用来说明「稀疏激活能做到多稀疏」,**三条口径必须分开**:
+两年多时间,激活占比从 28% 一路压到 3%–4%。专家个数上走得最远的是 Kimi K3,但它的激活参数也涨到了 104B,激活占比反而略高于 V4-Pro——**专家多少和激活占比是两个维度**,前者管组合数,后者管每 token 的计算(Kimi-K3 PDF p. 1、p. 11 表 1)。但这张表只能用来说明「稀疏激活能做到多稀疏」,**三条口径必须分开**:
 
 - **激活参数 ≠ FLOPs**。两者同阶,但 MoE 的专家计算被切成 $N$ 段,每段平均只有 $Tk/N$ 个 token,矩阵一瘦算力利用率就掉;Dense 那边是一个完整连续的大 GEMM。
 - **FLOPs ≠ 显存**。就是上一节那一格,权重按总参数算。
@@ -124,6 +124,8 @@ $$
 
 这两个数说的是「一个 token 可能的会诊阵容有多少种」。总参数和激活参数都可以保持不变,只是把同样的宽度切得更碎,可表达的专家组合就多出十几个数量级——相当于医院从 8 个大科室细分成 256 个亚专科,「既懂 Rust 又懂密码学」这种组合式需求才可能被精确匹配,每个专家也才有机会特化到更窄的领域。
 
+「只改切法」有现成的一对:DeepSeek-V3 与 Mistral Large 3 都是 7168 宽、61 层、前 3 层稠密、1 个共享专家,V3 每层 256 个中间宽 2048 的路由专家选 8,Mistral Large 3 是 128 个宽 4096 的选 4——每层路由专家的总宽度($256\times2048=128\times4096$)与每 token 激活宽度($8\times2048=4\times4096$)都相同,差别只在切法,可选阵容从约 $1.1\times10^{7}$ 种变成约 $4\times10^{14}$ 种(Mistral Large 3 的数字取自官方公开的 params.json)。
+
 一手依据是 DeepSeekMoE:同等参数与算力下,把 $N$ 个专家切成 $mN$ 个、同时把 top-$k$ 放大到 $mk$,再隔离出共享专家,专家特化程度显著更高;论文给的对照是 DeepSeekMoE 2B 用少 1.5 倍的专家参数追平 GShard 2.9B。DeepSeek-V2 是这条路线的工程落地:单个专家的中间维度只有 1536,约为同规模稠密 FFN 的 1/8,每个 token 激活 2 共享 + 6 路由 = 8 个,**总算力刚好等于一个完整的稠密 FFN**。
 
 第二个好处更实际:**选错的代价变小了**。8 选 2 时 router 挑错一个,等于一半的专家算力浪费在不对口的大专家上;256 选 8 时挑错一个只丢掉八分之一,而且那一格本身就很小。
@@ -137,6 +139,10 @@ $$
 - **只切细、不加总参数,反而输给稠密**:把一个 FFN 拆成 $n$ 份常开小块,总参与激活都不变,所有规模上都差于稠密。MoE 的收益主要来自那些不被激活的参数,而不是"拆成小块"这种结构本身。
 
 它和 DeepSeekMoE 不矛盾:DeepSeekMoE 是从 8、16 个大专家往细切,落点正在这个区间附近。边界也要记住:最大只到 300M 激活、约 20 个 token 每激活参数的短训练,更大规模上的最优粒度仍要自己量。
+
+### 第三个旋钮:专家在多宽的空间里算
+
+切细之后还剩一笔账:传统 MoE 里每个被选中的专家都要收到完整的 $d$ 维表示,专家权重和 dispatch 流量都随 $d$ 与 K 一起涨。**LatentMoE 把路由专家挪进更窄的潜空间**:路由那一路先把 token 从 $d$ 投到 $\ell$,分发、专家计算、加权合并都在 $\ell$ 维里做,再投回 $d$;**共享专家保留全宽**,因为它承担的是人人都要的通用变换,压窄了就是让所有 token 一起吃亏。Nemotron 3 Ultra 是 $8192\to2048$、512 个专家选 22,共享专家中间宽 10240(PDF p. 4 表 1);Kimi K3 是 $7168\to3584$、896 选 16,每层 2 个全宽共享专家,并在合并后、上投影前加一层 RMSNorm,让路由分支的尺度不随选中了谁而漂,报告说这层归一化也降了验证损失(Kimi-K3 PDF p. 6–7、p. 11)。代价是多一对上下投影,且潜维度不能窄过任务需要的特征秩;Nemotron 3 Ultra 只说它比标准细粒度 MoE「每参数精度更好」,没有同规模消融(PDF p. 1)。省下的额度怎么换成更多专家与更大 K,见 MoE路由 篇第八节。
 
 ### 代价
 
@@ -158,7 +164,7 @@ $$
 
 | 用共享专家 | 不用 |
 |---|---|
-| DeepSeek V2/V3/V4、Llama 4、GLM-4.5、Qwen3-Next、Qwen3.5/3.6、Gemma 4 MoE、Mistral Small 4 | Qwen3 235B-A22B、MiniMax M2 系列 |
+| DeepSeek V2/V3/V4、Llama 4、GLM-4.5、Qwen3-Next、Qwen3.5/3.6、Gemma 4 MoE、Mistral Small 4、Mistral Large 3、Kimi K3(2 个)、Nemotron 3 Ultra | Qwen3 235B-A22B、MiniMax M2 系列 |
 
 三个值得记住的细节:
 
@@ -217,6 +223,7 @@ $$
 | 专家是不是切得越细越好?MoE 的收益到底来自哪里(补充题) | 五(反面证据:最优粒度约 1/8–1/4;收益来自不激活的总参数) |
 | 共享专家解决什么问题?为什么有的模型不用(补充题) | 六(冗余、免通信、Qwen 两次改主意) |
 | 并发越高,MoE 的访存优势为什么会缩水(补充题) | 四(被点到的专家并集逼近全部) |
+| LatentMoE 为什么只压路由专家,不压共享专家?(补充题) | 五(第三个旋钮) |
 
 延伸阅读顺序:本篇 → MoE路由(router 与均衡)→ MoE并行与DeepEP(多卡与通信)。
 
@@ -231,4 +238,7 @@ $$
 - Efficient Large Scale Language Modeling with Mixtures of Experts(Meta 2022,MoE 与稠密在不同预算、领域、零样本与微调上的对照)— [arXiv:2112.10684](https://arxiv.org/abs/2112.10684)
 - MegaBlocks: Efficient Sparse Training with Mixture-of-Experts(块稀疏 kernel 执行不均匀的专家负载,去掉容量因子与丢 token)— [arXiv:2211.15841](https://arxiv.org/abs/2211.15841)
 - DeepSeek-V3 Technical Report(671B / 37B,1 共享 + 256 路由选 8,前 3 层稠密)— [arXiv:2412.19437](https://arxiv.org/abs/2412.19437)
+- Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning(LatentMoE:8192 → 2048,512 选 22)— [arXiv:2606.15007](https://arxiv.org/abs/2606.15007)
+- Kimi K3: Open Frontier Intelligence(2.78T / 104B;Stable LatentMoE,2 个全宽共享专家 + 896 选 16)— [arXiv:2607.24653](https://arxiv.org/abs/2607.24653)
+- Mistral Large 3 官方权重配置(128 个路由专家选 4,与 DeepSeek-V3 每层容量相同)— https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512/blob/main/params.json
 - DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence(Flash 284B / 13B、Pro 1.6T / 49B,均为 1 共享 + 路由专家选 6;沿用 DeepSeekMoE,无 MoE 单项消融)— [arXiv:2606.19348](https://arxiv.org/abs/2606.19348)
