@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="400" viewBox="0 0 1120 400" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1120" height="400" fill="#ffffff"/>
+  <text x="24" y="40" font-size="19" font-weight="700" fill="#111827">每个文本位置只交叉注意它前面最近的那张图</text>
+  <text x="24" y="64" font-size="13" fill="#6b7280">黄 = 文本段；紫 = 交叉注意力可见；灰 = 被掩掉。φ = 这一段之前最近一张图的编号，前面没有图时为 0。</text>
+
+  <!-- 自注意力间接通道 -->
+  <path d="M 610 136 L 610 112 L 905 112 L 905 136" fill="none" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+  <text x="757" y="104" font-size="11" fill="#6b7280" text-anchor="middle">图 1 的信息已写进这段文本的隐状态，经语言模型自注意力传给后文</text>
+
+  <!-- 文本序列 -->
+  <text x="24" y="165" font-size="14" font-weight="700" fill="#111827">文本序列</text>
+  <rect x="200" y="140" width="230" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <text x="315" y="165" font-size="12" fill="#111827" text-anchor="middle">&lt;BOS&gt; Cute pics of my pets! &lt;EOC&gt;</text>
+  <rect x="445" y="140" width="330" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <text x="610" y="165" font-size="12" fill="#111827" text-anchor="middle">&lt;image&gt; My puppy sitting in the grass. &lt;EOC&gt;</text>
+  <rect x="790" y="140" width="306" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <text x="943" y="165" font-size="12" fill="#111827" text-anchor="middle">&lt;image&gt; My cat looking very dignified. &lt;EOC&gt;</text>
+
+  <text x="315" y="204" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">φ = 0</text>
+  <text x="610" y="204" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">φ = 1</text>
+  <text x="943" y="204" font-size="13" font-weight="700" fill="#111827" text-anchor="middle">φ = 2</text>
+
+  <!-- 掩码：图 1 -->
+  <text x="24" y="246" font-size="14" font-weight="700" fill="#111827">图 1（小狗）</text>
+  <text x="24" y="262" font-size="11" fill="#6b7280">64 个视觉 token</text>
+  <rect x="200" y="226" width="230" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="315" y="248" font-size="11" fill="#6b7280" text-anchor="middle">掩掉：前面还没有图</text>
+  <rect x="445" y="226" width="330" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+  <text x="610" y="248" font-size="11" fill="#111827" text-anchor="middle">可见</text>
+  <rect x="790" y="226" width="306" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="943" y="248" font-size="11" fill="#6b7280" text-anchor="middle">掩掉：已有更近的图 2</text>
+
+  <!-- 掩码：图 2 -->
+  <text x="24" y="298" font-size="14" font-weight="700" fill="#111827">图 2（猫）</text>
+  <text x="24" y="314" font-size="11" fill="#6b7280">64 个视觉 token</text>
+  <rect x="200" y="278" width="230" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="315" y="300" font-size="11" fill="#6b7280" text-anchor="middle">掩掉</text>
+  <rect x="445" y="278" width="330" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="610" y="300" font-size="11" fill="#6b7280" text-anchor="middle">掩掉：图 2 还在后面</text>
+  <rect x="790" y="278" width="306" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+  <text x="943" y="300" font-size="11" fill="#111827" text-anchor="middle">可见</text>
+
+  <text x="24" y="356" font-size="11" fill="#9ca3af">机制示意：按段画，不逐 token 标注；序列与掩码据 PDF p. 24 Figure 7 与附录 A.1.3 重画。</text>
+  <text x="24" y="374" font-size="11" fill="#9ca3af">训练时每个网页还以 1/2 的概率改成「看后面紧跟的那张图」，作为数据增强（PDF p. 27）。</text>
+</svg>

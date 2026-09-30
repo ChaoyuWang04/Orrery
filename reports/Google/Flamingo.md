@@ -2,17 +2,9 @@
 
 <!-- release-date: 2022-04-28 -->
 
-> 本文依据 DeepMind 的 **Flamingo: a Visual Language Model for Few-Shot Learning**，即 [arXiv:2204.14198](https://arxiv.org/abs/2204.14198) 的 2022-11-15 修订版 v2，NeurIPS 2022，共 54 页。页码均指这份 PDF 自身页码。封面水印为 `arXiv:2204.14198v2 [cs.CV] 15 Nov 2022`。v1 提交于 2022-04-29 16:29:01 UTC；v2 修订于 2022-11-15 23:07:37 UTC。截至 2026-09-11 核验，arXiv 当前仍是 v2，本地原件即该版，**没有换过 PDF**。全文会区分三件事：报告明确写了什么、我们如何解释它、哪些是外部资料补充。凡是外部补充都会给出链接并明确标注。
->
-> 这是一篇方法与模型论文。Flamingo 本身没有向公众开放权重、API 或产品接口。按「技术首次官方公开日」，`release-date` 取 **2022-04-28**：DeepMind 官方博客 [Tackling multiple tasks with a single visual language model](https://deepmind.google/discover/blog/tackling-multiple-tasks-with-a-single-visual-language-model/) 标注 April 28, 2022，正文写「Today, in the preprint of our paper, we introduce Flamingo」。arXiv v1 是次日 2022-04-29。按手册取更早的官方公开事件，因此卡片日期是博客日，不用 v2、NeurIPS 或后续修订回写。Hugging Face 仓库的 `createdAt` 按本模块规则禁用。
->
-> 单位：论文署名 DeepMind。目录按企业主导放在 `Google`，DeepMind 写在正文，不另建实验室目录。
->
-> **同方向边界**：后作 [Qwen3-Omni](/reports/Alibaba/Qwen3-Omni) 已发布。那条线是 Thinker-Talker 全模态（听、说、读、写），不是本文这种「冻结视觉编码器 + 冻结语言模型 + 可训桥」的少样本视觉语言模型，也不是把图文收成统一 token 的早期融合。本文只在方法粒度上标出这条差异，**不把 Qwen Omni / VL 的延迟表、参数量或基准分写进本文实验**。
+> 本文依据 DeepMind 的 **Flamingo: a Visual Language Model for Few-Shot Learning**，arXiv:2204.14198v2（2022-11-15），NeurIPS 2022，共 54 页（正文 p. 1–10，参考文献与 checklist p. 11–21，附录从 p. 22 起）。页码均指 PDF 自身页码。全文区分三件事：**论文明确写了什么**、**我们怎么解释它**、**哪些是外部资料补充**。
 
 ## 旧路只有两条，交错图文和视频都走不通
-
-先把矛盾摊开，再上名词。
 
 2022 年要把「看」接到「说」上，常见做法只有两条（PDF p. 3）。
 
@@ -26,7 +18,7 @@
 
 > **已经有了很强的视觉编码器和很强的语言模型。能不能冻住两端，只训一座桥，让同一个模型在任意交错的图、视频和文字上，靠几条示范就做新任务？**
 
-论文的主张是能。家族三档：Flamingo-3B、Flamingo-9B、Flamingo-80B。16 个图文 / 视频任务上，少样本全面超过当时的零样本 / 少样本方法；其中 6 个任务只用 32 条示范、不改权重，就超过当时用成千上万条标注微调出来的 SOTA（PDF p. 3–4、7，Figure 2、Table 1）。这 6 个是哪几个、数字是多少，后面会回到 Table 1 逐项对。
+论文的主张是能。家族三档：Flamingo-3B、Flamingo-9B、Flamingo-80B。16 个图文 / 视频任务上，少样本全面超过当时的零样本 / 少样本方法；其中 6 个任务只用 32 条示范、不改权重，就超过当时用成千上万条标注微调出来的 SOTA（PDF p. 3–4、7，Figure 2、Table 1）。
 
 ## 读前先认这几个零件
 
@@ -51,47 +43,11 @@ Flamingo 的主张只有一句：**冻住已经很强的视觉编码器和语言
 
 它也不是后来那种「一个模型既听又说」的全模态系统。输入是图或视频加文字，输出只有文字。
 
-## 报告地图：这篇 54 页到底铺了什么
-
-论文正文 10 页，其余是附录。数字和关键机制有一半在附录里。对应关系如下，避免只追着摘要写。
-
-| 论文位置 | 讲什么 | 本文落在哪 |
-|---|---|---|
-| 摘要、Figure 1–2、§1 | 矛盾、16 任务少样本、6 个任务对微调 SOTA | 开篇矛盾、主表 |
-| §2.1、附录 A.1.1、B.1.3 | NFNet 视觉编码器、对比预训练、Perceiver | 核心设计一、二 |
-| §2.2、Figure 4、附录 A.1.2 / A.1.4 | 门控交叉注意力、三档规模 | 核心设计三、六 |
-| §2.3、附录 A.1.3 | 每次只看上一张图的 mask | 核心设计四 |
-| §2.4、附录 A.3、F | M3W / ALIGN / LTIP / VTP | 核心设计五 |
-| §2.5、附录 A.2、B.1.5 | 少样本 prompt、开闭卷、0-shot 口径 | 少样本 prompting |
-| §3.1、Table 1 | 16 任务主表 | 实验 |
-| §3.2、Table 2、附录 B.2.2 / Table 8 | 微调补 5 个 SOTA | 微调补充 |
-| §3.3、Table 3、附录 B.3 / Table 10 | 消融 | 消融 |
-| 附录 B.2.1 / Table 7、B.2.3 / Table 9 | 分类落后、对比编码器检索 | 限制、视觉编码器 |
-| §5、附录 D、E | 幻觉、序列长度、闭源、偏见与毒性 | 限制 |
-| 附录 C、Figure 13 | 定性对话与失败案例 | 限制 |
-
-标题页是 PDF 第 1 页。正文页脚印着 `2` 到 `10`，与 PDF 页码一致。第 11–20 页是参考文献，第 21 页是 NeurIPS checklist，第 22 页起是附录；附录自己从 `1` 再编页，引用时仍用打开这份 PDF 看到的页码。
-
 ## 先看全景：冻住的两端，可训的中间
 
-论文 Figure 3 把整张图分成左视觉、右语言（PDF p. 4）。左边每张图或每段视频走一遍冻结视觉编码器，再被 Perceiver Resampler 收成固定长度；右边是冻结语言模型，层前插上从零初始化的门控交叉注意力。雪花标记表示冻住，空白块表示从零训练。
+![Flamingo 架构总览：左侧每张图各走一遍冻结的视觉编码器，再由从零训练的 Perceiver Resampler 收成固定数量的视觉 token；右侧冻结的语言模型块之间插入从零训练的 GATED XATTN-DENSE 层，文本里的 <image> 只是占位，视觉经交叉注意力从侧路进入，最后输出自由文本（引自原文 Figure 3，PDF p. 4）](/reports/Flamingo/figure3-architecture.png)
 
-```mermaid
-flowchart TB
-    subgraph VIS["视觉侧：每张图 / 每段视频独立走一遍"]
-        PIX["像素"] --> VE["冻结 NFNet-F6"]
-        VE --> PR["可训 Perceiver Resampler<br/>固定 64 个视觉 token"]
-    end
-    subgraph LANG["语言侧：自回归写下一个 token"]
-        TXT["交错文本 + 图像标记"] --> GX["可训 GATED XATTN-DENSE<br/>Q 来自文本，KV 来自视觉"]
-        PR --> GX
-        GX --> LM["冻结 LM 块"]
-        LM --> NEXT["下一层，重复"]
-        NEXT --> OUT["自由文本"]
-    end
-```
-
-这张图是机制示意，根据 PDF p. 4 Figure 3 重画，不代表实测延迟。读这张图时抓住三件事：
+原图左边是视觉、右边是语言。雪花表示预训练后冻住，浅紫表示从零训练。读这张图时抓住三件事：
 
 1. **视觉不进语言模型的 token 座位。** `<image>` 只是文本里的占位，真正的视觉向量走侧路交叉注意力。
 2. **每张图单独编码。** 多图、多视频不是拼成一张超级特征图，而是各自变成 64 个 token，再靠 mask 决定当前文本能看哪一组。
@@ -131,7 +87,7 @@ $y_\ell$ 是第 $\ell$ 个文本 token，$y_{<\ell}$ 是它前面的字，$x_{\l
 
 ### 消融：换成 CLIP，整体掉 5.8 个点
 
-Table 3 在 Flamingo-3B、4-shot、DEV 五任务上比视觉骨干（PDF p. 8）。总体分是各任务分数除以 Table 1 里对应微调 SOTA 再平均。NFNet-F6 基线 70.7；换成公开的 CLIP ViT-L/14（224 分辨率）掉到 64.9，差 5.8；换成更小的 NFNet-F0 掉到 62.7，差 8.0。视觉编码器从随机初始化训，总体分 57.8；从对比预训练出发再解冻，也只有 68.1，而且更贵（PDF p. 35，Table 10）。
+Table 3 在 Flamingo-3B、4-shot、DEV 五任务上比视觉骨干（PDF p. 8）。总体分是各任务分数除以 Table 1 里对应微调 SOTA 再平均。NFNet-F6 基线 70.7；换成公开的 CLIP ViT-L/14（224 分辨率）掉到 64.9，差 5.8；换成更小的 NFNet-F0 掉到 62.7，差 8.0。视觉编码器从随机初始化训，总体分 61.4，掉 9.3%；从对比预训练出发再解冻，也只有 68.1，掉 2.6%，而且显存吃紧，要用 4 倍的 TPU 芯片（PDF p. 35–36，Table 10）。
 
 所以冻住视觉不是省事的借口。消融支持的判断是：**先把视觉塔在对比目标上训强，再锁死，比在 Flamingo 阶段一起改更划算。**
 
@@ -146,6 +102,8 @@ Table 3 在 Flamingo-3B、4-shot、DEV 五任务上比视觉骨干（PDF p. 8）
 一张图的空间网格已经不小。视频再乘上帧数，Key / Value 长度会直接打进每一层交叉注意力。如果把这些特征一股脑拼进语言模型的输入序列，上下文预算会被视觉吃光——这是后来投影路线的核心痛。Flamingo 选了另一条：视觉不进序列，但交叉注意力仍然要读视觉。于是必须先把「可变、很长」收成「固定、很短」。
 
 ### 新设计：一组学出来的 latent，去读全部视觉特征
+
+![Perceiver Resampler：视频逐帧过冻结视觉编码器，加上时间位置编码后展平成 X_f；一组学出来的 latent query 做 Query，Key 和 Value 是 X_f 与 latent 自身的拼接，经若干层注意力加前馈，输出个数只等于 latent 个数，右侧是对应伪代码（引自原文 Figure 5，PDF p. 23；图中示意为 5 个输出，主模型用 64 个）](/reports/Flamingo/figure5-perceiver.png)
 
 Perceiver Resampler 学 $R$ 个 latent query（论文主模型 $R = 64$），用 Transformer 去交叉注意视觉特征，输出长度等于 latent 个数，与输入分辨率、视频帧数无关（PDF p. 5、23，Figure 5）。
 
@@ -181,7 +139,9 @@ $x$ 是那 64 个 latent，$x_f$ 是展平后的时空视觉特征，$[x_f; x]$ 
 
 ### 新设计：$\tanh$ 门从 0 出发，训练起点等于原 LM
 
-论文在冻结的 LM 块之间插入 GATED XATTN-DENSE（PDF p. 5，Figure 4）。一块里有两段可训计算，然后才是原来的自注意力和前馈：
+![GATED XATTN-DENSE：新块插在冻结的 LM 层之前；块内先做交叉注意力（Query 来自语言，Key 与 Value 来自视觉），再过一层前馈，两段输出都先乘 tanh 门再加回残差，之后才是冻结的自注意力与前馈；右侧是对应伪代码（引自原文 Figure 4，PDF p. 5）](/reports/Flamingo/figure4-gated-xattn.png)
+
+论文在冻结的 LM 块之间插入 GATED XATTN-DENSE（PDF p. 5）。一块里有两段可训计算，然后才是原来的自注意力和前馈：
 
 $$
 \begin{aligned}
@@ -236,6 +196,8 @@ Table 3 第（viii）行：LM 从随机初始化一起训，总体分 57.8，掉
 
 ### 新设计：交叉注意力只看最近一张，更早的图走语言模型自注意力
 
+![掩码机制示意：文本序列按两个 <image> 标记分成三段，φ 依次为 0、1、2；图 1 的视觉 token 只对第二段可见，图 2 只对第三段可见，第一段前面没有图、两张都看不到；图 1 的信息经语言模型自注意力间接传到第三段（本文根据原文 Figure 7 与附录 A.1.3 重画，PDF p. 24）](/reports/Flamingo/figure7-masking.svg)
+
 论文给每个文本位置定义函数 $\varphi$：它指向「这个位置之前最近的那张图 / 那段视频」，没有图就是 0。交叉注意力用 mask 实现——当前 token 只看见 $\varphi(\ell)$ 那一组 64 个视觉 token（PDF p. 6、24，Figure 7）。更早的图并没有消失：它们已经写进前面文本位置的隐状态，可以经 LM 自注意力间接过来。
 
 网页预处理会插入 `<image>` 标记，并在图像前和文档末插入学出来的 `<EOC>`（end of chunk）token（PDF p. 6、24）。生成时碰到 `<EOC>` 就停（PDF p. 25）。
@@ -244,9 +206,9 @@ Table 3 第（viii）行：LM 从随机初始化一起训，总体分 57.8，掉
 
 Table 10 第（ii）行：交叉注意力改为看见所有之前的图像，总体分从 70.7 掉到 63.5，差 7.2%（PDF p. 35）。论文给的解释是没有显式手段区分不同图像。他们试过把标记改成 `<image 1>`、`<image 2>`，或给每张图加绝对索引嵌入，在训练图数和测试图数不一致时都不如「只看上一张」稳（PDF p. 35–36）。
 
-这就是 5 张图训练、32 张图测试仍然能涨分的结构原因。Figure 2 右侧显示，从 0 到 32 shot，三条尺寸曲线都在涨，最大的模型更能吃更多 shot（PDF p. 3、8）。
+这就是 5 张图训练、32 张图测试仍然能涨分的结构原因。实验一节的 Figure 2 右图显示，从 0 到 32 shot，三条尺寸曲线都在涨，最大的模型更能吃更多 shot（PDF p. 3、8）。
 
-网页上图和字谁先谁后并不知道。训练时以 $p_{\text{next}} = 1/2$ 随机决定文本去看「上一张」还是「下一张」，当作数据增强；消融里这个随机比永远看上一张或下一张略好（PDF p. 27、36）。
+网页上图和字谁先谁后并不知道。训练时**每个网页抽一次**，以 $p_{\text{next}} = 1/2$ 决定整页文本去看「上一张」还是「下一张」图，当作数据增强；消融里这个随机比永远看上一张（69.6）或永远看下一张（70.4）略好（PDF p. 27、36，Table 10）。
 
 ### 图像和视频在结构上是同一件事
 
@@ -303,7 +265,7 @@ Table 3 第（i）行，总体分 70.7 为参照（PDF p. 8–9）：
 | 去掉图文对 | 60.9 | 9.8%（PDF p. 9） |
 | 去掉视频–文本对 | 67.3 | 3.4 分，且视频任务全掉 |
 | 图文对换成 LAION | 66.4 | 略降 |
-| 语言模型改在 C4 上预训练 | 62.8 | 7.9%，问答掉得更明显（PDF p. 36） |
+| 语言模型改在 C4 上预训练 | 62.8 | 7.9%，问答掉得更明显（PDF p. 36）；表中这一行的 MSVDQA 印作 60.6，高于基线的 36.3，与正文「MSVDQA 下降」矛盾，疑为印刷错误 |
 
 论文把这件事说得很硬：交错数据和配对数据是不同物种，少样本靠交错，描述质量靠配对，视频靠 VTP。只用公开 LAION-400M 加 CLIP ViT-L/14，总体分 54.7；M3W + LAION + VTP 加 CLIP，64.9，仍低于他们自己的数据加 NFNet-F6（PDF p. 36）。这是可复现性参考，不是主模型。
 
@@ -343,6 +305,10 @@ Table 3 第（i）行，总体分 70.7 为参照（PDF p. 8–9）：
 评测超参几乎不按任务交叉验证。论文引用 Perez 等人的批评：在少样本里调超参，等于偷偷多用了 shot（PDF p. 32）。DEV 五任务（COCO、OKVQA、VQAv2、MSVDQA、VATEX）用于开发期做决定，估计可能偏乐观；另外 11 个任务在训练结束后才看，用来估计无偏少样本表现（PDF p. 7）。ImageNet 和 Kinetics700 也在 DEV 里，但主表 16 任务指的是多模态语言任务，分类另见表 7。
 
 ## 实验怎么证明：16 个任务，以及那 6 个超过微调 SOTA 的数字
+
+![Flamingo 结果总览。左：16 个任务里除 RareAct 外的 15 个，柱高是 Flamingo-80B 32-shot 相对该任务微调 SOTA 的百分比，浅灰是此前最好的零样本或少样本方法；超过 100% 虚线的是 OKVQA、MSVDQA、STAR、Flickr30K、iVQA、NextQA 六个。右：聚合分随 shot 数上升，80B 高于 9B 高于 3B，原文没有说明聚合口径（引自原文 Figure 2，PDF p. 3）](/reports/Flamingo/figure2-overview.png)
+
+左图就是 Table 1 按「除以微调 SOTA」换算后的样子，所以下面的表只补左图读不出的东西：原始分数、0 / 4-shot 两档与每个微调 SOTA 用了多少标注。
 
 主证据是 Table 1（PDF p. 7）。一个 Flamingo-80B，同一套权重，0 / 4 / 32 shot。下面只抄 80B 和两列对照：当时最好的零 / 少样本方法，以及用任务数据微调的 SOTA（括号里是微调用的标注量级）。指标因任务而异，见表后说明。
 
@@ -415,7 +381,7 @@ COCO、YouCook2、VisDial、TextVQA test-std 没有超。论文承认他们只�
 
 ## 分类任务：少样本 VLM 打不过对比学习
 
-附录 Table 7 把 ImageNet 和 Kinetics700 单独拿出来（PDF p. 33）。Flamingo-80B 用 RICES 从最多 5000 条 support 里挑 16 条、每类 5 张，再加 prompt 集成，ImageNet top-1 77.3，Kinetics700 top-1/5 平均 64.2。随机挑 16 条只有 66.4 / 51.2。RICES 相对随机在 ImageNet 上高 9.2 个百分点（16 条、从 5000 里挑）（PDF p. 33）。
+附录 Table 7 把 ImageNet 和 Kinetics700 单独拿出来（PDF p. 33）。Flamingo-80B 的 support 池是每类 5 张（ImageNet 共 5000 条），用 RICES 从中挑 16 条进 prompt，再加 prompt 集成，ImageNet top-1 77.3，Kinetics700 top-1/5 平均 64.2；随机挑 16 条只有 66.4 / 51.2（PDF p. 33，Table 7）。正文说 RICES 比随机挑在 ImageNet 上高 9.2%，但按表算，同为 16 条 prompt、不加集成时是 76.0 对 66.4，差 9.6 个百分点，正文与表对不上（PDF p. 33）。
 
 但对比学习基线更高：他们自己的 NFNet-F6 零样本 ImageNet 77.9，已经略高于 Flamingo 的 77.3；公开对比 SOTA 85.7，微调 SOTA 90.9。Kinetics700 同样：CLIP 69.6，微调 89.0，Flamingo 64.2。论文把这写成结构性限制：对比目标直接优化检索，分类是检索的特例；语言建模目标不是（PDF p. 10、38）。**不要用主表 16 任务的少样本 SOTA，去暗示 Flamingo 也赢了 ImageNet。**
 
@@ -425,13 +391,15 @@ COCO、YouCook2、VisDial、TextVQA test-std 没有超。论文承认他们只�
 
 **官方实现不公开。** Checklist：代码和数据是专有的（PDF p. 21）。Model Card 写模型日期 March 2022，主要用途是研究，明确排除有害或欺骗性的视觉条件生成，并说下游应用前要做针对该应用的安全与公平缓解（PDF p. 45）。训练数据来自网页，滤了性明示内容，但种族歧视、性别歧视和其他有害内容仍在；也可能含个人信息（PDF p. 46–47）。
 
-**继承语言模型的弱点。** 因果建模比双向更弱；对长于训练长度的序列泛化差；语言建模样本效率低（PDF p. 10、38）。VisDial 是具体例子：32-shot 会到 4096–8192 token，超过 Chinchilla 的 2048，16-shot 到 32-shot 相对掉约 30%，所以主表封顶（PDF p. 38）。开放式对话里会出现幻觉和没有视觉根据的猜测。Figure 13 给了三类失败：只看问题、不看图就编一个像那么回事的答案；用无关问题对抗性地把模型问崩；答案在输入里根本决定不了，模型仍然猜（PDF p. 42）。这是定性例子，没有量化率。
+**继承语言模型的弱点。** 因果建模比双向更弱；对长于训练长度的序列泛化差；语言建模样本效率低（PDF p. 10、38）。VisDial 是具体例子：一条示范就是一张图加 21 句对话，32-shot 会到 4096–8192 token，远超 Chinchilla 训练时的 2048，所以主表把 VisDial 封顶在 16-shot（PDF p. 38）。开放式对话里会出现幻觉和没有视觉根据的猜测。Figure 13 给了三类失败：只看问题、不看图就编一个像那么回事的答案；用无关问题对抗性地把模型问崩；答案在输入里根本决定不了，模型仍然猜（PDF p. 42）。这是定性例子，没有量化率。
 
-**in-context 不是免费午餐。** 好处是几乎不用调超参、几十条样本就能用、只做推理。坏处是对示范的格式、顺序、选例敏感，推理成本随 shot 线性涨（能复用 prompt 时），绝对性能在过了几十条之后缩放不好。梯度微调则要小心过拟合，且往往要上千条才稳。论文认为两者该互补，而不是互相取代（PDF p. 10、38）。
+**in-context 不是免费午餐。** 好处是几乎不用调超参、几十条样本就能用、只做推理。坏处是对示范的格式、顺序敏感；推理成本随 shot 线性涨（能缓存 prompt 的键值时，否则是平方）；shot 超过 32 之后性能很快走平。梯度微调则要小心过拟合，且往往要上千条才稳。论文认为两者该互补，而不是互相取代（PDF p. 38、41–42）。
 
-**接口到不了的任务。** 输出是文本。边界框、光流、连续空间里的稠密预测，它开箱不能做。音频等其他模态也没有（PDF p. 38 附近附录讨论）。
+作者还给了一个解释 shot 为什么不总是有用的角度：引用的研究认为，in-context 学习主要是在**定位**训练时已经学过的任务，而不是从示范的输入–输出映射里现学；他们自己「只放两条不带图的文字示范也能拿到不低的 0-shot 分数」这一观察与此一致，说明任务格式本身很关键（PDF p. 41）。这是作者的推测，没有专门实验。
 
-**偏见与毒性是初步检查，不是清白证明。** Table 12 用 Zhao 等人的 COCO 性别 / 肤色划分看 CIDEr（PDF p. 44）。0-shot 女–男差 +0.029（$p=0.52$），深–浅肤色差 +0.091（$p=0.25$）；32-shot 分别为 +0.030（$p=0.54$）和 −0.025（$p=0.76$）。论文用不等方差双尾 t 检验，最低 $p=0.25$，不能拒绝「均值相等」。他们立刻写明：没拒绝零假设，不等于证明没有差异，更大样本仍可能检出来。Perspective API 给 COCO 生成描述打毒性，有些被标成潜在有毒，人工看并不明显；作者说在「适合工作场合」的图上没见到有毒输出，但 NSFW 图或有毒文字仍可能引出问题，上线前要再做（PDF p. 44）。性别偏见还指向 Chinchilla 在 Winogender 上的分析：比前作少，但还在（PDF p. 43）。
+**接口到不了的任务。** 输出是文本。边界框、光流、连续空间里的稠密预测，它开箱不能做。音频等其他模态也没有（PDF p. 42）。
+
+**偏见与毒性是初步检查，不是清白证明。** Table 12 用 Zhao 等人的 COCO 性别 / 肤色划分看 CIDEr（PDF p. 44）。0-shot 女–男差 +0.029（$p=0.52$），深–浅肤色差 +0.091（$p=0.25$）；32-shot 分别为 +0.030（$p=0.54$）和 −0.025（$p=0.76$）。论文用不等方差双尾 t 检验，最低 $p=0.25$，不能拒绝「均值相等」。他们立刻写明：没拒绝零假设，不等于证明没有差异，更大样本仍可能检出来。Perspective API 给 COCO 生成描述打毒性，有些被标成潜在有毒，人工看并不明显；作者说在「适合工作场合」的图上没见到有毒输出，但 NSFW 图或有毒文字仍可能引出问题，上线前要再做（PDF p. 44）。性别偏见还指向 Chinchilla 在 Winogender 上的分析：比前作少，但还在（PDF p. 44）。
 
 **正面用途和风险是同一枚硬币。** 少样本降低了非专家用视觉模型的门槛，VizWiz、HatefulMemes 被写成辅助视障和识别仇恨内容的方向；同一能力也可以被用来做恶意应用。没有图时，Flamingo 退回语言模型行为，因此带上 LM 的攻击面（PDF p. 10、43）。他们也提到：少样本本身可以用来做低资源的过滤、拒答或 red team（PDF p. 44–45）。这是方向，不是这篇论文里已经做成的产品。
 
@@ -480,9 +448,9 @@ Flamingo 没有把分类、定位、开源复现和全模态生成一次做完�
 - **in-context few-shot**：不改权重，把示范写进交错 prompt；0-shot 在本篇里是两条不带图的文字示范。
 - **16 任务少样本、6 任务对微调 SOTA**：主结论。6 个任务是 OKVQA、MSVDQA、Flickr30K、iVQA、STAR、NextQA。
 
-## 参考与日期证据
+## 资料与阅读边界
 
-- 论文：Alayrac 等，**Flamingo: a Visual Language Model for Few-Shot Learning**，NeurIPS 2022，[arXiv:2204.14198](https://arxiv.org/abs/2204.14198)。本地 `papers/Google/Flamingo.pdf` 为 v2，54 页。
-- 官方博客（`release-date` 依据）：[Tackling multiple tasks with a single visual language model](https://deepmind.google/discover/blog/tackling-multiple-tasks-with-a-single-visual-language-model/)，2022-04-28。同日 DeepMind 账号发推介绍模型。
-- 排除的更晚日期：arXiv v1 2022-04-29；v2 2022-11-15；NeurIPS 会议录 2022-11-28。这些都不回写首发日。
+- 论文：Alayrac 等，**Flamingo: a Visual Language Model for Few-Shot Learning**，NeurIPS 2022，[arXiv:2204.14198](https://arxiv.org/abs/2204.14198)。依据 v2（2022-11-15），这也是 arXiv 上的最新版。论文署名 DeepMind，库内按归属方放在 Google 目录。
+- 首发日取 **2022-04-28**：Flamingo 从未对外开放权重、API 或产品，按技术首次官方公开日计。DeepMind 官方博客 [Tackling multiple tasks with a single visual language model](https://deepmind.google/discover/blog/tackling-multiple-tasks-with-a-single-visual-language-model/) 标注 2022-04-28，正文说「今天在论文预印本中介绍 Flamingo」；arXiv v1 晚一天（2022-04-29）。
 - 外部补充，非本 PDF 来源：OpenFlamingo [arXiv:2308.01390](https://arxiv.org/abs/2308.01390)。
+- 本文推算：6 个任务相对微调 SOTA 的数据倍数；RICES 与随机挑选的差值按 Table 7 复算。
