@@ -137,12 +137,12 @@
 | AgentEvolver | Alibaba | 通义,自进化 agent 系统:自出题、自导航、自归因 |
 | FP16-Training-Inference-Mismatch | SeaAILab | 训推数值不一致导致 RL 崩溃,换 FP16 即可解决 |
 | Ouro | ByteDance | 参数循环复用做潜空间推理的 scaling(Seed) |
-| Laminar | ByteDance | 可扩展的异步 RL 后训练框架(依据 arXiv v1;EuroSys '26 正式版数字一致) |
+| Laminar | ByteDance | 取消全局权重同步点、轨迹级异步的 RL 后训练框架(依据 EuroSys '26 正式版) |
 | Evolution-Strategies-at-Scale | Cognizant | 进化策略替代 RL 微调十亿参数模型 |
 | rStar2-Agent | Microsoft | agentic reasoning 的训练 |
-| Agent-Lightning | Microsoft | agent 执行与训练完全解耦,span 流入 LightningStore |
 | GSPO | Alibaba | 序列级重要性比 |
 | AsyncFlow | Huawei | 服务化异步流式 RL,生产者-消费者工作流 |
+| Agent-Lightning | Microsoft | 把 Agent 每次模型调用拆成 MDP 转移,Agent 执行与 RL 训练解耦 |
 | ROLL | Alibaba | 面向 RLHF / 推理 / 多轮 agentic 的框架论文 |
 | AReaL | AntGroup | 大规模异步 RL 系统 |
 | GPG | Alibaba | 去掉 GRPO 多余项后的最简 RL 基线(AMAP) |
