@@ -23,5 +23,5 @@
 ## 底线
 
 - 对话与汇报用中文,长任务收尾也一样
-- 提交、PR、issue 一律不写 AI 署名(Co-Authored-By、Generated with 之类)
+- 提交、PR、issue 默认不写 AI 署名(Co-Authored-By、Generated with 之类)。上游项目的政策明文要求声明 AI 协助或加署名 trailer 时,按上游政策写,并记在该项目的画像里
 - 改动影响对外接口、数据格式或目录结构时,同一批里更新对应文档
