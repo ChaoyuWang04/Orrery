@@ -354,6 +354,7 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| InternW0-Delta | ShanghaiAILab | 世界动作模型:把视频动态、视觉语言语义与几何运动先验并进同一框架出动作,在约 2.3 万小时的真机、UMI 与第一人称异构数据上预训练,数据工具、配方与权重全栈开源(上海 AI 实验室) |
 | Representation-World-Model | Tsinghua | 不学前向动力学、不做搜索:在端点表征之间直接插出隐空间路径,用逆动力学沿路径解码动作,把规划做进表征几何本身(arXiv 2609.29171) |
 | ART-Discovery | Anthropic | 自主运行的 Claude Code 实例在 19 亿个蛋白簇里普查逆转录酶位点,找出带约 200 nt 重复阵列的新家族 ART(alphaXiv 自有编号,非 arXiv) |
 | InternW0 | ShanghaiAILab | 物理世界模型:视频专家慢速预测未来、动作专家快速出动作的异步双专家结构,混合真机、仿真、第一人称与接触力数据预训练(上海 AI 实验室) |
@@ -381,7 +382,6 @@
 | Genie | Google | 无动作标注的纯视频里,学出可交互的潜动作 |
 | DreamerV3 | Google | 一套超参掌握多样控制任务(DeepMind,Nature) |
 | EmbodiedSWE | ByteDance | 让前沿 coding agent 写代码解长时程、接触丰富的灵巧操作仿真任务,再把单个解扩展成能监督通用机器人策略的数据 |
-| InternW0-Delta | ShanghaiAILab | 世界动作模型:把视频动态、视觉语言语义与几何运动先验并进同一框架出动作,在约 2.3 万小时的真机、UMI 与第一人称异构数据上预训练,数据工具、配方与权重全栈开源(上海 AI 实验室) |
 | Workspace-Models | MIT | 训练时用 VLM 标出任务相关的当前与历史信息,蒸馏成轻量的 workspace token,部署时代替观测喂给策略,不再在环调用 VLM |
 | MotionJEPA | Oxford | JEPA 偏好慢特征导致时间维坍塌:加一个预测差分图像嵌入的正则 DISReg,不需要动作标签也不做像素重建 |
 | InsertionWM | NVIDIA | 用 TD-MPC2 视觉世界模型做机器人插装:腕部深度图加本体感知,一个模型在 90 种零件上训练,对未见几何零样本成功率 56%,远高于无模型基线的 7% |
