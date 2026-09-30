@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">一轮 ReST-EM 的账：打分要跑几百次微调，更新策略只要一次 SFT</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">黄 = 模型写的 self-edit；紫 = 一次内层微调加评测；绿 = 被留下来强化的 self-edit；红 = 被更新的策略权重；灰 = 输入数据。机制示意，据 PDF p. 6、p. 18、p. 20–21 重画。</text>
+
+<rect x="16" y="72" width="1088" height="372" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="98" font-size="14" fill="#111827" font-weight="700">知识写入（Qwen2.5-7B）：两轮，每轮如下</text>
+
+<rect x="36" y="180" width="170" height="90" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="121" y="214" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">50 个训练段落</text>
+<text x="121" y="236" font-size="11" fill="#6b7280" text-anchor="middle">每段自带参考问答 τ</text>
+<text x="121" y="254" font-size="11" fill="#6b7280" text-anchor="middle">取自 SQuAD 训练集</text>
+<line x1="206" y1="225" x2="244" y2="225" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="250" y="112" width="520" height="316" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="266" y="136" font-size="14" fill="#111827" font-weight="700">E 步：当前模型采样，逐份打分</text>
+<text x="266" y="156" font-size="11" fill="#6b7280">下面只画一个段落；温度 1 采 5 份，每份用 3 个随机种子各跑一遍</text>
+
+<rect x="266" y="172" width="64" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="342" y="172" width="64" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="418" y="172" width="64" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="494" y="172" width="64" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="570" y="172" width="64" height="28" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="298" y="191" font-size="11" fill="#111827" text-anchor="middle">SE 1</text>
+<text x="374" y="191" font-size="11" fill="#111827" text-anchor="middle">SE 2</text>
+<text x="450" y="191" font-size="11" fill="#111827" text-anchor="middle">SE 3</text>
+<text x="526" y="191" font-size="11" fill="#111827" text-anchor="middle">SE 4</text>
+<text x="602" y="191" font-size="11" fill="#111827" text-anchor="middle">SE 5</text>
+
+<rect x="266" y="210" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="342" y="210" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="418" y="210" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="494" y="210" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="570" y="210" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="266" y="240" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="342" y="240" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="418" y="240" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="494" y="240" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="570" y="240" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="266" y="270" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="342" y="270" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="418" y="270" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="494" y="270" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="570" y="270" width="64" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="298" y="226" font-size="11" fill="#6b7280" text-anchor="middle">种子 1</text>
+<text x="298" y="256" font-size="11" fill="#6b7280" text-anchor="middle">种子 2</text>
+<text x="298" y="286" font-size="11" fill="#6b7280" text-anchor="middle">种子 3</text>
+
+<rect x="266" y="304" width="64" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="342" y="304" width="64" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="418" y="304" width="64" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="494" y="304" width="64" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="570" y="304" width="64" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="298" y="320" font-size="11" fill="#6b7280" text-anchor="middle">丢弃</text>
+<text x="374" y="320" font-size="11" fill="#6b7280" text-anchor="middle">丢弃</text>
+<text x="450" y="320" font-size="11" fill="#111827" text-anchor="middle">留下</text>
+<text x="526" y="320" font-size="11" fill="#6b7280" text-anchor="middle">丢弃</text>
+<text x="602" y="320" font-size="11" fill="#6b7280" text-anchor="middle">丢弃</text>
+
+<text x="266" y="352" font-size="11" fill="#6b7280">每个紫格 = 一次内层循环：LoRA 微调（段落 + 这份 SE）→ 不给原文答 τ → 准确率</text>
+<text x="266" y="372" font-size="11" fill="#6b7280">3 个种子取平均，每段只留平均最高的那 1 份（PDF p. 4 脚注 2、p. 20）</text>
+<text x="266" y="400" font-size="14" fill="#111827" font-weight="700">15 格 × 50 段 = 750 次内层循环，约 6 小时（2×H100）</text>
+
+<text x="704" y="226" font-size="11" fill="#9ca3af" text-anchor="middle">每次约</text>
+<text x="704" y="244" font-size="11" fill="#9ca3af" text-anchor="middle">30–45 秒</text>
+<text x="704" y="262" font-size="11" fill="#9ca3af" text-anchor="middle">（PDF p. 9）</text>
+
+<line x1="770" y1="225" x2="808" y2="225" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="814" y="172" width="270" height="106" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="949" y="200" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">M 步：一次 SFT</text>
+<text x="949" y="222" font-size="11" fill="#6b7280" text-anchor="middle">50 对（段落，最好的那份 SE）</text>
+<text x="949" y="240" font-size="11" fill="#6b7280" text-anchor="middle">LoRA rank 64、alpha 128</text>
+<text x="949" y="258" font-size="11" fill="#6b7280" text-anchor="middle">batch 10、2 个 epoch、学习率 3e-4</text>
+<line x1="949" y1="278" x2="949" y2="316" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="854" y="322" width="190" height="56" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="949" y="346" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">新的策略权重</text>
+<text x="949" y="366" font-size="11" fill="#6b7280" text-anchor="middle">下一轮用它重新采样与打分</text>
+
+<rect x="16" y="462" width="1088" height="160" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="488" font-size="14" fill="#111827" font-weight="700">少样本 ARC（Llama-3.2-1B-Instruct）：只跑一轮，留样规则更宽</text>
+
+<rect x="36" y="508" width="170" height="90" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="121" y="542" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">11 道训练题</text>
+<text x="121" y="564" font-size="11" fill="#6b7280" text-anchor="middle">按「最优 TTT 能解」筛过</text>
+<line x1="206" y1="553" x2="244" y2="553" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="250" y="508" width="200" height="90" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="350" y="542" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">每题 15 份配置</text>
+<text x="350" y="564" font-size="11" fill="#6b7280" text-anchor="middle">增强开关、学习率、epoch</text>
+<line x1="450" y1="553" x2="488" y2="553" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="494" y="508" width="240" height="90" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="614" y="542" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">每份 1 次 TTT</text>
+<text x="614" y="564" font-size="11" fill="#6b7280" text-anchor="middle">超过 375 步的配置直接丢</text>
+<text x="614" y="582" font-size="11" fill="#6b7280" text-anchor="middle">测试输出对 = 1，否则 = 0</text>
+<line x1="734" y1="553" x2="808" y2="553" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="814" y="508" width="270" height="90" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="949" y="542" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">凡得 1 的都留下做 SFT</text>
+<text x="949" y="564" font-size="11" fill="#6b7280" text-anchor="middle">LoRA rank 16、8 个 epoch</text>
+<text x="949" y="582" font-size="11" fill="#6b7280" text-anchor="middle">全程约 2–3 小时，单卡</text>
+</svg>

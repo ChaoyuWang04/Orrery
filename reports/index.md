@@ -401,11 +401,11 @@
 | Reward-Free-Self-Evolution | Tencent | 部件:任务/课程。通过世界知识探索做无奖励的自发自进化 |
 | Dr-Zero | Meta | 部件:任务/课程。无训练数据的自进化搜索 agent(MSL) |
 | R-Zero | Tencent | 部件:任务/课程。challenger 与 solver 共进化,ICLR 2026(腾讯西雅图 AI Lab) |
-| GEPA | Berkeley | 部件:Prompt。反思式提示词进化,DSPy 生态(Databricks/Stanford/MIT 合作) |
-| SEAL | MIT | 部件:模型权重。让模型自己生成「自编辑指令」来更新权重 |
-| Darwin-Godel-Machine | Sakana | 部件:harness。agent 改写自身代码 + 基准存档做开放式进化(UBC 合作) |
-| Alita | Princeton | 部件:工具/技能库。最小预定义,自己造 MCP 工具(清华合作) |
-| AlphaEvolve | Google | 部件:算子/infra。进化搜索出的 kernel 反过来加速训练它自己的模型;**原件是白皮书,非 arXiv** |
+| GEPA | Berkeley | 部件:Prompt。反思式提示词进化,ICLR 2026 Oral(UC Berkeley 主导,Stanford、Databricks、MIT 等合作) |
+| SEAL | MIT | 部件:模型权重。让模型自己生成「自编辑」(合成训练数据与更新设置)来微调自身权重,NeurIPS 2025 |
+| Darwin-Godel-Machine | Sakana | 部件:harness。agent 改写自身代码 + 基准存档做开放式进化,ICLR 2026(UBC 主导,Sakana 合作) |
+| Alita | Princeton | 部件:工具/技能库。最小预定义,自己造 MCP 工具(普林斯顿主导,清华、上交等合作) |
+| AlphaEvolve | Google | 部件:算子/infra。进化搜索出的 kernel 反过来加速训练它自己的模型;原件是白皮书,同文上了 arXiv:2506.13131 |
 | Absolute-Zero | Tsinghua | 部件:任务/课程。零外部数据,出题者与解题者自博弈(BIGAI 合作) |
 | Agent-Workflow-Memory | CMU | 部件:记忆/经验。从轨迹里归纳可复用的工作流 |
 | ADAS | UBC | 部件:harness。外层 agent 用代码搜索内层 agent 系统(Meta/Vector 合作) |

@@ -70,6 +70,8 @@ flowchart TD
     F --> B
 ```
 
+只按验证集总分留 top-k 并不是最好的选择方式。GEPA 用反思模型读评测痕迹(报错、判分理由)来改写指令,候选按「在哪些验证样本上是最优」保留帕累托前沿,再从前沿里抽亲本,而不是只留总分最高的几个。同一套反思改写、Qwen3 8B 四个复合任务上,帕累托抽样合计提升 +12.44,换成「只留总分最好的一个」是 +6.05,换成保留前 4 名的 beam search 是 +5.11;只留最好的那个在 IFBench 上甚至跌到 30.44,低于未优化的 36.90(GEPA,p. 10)。原因是总分择优会让后续候选全挂在同一个亲本下,搜索很快收窄。它还发现只进化指令、不堆少样本示范,也能在六个任务上超过同时搜指令与示范的 MIPROv2,四任务合计的提示词短约 4–5 倍(GEPA,p. 8、p. 31)。所以上图最后一步要留的是「各有所长」的一组候选,而不只是总分前几名。
+
 三条纪律:**一次只动一个维度**(改指令、改示例、改 schema 分开跑),否则涨了也不知道功劳归谁;每轮保留回退到上一版的路;**搜出来的 prompt 必须人读一遍**——搜索非常擅长靠"往里塞验证集的具体特征"作弊,读一遍就能发现它把某个实体名硬编码进去了。
 
 ## 五、评估闭环:三集隔离,粗筛在前贵评在后
@@ -180,3 +182,4 @@ flowchart TD
 - Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection — [arXiv:2302.12173](https://arxiv.org/abs/2302.12173)
 - Universal and Transferable Adversarial Attacks on Aligned Language Models(可迁移对抗后缀)— [arXiv:2307.15043](https://arxiv.org/abs/2307.15043)
 - Design Patterns for Securing LLM Agents against Prompt Injections — [arXiv:2506.08837](https://arxiv.org/abs/2506.08837)
+- GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning(反思改写与帕累托选择)— [arXiv:2507.19457](https://arxiv.org/abs/2507.19457)

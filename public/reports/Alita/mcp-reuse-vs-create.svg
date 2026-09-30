@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="500" viewBox="0 0 860 500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+  <rect x="0" y="0" width="860" height="500" fill="#ffffff"/>
+  <text x="40" y="36" font-size="19" font-weight="700" fill="#111827">没有工具、借来工具、自己造工具，各落在哪一档</text>
+  <text x="40" y="58" font-size="13" fill="#6b7280">GAIA 验证集总分（%）。灰：不用 Alita 造的 MCP；紫：外挂 Claude 3.7 版 Alita 造好的 MCP；</text>
+  <text x="40" y="76" font-size="13" fill="#6b7280">绿：自己跑完整 Alita、当场造 MCP。</text>
+
+  <!-- grid -->
+  <g stroke="#e5e7eb" stroke-width="1">
+    <line x1="320" y1="92" x2="320" y2="402"/>
+    <line x1="450" y1="92" x2="450" y2="402"/>
+    <line x1="580" y1="92" x2="580" y2="402"/>
+    <line x1="710" y1="92" x2="710" y2="402"/>
+  </g>
+  <g font-size="11" fill="#9ca3af" text-anchor="middle">
+    <text x="320" y="420">0</text>
+    <text x="450" y="420">20</text>
+    <text x="580" y="420">40</text>
+    <text x="710" y="420">60</text>
+  </g>
+
+  <!-- group A: GPT-4o-mini -->
+  <text x="40" y="110" font-size="14" font-weight="700" fill="#111827">GPT-4o-mini</text>
+  <text x="305" y="137" font-size="13" fill="#111827" text-anchor="end">ODR 基座，无 Alita MCP</text>
+  <rect x="320" y="122" width="141.8" height="22" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="469.8" y="137" font-size="11" fill="#6b7280">21.82（表 3）</text>
+  <text x="305" y="171" font-size="13" fill="#111827" text-anchor="end">ODR 基座 + 借来的 MCP</text>
+  <rect x="320" y="156" width="189.1" height="22" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+  <text x="517.1" y="171" font-size="11" fill="#6b7280">29.09（表 3）</text>
+  <text x="305" y="205" font-size="13" fill="#111827" text-anchor="end">完整 Alita，自己造 MCP</text>
+  <rect x="320" y="190" width="283.7" height="22" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="611.7" y="205" font-size="11" fill="#6b7280">43.64（表 4）</text>
+
+  <!-- group B: GPT-4o -->
+  <text x="40" y="250" font-size="14" font-weight="700" fill="#111827">GPT-4o</text>
+  <text x="305" y="277" font-size="13" fill="#111827" text-anchor="end">ODR 基座，无 Alita MCP</text>
+  <rect x="320" y="262" width="181.2" height="22" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="509.2" y="277" font-size="11" fill="#6b7280">27.88（表 2）</text>
+  <text x="305" y="311" font-size="13" fill="#111827" text-anchor="end">ODR 基座 + 借来的 MCP</text>
+  <rect x="320" y="296" width="220.6" height="22" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+  <text x="548.6" y="311" font-size="11" fill="#6b7280">33.94（表 2）</text>
+
+  <!-- group C: Claude 3.7 + GPT-4o -->
+  <text x="40" y="356" font-size="14" font-weight="700" fill="#111827">Claude 3.7 Sonnet + GPT-4o</text>
+  <text x="305" y="383" font-size="13" fill="#111827" text-anchor="end">完整 Alita，自己造 MCP</text>
+  <rect x="320" y="368" width="472.7" height="22" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="800.7" y="383" font-size="11" fill="#6b7280">72.73</text>
+
+  <text x="40" y="452" font-size="11" fill="#9ca3af">数据：Alita 原文 PDF p. 7–9 的 Table 1–4。借来的 MCP 都是 Claude 3.7 Sonnet + GPT-4o 版 Alita 跑 GAIA 时造出的那一批。</text>
+  <text x="40" y="472" font-size="11" fill="#9ca3af">表 3 的基座还保留了 ODR 自带的部分预定义工具；表 4 只说把 Claude 3.7 Sonnet 换成 GPT-4o-mini，GPT-4o 是否仍在原文没写。</text>
+</svg>

@@ -156,6 +156,8 @@ Tensor Core 不接受任意形状,它只做**固定尺寸的小矩阵乘加**,�
 
 **实践中谁来 tune**:cuBLAS 内部有预编译的 kernel 集合 + 启发式选择(cuBLASLt 暴露成 `cublasLtMatmulAlgoGetHeuristic`);CUTLASS 提供 profiler 对模板实例做穷举;Triton 用 `@triton.autotune` 声明候选 config 实测挑选;`torch.compile` 的 max-autotune 模式会把 cuBLAS 和 Triton 候选一起 benchmark。**没有一套参数通吃所有 shape,所以"选 kernel"本身才是库的核心竞争力。**
 
+还有第三条路:不在候选 config 里挑,而是让 LLM 进化出「按形状选分块」的那段启发式代码本身。AlphaEvolve 对 Gemini 训练用的一个矩阵乘 kernel 这样做,只改分块策略、不改运算所以正确性由构造保证;输入形状从真实调用方收集,一半当进化目标、一半检验泛化,相对专家写的启发式平均快 23%,折合训练总时长少 1%(AlphaEvolve,p. 15–16)。它和 autotune 的区别在于产物是一段可读、可部署的选择逻辑,而不是一张查表。
+
 ## 六、小 batch 与瘦长矩阵:decode 为什么慢
 
 把第一节的公式套到 $M=1$(decode 阶段一次只解一个 token)上。此时权重矩阵 $K \times N$ 的搬运完全主导访存:
@@ -215,3 +217,4 @@ CUTLASS 的价值在于:**它把本文第二到第五节的每一层都变成了
 - PTX ISA(`mma` 各形状的 fragment 布局与 `ldmatrix` 语义)— https://docs.nvidia.com/cuda/parallel-thread-execution/
 - Stream-K: Work-centric Parallel Decomposition for Dense Matrix-Matrix Multiplication on the GPU — [arXiv:2301.03598](https://arxiv.org/abs/2301.03598)
 - NVIDIA A100 Tensor Core GPU Architecture(白皮书,本文算力/带宽数字来源)— https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/nvidia-ampere-architecture-whitepaper.pdf
+- AlphaEvolve: A coding agent for scientific and algorithmic discovery(LLM 进化分块启发式)— [arXiv:2506.13131](https://arxiv.org/abs/2506.13131)

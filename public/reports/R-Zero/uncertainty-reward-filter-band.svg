@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 610" width="1120" height="610" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="610" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">同一个一致率，两处用：出题奖励看它，课表过滤也看它</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">横轴 = Solver 答 10 次里与多数票一致的次数（一致率 p = 次数 / 10，即正文的经验正确率）；柱高 = Challenger 的不确定度奖励 1 − 2|p − 0.5|（未减重复惩罚）。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">绿 = 进入 Solver 课表的题（3–7 次，δ = 0.25）；灰 = 被过滤掉的题。据 PDF p. 3–4 的公式与设定重画，是机制示意，不是实测分布。</text>
+<line x1="100" y1="420" x2="1060" y2="420" stroke="#e5e7eb" stroke-width="1"/>
+<text x="90" y="424" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="100" y1="300.0" x2="1060" y2="300.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="90" y="304.0" font-size="11" fill="#9ca3af" text-anchor="end">0.5</text>
+<line x1="100" y1="180.0" x2="1060" y2="180.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="90" y="184.0" font-size="11" fill="#9ca3af" text-anchor="end">1</text>
+<text x="100" y="112" font-size="11" fill="#9ca3af">Challenger 奖励</text>
+<rect x="286" y="130" width="492" height="292" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="298" y="152" font-size="14" fill="#111827" font-weight="700">进入课表：|p − 0.5| ≤ 0.25</text>
+<rect x="124.0" y="372.0" width="48" height="48.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="148.0" y="364.0" font-size="11" fill="#6b7280" text-anchor="middle">0.2</text>
+<text x="148.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">1</text>
+<text x="148.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 0.1</text>
+<rect x="220.0" y="324.0" width="48" height="96.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="244.0" y="316.0" font-size="11" fill="#6b7280" text-anchor="middle">0.4</text>
+<text x="244.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">2</text>
+<text x="244.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 0.2</text>
+<rect x="316.0" y="276.0" width="48" height="144.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="340.0" y="268.0" font-size="11" fill="#6b7280" text-anchor="middle">0.6</text>
+<text x="340.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">3</text>
+<text x="340.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 0.3</text>
+<rect x="412.0" y="228.0" width="48" height="192.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="436.0" y="220.0" font-size="11" fill="#6b7280" text-anchor="middle">0.8</text>
+<text x="436.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">4</text>
+<text x="436.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 0.4</text>
+<rect x="508.0" y="180.0" width="48" height="240.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="532.0" y="172.0" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="532.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">5</text>
+<text x="532.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 0.5</text>
+<rect x="604.0" y="228.0" width="48" height="192.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="628.0" y="220.0" font-size="11" fill="#6b7280" text-anchor="middle">0.8</text>
+<text x="628.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">6</text>
+<text x="628.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 0.6</text>
+<rect x="700.0" y="276.0" width="48" height="144.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="724.0" y="268.0" font-size="11" fill="#6b7280" text-anchor="middle">0.6</text>
+<text x="724.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">7</text>
+<text x="724.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 0.7</text>
+<rect x="796.0" y="324.0" width="48" height="96.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="820.0" y="316.0" font-size="11" fill="#6b7280" text-anchor="middle">0.4</text>
+<text x="820.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">8</text>
+<text x="820.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 0.8</text>
+<rect x="892.0" y="372.0" width="48" height="48.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="916.0" y="364.0" font-size="11" fill="#6b7280" text-anchor="middle">0.2</text>
+<text x="916.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">9</text>
+<text x="916.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 0.9</text>
+<line x1="988.0" y1="420" x2="1036.0" y2="420" stroke="#b9b9b9" stroke-width="3"/>
+<text x="1012.0" y="412.0" font-size="11" fill="#6b7280" text-anchor="middle">0</text>
+<text x="1012.0" y="440" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">10</text>
+<text x="1012.0" y="456" font-size="11" fill="#9ca3af" text-anchor="middle">p = 1</text>
+<line x1="100" y1="420" x2="1060" y2="420" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="580" y="480" font-size="11" fill="#9ca3af" text-anchor="middle">多数票至少占 1 票，所以 p 不会是 0；奖励最低的一端其实是「答案高度一致」</text>
+<rect x="100" y="500" width="300" height="84" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="114" y="524" font-size="14" fill="#111827" font-weight="700">答案很散：1–2 次</text>
+<text x="114" y="548" font-size="11" fill="#6b7280">奖励还有 0.2–0.4，但题可能含糊、病态，</text>
+<text x="114" y="568" font-size="11" fill="#6b7280">多数票也靠不住，过滤把它挡在课表外</text>
+<rect x="410" y="500" width="300" height="84" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="424" y="524" font-size="14" fill="#111827" font-weight="700">刚好卡在边界：5 次</text>
+<text x="424" y="548" font-size="11" fill="#6b7280">奖励 1.0 最高。附录 F 的动机：二值奖励</text>
+<text x="424" y="568" font-size="11" fill="#6b7280">方差 p(1 − p) 在 0.5 处最大</text>
+<rect x="720" y="500" width="340" height="84" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="734" y="524" font-size="14" fill="#111827" font-weight="700">高度一致：8–10 次</text>
+<text x="734" y="548" font-size="11" fill="#6b7280">可能是太易，也可能是一致地答错；</text>
+<text x="734" y="568" font-size="11" fill="#6b7280">多数票分不出这两种，奖励都趋近 0</text>
+</svg>
