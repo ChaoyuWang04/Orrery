@@ -315,8 +315,8 @@
 | LayoutVLM | Stanford | VLM 可微优化 3D 布局(CVPR 2025) |
 | TRELLIS | Microsoft | 结构化 3D 潜表示,一套潜变量出多种 3D 格式 |
 | Video-3D-LLM | CUHK | 把 3D 场景当视频,位置感知表示(CVPR 2025) |
-| Transfusion | Meta | 一个模型同时做 next-token 与扩散 |
-| Stable-Diffusion-3 | StabilityAI | MMDiT + 校正流的文生图基模报告 |
+| Transfusion | Meta | 一个 Transformer 同时做 next-token 与扩散:受控对照下图像质量追平 Chameleon 只需约 3% 算力 |
+| Stable-Diffusion-3 | StabilityAI | 校正流加 logit-normal 时间步、MMDiT 双流,放大到 8B,验证损失与人评同步下降 |
 | FlexiCubes | NVIDIA | 可微等值面提取,基于梯度的网格优化 |
 | WanPE | Alibaba | 万相团队的 397B 视频提示词增强模型:从 105 万条真实视频反向构造分镜级计划,用 SC-GRPO 保住用户要求,并配 5 到 30 秒的人工标注评测集 |
 | Seedance-1.0 | ByteDance | 视频基模的质量、效率、可控性三角与蒸馏;1.5 pro 与 2.0 同系列并入(arXiv 2506.09113) |

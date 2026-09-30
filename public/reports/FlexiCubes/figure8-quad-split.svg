@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<rect x="16" y="76" width="352" height="404" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="384" y="76" width="352" height="404" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="752" y="76" width="352" height="404" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<path d="M52,220 L212,140 L332,170 L182,370 Z" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<line x1="52" y1="220" x2="332" y2="170" stroke="#8f8bd8" stroke-width="2"/>
+<line x1="212" y1="140" x2="182" y2="370" stroke="#d4a24c" stroke-width="2" stroke-dasharray="6 4"/>
+<circle cx="52" cy="220" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="212" cy="140" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="332" cy="170" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="182" cy="370" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<path d="M420,220 L580,140 L700,170 L550,370 Z" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<line x1="562" y1="219" x2="420" y2="220" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="562" y1="219" x2="580" y2="140" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="562" y1="219" x2="700" y2="170" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="562" y1="219" x2="550" y2="370" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="560" y1="195" x2="565" y2="255" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="3 3"/>
+<circle cx="560" cy="195" r="5" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="565" cy="255" r="5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="562" cy="219" r="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.6"/>
+<circle cx="420" cy="220" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="580" cy="140" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="700" cy="170" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="550" cy="370" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<path d="M788,220 L948,140 L1068,170 L918,370 Z" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+<line x1="788" y1="220" x2="1068" y2="170" stroke="#5fa886" stroke-width="2.4"/>
+<circle cx="788" cy="220" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="948" cy="140" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="1068" cy="170" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<circle cx="918" cy="370" r="4" fill="#ffffff" stroke="#6b7280" stroke-width="1.6"/>
+<text x="42" y="224" font-size="11" fill="#111827" text-anchor="end" font-weight="700">v1</text>
+<text x="212" y="128" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">v2</text>
+<text x="342" y="174" font-size="11" fill="#111827" font-weight="700">v3</text>
+<text x="182" y="392" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">v4</text>
+<text x="410" y="224" font-size="11" fill="#111827" text-anchor="end" font-weight="700">v1</text>
+<text x="580" y="128" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">v2</text>
+<text x="710" y="174" font-size="11" fill="#111827" font-weight="700">v3</text>
+<text x="550" y="392" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">v4</text>
+<text x="548" y="191" font-size="11" fill="#6b7280" text-anchor="end">1–3 中点</text>
+<text x="577" y="269" font-size="11" fill="#6b7280">2–4 中点</text>
+<text x="574" y="223" font-size="13" fill="#111827" font-weight="700">v̄</text>
+<text x="778" y="224" font-size="11" fill="#111827" text-anchor="end" font-weight="700">v1</text>
+<text x="948" y="128" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">v2</text>
+<text x="1078" y="174" font-size="11" fill="#111827" font-weight="700">v3</text>
+<text x="918" y="392" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">v4</text>
+<text x="888" y="170" font-size="11" fill="#6b7280">三角 ①</text>
+<text x="898" y="290" font-size="11" fill="#6b7280">三角 ②</text>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">四边形怎么剖成三角：训练时软选，推理时硬切</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 对角线 1–3 及其中点；黄 = 对角线 2–4 及其中点；绿 = 最终用上的点与线。四边形是非平面面片的投影示意，按原文 Figure 8 重画。</text>
+<text x="192" y="100" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(a) 同一个四边形，两种剖法</text>
+<text x="560" y="100" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(b) 优化时：加权中点，剖 4 片</text>
+<text x="928" y="100" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">(c) 推理时：选一条对角线，剖 2 片</text>
+<text x="192" y="422" font-size="11" fill="#6b7280" text-anchor="middle">抽出的是非平面四边形，</text>
+<text x="192" y="440" font-size="11" fill="#6b7280" text-anchor="middle">沿 1–3 还是 2–4 切开，几何不一样；</text>
+<text x="192" y="458" font-size="11" fill="#6b7280" text-anchor="middle">形状未知时，没有哪条对角线总是对的。</text>
+<text x="560" y="422" font-size="11" fill="#6b7280" text-anchor="middle">插入中点 v̄，四个顶点各连一条边；</text>
+<text x="560" y="440" font-size="11" fill="#6b7280" text-anchor="middle">v̄ 按 γ1·γ3 与 γ2·γ4 给两个中点加权，</text>
+<text x="560" y="458" font-size="11" fill="#6b7280" text-anchor="middle">改 γ 就在两种剖法之间连续过渡。</text>
+<text x="928" y="422" font-size="11" fill="#6b7280" text-anchor="middle">不再插中点，只切一刀成 2 片；</text>
+<text x="928" y="440" font-size="11" fill="#6b7280" text-anchor="middle">沿 γ 乘积更大的那条对角线切开。</text>
+<text x="928" y="458" font-size="11" fill="#6b7280" text-anchor="middle">图里设 γ1·γ3 更大，所以沿 1–3。</text>
+</svg>

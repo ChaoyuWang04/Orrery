@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 360" width="1120" height="360" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="360" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">训练样本的两种排法：标题在前学画图，图在前学看图说话</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 标题文字；绿 = 加了噪的图像块；灰 = 模态边界标记。示意，不是语料原文，报告没有给出标题样例。</text>
+<text x="40.0" y="98.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">80% 的图文对：标题在前，图以标题为条件（PDF p. 6）</text>
+<rect x="40.0" y="110.0" width="300.0" height="44.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="190.0" y="137.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">标题 token …</text>
+<rect x="348.0" y="110.0" width="70.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="383.0" y="137.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">BOI</text>
+<rect x="426.0" y="110.0" width="480.0" height="44.0" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="666.0" y="137.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">图像块 × 256，按 1000 步日程加噪</text>
+<rect x="914.0" y="110.0" width="70.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="949.0" y="137.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">EOI</text>
+<text x="40.0" y="208.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">20% 的图文对：图在前，标题以图为条件（PDF p. 19）</text>
+<rect x="40.0" y="220.0" width="70.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="75.0" y="247.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">BOI</text>
+<rect x="118.0" y="220.0" width="480.0" height="44.0" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="358.0" y="247.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">图像块 × 256，同样加噪</text>
+<rect x="606.0" y="220.0" width="70.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="641.0" y="247.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">EOI</text>
+<rect x="684.0" y="220.0" width="300.0" height="44.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="834.0" y="247.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">标题 token …</text>
+<text x="40.0" y="296.0" font-size="13" fill="#111827" text-anchor="start">图在前时，后面的标题训练中看到的是带噪的图，推理时却是干净图（PDF p. 5 脚注 1）。</text>
+<text x="40.0" y="320.0" font-size="13" fill="#6b7280" text-anchor="start">附录 B.2 的变体只对这 20% 把噪声上限设为 t = 500：CIDEr 0.76B 从 25.4 到 29.4，7B 从 33.7 到 35.2（PDF p. 20 Table 11）。</text>
+<text x="40.0" y="346.0" font-size="12" fill="#9ca3af" text-anchor="start">256 个块对应旗舰与多数消融用的 2×2 合并；按 PDF p. 4–6 与附录 B 重画。</text>
+</svg>

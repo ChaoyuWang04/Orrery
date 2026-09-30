@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">MM-DiT 块：两列各用自己的权重，只在注意力里拼成一条序列</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 文字流的权重；绿 = 图像流的权重；黄 = 两列共用的调制来源 y；灰 = 没有自己权重的联合注意力。</text>
+<rect x="430.0" y="72.0" width="260.0" height="46.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="560.0" y="92.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">调制向量 y</text>
+<text x="560.0" y="110.0" font-size="11" fill="#6b7280" text-anchor="middle">时间步编码 + CLIP pooled 向量</text>
+<path d="M430,95 L240.0,95 L240.0,128" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<path d="M690,95 L880.0,95 L880.0,128" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="250.0" y="88.0" font-size="11" fill="#9ca3af" text-anchor="middle">各自一套 SiLU + Linear，算出 α β γ δ ε ζ</text>
+<text x="870.0" y="88.0" font-size="11" fill="#9ca3af" text-anchor="middle">另一套 SiLU + Linear</text>
+<rect x="110.0" y="130.0" width="260.0" height="46.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="240.0" y="150.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">文字 token c</text>
+<text x="240.0" y="168.0" font-size="11" fill="#6b7280" text-anchor="middle">154 个，来自 CLIP 与 T5</text>
+<rect x="110.0" y="198.0" width="260.0" height="46.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="240.0" y="226.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">LayerNorm，按 α、β 调制</text>
+<rect x="110.0" y="266.0" width="260.0" height="46.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="240.0" y="286.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Linear 出 Q、K、V</text>
+<text x="240.0" y="304.0" font-size="11" fill="#6b7280" text-anchor="middle">Q、K 可选 RMSNorm</text>
+<rect x="110.0" y="400.0" width="260.0" height="46.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="240.0" y="428.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Linear，乘门控 γ，加残差</text>
+<rect x="110.0" y="468.0" width="260.0" height="46.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="240.0" y="496.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">LayerNorm，按 δ、ε 调制</text>
+<rect x="110.0" y="536.0" width="260.0" height="46.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="240.0" y="564.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MLP，乘门控 ζ，加残差</text>
+<line x1="240.0" y1="176.0" x2="240.0" y2="198.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="240.0" y1="244.0" x2="240.0" y2="266.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="240.0" y1="446.0" x2="240.0" y2="468.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="240.0" y1="514.0" x2="240.0" y2="536.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="750.0" y="130.0" width="260.0" height="46.0" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="880.0" y="150.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">图像 token x</text>
+<text x="880.0" y="168.0" font-size="11" fill="#6b7280" text-anchor="middle">2×2 patch，共 h/2 × w/2 个</text>
+<rect x="750.0" y="198.0" width="260.0" height="46.0" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="880.0" y="226.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">LayerNorm，按 α、β 调制</text>
+<rect x="750.0" y="266.0" width="260.0" height="46.0" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="880.0" y="286.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Linear 出 Q、K、V</text>
+<text x="880.0" y="304.0" font-size="11" fill="#6b7280" text-anchor="middle">Q、K 可选 RMSNorm</text>
+<rect x="750.0" y="400.0" width="260.0" height="46.0" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="880.0" y="428.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Linear，乘门控 γ，加残差</text>
+<rect x="750.0" y="468.0" width="260.0" height="46.0" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="880.0" y="496.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">LayerNorm，按 δ、ε 调制</text>
+<rect x="750.0" y="536.0" width="260.0" height="46.0" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+<text x="880.0" y="564.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">MLP，乘门控 ζ，加残差</text>
+<line x1="880.0" y1="176.0" x2="880.0" y2="198.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="880.0" y1="244.0" x2="880.0" y2="266.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="880.0" y1="446.0" x2="880.0" y2="468.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="880.0" y1="514.0" x2="880.0" y2="536.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="170.0" y="334.0" width="780.0" height="44.0" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="560.0" y="361.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">拼接 [c ; x]，做一次完整注意力，再按位置拆回两列</text>
+<line x1="240.0" y1="312.0" x2="240.0" y2="334.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="880.0" y1="312.0" x2="880.0" y2="334.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="240.0" y1="378.0" x2="240.0" y2="400.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="880.0" y1="378.0" x2="880.0" y2="400.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="560.0" y="420.0" font-size="11" fill="#6b7280" text-anchor="middle">文字 token 能看见图像 token，</text>
+<text x="560.0" y="438.0" font-size="11" fill="#6b7280" text-anchor="middle">图像 token 也能看见文字 token</text>
+<text x="240.0" y="604.0" font-size="11" fill="#9ca3af" text-anchor="middle">输出进下一块（共 d 块）</text>
+<text x="880.0" y="604.0" font-size="11" fill="#9ca3af" text-anchor="middle">最后一块后反 patch，输出速度</text>
+<line x1="240.0" y1="582.0" x2="240.0" y2="592.0" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="880.0" y1="582.0" x2="880.0" y2="592.0" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="30.0" y="628.0" font-size="12" fill="#9ca3af" text-anchor="start">据 PDF p. 5 Figure 2b 重画，属机制示意。块数 d 决定规模：隐藏维 64·d，MLP 4·64·d，头数 d（PDF p. 5）。</text>
+</svg>

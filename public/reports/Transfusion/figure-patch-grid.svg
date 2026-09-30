@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">一张图占几个位置：32×32 的潜变量按 k×k 合并</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">灰格 = 送进 Transformer 的一个位置。256×256 像素经 VAE 压成 32×32×8，每个潜像素对应 8×8 像素（PDF p. 18）。</text>
+<rect x="50.0" y="90.0" width="200.0" height="200.0" rx="0" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="56.2" y1="90.0" x2="56.2" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="96.2" x2="250.0" y2="96.2" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="62.5" y1="90.0" x2="62.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="102.5" x2="250.0" y2="102.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="68.8" y1="90.0" x2="68.8" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="108.8" x2="250.0" y2="108.8" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="75.0" y1="90.0" x2="75.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="115.0" x2="250.0" y2="115.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="81.2" y1="90.0" x2="81.2" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="121.2" x2="250.0" y2="121.2" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="87.5" y1="90.0" x2="87.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="127.5" x2="250.0" y2="127.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="93.8" y1="90.0" x2="93.8" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="133.8" x2="250.0" y2="133.8" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="100.0" y1="90.0" x2="100.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="140.0" x2="250.0" y2="140.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="106.2" y1="90.0" x2="106.2" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="146.2" x2="250.0" y2="146.2" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="112.5" y1="90.0" x2="112.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="152.5" x2="250.0" y2="152.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="118.8" y1="90.0" x2="118.8" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="158.8" x2="250.0" y2="158.8" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="125.0" y1="90.0" x2="125.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="165.0" x2="250.0" y2="165.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="131.2" y1="90.0" x2="131.2" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="171.2" x2="250.0" y2="171.2" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="137.5" y1="90.0" x2="137.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="177.5" x2="250.0" y2="177.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="143.8" y1="90.0" x2="143.8" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="183.8" x2="250.0" y2="183.8" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="150.0" y1="90.0" x2="150.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="190.0" x2="250.0" y2="190.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="156.2" y1="90.0" x2="156.2" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="196.2" x2="250.0" y2="196.2" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="162.5" y1="90.0" x2="162.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="202.5" x2="250.0" y2="202.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="168.8" y1="90.0" x2="168.8" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="208.8" x2="250.0" y2="208.8" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="175.0" y1="90.0" x2="175.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="215.0" x2="250.0" y2="215.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="181.2" y1="90.0" x2="181.2" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="221.2" x2="250.0" y2="221.2" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="187.5" y1="90.0" x2="187.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="227.5" x2="250.0" y2="227.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="193.8" y1="90.0" x2="193.8" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="233.8" x2="250.0" y2="233.8" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="200.0" y1="90.0" x2="200.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="240.0" x2="250.0" y2="240.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="206.2" y1="90.0" x2="206.2" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="246.2" x2="250.0" y2="246.2" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="212.5" y1="90.0" x2="212.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="252.5" x2="250.0" y2="252.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="218.8" y1="90.0" x2="218.8" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="258.8" x2="250.0" y2="258.8" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="225.0" y1="90.0" x2="225.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="265.0" x2="250.0" y2="265.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="231.2" y1="90.0" x2="231.2" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="271.2" x2="250.0" y2="271.2" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="237.5" y1="90.0" x2="237.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="277.5" x2="250.0" y2="277.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="243.8" y1="90.0" x2="243.8" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="50.0" y1="283.8" x2="250.0" y2="283.8" stroke="#b9b9b9" stroke-width="0.6"/>
+<text x="150.0" y="316.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">k = 1：每张图 1024 个位置</text>
+<text x="150.0" y="336.0" font-size="11" fill="#6b7280" text-anchor="middle">一个位置 = 8×8 像素</text>
+<text x="150.0" y="364.0" font-size="12" fill="#6b7280" text-anchor="middle">不合并</text>
+<text x="150.0" y="386.0" font-size="12" fill="#111827" text-anchor="middle">FID 21.0，CIDEr 12.0</text>
+<rect x="312.0" y="90.0" width="200.0" height="200.0" rx="0" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="324.5" y1="90.0" x2="324.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="102.5" x2="512.0" y2="102.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="337.0" y1="90.0" x2="337.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="115.0" x2="512.0" y2="115.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="349.5" y1="90.0" x2="349.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="127.5" x2="512.0" y2="127.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="362.0" y1="90.0" x2="362.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="140.0" x2="512.0" y2="140.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="374.5" y1="90.0" x2="374.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="152.5" x2="512.0" y2="152.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="387.0" y1="90.0" x2="387.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="165.0" x2="512.0" y2="165.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="399.5" y1="90.0" x2="399.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="177.5" x2="512.0" y2="177.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="412.0" y1="90.0" x2="412.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="190.0" x2="512.0" y2="190.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="424.5" y1="90.0" x2="424.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="202.5" x2="512.0" y2="202.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="437.0" y1="90.0" x2="437.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="215.0" x2="512.0" y2="215.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="449.5" y1="90.0" x2="449.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="227.5" x2="512.0" y2="227.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="462.0" y1="90.0" x2="462.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="240.0" x2="512.0" y2="240.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="474.5" y1="90.0" x2="474.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="252.5" x2="512.0" y2="252.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="487.0" y1="90.0" x2="487.0" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="265.0" x2="512.0" y2="265.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="499.5" y1="90.0" x2="499.5" y2="290.0" stroke="#b9b9b9" stroke-width="0.6"/>
+<line x1="312.0" y1="277.5" x2="512.0" y2="277.5" stroke="#b9b9b9" stroke-width="0.6"/>
+<text x="412.0" y="316.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">k = 2：每张图 256 个位置</text>
+<text x="412.0" y="336.0" font-size="11" fill="#6b7280" text-anchor="middle">一个位置 = 16×16 像素</text>
+<text x="412.0" y="364.0" font-size="12" fill="#111827" text-anchor="middle">线性：FID 20.3，CIDEr 16.0</text>
+<text x="412.0" y="386.0" font-size="12" fill="#111827" text-anchor="middle">U-Net：FID 16.7，CIDEr 25.4</text>
+<rect x="574.0" y="90.0" width="200.0" height="200.0" rx="0" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="599.0" y1="90.0" x2="599.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="574.0" y1="115.0" x2="774.0" y2="115.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="624.0" y1="90.0" x2="624.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="574.0" y1="140.0" x2="774.0" y2="140.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="649.0" y1="90.0" x2="649.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="574.0" y1="165.0" x2="774.0" y2="165.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="674.0" y1="90.0" x2="674.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="574.0" y1="190.0" x2="774.0" y2="190.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="699.0" y1="90.0" x2="699.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="574.0" y1="215.0" x2="774.0" y2="215.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="724.0" y1="90.0" x2="724.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="574.0" y1="240.0" x2="774.0" y2="240.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="749.0" y1="90.0" x2="749.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="574.0" y1="265.0" x2="774.0" y2="265.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="674.0" y="316.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">k = 4：每张图 64 个位置</text>
+<text x="674.0" y="336.0" font-size="11" fill="#6b7280" text-anchor="middle">一个位置 = 32×32 像素</text>
+<text x="674.0" y="364.0" font-size="12" fill="#111827" text-anchor="middle">线性：FID 25.6，CIDEr 14.3</text>
+<text x="674.0" y="386.0" font-size="12" fill="#111827" text-anchor="middle">U-Net：FID 16.0，CIDEr 29.9</text>
+<rect x="836.0" y="90.0" width="200.0" height="200.0" rx="0" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="886.0" y1="90.0" x2="886.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="836.0" y1="140.0" x2="1036.0" y2="140.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="936.0" y1="90.0" x2="936.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="836.0" y1="190.0" x2="1036.0" y2="190.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="986.0" y1="90.0" x2="986.0" y2="290.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<line x1="836.0" y1="240.0" x2="1036.0" y2="240.0" stroke="#b9b9b9" stroke-width="1.2"/>
+<text x="936.0" y="316.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">k = 8：每张图 16 个位置</text>
+<text x="936.0" y="336.0" font-size="11" fill="#6b7280" text-anchor="middle">一个位置 = 64×64 像素</text>
+<text x="936.0" y="364.0" font-size="12" fill="#111827" text-anchor="middle">线性：FID 43.5，CIDEr 11.3</text>
+<text x="936.0" y="386.0" font-size="12" fill="#111827" text-anchor="middle">U-Net：FID 16.1，CIDEr 29.5</text>
+<text x="50.0" y="440.0" font-size="13" fill="#111827" text-anchor="start">数字来自 0.76B 模型、0.5T token 的消融（PDF p. 19 Table 9）。线性层压到 16 个位置时 FID 从 20.3 垮到 43.5；U-Net 块压到 16 个仍是 16.1。</text>
+<text x="50.0" y="464.0" font-size="13" fill="#6b7280" text-anchor="start">文字与图像的 token 比固定为 1:1：位置越少，同一预算里看过的图越多，每张图分到的算力越少（PDF p. 18 脚注 7）。</text>
+<text x="50.0" y="496.0" font-size="12" fill="#9ca3af" text-anchor="start">7B / 2T 旗舰用的是 U-Net、k = 2，每张图 256 个位置（PDF p. 9）；16 个位置只在 0.76B 消融里验证过。</text>
+</svg>

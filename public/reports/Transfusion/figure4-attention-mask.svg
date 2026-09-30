@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 4 的掩码：默认因果，同一张图的块之间放开</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">行 = 正在计算的位置，列 = 它能看见的位置。绿 = 因果掩码本来就允许；黄 = Transfusion 额外放开；白 = 看不见。</text>
+<rect x="130.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="202.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="238.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="274.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="310.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="346.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="382.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="418.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="454.0" y="120.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="130.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="202.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="238.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="274.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="310.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="346.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="382.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="418.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="454.0" y="156.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="130.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="202.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="238.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="274.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="310.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="346.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="382.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="418.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="454.0" y="192.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="130.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="202.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="238.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="274.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="310.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="346.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="382.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="418.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="454.0" y="228.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="130.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="202.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="238.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="274.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="310.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#fdf1dc" stroke="#cbd2d9"/>
+<rect x="346.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#fdf1dc" stroke="#cbd2d9"/>
+<rect x="382.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#fdf1dc" stroke="#cbd2d9"/>
+<rect x="418.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="454.0" y="264.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="130.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="202.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="238.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="274.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="310.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="346.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#fdf1dc" stroke="#cbd2d9"/>
+<rect x="382.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#fdf1dc" stroke="#cbd2d9"/>
+<rect x="418.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="454.0" y="300.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="130.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="202.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="238.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="274.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="310.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="346.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="382.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#fdf1dc" stroke="#cbd2d9"/>
+<rect x="418.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="454.0" y="336.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="130.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="202.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="238.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="274.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="310.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="346.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="382.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="418.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="454.0" y="372.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="130.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="202.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="238.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="274.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="310.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="346.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="382.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="418.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="454.0" y="408.0" width="36.0" height="36.0" rx="0" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="130.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="166.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="202.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="238.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="274.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="310.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="346.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="382.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="418.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<rect x="454.0" y="444.0" width="36.0" height="36.0" rx="0" fill="#e3f4ec" stroke="#cbd2d9"/>
+<text x="122.0" y="142.0" font-size="11" fill="#111827" text-anchor="end">A</text>
+<text x="148.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">A</text>
+<text x="122.0" y="178.0" font-size="11" fill="#111827" text-anchor="end">cute</text>
+<text x="184.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">cute</text>
+<text x="122.0" y="214.0" font-size="11" fill="#111827" text-anchor="end">cat</text>
+<text x="220.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">cat</text>
+<text x="122.0" y="250.0" font-size="11" fill="#111827" text-anchor="end">BOI</text>
+<text x="256.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">BOI</text>
+<text x="122.0" y="286.0" font-size="11" fill="#111827" text-anchor="end">块 1</text>
+<text x="292.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">块 1</text>
+<text x="122.0" y="322.0" font-size="11" fill="#111827" text-anchor="end">块 2</text>
+<text x="328.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">块 2</text>
+<text x="122.0" y="358.0" font-size="11" fill="#111827" text-anchor="end">块 3</text>
+<text x="364.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">块 3</text>
+<text x="122.0" y="394.0" font-size="11" fill="#111827" text-anchor="end">块 4</text>
+<text x="400.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">块 4</text>
+<text x="122.0" y="430.0" font-size="11" fill="#111827" text-anchor="end">EOI</text>
+<text x="436.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">EOI</text>
+<text x="122.0" y="466.0" font-size="11" fill="#111827" text-anchor="end">What</text>
+<text x="472.0" y="112.0" font-size="10" fill="#111827" text-anchor="middle">What</text>
+<rect x="274" y="264" width="144" height="144" fill="none" stroke="#d4a24c" stroke-width="2"/>
+<text x="310.0" y="504.0" font-size="11" fill="#9ca3af" text-anchor="middle">橙框：同一张图的 4 个块</text>
+<text x="560.0" y="140.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">读这张表的三条</text>
+<text x="560.0" y="168.0" font-size="13" fill="#111827" text-anchor="start">1. 文字行只有绿格：写字仍然只看自己和左边。</text>
+<text x="560.0" y="196.0" font-size="13" fill="#111827" text-anchor="start">2. 块 1 那一行也能看块 2–4（黄格）：画布上的块互相都看。</text>
+<text x="560.0" y="224.0" font-size="13" fill="#111827" text-anchor="start">3. EOI、What 能看整张图；BOI 之前的文字看不到图。</text>
+<text x="560.0" y="252.0" font-size="13" fill="#6b7280" text-anchor="start">序列里若有第二张图，它的块能看第一张图；</text>
+<text x="560.0" y="280.0" font-size="13" fill="#6b7280" text-anchor="start">第一张看不到第二张，双向只在一张图内部（PDF p. 5）。</text>
+<text x="560.0" y="326.0" font-size="14" fill="#111827" text-anchor="start" font-weight="700">去掉黄格会怎样（0.76B，2×2 块，PDF p. 8 Table 3）</text>
+<text x="560.0" y="354.0" font-size="13" fill="#111827" text-anchor="start">线性编解码：FID 从 20.3 恶化到 61.3，CIDEr 16.0 → 12.7。</text>
+<text x="560.0" y="382.0" font-size="13" fill="#111827" text-anchor="start">U-Net 编解码：FID 16.7 → 16.8，CIDEr 25.4 → 23.3。</text>
+<text x="560.0" y="410.0" font-size="13" fill="#6b7280" text-anchor="start">U-Net 块内部自带双向注意力，所以对掩码不那么敏感。</text>
+<text x="30.0" y="540.0" font-size="12" fill="#9ca3af" text-anchor="start">据 PDF p. 4 Figure 4 逐格重画：行列标签与原图一致，原图用小猫图片表示 4 个块。</text>
+</svg>

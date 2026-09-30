@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" text-anchor="start" font-weight="700">文字条件怎么排：粗语义进调制，逐词序列进注意力</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280" text-anchor="start">紫 = 两个 CLIP 的输出；黄 = T5 的输出；灰 = 零填充。右侧色块宽度按通道数成比例。</text>
+<rect x="30.0" y="232.0" width="110.0" height="46.0" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-width="1"/>
+<text x="85.0" y="260.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">提示词</text>
+<rect x="190.0" y="100.0" width="220.0" height="50.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="300.0" y="122.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">CLIP L/14</text>
+<text x="300.0" y="140.0" font-size="11" fill="#6b7280" text-anchor="middle">pooled 768；序列 77 × 768</text>
+<rect x="190.0" y="210.0" width="220.0" height="50.0" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="300.0" y="232.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">OpenCLIP bigG/14</text>
+<text x="300.0" y="250.0" font-size="11" fill="#6b7280" text-anchor="middle">pooled 1280；序列 77 × 1280</text>
+<rect x="190.0" y="340.0" width="220.0" height="50.0" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="300.0" y="362.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">T5-v1.1-XXL（4.7B）</text>
+<text x="300.0" y="380.0" font-size="11" fill="#6b7280" text-anchor="middle">编码器末层 77 × 4096</text>
+<line x1="140.0" y1="255.0" x2="188.0" y2="125.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="140.0" y1="255.0" x2="188.0" y2="235.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="140.0" y1="255.0" x2="188.0" y2="365.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="520.0" y="96.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">c_vec：两个 pooled 向量首尾相接，2048 维</text>
+<rect x="520.0" y="108.0" width="97.5" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="568.8" y="126.0" font-size="11" fill="#111827" text-anchor="middle">L 768</text>
+<rect x="617.5" y="108.0" width="162.5" height="26.0" rx="3" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="698.8" y="126.0" font-size="11" fill="#111827" text-anchor="middle">bigG 1280</text>
+<text x="794.0" y="126.0" font-size="11" fill="#6b7280" text-anchor="start">→ 与时间步合成 y，进 AdaLN 式调制</text>
+<text x="520.0" y="180.0" font-size="13" fill="#111827" text-anchor="start" font-weight="700">c_ctxt：154 × 4096，进 MM-DiT 的文字流</text>
+<rect x="520.0" y="196.0" width="97.5" height="90.0" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="568.8" y="245.0" font-size="11" fill="#111827" text-anchor="middle">L 768</text>
+<rect x="617.5" y="196.0" width="162.5" height="90.0" rx="0" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1"/>
+<text x="698.8" y="245.0" font-size="11" fill="#111827" text-anchor="middle">bigG 1280</text>
+<rect x="780.0" y="196.0" width="260.0" height="90.0" rx="0" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1"/>
+<text x="910.0" y="245.0" font-size="11" fill="#6b7280" text-anchor="middle">补零到 4096</text>
+<rect x="520.0" y="286.0" width="520.0" height="90.0" rx="0" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1"/>
+<text x="780.0" y="335.0" font-size="11" fill="#111827" text-anchor="middle">T5 4096</text>
+<text x="512.0" y="245.0" font-size="11" fill="#6b7280" text-anchor="end">第 1–77 位</text>
+<text x="512.0" y="335.0" font-size="11" fill="#6b7280" text-anchor="end">第 78–154 位</text>
+<text x="1052.0" y="245.0" font-size="11" fill="#9ca3af" text-anchor="start">通道维拼接</text>
+<text x="1052.0" y="335.0" font-size="11" fill="#9ca3af" text-anchor="start">序列维接续</text>
+<line x1="410.0" y1="118.0" x2="516.0" y2="121.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="410.0" y1="228.0" x2="516.0" y2="126.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="410.0" y1="132.0" x2="448.0" y2="226.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="410.0" y1="242.0" x2="448.0" y2="246.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="410.0" y1="365.0" x2="436.0" y2="331.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="30.0" y="420.0" width="1060.0" height="76.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="50.0" y="446.0" font-size="13" fill="#111827" text-anchor="start">训练：三路各自独立以 46.4% 的概率整路置零，三路同时为零的步约占 10%，这就是 CFG 需要的无条件训练（PDF p. 19）。</text>
+<text x="50.0" y="474.0" font-size="13" fill="#111827" text-anchor="start">推理：可以只留任意子集。去掉 T5 省下 19.05 GB 显存，美学不受影响，排版明显变差（PDF p. 20 Table 7、p. 24）。</text>
+<text x="30.0" y="530.0" font-size="12" fill="#9ca3af" text-anchor="start">据 PDF p. 18 附录 B.2 与 p. 5 Figure 2a 重画，布局示意，不是某条真实提示词的特征。</text>
+</svg>

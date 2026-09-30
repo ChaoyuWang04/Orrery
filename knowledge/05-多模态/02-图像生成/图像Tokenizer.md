@@ -172,6 +172,7 @@ tokenizer 一旦定了,下游能选什么范式、要付多少代价也就基本
 | 多尺度残差量化 | 下一尺度预测(VAR):先出一整张低分辨率 token 图,再逐级细化 | 自回归的「下一个单位」被 tokenizer 重新定义了 |
 | 不量化,连续 token | 自回归 + 扩散损失(MAR) | 省掉量化误差,换来每个 token 都要跑一个小扩散头 |
 | 图像与文本共用一个词表 | 早融合的混合模态序列(Chameleon) | 图像 token 与文本 token 抢同一个 softmax 和同一份上下文预算 |
+| 图像不量化、文本照常离散 | 同一主干里文字走 next-token、图像连续 patch 走扩散损失(Transfusion) | 受控对照下图像质量追平 Chameleon 只需约 3% 算力,纯文本能力也掉得更少;代价是一段图像要跑几百步去噪 |
 
 VAR 那一行最说明问题:**它把自回归的「下一个单位」从「下一个位置」改成了「下一个分辨率」,而这件事只有在 tokenizer 本身按尺度做残差量化之后才成立**。所以 tokenizer 不是生成模型的前处理,它定义了生成模型的状态空间。
 
@@ -210,3 +211,4 @@ VAR 那一行最说明问题:**它把自回归的「下一个单位」从「下�
 - Chameleon: Mixed-Modal Early-Fusion Foundation Models(图文共用词表的早融合序列)— [arXiv:2405.09818](https://arxiv.org/abs/2405.09818)
 - Recommender Systems with Generative Retrieval(TIGER:语义 ID 与生成式检索)— [arXiv:2305.05065](https://arxiv.org/abs/2305.05065)
 - High-Resolution Image Synthesis with Latent Diffusion Models(KL-reg 与 VQ-reg 的下游对比)— [arXiv:2112.10752](https://arxiv.org/abs/2112.10752)
+- Transfusion: Predict the Next Token and Diffuse Images with One Multi-Modal Model — [arXiv:2408.11039](https://arxiv.org/abs/2408.11039)
