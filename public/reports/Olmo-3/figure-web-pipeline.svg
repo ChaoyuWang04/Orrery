@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 580" width="1120" height="580" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="580" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">网页数据先洗到几乎不重复，再按主题与质量把重复有选择地加回来</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰条 = 剩余文档数（按长度线性缩放）；下方格子：灰 = 丢弃的低质量档，绿 = 保留，绿越深重复次数越多。</text>
+<text x="40" y="105" font-size="14" fill="#111827" text-anchor="start" font-weight="700">CommonCrawl 104 个 dump</text>
+<rect x="320" y="86" width="500.0" height="28" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="832.0" y="105" font-size="13" fill="#6b7280" text-anchor="start">252.6B 文档</text>
+<text x="40" y="151" font-size="14" fill="#111827" text-anchor="start" font-weight="700">启发式过滤</text>
+<rect x="320" y="132" width="76.6" height="28" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="408.6" y="151" font-size="13" fill="#6b7280" text-anchor="start">38.7B，去掉约 85%</text>
+<text x="40" y="197" font-size="14" fill="#111827" text-anchor="start" font-weight="700">精确去重（文本哈希）</text>
+<rect x="320" y="178" width="25.3" height="28" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="357.3" y="197" font-size="13" fill="#6b7280" text-anchor="start">12.8B，再去 67%</text>
+<text x="40" y="243" font-size="14" fill="#111827" text-anchor="start" font-weight="700">MinHash 模糊去重</text>
+<rect x="320" y="224" width="19.4" height="28" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="351.4" y="243" font-size="13" fill="#6b7280" text-anchor="start">9.8B，再去 23%</text>
+<text x="40" y="289" font-size="14" fill="#111827" text-anchor="start" font-weight="700">后缀数组子串去重</text>
+<rect x="320" y="270" width="19.2" height="28" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="351.2" y="289" font-size="13" fill="#6b7280" text-anchor="start">9.7B 文档、36.5T 字节，删 14% 字节</text>
+<text x="40" y="358" font-size="14" fill="#111827" text-anchor="start" font-weight="700">24 个主题 × 20 个质量档</text>
+<text x="40" y="378" font-size="11" fill="#6b7280" text-anchor="start">= 480 个互不相交的桶，约 8T token</text>
+<rect x="320" y="340" width="10" height="144" fill="#eeeeee" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="330" y="340" width="10" height="144" fill="#eeeeee" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="340" y="340" width="10" height="144" fill="#eeeeee" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="350" y="340" width="10" height="144" fill="#eeeeee" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="360" y="340" width="10" height="144" fill="#eeeeee" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="370" y="340" width="10" height="144" fill="#eeeeee" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="380" y="340" width="10" height="144" fill="#eeeeee" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="390" y="340" width="10" height="144" fill="#eeeeee" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="400" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.25" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="410" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.32" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="420" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.39" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="430" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.45" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="440" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.52" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="450" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.59" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="460" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.66" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="470" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.73" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="480" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.80" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="490" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.86" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="500" y="340" width="10" height="144" fill="#5fa886" fill-opacity="0.93" stroke="#ffffff" stroke-width="0.6"/>
+<rect x="510" y="340" width="10" height="144" fill="#5fa886" fill-opacity="1.00" stroke="#ffffff" stroke-width="0.6"/>
+<line x1="320" y1="346" x2="520" y2="346" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="352" x2="520" y2="352" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="358" x2="520" y2="358" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="364" x2="520" y2="364" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="370" x2="520" y2="370" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="376" x2="520" y2="376" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="382" x2="520" y2="382" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="388" x2="520" y2="388" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="394" x2="520" y2="394" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="400" x2="520" y2="400" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="406" x2="520" y2="406" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="412" x2="520" y2="412" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="418" x2="520" y2="418" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="424" x2="520" y2="424" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="430" x2="520" y2="430" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="436" x2="520" y2="436" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="442" x2="520" y2="442" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="448" x2="520" y2="448" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="454" x2="520" y2="454" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="460" x2="520" y2="460" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="466" x2="520" y2="466" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="472" x2="520" y2="472" stroke="#ffffff" stroke-width="0.8"/>
+<line x1="320" y1="478" x2="520" y2="478" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="320" y="340" width="200" height="144" rx="2" fill="none" stroke="#b9b9b9"/>
+<text x="320" y="502" font-size="11" fill="#9ca3af" text-anchor="start">低质量</text>
+<text x="520" y="502" font-size="11" fill="#9ca3af" text-anchor="end">高质量</text>
+<text x="312" y="352" font-size="11" fill="#9ca3af" text-anchor="end">主题 1</text>
+<text x="312" y="482" font-size="11" fill="#9ca3af" text-anchor="end">主题 24</text>
+<text x="560" y="350" font-size="14" fill="#111827" text-anchor="start" font-weight="700">每一行是一个主题：Olmix 定这一行一共取多少 token（行约束）</text>
+<text x="560" y="372" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400">小模型蜂群 + 逐任务回归，求平均 BPB 最低的配比；任何域重复不超过约 4–7 次</text>
+<text x="560" y="402" font-size="14" fill="#111827" text-anchor="start" font-weight="700">每一列是一个 5% 质量档：行内按质量上采样（列约束）</text>
+<text x="560" y="424" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400">最低 40% 丢弃，越高质量的档重复越多，单档平均不超过 7 次</text>
+<text x="560" y="454" font-size="14" fill="#111827" text-anchor="start" font-weight="700">两种约束用截断幂指数函数族合在一起</text>
+<text x="560" y="476" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400">网页最终进入训练混合 4.51T token，占 5.93T 的 76.1%</text>
+<text x="30" y="548" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 14 Table 4、p. 15–20、p. 87–90 重画。正文与附录的中间数略有出入（38.8B 与 38.7B、12.8B 与 12.7B、23% 与 24%），这里取正文去重一节的口径。</text>
+<text x="30" y="568" font-size="13" fill="#6b7280" text-anchor="start">格子只示意行列结构与上采样的方向，颜色深浅不是实测倍数。</text>
+</svg>

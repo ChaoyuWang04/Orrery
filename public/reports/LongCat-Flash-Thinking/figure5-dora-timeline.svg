@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">DORA 一步里发生了什么：每条回答从头到尾只用一个版本</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">陈旧度 = 2，最多三个版本并存。红 = θn−2；黄 = θn−1；绿 = θn；紫 = θn+1；白框 = 新提示预填充；灰 = 连同 KV cache 迁移；竖黑线 = 写完（EOS）；× = 丢弃。</text>
+<rect x="170.0" y="96" width="228.5" height="24" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="175.0" y="112" font-size="11" fill="#111827">1</text>
+<rect x="397.0" y="96" width="3" height="24" fill="#111827"/>
+<rect x="401.6" y="96" width="59.0" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="406.6" y="112" font-size="11" fill="#111827">12</text>
+<rect x="460.6" y="96" width="99.4" height="24" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="548.8" y="113" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">×</text>
+<rect x="170.0" y="126" width="57.1" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="175.0" y="142" font-size="11" fill="#111827">2</text>
+<rect x="227.1" y="126" width="327.9" height="24" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="553.5" y="126" width="3" height="24" fill="#111827"/>
+<rect x="170.0" y="156" width="27.9" height="24" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="175.0" y="172" font-size="11" fill="#111827">3</text>
+<rect x="197.9" y="156" width="173.9" height="24" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="370.3" y="156" width="3" height="24" fill="#111827"/>
+<rect x="374.9" y="156" width="60.9" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="379.9" y="172" font-size="11" fill="#111827">11</text>
+<rect x="435.8" y="156" width="124.2" height="24" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="170.0" y="186" width="57.1" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="175.0" y="202" font-size="11" fill="#111827">4</text>
+<rect x="227.1" y="186" width="332.9" height="24" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="170.0" y="236" width="57.1" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="175.0" y="252" font-size="11" fill="#111827">5</text>
+<rect x="227.1" y="236" width="102.5" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="330.0" y="236" width="3" height="24" fill="#111827"/>
+<rect x="334.6" y="236" width="57.8" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="339.6" y="252" font-size="11" fill="#111827">9</text>
+<rect x="392.3" y="236" width="167.7" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="170.0" y="266" width="57.1" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="175.0" y="282" font-size="11" fill="#111827">6</text>
+<rect x="227.1" y="266" width="216.1" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="444.8" y="266" width="3" height="24" fill="#111827"/>
+<rect x="449.4" y="266" width="57.8" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="454.4" y="282" font-size="11" fill="#111827">13</text>
+<rect x="507.2" y="266" width="52.8" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="170.0" y="296" width="57.1" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="175.0" y="312" font-size="11" fill="#111827">7</text>
+<rect x="227.1" y="296" width="332.9" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="170.0" y="326" width="185.1" height="24" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="175.0" y="342" font-size="11" fill="#111827">8</text>
+<rect x="356.0" y="326" width="3" height="24" fill="#111827"/>
+<rect x="360.6" y="326" width="57.8" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="365.6" y="342" font-size="11" fill="#111827">10</text>
+<rect x="418.4" y="326" width="141.6" height="24" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="548.8" y="343" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">×</text>
+<rect x="566.0" y="90" width="58" height="266" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="595.0" y="210" font-size="12" fill="#6b7280" text-anchor="middle">经验</text>
+<text x="595.0" y="228" font-size="12" fill="#6b7280" text-anchor="middle">制作</text>
+<rect x="640.0" y="96" width="30.0" height="24" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="645.0" y="112" font-size="11" fill="#111827">7</text>
+<rect x="670.0" y="96" width="151.8" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="823.3" y="96" width="3" height="24" fill="#111827"/>
+<rect x="827.8" y="96" width="57.0" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="832.8" y="112" font-size="11" fill="#111827">19</text>
+<rect x="884.8" y="96" width="134.4" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="640.0" y="126" width="30.0" height="24" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="645.0" y="142" font-size="11" fill="#111827">13</text>
+<rect x="670.0" y="126" width="90.0" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="761.5" y="126" width="3" height="24" fill="#111827"/>
+<rect x="766.0" y="126" width="57.0" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="771.0" y="142" font-size="11" fill="#111827">17</text>
+<rect x="823.0" y="126" width="196.2" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="640.0" y="156" width="165.6" height="24" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="645.0" y="172" font-size="11" fill="#111827">11</text>
+<rect x="807.1" y="156" width="3" height="24" fill="#111827"/>
+<rect x="811.6" y="156" width="57.0" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="816.6" y="172" font-size="11" fill="#111827">18</text>
+<rect x="868.6" y="156" width="150.6" height="24" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1009.0" y="173" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">×</text>
+<rect x="640.0" y="186" width="225.0" height="24" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="645.0" y="202" font-size="11" fill="#111827">4</text>
+<rect x="866.5" y="186" width="3" height="24" fill="#111827"/>
+<rect x="871.0" y="186" width="57.0" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="876.0" y="202" font-size="11" fill="#111827">21</text>
+<rect x="928.0" y="186" width="91.2" height="24" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1009.0" y="203" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">×</text>
+<rect x="640.0" y="236" width="76.8" height="114" rx="6" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="678.4" y="286" font-size="12" fill="#6b7280" text-anchor="middle">训练</text>
+<rect x="719.2" y="236" width="292.8" height="24" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="724.2" y="252" font-size="11" fill="#111827">9</text>
+<rect x="1013.5" y="236" width="3" height="24" fill="#111827"/>
+<rect x="719.2" y="266" width="55.8" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="724.2" y="282" font-size="11" fill="#111827">14</text>
+<rect x="775.0" y="266" width="244.2" height="24" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="719.2" y="296" width="55.8" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="724.2" y="312" font-size="11" fill="#111827">15</text>
+<rect x="775.0" y="296" width="70.8" height="24" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="846.1" y="296" width="3" height="24" fill="#111827"/>
+<rect x="850.6" y="296" width="56.4" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="855.6" y="312" font-size="11" fill="#111827">20</text>
+<rect x="907.0" y="296" width="112.2" height="24" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="719.2" y="326" width="55.8" height="24" fill="#ffffff" stroke="#9ca3af"/>
+<text x="724.2" y="342" font-size="11" fill="#111827">16</text>
+<rect x="775.0" y="326" width="244.2" height="24" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1025.2" y="90" width="58" height="266" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="1054.2" y="210" font-size="12" fill="#6b7280" text-anchor="middle">经验</text>
+<text x="1054.2" y="228" font-size="12" fill="#6b7280" text-anchor="middle">制作</text>
+<text x="365.0" y="84" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 n 步</text>
+<text x="829.6" y="84" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">第 n+1 步</text>
+<text x="30" y="148" font-size="14" fill="#111827" font-weight="700">独立生成组</text>
+<text x="30" y="166" font-size="11" fill="#6b7280">只做生成</text>
+<text x="30" y="288" font-size="14" fill="#111827" font-weight="700">弹性角色组</text>
+<text x="30" y="306" font-size="11" fill="#6b7280">生成与训练轮换</text>
+<text x="30" y="390" font-size="13" fill="#6b7280">第 n 步：5、8、3、1、6、2 依次写完就流走；2 写完凑满一批，生成中断，进入经验制作。</text>
+<text x="30" y="414" font-size="13" fill="#6b7280">中断时 10、12 还在用 θn−2，训练出 θn+1 后它超出陈旧度，两条丢弃重生成；其余接着写。</text>
+<text x="30" y="438" font-size="13" fill="#6b7280">第 n+1 步：7、13 连同 KV cache 迁到独立组续写，9 在弹性组原地续写；弹性组训练完用 θn+1 起新提示 14–16。</text>
+<text x="30" y="462" font-size="13" fill="#6b7280">同一规则再走一遍：18、21 用的是 θn−1，到下一步也会超限被丢。</text>
+<text x="30" y="500" font-size="11" fill="#9ca3af">据 PDF p. 7 Figure 5 逐格重画，条的长短只示意先后，不是实测时长。</text>
+</svg>

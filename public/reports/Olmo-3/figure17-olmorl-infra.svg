@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">OlmoRL 的基础设施：让生成永远不停，训练只等凑满的批</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 训练（learner）；绿 = 生成（actor 解码）；黄 = 过滤与补样；灰 = 空转。</text>
+<rect x="30" y="72" width="520" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="50" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">全异步架构</text>
+<rect x="60" y="130" width="190" height="64" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="155" y="156" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Learner</text>
+<text x="155" y="178" font-size="11" fill="#6b7280" text-anchor="middle">DeepSpeed，跨多节点</text>
+<rect x="340" y="118" width="180" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="430" y="145" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Actor 1：独立 vLLM</text>
+<rect x="340" y="176" width="180" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="430" y="203" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Actor 2：独立 vLLM</text>
+<rect x="340" y="234" width="180" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="430" y="261" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">Actor 3：独立 vLLM</text>
+
+<line x1="250" y1="140" x2="338" y2="140" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="294" y="132" font-size="11" fill="#9ca3af" text-anchor="middle">提示队列</text>
+<line x1="250" y1="186" x2="338" y2="186" stroke="#8f8bd8" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+<text x="294" y="212" font-size="11" fill="#9ca3af" text-anchor="middle">inflight 换权重</text>
+<rect x="60" y="340" width="460" height="64" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="290" y="366" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">零梯度过滤 + 主动采样</text>
+<text x="290" y="388" font-size="11" fill="#6b7280" text-anchor="middle">组内奖励全相同的组直接丢；边拉边滤，凑满非零优势的样本才交给 learner</text>
+<line x1="430" y1="278" x2="430" y2="338" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="440" y="324" font-size="11" fill="#9ca3af" text-anchor="start">结果队列</text>
+<line x1="155" y1="340" x2="155" y2="196" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="165" y="290" font-size="11" fill="#9ca3af" text-anchor="start">凑满的批</text>
+<text x="50" y="440" font-size="11" fill="#6b7280" text-anchor="start">inflight 更新：不等 actor 跑完、不清 KV cache，直接换权重</text>
+<text x="50" y="458" font-size="11" fill="#6b7280" text-anchor="start">32B 用 8 个训练节点配 20 个推理节点；报告称 inflight 更新让同等资源下吞吐最高提升 4 倍</text>
+<rect x="570" y="72" width="520" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="590" y="98" font-size="14" fill="#111827" text-anchor="start" font-weight="700">静态批处理：一批里最长的那条决定何时换批</text>
+<text x="630" y="132" font-size="11" fill="#9ca3af" text-anchor="end">槽 1</text>
+<rect x="640" y="118" width="250" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="890" y="118" width="150" height="18" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="630" y="160" font-size="11" fill="#9ca3af" text-anchor="end">槽 2</text>
+<rect x="640" y="146" width="130" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="770" y="146" width="270" height="18" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="630" y="188" font-size="11" fill="#9ca3af" text-anchor="end">槽 3</text>
+<rect x="640" y="174" width="400" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="630" y="216" font-size="11" fill="#9ca3af" text-anchor="end">槽 4</text>
+<rect x="640" y="202" width="190" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="830" y="202" width="210" height="18" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="1040" y1="112" x2="1040" y2="232" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="1046" y="236" font-size="11" fill="#9ca3af" text-anchor="start">下一批</text>
+<text x="590" y="272" font-size="14" fill="#111827" text-anchor="start" font-weight="700">连续批处理：哪条先结束，哪个槽立刻补新提示</text>
+<text x="630" y="304" font-size="11" fill="#9ca3af" text-anchor="end">槽 1</text>
+<rect x="640" y="290" width="250" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="890" y="290" width="150" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="630" y="332" font-size="11" fill="#9ca3af" text-anchor="end">槽 2</text>
+<rect x="640" y="318" width="130" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="770" y="318" width="150" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="920" y="318" width="120" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="630" y="360" font-size="11" fill="#9ca3af" text-anchor="end">槽 3</text>
+<rect x="640" y="346" width="400" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="630" y="388" font-size="11" fill="#9ca3af" text-anchor="end">槽 4</text>
+<rect x="640" y="374" width="190" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="830" y="374" width="210" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="590" y="420" font-size="11" fill="#6b7280" text-anchor="start">静态批处理浪费的比例 = （最大长度 − 平均长度）/ 最大长度</text>
+<text x="590" y="440" font-size="11" fill="#6b7280" text-anchor="start">上限 32K、平均 14,628 token：最多约 54% 的算力在空转</text>
+<text x="30" y="508" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 48–49 正文与 Figure 17 重画。左为机制示意；右为时间示意，条长只表示「长短不一」，不是实测长度。</text>
+<text x="30" y="530" font-size="13" fill="#6b7280" text-anchor="start">三项改动逐项叠加后的实测吞吐见下方 Table 23。</text>
+</svg>

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">窗口化 FIFO：窗口内谁先完成谁先训，窗口外一律等</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">同一队列、同一组完成状态，三种取数规则。绿 = 已完成且可取；黄 = 已完成但被挡；灰 = 仍在生成；虚线框 = 允许取数的范围。</text>
+<rect x="292" y="78" width="92" height="60" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="106" font-size="14" fill="#111827" font-weight="700">严格 FIFO</text>
+<text x="30" y="124" font-size="11" fill="#6b7280">窗口 = 1</text>
+<rect x="300" y="86" width="76" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="338" y="105" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">0</text>
+<text x="338" y="122" font-size="11" fill="#6b7280" text-anchor="middle">生成中</text>
+<rect x="384" y="86" width="76" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="422" y="105" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">1</text>
+<text x="422" y="122" font-size="11" fill="#6b7280" text-anchor="middle">已完成·被挡</text>
+<rect x="468" y="86" width="76" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="506" y="105" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">2</text>
+<text x="506" y="122" font-size="11" fill="#6b7280" text-anchor="middle">已完成·被挡</text>
+<rect x="552" y="86" width="76" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="590" y="105" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">3</text>
+<text x="590" y="122" font-size="11" fill="#6b7280" text-anchor="middle">生成中</text>
+<rect x="636" y="86" width="76" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="674" y="105" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">4</text>
+<text x="674" y="122" font-size="11" fill="#6b7280" text-anchor="middle">已完成·被挡</text>
+<rect x="720" y="86" width="76" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="758" y="105" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">5</text>
+<text x="758" y="122" font-size="11" fill="#6b7280" text-anchor="middle">已完成·被挡</text>
+<rect x="804" y="86" width="76" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="842" y="105" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">6</text>
+<text x="842" y="122" font-size="11" fill="#6b7280" text-anchor="middle">已完成·被挡</text>
+<rect x="888" y="86" width="76" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="926" y="105" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">7</text>
+<text x="926" y="122" font-size="11" fill="#6b7280" text-anchor="middle">生成中</text>
+<text x="300" y="162" font-size="13" fill="#6b7280">可取 0 条：队头 0 号还在跑，后面全部干等（队头阻塞）</text>
+<rect x="292" y="194" width="344" height="60" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="222" font-size="14" fill="#111827" font-weight="700">窗口化 FIFO</text>
+<text x="30" y="240" font-size="11" fill="#6b7280">窗口 W = 4</text>
+<rect x="300" y="202" width="76" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="338" y="221" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">0</text>
+<text x="338" y="238" font-size="11" fill="#6b7280" text-anchor="middle">生成中</text>
+<rect x="384" y="202" width="76" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="422" y="221" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">1</text>
+<text x="422" y="238" font-size="11" fill="#6b7280" text-anchor="middle">已完成·可取</text>
+<rect x="468" y="202" width="76" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="506" y="221" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">2</text>
+<text x="506" y="238" font-size="11" fill="#6b7280" text-anchor="middle">已完成·可取</text>
+<rect x="552" y="202" width="76" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="590" y="221" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">3</text>
+<text x="590" y="238" font-size="11" fill="#6b7280" text-anchor="middle">生成中</text>
+<rect x="636" y="202" width="76" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="674" y="221" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">4</text>
+<text x="674" y="238" font-size="11" fill="#6b7280" text-anchor="middle">已完成·被挡</text>
+<rect x="720" y="202" width="76" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="758" y="221" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">5</text>
+<text x="758" y="238" font-size="11" fill="#6b7280" text-anchor="middle">已完成·被挡</text>
+<rect x="804" y="202" width="76" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="842" y="221" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">6</text>
+<text x="842" y="238" font-size="11" fill="#6b7280" text-anchor="middle">已完成·被挡</text>
+<rect x="888" y="202" width="76" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="926" y="221" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">7</text>
+<text x="926" y="238" font-size="11" fill="#6b7280" text-anchor="middle">生成中</text>
+<text x="300" y="278" font-size="13" fill="#6b7280">可取 2 条（1、2 号）；4–6 号虽已完成，要等 0 号被消费、窗口前移</text>
+<rect x="292" y="310" width="680" height="60" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="338" font-size="14" fill="#111827" font-weight="700">完全贪心</text>
+<text x="30" y="356" font-size="11" fill="#6b7280">窗口 = 整条队列</text>
+<rect x="300" y="318" width="76" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="338" y="337" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">0</text>
+<text x="338" y="354" font-size="11" fill="#6b7280" text-anchor="middle">生成中</text>
+<rect x="384" y="318" width="76" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="422" y="337" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">1</text>
+<text x="422" y="354" font-size="11" fill="#6b7280" text-anchor="middle">已完成·可取</text>
+<rect x="468" y="318" width="76" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="506" y="337" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">2</text>
+<text x="506" y="354" font-size="11" fill="#6b7280" text-anchor="middle">已完成·可取</text>
+<rect x="552" y="318" width="76" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="590" y="337" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">3</text>
+<text x="590" y="354" font-size="11" fill="#6b7280" text-anchor="middle">生成中</text>
+<rect x="636" y="318" width="76" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="674" y="337" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">4</text>
+<text x="674" y="354" font-size="11" fill="#6b7280" text-anchor="middle">已完成·可取</text>
+<rect x="720" y="318" width="76" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="758" y="337" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">5</text>
+<text x="758" y="354" font-size="11" fill="#6b7280" text-anchor="middle">已完成·可取</text>
+<rect x="804" y="318" width="76" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="842" y="337" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">6</text>
+<text x="842" y="354" font-size="11" fill="#6b7280" text-anchor="middle">已完成·可取</text>
+<rect x="888" y="318" width="76" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="926" y="337" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">7</text>
+<text x="926" y="354" font-size="11" fill="#6b7280" text-anchor="middle">生成中</text>
+<text x="300" y="394" font-size="13" fill="#6b7280">可取 5 条：短任务先涌进批次，难任务挤到后面，分布漂移</text>
+<line x1="30" y1="426" x2="1090" y2="426" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="30" y="450" font-size="14" fill="#111827" font-weight="700">原文 Figure 5 的例子（N = 8，W = 4）</text>
+<text x="30" y="476" font-size="13" fill="#6b7280">后续某一时刻：0–10 号里除了 7 号都已训完，7 号仍在生成；窗口锚在最老的 7 号上，里面是 7、11、12、13，还剩 1 个空位。</text>
+<text x="30" y="500" font-size="13" fill="#6b7280">最大乱序容忍 3 = W − 1；最大离策略滞后 10 = 8 + 3 − 1，正是 7 号被消费前先训完的那 10 条（0–6、8–10）。</text>
+<text x="30" y="532" font-size="11" fill="#9ca3af">据 PDF p. 21–22 第 6.2.4 节与 Figure 5 重画。上面三行的完成状态是机制示意，不是实测；报告的实践值是 W = 0.3N。</text>
+</svg>
