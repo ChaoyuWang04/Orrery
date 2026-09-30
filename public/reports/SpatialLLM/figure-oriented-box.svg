@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 570" width="1120" height="570" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker><marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker></defs>
+<rect x="0" y="0" width="1120" height="570" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">有朝向的 3D 框，才出得了朝向题和「从谁的视角看」的题</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">俯视示意。灰 = 只有位置和大小的轴对齐框；绿 = 带正面方向的有朝向框，箭头指车头；黄 = 相机。</text>
+<rect x="20" y="72" width="360" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="200" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">前人：深度 + 相机标定 → 轴对齐框</text>
+<text x="200" y="118" font-size="11" fill="#6b7280" text-anchor="middle">SpatialVLM、SpatialRGPT 的数据引擎</text>
+<rect x="400" y="72" width="360" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="580" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">本文：再加 6D 位姿估计 → 有朝向的框</text>
+<text x="580" y="118" font-size="11" fill="#6b7280" text-anchor="middle">ImageNet3D 上预训练的位姿估计器</text>
+<rect x="75.0" y="215.0" width="70" height="70" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="235.0" y="155.0" width="70" height="70" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="110" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A</text>
+<text x="270" y="195" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">B</text>
+<path d="M184,412 L216,412 L200,390 Z" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="200" y="438" font-size="11" fill="#6b7280" text-anchor="middle">相机</text>
+<line x1="110" y1="250" x2="270" y2="190" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="200" y="330" font-size="11" fill="#9ca3af" text-anchor="middle">框只知道中心和尺寸</text>
+<text x="200" y="348" font-size="11" fill="#9ca3af" text-anchor="middle">车头朝哪，框里没有</text>
+<path d="M506.5,207.4 L534.8,241.1 L473.5,292.6 L445.2,258.9 Z" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<line x1="514.5" y1="229.4" x2="546.7" y2="202.4" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+<path d="M657.0,235.1 L615.6,220.1 L643.0,144.9 L684.4,159.9 Z" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+<line x1="639.1" y1="220.1" x2="624.7" y2="259.5" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+<text x="490" y="255" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">A</text>
+<text x="650" y="195" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">B</text>
+<path d="M564,412 L596,412 L580,390 Z" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+<text x="580" y="438" font-size="11" fill="#6b7280" text-anchor="middle">相机</text>
+<text x="580" y="330" font-size="11" fill="#9ca3af" text-anchor="middle">A 车头朝右上，B 车头朝下偏左</text>
+<text x="580" y="348" font-size="11" fill="#9ca3af" text-anchor="middle">于是能问：同向吗？A 朝着 B 吗？</text>
+<rect x="790" y="72" width="310" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="945" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">SpatialVQA 七类题要什么</text>
+<text x="945" y="118" font-size="11" fill="#6b7280" text-anchor="middle">附录 B 的题型与归类</text>
+<rect x="804" y="134" width="282" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="816" y="151" font-size="12" fill="#111827" text-anchor="start" font-weight="700">Closer to camera</text>
+<text x="816" y="167" font-size="11" fill="#6b7280" text-anchor="start">距离：谁离相机近</text>
+<rect x="804" y="181" width="282" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="816" y="198" font-size="12" fill="#111827" text-anchor="start" font-weight="700">Closer to object</text>
+<text x="816" y="214" font-size="11" fill="#6b7280" text-anchor="start">距离：谁离第三物近</text>
+<rect x="804" y="228" width="282" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="816" y="245" font-size="12" fill="#111827" text-anchor="start" font-weight="700">Higher</text>
+<text x="816" y="261" font-size="11" fill="#6b7280" text-anchor="start">空间关系：谁的 3D 位置高</text>
+<rect x="804" y="275" width="282" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="816" y="292" font-size="12" fill="#111827" text-anchor="start" font-weight="700">Facing camera</text>
+<text x="816" y="308" font-size="11" fill="#6b7280" text-anchor="start">朝向：哪一面朝相机</text>
+<rect x="804" y="322" width="282" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="816" y="339" font-size="12" fill="#111827" text-anchor="start" font-weight="700">Facing object</text>
+<text x="816" y="355" font-size="11" fill="#6b7280" text-anchor="start">朝向：第三物朝着谁</text>
+<rect x="804" y="369" width="282" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="816" y="386" font-size="12" fill="#111827" text-anchor="start" font-weight="700">Same direction</text>
+<text x="816" y="402" font-size="11" fill="#6b7280" text-anchor="start">空间关系：两物是否同向</text>
+<rect x="804" y="416" width="282" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="816" y="433" font-size="12" fill="#111827" text-anchor="start" font-weight="700">On which side</text>
+<text x="816" y="449" font-size="11" fill="#6b7280" text-anchor="start">空间关系：从 A 的朝向看 B 在哪侧</text>
+<text x="30" y="500" font-size="13" fill="#6b7280" text-anchor="start">灰格三类只要位置，左边的轴对齐框就够；绿格四类必须知道物体正面朝哪，只有右边的有朝向框能按规则生成答案。</text>
+<text x="30" y="524" font-size="13" fill="#6b7280" text-anchor="start">机制示意，不是实测数据。据 PDF p. 13 附录 A（轴对齐框 vs 有朝向框）与 p. 13–14 附录 B（七类题型）绘制；</text>
+<text x="30" y="546" font-size="13" fill="#6b7280" text-anchor="start">题型归类照原文：Higher 与 Same direction 在原文里都归「空间关系」，但前者只用位置，后者只用朝向。</text>
+</svg>

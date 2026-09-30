@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="arp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="540" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 6：顺序展开的每步耗时与并行做法同一档，同样墙钟下质量更高</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = Diffusion Forcing；黄 = Teacher Forcing；紫 = Self Forcing。左图柱上的 1–4 是 Self Forcing 的去噪步数；两图都用 DMD 目标、chunk-wise 少步设定。</text>
+<line x1="80" y1="400.0" x2="520" y2="400.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="404.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="80" y1="327.5" x2="520" y2="327.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="331.5" font-size="11" fill="#9ca3af" text-anchor="end">5</text>
+<line x1="80" y1="255.0" x2="520" y2="255.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="259.0" font-size="11" fill="#9ca3af" text-anchor="end">10</text>
+<line x1="80" y1="182.5" x2="520" y2="182.5" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="186.5" font-size="11" fill="#9ca3af" text-anchor="end">15</text>
+<line x1="80" y1="110.0" x2="520" y2="110.0" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="114.0" font-size="11" fill="#9ca3af" text-anchor="end">20</text>
+<text x="72" y="96" font-size="11" fill="#9ca3af" text-anchor="start">秒 / 迭代</text>
+<rect x="100" y="194.1" width="26" height="205.9" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="113" y="416" font-size="11" fill="#6b7280" text-anchor="middle">DF</text>
+<text x="113" y="189.1" font-size="11" fill="#6b7280" text-anchor="middle">14.2</text>
+<rect x="132" y="134.6" width="26" height="265.4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="145" y="416" font-size="11" fill="#6b7280" text-anchor="middle">TF</text>
+<text x="145" y="129.6" font-size="11" fill="#6b7280" text-anchor="middle">18.3</text>
+<rect x="164" y="223.1" width="26" height="176.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="177" y="416" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="177" y="218.1" font-size="11" fill="#6b7280" text-anchor="middle">12.2</text>
+<rect x="196" y="211.5" width="26" height="188.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="209" y="416" font-size="11" fill="#6b7280" text-anchor="middle">2</text>
+<text x="209" y="206.5" font-size="11" fill="#6b7280" text-anchor="middle">13.0</text>
+<rect x="228" y="201.3" width="26" height="198.7" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="241" y="416" font-size="11" fill="#6b7280" text-anchor="middle">3</text>
+<text x="241" y="196.3" font-size="11" fill="#6b7280" text-anchor="middle">13.7</text>
+<rect x="260" y="189.8" width="26" height="210.2" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="273" y="416" font-size="11" fill="#6b7280" text-anchor="middle">4</text>
+<text x="273" y="184.8" font-size="11" fill="#6b7280" text-anchor="middle">14.5</text>
+<text x="193" y="438" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">生成器更新</text>
+<rect x="320" y="326.1" width="26" height="73.9" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="333" y="416" font-size="11" fill="#6b7280" text-anchor="middle">DF</text>
+<text x="333" y="321.1" font-size="11" fill="#6b7280" text-anchor="middle">5.1</text>
+<rect x="352" y="314.4" width="26" height="85.6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="365" y="416" font-size="11" fill="#6b7280" text-anchor="middle">TF</text>
+<text x="365" y="309.4" font-size="11" fill="#6b7280" text-anchor="middle">5.9</text>
+<rect x="384" y="331.9" width="26" height="68.1" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="397" y="416" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<text x="397" y="326.9" font-size="11" fill="#6b7280" text-anchor="middle">4.7</text>
+<rect x="416" y="320.2" width="26" height="79.8" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="429" y="416" font-size="11" fill="#6b7280" text-anchor="middle">2</text>
+<text x="429" y="315.2" font-size="11" fill="#6b7280" text-anchor="middle">5.5</text>
+<rect x="448" y="310.1" width="26" height="89.9" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="461" y="416" font-size="11" fill="#6b7280" text-anchor="middle">3</text>
+<text x="461" y="305.1" font-size="11" fill="#6b7280" text-anchor="middle">6.2</text>
+<rect x="480" y="298.5" width="26" height="101.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="493" y="416" font-size="11" fill="#6b7280" text-anchor="middle">4</text>
+<text x="493" y="293.5" font-size="11" fill="#6b7280" text-anchor="middle">7.0</text>
+<text x="413" y="438" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">判别网络（critic）更新</text>
+<line x1="80" y1="400" x2="520" y2="400" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="300" y="88" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">左：每次迭代耗时</text>
+<line x1="640" y1="360.8" x2="1080" y2="360.8" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632" y="364.8" font-size="11" fill="#9ca3af" text-anchor="end">0.81</text>
+<line x1="640" y1="282.4" x2="1080" y2="282.4" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632" y="286.4" font-size="11" fill="#9ca3af" text-anchor="end">0.82</text>
+<line x1="640" y1="204.1" x2="1080" y2="204.1" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632" y="208.1" font-size="11" fill="#9ca3af" text-anchor="end">0.83</text>
+<line x1="640" y1="125.7" x2="1080" y2="125.7" stroke="#e5e7eb" stroke-width="1"/>
+<text x="632" y="129.7" font-size="11" fill="#9ca3af" text-anchor="end">0.84</text>
+<text x="713.3" y="416" font-size="11" fill="#9ca3af" text-anchor="middle">10</text>
+<text x="860.0" y="416" font-size="11" fill="#9ca3af" text-anchor="middle">20</text>
+<text x="1006.7" y="416" font-size="11" fill="#9ca3af" text-anchor="middle">30</text>
+<line x1="640" y1="400" x2="1080" y2="400" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="860" y="438" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">训练墙钟（分钟）</text>
+<text x="860" y="88" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">右：VBench 总分随训练墙钟</text>
+<polyline points="662.0,291.8 758.8,224.4 857.1,218.9 952.4,222.1" fill="none" stroke="#b9b9b9" stroke-width="2.2"/>
+<circle cx="662.0" cy="291.8" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="758.8" cy="224.4" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="857.1" cy="218.9" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="952.4" cy="222.1" r="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="960.4" y="226.1" font-size="11" fill="#111827" text-anchor="start">DF</text>
+<polyline points="682.5,373.4 799.9,299.7 915.7,245.6 1033.1,258.1" fill="none" stroke="#d4a24c" stroke-width="2.2"/>
+<circle cx="682.5" cy="373.4" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="799.9" cy="299.7" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="915.7" cy="245.6" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<circle cx="1033.1" cy="258.1" r="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1041.1" y="262.1" font-size="11" fill="#111827" text-anchor="start">TF</text>
+<polyline points="669.3,285.6 774.9,186.8 879.1,141.4 984.7,129.6" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<circle cx="669.3" cy="285.6" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="774.9" cy="186.8" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="879.1" cy="141.4" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="984.7" cy="129.6" r="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="992.7" y="133.6" font-size="11" fill="#111827" text-anchor="start">SF</text>
+<text x="30" y="482" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 10 Figure 6 重画，柱高与折点是本文从原图读出的近似值（原文没有印数字）。原文的读法：Self Forcing 的每步耗时与 TF / DF 相当，</text>
+<text x="30" y="504" font-size="13" fill="#6b7280" text-anchor="start">同样墙钟下质量更高；DMD 版约 1.5 小时在 64 张 H100 上收敛（p. 9）。右图 SF 的终点约 0.840，略低于 Table 1 的 84.31，报告没说明两者的关系。</text>
+</svg>

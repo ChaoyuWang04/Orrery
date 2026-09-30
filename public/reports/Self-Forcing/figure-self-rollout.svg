@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="arp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Algorithm 1：前向照推理走满整段，反向只打开一个随机抽中的去噪步</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">本例 s = 2。灰 = 关着梯度的去噪步；紫 = 开梯度的那一步，它的输出就是该帧的最终输出；白虚线 = 本样本不执行；黄 = 写入 KV cache（关梯度）。</text>
+<text x="150" y="134" font-size="12" fill="#111827" text-anchor="end">t₄ = 1000</text>
+<text x="150" y="194" font-size="12" fill="#111827" text-anchor="end">t₃ = 750</text>
+<text x="150" y="254" font-size="12" fill="#111827" text-anchor="end">t₂ = 500</text>
+<text x="150" y="314" font-size="12" fill="#111827" text-anchor="end">t₁ = 250</text>
+<text x="260" y="96" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">第 1 帧（或块）</text>
+<rect x="180" y="110" width="160" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="260.0" y="133.96" font-size="11" fill="#111827" text-anchor="middle">去噪 → 加回更低噪声</text>
+<line x1="260" y1="150" x2="260" y2="168" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="180" y="170" width="160" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="260.0" y="193.96" font-size="11" fill="#111827" text-anchor="middle">去噪 → 加回更低噪声</text>
+<line x1="260" y1="210" x2="260" y2="228" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="180" y="230" width="160" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="260.0" y="254.32" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">开梯度：输出 x̂¹</text>
+<rect x="180" y="290" width="160" height="40" rx="6" fill="#ffffff" stroke="#9ca3af" stroke-dasharray="5 4"/>
+<text x="260.0" y="314.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700"></text>
+<text x="190" y="315" font-size="11" fill="#9ca3af" text-anchor="start">本样本不跑</text>
+<line x1="320" y1="270" x2="320" y2="348" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="180" y="350" width="160" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="260.0" y="374.32" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">用 x̂、t = 0 写 KV</text>
+<line x1="340" y1="370" x2="378" y2="370" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="460" y="96" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">第 2 帧（或块）</text>
+<rect x="380" y="110" width="160" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="460.0" y="133.96" font-size="11" fill="#111827" text-anchor="middle">去噪 → 加回更低噪声</text>
+<line x1="460" y1="150" x2="460" y2="168" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="380" y="170" width="160" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="460.0" y="193.96" font-size="11" fill="#111827" text-anchor="middle">去噪 → 加回更低噪声</text>
+<line x1="460" y1="210" x2="460" y2="228" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="380" y="230" width="160" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="460.0" y="254.32" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">开梯度：输出 x̂²</text>
+<rect x="380" y="290" width="160" height="40" rx="6" fill="#ffffff" stroke="#9ca3af" stroke-dasharray="5 4"/>
+<text x="460.0" y="314.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700"></text>
+<text x="390" y="315" font-size="11" fill="#9ca3af" text-anchor="start">本样本不跑</text>
+<line x1="520" y1="270" x2="520" y2="348" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="380" y="350" width="160" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="460.0" y="374.32" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">用 x̂、t = 0 写 KV</text>
+<line x1="540" y1="370" x2="578" y2="370" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="660" y="96" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">第 3 帧（或块）</text>
+<rect x="580" y="110" width="160" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="660.0" y="133.96" font-size="11" fill="#111827" text-anchor="middle">去噪 → 加回更低噪声</text>
+<line x1="660" y1="150" x2="660" y2="168" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="580" y="170" width="160" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="660.0" y="193.96" font-size="11" fill="#111827" text-anchor="middle">去噪 → 加回更低噪声</text>
+<line x1="660" y1="210" x2="660" y2="228" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="580" y="230" width="160" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="660.0" y="254.32" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">开梯度：输出 x̂³</text>
+<rect x="580" y="290" width="160" height="40" rx="6" fill="#ffffff" stroke="#9ca3af" stroke-dasharray="5 4"/>
+<text x="660.0" y="314.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700"></text>
+<text x="590" y="315" font-size="11" fill="#9ca3af" text-anchor="start">本样本不跑</text>
+<line x1="720" y1="270" x2="720" y2="348" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="580" y="350" width="160" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="660.0" y="374.32" font-size="12" fill="#111827" text-anchor="middle" font-weight="700">用 x̂、t = 0 写 KV</text>
+<text x="360" y="412" font-size="11" fill="#6b7280" text-anchor="middle">KV cache 追加，下一帧在它上面去噪</text>
+<rect x="790" y="100" width="314" height="290" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="947" y="126" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">整段输出视频</text>
+<rect x="820" y="142" width="74" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="857.0" y="164.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">x̂¹</text>
+<rect x="910" y="142" width="74" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="947.0" y="164.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">x̂²</text>
+<rect x="1000" y="142" width="74" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1037.0" y="164.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">x̂³</text>
+<line x1="947" y1="184" x2="947" y2="214" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="810" y="216" width="274" height="44" rx="6" fill="#ffffff" stroke="#9ca3af"/>
+<text x="947.0" y="236.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">视频级分布匹配损失</text>
+<text x="947.0" y="251.0" font-size="11" fill="#6b7280" text-anchor="middle">DMD / SiD / GAN</text>
+<text x="810" y="290" font-size="11" fill="#6b7280" text-anchor="start">只有紫格回传梯度：</text>
+<text x="810" y="308" font-size="11" fill="#6b7280" text-anchor="start">每个样本重新抽 s，4 个去噪步</text>
+<text x="810" y="326" font-size="11" fill="#6b7280" text-anchor="start">轮流当「终点」，都能收到监督。</text>
+<text x="810" y="350" font-size="11" fill="#6b7280" text-anchor="start">KV 写入关着梯度：当前帧的梯度</text>
+<text x="810" y="368" font-size="11" fill="#6b7280" text-anchor="start">不穿过历史帧的生成过程。</text>
+<line x1="742" y1="250" x2="788" y2="250" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="452" font-size="13" fill="#6b7280" text-anchor="start">推理（Algorithm 2）的差别只有一处：每帧走满 t₄ → t₁ 四步，走完才用干净输出、时间步 0 写 KV。训练写 KV 的方式与之相同，</text>
+<text x="30" y="474" font-size="13" fill="#6b7280" text-anchor="start">所以训练时缓存里的表示，就是推理时缓存里的那种表示。</text>
+<text x="30" y="510" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 5 Algorithm 1–2 与 §3.2 画出，时间步取附录 A 的均匀 4 步（p. 16）。是控制流示意，不是实测时间；原文没有对应的图。</text>
+</svg>

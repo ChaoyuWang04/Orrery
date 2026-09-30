@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 590" width="1120" height="590" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="590" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">包围盒看不见搁板：FirePlace 把「书放架子上」落到某一层的平面上</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">书架侧视示意。灰 = 书架网格；黄 = 包围盒及其朝上的面；绿 = 按法向抽出的朝上平面（候选交互表面）；紫 = 要放的书。</text>
+<rect x="20" y="72" width="520" height="420" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="280" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">旧做法：约束写在包围盒上</text>
+<text x="280" y="118" font-size="11" fill="#6b7280" text-anchor="middle">LayoutGPT、Holodeck 一类</text>
+<rect x="580" y="72" width="520" height="420" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="840" y="98" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">FirePlace：先抽表面，再指一块</text>
+<text x="840" y="118" font-size="11" fill="#6b7280" text-anchor="middle">SurfExtr 加分批视觉选择</text>
+<rect x="90" y="170" width="12" height="290" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="298" y="170" width="12" height="290" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="90" y="170" width="220" height="12" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="90" y="262" width="220" height="12" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="90" y="354" width="220" height="12" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="90" y="448" width="220" height="12" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="82" y="162" width="236" height="306" rx="2" fill="none" stroke="#d4a24c" stroke-width="1.6" stroke-dasharray="6 4"/>
+<line x1="82" y1="162" x2="318" y2="162" stroke="#d4a24c" stroke-width="4"/>
+<rect x="180" y="122" width="44" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="202" y="147" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">书</text>
+<text x="350" y="186" font-size="12" fill="#111827" text-anchor="start">盒子只有一个朝上的面：</text>
+<text x="350" y="206" font-size="12" fill="#111827" text-anchor="start">整架的顶面</text>
+<text x="350" y="250" font-size="12" fill="#6b7280" text-anchor="start">两层搁板和底板都在盒子里，</text>
+<text x="350" y="270" font-size="12" fill="#6b7280" text-anchor="start">约束里看不见它们</text>
+<text x="350" y="330" font-size="12" fill="#6b7280" text-anchor="start">Contact（书底面，</text>
+<text x="350" y="350" font-size="12" fill="#6b7280" text-anchor="start">书架顶面）只会把书</text>
+<text x="350" y="370" font-size="12" fill="#6b7280" text-anchor="start">送上架顶</text>
+<rect x="640" y="170" width="12" height="290" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="848" y="170" width="12" height="290" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="640" y="170" width="220" height="12" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="640" y="262" width="220" height="12" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="640" y="354" width="220" height="12" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="640" y="448" width="220" height="12" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="652" y1="168" x2="848" y2="168" stroke="#5fa886" stroke-width="4"/>
+<line x1="652" y1="260" x2="848" y2="260" stroke="#5fa886" stroke-width="4"/>
+<line x1="652" y1="352" x2="848" y2="352" stroke="#5fa886" stroke-width="4"/>
+<line x1="652" y1="446" x2="848" y2="446" stroke="#5fa886" stroke-width="4"/>
+<rect x="720" y="312" width="44" height="40" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="742" y="337" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">书</text>
+<text x="876" y="172" font-size="12" fill="#111827" text-anchor="start">顶面</text>
+<text x="876" y="264" font-size="12" fill="#111827" text-anchor="start">第一层搁板</text>
+<text x="876" y="356" font-size="12" fill="#111827" text-anchor="start">第二层搁板</text>
+<text x="876" y="450" font-size="12" fill="#111827" text-anchor="start">底板</text>
+<text x="950" y="186" font-size="12" fill="#111827" text-anchor="start">① 选朝向：搁板取朝上</text>
+<text x="950" y="206" font-size="12" fill="#6b7280" text-anchor="start">② 法向相近的三角面</text>
+<text x="950" y="224" font-size="12" fill="#6b7280" text-anchor="start">按高度 DBSCAN 分层</text>
+<text x="950" y="242" font-size="12" fill="#6b7280" text-anchor="start">每层拟合一块凸包</text>
+<text x="950" y="282" font-size="12" fill="#6b7280" text-anchor="start">③ 相近的片合并；</text>
+<text x="950" y="300" font-size="12" fill="#6b7280" text-anchor="start">同向的盒子面也并入</text>
+<text x="950" y="340" font-size="12" fill="#111827" text-anchor="start">④ 候选涂色，每批</text>
+<text x="950" y="358" font-size="12" fill="#111827" text-anchor="start">至多 3 块，MLLM</text>
+<text x="950" y="376" font-size="12" fill="#111827" text-anchor="start">报颜色选一块</text>
+<text x="30" y="520" font-size="13" fill="#6b7280" text-anchor="start">机制示意，不是论文原图。据 PDF p. 2（书与搁板的例子）、p. 4 §3.2 与 p. 13–14 附录 §11（表面抽取与合并）绘制。</text>
+<text x="30" y="544" font-size="13" fill="#6b7280" text-anchor="start">朝向是在物体自己的规范坐标系里判定的：书架若被艺术家转过，「朝上」的面在世界里就不再承重（附录 Figure 7 的失败例）。</text>
+<text x="30" y="566" font-size="13" fill="#6b7280" text-anchor="start">余弦阈值、DBSCAN 参数与合并距离，原文都没有给出。</text>
+</svg>

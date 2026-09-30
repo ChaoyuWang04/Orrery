@@ -303,9 +303,9 @@
 | HunyuanImage-3.0 | Tencent | 教 80B MoE 语言模型画图:文字自回归、图像扩散走同一条序列,广义因果注意力与可退化的 2D RoPE 保住语言能力 |
 | MixGRPO | Tencent | 只在滑动窗口里走 SDE 并优化、窗外走 ODE,流模型 GRPO 单轮训练时间约减半(混元) |
 | HunyuanWorld-1.0 | Tencent | 全景图当世界代理,VLM 编排语义分层与逐层补全,再按对齐深度抬成可导出的分层网格 |
-| AAPT | ByteDance | 自回归对抗后训练做实时交互视频生成(Seed) |
+| AAPT | ByteDance | 自回归对抗后训练:一次前向出一帧加学生强制,单卡 H100 实时 24fps 交互视频(Seed) |
 | Self-Forcing | Adobe | 自回归视频扩散的训推差距:用自己的输出做条件 |
-| Flow-GRPO | Kuaishou | 在线 RL 训练流匹配模型(可灵,与港中文合作) |
+| Flow-GRPO | Kuaishou | ODE 改写为边际不变的 SDE,训练采样 10 步、推理 40 步,把 GRPO 接到流匹配上(可灵,与港中文合作) |
 | SpatialLLM | JohnsHopkins | 3D 空间智能的多模态模型设计(CVPR 2025 highlight) |
 | Global-Local-Tree-Search | BUPT | VLM 全局-局部树搜索做室内 3D 场景(CVPR 2025) |
 | FirePlace | Google | LLM 常识加几何约束做 3D 物体摆放(CVPR 2025 highlight;DeepMind) |

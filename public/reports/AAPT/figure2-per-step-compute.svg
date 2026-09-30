@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" width="1120" height="440" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="arp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="440" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 2：同样一步、同样有 KV cache，扩散 forcing 每步算两帧，AAPT 只算一帧</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">紫 = 已经生成的帧；灰 = 当前步的噪声；虚线框 = 已在 KV cache 里、本步不再计算的历史；括号 = 本步真正进入前向计算的 token。</text>
+<text x="30" y="128" font-size="14" fill="#111827" text-anchor="start" font-weight="700">一步扩散 forcing</text>
+<text x="30" y="148" font-size="11" fill="#6b7280" text-anchor="start">上一帧作为干净帧</text>
+<text x="30" y="164" font-size="11" fill="#6b7280" text-anchor="start">重新进入计算</text>
+<text x="30" y="288" font-size="14" fill="#111827" text-anchor="start" font-weight="700">AAPT（回收输入）</text>
+<text x="30" y="308" font-size="11" fill="#6b7280" text-anchor="start">上一帧沿通道拼到</text>
+<text x="30" y="324" font-size="11" fill="#6b7280" text-anchor="start">当前噪声上</text>
+<text x="340" y="84" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">第 1 个自回归步</text>
+<rect x="284" y="128" width="72" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="320.0" y="152.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 0</text>
+<rect x="362" y="128" width="72" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="398.0" y="152.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">噪声 1</text>
+<path d="M284,178 L284,186 L434,186 L434,178" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="359" y="204" font-size="11" fill="#6b7280" text-anchor="middle">本步计算 2 帧</text>
+<rect x="284" y="280" width="110" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="339.0" y="295.96" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">帧 0（通道）</text>
+<rect x="284" y="304" width="110" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="339.0" y="319.96" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">噪声 1</text>
+<path d="M284,338 L284,346 L394,346 L394,338" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="339" y="364" font-size="11" fill="#6b7280" text-anchor="middle">本步计算 1 帧</text>
+<text x="640" y="84" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">第 2 个自回归步</text>
+<rect x="500" y="128" width="70" height="40" rx="6" fill="#ffffff" stroke="#9ca3af" stroke-dasharray="5 4"/>
+<text x="535.0" y="151.96" font-size="11" fill="#111827" text-anchor="middle">KV cache</text>
+<rect x="584" y="128" width="72" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="620.0" y="152.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 1</text>
+<rect x="662" y="128" width="72" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="698.0" y="152.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">噪声 2</text>
+<path d="M584,178 L584,186 L734,186 L734,178" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="659" y="204" font-size="11" fill="#6b7280" text-anchor="middle">本步计算 2 帧</text>
+<rect x="500" y="280" width="70" height="48" rx="6" fill="#ffffff" stroke="#9ca3af" stroke-dasharray="5 4"/>
+<text x="535.0" y="307.96" font-size="11" fill="#111827" text-anchor="middle">KV cache</text>
+<rect x="584" y="280" width="110" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="639.0" y="295.96" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">帧 1（通道）</text>
+<rect x="584" y="304" width="110" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="639.0" y="319.96" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">噪声 2</text>
+<path d="M584,338 L584,346 L694,346 L694,338" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="639" y="364" font-size="11" fill="#6b7280" text-anchor="middle">本步计算 1 帧</text>
+<text x="940" y="84" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">第 3 个自回归步</text>
+<rect x="800" y="128" width="70" height="40" rx="6" fill="#ffffff" stroke="#9ca3af" stroke-dasharray="5 4"/>
+<text x="835.0" y="151.96" font-size="11" fill="#111827" text-anchor="middle">KV cache</text>
+<rect x="884" y="128" width="72" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="920.0" y="152.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">帧 2</text>
+<rect x="962" y="128" width="72" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="998.0" y="152.68" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">噪声 3</text>
+<path d="M884,178 L884,186 L1034,186 L1034,178" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="959" y="204" font-size="11" fill="#6b7280" text-anchor="middle">本步计算 2 帧</text>
+<rect x="800" y="280" width="70" height="48" rx="6" fill="#ffffff" stroke="#9ca3af" stroke-dasharray="5 4"/>
+<text x="835.0" y="307.96" font-size="11" fill="#111827" text-anchor="middle">KV cache</text>
+<rect x="884" y="280" width="110" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="939.0" y="295.96" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">帧 2（通道）</text>
+<rect x="884" y="304" width="110" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="939.0" y="319.96" font-size="11" fill="#111827" text-anchor="middle" font-weight="700">噪声 3</text>
+<path d="M884,338 L884,346 L994,346 L994,338" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="939" y="364" font-size="11" fill="#6b7280" text-anchor="middle">本步计算 1 帧</text>
+<text x="30" y="400" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 4 Figure 2 与 p. 5 正文重画；原图第 1 步的上一帧是用户给的第 0 帧（绿）。这是计算量示意，不是墙钟实测，墙钟数字见 Table 4。</text>
+<text x="30" y="422" font-size="13" fill="#6b7280" text-anchor="start">原文只说扩散 forcing 带 KV cache 时每步要在两帧上计算、AAPT 只要一帧，没有给出实测的 2 倍。</text>
+</svg>

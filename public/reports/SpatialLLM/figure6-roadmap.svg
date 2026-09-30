@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker><marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker></defs>
+<rect x="0" y="0" width="1120" height="540" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">Figure 6：从 LLaVA-v1.5 到 SpatialLLM，每一步在 SpatialVQA 上加了多少</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = LLaVA-v1.5 基线；绿 = 架构改动带来的增量；黄 = 3D 数据带来的增量；紫 = GPT-4o 参照。横轴从 40 起。</text>
+<line x1="330.0" y1="84" x2="330.0" y2="440" stroke="#e5e7eb" stroke-width="1"/>
+<text x="330.0" y="460" font-size="11" fill="#9ca3af" text-anchor="middle">40</text>
+<line x1="466.0" y1="84" x2="466.0" y2="440" stroke="#e5e7eb" stroke-width="1"/>
+<text x="466.0" y="460" font-size="11" fill="#9ca3af" text-anchor="middle">45</text>
+<line x1="602.0" y1="84" x2="602.0" y2="440" stroke="#e5e7eb" stroke-width="1"/>
+<text x="602.0" y="460" font-size="11" fill="#9ca3af" text-anchor="middle">50</text>
+<line x1="738.0" y1="84" x2="738.0" y2="440" stroke="#e5e7eb" stroke-width="1"/>
+<text x="738.0" y="460" font-size="11" fill="#9ca3af" text-anchor="middle">55</text>
+<line x1="874.0" y1="84" x2="874.0" y2="440" stroke="#e5e7eb" stroke-width="1"/>
+<text x="874.0" y="460" font-size="11" fill="#9ca3af" text-anchor="middle">60</text>
+<line x1="1010.0" y1="84" x2="1010.0" y2="440" stroke="#e5e7eb" stroke-width="1"/>
+<text x="1010.0" y="460" font-size="11" fill="#9ca3af" text-anchor="middle">65</text>
+<text x="670.0" y="480" font-size="12" fill="#6b7280" text-anchor="middle">SpatialVQA 平均准确率（%）</text>
+<text x="310" y="111" font-size="14" fill="#111827" text-anchor="end" font-weight="700">LLaVA-v1.5</text>
+<text x="310" y="127" font-size="11" fill="#6b7280" text-anchor="end">CLIP + Vicuna-7B</text>
+<rect x="330.0" y="96" width="209.4" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="547.4" y="118" font-size="13" fill="#111827" text-anchor="start" font-weight="700">47.7</text>
+<text x="310" y="167" font-size="14" fill="#111827" text-anchor="end" font-weight="700">+ 混合编码器</text>
+<text x="310" y="183" font-size="11" fill="#6b7280" text-anchor="end">CLIP + DINOv2</text>
+<rect x="330.0" y="152" width="209.4" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="539.4" y="152" width="8.2" height="34" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="555.6" y="174" font-size="13" fill="#111827" text-anchor="start" font-weight="700">48.0</text>
+<text x="599.6" y="174" font-size="12" fill="#6b7280" text-anchor="start">+0.3</text>
+<text x="310" y="223" font-size="14" fill="#111827" text-anchor="end" font-weight="700">Vicuna → Llama3-8B</text>
+<text x="310" y="239" font-size="11" fill="#6b7280" text-anchor="end">换语言模型</text>
+<rect x="330.0" y="208" width="209.4" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="539.4" y="208" width="35.4" height="34" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="582.8" y="230" font-size="13" fill="#111827" text-anchor="start" font-weight="700">49.0</text>
+<text x="626.8" y="230" font-size="12" fill="#6b7280" text-anchor="start">+1.0</text>
+<text x="310" y="279" font-size="14" fill="#111827" text-anchor="end" font-weight="700">+ 3DI-Ft1M</text>
+<text x="310" y="295" font-size="11" fill="#6b7280" text-anchor="end">进 Stage 2 指令微调</text>
+<rect x="330.0" y="264" width="209.4" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="539.4" y="264" width="35.4" height="34" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="574.8" y="264" width="291.0" height="34" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="873.8" y="286" font-size="13" fill="#111827" text-anchor="start" font-weight="700">59.7</text>
+<text x="917.8" y="286" font-size="12" fill="#6b7280" text-anchor="start">+10.7</text>
+<text x="310" y="335" font-size="14" fill="#111827" text-anchor="end" font-weight="700">+ 3DI-Pb-IN166K</text>
+<text x="310" y="351" font-size="11" fill="#6b7280" text-anchor="end">进 Stage 1 对齐</text>
+<rect x="330.0" y="320" width="209.4" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="539.4" y="320" width="35.4" height="34" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="574.8" y="320" width="372.6" height="34" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="955.4" y="342" font-size="13" fill="#111827" text-anchor="start" font-weight="700">62.7</text>
+<text x="999.4" y="342" font-size="12" fill="#6b7280" text-anchor="start">+3.0</text>
+<line x1="40" y1="370" x2="1080" y2="370" stroke="#cbd2d9" stroke-width="1.4" stroke-dasharray="6 5"/>
+<text x="310" y="404" font-size="14" fill="#111827" text-anchor="end" font-weight="700">GPT-4o</text>
+<rect x="330.0" y="382" width="380.8" height="34" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="718.8" y="404" font-size="13" fill="#111827" text-anchor="start" font-weight="700">54.0</text>
+<text x="30" y="508" font-size="13" fill="#6b7280" text-anchor="start">据 PDF p. 6 Figure 6 与 p. 8 Table 2 的非灰色行重画。绿色两段合计 1.3，黄色两段合计 13.7；数值是准确率的百分点。</text>
+</svg>
