@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">QK-Clip 在 MLA 上：只缩每头独有的分量，共享的 RoPE Key 不动</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">紫 = 每个头独有、超阈值时被缩放；灰 = 所有头共享、不缩放；黄 = 这个头进入 softmax 前的打分。γ_h = τ / S_max^h，只对 S_max^h &gt; τ 的头生效。</text>
+<text x="190" y="104" font-size="14" font-weight="700" fill="#6b7280" text-anchor="middle">Query 侧</text>
+<text x="590" y="104" font-size="14" font-weight="700" fill="#6b7280" text-anchor="middle">Key 侧</text>
+<rect x="80" y="120" width="220" height="60" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="190.0" y="144" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">内容分量 q^C_h</text>
+<text x="190.0" y="164" font-size="11" fill="#6b7280" text-anchor="middle">权重 × √γ_h</text>
+<rect x="480" y="120" width="220" height="60" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="590.0" y="144" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">内容分量 k^C_h</text>
+<text x="590.0" y="164" font-size="11" fill="#6b7280" text-anchor="middle">权重 × √γ_h</text>
+<rect x="80" y="240" width="220" height="60" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="190.0" y="264" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">RoPE 分量 q^R_h</text>
+<text x="190.0" y="284" font-size="11" fill="#6b7280" text-anchor="middle">权重 × γ_h（一边全担）</text>
+<rect x="480" y="240" width="220" height="60" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="590.0" y="264" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">RoPE 分量 k^R</text>
+<text x="590.0" y="284" font-size="11" fill="#6b7280" text-anchor="middle">所有头共享，不缩放</text>
+<line x1="300" y1="150" x2="480" y2="150" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="300" y1="270" x2="480" y2="270" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="390" y="142" font-size="11" fill="#6b7280" text-anchor="middle">点乘</text>
+<text x="390" y="262" font-size="11" fill="#6b7280" text-anchor="middle">点乘</text>
+<rect x="800" y="120" width="260" height="60" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="930.0" y="144" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">内容打分 × γ_h</text>
+<text x="930.0" y="164" font-size="11" fill="#6b7280" text-anchor="middle">√γ_h · √γ_h = γ_h</text>
+<rect x="800" y="240" width="260" height="60" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="930.0" y="264" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">位置打分 × γ_h</text>
+<text x="930.0" y="284" font-size="11" fill="#6b7280" text-anchor="middle">γ_h · 1 = γ_h</text>
+<line x1="700" y1="150" x2="796" y2="150" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="700" y1="270" x2="796" y2="270" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="930" y1="180" x2="930" y2="236" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="930" y1="300" x2="930" y2="346" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="800" y="350" width="260" height="60" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="930.0" y="374" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">两部分相加：整体 × γ_h</text>
+<text x="930.0" y="394" font-size="11" fill="#6b7280" text-anchor="middle">最大打分被拉回 τ</text>
+<rect x="80" y="350" width="620" height="60" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="100" y="375" font-size="13" fill="#111827">若缩 k^R，所有头的位置打分都会被连带改动，所以它不动；</text>
+<text x="100" y="396" font-size="13" fill="#111827">q^R_h 的对面没人分担，只能由 Query 侧自己乘满 γ_h。</text>
+<text x="30" y="450" font-size="13" fill="#111827">时机：S_max^h 在前向里顺带算出；Muon 更新之后再缩权重，本步前向与反向不变。</text>
+<text x="30" y="494" font-size="11" fill="#9ca3af">据 PDF p. 3 §2.1 与 p. 4 Algorithm 1 重画，机制示意，不含实测数据。</text>
+</svg>

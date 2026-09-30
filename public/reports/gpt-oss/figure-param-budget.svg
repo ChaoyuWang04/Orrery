@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" width="1120" height="440" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="440" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">参数几乎全在专家里：量化专家就能塞进一张卡，每 Token 只算一小截</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">条长按同一比例尺画参数量。绿 = MoE 专家（按 MXFP4 存）；紫 = 注意力；灰 = 输入嵌入 + 输出投影；黄 = 每 Token 激活参数。</text>
+<text x="136" y="122" font-size="14" font-weight="700" fill="#111827" text-anchor="end">gpt-oss-120b</text>
+<rect x="150" y="100" width="864.0" height="34" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="1014.0" y="100" width="7.2" height="34" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1021.2" y="100" width="8.7" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="150" y="146" width="38.6" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="198.6" y="162" font-size="11" fill="#6b7280">每 Token 激活 5.13B，占总参数 4.4%</text>
+<text x="162" y="122" font-size="13" fill="#111827">MoE 专家 114.71B（36 层 × 128 个）</text>
+<text x="1029.9" y="92" font-size="11" fill="#6b7280" text-anchor="end">注意力 0.96B + 嵌入 1.16B，合计不到 2%</text>
+<text x="1029.9" y="162" font-size="11" fill="#9ca3af" text-anchor="end">总 116.83B · checkpoint 60.8 GiB</text>
+<text x="136" y="252" font-size="14" font-weight="700" fill="#111827" text-anchor="end">gpt-oss-20b</text>
+<rect x="150" y="230" width="144.0" height="34" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="294.0" y="230" width="4.8" height="34" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="298.8" y="230" width="8.7" height="34" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="150" y="276" width="27.2" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="187.2" y="292" font-size="11" fill="#6b7280">每 Token 激活 3.61B，占总参数 17.3%</text>
+<text x="319.5" y="245" font-size="13" fill="#111827">专家 19.12B（24 层 × 32 个）+ 注意力 0.64B + 嵌入 1.16B</text>
+<text x="319.5" y="261" font-size="11" fill="#9ca3af">总 20.91B · checkpoint 12.8 GiB · 非专家部分约占 9%</text>
+<line x1="150" y1="330" x2="1030" y2="330" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="150" y="358" font-size="13" fill="#111827">绿色按 MXFP4（4.25 位/参数）、其余按 BF16 存：120b 平均约 4.47 位/参数，20b 约 5.26 位/参数。</text>
+<text x="150" y="380" font-size="13" fill="#111827">同一套量化，模型越小、非专家占比越高，省下的比例就越小。</text>
+<text x="30" y="420" font-size="11" fill="#9ca3af">参数量与 checkpoint 大小据 PDF p. 5 Table 1；平均位数是本文按 Table 1 与 §2.1 的算术，非卡内数字。</text>
+</svg>

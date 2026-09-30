@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" width="1120" height="430" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="430" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">这份卡怎样从「评了什么」走到「风险已被充分压低」</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = 评估对象；紫 = 行为评估；黄 = 能力分级；绿 = 缓解措施；红 = 残余风险与结论。</text>
+<rect x="30" y="86" width="196" height="270" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="44" y="114" font-size="14" fill="#111827" text-anchor="start" font-weight="700">① 定对象</text>
+<text x="44" y="134" font-size="11" fill="#9ca3af" text-anchor="start">第 1–3 节开头</text>
+<text x="44" y="170" font-size="11" fill="#374151" text-anchor="start">GPT-5 = 快模型 + 推理模型</text>
+<text x="44" y="187" font-size="11" fill="#374151" text-anchor="start">+ 实时路由</text>
+<text x="44" y="222" font-size="11" fill="#374151" text-anchor="start">正文主测 thinking 与 main</text>
+<text x="44" y="257" font-size="11" fill="#374151" text-anchor="start">thinking 对 o3，</text>
+<text x="44" y="274" font-size="11" fill="#374151" text-anchor="start">main 对 GPT-4o</text>
+<text x="44" y="309" font-size="11" fill="#374151" text-anchor="start">pro 不重跑，</text>
+<text x="44" y="326" font-size="11" fill="#374151" text-anchor="start">用 thinking 代理</text>
+<line x1="228" y1="221.0" x2="244" y2="221.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="246" y="86" width="196" height="270" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="260" y="114" font-size="14" fill="#111827" text-anchor="start" font-weight="700">② 测行为</text>
+<text x="260" y="134" font-size="11" fill="#9ca3af" text-anchor="start">第 3–5 节</text>
+<text x="260" y="170" font-size="11" fill="#374151" text-anchor="start">12 个安全评估域</text>
+<text x="260" y="205" font-size="11" fill="#374151" text-anchor="start">400 多名外部红队，</text>
+<text x="260" y="222" font-size="11" fill="#374151" text-anchor="start">5000 多小时</text>
+<text x="260" y="257" font-size="11" fill="#374151" text-anchor="start">思考链可监控与可控</text>
+<text x="260" y="274" font-size="11" fill="#374151" text-anchor="start">（v2 新增）</text>
+<text x="260" y="309" font-size="11" fill="#374151" text-anchor="start">有进有退，退的写明</text>
+<line x1="444" y1="221.0" x2="460" y2="221.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="462" y="86" width="196" height="270" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="476" y="114" font-size="14" fill="#111827" text-anchor="start" font-weight="700">③ 测能力</text>
+<text x="476" y="134" font-size="11" fill="#9ca3af" text-anchor="start">第 6.1–6.2 节</text>
+<text x="476" y="170" font-size="11" fill="#374151" text-anchor="start">生化：无定论性证据，</text>
+<text x="476" y="187" font-size="11" fill="#374151" text-anchor="start">仍按 High 处理</text>
+<text x="476" y="222" font-size="11" fill="#374151" text-anchor="start">网络：未达 High</text>
+<text x="476" y="257" font-size="11" fill="#374151" text-anchor="start">AI 自改进：未达 High</text>
+<text x="476" y="292" font-size="11" fill="#374151" text-anchor="start">sandbagging：研究域，</text>
+<text x="476" y="309" font-size="11" fill="#374151" text-anchor="start">由 Apollo 外测</text>
+<line x1="660" y1="172" x2="676" y2="172" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="678" y="86" width="196" height="270" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="692" y="114" font-size="14" fill="#111827" text-anchor="start" font-weight="700">④ 上护栏</text>
+<text x="692" y="134" font-size="11" fill="#9ca3af" text-anchor="start">第 6.3.1–6.3.4 节</text>
+<text x="692" y="170" font-size="11" fill="#374151" text-anchor="start">模型训练：拒武器化，</text>
+<text x="692" y="187" font-size="11" fill="#374151" text-anchor="start">不给可操作细节</text>
+<text x="692" y="222" font-size="11" fill="#374151" text-anchor="start">两级系统监控</text>
+<text x="692" y="257" font-size="11" fill="#374151" text-anchor="start">账号处置与 API 身份字段</text>
+<text x="692" y="292" font-size="11" fill="#374151" text-anchor="start">可信访问计划、权重安全</text>
+<line x1="876" y1="221.0" x2="892" y2="221.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="894" y="86" width="196" height="270" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="908" y="114" font-size="14" fill="#111827" text-anchor="start" font-weight="700">⑤ 验残余、下结论</text>
+<text x="908" y="134" font-size="11" fill="#9ca3af" text-anchor="start">第 6.3.3、6.3.5 节</text>
+<text x="908" y="170" font-size="11" fill="#374151" text-anchor="start">红队专找通用越狱</text>
+<text x="908" y="205" font-size="11" fill="#374151" text-anchor="start">承认上线后可能出现</text>
+<text x="908" y="222" font-size="11" fill="#374151" text-anchor="start">未知通用越狱</text>
+<text x="908" y="257" font-size="11" fill="#374151" text-anchor="start">理由：难发现、会封号、</text>
+<text x="908" y="274" font-size="11" fill="#374151" text-anchor="start">能快速修复</text>
+<text x="908" y="309" font-size="11" fill="#374151" text-anchor="start">结论：充分压低</text>
+<text x="30" y="388" font-size="13" fill="#6b7280" text-anchor="start">只有生化一域从③走到④⑤（黄框第一条旁的箭头）；网络与自改进在③就停下。</text>
+<text x="30" y="410" font-size="13" fill="#6b7280" text-anchor="start">据原卡第 1–6 节的章节结构重画，是论证示意，不是原卡里的图。</text>
+</svg>

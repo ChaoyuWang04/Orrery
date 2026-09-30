@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" width="1120" height="400" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="400" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">35 页的 model card，写「怎么造」的只有两页</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">一格一页，按该页主体内容着色。绿 = 怎么造出来；黄 = 怎么正确使用；紫 = 能力评测；红 = 风险与安全；灰 = 封面、目录、署名与参考文献。</text>
+<rect x="70" y="200" width="26" height="56" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="83.0" y="276" font-size="11" fill="#9ca3af" text-anchor="middle">p. 1</text>
+<rect x="98" y="200" width="26" height="56" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="126" y="200" width="26" height="56" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="154" y="200" width="26" height="56" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="182" y="200" width="26" height="56" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="195.0" y="276" font-size="11" fill="#9ca3af" text-anchor="middle">p. 5</text>
+<rect x="210" y="200" width="26" height="56" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="238" y="200" width="26" height="56" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="266" y="200" width="26" height="56" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="294" y="200" width="26" height="56" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="322" y="200" width="26" height="56" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="335.0" y="276" font-size="11" fill="#9ca3af" text-anchor="middle">p. 10</text>
+<rect x="350" y="200" width="26" height="56" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="378" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="406" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="434" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="462" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="475.0" y="276" font-size="11" fill="#9ca3af" text-anchor="middle">p. 15</text>
+<rect x="490" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="518" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="546" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="574" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="602" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="615.0" y="276" font-size="11" fill="#9ca3af" text-anchor="middle">p. 20</text>
+<rect x="630" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="658" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="686" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="714" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="742" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="755.0" y="276" font-size="11" fill="#9ca3af" text-anchor="middle">p. 25</text>
+<rect x="770" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="798" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="826" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="854" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="882" y="200" width="26" height="56" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="895.0" y="276" font-size="11" fill="#9ca3af" text-anchor="middle">p. 30</text>
+<rect x="910" y="200" width="26" height="56" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="938" y="200" width="26" height="56" rx="4" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="966" y="200" width="26" height="56" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="994" y="200" width="26" height="56" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1022" y="200" width="26" height="56" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="1035.0" y="276" font-size="11" fill="#9ca3af" text-anchor="middle">p. 35</text>
+<path d="M182,188 L182,178 L236,178 L236,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="209.0" y="154" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">怎么造</text>
+<text x="209.0" y="170" font-size="11" fill="#6b7280" text-anchor="middle">§2.1–2.4</text>
+<path d="M294,188 L294,178 L376,178 L376,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="335.0" y="154" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">有多强</text>
+<text x="335.0" y="170" font-size="11" fill="#6b7280" text-anchor="middle">§2.6</text>
+<path d="M378,188 L378,178 L544,178 L544,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="461.0" y="154" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">默认模型的安全</text>
+<text x="461.0" y="170" font-size="11" fill="#6b7280" text-anchor="middle">§3–4</text>
+<path d="M546,188 L546,178 L880,178 L880,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="713.0" y="154" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">Preparedness 与对抗微调</text>
+<text x="713.0" y="170" font-size="11" fill="#6b7280" text-anchor="middle">§5</text>
+<path d="M238,290 L238,300 L292,300 L292,290" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="265.0" y="320" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">怎么用</text>
+<text x="265.0" y="336" font-size="11" fill="#6b7280" text-anchor="middle">harmony、档位、工具</text>
+<path d="M882,290 L882,300 L936,300 L936,290" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="909.0" y="320" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">harmony 示例</text>
+<text x="909.0" y="336" font-size="11" fill="#6b7280" text-anchor="middle">附录 1</text>
+<path d="M938,188 L938,178 L964,178 L964,188" fill="none" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="951" y="154" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">外部评审</text>
+<text x="951" y="170" font-size="11" fill="#6b7280" text-anchor="middle">附录 2</text>
+<text x="30" y="386" font-size="11" fill="#9ca3af">据 PDF 目录（p. 2–3）与逐页内容归类。训练配方散在 p. 5–7：数据一段、算力一段、后训练一段，没有超参、没有消融。</text>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="l8-ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" font-weight="700">专家并行里计算在等什么：普通 MoE、ScMoE、ScMoE 加两个 chunk</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280">每组上一道是计算流、下一道是专家并行通信流。灰 = 不依赖通信的计算；紫 = 专家计算；黄 = dispatch / combine 通信；红虚框 = 计算流空等。</text>
+<text x="30.0" y="72.0" font-size="13" fill="#6b7280">块的位置与长度按 PDF p. 22 Figure 8 估读，是机制示意，不是实测时长。</text>
+<text x="30.0" y="118.0" font-size="13" fill="#111827" font-weight="700">(a) 两层普通 MoE</text>
+<text x="30.0" y="156.0" font-size="11" fill="#6b7280">计算流</text>
+<text x="30.0" y="200.0" font-size="11" fill="#6b7280">通信流</text>
+<rect x="200.0" y="134.0" width="52.7" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="226.3" y="154.0" font-size="11" fill="#111827" text-anchor="middle">Attn</text>
+<rect x="261.5" y="134.0" width="63.1" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="293.0" y="154.0" font-size="11" fill="#111827" text-anchor="middle">Router</text>
+<rect x="327.6" y="134.0" width="99.1" height="32" rx="6" fill="none" stroke="#d9877a" stroke-dasharray="5 4"/>
+<rect x="429.7" y="134.0" width="108.4" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="483.9" y="154.0" font-size="11" fill="#111827" text-anchor="middle">MoE GEMM</text>
+<rect x="541.0" y="134.0" width="93.3" height="32" rx="6" fill="none" stroke="#d9877a" stroke-dasharray="5 4"/>
+<rect x="637.3" y="134.0" width="52.7" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="663.7" y="154.0" font-size="11" fill="#111827" text-anchor="middle">Attn</text>
+<rect x="698.8" y="134.0" width="63.1" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="730.4" y="154.0" font-size="11" fill="#111827" text-anchor="middle">Router</text>
+<rect x="764.9" y="134.0" width="99.1" height="32" rx="6" fill="none" stroke="#d9877a" stroke-dasharray="5 4"/>
+<rect x="867.0" y="134.0" width="108.4" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="921.2" y="154.0" font-size="11" fill="#111827" text-anchor="middle">MoE GEMM</text>
+<rect x="978.4" y="134.0" width="94.4" height="32" rx="6" fill="none" stroke="#d9877a" stroke-dasharray="5 4"/>
+<rect x="332.2" y="178.0" width="94.4" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="379.5" y="198.0" font-size="11" fill="#111827" text-anchor="middle">Dispatch</text>
+<rect x="541.0" y="178.0" width="93.3" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="587.7" y="198.0" font-size="11" fill="#111827" text-anchor="middle">Combine</text>
+<rect x="770.7" y="178.0" width="93.3" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="817.4" y="198.0" font-size="11" fill="#111827" text-anchor="middle">Dispatch</text>
+<rect x="978.4" y="178.0" width="94.4" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="1025.6" y="198.0" font-size="11" fill="#111827" text-anchor="middle">Combine</text>
+<text x="30.0" y="263.0" font-size="13" fill="#111827" font-weight="700">(b) 一层 ScMoE：稠密 FFN 与 dispatch 并排，下一层的 Attn、稠密 FFN 与 combine 并排</text>
+<text x="30.0" y="301.0" font-size="11" fill="#6b7280">计算流</text>
+<text x="30.0" y="345.0" font-size="11" fill="#6b7280">通信流</text>
+<rect x="200.0" y="279.0" width="52.7" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="226.3" y="299.0" font-size="11" fill="#111827" text-anchor="middle">Attn</text>
+<rect x="261.5" y="279.0" width="63.1" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="293.0" y="299.0" font-size="11" fill="#111827" text-anchor="middle">Router</text>
+<rect x="332.2" y="279.0" width="102.6" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="383.5" y="299.0" font-size="11" fill="#111827" text-anchor="middle">Dense FFN</text>
+<rect x="437.8" y="279.0" width="89.8" height="32" rx="6" fill="none" stroke="#d9877a" stroke-dasharray="5 4"/>
+<rect x="530.6" y="279.0" width="189.6" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="625.4" y="299.0" font-size="11" fill="#111827" text-anchor="middle">MoE GEMM</text>
+<rect x="731.3" y="279.0" width="52.7" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="757.6" y="299.0" font-size="11" fill="#111827" text-anchor="middle">Attn</text>
+<rect x="795.1" y="279.0" width="101.4" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="845.8" y="299.0" font-size="11" fill="#111827" text-anchor="middle">Dense FFN</text>
+<rect x="899.5" y="279.0" width="75.9" height="32" rx="6" fill="none" stroke="#d9877a" stroke-dasharray="5 4"/>
+<rect x="332.2" y="323.0" width="195.4" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="429.9" y="343.0" font-size="11" fill="#111827" text-anchor="middle">Dispatch</text>
+<rect x="731.3" y="323.0" width="244.1" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="853.3" y="343.0" font-size="11" fill="#111827" text-anchor="middle">Combine</text>
+<text x="30.0" y="408.0" font-size="13" fill="#111827" font-weight="700">(c) ScMoE 再沿 Token 维切两块：两块专家计算与两块通信互相遮</text>
+<text x="30.0" y="446.0" font-size="11" fill="#6b7280">计算流</text>
+<text x="30.0" y="490.0" font-size="11" fill="#6b7280">通信流</text>
+<rect x="200.0" y="424.0" width="52.7" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="226.3" y="444.0" font-size="11" fill="#111827" text-anchor="middle">Attn</text>
+<rect x="261.5" y="424.0" width="63.1" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="293.0" y="444.0" font-size="11" fill="#111827" text-anchor="middle">Router</text>
+<rect x="332.2" y="424.0" width="102.6" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="383.5" y="444.0" font-size="11" fill="#111827" text-anchor="middle">Dense FFN</text>
+<rect x="447.1" y="424.0" width="102.6" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="498.4" y="444.0" font-size="11" fill="#111827" text-anchor="middle">GEMM 块0</text>
+<rect x="571.2" y="424.0" width="114.2" height="32.0" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="628.3" y="444.0" font-size="11" fill="#111827" text-anchor="middle">GEMM 块1</text>
+<rect x="725.5" y="424.0" width="52.7" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="751.8" y="444.0" font-size="11" fill="#111827" text-anchor="middle">Attn</text>
+<rect x="787.0" y="424.0" width="101.4" height="32.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="837.7" y="444.0" font-size="11" fill="#111827" text-anchor="middle">Dense FFN</text>
+<rect x="332.2" y="468.0" width="102.6" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="383.5" y="488.0" font-size="11" fill="#111827" text-anchor="middle">Disp 块0</text>
+<rect x="447.1" y="468.0" width="102.6" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="498.4" y="488.0" font-size="11" fill="#111827" text-anchor="middle">Disp 块1</text>
+<rect x="571.2" y="468.0" width="142.0" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="642.2" y="488.0" font-size="11" fill="#111827" text-anchor="middle">Comb 块0</text>
+<rect x="725.5" y="468.0" width="143.2" height="32.0" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="797.1" y="488.0" font-size="11" fill="#111827" text-anchor="middle">Comb 块1</text>
+<text x="30.0" y="548.0" font-size="12" fill="#6b7280">报告实测：训练中无法被计算遮住的 dispatch / combine 时间占比，从 25.3% 降到 8.4%（PDF p. 22）。</text>
+</svg>

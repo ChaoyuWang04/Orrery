@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">RL 里把新权重交给推理引擎：先广播全量，再各取所需</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">灰 = H2D（从 CPU 内存拷上 GPU）；黄 = 在 checkpoint engine 之间广播；绿 = 推理引擎从共享缓冲重载权重。</text>
+<text x="30" y="96" font-size="14" font-weight="700" fill="#6b7280">① 数据流（同一个 pod 里三套引擎共置）</text>
+<rect x="60" y="112" width="260" height="62" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="190.0" y="136" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">训练引擎</text>
+<text x="190.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">rollout 期间参数卸载在 CPU 内存</text>
+<rect x="430" y="112" width="260" height="62" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="560.0" y="136" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">checkpoint engine</text>
+<text x="560.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">每个 worker 拿本地一份，再广播全量</text>
+<rect x="800" y="112" width="260" height="62" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="930.0" y="136" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">推理引擎</text>
+<text x="930.0" y="156" font-size="11" fill="#6b7280" text-anchor="middle">只取自己那种切分需要的分片</text>
+<line x1="320" y1="143" x2="426" y2="143" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="690" y1="143" x2="796" y2="143" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="560" y="198" font-size="11" fill="#6b7280" text-anchor="middle">比理论最优多传好几倍数据，但同步少、带宽跑得满，实测反而更快；全量更新不到 30 秒</text>
+<text x="30" y="246" font-size="14" font-weight="700" fill="#6b7280">② 一张卡上的时间线（附录 G）</text>
+<text x="30" y="296" font-size="14" font-weight="700" fill="#111827">理想三段流水</text>
+<text x="30" y="316" font-size="11" fill="#6b7280">三步错开重叠</text>
+<rect x="300" y="274" width="72" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="375" y="274" width="72" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="450" y="274" width="72" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="375" y="300" width="72" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="450" y="300" width="72" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="525" y="300" width="72" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="450" y="326" width="72" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="525" y="326" width="72" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="600" y="326" width="72" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="30" y="408" font-size="14" font-weight="700" fill="#111827">H800 上 PCIe 打满</text>
+<text x="30" y="428" font-size="11" fill="#6b7280">H2D 与广播争 PCIe，退化成串行</text>
+<rect x="300" y="386" width="72" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="375" y="412" width="72" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="450" y="438" width="72" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="525" y="386" width="72" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="600" y="412" width="72" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="675" y="438" width="72" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="750" y="386" width="72" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="825" y="412" width="72" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="900" y="438" width="72" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="30" y="520" font-size="14" font-weight="700" fill="#111827">K2 采用的两段</text>
+<text x="30" y="540" font-size="11" fill="#6b7280">先一次同步 H2D，再广播与重载并行</text>
+<rect x="300" y="498" width="197" height="22" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="500" y="524" width="72" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="575" y="524" width="72" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="650" y="524" width="72" height="22" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="500" y="550" width="72" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="575" y="550" width="72" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="650" y="550" width="72" height="22" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="300" y="610" font-size="11" fill="#9ca3af">时间 →（方块长短为示意，不是实测时长）</text>
+<text x="30" y="630" font-size="11" fill="#9ca3af">据 PDF p. 14 Figure 10 与 p. 32 Figure 13 重画。两段方案会受多次同步 H2D 拖累，报告说设备够多、分片够小时，全部参数一次就能装进 H2D 缓冲。</text>
+</svg>

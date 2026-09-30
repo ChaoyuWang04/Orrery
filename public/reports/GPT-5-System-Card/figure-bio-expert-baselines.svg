@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 676" width="1120" height="676" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="676" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">生物评估的读法：模型分数落在专家分数线的哪一侧</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">灰 = OpenAI o3（浏览）；绿 = gpt-5-thinking 上线候选；黄 = gpt-5-thinking helpful-only（去掉安全训练）；红虚线 = 专家基线。</text>
+<text x="330.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">0%</text>
+<line x1="330.0" y1="104" x2="330.0" y2="596" stroke="#eeeeee" stroke-width="1"/>
+<text x="470.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">20%</text>
+<line x1="470.0" y1="104" x2="470.0" y2="596" stroke="#eeeeee" stroke-width="1"/>
+<text x="610.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">40%</text>
+<line x1="610.0" y1="104" x2="610.0" y2="596" stroke="#eeeeee" stroke-width="1"/>
+<text x="750.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">60%</text>
+<line x1="750.0" y1="104" x2="750.0" y2="596" stroke="#eeeeee" stroke-width="1"/>
+<text x="890.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">80%</text>
+<line x1="890.0" y1="104" x2="890.0" y2="596" stroke="#eeeeee" stroke-width="1"/>
+<text x="1030.0" y="96" font-size="11" fill="#9ca3af" text-anchor="middle">100%</text>
+<line x1="1030.0" y1="104" x2="1030.0" y2="596" stroke="#eeeeee" stroke-width="1"/>
+<text x="30" y="140" font-size="14" fill="#111827" text-anchor="start" font-weight="700">多模态病毒学排障</text>
+<text x="30" y="160" font-size="11" fill="#6b7280" text-anchor="start">350 题，多选，pass@1</text>
+<rect x="330" y="118" width="287.0" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="611.0" y="130" font-size="11" fill="#111827" text-anchor="end">41%</text>
+<rect x="330" y="140" width="294.0" height="16" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="618.0" y="152" font-size="11" fill="#111827" text-anchor="end">42%</text>
+<rect x="330" y="162" width="245.0" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="569.0" y="174" font-size="11" fill="#111827" text-anchor="end">35%</text>
+<line x1="484.70000000000005" y1="112" x2="484.70000000000005" y2="186" stroke="#d9877a" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="488.70000000000005" y="200" font-size="11" fill="#d9877a" text-anchor="start">中位专家 22.1%</text>
+<line x1="30" y1="226" x2="1090" y2="226" stroke="#eeeeee" stroke-width="1"/>
+<text x="30" y="264" font-size="14" fill="#111827" text-anchor="start" font-weight="700">ProtocolQA 开放作答</text>
+<text x="30" y="284" font-size="11" fill="#6b7280" text-anchor="start">108 题，pass@1</text>
+<rect x="330" y="242" width="273.0" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="597.0" y="254" font-size="11" fill="#111827" text-anchor="end">39%</text>
+<rect x="330" y="264" width="210.0" height="16" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="534.0" y="276" font-size="11" fill="#111827" text-anchor="end">30%</text>
+<rect x="330" y="286" width="224.0" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="548.0" y="298" font-size="11" fill="#111827" text-anchor="end">32%</text>
+<line x1="624.0" y1="236" x2="624.0" y2="310" stroke="#d9877a" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="628.0" y="324" font-size="11" fill="#d9877a" text-anchor="start">中位专家 42%</text>
+<line x1="708.0" y1="236" x2="708.0" y2="326" stroke="#d9877a" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="712.0" y="340" font-size="11" fill="#d9877a" text-anchor="start">共识专家 54%</text>
+<line x1="30" y1="350" x2="1090" y2="350" stroke="#eeeeee" stroke-width="1"/>
+<text x="30" y="388" font-size="14" fill="#111827" text-anchor="start" font-weight="700">隐性知识与排障</text>
+<text x="30" y="408" font-size="11" fill="#6b7280" text-anchor="start">选择题，cons@32</text>
+<rect x="330" y="366" width="539.0" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="863.0" y="378" font-size="11" fill="#111827" text-anchor="end">77%</text>
+<rect x="330" y="388" width="462.0" height="16" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="786.0" y="400" font-size="11" fill="#111827" text-anchor="end">66%</text>
+<rect x="330" y="410" width="518.0" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="842.0" y="422" font-size="11" fill="#111827" text-anchor="end">74%</text>
+<line x1="771.0" y1="360" x2="771.0" y2="434" stroke="#d9877a" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="775.0" y="448" font-size="11" fill="#d9877a" text-anchor="start">80 分位 PhD 63%</text>
+<line x1="890.0" y1="360" x2="890.0" y2="450" stroke="#d9877a" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="894.0" y="464" font-size="11" fill="#d9877a" text-anchor="start">共识专家 80%</text>
+<line x1="30" y1="474" x2="1090" y2="474" stroke="#eeeeee" stroke-width="1"/>
+<text x="30" y="512" font-size="14" fill="#111827" text-anchor="start" font-weight="700">TroubleshootingBench</text>
+<text x="30" y="532" font-size="11" fill="#6b7280" text-anchor="start">52 份协议各 3 题，pass@1</text>
+<rect x="330" y="490" width="224.0" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="548.0" y="502" font-size="11" fill="#111827" text-anchor="end">32%</text>
+<rect x="330" y="512" width="154.0" height="16" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="478.0" y="524" font-size="11" fill="#111827" text-anchor="end">22%</text>
+<rect x="330" y="534" width="231.0" height="16" rx="3" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="555.0" y="546" font-size="11" fill="#111827" text-anchor="end">33%</text>
+<line x1="584.8" y1="484" x2="584.8" y2="558" stroke="#d9877a" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="588.8" y="572" font-size="11" fill="#d9877a" text-anchor="start">第 80 百分位专家 36.4%</text>
+<text x="30" y="636" font-size="13" fill="#6b7280" text-anchor="start">读自 PDF p. 27–29 Figure 13–16 的柱顶标注（均为带浏览的设置）；专家基线取自同页正文。</text>
+<text x="30" y="658" font-size="13" fill="#6b7280" text-anchor="start">第三行纵轴是 cons@32，其余是 pass@1。卡里称 TroubleshootingBench「gpt-5-thinking 最强」，对应的是 helpful-only 那根柱。</text>
+</svg>

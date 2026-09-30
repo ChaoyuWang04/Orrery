@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="g1-ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" font-weight="700">GLM-4.5 与同代两个大 MoE 的形状：更窄、更深</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280">方框宽度正比于隐藏维度，高度正比于层数（稠密层 + MoE 层，不含 MTP 层）。绿 = GLM-4.5；灰 = 对照。数字来自 PDF p. 3 Table 1。</text>
+<rect x="60.0" y="127.2" width="142.2" height="312.8" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="131.1" y="115.2" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">GLM-4.5</text>
+<text x="131.1" y="275.6" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">92 层</text>
+<text x="131.1" y="295.6" font-size="11" fill="#6b7280" text-anchor="middle">3 稠密 + 89 MoE</text>
+<text x="131.1" y="462.0" font-size="12" fill="#111827" text-anchor="middle">隐藏维度 5120</text>
+<text x="131.1" y="482.0" font-size="11" fill="#6b7280" text-anchor="middle">路由专家 160 个</text>
+<text x="131.1" y="500.0" font-size="11" fill="#6b7280" text-anchor="middle">96 头 × 128 维 = 12288</text>
+<text x="131.1" y="518.0" font-size="11" fill="#6b7280" text-anchor="middle">KV 头 8</text>
+<rect x="272.2" y="232.6" width="199.1" height="207.4" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="371.8" y="220.6" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">DeepSeek-V3</text>
+<text x="371.8" y="328.3" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">61 层</text>
+<text x="371.8" y="348.3" font-size="11" fill="#6b7280" text-anchor="middle">3 稠密 + 58 MoE</text>
+<text x="371.8" y="462.0" font-size="12" fill="#111827" text-anchor="middle">隐藏维度 7168</text>
+<text x="371.8" y="482.0" font-size="11" fill="#6b7280" text-anchor="middle">路由专家 256 个</text>
+<text x="371.8" y="500.0" font-size="11" fill="#6b7280" text-anchor="middle">128 头 × 192 维 = 24576</text>
+<text x="371.8" y="518.0" font-size="11" fill="#6b7280" text-anchor="middle">KV 头 128</text>
+<rect x="541.3" y="232.6" width="199.1" height="207.4" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="640.9" y="220.6" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Kimi K2</text>
+<text x="640.9" y="328.3" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">61 层</text>
+<text x="640.9" y="348.3" font-size="11" fill="#6b7280" text-anchor="middle">1 稠密 + 60 MoE</text>
+<text x="640.9" y="462.0" font-size="12" fill="#111827" text-anchor="middle">隐藏维度 7168</text>
+<text x="640.9" y="482.0" font-size="11" fill="#6b7280" text-anchor="middle">路由专家 384 个</text>
+<text x="640.9" y="500.0" font-size="11" fill="#6b7280" text-anchor="middle">64 头 × 192 维 = 12288</text>
+<text x="640.9" y="518.0" font-size="11" fill="#6b7280" text-anchor="middle">KV 头 64</text>
+<path d="M60.0,440.0 L750.4,440.0" fill="none" stroke="#cbd2d9" stroke-width="1"/>
+<text x="800.0" y="120.0" font-size="14" fill="#111827" font-weight="700">读图要点</text>
+<text x="800.0" y="146.0" font-size="12" fill="#6b7280">GLM-4.5 的隐藏维度只有对照的 0.71 倍，</text>
+<text x="800.0" y="166.0" font-size="12" fill="#6b7280">路由专家也更少，层数却多出约一半。</text>
+<text x="800.0" y="186.0" font-size="12" fill="#6b7280">报告给的理由只有一句：更深的模型</text>
+<text x="800.0" y="206.0" font-size="12" fill="#6b7280">推理能力更好（PDF p. 2），没有对照实验。</text>
+<text x="800.0" y="246.0" font-size="12" fill="#6b7280">注意力这一侧：96 头 × 128 维 = 12288，</text>
+<text x="800.0" y="266.0" font-size="12" fill="#6b7280">是隐藏维度的 2.4 倍，报告称「2.5 倍的头」。</text>
+<text x="800.0" y="286.0" font-size="12" fill="#6b7280">DeepSeek-V3 的 128 × 192 = 24576，</text>
+<text x="800.0" y="306.0" font-size="12" fill="#6b7280">是其隐藏维度的 3.4 倍，同样远超惯例。</text>
+<text x="800.0" y="346.0" font-size="12" fill="#6b7280">KV 头只有 8 个（GQA），缓存按 8 组存。</text>
+</svg>

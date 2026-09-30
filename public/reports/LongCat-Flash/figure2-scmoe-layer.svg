@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="l2-ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30.0" y="32.0" font-size="19" fill="#111827" font-weight="700">LongCat-Flash 的一层：MoE 从第一个 MLA 抄近路，12 个名额里可以有「不干活」的专家</text>
+<text x="30.0" y="54.0" font-size="13" fill="#6b7280">绿 = 每个 Token 都走的稠密主干；灰 = 路由器；紫 = FFN 专家（每层 512 个）；黄 = 零计算专家（每层 256 个，原样返回输入）。根据 PDF p. 5 Figure 2 与 p. 10 重画。</text>
+<rect x="30.0" y="84.0" width="560.0" height="490.0" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="46.0" y="106.0" font-size="12" fill="#6b7280">一层（共 28 层，不含 MTP 层）</text>
+<rect x="210.0" y="528.0" width="180.0" height="34.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="300.0" y="550.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">输入隐状态</text>
+<rect x="210.0" y="118.0" width="180.0" height="34.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="300.0" y="140.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="700">输出隐状态</text>
+<rect x="150.0" y="452.0" width="300.0" height="44.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="300.0" y="472.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">第一个 MLA</text>
+<text x="300.0" y="488.0" font-size="11" fill="#6b7280" text-anchor="middle">它的输出同时喂给主干和 MoE</text>
+<path d="M300.0,528.0 L300.0,498.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#l2-ar)"/>
+<rect x="50.0" y="382.0" width="160.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="130.0" y="407.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">稠密 FFN</text>
+<rect x="50.0" y="316.0" width="160.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="130.0" y="341.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">第二个 MLA</text>
+<rect x="50.0" y="250.0" width="160.0" height="40.0" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="130.0" y="275.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">稠密 FFN</text>
+<path d="M190.0,452.0 L130.0,424.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#l2-ar)"/>
+<path d="M130.0,382.0 L130.0,358.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#l2-ar)"/>
+<path d="M130.0,316.0 L130.0,292.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#l2-ar)"/>
+<text x="50.0" y="240.0" font-size="11" fill="#6b7280">主干：本地就能算，不等跨卡通信</text>
+<rect x="300.0" y="382.0" width="250.0" height="40.0" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="425.0" y="400.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Top-12 路由器</text>
+<text x="425.0" y="415.0" font-size="11" fill="#6b7280" text-anchor="middle">选谁看「分数 + 偏置 b」，加权只用分数</text>
+<path d="M400.0,452.0 L425.0,424.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#l2-ar)"/>
+<text x="446.0" y="442.0" font-size="11" fill="#9ca3af">快捷连接</text>
+<rect x="290.0" y="300.0" width="30.0" height="36.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="305.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="324.0" y="300.0" width="30.0" height="36.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="339.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="358.0" y="300.0" width="30.0" height="36.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="373.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle">…</text>
+<rect x="392.0" y="300.0" width="30.0" height="36.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="407.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle">512</text>
+<rect x="446.0" y="300.0" width="30.0" height="36.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="461.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="480.0" y="300.0" width="30.0" height="36.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="495.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle">…</text>
+<rect x="514.0" y="300.0" width="30.0" height="36.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="529.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle">256</text>
+<path d="M407.0,382.0 L407.0,338.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#l2-ar)"/>
+<text x="290.0" y="356.0" font-size="11" fill="#6b7280">FFN 专家</text>
+<text x="446.0" y="356.0" font-size="11" fill="#6b7280">零计算专家</text>
+<text x="446.0" y="284.0" font-size="11" fill="#6b7280">跨卡通信 + 专家计算</text>
+<circle cx="300" cy="196" r="14" fill="#ffffff" stroke="#9ca3af" stroke-width="1.4"/>
+<text x="300.0" y="201.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">+</text>
+<path d="M130.0,250.0 L130.0,196.0 L284.0,196.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#l2-ar)"/>
+<path d="M434.0,300.0 L434.0,196.0 L316.0,196.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#l2-ar)"/>
+<path d="M300.0,182.0 L300.0,154.0" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#l2-ar)"/>
+<text x="630.0" y="106.0" font-size="14" fill="#111827" font-weight="700">同一层的 12 个名额，三种花法</text>
+<text x="630.0" y="126.0" font-size="11" fill="#6b7280">紫 = 名额给了 FFN 专家（真算）；黄 = 给了零计算专家（不算）</text>
+<text x="630.0" y="158.0" font-size="13" fill="#111827" font-weight="700">12 个名额全给零计算专家</text>
+<rect x="630.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="666.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="702.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="738.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="774.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="810.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="846.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="882.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="918.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="954.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="990.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="1026.0" y="170.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="630.0" y="222.0" font-size="12" fill="#6b7280">每 Token 激活 18.6B（下限）</text>
+<text x="630.0" y="268.0" font-size="13" fill="#111827" font-weight="700">平均 8 个给 FFN 专家</text>
+<rect x="630.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="666.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="702.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="738.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="774.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="810.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="846.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="882.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="918.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="954.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="990.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="1026.0" y="280.0" width="30.0" height="30.0" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="630.0" y="332.0" font-size="12" fill="#6b7280">约 27B（训练中的平均值）</text>
+<text x="630.0" y="378.0" font-size="13" fill="#111827" font-weight="700">12 个名额全给 FFN 专家</text>
+<rect x="630.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="666.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="702.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="738.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="774.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="810.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="846.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="882.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="918.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="954.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="990.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="1026.0" y="390.0" width="30.0" height="30.0" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="630.0" y="442.0" font-size="12" fill="#6b7280">31.3B（上限）</text>
+<text x="630.0" y="500.0" font-size="11" fill="#9ca3af">上下限与平均来自 PDF p. 10；平均 8 个对应约 27B 见 p. 6 图注。</text>
+<text x="630.0" y="518.0" font-size="11" fill="#9ca3af">偏置控制器只管全语料平均落在 8 个，单个 Token 拿几个由路由器定。</text>
+<text x="630.0" y="536.0" font-size="11" fill="#9ca3af">零计算专家的输出不用跨卡通信就能拿到（PDF p. 26）。</text>
+</svg>

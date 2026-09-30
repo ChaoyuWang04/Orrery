@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 460" width="1120" height="460" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="460" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">原版 Muon 让最大注意力打分冲过 1000；K2 用 QK-Clip 把它按在 100，之后自行回落</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">红 = 原版 Muon（9B 激活 / 53B 总参数的中等规模 MoE）；绿 = Kimi K2 用 MuonClip，τ = 100。两图纵轴刻度不同。</text>
+<rect x="90" y="100" width="420" height="260" fill="#ffffff" stroke="#cbd2d9"/>
+<line x1="90" y1="360.0" x2="510" y2="360.0" stroke="#eeeeee"/>
+<text x="82" y="364.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="90" y1="273.33333333333337" x2="510" y2="273.33333333333337" stroke="#eeeeee"/>
+<text x="82" y="277.33333333333337" font-size="11" fill="#9ca3af" text-anchor="end">400</text>
+<line x1="90" y1="186.66666666666669" x2="510" y2="186.66666666666669" stroke="#eeeeee"/>
+<text x="82" y="190.66666666666669" font-size="11" fill="#9ca3af" text-anchor="end">800</text>
+<line x1="90" y1="100.0" x2="510" y2="100.0" stroke="#eeeeee"/>
+<text x="82" y="104.0" font-size="11" fill="#9ca3af" text-anchor="end">1200</text>
+<text x="90.0" y="378" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="213.52941176470588" y="378" font-size="11" fill="#9ca3af" text-anchor="middle">5000</text>
+<text x="337.05882352941177" y="378" font-size="11" fill="#9ca3af" text-anchor="middle">10000</text>
+<text x="460.5882352941176" y="378" font-size="11" fill="#9ca3af" text-anchor="middle">15000</text>
+<path d="M90.0,360.0 L139.4,351.3 L213.5,342.7 L287.6,329.7 L337.1,321.0 L386.5,295.0 L423.5,269.0 L460.6,208.3 L497.6,100.0" fill="none" stroke="#d9877a" stroke-width="2.4"/>
+<text x="90" y="88" font-size="14" font-weight="700" fill="#111827">原版 Muon：最大打分一路上涨</text>
+<text x="300.0" y="398" font-size="11" fill="#6b7280" text-anchor="middle">训练步数</text>
+<text x="110" y="130" font-size="11" fill="#6b7280">不到 1.7 万步就超过 1000</text>
+<rect x="620" y="100" width="440" height="260" fill="#ffffff" stroke="#cbd2d9"/>
+<line x1="620" y1="360.0" x2="1060" y2="360.0" stroke="#eeeeee"/>
+<text x="612" y="364.0" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<line x1="620" y1="241.8181818181818" x2="1060" y2="241.8181818181818" stroke="#eeeeee"/>
+<text x="612" y="245.8181818181818" font-size="11" fill="#9ca3af" text-anchor="end">50</text>
+<line x1="620" y1="123.63636363636365" x2="1060" y2="123.63636363636365" stroke="#eeeeee"/>
+<text x="612" y="127.63636363636365" font-size="11" fill="#9ca3af" text-anchor="end">100</text>
+<text x="620.0" y="378" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="713.6170212765958" y="378" font-size="11" fill="#9ca3af" text-anchor="middle">50k</text>
+<text x="807.2340425531916" y="378" font-size="11" fill="#9ca3af" text-anchor="middle">100k</text>
+<text x="900.8510638297872" y="378" font-size="11" fill="#9ca3af" text-anchor="middle">150k</text>
+<text x="994.468085106383" y="378" font-size="11" fill="#9ca3af" text-anchor="middle">200k</text>
+<path d="M620.0,360.0 L625.6,218.2 L631.2,123.6 L743.6,123.6 L754.8,170.9 L766.0,260.7 L788.5,274.9 L844.7,282.0 L919.6,284.4 L994.5,284.4 L1050.6,286.7" fill="none" stroke="#5fa886" stroke-width="2.4"/>
+<line x1="751.1" y1="100" x2="751.1" y2="360" stroke="#9ca3af" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="620" y="88" font-size="14" font-weight="700" fill="#111827">Kimi K2：钳在 τ = 100，约 30% 训练步后回落</text>
+<text x="840.0" y="398" font-size="11" fill="#6b7280" text-anchor="middle">训练步数</text>
+<text x="790" y="310" font-size="11" fill="#6b7280">第 7 万步：此后 QK-Clip 不再触发</text>
+<text x="650" y="180" font-size="11" fill="#6b7280">12.7% 的头</text>
+<text x="650" y="196" font-size="11" fill="#6b7280">至少被钳过一次</text>
+<text x="30" y="440" font-size="11" fill="#9ca3af">按 PDF p. 4 Figure 2 的趋势重画，曲线形状为示意，读数以原图为准；12.7% 与第 7 万步取自附录 D（PDF p. 30）。</text>
+</svg>

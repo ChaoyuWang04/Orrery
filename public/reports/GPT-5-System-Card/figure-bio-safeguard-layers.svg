@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 622" width="1120" height="622" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="622" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" text-anchor="start" font-weight="700">生化护栏的四层，以及红队结果分别落在哪一层</text>
+<text x="30" y="54" font-size="13" fill="#6b7280" text-anchor="start">绿 = 防御层及其测试数字；红 = 红队结果，箭头指向拦下它的那一层；灰 = 说明。</text>
+<rect x="30" y="86" width="500" height="102" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="44" y="110" font-size="14" fill="#111827" text-anchor="start" font-weight="700">第 1 层 · 模型安全训练</text>
+<text x="44" y="132" font-size="11" fill="#374151" text-anchor="start">拒绝一切武器化请求；双用途话题不给可操作细节</text>
+<text x="44" y="150" font-size="11" fill="#374151" text-anchor="start">PhD 红队困难提示 not_unsafe 0.921（o3 0.829）</text>
+<text x="44" y="168" font-size="11" fill="#374151" text-anchor="start">过滤后的生产对抗提示 0.957（o3 0.899）</text>
+<rect x="620" y="86" width="470" height="54" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="634" y="108" font-size="11" fill="#374151" text-anchor="start">成对盲评：60.0% 的对比里 thinking 被判更安全</text>
+<text x="634" y="126" font-size="11" fill="#374151" text-anchor="start">（95% CI 53.2%–66.9%）；单模型细则战役里 o3 常多给一点信息</text>
+<line x1="618" y1="113.0" x2="534" y2="113.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="30" y="204" width="500" height="84" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="44" y="228" font-size="14" fill="#111827" text-anchor="start" font-weight="700">第 2 层 · 主题分类器（快）</text>
+<text x="44" y="250" font-size="11" fill="#374151" text-anchor="start">判断内容是否与生物相关，相关就升级到下一层</text>
+<text x="44" y="268" font-size="11" fill="#374151" text-anchor="start">recall 0.960，precision 0.737</text>
+<rect x="620" y="204" width="470" height="54" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="634" y="226" font-size="11" fill="#374151" text-anchor="start">这两层监控沿用 ChatGPT agent 的模型与测试结果，</text>
+<text x="634" y="244" font-size="11" fill="#374151" text-anchor="start">GPT-5 上线时没有另测</text>
+<rect x="30" y="304" width="500" height="118" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="44" y="328" font-size="14" fill="#111827" text-anchor="start" font-weight="700">第 3 层 · 推理监控器</text>
+<text x="44" y="350" font-size="11" fill="#374151" text-anchor="start">判断落在生物威胁分类学的哪一类、能否展示</text>
+<text x="44" y="368" font-size="11" fill="#374151" text-anchor="start">困难集 recall 0.838，precision 0.647</text>
+<rect x="620" y="304" width="470" height="54" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="634" y="326" font-size="11" fill="#374151" text-anchor="start">内部 API 越狱战役：19 名 PhD、约 380 小时</text>
+<text x="634" y="344" font-size="11" fill="#374151" text-anchor="start">46 份报告 → 3 份具体可操作 → 都会被这一层拦下</text>
+<line x1="618" y1="331.0" x2="534" y2="331.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="620" y="368" width="470" height="54" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="634" y="390" font-size="11" fill="#374151" text-anchor="start">Gray Swan：28,367 次尝试，攻击成功率 0.98%</text>
+<text x="634" y="408" font-size="11" fill="#374151" text-anchor="start">抽查 60 例，58 例会被这一层拦下</text>
+<line x1="618" y1="395.0" x2="534" y2="395.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="30" y="438" width="500" height="118" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="44" y="462" font-size="14" fill="#111827" text-anchor="start" font-weight="700">第 4 层 · 账号级处置</text>
+<text x="44" y="484" font-size="11" fill="#374151" text-anchor="start">自动检测 + 生物专家复核：封号、防多号</text>
+<text x="44" y="502" font-size="11" fill="#374151" text-anchor="start">极端情况通报执法；API 侧另有 safety_identifier</text>
+<rect x="620" y="438" width="470" height="54" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="634" y="460" font-size="11" fill="#374151" text-anchor="start">FAR.AI：找到 1 个绕过部分层的通用越狱，</text>
+<text x="634" y="478" font-size="11" fill="#374151" text-anchor="start">实际会触发处置</text>
+<line x1="618" y1="465.0" x2="534" y2="465.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="620" y="502" width="470" height="54" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="634" y="524" font-size="11" fill="#374151" text-anchor="start">UK AISI：1 个越狱绕过全部层，正在修补；</text>
+<text x="634" y="542" font-size="11" fill="#374151" text-anchor="start">产生它的过程会触发大量标记、最终封号</text>
+<line x1="618" y1="529.0" x2="534" y2="529.0" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="592" font-size="13" fill="#6b7280" text-anchor="start">数字取自 PDF p. 50–56（Table 20–22 与正文）。第 1 层的红框是比较两代模型的红队，不是找越狱。</text>
+</svg>
