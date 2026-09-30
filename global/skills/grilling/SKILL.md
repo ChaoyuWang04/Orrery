@@ -40,7 +40,3 @@ Q2 <标题>:……
 任务做到一半冒出的模糊,只问那一枝,答完接着做;答案改变了已确认的范围时,才重出方案。
 
 拷问、方案、实施尽量放在同一个会话:换一次上下文,原始问答就只剩摘要。
-
----
-
-改写自 [mattpocock/skills](https://github.com/mattpocock/skills) 的 grilling skill,原作 Copyright (c) 2026 Matt Pocock,MIT 许可。
