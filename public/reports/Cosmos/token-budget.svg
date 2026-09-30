@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 510" width="1120" height="510" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+  <rect x="0" y="0" width="1120" height="510" fill="#ffffff"/>
+  <text x="40" y="38" font-size="19" font-weight="700" fill="#111827">一段视频变成多少个 token：两条路线各压一次</text>
+  <text x="40" y="62" font-size="13" fill="#6b7280">灰色是原始像素位置数，紫色是连续 token 路线（扩散），黄色是离散 token 路线（自回归）；条长按对数刻度画</text>
+
+  <!-- Group A -->
+  <text x="40" y="104" font-size="14" font-weight="700" fill="#111827">扩散路线：Cosmos-Tokenize1-CV8×8×8-720p，121 帧 1280×704</text>
+  <text x="40" y="136" font-size="14" font-weight="700" fill="#111827">原始视频</text>
+  <text x="40" y="152" font-size="11" fill="#6b7280">121 帧 × 704 × 1280</text>
+  <rect x="320" y="122" width="635" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="963" y="140" font-size="11" fill="#6b7280">约 1.09 亿</text>
+
+  <text x="40" y="194" font-size="14" font-weight="700" fill="#111827">tokenizer 之后</text>
+  <text x="40" y="210" font-size="11" fill="#6b7280">16 × 88 × 160，每格 16 维浮点</text>
+  <rect x="320" y="180" width="259" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+  <text x="587" y="198" font-size="11" fill="#6b7280">225,280（时间 ÷8，空间各 ÷8）</text>
+
+  <text x="40" y="252" font-size="14" font-weight="700" fill="#111827">patchify 之后</text>
+  <text x="40" y="268" font-size="11" fill="#6b7280">每 1×2×2 格并成一个 token</text>
+  <rect x="320" y="238" width="175" height="26" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+  <text x="503" y="256" font-size="11" fill="#6b7280">56,320（表 12 脚注的上下文长度）</text>
+
+  <!-- Group B -->
+  <text x="40" y="310" font-size="14" font-weight="700" fill="#111827">自回归路线：Cosmos-Tokenize1-DV8×16×16-720p，33 帧 1024×640</text>
+  <text x="40" y="342" font-size="14" font-weight="700" fill="#111827">原始视频</text>
+  <text x="40" y="358" font-size="11" fill="#6b7280">33 帧 × 640 × 1024</text>
+  <rect x="320" y="328" width="537" height="26" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="865" y="346" font-size="11" fill="#6b7280">约 2,163 万</text>
+
+  <text x="40" y="400" font-size="14" font-weight="700" fill="#111827">tokenizer 之后</text>
+  <text x="40" y="416" font-size="11" fill="#6b7280">5 × 40 × 64，每格一个整数</text>
+  <rect x="320" y="386" width="85" height="26" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <text x="413" y="404" font-size="11" fill="#6b7280">12,800（表 14），不再 patchify，词表 64,000</text>
+
+  <!-- axis -->
+  <line x1="320" y1="440" x2="960" y2="440" stroke="#9ca3af" stroke-width="1.4"/>
+  <g stroke="#9ca3af" stroke-width="1.4">
+    <line x1="390" y1="436" x2="390" y2="444"/>
+    <line x1="530" y1="436" x2="530" y2="444"/>
+    <line x1="670" y1="436" x2="670" y2="444"/>
+    <line x1="810" y1="436" x2="810" y2="444"/>
+    <line x1="950" y1="436" x2="950" y2="444"/>
+  </g>
+  <g font-size="11" fill="#9ca3af" text-anchor="middle">
+    <text x="390" y="458">1 万</text>
+    <text x="530" y="458">10 万</text>
+    <text x="670" y="458">100 万</text>
+    <text x="810" y="458">1,000 万</text>
+    <text x="950" y="458">1 亿</text>
+  </g>
+  <text x="40" y="490" font-size="11" fill="#9ca3af">依据 PDF p.19–22（表 12 脚注）与 p.30（表 14）推算；自回归按 33 帧计，因为 12,800 = 5 × 40 × 64 对应 1 + 32 ÷ 8 = 5 个时间格，正文写的是 34 帧</text>
+</svg>

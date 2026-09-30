@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+
+  <text x="40" y="42" font-size="19" font-weight="700" fill="#111827">潜动作模型：只留一条窄通路，动作就被「挤」出来</text>
+  <text x="40" y="66" font-size="13" fill="#6b7280">绿 = 画面输入与输出　紫 = 唯一能携带「下一帧信息」的通路　黄 = 只在训练时存在的编码器与解码器</text>
+
+  <!-- history frames -->
+  <rect x="40" y="120" width="180" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="130" y="144" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">历史帧 x₁ … xₜ</text>
+  <text x="130" y="163" font-size="11" fill="#6b7280" text-anchor="middle">编码器和解码器都能看到</text>
+
+  <!-- next frame -->
+  <rect x="40" y="210" width="180" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="130" y="234" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">下一帧 xₜ₊₁</text>
+  <text x="130" y="253" font-size="11" fill="#6b7280" text-anchor="middle">只有编码器能看到</text>
+
+  <!-- encoder -->
+  <rect x="280" y="155" width="150" height="76" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+  <text x="355" y="188" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">LAM 编码器</text>
+  <text x="355" y="208" font-size="11" fill="#6b7280" text-anchor="middle">看历史 + 下一帧</text>
+
+  <!-- latent -->
+  <rect x="490" y="165" width="150" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+  <text x="565" y="189" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">潜动作 ãₜ</text>
+  <text x="565" y="208" font-size="11" fill="#6b7280" text-anchor="middle">VQ 码本 8 选 1</text>
+
+  <!-- decoder -->
+  <rect x="700" y="155" width="150" height="76" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+  <text x="775" y="188" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">LAM 解码器</text>
+  <text x="775" y="208" font-size="11" fill="#6b7280" text-anchor="middle">轻量，看不到下一帧</text>
+
+  <!-- output -->
+  <rect x="910" y="165" width="170" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="995" y="189" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">重建 x̂ₜ₊₁</text>
+  <text x="995" y="208" font-size="11" fill="#6b7280" text-anchor="middle">与真实下一帧比误差</text>
+
+  <!-- arrows -->
+  <path d="M220 148 L250 148 L250 180 L278 180" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <path d="M220 238 L250 238 L250 206 L278 206" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <path d="M430 193 L488 193" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <path d="M640 193 L698 193" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <path d="M850 193 L908 193" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <!-- history also to decoder, routed above -->
+  <path d="M130 120 L130 98 L775 98 L775 153" fill="none" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="452" y="92" font-size="11" fill="#9ca3af" text-anchor="middle">历史帧也直接交给解码器</text>
+  <text x="565" y="250" font-size="11" fill="#9ca3af" text-anchor="middle">历史解释不了的那部分变化，只能从这里过</text>
+
+  <!-- bit accounting panel -->
+  <rect x="40" y="300" width="1040" height="170" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+  <text x="60" y="328" font-size="14" font-weight="700" fill="#111827">每一步能带多少信息（本文按报告配置推算）</text>
+
+  <text x="60" y="362" font-size="11" fill="#6b7280">一帧画面的 token</text>
+  <rect x="200" y="350" width="620" height="18" rx="3" fill="#e3f4ec" stroke="#5fa886" stroke-width="1"/>
+  <text x="832" y="364" font-size="11" fill="#6b7280">约 920 个 × 10 比特 ≈ 9,200 比特</text>
+
+  <text x="60" y="404" font-size="11" fill="#6b7280">一个潜动作</text>
+  <rect x="200" y="392" width="3" height="18" fill="#8f8bd8"/>
+  <text x="212" y="406" font-size="11" fill="#6b7280">log₂8 = 3 比特，按长度画只剩一根细线：约为一帧的三千分之一</text>
+
+  <text x="60" y="446" font-size="11" fill="#9ca3af">结论：这条通路装不下画面本身，只装得下「这一步做了哪一类操作」。码本若放大到上万个码或改成不量化的连续向量，它就可能退化成下一帧的缩略图。</text>
+
+  <!-- inference note -->
+  <rect x="40" y="490" width="1040" height="50" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.4"/>
+  <text x="560" y="520" font-size="13" fill="#111827" text-anchor="middle">推理时编码器和解码器都丢掉，只留 8 个码：用户输入 0–7 的整数去查码本，得到的向量交给动态模型</text>
+</svg>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">shortcut forcing：训练时教会网络跨大步，推理时每帧只走 4 步</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 网络一次前向跨出的一步；黄 = 由两个半步合成的目标（不回传梯度）；绿 = 干净表示；灰 = 噪声。依据 PDF p.3 式 1–4、p.6 式 6–8 与推理段。</text>
+
+<rect x="16" y="72" width="560" height="472" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="98" font-size="14" fill="#111827" font-weight="700">训练：一个网络，两种步长，两种目标</text>
+<text x="36" y="118" font-size="11" fill="#6b7280">网络的输入是带噪表示、信号水平 τ、步长 d 和动作；输出一律是干净表示</text>
+
+<path d="M180,250 Q300,150 420,250" fill="none" stroke="#8f8bd8" stroke-width="2" marker-end="url(#ap)"/>
+<text x="300" y="168" font-size="11" fill="#111827" text-anchor="middle">网络一次跨 d</text>
+<path d="M180,250 Q240,296 300,252" fill="none" stroke="#d4a24c" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ay)"/>
+<path d="M300,252 Q360,296 420,252" fill="none" stroke="#d4a24c" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ay)"/>
+<line x1="60" y1="250" x2="540" y2="250" stroke="#9ca3af" stroke-width="1.4"/>
+<circle cx="180" cy="250" r="5" fill="#eeeeee" stroke="#b9b9b9"/>
+<circle cx="420" cy="250" r="5" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="60" y="232" font-size="11" fill="#6b7280">τ = 0</text>
+<text x="540" y="232" font-size="11" fill="#6b7280" text-anchor="end">τ = 1</text>
+<text x="180" y="226" font-size="11" fill="#111827" text-anchor="middle">当前 τ</text>
+<text x="420" y="226" font-size="11" fill="#111827" text-anchor="middle">τ + d</text>
+<text x="60" y="270" font-size="11" fill="#9ca3af">纯噪声</text>
+<text x="540" y="270" font-size="11" fill="#9ca3af" text-anchor="end">干净数据</text>
+<text x="240" y="314" font-size="11" fill="#111827" text-anchor="middle">前向 1：跨 d/2</text>
+<text x="360" y="314" font-size="11" fill="#111827" text-anchor="middle">前向 2：跨 d/2</text>
+<text x="300" y="340" font-size="11" fill="#6b7280" text-anchor="middle">两段速度取平均、停梯度，就是「跨 d」的目标</text>
+<text x="300" y="358" font-size="11" fill="#6b7280" text-anchor="middle">误差在速度空间比，再乘 (1 − τ)² 拉回 x 空间的量级</text>
+
+<rect x="36" y="378" width="520" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="296" y="399" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">最小步 d = d_min：直接回归干净表示</text>
+<text x="296" y="418" font-size="11" fill="#6b7280" text-anchor="middle">不需要教师；d 按 2 的幂采样，τ 落在该步长能走到的网格上</text>
+
+<line x1="60" y1="524" x2="240" y2="524" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="60" y1="524" x2="60" y2="450" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="60" y1="516" x2="240" y2="456" stroke="#d4a24c" stroke-width="2"/>
+<text x="66" y="538" font-size="11" fill="#9ca3af">τ = 0</text>
+<text x="240" y="538" font-size="11" fill="#9ca3af" text-anchor="end">τ = 1</text>
+<text x="256" y="476" font-size="11" fill="#111827">损失权重 w(τ) = 0.9τ + 0.1</text>
+<text x="256" y="494" font-size="11" fill="#6b7280">从 0.1 线性升到 1.0：越接近干净，越认真学</text>
+<text x="256" y="512" font-size="11" fill="#6b7280">太吵的位置只能学到数据均值，给低权重</text>
+
+<rect x="592" y="72" width="512" height="472" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="612" y="98" font-size="14" fill="#111827" font-weight="700">推理：一帧一帧往前滚</text>
+<text x="612" y="118" font-size="11" fill="#6b7280">历史帧已生成完，只有当前这一帧从噪声开始</text>
+
+<rect x="612" y="136" width="64" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="644" y="167" font-size="11" fill="#111827" text-anchor="middle">t − 3</text>
+<rect x="692" y="136" width="64" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="724" y="167" font-size="11" fill="#111827" text-anchor="middle">t − 2</text>
+<rect x="772" y="136" width="64" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="804" y="167" font-size="11" fill="#111827" text-anchor="middle">t − 1</text>
+<text x="724" y="206" font-size="11" fill="#6b7280" text-anchor="middle">历史帧再加一点噪声：τ_ctx = 0.1</text>
+<rect x="872" y="146" width="92" height="32" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="918" y="167" font-size="11" fill="#111827" text-anchor="middle">动作 a_t</text>
+
+<line x1="724" y1="214" x2="724" y2="252" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="918" y1="180" x2="918" y2="252" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+
+<rect x="612" y="256" width="80" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="652" y="283" font-size="11" fill="#111827" text-anchor="middle">纯噪声</text>
+<line x1="694" y1="278" x2="708" y2="278" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<rect x="710" y="256" width="80" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="750" y="283" font-size="11" fill="#111827" text-anchor="middle">τ = 0.25</text>
+<line x1="792" y1="278" x2="806" y2="278" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<rect x="808" y="256" width="80" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="848" y="283" font-size="11" fill="#111827" text-anchor="middle">τ = 0.5</text>
+<line x1="890" y1="278" x2="904" y2="278" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<rect x="906" y="256" width="80" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="946" y="283" font-size="11" fill="#111827" text-anchor="middle">τ = 0.75</text>
+<line x1="988" y1="278" x2="1002" y2="278" stroke="#8f8bd8" stroke-width="1.4" marker-end="url(#ap)"/>
+<rect x="1004" y="256" width="80" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1044" y="283" font-size="11" fill="#111827" text-anchor="middle">干净 ẑ</text>
+<text x="848" y="322" font-size="11" fill="#6b7280" text-anchor="middle">4 次前向，每次 d = 1/4；每次都看历史和 a_t</text>
+
+<path d="M1044,254 L1044,124 L820,124 L820,134" fill="none" stroke="#5fa886" stroke-width="1.4" marker-end="url(#ag)"/>
+<text x="1036" y="236" font-size="11" fill="#111827" text-anchor="end">写回历史</text>
+
+<text x="612" y="364" font-size="11" fill="#111827">为什么给历史加一点噪声</text>
+<text x="612" y="382" font-size="11" fill="#6b7280">历史里是模型自己生成的帧，带小瑕疵；训练时见过带噪历史，</text>
+<text x="612" y="398" font-size="11" fill="#6b7280">推理时就不会把瑕疵当成真的</text>
+<text x="612" y="426" font-size="11" fill="#111827">为什么预测干净表示，不预测速度</text>
+<text x="612" y="444" font-size="11" fill="#6b7280">速度预测会输出高频细节，按帧往前滚时误差一帧帧累积；</text>
+<text x="612" y="460" font-size="11" fill="#6b7280">作者假设干净表示更有结构，误差不容易叠起来</text>
+<text x="612" y="488" font-size="11" fill="#111827">为什么是 4 步</text>
+<text x="612" y="506" font-size="11" fill="#6b7280">朴素扩散每帧 64 步，单卡 H100 只有 0.8 FPS；</text>
+<text x="612" y="522" font-size="11" fill="#6b7280">大步在训练里学过，4 步就不必再做一轮蒸馏（PDF p.15 表 2）</text>
+</svg>

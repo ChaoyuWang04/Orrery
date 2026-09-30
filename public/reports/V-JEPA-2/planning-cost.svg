@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" width="1120" height="430" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="430" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">一步规划的账：同样 10 轮 CEM，一边生成视频，一边只比表征</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = Cosmos（动作条件视频扩散）；绿 = V-JEPA 2-AC（表征预测器）。条长 = 每一步规划的耗时，按比例画。依据 PDF p.13、p.15 表 3、p.37。</text>
+
+<rect x="16" y="72" width="1088" height="150" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="98" font-size="14" fill="#111827" font-weight="700">Cosmos：从无动作的 Cosmos 出发，在 Droid 上做动作条件微调</text>
+<rect x="36" y="114" width="220" height="48" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="146" y="134" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">采样候选动作</text>
+<text x="146" y="152" font-size="11" fill="#6b7280" text-anchor="middle">每轮 80 个</text>
+<line x1="258" y1="138" x2="282" y2="138" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="286" y="114" width="300" height="48" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="436" y="134" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">潜空间扩散，生成下一帧</text>
+<text x="436" y="152" font-size="11" fill="#6b7280" text-anchor="middle">70 亿参数，连续 tokenizer</text>
+<line x1="588" y1="138" x2="612" y2="138" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="616" y="114" width="220" height="48" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="726" y="134" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">和目标图比 L1</text>
+<text x="726" y="152" font-size="11" fill="#6b7280" text-anchor="middle">目标图编码进同一潜空间</text>
+<line x1="838" y1="138" x2="862" y2="138" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="866" y="114" width="218" height="48" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="975" y="134" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">用最优一批更新高斯</text>
+<text x="975" y="152" font-size="11" fill="#6b7280" text-anchor="middle">共 10 轮，地平线 1</text>
+<rect x="36" y="176" width="900" height="16" rx="3" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="946" y="189" font-size="11" fill="#111827">每步 4 分钟</text>
+<text x="36" y="210" font-size="11" fill="#6b7280">抓放按子目标共走 4 + 10 + 4 = 18 步，整条超过 1 小时（PDF p.13）</text>
+
+<rect x="16" y="236" width="1088" height="150" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="262" font-size="14" fill="#111827" font-weight="700">V-JEPA 2-AC：冻结的 V-JEPA 2 编码器，加一个吃动作的预测器</text>
+<rect x="36" y="278" width="220" height="48" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="146" y="298" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">采样候选动作</text>
+<text x="146" y="316" font-size="11" fill="#6b7280" text-anchor="middle">每轮 800 个，多 10 倍</text>
+<line x1="258" y1="302" x2="282" y2="302" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="286" y="278" width="300" height="48" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="436" y="298" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">预测器前向一次</text>
+<text x="436" y="316" font-size="11" fill="#6b7280" text-anchor="middle">约 3 亿参数，输出 16×16×1408 的表征</text>
+<line x1="588" y1="302" x2="612" y2="302" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="616" y="278" width="220" height="48" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="726" y="298" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">和目标图比 L1</text>
+<text x="726" y="316" font-size="11" fill="#6b7280" text-anchor="middle">目标图由同一编码器编码</text>
+<line x1="838" y1="302" x2="862" y2="302" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="866" y="278" width="218" height="48" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="975" y="298" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">用前 10 个更新高斯</text>
+<text x="975" y="316" font-size="11" fill="#6b7280" text-anchor="middle">共 10 轮，地平线 1</text>
+<rect x="36" y="340" width="60" height="16" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="106" y="353" font-size="11" fill="#111827">每步 16 秒</text>
+<text x="36" y="374" font-size="11" fill="#6b7280">两边都在同一块 RTX 4090 上跑，都用图像目标（PDF p.13、p.15 表 3）</text>
+
+<text x="30" y="412" font-size="11" fill="#9ca3af">折算到每评估一个候选：Cosmos 约 240 ÷ (10 × 80) ≈ 0.3 秒，V-JEPA 2-AC 约 16 ÷ (10 × 800) ≈ 0.002 秒，差约 150 倍。本文算术，假设一步的耗时都花在评估候选上。</text>
+</svg>
