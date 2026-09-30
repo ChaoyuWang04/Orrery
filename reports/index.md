@@ -183,6 +183,7 @@
 | RetireOPD | ZJU | 多轮 agent 的自蒸馏:先用环境奖励优化带技能的教师,再让学生 RL 加 OPD 联合训练,差距不再缩小且达到目标成功率就自行退掉教师 |
 | ScienceIDE | Oxford | 让 agent 按专家定义的案例与验收标准把科学代码仓改造成可执行环境,用于 SFT、RL 与评测,并训出 PhAI-IDE 72B/9B/4B |
 | Cordis | DeepSeek | DeepSeek Harness 底下的插件内核;把动态组合拆成时间(可完全撤销副作用)与空间(响应式依赖)两维并给出演算 |
+| JAZ | MIT | 把 agent 循环抽象成语言原语 invoke:输入与 REPL 历史都是代码变量、子 agent 就是递归调用;只靠提示,就在 StuLife 长程回忆与 AppWorld 自我改进上胜过 Letta 与 ACE 这类专用 harness(arXiv 2609.26891) |
 | DSec | DeepSeek | 支撑 Agent 训练的生产级沙箱平台:统一接口管理多类沙箱,每天约 300 万个、每秒创建 5000 个以上(arXiv 2609.22978) |
 | DR-Venus | AntGroup | 只用 1 万条开放数据训边缘规模深研 agent |
 | Agent-World | ByteDance | 规模化合成真实环境,演化通用 agent(Seed,与人大合作) |
@@ -203,7 +204,6 @@
 | WebGPT | OpenAI | 浏览器辅助问答,人类反馈训练的早期 web agent |
 | Fara-1.5 | Microsoft | 电脑操作 agent 的可扩展学习环境与小模型数据配方;前作 Fara-7B 见 arXiv 2511.19663 |
 | Harness-Zero | Peking | harness 蒸馏:用优化过的 harness 指导一个 harnessing agent 在目标 harness 的动作空间里改写学生回答,微调后部署时去掉专用 harness |
-| JAZ | MIT | 把 agent 循环抽象成语言原语 invoke:输入与 REPL 历史都是代码变量、子 agent 就是递归调用;只靠提示,就在 StuLife 长程回忆与 AppWorld 自我改进上胜过 Letta 与 ACE 这类专用 harness(arXiv 2609.26891) |
 
 ## 推理服务与架构探索
 
