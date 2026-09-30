@@ -1,8 +1,8 @@
 # SoL-Pi：让 AI 替 harness 做研究，4 个机制把 Agent 的 token 账单砍掉 1/3
 
-<!-- release-date: 2026-09-17 -->
+<!-- release-date: 2026-09-09 -->
 
-> 本文依据 NVIDIA（联合南洋理工大学 NTU 与 MIT）的 **SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness**，即 arXiv:2609.20519v1（2026-09-17），共 15 页。页码均指这份 PDF 的物理页码。这是一篇技术论文，不是基模报告：没有训练任何模型，也没有改模型权重，它改的是模型外面那层程序。全文把 3 件事分开写：**论文明确写了什么**（带页码）、**我们如何解释或验算它**（会写明）、**外部资料补充**（给出处并标注）。
+> 本文依据 NVIDIA（联合南洋理工大学 NTU 与 MIT）的 **SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness**，即 arXiv:2609.20519v1（2026-09-17 提交，首页印 2026-08-17），共 15 页。页码均指这份 PDF 的物理页码。这是一篇技术论文，不是基模报告：没有训练任何模型，也没有改模型权重，它改的是模型外面那层程序。全文把 3 件事分开写：**论文明确写了什么**（带页码）、**我们如何解释或验算它**（会写明）、**外部资料补充**（给出处并标注）。
 
 ## 读前先把几个词说成人话
 
@@ -32,15 +32,17 @@ Agent 越跑越久，花钱的大头已经不是「每个 token 多贵」，而�
 
 难点是 harness 的各个部件耦合得很紧：工具、上下文管理、校验、委托、恢复、终止，一处局部省了，可能在下游引发失败，或者只是把 token 成本挪到了后面（PDF p. 2）。人工去看长轨迹、找反复出现的浪费、改代码，又贵又难扩展。
 
-所以作者让 AI 来做这份研究，并把研究流程本身做成可以横向扩展的「漏斗」：
+所以作者让 AI 来做这份研究，并把研究流程本身做成可以横向扩展的「漏斗」。
 
-1. 研究 AI 读基础 harness 的执行轨迹，提出约 150 个方向（精确是 152 个），在 535 个可执行环境里跑了 3,000 多次实验、60,000 多次 Agent 与环境的交互（PDF p. 2、p. 3）；
-2. 每个候选必须过 2 道预先固定的闸门：能力指标不能跌出容差，效率指标至少改善一项（PDF p. 3）；
-3. 最后留下 4 个机制，合并成 SoL-Pi，冻结之后才去留出集 EdgeBench 上验收，验收结果永不回流到搜索里（PDF p. 3、p. 6）。
+![Figure 1 上半是自动研究循环：研究环境供题，研究 AI 观察基础 harness 的执行轨迹、往想法池里提改动，经性能与成本两道闸门筛选后留下 4 个机制，合并冻结成 SoL-Pi；下半是 EdgeBench 上两个模型后端的平均分与 API 费用。（引自原文 Figure 1，PDF p. 1）](/reports/SoL-Pi/fig1-overview.png)
 
-![Figure 1：（a）自动研究循环全景，研究环境供题、研究 AI 观察执行轨迹、想法池经性能与成本 2 道闸门筛选，留下的 4 个机制合并冻结成 SoL-Pi；（b）EdgeBench 上 2 个模型后端的平均分与 API 费用（引自原文 Figure 1，PDF p. 1）](/reports/SoL-Pi/fig1-overview.png)
+图上半的三处要点，正文给了数字：
 
-主要结果（PDF p. 1、p. 6–7）：
+1. 研究 AI 提出约 150 个方向（精确是 152 个），在 535 个可执行环境里跑了 3,000 多次实验、60,000 多次 Agent 与环境的交互（PDF p. 2、p. 3）；
+2. 两道闸门是预先固定的：能力指标不能跌出容差，效率指标至少改善一项（PDF p. 3）；
+3. 留下的 4 个机制合并成 SoL-Pi，冻结之后才去留出集 EdgeBench 上验收，验收结果永不回流到搜索里（PDF p. 3、p. 6）。
+
+下半的柱子就是主要结果（PDF p. 1、p. 6–7）：
 
 - EdgeBench 公开的 51 题上，SoL-Pi 在 GPT-5.6 Sol 和 Opus 5 这 2 个模型后端上的分数与 Pi 相当（保留 Pi 分数的 93.7% 与 94.3%），token 流量降 49.0% 与 44.7%，API 费用降约 1/3（33.2% 与 33.5%）（PDF p. 6）；
 - 相对各自的原生 harness，费用降 50.0%（对 GPT-5.6 Sol 上的 Codex）和 54.3%（对 Opus 5 上的 Claude Code）（PDF p. 1，Figure 1 图注）；
@@ -213,7 +215,7 @@ flowchart LR
     OCC["Online Context Compact<br/>计划步完成时算账压缩"] -.-> Ctx
 ```
 
-这张图按 PDF p. 5 第 2.4 节末段的文字重画，是机制示意。原文的说法是：改代码时 Action Fusion 把编辑和后续命令合并；环境返回输出时 Reducer 从日志里抽证据，ObservationPack 避免大结果被反复完整发送；完成一个计划步时 Online Context Compact 检查压缩是否划算，所以它们针对的是互补的开销来源（PDF p. 5）。
+这张环形图按 PDF p. 5 第 2.4 节末段的文字重画，是机制示意：Figure 4 把 4 个机制分开画，这张把它们挂回同一个循环。作者据此说它们针对的是互补的开销来源（PDF p. 5）。
 
 ### 机制一：Action Fusion，省掉一次「空转」的往返
 
@@ -458,17 +460,11 @@ Table 3（PDF p. 7）：
 
 ![Figure 5：（a）集群架构：Codex 协调者下分 5 组、每组 4 个工人，组内共享证据板，候选以不可变快照提交独立验证；（b）2 小时内经验证的最优周期数随时间的变化（对数轴），以及最终周期数与模型费用（引自原文 Figure 5，PDF p. 8）](/reports/SoL-Pi/fig5-swarm.png)
 
-任务是一个以模拟机器周期（cycles，越少越好）衡量的内核优化基准，来自 Anthropic 公开的「original performance take-home」（PDF p. 7、p. 14 参考文献 28）。比较 3 种配置，各跑一次 2 小时（PDF p. 7）：
+任务是一个以模拟机器周期（cycles，越少越好）衡量的内核优化基准，来自 Anthropic 公开的「original performance take-home」（PDF p. 7、p. 14 参考文献 28）。三种配置各跑一次 2 小时：单个 Codex Agent、Codex 协调者 + 20 个 Pi 基线工人、Codex 协调者 + 20 个启用全部 4 个机制的 SoL-Pi 工人（PDF p. 7）。
 
-1. 单个 Codex Agent；
-2. Codex 协调者 + 20 个 Pi 基线工人；
-3. Codex 协调者 + 20 个启用全部 4 个机制的 SoL-Pi 工人。
+图（a）的集群结构之外，正文补了三条图上读不出的设定（PDF p. 7）：单 Agent 和协调者用 GPT-5.6 Sol（xhigh），所有工人用 GPT-5.6 Luna（xhigh）；每次都从同一个冻结起点出发，起点需要 147,734 个周期，会话全新、不带之前的解法或笔记；共享最优结果只在独立验证确认「严格改进」时才更新。
 
-单 Agent 和协调者用 GPT-5.6 Sol（xhigh），所有工人用 GPT-5.6 Luna（xhigh）。每次都从同一个冻结的起点开始，起点需要 147,734 个周期；会话全新，不带之前运行的解法或笔记（PDF p. 7）。
-
-2 个集群里，工人分成 5 组、每组 4 人，各有独立工作区，组内共享一块证据板；组内交换笔记来复现或组合有希望的发现，协调者负责跨组转达。只有当协调者提交一个不可变的候选快照、且独立验证确认严格改进时，共享的最优结果才会更新（PDF p. 7）。
-
-结果（PDF p. 8）：
+图（b）右侧两组柱子的数字（PDF p. 8）：
 
 | 配置 | 最终周期数 | 模型费用（美元） | 8 档速度门槛 |
 |---|---:|---:|---|
@@ -568,13 +564,13 @@ Agent 的新工具，「写在提示词里请模型用」和「做成工具 sche
 ### 本文依据的版本
 
 - 本地原件：`papers/NVIDIA/SoL-Pi.pdf`，15 页，页边标注 `arXiv:2609.20519v1 [cs.AI] 17 Sep 2026`。首页右上角另印有日期 2026-08-17（PDF p. 1），与正文中 API 价格的取价日相同（PDF p. 6），不是公开日。
-- 官方页：[arXiv:2609.20519](https://arxiv.org/abs/2609.20519)。截至 2026-09-23 核验只有 v1，提交于 2026-09-17，与本地原件一致。
-- `release-date` 取 2026-09-17。这是一篇讲公开技术的方法论文，按 arXiv v1 提交日取首次官方公开日。
+- 官方页：[arXiv:2609.20519](https://arxiv.org/abs/2609.20519)。截至 2026-09-30 只有 v1，提交于 2026-09-17 14:58 UTC，与本地原件是同一文件。
+- `release-date` 取 2026-09-09，即 SoL-Pi 首次官方公开的日期，早于论文一周多。依据是 [NVlabs/SoL-Pi](https://github.com/NVlabs/SoL-Pi) 仓库：「Initial open-source release」提交在 2026-09-07，项目博客 [nvlabs.github.io/SoL-Pi](https://nvlabs.github.io/SoL-Pi/) 于 2026-09-09（UTC）经 GitHub Pages 发布，同日 README 加上博客徽章。这是能确认的最早官方公开事件，是上界：仓库本身可能早一两天就已公开，但没有直接证据。
 - 作者单位：第一作者与多数作者来自 NVIDIA，另有 NTU 与 MIT 的作者（PDF p. 1）。
 
 ### 外部资料补充（不是 PDF 原文）
 
-- 论文首页给出代码仓库 [github.com/NVlabs/SoL-Pi](https://github.com/NVlabs/SoL-Pi) 与项目博客 [nvlabs.github.io/SoL-Pi](https://nvlabs.github.io/SoL-Pi/) 2 个链接（PDF p. 1）。本文**未能核实**两者的内容与当前状态，文中所有机制细节只依据 PDF。
+- 论文首页给出代码仓库 [github.com/NVlabs/SoL-Pi](https://github.com/NVlabs/SoL-Pi) 与项目博客 [nvlabs.github.io/SoL-Pi](https://nvlabs.github.io/SoL-Pi/)（PDF p. 1）。仓库 README 把 SoL-Pi 定位为装在未修改的 Pi 之上的独立扩展，MIT 许可，4 个机制都默认关闭、需显式开启；这些是开源版的现状，文中机制细节仍只依据 PDF。
 - 对照的基线 harness 均为开源项目，仓库地址见 PDF p. 14 参考文献 30–36：Codex CLI、OpenSquilla、Oh My Pi、OpenCode、Oh My OpenCode（现名 oh-my-openagent）、Pi（原名 pi-mono）、Claude Code。
 - 相关的自动 Agent 设计工作在同库另有解读：GEPA、ADAS、Darwin-Godel-Machine；自动 ML 研究循环见 AIDE2 一篇。
 

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+
+  <text x="40" y="36" font-size="19" font-weight="700" fill="#111827">给出题者算优势：GRPO 在一条种子里比，HRPO 跨种子按 hop 比</text>
+  <text x="40" y="60" font-size="13" fill="#6b7280">灰 = 种子提示；绿 = 出题者的一次 rollout；紫 = 解题者的一次作答；黄 = 共用一条基线（均值、方差）的组。方块个数即 rollout 次数</text>
+
+  <!-- 左：GRPO -->
+  <rect x="24" y="84" width="520" height="396" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+  <text x="40" y="108" font-size="14" font-weight="700" fill="#111827">出题者用标准 GRPO（PDF p. 4）</text>
+  <text x="40" y="126" font-size="11" fill="#6b7280">组 = 同一条种子提示下的 m = 4 道候选题；每道再让解题者答 n = 4 次</text>
+
+  <rect x="150" y="146" width="292" height="252" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <text x="296" y="388" font-size="11" fill="#6b7280" text-anchor="middle">这 4 道题互为基线</text>
+
+  <rect x="40" y="252" width="80" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="80" y="277" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">种子 s</text>
+
+  <line x1="120" y1="272" x2="164" y2="173" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="120" y1="272" x2="164" y2="229" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="120" y1="272" x2="164" y2="285" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="120" y1="272" x2="164" y2="341" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <rect x="166" y="156" width="90" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="211" y="178" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">候选题 1</text>
+  <rect x="166" y="212" width="90" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="211" y="234" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">候选题 2</text>
+  <rect x="166" y="268" width="90" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="211" y="290" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">候选题 3</text>
+  <rect x="166" y="324" width="90" height="34" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="211" y="346" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">候选题 4</text>
+
+  <g fill="#ecebfb" stroke="#8f8bd8">
+    <rect x="276" y="158" width="30" height="30" rx="6"/><rect x="316" y="158" width="30" height="30" rx="6"/><rect x="356" y="158" width="30" height="30" rx="6"/><rect x="396" y="158" width="30" height="30" rx="6"/>
+    <rect x="276" y="214" width="30" height="30" rx="6"/><rect x="316" y="214" width="30" height="30" rx="6"/><rect x="356" y="214" width="30" height="30" rx="6"/><rect x="396" y="214" width="30" height="30" rx="6"/>
+    <rect x="276" y="270" width="30" height="30" rx="6"/><rect x="316" y="270" width="30" height="30" rx="6"/><rect x="356" y="270" width="30" height="30" rx="6"/><rect x="396" y="270" width="30" height="30" rx="6"/>
+    <rect x="276" y="326" width="30" height="30" rx="6"/><rect x="316" y="326" width="30" height="30" rx="6"/><rect x="356" y="326" width="30" height="30" rx="6"/><rect x="396" y="326" width="30" height="30" rx="6"/>
+  </g>
+
+  <text x="40" y="440" font-size="14" font-weight="700" fill="#111827">每条种子：4 次出题 + 16 次解答 = 20 次 rollout</text>
+  <text x="40" y="462" font-size="11" fill="#6b7280">3B、单节点 8×H100：出题一侧每轮 10.58 小时、84.64 GPU 小时（PDF p. 16）</text>
+
+  <!-- 右：HRPO -->
+  <rect x="576" y="84" width="520" height="396" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+  <text x="592" y="108" font-size="14" font-weight="700" fill="#111827">出题者用 HRPO（PDF p. 5）</text>
+  <text x="592" y="126" font-size="11" fill="#6b7280">每条种子只出 1 道题、解题者答 5 次；组 = 整个 batch 里 hop 数相同的题</text>
+
+  <rect x="656" y="146" width="268" height="78" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <rect x="656" y="236" width="268" height="78" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <rect x="656" y="326" width="268" height="38" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <rect x="656" y="376" width="268" height="38" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+  <text x="938" y="189" font-size="11" fill="#6b7280">1 跳组</text>
+  <text x="938" y="279" font-size="11" fill="#6b7280">2 跳组</text>
+  <text x="938" y="349" font-size="11" fill="#6b7280">3 跳组</text>
+  <text x="938" y="399" font-size="11" fill="#6b7280">4 跳组</text>
+
+  <rect x="592" y="150" width="50" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="617" y="170" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">s1</text>
+  <rect x="592" y="190" width="50" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="617" y="210" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">s4</text>
+  <rect x="592" y="240" width="50" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="617" y="260" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">s2</text>
+  <rect x="592" y="280" width="50" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="617" y="300" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">s5</text>
+  <rect x="592" y="330" width="50" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="617" y="350" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">s3</text>
+  <rect x="592" y="380" width="50" height="30" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+  <text x="617" y="400" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">s6</text>
+
+  <rect x="662" y="150" width="86" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="705" y="170" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">1 跳题</text>
+  <rect x="662" y="190" width="86" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="705" y="210" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">1 跳题</text>
+  <rect x="662" y="240" width="86" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="705" y="260" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">2 跳题</text>
+  <rect x="662" y="280" width="86" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="705" y="300" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">2 跳题</text>
+  <rect x="662" y="330" width="86" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="705" y="350" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">3 跳题</text>
+  <rect x="662" y="380" width="86" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+  <text x="705" y="400" font-size="14" font-weight="700" fill="#111827" text-anchor="middle">4 跳题</text>
+
+  <g fill="#ecebfb" stroke="#8f8bd8">
+    <rect x="760" y="152" width="26" height="26" rx="6"/><rect x="792" y="152" width="26" height="26" rx="6"/><rect x="824" y="152" width="26" height="26" rx="6"/><rect x="856" y="152" width="26" height="26" rx="6"/><rect x="888" y="152" width="26" height="26" rx="6"/>
+    <rect x="760" y="192" width="26" height="26" rx="6"/><rect x="792" y="192" width="26" height="26" rx="6"/><rect x="824" y="192" width="26" height="26" rx="6"/><rect x="856" y="192" width="26" height="26" rx="6"/><rect x="888" y="192" width="26" height="26" rx="6"/>
+    <rect x="760" y="242" width="26" height="26" rx="6"/><rect x="792" y="242" width="26" height="26" rx="6"/><rect x="824" y="242" width="26" height="26" rx="6"/><rect x="856" y="242" width="26" height="26" rx="6"/><rect x="888" y="242" width="26" height="26" rx="6"/>
+    <rect x="760" y="282" width="26" height="26" rx="6"/><rect x="792" y="282" width="26" height="26" rx="6"/><rect x="824" y="282" width="26" height="26" rx="6"/><rect x="856" y="282" width="26" height="26" rx="6"/><rect x="888" y="282" width="26" height="26" rx="6"/>
+    <rect x="760" y="332" width="26" height="26" rx="6"/><rect x="792" y="332" width="26" height="26" rx="6"/><rect x="824" y="332" width="26" height="26" rx="6"/><rect x="856" y="332" width="26" height="26" rx="6"/><rect x="888" y="332" width="26" height="26" rx="6"/>
+    <rect x="760" y="382" width="26" height="26" rx="6"/><rect x="792" y="382" width="26" height="26" rx="6"/><rect x="824" y="382" width="26" height="26" rx="6"/><rect x="856" y="382" width="26" height="26" rx="6"/><rect x="888" y="382" width="26" height="26" rx="6"/>
+  </g>
+
+  <text x="592" y="440" font-size="14" font-weight="700" fill="#111827">每条种子：1 次出题 + 5 次解答 = 6 次 rollout</text>
+  <text x="592" y="462" font-size="11" fill="#6b7280">同一设置：出题一侧每轮 4.16 小时、33.28 GPU 小时（PDF p. 16）</text>
+</svg>

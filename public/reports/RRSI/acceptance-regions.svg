@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 640" width="860" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="860" height="640" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" font-weight="700" fill="#111827">编码实例里，一个候选落在哪一格就决定去留</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">红 = 拒绝；绿 = 可接纳；黄 = 取决于未公开的新颖性权重；紫点 = 附录 Table 6 的三个真实候选。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">δ = 178 次试验中的 3 次通过（约 1.7 分），β0 = 10%，β1 = 44.5（每多 1 分放宽 44.5% 成本）。</text>
+<rect x="90" y="120" width="182.6" height="410" fill="#fbe9e7"/>
+<rect x="272.6" y="120" width="265.9" height="341.7" fill="#fdf1dc"/>
+<rect x="272.6" y="461.7" width="265.9" height="68.3" fill="#e3f4ec"/>
+<polygon points="538.5,530 538.5,316.5 742.4,120 800,120 800,530" fill="#e3f4ec"/>
+<polygon points="538.5,120 742.4,120 538.5,316.5" fill="#fbe9e7"/>
+<line x1="90" y1="461.7" x2="800" y2="461.7" stroke="#9ca3af" stroke-width="1"/>
+<line x1="272.6" y1="120" x2="272.6" y2="530" stroke="#d4a24c" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="538.5" y1="120" x2="538.5" y2="530" stroke="#d4a24c" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="538.5" y1="316.5" x2="742.4" y2="120" stroke="#5fa886" stroke-width="2"/>
+<line x1="90" y1="530" x2="800" y2="530" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="90" y1="120" x2="90" y2="530" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="715.6" y1="530" x2="715.6" y2="145.8" stroke="#8f8bd8" stroke-width="1.4" stroke-dasharray="4 3"/>
+<circle cx="715.6" cy="145.8" r="4" fill="#ffffff" stroke="#8f8bd8" stroke-width="1.6"/>
+<circle cx="538.9" cy="417.1" r="5.5" fill="#8f8bd8"/>
+<circle cx="183.9" cy="484.9" r="5.5" fill="#8f8bd8"/>
+<text x="90.0" y="548" font-size="11" fill="#6b7280" text-anchor="middle">-4</text>
+<text x="168.9" y="548" font-size="11" fill="#6b7280" text-anchor="middle">-3</text>
+<text x="247.8" y="548" font-size="11" fill="#6b7280" text-anchor="middle">-2</text>
+<text x="326.7" y="548" font-size="11" fill="#6b7280" text-anchor="middle">-1</text>
+<text x="405.6" y="548" font-size="11" fill="#6b7280" text-anchor="middle">0</text>
+<text x="484.4" y="548" font-size="11" fill="#6b7280" text-anchor="middle">+1</text>
+<text x="563.3" y="548" font-size="11" fill="#6b7280" text-anchor="middle">+2</text>
+<text x="642.2" y="548" font-size="11" fill="#6b7280" text-anchor="middle">+3</text>
+<text x="721.1" y="548" font-size="11" fill="#6b7280" text-anchor="middle">+4</text>
+<text x="800.0" y="548" font-size="11" fill="#6b7280" text-anchor="middle">+5</text>
+<text x="82" y="534.0" font-size="11" fill="#6b7280" text-anchor="end">-40%</text>
+<text x="82" y="465.7" font-size="11" fill="#6b7280" text-anchor="end">0%</text>
+<text x="82" y="380.2" font-size="11" fill="#6b7280" text-anchor="end">+50%</text>
+<text x="82" y="294.8" font-size="11" fill="#6b7280" text-anchor="end">+100%</text>
+<text x="82" y="209.4" font-size="11" fill="#6b7280" text-anchor="end">+150%</text>
+<text x="82" y="124.0" font-size="11" fill="#6b7280" text-anchor="end">+200%</text>
+<text x="272.6" y="112" font-size="11" fill="#d4a24c" text-anchor="middle">−δ</text>
+<text x="538.5" y="112" font-size="11" fill="#d4a24c" text-anchor="middle">+δ</text>
+<text x="445" y="572" font-size="13" fill="#111827" text-anchor="middle">相对在任者的分数变化 ΔS（分）</text>
+<text x="30" y="110" font-size="13" fill="#111827">纵轴：相对成本变化 ΔC</text>
+<text x="100" y="146" font-size="14" font-weight="700" fill="#111827">低于噪声下限</text>
+<text x="100" y="164" font-size="11" fill="#6b7280">分数 &lt; S★ − δ，直接拒绝</text>
+<text x="282.6" y="146" font-size="14" font-weight="700" fill="#111827">噪声带内</text>
+<text x="282.6" y="164" font-size="11" fill="#6b7280">编码设 w_s = 0，涨分本身不算数</text>
+<text x="282.6" y="180" font-size="11" fill="#6b7280">变贵时只能靠新结构类型加分</text>
+<text x="282.6" y="516" font-size="11" fill="#6b7280">带内且更省：可接纳</text>
+<text x="548.5" y="146" font-size="14" font-weight="700" fill="#111827">成本超上限</text>
+<text x="548.5" y="164" font-size="11" fill="#6b7280">ΔC &gt; β0 + β1·ΔS</text>
+<text x="548.5" y="498" font-size="14" font-weight="700" fill="#111827">涨幅超 δ 且成本在线下</text>
+<text x="548.5" y="516" font-size="11" fill="#6b7280">可接纳，取可接纳者中最高分</text>
+<text x="705.6" y="342.1" font-size="11" fill="#111827" text-anchor="end">R0-A：+3.93 分（+7 次通过）</text>
+<text x="705.6" y="358.1" font-size="11" fill="#6b7280" text-anchor="end">成本上限约 +185%，实测未报告</text>
+<text x="526.9" y="407.1" font-size="11" fill="#111827" text-anchor="end">R0-B：+1.69 分，成本 +26.1%</text>
+<text x="526.9" y="423.1" font-size="11" fill="#6b7280" text-anchor="end">恰为 3 次通过 = δ，归带内 → 拒绝</text>
+<text x="100" y="435.7" font-size="11" fill="#111827">R8-B：−2.81 分</text>
+<text x="100" y="451.7" font-size="11" fill="#6b7280">成本 −13.6% 也被拒</text>
+<text x="30" y="606" font-size="11" fill="#9ca3af">按原文式 （5）、（7）、（17） 与 Table 5 的编码超参画出（PDF p. 6、p. 21–23），三个候选取自 Table 6（PDF p. 24）。</text>
+<text x="30" y="624" font-size="11" fill="#9ca3af">机制示意：假设在任者即历史最佳；w_c、w_n 原文未给数值，黄区的真实边界画不出。</text>
+</svg>

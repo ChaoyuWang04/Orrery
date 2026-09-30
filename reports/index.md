@@ -397,7 +397,7 @@
 | RRSI | Google | 部件:harness。给 harness 递归自改进加正则:按轮退火的编辑预算、探索未走过的轨迹,再由 critic 筛掉针对特定基准的改动、pruner 删掉太小、太贵或已无用的改动;进化集最高 +14.1 分、5 个分布外基准最高 +4.7 分,策略 token 比无正则进化少 30% |
 | ScientistTwo | Google | 全自主多 agent 科研框架:建基线、提假设、跑实验与自动消融,再用模拟评审反驳闭环验证结论 |
 | SoL-Pi | NVIDIA | 在 harness 层递归扩展自动研究循环,筛出动作执行、上下文压缩、观测处理与委托阅读四个机制;EdgeBench 51 题上性能与 Pi 相当,token 流量降 44.7–49.0% |
-| AIDE2 | Weco | autoresearch 套 autoresearch,递归自我改进的首份实验证据;**原件是官方博客,`papers/` 下无 PDF** |
+| AIDE2 | Weco | autoresearch 套 autoresearch:研究 agent 递归改写自身代码,外部基准追平或超过人写版本;原件是技术报告 arXiv:2609.26457(首发为 2026-07-14 官方博客) |
 | Reward-Free-Self-Evolution | Tencent | 部件:任务/课程。通过世界知识探索做无奖励的自发自进化 |
 | Dr-Zero | Meta | 部件:任务/课程。无训练数据的自进化搜索 agent(MSL) |
 | R-Zero | Tencent | 部件:任务/课程。challenger 与 solver 共进化,ICLR 2026(腾讯西雅图 AI Lab) |
