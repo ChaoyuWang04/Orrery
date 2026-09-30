@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 650" width="1120" height="650" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ap" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="ag" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="650" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">外循环在预训练里攒技能，内循环在一次前向里认出任务</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">紫 = 更新权重；绿 = 只在一次前向里读上下文，权重不动。据 PDF p. 3 图 1.1 与 p. 7 图 2.1 重画，序列内容只是示意。</text>
+
+<text x="60" y="92" font-size="14" fill="#111827" font-weight="700">上半：元学习的两层循环</text>
+<text x="60" y="114" font-size="12" fill="#6b7280">外循环：无监督预训练，在一条又一条序列上做 SGD</text>
+<line x1="60" y1="126" x2="1050" y2="126" stroke="#8f8bd8" stroke-width="2" marker-end="url(#ap)"/>
+
+<rect x="60" y="140" width="300" height="160" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="76" y="160" font-size="11" fill="#6b7280">序列 1</text>
+<text x="76" y="182" font-size="12" fill="#111827">5 + 8 = 13</text>
+<text x="76" y="202" font-size="12" fill="#111827">7 + 2 = 9</text>
+<text x="76" y="222" font-size="12" fill="#111827">1 + 0 = 1</text>
+<text x="76" y="242" font-size="12" fill="#111827">3 + 4 = 7</text>
+<text x="76" y="262" font-size="12" fill="#111827">5 + 9 = 14</text>
+<text x="76" y="282" font-size="12" fill="#111827">9 + 8 = 17</text>
+<line x1="330" y1="168" x2="330" y2="288" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+
+<rect x="410" y="140" width="300" height="160" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="426" y="160" font-size="11" fill="#6b7280">序列 2</text>
+<text x="426" y="182" font-size="12" fill="#111827">gaot =&gt; goat</text>
+<text x="426" y="202" font-size="12" fill="#111827">sakne =&gt; snake</text>
+<text x="426" y="222" font-size="12" fill="#111827">brid =&gt; bird</text>
+<text x="426" y="242" font-size="12" fill="#111827">fsih =&gt; fish</text>
+<text x="426" y="262" font-size="12" fill="#111827">dcuk =&gt; duck</text>
+<text x="426" y="282" font-size="12" fill="#111827">cmihp =&gt; chimp</text>
+<line x1="680" y1="168" x2="680" y2="288" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+
+<rect x="760" y="140" width="300" height="160" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="776" y="160" font-size="11" fill="#6b7280">序列 3</text>
+<text x="776" y="182" font-size="12" fill="#111827">thanks =&gt; merci</text>
+<text x="776" y="202" font-size="12" fill="#111827">hello =&gt; bonjour</text>
+<text x="776" y="222" font-size="12" fill="#111827">mint =&gt; menthe</text>
+<text x="776" y="242" font-size="12" fill="#111827">wall =&gt; mur</text>
+<text x="776" y="262" font-size="12" fill="#111827">otter =&gt; loutre</text>
+<text x="776" y="282" font-size="12" fill="#111827">bread =&gt; pain</text>
+<line x1="1030" y1="168" x2="1030" y2="288" stroke="#5fa886" stroke-width="2" marker-end="url(#ag)"/>
+
+<text x="60" y="324" font-size="11" fill="#6b7280">绿箭头 = 内循环：同一条序列里，前面几行帮模型猜后面几行。论文把这一步叫上下文学习，它发生在前向传播之内。</text>
+
+<text x="40" y="366" font-size="14" fill="#111827" font-weight="700">下半：评测时的四种设定（以英译法为例）</text>
+
+<rect x="40" y="380" width="245" height="200" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="54" y="402" font-size="14" fill="#111827" font-weight="700">零样本（0S）</text>
+<text x="54" y="430" font-size="12" fill="#111827">Translate English to French:</text>
+<text x="54" y="452" font-size="12" fill="#111827">cheese =&gt;</text>
+<text x="54" y="566" font-size="11" fill="#6b7280">只给一句任务说明</text>
+
+<rect x="305" y="380" width="245" height="200" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="319" y="402" font-size="14" fill="#111827" font-weight="700">单样本（1S）</text>
+<text x="319" y="430" font-size="12" fill="#111827">Translate English to French:</text>
+<text x="319" y="452" font-size="12" fill="#111827">sea otter =&gt; loutre de mer</text>
+<text x="319" y="474" font-size="12" fill="#111827">cheese =&gt;</text>
+<text x="319" y="566" font-size="11" fill="#6b7280">说明 + 1 个示例</text>
+
+<rect x="570" y="380" width="245" height="200" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="584" y="402" font-size="14" fill="#111827" font-weight="700">少样本（FS）</text>
+<text x="584" y="430" font-size="12" fill="#111827">Translate English to French:</text>
+<text x="584" y="452" font-size="12" fill="#111827">sea otter =&gt; loutre de mer</text>
+<text x="584" y="474" font-size="12" fill="#111827">peppermint =&gt; menthe poivrée</text>
+<text x="584" y="496" font-size="12" fill="#111827">plush girafe =&gt; girafe peluche</text>
+<text x="584" y="518" font-size="12" fill="#111827">cheese =&gt;</text>
+<text x="584" y="566" font-size="11" fill="#6b7280">说明 + K 个示例，K 通常 10–100</text>
+
+<rect x="835" y="380" width="245" height="200" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="849" y="402" font-size="14" fill="#111827" font-weight="700">微调（FT，GPT-3 未用）</text>
+<text x="849" y="430" font-size="12" fill="#111827">sea otter =&gt; loutre de mer</text>
+<text x="849" y="452" font-size="11" fill="#6b7280">↓ 梯度更新</text>
+<text x="849" y="474" font-size="12" fill="#111827">peppermint =&gt; menthe poivrée</text>
+<text x="849" y="496" font-size="11" fill="#6b7280">↓ 梯度更新 …</text>
+<text x="849" y="518" font-size="12" fill="#111827">cheese =&gt;</text>
+<text x="849" y="566" font-size="11" fill="#6b7280">逐条样本做梯度更新</text>
+
+<text x="40" y="614" font-size="13" fill="#6b7280">0S、1S、FS 在论文里是三种问题设定，不是三种互相竞争的方法；K 的上限来自 2048 Token 的上下文窗口（PDF p. 6–7）。</text>
+</svg>

@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">三种预训练结构：谁在每一层都同时看见左右</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">黄 = 输入嵌入 E；紫 = Transformer 块；灰 = LSTM 单元；绿 = 输出表示 T。连线表示「这个位置的计算读了哪些位置」。</text>
+<line x1="70" y1="203" x2="70" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="148" y1="203" x2="148" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="226" y1="203" x2="226" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="304" y1="203" x2="304" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="70" y1="363" x2="70" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="148" y1="363" x2="70" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="226" y1="363" x2="70" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="304" y1="363" x2="70" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="70" y1="363" x2="148" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="148" y1="363" x2="148" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="226" y1="363" x2="148" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="304" y1="363" x2="148" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="70" y1="363" x2="226" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="148" y1="363" x2="226" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="226" y1="363" x2="226" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="304" y1="363" x2="226" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="70" y1="363" x2="304" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="148" y1="363" x2="304" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="226" y1="363" x2="304" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="304" y1="363" x2="304" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="70" y1="283" x2="70" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="148" y1="283" x2="70" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="226" y1="283" x2="70" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="304" y1="283" x2="70" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="70" y1="283" x2="148" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="148" y1="283" x2="148" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="226" y1="283" x2="148" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="304" y1="283" x2="148" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="70" y1="283" x2="226" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="148" y1="283" x2="226" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="226" y1="283" x2="226" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="304" y1="283" x2="226" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="70" y1="283" x2="304" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="148" y1="283" x2="304" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="226" y1="283" x2="304" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="304" y1="283" x2="304" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="440" y1="203" x2="440" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="518" y1="203" x2="518" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="596" y1="203" x2="596" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="674" y1="203" x2="674" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="440" y1="363" x2="440" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="440" y1="363" x2="518" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="518" y1="363" x2="518" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="440" y1="363" x2="596" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="518" y1="363" x2="596" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="596" y1="363" x2="596" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="440" y1="363" x2="674" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="518" y1="363" x2="674" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="596" y1="363" x2="674" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="674" y1="363" x2="674" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="440" y1="283" x2="440" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="440" y1="283" x2="518" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="518" y1="283" x2="518" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="440" y1="283" x2="596" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="518" y1="283" x2="596" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="596" y1="283" x2="596" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="440" y1="283" x2="674" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="518" y1="283" x2="674" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="596" y1="283" x2="674" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="674" y1="283" x2="674" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="804" y1="363" x2="804" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="842" y1="363" x2="842" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="802" y1="283" x2="802" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="836" y1="203" x2="836" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="882" y1="363" x2="882" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="920" y1="363" x2="920" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="880" y1="283" x2="880" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="914" y1="203" x2="914" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="960" y1="363" x2="960" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="998" y1="363" x2="998" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="958" y1="283" x2="958" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="992" y1="203" x2="992" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="1038" y1="363" x2="1038" y2="307" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="1076" y1="363" x2="1076" y2="227" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="1036" y1="283" x2="1036" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="1070" y1="203" x2="1070" y2="152" stroke="#9ca3af" stroke-width="1.2"/>
+<line x1="824" y1="295" x2="861" y2="295" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="894" y1="215" x2="857" y2="215" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="902" y1="295" x2="939" y2="295" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="972" y1="215" x2="935" y2="215" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="980" y1="295" x2="1017" y2="295" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<line x1="1050" y1="215" x2="1013" y2="215" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#ar)"/>
+<rect x="47" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="47" y="283" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="47" y="203" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="47" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="125" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="125" y="283" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="125" y="203" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="125" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="203" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="203" y="283" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="203" y="203" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="203" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="281" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="281" y="283" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="281" y="203" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="281" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="417" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="417" y="283" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="417" y="203" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="417" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="495" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="495" y="283" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="495" y="203" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="495" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="573" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="573" y="283" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="573" y="203" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="573" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="651" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="651" y="283" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="651" y="203" width="46" height="24" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="651" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="797" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="784" y="283" width="40" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="816" y="203" width="40" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="797" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="875" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="862" y="283" width="40" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="894" y="203" width="40" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="875" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="953" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="940" y="283" width="40" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="972" y="203" width="40" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="953" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="1031" y="363" width="46" height="24" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="1018" y="283" width="40" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1050" y="203" width="40" height="24" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1031" y="128" width="46" height="24" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="30" y="100" font-size="14" fill="#111827" font-weight="700">BERT：双向 Transformer</text>
+<text x="30" y="118" font-size="11" fill="#6b7280">每层每个位置读全部位置</text>
+<text x="70" y="379" font-size="11" fill="#111827" text-anchor="middle">E1</text>
+<text x="70" y="299" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="70" y="219" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="70" y="144" font-size="11" fill="#111827" text-anchor="middle">T1</text>
+<text x="148" y="379" font-size="11" fill="#111827" text-anchor="middle">E2</text>
+<text x="148" y="299" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="148" y="219" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="148" y="144" font-size="11" fill="#111827" text-anchor="middle">T2</text>
+<text x="226" y="379" font-size="11" fill="#111827" text-anchor="middle">E3</text>
+<text x="226" y="299" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="226" y="219" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="226" y="144" font-size="11" fill="#111827" text-anchor="middle">T3</text>
+<text x="304" y="379" font-size="11" fill="#111827" text-anchor="middle">E4</text>
+<text x="304" y="299" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="304" y="219" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="304" y="144" font-size="11" fill="#111827" text-anchor="middle">T4</text>
+<text x="400" y="100" font-size="14" fill="#111827" font-weight="700">OpenAI GPT：从左到右</text>
+<text x="400" y="118" font-size="11" fill="#6b7280">每层每个位置只读自己和左边</text>
+<text x="440" y="379" font-size="11" fill="#111827" text-anchor="middle">E1</text>
+<text x="440" y="299" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="440" y="219" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="440" y="144" font-size="11" fill="#111827" text-anchor="middle">T1</text>
+<text x="518" y="379" font-size="11" fill="#111827" text-anchor="middle">E2</text>
+<text x="518" y="299" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="518" y="219" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="518" y="144" font-size="11" fill="#111827" text-anchor="middle">T2</text>
+<text x="596" y="379" font-size="11" fill="#111827" text-anchor="middle">E3</text>
+<text x="596" y="299" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="596" y="219" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="596" y="144" font-size="11" fill="#111827" text-anchor="middle">T3</text>
+<text x="674" y="379" font-size="11" fill="#111827" text-anchor="middle">E4</text>
+<text x="674" y="299" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="674" y="219" font-size="11" fill="#111827" text-anchor="middle">Trm</text>
+<text x="674" y="144" font-size="11" fill="#111827" text-anchor="middle">T4</text>
+<text x="770" y="100" font-size="14" fill="#111827" font-weight="700">ELMo：两条独立的单向 LSTM</text>
+<text x="770" y="118" font-size="11" fill="#6b7280">只在最顶上把两个方向拼接</text>
+<text x="820" y="379" font-size="11" fill="#111827" text-anchor="middle">E1</text>
+<text x="804" y="299" font-size="11" fill="#111827" text-anchor="middle">→</text>
+<text x="836" y="219" font-size="11" fill="#111827" text-anchor="middle">←</text>
+<text x="820" y="144" font-size="11" fill="#111827" text-anchor="middle">T1</text>
+<text x="898" y="379" font-size="11" fill="#111827" text-anchor="middle">E2</text>
+<text x="882" y="299" font-size="11" fill="#111827" text-anchor="middle">→</text>
+<text x="914" y="219" font-size="11" fill="#111827" text-anchor="middle">←</text>
+<text x="898" y="144" font-size="11" fill="#111827" text-anchor="middle">T2</text>
+<text x="976" y="379" font-size="11" fill="#111827" text-anchor="middle">E3</text>
+<text x="960" y="299" font-size="11" fill="#111827" text-anchor="middle">→</text>
+<text x="992" y="219" font-size="11" fill="#111827" text-anchor="middle">←</text>
+<text x="976" y="144" font-size="11" fill="#111827" text-anchor="middle">T3</text>
+<text x="1054" y="379" font-size="11" fill="#111827" text-anchor="middle">E4</text>
+<text x="1038" y="299" font-size="11" fill="#111827" text-anchor="middle">→</text>
+<text x="1070" y="219" font-size="11" fill="#111827" text-anchor="middle">←</text>
+<text x="1054" y="144" font-size="11" fill="#111827" text-anchor="middle">T4</text>
+<text x="770" y="299" font-size="11" fill="#9ca3af" text-anchor="start">前</text>
+<text x="770" y="219" font-size="11" fill="#9ca3af" text-anchor="start">后</text>
+<text x="30" y="440" font-size="13" fill="#6b7280">BERT 的 T2 在第一层就读到了 E3、E4；GPT 的 T2 永远读不到右边。ELMo 两个方向各看一半，直到输出才拼在一起，中间层没有左右融合。</text>
+<text x="30" y="462" font-size="13" fill="#6b7280">BERT_BASE 与 GPT 尺寸对齐，论文说两者架构除注意力掩码外几乎相同；BERT、GPT 走微调路线，ELMo 走特征式路线。</text>
+<text x="30" y="506" font-size="11" fill="#9ca3af">据 PDF p. 13 Figure 3 重画，另参考 p. 3、p. 6 正文。只画 4 个位置、2 层，结构示意；原图 ELMo 每个方向画了两层 LSTM，此处各画一层。</text>
+<text x="30" y="524" font-size="11" fill="#9ca3af">图中「前」「后」行分别是从左到右、从右到左的 LSTM；两行上下错开只是为了让连线不重叠，不代表层次先后。</text>
+</svg>

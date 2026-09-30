@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 480" width="1120" height="480" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="480" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">每个参数看多少 Token：LLaMA 故意越过「训练最优」那条线</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">黄 = Chinchilla 给的训练算力最优示例；绿 = LLaMA 四个规格；灰 = GPT-3（外部补充）。条长 = 训练 Token 数 ÷ 参数量。</text>
+<text x="40" y="109" font-size="14" fill="#111827" font-weight="700">GPT-3 175B</text>
+<text x="40" y="126" font-size="11" fill="#6b7280">300B Token</text>
+<rect x="300" y="94" width="6.9" height="28" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="316.9" y="113" font-size="12" fill="#111827">约 1.7 Token / 参数</text>
+<text x="40" y="159" font-size="14" fill="#111827" font-weight="700">Chinchilla 示例 10B</text>
+<text x="40" y="176" font-size="11" fill="#6b7280">200B Token</text>
+<rect x="300" y="144" width="80.0" height="28" rx="4" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="390.0" y="163" font-size="12" fill="#111827">约 20 Token / 参数</text>
+<text x="40" y="209" font-size="14" fill="#111827" font-weight="700">LLaMA 65B</text>
+<text x="40" y="226" font-size="11" fill="#6b7280">1.4T Token</text>
+<rect x="300" y="194" width="85.9" height="28" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="395.9" y="213" font-size="12" fill="#111827">约 21 Token / 参数</text>
+<text x="40" y="259" font-size="14" fill="#111827" font-weight="700">LLaMA 33B</text>
+<text x="40" y="276" font-size="11" fill="#6b7280">1.4T Token</text>
+<rect x="300" y="244" width="172.3" height="28" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="482.3" y="263" font-size="12" fill="#111827">约 43 Token / 参数</text>
+<text x="40" y="309" font-size="14" fill="#111827" font-weight="700">LLaMA 13B</text>
+<text x="40" y="326" font-size="11" fill="#6b7280">1.0T Token</text>
+<rect x="300" y="294" width="307.7" height="28" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="617.7" y="313" font-size="12" fill="#111827">约 77 Token / 参数</text>
+<text x="40" y="359" font-size="14" fill="#111827" font-weight="700">LLaMA 7B</text>
+<text x="40" y="376" font-size="11" fill="#6b7280">1.0T Token</text>
+<rect x="300" y="344" width="597.0" height="28" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="907.0" y="363" font-size="12" fill="#111827">约 149 Token / 参数</text>
+<line x1="380.0" y1="136" x2="380.0" y2="390" stroke="#d4a24c" stroke-dasharray="5 4" stroke-width="1.4"/>
+<text x="386.0" y="404" font-size="11" fill="#9ca3af">约 20 Token / 参数</text>
+<text x="30" y="438" font-size="13" fill="#6b7280">LLaMA 与 Chinchilla 的数字据 PDF p. 1 与 p. 3 Table 2（精确参数量 6.7B / 13.0B / 32.5B / 65.2B）；GPT-3 的 300B Token 取自 GPT-3 论文，不是本 PDF。</text>
+<text x="30" y="460" font-size="13" fill="#6b7280">7B 看到 1T Token 时训练损失仍在下降（PDF p. 1、p. 3 Figure 1）：多出来的 Token 买的是推理时更小的模型。</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 530" width="1120" height="530" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="530" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">GAtt：合成时每轮都带指令，训练时只留第一轮、只训最后一轮</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">黄 = 系统指令 inst；灰 = 用户话；紫 = 助手回答。下方细条：绿 = 参与损失，红 = 损失置零。</text>
+<text x="30" y="106" font-size="14" fill="#111827" font-weight="700">① 合成对话</text>
+<text x="30" y="124" font-size="11" fill="#6b7280">把 inst 拼到每一轮用户话前</text>
+<rect x="280" y="84" width="56" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="308.0" y="109.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">inst</text>
+<rect x="344" y="84" width="56" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="372.0" y="109.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">u1</text>
+<rect x="408" y="84" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="440.0" y="109.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a1</text>
+<rect x="480" y="84" width="56" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="508.0" y="109.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">inst</text>
+<rect x="544" y="84" width="56" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="572.0" y="109.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">u2</text>
+<rect x="608" y="84" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="640.0" y="109.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a2</text>
+<rect x="680" y="84" width="56" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="708.0" y="109.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">inst</text>
+<rect x="744" y="84" width="56" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="772.0" y="109.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">u3</text>
+<rect x="808" y="84" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="840.0" y="109.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a3</text>
+<text x="900" y="110" font-size="11" fill="#6b7280">a1–a3 由最新 RLHF 模型采样，</text>
+<text x="900" y="126" font-size="11" fill="#6b7280">每一轮都看得见 inst</text>
+<line x1="600" y1="132" x2="600" y2="176" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="30" y="206" font-size="14" fill="#111827" font-weight="700">② 改写成训练样本</text>
+<text x="30" y="224" font-size="11" fill="#6b7280">inst 只在第一轮保留，回答原样不动</text>
+<rect x="280" y="184" width="56" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="308.0" y="209.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">inst</text>
+<rect x="344" y="184" width="56" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="372.0" y="209.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">u1</text>
+<rect x="408" y="184" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="440.0" y="209.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a1</text>
+<rect x="480" y="184" width="56" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="508.0" y="209.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">u2</text>
+<rect x="544" y="184" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="576.0" y="209.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a2</text>
+<rect x="616" y="184" width="56" height="40" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="644.0" y="209.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">u3</text>
+<rect x="680" y="184" width="64" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="712.0" y="209.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">a3</text>
+<rect x="280" y="232" width="56" height="10" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="344" y="232" width="56" height="10" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="408" y="232" width="64" height="10" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="480" y="232" width="56" height="10" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="544" y="232" width="64" height="10" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="616" y="232" width="56" height="10" rx="3" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="680" y="232" width="64" height="10" rx="3" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="30" y="250" font-size="11" fill="#6b7280">损失：前面各轮全部置零，包括 a1、a2</text>
+<text x="758" y="241" font-size="11" fill="#6b7280">只在 a3 上回传</text>
+<rect x="40" y="290" width="1040" height="150" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="60" y="318" font-size="14" fill="#111827" font-weight="700">为什么要置零</text>
+<text x="60" y="340" font-size="12" fill="#6b7280">a2 是在「看得见 inst」的条件下采出来的，改写后它前面却没有 inst。若在 a1、a2 上也算损失，</text>
+<text x="60" y="358" font-size="12" fill="#6b7280">模型会学到「没有指令也照指令回答」这种错配。只训最后一轮，梯度就只来自一段仍然守着第一轮 inst 的回答。</text>
+<text x="60" y="390" font-size="14" fill="#111827" font-weight="700">inst 从哪来</text>
+<text x="60" y="412" font-size="12" fill="#6b7280">爱好、语言、公众人物三类约束随机组合；爱好和人物名单让 Llama 2-Chat 自己生成，避免它扮演没见过的人；</text>
+<text x="60" y="430" font-size="12" fill="#6b7280">一半样本把指令改写得更短，如「Always act as Napoleon from now」写成「Figure: Napoleon.」。</text>
+<text x="30" y="480" font-size="13" fill="#6b7280">据 PDF p. 16–17 第 3.3 节重画的机制示意，不是论文原图；三轮只是举例，真实对话轮数不定。</text>
+<text x="30" y="502" font-size="13" fill="#6b7280">「为什么要置零」一段是本文对原文「mismatch at training time」一句的展开。</text>
+</svg>

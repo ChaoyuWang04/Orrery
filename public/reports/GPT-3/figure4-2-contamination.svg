@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 570" width="1120" height="570" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="570" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">把每个基准切出「干净子集」重测：多数几乎不动，少数被点名复查</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">横轴 = 干净样本占比，纵轴 = 只在干净子集上评测时的相对变化。红 = 复查后打星号；黄 = 复查后判定不构成作弊或属于伪信号；灰 = 其余。</text>
+<line x1="100" y1="110" x2="1000" y2="110" stroke="#eeeeee" stroke-width="1"/>
+<line x1="100" y1="170" x2="1000" y2="170" stroke="#eeeeee" stroke-width="1"/>
+<line x1="100" y1="230" x2="1000" y2="230" stroke="#eeeeee" stroke-width="1"/>
+<line x1="100" y1="290" x2="1000" y2="290" stroke="#9ca3af" stroke-width="1"/>
+<line x1="100" y1="350" x2="1000" y2="350" stroke="#eeeeee" stroke-width="1"/>
+<line x1="100" y1="410" x2="1000" y2="410" stroke="#eeeeee" stroke-width="1"/>
+<line x1="100" y1="470" x2="1000" y2="470" stroke="#eeeeee" stroke-width="1"/>
+<line x1="100" y1="110" x2="100" y2="470" stroke="#eeeeee" stroke-width="1"/>
+<line x1="325" y1="110" x2="325" y2="470" stroke="#eeeeee" stroke-width="1"/>
+<line x1="550" y1="110" x2="550" y2="470" stroke="#eeeeee" stroke-width="1"/>
+<line x1="775" y1="110" x2="775" y2="470" stroke="#eeeeee" stroke-width="1"/>
+<line x1="1000" y1="110" x2="1000" y2="470" stroke="#eeeeee" stroke-width="1"/>
+<circle cx="424.0" cy="284.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="451.0" cy="296.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="460.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="469.0" cy="284.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="595.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="613.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="613.0" cy="296.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="640.0" cy="272.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="775.0" cy="272.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="775.0" cy="308.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="811.0" cy="284.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="811.0" cy="284.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="811.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="820.0" cy="308.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="838.0" cy="272.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="847.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="856.0" cy="284.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="874.0" cy="284.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="874.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="928.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="928.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="937.0" cy="302.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="946.0" cy="284.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="964.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="973.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="973.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="982.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="991.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="991.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="991.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="1000.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="1000.0" cy="290.0" r="5" fill="#eeeeee" stroke="#b9b9b9" stroke-width="1.6"/>
+<circle cx="109.0" cy="170.0" r="5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="154.0" cy="302.0" r="5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="163.0" cy="416.0" r="5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="226.0" cy="290.0" r="5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="775.0" cy="320.0" r="5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="937.0" cy="332.0" r="5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="937.0" cy="446.0" r="5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="973.0" cy="338.0" r="5" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.6"/>
+<circle cx="460.0" cy="308.0" r="5" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.6"/>
+<circle cx="739.0" cy="314.0" r="5" fill="#fbe9e7" stroke="#d9877a" stroke-width="1.6"/>
+<line x1="109" y1="170" x2="122" y2="168" stroke="#9ca3af" stroke-width="1"/>
+<line x1="739" y1="314" x2="650" y2="346" stroke="#9ca3af" stroke-width="1"/>
+<line x1="775" y1="320" x2="760" y2="398" stroke="#9ca3af" stroke-width="1"/>
+<line x1="940" y1="337" x2="948" y2="372" stroke="#9ca3af" stroke-width="1"/>
+<text x="90" y="114" font-size="11" fill="#6b7280" text-anchor="end">+30%</text>
+<text x="90" y="174" font-size="11" fill="#6b7280" text-anchor="end">+20%</text>
+<text x="90" y="234" font-size="11" fill="#6b7280" text-anchor="end">+10%</text>
+<text x="90" y="294" font-size="11" fill="#6b7280" text-anchor="end">0%</text>
+<text x="90" y="354" font-size="11" fill="#6b7280" text-anchor="end">−10%</text>
+<text x="90" y="414" font-size="11" fill="#6b7280" text-anchor="end">−20%</text>
+<text x="90" y="474" font-size="11" fill="#6b7280" text-anchor="end">−30%</text>
+<text x="100" y="490" font-size="11" fill="#6b7280" text-anchor="middle">0%</text>
+<text x="325" y="490" font-size="11" fill="#6b7280" text-anchor="middle">25%</text>
+<text x="550" y="490" font-size="11" fill="#6b7280" text-anchor="middle">50%</text>
+<text x="775" y="490" font-size="11" fill="#6b7280" text-anchor="middle">75%</text>
+<text x="1000" y="490" font-size="11" fill="#6b7280" text-anchor="middle">100%</text>
+<text x="124" y="172" font-size="11" fill="#111827" text-anchor="start">QuAC +20%：只剩 1% 干净样本，被见过的是原文不是问答</text>
+<text x="168" y="318" font-size="11" fill="#111827" text-anchor="start">SQuADv2 −2%</text>
+<text x="176" y="420" font-size="11" fill="#111827" text-anchor="start">DROP −21%：见过的只是原文，剩下的样本分布略不同</text>
+<text x="238" y="278" font-size="11" fill="#111827" text-anchor="start">Symbol Insertion：重叠高但分数不变，是伪匹配</text>
+<text x="452" y="332" font-size="11" fill="#111827" text-anchor="end">Winograd −3%：训练集里确有 132 条</text>
+<text x="646" y="352" font-size="11" fill="#111827" text-anchor="end">PIQA −4%：打星号</text>
+<text x="756" y="410" font-size="11" fill="#111827" text-anchor="end">WMT16 德→英 −5%：碰撞只是单语新闻片段</text>
+<text x="990" y="384" font-size="11" fill="#111827" text-anchor="end">变位词 A1 −8%、A2 −7%</text>
+<text x="925" y="450" font-size="11" fill="#111827" text-anchor="end">反写单词 −26%：被剔掉的多是回文</text>
+<text x="1008" y="126" font-size="11" fill="#6b7280">↑ 干净子集分数更高</text>
+<text x="1008" y="462" font-size="11" fill="#6b7280">↓ 全集分数更高</text>
+<text x="550" y="514" font-size="12" fill="#6b7280" text-anchor="middle">干净样本占比（越靠右，能高置信确认干净的样本越多）</text>
+<text x="30" y="548" font-size="11" fill="#9ca3af">据 PDF p. 45 表 C.1 的 42 行逐点重画（对应 p. 32 图 4.2）。表 C.1 用了另一组随机示例，分数与正文略有出入；复查结论见 p. 32–33。</text>
+</svg>

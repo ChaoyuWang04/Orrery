@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="540" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">块稀疏注意力：每个头只看一半的块，四个头合起来一块不漏</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">查询 Token 位于 Block8，2 个局部块、纵向步长 3。绿 = 局部块；黄 = 按步长挑出的远程块；灰 = 跳过的块。</text>
+
+<text x="200" y="98" font-size="12" fill="#6b7280" text-anchor="middle">Block1</text>
+<text x="300" y="98" font-size="12" fill="#6b7280" text-anchor="middle">Block2</text>
+<text x="400" y="98" font-size="12" fill="#6b7280" text-anchor="middle">Block3</text>
+<text x="500" y="98" font-size="12" fill="#6b7280" text-anchor="middle">Block4</text>
+<text x="600" y="98" font-size="12" fill="#6b7280" text-anchor="middle">Block5</text>
+<text x="700" y="98" font-size="12" fill="#6b7280" text-anchor="middle">Block6</text>
+<text x="800" y="98" font-size="12" fill="#6b7280" text-anchor="middle">Block7</text>
+<text x="900" y="98" font-size="12" fill="#6b7280" text-anchor="middle">Block8</text>
+
+<text x="60" y="133" font-size="14" fill="#111827" font-weight="700">Head1</text>
+<rect x="154" y="110" width="92" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="254" y="110" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="354" y="110" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="454" y="110" width="92" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="554" y="110" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="654" y="110" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="754" y="110" width="92" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="854" y="110" width="92" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+
+<text x="60" y="179" font-size="14" fill="#111827" font-weight="700">Head2</text>
+<rect x="154" y="156" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="254" y="156" width="92" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="354" y="156" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="454" y="156" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="554" y="156" width="92" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="654" y="156" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="754" y="156" width="92" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="854" y="156" width="92" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+
+<text x="60" y="225" font-size="14" fill="#111827" font-weight="700">Head3</text>
+<rect x="154" y="202" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="254" y="202" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="354" y="202" width="92" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="454" y="202" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="554" y="202" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="654" y="202" width="92" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="754" y="202" width="92" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="854" y="202" width="92" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+
+<text x="60" y="271" font-size="14" fill="#111827" font-weight="700">Head4</text>
+<rect x="154" y="248" width="92" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="254" y="248" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="354" y="248" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="454" y="248" width="92" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="554" y="248" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="654" y="248" width="92" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="754" y="248" width="92" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="854" y="248" width="92" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="960" y="271" font-size="11" fill="#9ca3af">与 Head1 相同</text>
+
+<line x1="154" y1="302" x2="946" y2="302" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="40" y="333" font-size="14" fill="#111827" font-weight="700">四个头合起来</text>
+<rect x="154" y="312" width="592" height="36" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="450" y="335" font-size="12" fill="#111827" text-anchor="middle">Block1–Block6 各被一个头看到</text>
+<rect x="754" y="312" width="192" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="850" y="335" font-size="12" fill="#111827" text-anchor="middle">每个头都看</text>
+
+<rect x="40" y="378" width="1040" height="130" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="60" y="404" font-size="14" fill="#111827" font-weight="700">放回整个模型：块稀疏层与密集层交替</text>
+<rect x="60" y="420" width="150" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="135" y="447" font-size="12" fill="#111827" text-anchor="middle">密集注意力层</text>
+<rect x="220" y="420" width="150" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="295" y="447" font-size="12" fill="#111827" text-anchor="middle">块稀疏注意力层</text>
+<rect x="380" y="420" width="150" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="455" y="447" font-size="12" fill="#111827" text-anchor="middle">密集注意力层</text>
+<rect x="540" y="420" width="150" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="615" y="447" font-size="12" fill="#111827" text-anchor="middle">块稀疏注意力层</text>
+<text x="710" y="447" font-size="14" fill="#9ca3af">……</text>
+<text x="760" y="436" font-size="11" fill="#6b7280">密集层保长上下文检索，稀疏层省 KV cache。</text>
+<text x="760" y="456" font-size="11" fill="#6b7280">模型另用 GQA：4 个 query 头共享 1 个 key 头。</text>
+<text x="60" y="492" font-size="11" fill="#9ca3af">据 PDF p. 2 正文与 p. 3 Figure 1 重画，是玩具示意；稀疏度、块大小与层的具体排布报告没有给。</text>
+</svg>

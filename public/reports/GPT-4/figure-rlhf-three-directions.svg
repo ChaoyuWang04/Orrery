@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" width="1120" height="500" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">同一次 RLHF 后训练，三类指标走向三个方向</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = 基座 GPT-4（只做了预训练）；绿 = RLHF 后的 GPT-4。三格纵轴刻度各不相同。</text>
+
+<text x="40" y="96" font-size="14" fill="#111827" font-weight="700">考试选择题平均分</text>
+<text x="40" y="114" font-size="11" fill="#6b7280">越高越好；Table 8，PDF p. 28</text>
+<line x1="60" y1="360" x2="330" y2="360" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="90" y="197.9" width="80" height="162.1" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="130" y="189" font-size="12" fill="#111827" text-anchor="middle">73.7%</text>
+<rect x="210" y="197.2" width="80" height="162.8" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="250" y="189" font-size="12" fill="#111827" text-anchor="middle">74.0%</text>
+<text x="130" y="380" font-size="11" fill="#6b7280" text-anchor="middle">基座</text>
+<text x="250" y="380" font-size="11" fill="#6b7280" text-anchor="middle">RLHF 后</text>
+<text x="40" y="420" font-size="14" fill="#111827" font-weight="700">几乎不变</text>
+<text x="40" y="440" font-size="11" fill="#6b7280">能力主要来自预训练</text>
+
+<text x="410" y="96" font-size="14" fill="#111827" font-weight="700">TruthfulQA mc1 准确率</text>
+<text x="410" y="114" font-size="11" fill="#6b7280">越高越好；读自 Figure 7，PDF p. 11，约数</text>
+<line x1="420" y1="360" x2="720" y2="360" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="440" y="268.9" width="70" height="91.1" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="475" y="260" font-size="12" fill="#111827" text-anchor="middle">约 29%</text>
+<rect x="540" y="237.4" width="70" height="122.6" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="575" y="229" font-size="12" fill="#111827" text-anchor="middle">约 39%</text>
+<rect x="640" y="171.4" width="70" height="188.6" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="675" y="163" font-size="12" fill="#111827" text-anchor="middle">约 60%</text>
+<text x="475" y="380" font-size="11" fill="#6b7280" text-anchor="middle">基座 0-shot</text>
+<text x="575" y="380" font-size="11" fill="#6b7280" text-anchor="middle">基座 5-shot</text>
+<text x="675" y="380" font-size="11" fill="#6b7280" text-anchor="middle">RLHF 后</text>
+<text x="410" y="420" font-size="14" fill="#111827" font-weight="700">大幅变好</text>
+<text x="410" y="440" font-size="11" fill="#6b7280">基座只比 GPT-3.5 基座略好，差距在 RLHF 后拉开</text>
+
+<text x="780" y="96" font-size="14" fill="#111827" font-weight="700">MMLU 子集上的校准误差 ECE</text>
+<text x="780" y="114" font-size="11" fill="#6b7280">越低越好；Figure 8，PDF p. 12</text>
+<line x1="800" y1="360" x2="1080" y2="360" stroke="#9ca3af" stroke-width="1.4"/>
+<rect x="830" y="340.75" width="80" height="19.25" rx="4" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="870" y="332" font-size="12" fill="#111827" text-anchor="middle">0.007</text>
+<rect x="970" y="156.5" width="80" height="203.5" rx="4" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1010" y="148" font-size="12" fill="#111827" text-anchor="middle">0.074</text>
+<text x="870" y="380" font-size="11" fill="#6b7280" text-anchor="middle">基座</text>
+<text x="1010" y="380" font-size="11" fill="#6b7280" text-anchor="middle">RLHF 后（ppo）</text>
+<text x="780" y="420" font-size="14" fill="#111827" font-weight="700">明显变差</text>
+<text x="780" y="440" font-size="11" fill="#6b7280">说出来的把握和实际正确率脱钩</text>
+
+<text x="30" y="480" font-size="11" fill="#9ca3af">选择题平均分与 ECE 是报告给出的数值；TruthfulQA 三根柱报告没有标数，按原图柱高读取。基座 5-shot 与 RLHF 后并非同一提示方式，比较时看量级。</text>
+</svg>

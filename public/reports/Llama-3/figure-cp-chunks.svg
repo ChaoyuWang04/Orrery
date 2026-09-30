@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">上下文并行：把序列切成 2 × CP 块，一头一尾配成一对</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">以 CP = 4 为例：序列切成 8 块。因果注意力下，第 k 块要看前面全部 k 块加自己，工作量大致正比于 k + 1。方块内的数字是块序号，方块长度是工作量。</text>
+<text x="30" y="74" font-size="13" fill="#6b7280">灰 = 假想对照（连续切）；绿 = Llama 3 的配法（第 i 个 rank 拿第 i 块和第 2 × CP − 1 − i 块）。</text>
+<text x="30" y="110" font-size="14" fill="#111827" font-weight="700">假想对照：按顺序连续切，每个 rank 拿相邻两块</text>
+<text x="154" y="150" font-size="12" fill="#111827" text-anchor="end">CP rank 0</text>
+<rect x="171" y="132" width="34" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="188" y="150" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="207" y="132" width="70" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="242" y="150" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<text x="288" y="150" font-size="12" fill="#6b7280">工作量 3</text>
+<text x="154" y="192" font-size="12" fill="#111827" text-anchor="end">CP rank 1</text>
+<rect x="171" y="174" width="106" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="224" y="192" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="279" y="174" width="142" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="350" y="192" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<text x="432" y="192" font-size="12" fill="#6b7280">工作量 7</text>
+<text x="154" y="234" font-size="12" fill="#111827" text-anchor="end">CP rank 2</text>
+<rect x="171" y="216" width="178" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="260" y="234" font-size="11" fill="#111827" text-anchor="middle">4</text>
+<rect x="351" y="216" width="214" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="458" y="234" font-size="11" fill="#111827" text-anchor="middle">5</text>
+<text x="576" y="234" font-size="12" fill="#6b7280">工作量 11</text>
+<text x="154" y="276" font-size="12" fill="#111827" text-anchor="end">CP rank 3</text>
+<rect x="171" y="258" width="250" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="296" y="276" font-size="11" fill="#111827" text-anchor="middle">6</text>
+<rect x="423" y="258" width="286" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="566" y="276" font-size="11" fill="#111827" text-anchor="middle">7</text>
+<text x="720" y="276" font-size="12" fill="#6b7280">工作量 15</text>
+<text x="30" y="330" font-size="14" fill="#111827" font-weight="700">Llama 3：首尾配对</text>
+<text x="154" y="370" font-size="12" fill="#111827" text-anchor="end">CP rank 0</text>
+<rect x="171" y="352" width="34" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="188" y="370" font-size="11" fill="#111827" text-anchor="middle">0</text>
+<rect x="207" y="352" width="286" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="350" y="370" font-size="11" fill="#111827" text-anchor="middle">7</text>
+<text x="504" y="370" font-size="12" fill="#6b7280">工作量 9</text>
+<text x="154" y="412" font-size="12" fill="#111827" text-anchor="end">CP rank 1</text>
+<rect x="171" y="394" width="70" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="206" y="412" font-size="11" fill="#111827" text-anchor="middle">1</text>
+<rect x="243" y="394" width="250" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="368" y="412" font-size="11" fill="#111827" text-anchor="middle">6</text>
+<text x="504" y="412" font-size="12" fill="#6b7280">工作量 9</text>
+<text x="154" y="454" font-size="12" fill="#111827" text-anchor="end">CP rank 2</text>
+<rect x="171" y="436" width="106" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="224" y="454" font-size="11" fill="#111827" text-anchor="middle">2</text>
+<rect x="279" y="436" width="214" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="386" y="454" font-size="11" fill="#111827" text-anchor="middle">5</text>
+<text x="504" y="454" font-size="12" fill="#6b7280">工作量 9</text>
+<text x="154" y="496" font-size="12" fill="#111827" text-anchor="end">CP rank 3</text>
+<rect x="171" y="478" width="142" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="242" y="496" font-size="11" fill="#111827" text-anchor="middle">3</text>
+<rect x="315" y="478" width="178" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="404" y="496" font-size="11" fill="#111827" text-anchor="middle">4</text>
+<text x="504" y="496" font-size="12" fill="#6b7280">工作量 9</text>
+<text x="30" y="556" font-size="11" fill="#9ca3af">据 PDF p. 11「Context parallelism for long sequences」重画。报告只写了切成 2 × CP 块、第 i 个 rank 拿第 i 与第 2 × CP − 1 − i 块，理由是负载均衡；</text>
+<text x="30" y="574" font-size="11" fill="#9ca3af">工作量按「块序号 + 1」计的方块模型和连续切的对照都是本图的机制示意，不是实测时间。405B 长上下文阶段实际用 CP = 16（Table 4）。</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">Llama 2-Chat 对 ChatGPT 的赢率：换一个裁判，曲线就缩一圈</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = SFT 版本；紫 = 只用拒绝采样；绿 = 拒绝采样后再跑 PPO。浅绿区 = 两轴都过 50%，两项都赢 ChatGPT。</text>
+<text x="310.0" y="88" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">裁判：Meta 自家奖励模型</text>
+<text x="310.0" y="104" font-size="11" fill="#6b7280" text-anchor="middle">可能偏向自家模型；RLHF-v3 起两轴都过 50%</text>
+<rect x="90" y="110" width="440" height="400" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="310.0" y="110" width="220.0" height="175.0" fill="#f1f9f5"/>
+<text x="90.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">10%</text>
+<text x="200.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">30%</text>
+<text x="310.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">50%</text>
+<text x="420.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">70%</text>
+<text x="530.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">90%</text>
+<text x="84" y="489.0" font-size="11" fill="#6b7280" text-anchor="end">10%</text>
+<text x="84" y="389.0" font-size="11" fill="#6b7280" text-anchor="end">30%</text>
+<text x="84" y="289.0" font-size="11" fill="#6b7280" text-anchor="end">50%</text>
+<text x="84" y="189.0" font-size="11" fill="#6b7280" text-anchor="end">70%</text>
+<line x1="310.0" y1="110" x2="310.0" y2="510" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<line x1="90" y1="285.0" x2="530" y2="285.0" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="310.0" y="546" font-size="11" fill="#6b7280" text-anchor="middle">有用性赢率（横轴）</text>
+<polyline points="249.5,425.0 332.0,295.0 370.5,295.0 381.5,310.0 392.5,265.0 403.5,240.0 420.0,195.0 464.0,155.0" fill="none" stroke="#d1d5db" stroke-width="1.4"/>
+<circle cx="249.5" cy="425.0" r="6" fill="#eeeeee" stroke="#9a9a9a" stroke-width="1.6"/>
+<text x="259.5" y="429.0" font-size="11" fill="#111827" text-anchor="start">SFT-v1</text>
+<circle cx="332.0" cy="295.0" r="6" fill="#eeeeee" stroke="#9a9a9a" stroke-width="1.6"/>
+<text x="323.0" y="287.0" font-size="11" fill="#111827" text-anchor="end">SFT-v2</text>
+<circle cx="370.5" cy="295.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="370.5" y="285.0" font-size="11" fill="#111827" text-anchor="middle">RLHF-v1</text>
+<circle cx="381.5" cy="310.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="390.5" y="324.0" font-size="11" fill="#111827" text-anchor="start">RLHF-v2</text>
+<circle cx="392.5" cy="265.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="402.5" y="269.0" font-size="11" fill="#111827" text-anchor="start">RLHF-v3</text>
+<circle cx="403.5" cy="240.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="394.5" y="234.0" font-size="11" fill="#111827" text-anchor="end">RLHF-v4</text>
+<circle cx="420.0" cy="195.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="411.0" y="199.0" font-size="11" fill="#111827" text-anchor="end">RLHF-v5 无 PPO</text>
+<circle cx="464.0" cy="155.0" r="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.6"/>
+<text x="455.0" y="147.0" font-size="11" fill="#111827" text-anchor="end">RLHF-v5 加 PPO</text>
+<text x="840.0" y="88" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">裁判：GPT-4</text>
+<text x="840.0" y="104" font-size="11" fill="#6b7280" text-anchor="middle">顺序随机对调；要到 RLHF-v5 才两轴都过 50%</text>
+<rect x="620" y="110" width="440" height="400" fill="#ffffff" stroke="#cbd2d9"/>
+<rect x="840.0" y="110" width="220.0" height="175.0" fill="#f1f9f5"/>
+<text x="620.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">10%</text>
+<text x="730.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">30%</text>
+<text x="840.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">50%</text>
+<text x="950.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">70%</text>
+<text x="1060.0" y="526" font-size="11" fill="#6b7280" text-anchor="middle">90%</text>
+<text x="614" y="489.0" font-size="11" fill="#6b7280" text-anchor="end">10%</text>
+<text x="614" y="389.0" font-size="11" fill="#6b7280" text-anchor="end">30%</text>
+<text x="614" y="289.0" font-size="11" fill="#6b7280" text-anchor="end">50%</text>
+<text x="614" y="189.0" font-size="11" fill="#6b7280" text-anchor="end">70%</text>
+<line x1="840.0" y1="110" x2="840.0" y2="510" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<line x1="620" y1="285.0" x2="1060" y2="285.0" stroke="#b9b9b9" stroke-dasharray="5 4"/>
+<text x="840.0" y="546" font-size="11" fill="#6b7280" text-anchor="middle">有用性赢率（横轴）</text>
+<polyline points="636.5,485.0 746.5,375.0 796.0,320.0 796.0,375.0 829.0,345.0 823.5,305.0 867.5,260.0 939.0,230.0" fill="none" stroke="#d1d5db" stroke-width="1.4"/>
+<circle cx="636.5" cy="485.0" r="6" fill="#eeeeee" stroke="#9a9a9a" stroke-width="1.6"/>
+<text x="646.5" y="489.0" font-size="11" fill="#111827" text-anchor="start">SFT-v1</text>
+<circle cx="746.5" cy="375.0" r="6" fill="#eeeeee" stroke="#9a9a9a" stroke-width="1.6"/>
+<text x="737.5" y="379.0" font-size="11" fill="#111827" text-anchor="end">SFT-v2</text>
+<circle cx="796.0" cy="320.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="787.0" y="316.0" font-size="11" fill="#111827" text-anchor="end">RLHF-v1</text>
+<circle cx="796.0" cy="375.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="805.0" y="389.0" font-size="11" fill="#111827" text-anchor="start">RLHF-v2</text>
+<circle cx="829.0" cy="345.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="839.0" y="357.0" font-size="11" fill="#111827" text-anchor="start">RLHF-v3</text>
+<circle cx="823.5" cy="305.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="832.5" y="299.0" font-size="11" fill="#111827" text-anchor="start">RLHF-v4</text>
+<circle cx="867.5" cy="260.0" r="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.6"/>
+<text x="858.5" y="254.0" font-size="11" fill="#111827" text-anchor="end">RLHF-v5 无 PPO</text>
+<circle cx="939.0" cy="230.0" r="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.6"/>
+<text x="930.0" y="220.0" font-size="11" fill="#111827" text-anchor="end">RLHF-v5 加 PPO</text>
+<text x="30" y="566" font-size="11" fill="#6b7280" transform="rotate(0)">纵轴：无害性赢率（两图同尺度，5%–85%）</text>
+<text x="30" y="590" font-size="13" fill="#6b7280">据 PDF p. 18 Figure 11 逐点读图重画，坐标是读图近似值。验证集为 1,586 条安全提示与 584 条有用性提示；两个裁判都不是人类评测。</text>
+<text x="30" y="612" font-size="13" fill="#6b7280">连线只表示版本顺序，不表示中间检查点。</text>
+</svg>
