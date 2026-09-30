@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="ay" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">长录音转写：30 秒窗口跟着预测的时间戳往前滑，每一窗先过失败检测</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">灰 = 音频与窗口；紫 = 一次解码；黄 = 失败检测与回退；绿 = 被接受、写进转写的文本。机制示意，时间戳数值为虚构示例。</text>
+
+<rect x="16" y="72" width="1088" height="210" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="98" font-size="14" fill="#111827" font-weight="700">① 窗口怎么滑：下一窗从「只预测出开始时间」的那句起</text>
+
+<rect x="40" y="118" width="1040" height="22" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="560" y="133" font-size="11" fill="#6b7280" text-anchor="middle">一段几分钟到几小时的录音；模型一次只能看 30 秒</text>
+
+<rect x="40" y="156" width="400" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="46" y="214" font-size="11" fill="#6b7280">窗口 1：0–30 秒</text>
+<rect x="48" y="164" width="96" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="96" y="182" font-size="11" fill="#111827" text-anchor="middle">0.0 句一 7.4</text>
+<rect x="148" y="164" width="104" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="200" y="182" font-size="11" fill="#111827" text-anchor="middle">7.4 句二 15.2</text>
+<rect x="256" y="164" width="104" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="308" y="182" font-size="11" fill="#111827" text-anchor="middle">15.2 句三 24.6</text>
+<rect x="364" y="164" width="70" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9" stroke-dasharray="4 3"/>
+<text x="399" y="182" font-size="11" fill="#6b7280" text-anchor="middle">24.6 …</text>
+
+<rect x="368" y="226" width="400" height="44" rx="6" fill="#ffffff" stroke="#b9b9b9"/>
+<text x="780" y="252" font-size="11" fill="#6b7280">窗口 2：从 24.6 秒起再取 30 秒</text>
+<rect x="376" y="234" width="120" height="28" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="436" y="252" font-size="11" fill="#111827" text-anchor="middle">0.0 句四 …</text>
+<path d="M399,194 L399,226" stroke="#9ca3af" stroke-width="1.4" fill="none" marker-end="url(#ar)"/>
+<text x="470" y="214" font-size="11" fill="#9ca3af">末句只预测出开始时间 → 下一窗对准这一刻</text>
+
+<rect x="16" y="298" width="1088" height="290" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="324" font-size="14" fill="#111827" font-weight="700">② 每一窗内部：解码 → 检查 → 不可信就升温重来</text>
+
+<rect x="40" y="350" width="220" height="92" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="150" y="376" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">解码这一窗</text>
+<text x="150" y="398" font-size="11" fill="#6b7280" text-anchor="middle">5 束的束搜索，按对数概率打分</text>
+<text x="150" y="416" font-size="11" fill="#6b7280" text-anchor="middle">温度 T 从 0 开始</text>
+<text x="150" y="434" font-size="11" fill="#6b7280" text-anchor="middle">首个时间戳限制在 0.0–1.0 秒</text>
+
+<rect x="310" y="350" width="240" height="92" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="430" y="376" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">像不像在胡说？</text>
+<text x="430" y="398" font-size="11" fill="#6b7280" text-anchor="middle">平均对数概率低于 −1</text>
+<text x="430" y="416" font-size="11" fill="#6b7280" text-anchor="middle">或文本 gzip 压缩率高于 2.4</text>
+<text x="430" y="434" font-size="11" fill="#6b7280" text-anchor="middle">（压缩率高 = 重复循环）</text>
+
+<rect x="600" y="350" width="220" height="92" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="710" y="376" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">这一窗有人说话吗？</text>
+<text x="710" y="398" font-size="11" fill="#6b7280" text-anchor="middle">无语音概率阈值 0.6</text>
+<text x="710" y="416" font-size="11" fill="#6b7280" text-anchor="middle">与平均对数概率阈值 −1 合用</text>
+<text x="710" y="434" font-size="11" fill="#6b7280" text-anchor="middle">判为无语音就不写文本</text>
+
+<rect x="870" y="350" width="214" height="92" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="977" y="376" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">接受，写进转写</text>
+<text x="977" y="398" font-size="11" fill="#6b7280" text-anchor="middle">T 低于 0.5 时，把这一窗文本</text>
+<text x="977" y="416" font-size="11" fill="#6b7280" text-anchor="middle">当作下一窗的先前文本</text>
+<text x="977" y="434" font-size="11" fill="#6b7280" text-anchor="middle">再按时间戳滑到下一窗</text>
+
+<path d="M260,396 L306,396" stroke="#9ca3af" stroke-width="1.4" fill="none" marker-end="url(#ar)"/>
+<path d="M550,396 L596,396" stroke="#9ca3af" stroke-width="1.4" fill="none" marker-end="url(#ar)"/>
+<text x="573" y="388" font-size="11" fill="#9ca3af" text-anchor="middle">否</text>
+<path d="M820,396 L866,396" stroke="#9ca3af" stroke-width="1.4" fill="none" marker-end="url(#ar)"/>
+
+<path d="M430,442 L430,500 L150,500 L150,446" stroke="#d4a24c" stroke-width="1.4" fill="none" marker-end="url(#ay)"/>
+<text x="290" y="520" font-size="11" fill="#6b7280" text-anchor="middle">是：T 加 0.2 重新解码，最高到 1.0</text>
+
+<text x="36" y="560" font-size="11" fill="#9ca3af">依据 PDF p. 9（3.8 节）与 p. 12–13（4.5 节、表 7）。论文没写两道检查的先后，这里按表 7 的叠加顺序排；这些是解码护栏，不是训练出来的能力。</text>
+</svg>

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 570" width="1120" height="570" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker></defs>
+<rect x="0" y="0" width="1120" height="570" fill="#ffffff"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700" text-anchor="start">EnCodec 的 RVQ：一帧向量逐级量化残差，用几本码本就是哪一档码率</text>
+<text x="30" y="56" font-size="13" fill="#6b7280" text-anchor="start">绿 = 连续向量；紫 = 10 bit 码本（1024 条码字）；黄 = 写进码流的整数编号。按原文 3.1–3.2 节（PDF p. 3–4）重画，机制示意。</text>
+<rect x="16" y="76" width="1088" height="210" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="102" font-size="14" fill="#111827" font-weight="700" text-anchor="start">一帧怎么变成 Nq 个编号</text>
+<text x="36" y="120" font-size="11" fill="#6b7280" text-anchor="start">24 kHz 波形经编码器压 320 倍，每秒 75 帧；每帧一个 D 维向量（论文没给 D 的数值）</text>
+<rect x="36" y="146" width="130" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="101.0" y="171.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">编码器输出 z</text>
+<text x="101.0" y="188.0" font-size="11" fill="#6b7280" text-anchor="middle">一帧一个向量</text>
+<rect x="206" y="146" width="130" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="271.0" y="171.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">码本 1</text>
+<text x="271.0" y="188.0" font-size="11" fill="#6b7280" text-anchor="middle">在 1024 条里找最近邻</text>
+<line x1="271" y1="202" x2="271" y2="224" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="231" y="226" width="80" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="271.0" y="248.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">编号 k1</text>
+<rect x="376" y="146" width="130" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="441.0" y="171.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">码本 2</text>
+<text x="441.0" y="188.0" font-size="11" fill="#6b7280" text-anchor="middle">量化 z − q1</text>
+<line x1="441" y1="202" x2="441" y2="224" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="401" y="226" width="80" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="441.0" y="248.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">编号 k2</text>
+<rect x="546" y="146" width="130" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="611.0" y="171.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">码本 3</text>
+<text x="611.0" y="188.0" font-size="11" fill="#6b7280" text-anchor="middle">量化上一层残差</text>
+<line x1="611" y1="202" x2="611" y2="224" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="571" y="226" width="80" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="611.0" y="248.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">编号 k3</text>
+<rect x="746" y="146" width="130" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="811.0" y="171.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">码本 Nq</text>
+<text x="811.0" y="188.0" font-size="11" fill="#6b7280" text-anchor="middle">最多 32 本</text>
+<line x1="811" y1="202" x2="811" y2="224" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="771" y="226" width="80" height="34" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="811.0" y="248.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">编号 kNq</text>
+<line x1="166" y1="174" x2="204" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="336" y1="178" x2="374" y2="178" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="356.0" y="168" font-size="11" fill="#9ca3af" text-anchor="middle">残差</text>
+<line x1="506" y1="178" x2="544" y2="178" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="526.0" y="168" font-size="11" fill="#9ca3af" text-anchor="middle">残差</text>
+<text x="706" y="180" font-size="19" fill="#9ca3af" text-anchor="middle">…</text>
+<line x1="676" y1="178" x2="690" y2="178" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="722" y1="178" x2="744" y2="178" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="916" y="146" width="170" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="1001.0" y="171.0" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">各本码字相加</text>
+<text x="1001.0" y="188.0" font-size="11" fill="#6b7280" text-anchor="middle">q1 + q2 + … 进解码器</text>
+<line x1="876" y1="174" x2="914" y2="174" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="916" y="244" font-size="11" fill="#6b7280" text-anchor="start">解码端只收到编号，</text>
+<text x="916" y="260" font-size="11" fill="#6b7280" text-anchor="start">按编号查回码字再求和</text>
+<rect x="16" y="300" width="1088" height="252" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="326" font-size="14" fill="#111827" font-weight="700" text-anchor="start">码率 = 75 帧/秒 × 10 bit × Nq：同一份权重，推理时只用前 Nq 本</text>
+<text x="36" y="344" font-size="11" fill="#6b7280" text-anchor="start">训练时每个 batch 随机抽一档 Nq，并只更新这一档专属的判别器；48 kHz 版每秒 150 帧、最多 16 本，同一公式给出 3、6、12、24 kbps</text>
+<rect x="60" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="74.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">1</text>
+<rect x="90" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="104.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">2</text>
+<rect x="120" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="134.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">3</text>
+<rect x="150" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="164.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">4</text>
+<rect x="180" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="194.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">5</text>
+<rect x="210" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="224.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">6</text>
+<rect x="240" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="254.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">7</text>
+<rect x="270" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="284.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">8</text>
+<rect x="300" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="314.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">9</text>
+<rect x="330" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="344.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">10</text>
+<rect x="360" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="374.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">11</text>
+<rect x="390" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="404.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">12</text>
+<rect x="420" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="434.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">13</text>
+<rect x="450" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="464.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">14</text>
+<rect x="480" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="494.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">15</text>
+<rect x="510" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="524.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">16</text>
+<rect x="540" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="554.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">17</text>
+<rect x="570" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="584.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">18</text>
+<rect x="600" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="614.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">19</text>
+<rect x="630" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="644.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">20</text>
+<rect x="660" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="674.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">21</text>
+<rect x="690" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="704.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">22</text>
+<rect x="720" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="734.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">23</text>
+<rect x="750" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="764.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">24</text>
+<rect x="780" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="794.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">25</text>
+<rect x="810" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="824.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">26</text>
+<rect x="840" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="854.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">27</text>
+<rect x="870" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="884.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">28</text>
+<rect x="900" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="914.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">29</text>
+<rect x="930" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="944.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">30</text>
+<rect x="960" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="974.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">31</text>
+<rect x="990" y="362" width="28" height="30" rx="4" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1004.0" y="381" font-size="11" fill="#6b7280" text-anchor="middle">32</text>
+<line x1="60" y1="414" x2="118" y2="414" stroke="#9ca3af" stroke-width="3"/>
+<text x="128" y="418" font-size="11" fill="#111827" text-anchor="start">前 2 本 · 1.5 kbps</text>
+<line x1="60" y1="438" x2="178" y2="438" stroke="#9ca3af" stroke-width="3"/>
+<text x="188" y="442" font-size="11" fill="#111827" text-anchor="start">前 4 本 · 3 kbps</text>
+<line x1="60" y1="462" x2="298" y2="462" stroke="#9ca3af" stroke-width="3"/>
+<text x="308" y="466" font-size="11" fill="#111827" text-anchor="start">前 8 本 · 6 kbps</text>
+<line x1="60" y1="486" x2="538" y2="486" stroke="#9ca3af" stroke-width="3"/>
+<text x="548" y="490" font-size="11" fill="#111827" text-anchor="start">前 16 本 · 12 kbps</text>
+<line x1="60" y1="510" x2="1018" y2="510" stroke="#9ca3af" stroke-width="3"/>
+<text x="60" y="530" font-size="11" fill="#111827" text-anchor="start">全部 32 本 · 24 kbps（24 kHz 满码率）</text>
+<text x="1030" y="381" font-size="11" fill="#9ca3af" text-anchor="start">码本序号</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="30" y="32" font-size="19" fill="#111827" font-weight="700">三个阶段各看多长：每条独立假设都删掉一大段序列</text>
+<text x="30" y="54" font-size="13" fill="#6b7280">黄 = 语义 token（25 Hz）；绿 = 粗声学 token（RVQ 前 4 层，每秒 200 个）；紫 = 细声学 token（后 8 层，每秒 400 个）。条长按 token 数等比例画。</text>
+
+<rect x="16" y="74" width="1088" height="290" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="36" y="108" font-size="14" fill="#111827" font-weight="700">阶段一 · 语义建模</text>
+<text x="36" y="128" font-size="11" fill="#6b7280">训练裁成 30 秒，只看过去的语义 token</text>
+<rect x="360" y="98" width="75" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="450" y="118" font-size="11" fill="#6b7280">750 个（去掉连续重复之前）</text>
+
+<text x="36" y="198" font-size="14" fill="#111827" font-weight="700">阶段二 · 粗声学建模</text>
+<text x="36" y="218" font-size="11" fill="#6b7280">训练裁成 10 秒，前缀是这段的全部语义 token</text>
+<rect x="360" y="188" width="25" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="387" y="188" width="200" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="602" y="208" font-size="11" fill="#6b7280">250 + 2000 = 2250 个</text>
+
+<text x="36" y="288" font-size="14" fill="#111827" font-weight="700">阶段三 · 细声学建模</text>
+<text x="36" y="308" font-size="11" fill="#6b7280">3 秒互不重叠的切片，不看语义 token</text>
+<rect x="360" y="278" width="60" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="422" y="278" width="120" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="557" y="298" font-size="11" fill="#6b7280">600 + 1200 = 1800 个</text>
+
+<text x="36" y="346" font-size="11" fill="#9ca3af">训练时三段按固定长度裁剪；推理时只有阶段三与目标长度无关，前两段仍随目标长度增长。</text>
+
+<rect x="16" y="380" width="1088" height="100" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="36" y="414" font-size="14" fill="#111827" font-weight="700">对照 · 一个模型写完 10 秒</text>
+<text x="36" y="434" font-size="11" fill="#6b7280">语义加全部 12 层声学，不做任何切分</text>
+<rect x="360" y="404" width="25" height="30" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="387" y="404" width="200" height="30" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="589" y="404" width="400" height="30" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="1000" y="424" font-size="11" fill="#6b7280">6250 个</text>
+<text x="36" y="462" font-size="11" fill="#9ca3af">自注意力代价随长度平方增长，6250 与 2250 的平方之比约为 7.7 倍。</text>
+
+<text x="30" y="506" font-size="11" fill="#9ca3af">依据 PDF p. 3–6 的帧率（语义 25 Hz、声学 50 Hz）、Q = 12、Q′ = 4 与训练裁剪长度 30 / 10 / 3 秒；token 数与平方比是本文算术，论文没有列出。</text>
+</svg>
