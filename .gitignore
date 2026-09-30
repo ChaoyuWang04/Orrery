@@ -43,6 +43,8 @@ projects/
 # 两个解读库的 PDF 原件默认不追踪;需要时可 git add -f 单篇加入。
 # 字幕与转录文本(.srt/.vtt/.md)不在此列,一律追踪——视频会下架,那份文本可能是唯一存世记录。
 /papers/**/*.pdf
+# 从 PDF 抽出的全文(pdftotext 等)是临时产物,不入库:整篇论文正文推上公开仓库有版权问题
+/papers/**/*.txt
 /readings/_src/**/*.pdf
 # 周会的录音转录与截图只留本机;仓库是公开的,只有提炼后的纪要入库
 /meetings/*/_src/
