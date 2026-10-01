@@ -77,6 +77,7 @@
 | LFM2 | LiquidAI | 为端侧效率反推架构的开源小基模家族(arXiv 2511.23404) |
 | SmolLM3 | HuggingFace | 3B 长上下文多语推理,训练方法与配方全公开。**原件待核**(HF 博客抓取失败) |
 | PuRo-2B | Tsinghua | RTX 5090 上 FP8 从零预训练 2B 模型,不到 6.9K 美元逼近 Qwen2.5-1.5B,并拟合训练成本缩放定律(arXiv 2608.27370) |
+| Tokenization-Survey | Google | **综述**:现代 LLM 时代的分词,从子词算法、陷阱、理论到实践,指出词表与模型训练脱节等瓶颈(alphaXiv 自有编号,非 arXiv) |
 
 ## 注意力与长上下文
 
@@ -171,6 +172,8 @@
 | DCLM | Stanford | 数据侧的 ImageNet 时刻:固定模型只比数据配方(arXiv 2406.11794,NeurIPS 2024) |
 | Nemotron-CLIMB | NVIDIA | 聚类迭代搜数据配方,用 512 个模型的网格反推预训练混合(arXiv 2504.13161) |
 | Nested-Learning | Google | 把「深度」重述为多尺度更新,连续学习的优化视角(arXiv 2512.24695,NeurIPS 2025) |
+| Simplex-Diffusion | Google | 把离散扩散搬到概率单纯形上,中间步保留类别上的信念而不是采样成硬类别;交叉熵训练、带可调随机性的类 DDIM 采样器,蒸馏到 8 步后 GSM8K 解出 32.1%(arXiv 2609.35553) |
+| Rufus-Air | Amazon | 在 GLM-4.5-Air-Base 上公开一条可复现的后训练配方:SFT 后串行接推理、代码、指令遵循 RL,再接通用、代码、搜索 agent 与 RLHF,按奖励可靠度排阶段,超过官方 GLM-4.5-Air 后训练版(arXiv 2609.29421) |
 
 ## Agent 训练与工具使用
 
@@ -235,6 +238,7 @@
 | KTransformers | Tsinghua | CPU 与 GPU 混合推理 MoE,把内存当一层慢显存用(SOSP 2025) |
 | Hyper-Connections | ByteDance | 把残差连接扩成多条带可学习权重的并行流,化解梯度消失与表示坍缩的跷跷板;DeepSeek mHC 的前作(arXiv 2409.19606,ICLR 2025) |
 | Flash-dLLM | MBZUAI | 扩散语言模型的免训练推理加速:融合 KV cache 更新内核削减显存读写,再让模型自己起草、自己验证做并行解码(arXiv 2609.26796) |
+| FlashLoop | MaxPlanck | 循环 Transformer 的免训练推理加速:跨循环只更新少数 token、稀疏注意力、KV 残差低比特量化,无损精度下端到端最高 1.64 倍提速、KV cache 最高省 6 倍(arXiv 2609.29812) |
 
 ## 分布式训练与并行
 
@@ -387,6 +391,10 @@
 | InsertionWM | NVIDIA | 用 TD-MPC2 视觉世界模型做机器人插装:腕部深度图加本体感知,一个模型在 90 种零件上训练,对未见几何零样本成功率 56%,远高于无模型基线的 7% |
 | MachEmbodied-U0 | LiAuto | 理想汽车的具身统一模型:理解专家出子任务与可交互区域,生成专家用流匹配联合生成未来 RGB、深度、法线、光流与动作,约 4,200 小时演示预训练(arXiv 2609.25627) |
 | ECO | Toronto | 端到端驾驶策略与控制器之间插一层免训练后处理:锚定已执行历史与预测终点,只重整中间航点,六个策略的闭环分数全部上升(alphaXiv 原件,非 arXiv 编号) |
+| APPL | NUS | 把每个技能策略训练时用的结构先验(行为依赖什么)写进技能接口:构建 agent 切分演示、按多种先验各训一个策略,运行时 agent 据接口挑选并组合,提升分布外技能泛化与新组合(arXiv 2609.35690) |
+| DexAgent | Stanford | 把一段第一视角人类视频加任务提示转成灵巧手训练轨迹的 agent 流水线:视频理解、按物体属性重建仿真、轨迹优化、数据生成四阶段,每段有验证器,新技能沉淀进自进化工具库(arXiv 2609.35318) |
+| RAPID | MIT | 从单个人类演示自动生成、验证并迭代机器人程序:从演示里推出可测的任务规约、动作原语与交互环境,用以物体为中心的关系式程序表示让程序迁移到新场景(arXiv 2609.30249) |
+| AD-E2E-JEPA | NYU | 端到端自动驾驶的 JEPA 世界模型:给 patch 嵌入加 SIGReg 正则的可学习投影器,规划 patch 减 16 倍、维度减 4 倍,推理提速 100 倍,不训驾驶策略即做目标条件零样本规划(arXiv 2609.34085) |
 
 ## 自进化系统
 
@@ -429,6 +437,7 @@
 | CoT-Empowers-Serial-Problems | Stanford | 给 CoT 的能力增益称重量:常数深度加立刻舍入的 Transformer 连 O(log n) 步思维链也只能算 AC0(定点数那档是 TC0),而 T 步思维链配 Θ(log n) 嵌入就能算任意规模 T 的电路;唯一的严格分离要假设 TC0 ⊊ NC1,且构造里的思维链是 0/1 门真值、人类读不懂(依据 arXiv v4,38 页) |
 | Towards-Monosemanticity | Anthropic | 一层 Transformer 的 512 个 MLP 神经元上训稀疏自编码器:字典从 512 扩到 131,072,人工打分(区间级)特征中位 12 分、神经元 0 分,A/1 恢复 79% 的 MLP 损失贡献(131,072 时 94.5%);阿拉伯文、DNA、base64、希伯来文四个特征逐项过特异性、敏感性、下游因果、非神经元、跨种子五关;特征随字典变大而分裂,还能经 token 流接成生成 HTML 的「有限状态自动机」(**原件是网页**,依据 transformer-circuits.pub 2023-10-04) |
 | Patchscopes | Google | 把隐藏表示打补丁进另一次前向,让模型自己用自然语言解释它;logit lens 等旧方法都是特例(arXiv 2401.06102,ICML 2024) |
+| LM-Generalization-Dynamics | Berkeley | 用一套小评测追踪预训练全程,发现模型会在「鹦鹉式」与可泛化的计算之间反复突跳(mode-hopping),作者把它解释为容量有限下泛化电路与早期浅层电路的竞争(arXiv 2609.33150) |
 
 ## 检索与 RAG
 
@@ -455,3 +464,5 @@
 | SWE-bench | Princeton | 2,294 道真实 GitHub 缺陷:已合并且自带测试的 PR 同时给出题目、答案与验收标准;判分是 F2P 与 P2P 的与运算,当年最好的模型只解出 1.96%(依据 arXiv v3,52 页) |
 | Lessons-from-the-Trenches | EleutherAI | 可复现评测的方法学教训:打分口径怎么会错(arXiv 2405.14782) |
 | EmbodiedMemory-Bench | ZJU | 2,554 个交互式具身记忆考题,覆盖细粒度视觉记忆、动态状态追踪、交互反馈与经验迁移四类;附带场景、空间、事件三层外部记忆基线与 8B 策略(arXiv 2609.28236) |
+| MatToolBench | SJTU | 在 Windows 11 虚拟机里测多模态 GUI agent 操作材料科学专业软件:10 个工具、204 个任务,专家拆细分项计分,最好的模型 GUI 任务成功率只有 25%、代码任务 45%(arXiv 2609.37053) |
+| Synthetic-Hospital | CMU | 全合成、可核验的纵向电子病历 benchmark:1268 名患者、5602 次就诊,诊断与时间关系都对齐标准本体并可溯源;10 个模型无一接近上限(arXiv 2609.30027) |

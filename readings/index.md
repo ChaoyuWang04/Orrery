@@ -244,6 +244,7 @@
 | Idea2Story | AgentAlpha | 把研究概念自动展开成完整科学叙事的流水线 |
 | Self-Evolving AI Agents Survey | Glasgow | **综述**:抽出统一反馈回路,再把技术切成模型/提示/记忆/工具/工作流/通信 |
 | Self-Evolving-Agents-Survey-2 | Tsinghua | **综述**:自进化 agent 的四问——进化什么、何时进化、怎么进化、在哪进化 |
+| Raven | EverMind AI | 「harness 的 harness」:开源多 agent 生态自动构建并演化面向特定模型与领域的 harness,把每个「模型–harness」对当作可组合单元,由 Host Agent 拆解目标、分派子任务并整合结果(arXiv 2609.33439) |
 
 ## 可解释性与对齐
 
@@ -254,6 +255,7 @@
 | Reward-Hacking-Probes | Goodfire | 差值均值向量就能表示并检测前沿开源模型的奖励黑客,成本近乎为零,效果接近 LLM 监控器,还能在思维链上提前预警 |
 | Scaling Monosemanticity | Anthropic | 稀疏自编码器在 Claude 3 Sonnet 上规模化,抽出可解释、可干预的单义特征 |
 | Refusal Direction | Independent | 拒答行为由残差流里的单一方向中介;删掉该方向就能定向解除拒答,加回去能诱发拒答 |
+| Just-Ask-Jev | Griffith University | 用为校准决策而做强化学习训练的 Jev 当零样本对齐失效检测器:RLCDAlignBench 覆盖 10 类失效、44 个 benchmark,一个通用问题中位 AUROC 0.886,成本比 LLM 评审低 63 倍(arXiv 2609.29429) |
 
 ## 深度学习基石
 
@@ -318,6 +320,7 @@
 | BIG-Bench | Google | 204 个众包任务的超大评测集,用来找模型能力的涌现与断崖 |
 | TruthfulQA | Oxford | 专挑人类也常答错的问题,测模型是否跟着复述常见谬误 |
 | MMLU | Berkeley | 57 个学科的多选题;十年里被引用最多、也被刷得最狠的通用知识评测 |
+| JEV-vs-LLM-Judges | University of Pennsylvania | 拿 Jev 与三个 flash 级 LLM 评审在 7 个 benchmark 的 9 组人工标注上逐条对照 rubric 打分:LLM 评审贵 16 到 325 倍、慢 28 到 350 倍,准确率差异多数不显著,而且错在同一批地方(arXiv 2609.29769) |
 
 ## 金融市场与量化
 
