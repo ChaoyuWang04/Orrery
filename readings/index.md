@@ -240,11 +240,11 @@
 
 | 材料 | 机构 | 一句话 |
 |---|---|---|
+| Raven | EverMind AI | 「harness 的 harness」:开源多 agent 生态自动构建并演化面向特定模型与领域的 harness,把每个「模型–harness」对当作可组合单元,由 Host Agent 拆解目标、分派子任务并整合结果(arXiv 2609.33439) |
 | RSI Survey | UCR | **综述**:1250 篇语料切成两轴(改什么 × 回路闭合到什么程度),中心刀是「有界自我精修」对「开放式 RSI」 |
 | Idea2Story | AgentAlpha | 把研究概念自动展开成完整科学叙事的流水线 |
 | Self-Evolving AI Agents Survey | Glasgow | **综述**:抽出统一反馈回路,再把技术切成模型/提示/记忆/工具/工作流/通信 |
 | Self-Evolving-Agents-Survey-2 | Tsinghua | **综述**:自进化 agent 的四问——进化什么、何时进化、怎么进化、在哪进化 |
-| Raven | EverMind AI | 「harness 的 harness」:开源多 agent 生态自动构建并演化面向特定模型与领域的 harness,把每个「模型–harness」对当作可组合单元,由 Host Agent 拆解目标、分派子任务并整合结果(arXiv 2609.33439) |
 
 ## 可解释性与对齐
 
