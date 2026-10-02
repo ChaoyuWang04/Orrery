@@ -77,6 +77,7 @@
 | LFM2 | LiquidAI | 为端侧效率反推架构的开源小基模家族(arXiv 2511.23404) |
 | SmolLM3 | HuggingFace | 3B 长上下文多语推理,训练方法与配方全公开。**原件待核**(HF 博客抓取失败) |
 | PuRo-2B | Tsinghua | RTX 5090 上 FP8 从零预训练 2B 模型,不到 6.9K 美元逼近 Qwen2.5-1.5B,并拟合训练成本缩放定律(arXiv 2608.27370) |
+| Tokenization-Survey | Google | **综述**:现代 LLM 时代的分词,从子词算法、陷阱、理论到实践,指出词表与模型训练脱节等瓶颈(alphaXiv 自有编号,非 arXiv) |
 
 ## 注意力与长上下文
 
@@ -101,6 +102,7 @@
 | FlashAttention-2 | Stanford | 并行与工作划分改进 |
 | FlashAttention | Stanford | IO 感知的精确注意力:多算 FLOP 换少搬字节(依据 NeurIPS 2022 正式版) |
 | Transformer | Google | Attention Is All You Need(2017):完全基于注意力、去掉循环与卷积的编码器—解码器架构 |
+| OPAL | CMU | 在线策略的注意力线性化:混合线性注意力学生自己采样长上下文轨迹,由冻结的全注意力教师逐 token 监督;3B token 内恢复大部分长检索与数学推理能力,无需 SFT 或 RLVR(arXiv 2609.31947) |
 | PISA | SJTU | 金字塔式 Top-K 逐层收窄候选的块稀疏注意力,选块复杂度从平方降到 O(N log N),配训练与推理的 Triton 内核 |
 | Hybrid-Architectures-for-LM | Meta | 线性与全注意力混合配比的系统性消融,41 页(FAIR 与 KAIST,arXiv 2510.04800) |
 | LongCat-Sparse-Attention | Meituan | 跨层索引的流式感知块稀疏注意力;同线还有 ZigZag(arXiv 2608.01662) |
@@ -171,11 +173,14 @@
 | DCLM | Stanford | 数据侧的 ImageNet 时刻:固定模型只比数据配方(arXiv 2406.11794,NeurIPS 2024) |
 | Nemotron-CLIMB | NVIDIA | 聚类迭代搜数据配方,用 512 个模型的网格反推预训练混合(arXiv 2504.13161) |
 | Nested-Learning | Google | 把「深度」重述为多尺度更新,连续学习的优化视角(arXiv 2512.24695,NeurIPS 2025) |
+| Simplex-Diffusion | Google | 把离散扩散搬到概率单纯形上,中间步保留类别上的信念而不是采样成硬类别;交叉熵训练、带可调随机性的类 DDIM 采样器,蒸馏到 8 步后 GSM8K 解出 32.1%(arXiv 2609.35553) |
+| Rufus-Air | Amazon | 在 GLM-4.5-Air-Base 上公开一条可复现的后训练配方:SFT 后串行接推理、代码、指令遵循 RL,再接通用、代码、搜索 agent 与 RLHF,按奖励可靠度排阶段,超过官方 GLM-4.5-Air 后训练版(arXiv 2609.29421) |
 
 ## Agent 训练与工具使用
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| Context-Language-Models | Washington | 让模型把上下文当文件自己读写管理,替代外部 harness 的压缩、卸载与检索策略;零样本即超过现有上下文管理方法,另有在线 RL 训练与配套的 Suffix Cache Reuse 推理优化(arXiv 2609.37725) |
 | Agensh | Microsoft | 没有中心编排者的多 agent harness:worker 经共享工作区、消息接口与共享上下文自行认领子任务并异步合并进度,扩到 1,024 个 agent |
 | Self-Organizing-Agent-Teams | Stanford | 固定的一组 agent 从过往协作里学可复用的组织策略(角色、阶段、发言与信息流),只用 15 道数学题与 25 道研究生知识题学到的策略原样迁移到未见基准 |
 | CodeMidas | Xiaomi | 只用源码本身造编码 RL 环境:agent 探索已实现功能、写行为规格与测试并反复验证,得到 3,185 个仓库的 5,545 个任务 |
@@ -226,6 +231,7 @@
 | PagedAttention | Berkeley | vLLM 的论文,KV cache 的分页管理 |
 | Efficient-Large-Scale-MoE | Meta | MoE 与 dense 在零样本与微调上的对照研究(2022) |
 | Switch-Transformers | Google | top-1 路由把 MoE 扩到万亿参数 |
+| TaH2 | Tsinghua | 自适应循环 Transformer:后训练一个迭代决策器,只让能从多算一轮中获益的 token 多循环;在 AIME 上把每翻倍解码算力的精度斜率提高 53%(arXiv 2609.35748) |
 | LMetric | Alibaba | 调度与 KV 命中率只用一个乘法指标就赢,OSDI 2026(SJTU IPADS 与阿里云) |
 | ECHO | Huawei | 稀疏注意力模型的 KV 换页为什么仍然打不满带宽,OSDI 2026 |
 | Strata | Stanford | 分层上下文缓存的碎片化把长上下文服务拖成 I/O bound(arXiv 2508.18572,OSDI 2026) |
@@ -235,6 +241,7 @@
 | KTransformers | Tsinghua | CPU 与 GPU 混合推理 MoE,把内存当一层慢显存用(SOSP 2025) |
 | Hyper-Connections | ByteDance | 把残差连接扩成多条带可学习权重的并行流,化解梯度消失与表示坍缩的跷跷板;DeepSeek mHC 的前作(arXiv 2409.19606,ICLR 2025) |
 | Flash-dLLM | MBZUAI | 扩散语言模型的免训练推理加速:融合 KV cache 更新内核削减显存读写,再让模型自己起草、自己验证做并行解码(arXiv 2609.26796) |
+| FlashLoop | MaxPlanck | 循环 Transformer 的免训练推理加速:跨循环只更新少数 token、稀疏注意力、KV 残差低比特量化,无损精度下端到端最高 1.64 倍提速、KV cache 最高省 6 倍(arXiv 2609.29812) |
 
 ## 分布式训练与并行
 
@@ -354,6 +361,7 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| APPL | NUS | 把每个技能策略训练时用的结构先验(行为依赖什么)写进技能接口:构建 agent 切分演示、按多种先验各训一个策略,运行时 agent 据接口挑选并组合,提升分布外技能泛化与新组合(arXiv 2609.35690) |
 | InternW0-Delta | ShanghaiAILab | 世界动作模型:把视频动态、视觉语言语义与几何运动先验并进同一框架出动作,在约 2.3 万小时的真机、UMI 与第一人称异构数据上预训练,数据工具、配方与权重全栈开源(上海 AI 实验室) |
 | Representation-World-Model | Tsinghua | 不学前向动力学、不做搜索:在端点表征之间直接插出隐空间路径,用逆动力学沿路径解码动作,把规划做进表征几何本身(arXiv 2609.29171) |
 | ART-Discovery | Anthropic | 自主运行的 Claude Code 实例在 19 亿个蛋白簇里普查逆转录酶位点,找出带约 200 nt 重复阵列的新家族 ART(alphaXiv 自有编号,非 arXiv) |
@@ -387,6 +395,9 @@
 | InsertionWM | NVIDIA | 用 TD-MPC2 视觉世界模型做机器人插装:腕部深度图加本体感知,一个模型在 90 种零件上训练,对未见几何零样本成功率 56%,远高于无模型基线的 7% |
 | MachEmbodied-U0 | LiAuto | 理想汽车的具身统一模型:理解专家出子任务与可交互区域,生成专家用流匹配联合生成未来 RGB、深度、法线、光流与动作,约 4,200 小时演示预训练(arXiv 2609.25627) |
 | ECO | Toronto | 端到端驾驶策略与控制器之间插一层免训练后处理:锚定已执行历史与预测终点,只重整中间航点,六个策略的闭环分数全部上升(alphaXiv 原件,非 arXiv 编号) |
+| DexAgent | Stanford | 把一段第一视角人类视频加任务提示转成灵巧手训练轨迹的 agent 流水线:视频理解、按物体属性重建仿真、轨迹优化、数据生成四阶段,每段有验证器,新技能沉淀进自进化工具库(arXiv 2609.35318) |
+| RAPID | MIT | 从单个人类演示自动生成、验证并迭代机器人程序:从演示里推出可测的任务规约、动作原语与交互环境,用以物体为中心的关系式程序表示让程序迁移到新场景(arXiv 2609.30249) |
+| AD-E2E-JEPA | NYU | 端到端自动驾驶的 JEPA 世界模型:给 patch 嵌入加 SIGReg 正则的可学习投影器,规划 patch 减 16 倍、维度减 4 倍,推理提速 100 倍,不训驾驶策略即做目标条件零样本规划(arXiv 2609.34085) |
 
 ## 自进化系统
 
@@ -411,11 +422,13 @@
 | ADAS | UBC | 部件:harness。元 agent 在代码空间里搜索内层 agent 的工作流,ICLR 2025(UBC 主导,Vector Institute 合作) |
 | Self-Rewarding-LM | Meta | 部件:模型权重。模型兼任裁判给自己的回答打分,取最高对最低做迭代 DPO,ICML 2024 |
 | PromptBreeder | Google | 部件:Prompt。DeepMind,任务提示与变异提示一起进化的自指涉提示词搜索,ICML 2024 |
+| Harness-Learning | JohnsHopkins | 部件:harness。用 RL 训练一个提议模型,按执行反馈改写求解模型的 harness;测试时不改参数,只靠多轮改写适应新任务,并能迁移到未见过的任务(arXiv 2609.35738) |
 
 ## 可解释性与对齐
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| LM-Generalization-Dynamics | Berkeley | 用一套小评测追踪预训练全程,发现模型会在「鹦鹉式」与可泛化的计算之间反复突跳(mode-hopping),作者把它解释为容量有限下泛化电路与早期浅层电路的竞争(arXiv 2609.33150) |
 | Agent-Trace-Tampering | MaxPlanck | 本地编码 agent 能改写、删除自己的执行轨迹:十组模型与 harness 在用户直接要求时大多照删,奖励诱导下也会自发删痕;作者主张把轨迹记录挪到 agent 控制之外的独立拦截层(arXiv 2609.30266) |
 | Matryoshka-Attribution | Stanford | 把归因写成「找出最小化下游损失的嵌套组件子集」:sigmoid top-k 掩码加随机稀疏预算一次学出组件排序,在 MIB 榜单排第一,还能用 RL 定位微调中改出拒答行为的那部分权重(arXiv 2609.25518) |
 | Chain-of-Thought-Monitorability | UK-AISI | 十余家机构联署的立场文:思维链在 RL 阶段是不受直接监督的潜变量,所以读得出来;四条训练与架构路径都能把它磨掉,而作者自认全篇零一手实验数字(依据 arXiv v2,11 页) |
@@ -448,10 +461,13 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| MatToolBench | SJTU | 在 Windows 11 虚拟机里测多模态 GUI agent 操作材料科学专业软件:10 个工具、204 个任务,专家拆细分项计分,最好的模型 GUI 任务成功率只有 25%、代码任务 45%(arXiv 2609.37053) |
 | JEV-as-a-Judge | CMU | 只出判决的评审模型做便宜的第一道:置信的判决直接接受、不确定的上交强评审,冻结级联保住 99% 的准确率(arXiv 2609.26550) |
 | PosteriorBench | Caltech | 评生成式逆问题求解器要看整个后验而非单个样本:四个物理逆问题配高精度参考后验与五项分布指标 |
+| Frontier-Vision | MBZUAI | 用 9 个领域、34 项能力、55 个 benchmark 测 GPT-6 Astra 与另外 5 个通用前沿系统的视觉能力,并对照专用模型与人类:语义与推理类任务接近参照线,度量几何、忠实重建与时序一致的稠密预测仍有差距(arXiv 2609.35718) |
 | MMLU-Pro | TIGER-Lab | 把 MMLU 失效拆成地板太高、不考推理、数据有噪声三处分别修:干扰项扩到 10 个(83% 的题)、too-easy 靠 8 个小模型投票滤掉 42.23%,12,032 题 14 学科(依据 arXiv v6,24 页) |
 | WildBench | Ai2 | 考什么交给真实用户、怎么判交给一张 5 到 10 问的清单:1,024 题、用三个不同水平的基线合成 WB-Reward,与 Arena 人类 Elo 的头部 Pearson 0.984(依据 arXiv v2,19 页) |
 | SWE-bench | Princeton | 2,294 道真实 GitHub 缺陷:已合并且自带测试的 PR 同时给出题目、答案与验收标准;判分是 F2P 与 P2P 的与运算,当年最好的模型只解出 1.96%(依据 arXiv v3,52 页) |
 | Lessons-from-the-Trenches | EleutherAI | 可复现评测的方法学教训:打分口径怎么会错(arXiv 2405.14782) |
 | EmbodiedMemory-Bench | ZJU | 2,554 个交互式具身记忆考题,覆盖细粒度视觉记忆、动态状态追踪、交互反馈与经验迁移四类;附带场景、空间、事件三层外部记忆基线与 8B 策略(arXiv 2609.28236) |
+| Synthetic-Hospital | CMU | 全合成、可核验的纵向电子病历 benchmark:1268 名患者、5602 次就诊,诊断与时间关系都对齐标准本体并可溯源;10 个模型无一接近上限(arXiv 2609.30027) |

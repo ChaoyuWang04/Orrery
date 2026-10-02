@@ -126,6 +126,7 @@
 | Orca | SNU | 迭代级调度的提出者:continuous batching 的原始论文,OSDI |
 | Sparsely-Gated-MoE | Google | 稀疏门控 MoE 的源头:参数量涨千倍而单样本计算量不变 |
 | Clipper | Berkeley | 通用的低延迟预测服务层,NSDI;缓存、自适应批处理与模型选择 |
+| ReFlux | Tongji | 把深层相对浅层的增量 Δ 写回前面的层,用可学习的反馈图选路组合;同步版降困惑度、提推理精度,流式版保持 1 倍骨干理论 FLOPs(arXiv 2609.32457) |
 
 ## 分布式训练与并行
 
@@ -205,6 +206,7 @@
 | PixelCNN | DeepMind | 逐像素自回归建图像,视觉侧的自回归起点 |
 | GAN | Montreal | 生成器与判别器对抗训练,生成模型十年的另一条主线 |
 | VAE | Amsterdam | 变分自编码器:重参数化技巧让隐变量模型可以端到端反传 |
+| FuseReg | USC | 表征自编码器选哪几层编码器特征作隐空间:训练时随机抽层子集做融合,一个解码器适配任意层组合,缓解重建与生成的取舍(arXiv 2609.31620) |
 
 ## 音频
 
@@ -240,6 +242,7 @@
 
 | 材料 | 机构 | 一句话 |
 |---|---|---|
+| Raven | EverMind AI | 「harness 的 harness」:开源多 agent 生态自动构建并演化面向特定模型与领域的 harness,把每个「模型–harness」对当作可组合单元,由 Host Agent 拆解目标、分派子任务并整合结果(arXiv 2609.33439) |
 | RSI Survey | UCR | **综述**:1250 篇语料切成两轴(改什么 × 回路闭合到什么程度),中心刀是「有界自我精修」对「开放式 RSI」 |
 | Idea2Story | AgentAlpha | 把研究概念自动展开成完整科学叙事的流水线 |
 | Self-Evolving AI Agents Survey | Glasgow | **综述**:抽出统一反馈回路,再把技术切成模型/提示/记忆/工具/工作流/通信 |
@@ -249,6 +252,7 @@
 
 | 材料 | 机构 | 一句话 |
 |---|---|---|
+| Just-Ask-Jev | Griffith University | 用为校准决策而做强化学习训练的 Jev 当零样本对齐失效检测器:RLCDAlignBench 覆盖 10 类失效、44 个 benchmark,一个通用问题中位 AUROC 0.886,成本比 LLM 评审低 63 倍(arXiv 2609.29429) |
 | Test-Time-Covert-Channels | Arizona State University | 参数固定、没有码本的两个 agent 只靠每轮一比特的成败反馈,就能在明令保密、逐条消息受监控的条件下,把机密值藏进正常措辞里传出去(alphaXiv 自有编号,非 arXiv) |
 | Few-Shot-World-Representations | University of Tokyo | 少样本示范让 LLM 更会用上下文里学到的图结构世界表示:线性探针显示示范移动了表示的位置并提高其预测作用(arXiv 2609.24352) |
 | Reward-Hacking-Probes | Goodfire | 差值均值向量就能表示并检测前沿开源模型的奖励黑客,成本近乎为零,效果接近 LLM 监控器,还能在思维链上提前预警 |
@@ -318,6 +322,7 @@
 | BIG-Bench | Google | 204 个众包任务的超大评测集,用来找模型能力的涌现与断崖 |
 | TruthfulQA | Oxford | 专挑人类也常答错的问题,测模型是否跟着复述常见谬误 |
 | MMLU | Berkeley | 57 个学科的多选题;十年里被引用最多、也被刷得最狠的通用知识评测 |
+| JEV-vs-LLM-Judges | University of Pennsylvania | 拿 Jev 与三个 flash 级 LLM 评审在 7 个 benchmark 的 9 组人工标注上逐条对照 rubric 打分:LLM 评审贵 16 到 325 倍、慢 28 到 350 倍,准确率差异多数不显著,而且错在同一批地方(arXiv 2609.29769) |
 
 ## 金融市场与量化
 

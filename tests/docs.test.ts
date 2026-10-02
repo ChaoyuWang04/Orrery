@@ -1,9 +1,87 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { describe, expect, it } from 'vitest'
+import os from 'node:os'
+import { spawnSync } from 'node:child_process'
+import { afterEach, describe, expect, it } from 'vitest'
+import { checkContext } from '../scripts/context-check.mjs'
 
 const projectRoot = path.resolve(import.meta.dirname, '..')
 const docsRoot = path.join(projectRoot, 'docs')
+
+const contextFixtures: string[] = []
+function contextFixture() {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'orrery-context-'))
+  contextFixtures.push(root)
+  return root
+}
+afterEach(() => {
+  for (const root of contextFixtures.splice(0)) fs.rmSync(root, { recursive: true, force: true })
+})
+
+describe('上下文检查与全局分发', () => {
+  it('解析真实 Markdown 链接,忽略代码示例与远程 URL,只读不改文件', () => {
+    const root = contextFixture()
+    fs.writeFileSync(path.join(root, '已有 文档.md'), '# 已有\n')
+    const source = '# 入口\n[文件](已有%20文档.md#标题)\n[站点](https://example.org)\n```md\n[示例](missing.md)\n```\n'
+    fs.writeFileSync(path.join(root, 'AGENTS.md'), source)
+    expect(checkContext(root, ['AGENTS.md'])).toEqual({ errors: [], warnings: [] })
+    fs.appendFileSync(path.join(root, 'AGENTS.md'), '\n[断链][a]\n\n[a]: absent.md\n')
+    const before = fs.readFileSync(path.join(root, 'AGENTS.md'), 'utf8')
+    const result = checkContext(root, ['AGENTS.md'])
+    expect(result.errors).toHaveLength(1)
+    expect(result.errors[0]).toContain('absent.md')
+    expect(fs.readFileSync(path.join(root, 'AGENTS.md'), 'utf8')).toBe(before)
+  })
+
+  it('超限、挤行与重复仅提示,长实验记录没有入口预算', () => {
+    const root = contextFixture()
+    const paragraph = '必须保留可复现证据和适用前提。'.repeat(35)
+    fs.writeFileSync(path.join(root, 'AGENTS.md'), `${'# 标题\n'.repeat(151)}\n${paragraph}\n\n${paragraph}\n`)
+    const result = checkContext(root, ['AGENTS.md'])
+    expect(result.errors).toEqual([])
+    expect(result.warnings.some((message: string) => message.includes('预算'))).toBe(true)
+    expect(result.warnings.some((message: string) => message.includes('挤行'))).toBe(true)
+    expect(result.warnings.some((message: string) => message.includes('相同长段落'))).toBe(true)
+    fs.writeFileSync(path.join(root, 'experiment.md'), '# 实验\n'.repeat(200))
+    expect(checkContext(root, ['experiment.md'])).toEqual({ errors: [], warnings: [] })
+    const cli = spawnSync(process.execPath, [path.join(projectRoot, 'scripts/context-check.mjs'), '--root', root, 'AGENTS.md'], { encoding: 'utf8' })
+    expect(cli.status, cli.stderr).toBe(0)
+  })
+
+  it('缺文件、错误编码和断链返回非零', () => {
+    const root = contextFixture()
+    fs.writeFileSync(path.join(root, 'AGENTS.md'), '[错误](%ZZ.md)\n\n![图](lost.png)\n')
+    expect(checkContext(root, ['missing.md', 'AGENTS.md']).errors).toHaveLength(3)
+    const cli = spawnSync(process.execPath, [path.join(projectRoot, 'scripts/context-check.mjs'), '--root', root, 'AGENTS.md'], { encoding: 'utf8' })
+    expect(cli.status).toBe(1)
+  })
+
+  it('实际默认入口不存在断链', () => {
+    expect(checkContext(projectRoot, ['AGENTS.md', 'global/AGENTS.md', 'global/skills/maintain-project-context/SKILL.md']).errors).toEqual([])
+  })
+
+  it('分发检查只读,安装可重复,错误或断链会失败且不被检查修复', () => {
+    const root = contextFixture()
+    const run = (...args: string[]) => spawnSync('bash', [path.join(projectRoot, 'scripts/link-global.sh'), ...args], {
+      encoding: 'utf8', env: { ...process.env, ORRERY_LINK_ROOT: root },
+    })
+    expect(run('--check').status).toBe(1)
+    expect(fs.readdirSync(root)).toEqual([])
+    fs.mkdirSync(path.join(root, '.codex'))
+    fs.writeFileSync(path.join(root, '.codex/AGENTS.md'), 'original')
+    expect(run().status).toBe(0)
+    const backup = fs.readdirSync(path.join(root, '.codex')).find(name => name.startsWith('AGENTS.md.bak-'))!
+    expect(fs.readFileSync(path.join(root, '.codex', backup), 'utf8')).toBe('original')
+    expect(run('--check').status).toBe(0)
+    expect(run().status).toBe(0)
+    const target = path.join(root, '.agents/skills/maintain-project-context')
+    fs.unlinkSync(target)
+    fs.symlinkSync(path.join(root, 'nonexistent'), target)
+    expect(run('--check').status).toBe(1)
+    expect(fs.readlinkSync(target)).toBe(path.join(root, 'nonexistent'))
+    expect(run('--unexpected').status).toBe(2)
+  })
+})
 
 function activeMarkdownFiles(): string[] {
   const files = [
@@ -55,6 +133,17 @@ describe('活动文档', () => {
     const link = path.join(projectRoot, '.agents/skills')
     expect(fs.lstatSync(link).isSymbolicLink()).toBe(true)
     expect(fs.readlinkSync(link)).toBe('../.claude/skills')
+  })
+
+  // 全局守则与全局 skill 的真源在 global/,由 scripts/link-global.sh 链到用户级
+  it('全局层真源齐全,skill 名与目录名一致', () => {
+    expect(fs.existsSync(path.join(projectRoot, 'global/AGENTS.md'))).toBe(true)
+    expect(fs.existsSync(path.join(projectRoot, 'scripts/link-global.sh'))).toBe(true)
+    const skillsDir = path.join(projectRoot, 'global/skills')
+    for (const name of fs.readdirSync(skillsDir)) {
+      const skill = fs.readFileSync(path.join(skillsDir, name, 'SKILL.md'), 'utf8')
+      expect(skill, `global/skills/${name}`).toMatch(new RegExp(`^---\\nname: ${name}\\n`))
+    }
   })
 
   it('入口统一为七个功能模块,运行设施不算模块', () => {
