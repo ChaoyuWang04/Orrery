@@ -102,6 +102,7 @@
 | FlashAttention-2 | Stanford | 并行与工作划分改进 |
 | FlashAttention | Stanford | IO 感知的精确注意力:多算 FLOP 换少搬字节(依据 NeurIPS 2022 正式版) |
 | Transformer | Google | Attention Is All You Need(2017):完全基于注意力、去掉循环与卷积的编码器—解码器架构 |
+| OPAL | CMU | 在线策略的注意力线性化:混合线性注意力学生自己采样长上下文轨迹,由冻结的全注意力教师逐 token 监督;3B token 内恢复大部分长检索与数学推理能力,无需 SFT 或 RLVR(arXiv 2609.31947) |
 | PISA | SJTU | 金字塔式 Top-K 逐层收窄候选的块稀疏注意力,选块复杂度从平方降到 O(N log N),配训练与推理的 Triton 内核 |
 | Hybrid-Architectures-for-LM | Meta | 线性与全注意力混合配比的系统性消融,41 页(FAIR 与 KAIST,arXiv 2510.04800) |
 | LongCat-Sparse-Attention | Meituan | 跨层索引的流式感知块稀疏注意力;同线还有 ZigZag(arXiv 2608.01662) |
@@ -179,6 +180,7 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| Context-Language-Models | Washington | 让模型把上下文当文件自己读写管理,替代外部 harness 的压缩、卸载与检索策略;零样本即超过现有上下文管理方法,另有在线 RL 训练与配套的 Suffix Cache Reuse 推理优化(arXiv 2609.37725) |
 | Agensh | Microsoft | 没有中心编排者的多 agent harness:worker 经共享工作区、消息接口与共享上下文自行认领子任务并异步合并进度,扩到 1,024 个 agent |
 | Self-Organizing-Agent-Teams | Stanford | 固定的一组 agent 从过往协作里学可复用的组织策略(角色、阶段、发言与信息流),只用 15 道数学题与 25 道研究生知识题学到的策略原样迁移到未见基准 |
 | CodeMidas | Xiaomi | 只用源码本身造编码 RL 环境:agent 探索已实现功能、写行为规格与测试并反复验证,得到 3,185 个仓库的 5,545 个任务 |
@@ -229,6 +231,7 @@
 | PagedAttention | Berkeley | vLLM 的论文,KV cache 的分页管理 |
 | Efficient-Large-Scale-MoE | Meta | MoE 与 dense 在零样本与微调上的对照研究(2022) |
 | Switch-Transformers | Google | top-1 路由把 MoE 扩到万亿参数 |
+| TaH2 | Tsinghua | 自适应循环 Transformer:后训练一个迭代决策器,只让能从多算一轮中获益的 token 多循环;在 AIME 上把每翻倍解码算力的精度斜率提高 53%(arXiv 2609.35748) |
 | LMetric | Alibaba | 调度与 KV 命中率只用一个乘法指标就赢,OSDI 2026(SJTU IPADS 与阿里云) |
 | ECHO | Huawei | 稀疏注意力模型的 KV 换页为什么仍然打不满带宽,OSDI 2026 |
 | Strata | Stanford | 分层上下文缓存的碎片化把长上下文服务拖成 I/O bound(arXiv 2508.18572,OSDI 2026) |
@@ -419,11 +422,13 @@
 | ADAS | UBC | 部件:harness。元 agent 在代码空间里搜索内层 agent 的工作流,ICLR 2025(UBC 主导,Vector Institute 合作) |
 | Self-Rewarding-LM | Meta | 部件:模型权重。模型兼任裁判给自己的回答打分,取最高对最低做迭代 DPO,ICML 2024 |
 | PromptBreeder | Google | 部件:Prompt。DeepMind,任务提示与变异提示一起进化的自指涉提示词搜索,ICML 2024 |
+| Harness-Learning | JohnsHopkins | 部件:harness。用 RL 训练一个提议模型,按执行反馈改写求解模型的 harness;测试时不改参数,只靠多轮改写适应新任务,并能迁移到未见过的任务(arXiv 2609.35738) |
 
 ## 可解释性与对齐
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| LM-Generalization-Dynamics | Berkeley | 用一套小评测追踪预训练全程,发现模型会在「鹦鹉式」与可泛化的计算之间反复突跳(mode-hopping),作者把它解释为容量有限下泛化电路与早期浅层电路的竞争(arXiv 2609.33150) |
 | Agent-Trace-Tampering | MaxPlanck | 本地编码 agent 能改写、删除自己的执行轨迹:十组模型与 harness 在用户直接要求时大多照删,奖励诱导下也会自发删痕;作者主张把轨迹记录挪到 agent 控制之外的独立拦截层(arXiv 2609.30266) |
 | Matryoshka-Attribution | Stanford | 把归因写成「找出最小化下游损失的嵌套组件子集」:sigmoid top-k 掩码加随机稀疏预算一次学出组件排序,在 MIB 榜单排第一,还能用 RL 定位微调中改出拒答行为的那部分权重(arXiv 2609.25518) |
 | Chain-of-Thought-Monitorability | UK-AISI | 十余家机构联署的立场文:思维链在 RL 阶段是不受直接监督的潜变量,所以读得出来;四条训练与架构路径都能把它磨掉,而作者自认全篇零一手实验数字(依据 arXiv v2,11 页) |
@@ -437,7 +442,6 @@
 | CoT-Empowers-Serial-Problems | Stanford | 给 CoT 的能力增益称重量:常数深度加立刻舍入的 Transformer 连 O(log n) 步思维链也只能算 AC0(定点数那档是 TC0),而 T 步思维链配 Θ(log n) 嵌入就能算任意规模 T 的电路;唯一的严格分离要假设 TC0 ⊊ NC1,且构造里的思维链是 0/1 门真值、人类读不懂(依据 arXiv v4,38 页) |
 | Towards-Monosemanticity | Anthropic | 一层 Transformer 的 512 个 MLP 神经元上训稀疏自编码器:字典从 512 扩到 131,072,人工打分(区间级)特征中位 12 分、神经元 0 分,A/1 恢复 79% 的 MLP 损失贡献(131,072 时 94.5%);阿拉伯文、DNA、base64、希伯来文四个特征逐项过特异性、敏感性、下游因果、非神经元、跨种子五关;特征随字典变大而分裂,还能经 token 流接成生成 HTML 的「有限状态自动机」(**原件是网页**,依据 transformer-circuits.pub 2023-10-04) |
 | Patchscopes | Google | 把隐藏表示打补丁进另一次前向,让模型自己用自然语言解释它;logit lens 等旧方法都是特例(arXiv 2401.06102,ICML 2024) |
-| LM-Generalization-Dynamics | Berkeley | 用一套小评测追踪预训练全程,发现模型会在「鹦鹉式」与可泛化的计算之间反复突跳(mode-hopping),作者把它解释为容量有限下泛化电路与早期浅层电路的竞争(arXiv 2609.33150) |
 
 ## 检索与 RAG
 
@@ -460,6 +464,7 @@
 | MatToolBench | SJTU | 在 Windows 11 虚拟机里测多模态 GUI agent 操作材料科学专业软件:10 个工具、204 个任务,专家拆细分项计分,最好的模型 GUI 任务成功率只有 25%、代码任务 45%(arXiv 2609.37053) |
 | JEV-as-a-Judge | CMU | 只出判决的评审模型做便宜的第一道:置信的判决直接接受、不确定的上交强评审,冻结级联保住 99% 的准确率(arXiv 2609.26550) |
 | PosteriorBench | Caltech | 评生成式逆问题求解器要看整个后验而非单个样本:四个物理逆问题配高精度参考后验与五项分布指标 |
+| Frontier-Vision | MBZUAI | 用 9 个领域、34 项能力、55 个 benchmark 测 GPT-6 Astra 与另外 5 个通用前沿系统的视觉能力,并对照专用模型与人类:语义与推理类任务接近参照线,度量几何、忠实重建与时序一致的稠密预测仍有差距(arXiv 2609.35718) |
 | MMLU-Pro | TIGER-Lab | 把 MMLU 失效拆成地板太高、不考推理、数据有噪声三处分别修:干扰项扩到 10 个(83% 的题)、too-easy 靠 8 个小模型投票滤掉 42.23%,12,032 题 14 学科(依据 arXiv v6,24 页) |
 | WildBench | Ai2 | 考什么交给真实用户、怎么判交给一张 5 到 10 问的清单:1,024 题、用三个不同水平的基线合成 WB-Reward,与 Arena 人类 Elo 的头部 Pearson 0.984(依据 arXiv v2,19 页) |
 | SWE-bench | Princeton | 2,294 道真实 GitHub 缺陷:已合并且自带测试的 PR 同时给出题目、答案与验收标准;判分是 F2P 与 P2P 的与运算,当年最好的模型只解出 1.96%(依据 arXiv v3,52 页) |

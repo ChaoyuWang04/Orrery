@@ -126,6 +126,7 @@
 | Orca | SNU | 迭代级调度的提出者:continuous batching 的原始论文,OSDI |
 | Sparsely-Gated-MoE | Google | 稀疏门控 MoE 的源头:参数量涨千倍而单样本计算量不变 |
 | Clipper | Berkeley | 通用的低延迟预测服务层,NSDI;缓存、自适应批处理与模型选择 |
+| ReFlux | Tongji | 把深层相对浅层的增量 Δ 写回前面的层,用可学习的反馈图选路组合;同步版降困惑度、提推理精度,流式版保持 1 倍骨干理论 FLOPs(arXiv 2609.32457) |
 
 ## 分布式训练与并行
 
@@ -205,6 +206,7 @@
 | PixelCNN | DeepMind | 逐像素自回归建图像,视觉侧的自回归起点 |
 | GAN | Montreal | 生成器与判别器对抗训练,生成模型十年的另一条主线 |
 | VAE | Amsterdam | 变分自编码器:重参数化技巧让隐变量模型可以端到端反传 |
+| FuseReg | USC | 表征自编码器选哪几层编码器特征作隐空间:训练时随机抽层子集做融合,一个解码器适配任意层组合,缓解重建与生成的取舍(arXiv 2609.31620) |
 
 ## 音频
 
@@ -250,12 +252,12 @@
 
 | 材料 | 机构 | 一句话 |
 |---|---|---|
+| Just-Ask-Jev | Griffith University | 用为校准决策而做强化学习训练的 Jev 当零样本对齐失效检测器:RLCDAlignBench 覆盖 10 类失效、44 个 benchmark,一个通用问题中位 AUROC 0.886,成本比 LLM 评审低 63 倍(arXiv 2609.29429) |
 | Test-Time-Covert-Channels | Arizona State University | 参数固定、没有码本的两个 agent 只靠每轮一比特的成败反馈,就能在明令保密、逐条消息受监控的条件下,把机密值藏进正常措辞里传出去(alphaXiv 自有编号,非 arXiv) |
 | Few-Shot-World-Representations | University of Tokyo | 少样本示范让 LLM 更会用上下文里学到的图结构世界表示:线性探针显示示范移动了表示的位置并提高其预测作用(arXiv 2609.24352) |
 | Reward-Hacking-Probes | Goodfire | 差值均值向量就能表示并检测前沿开源模型的奖励黑客,成本近乎为零,效果接近 LLM 监控器,还能在思维链上提前预警 |
 | Scaling Monosemanticity | Anthropic | 稀疏自编码器在 Claude 3 Sonnet 上规模化,抽出可解释、可干预的单义特征 |
 | Refusal Direction | Independent | 拒答行为由残差流里的单一方向中介;删掉该方向就能定向解除拒答,加回去能诱发拒答 |
-| Just-Ask-Jev | Griffith University | 用为校准决策而做强化学习训练的 Jev 当零样本对齐失效检测器:RLCDAlignBench 覆盖 10 类失效、44 个 benchmark,一个通用问题中位 AUROC 0.886,成本比 LLM 评审低 63 倍(arXiv 2609.29429) |
 
 ## 深度学习基石
 

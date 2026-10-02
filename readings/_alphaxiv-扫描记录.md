@@ -92,3 +92,10 @@
 | 2026-10-01 | 2609.tokenization-survey-modern-nlp | Tokenization: A Survey for Modern NLP | (alphaXiv 未标) | 31 | A · 名单内(Google) | reports/Google/Tokenization-Survey |
 | 2026-10-01 | 2609.30027 | Synthetic Hospital: An Open, Verifiable, Physician-Validated Longitudinal EHR Benchmark | Carnegie Mellon University | 31 | A · 名单内(CMU) | reports/CMU/Synthetic-Hospital |
 | 2026-10-01 | 2609.34085 | AD-E2E-JEPA: A Joint-Embedding Predictive Architecture For End-to-End Autonomous Driving | New York University、Advanced Machine Intelligence Labs | 30 | A · 名单内(NYU) | reports/NYU/AD-E2E-JEPA |
+| 2026-10-02 | 2609.37725 | Context Language Models | University of Washington、Meta Superintelligence Labs、Massachusetts Institute of Technology、Trillium Labs | 66 | A · 名单内(Washington) | reports/Washington/Context-Language-Models |
+| 2026-10-02 | 2609.35738 | Harness Learning Enables Generalizable Test-Time Adaptation | Carnegie Mellon University、Johns Hopkins University、Stanford University | 35 | A · 名单内(JohnsHopkins) | reports/JohnsHopkins/Harness-Learning |
+| 2026-10-02 | 2609.31947 | On-Policy Attention Linearization | Carnegie Mellon University、Cornell University | 35 | A · 名单内(CMU) | reports/CMU/OPAL |
+| 2026-10-02 | 2609.35718 | Hard Vision, Easy Vision: What GPT-6 Astra Reveals Across Computer Vision | Mohamed bin Zayed University of Artificial Intelligence、Apertix | 34 | A · 名单内(MBZUAI) | reports/MBZUAI/Frontier-Vision |
+| 2026-10-02 | 2609.31620 | FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders | USC PSI Lab、Brown University、Rice University、University of Aberdeen | 33 | B · 名单外 | readings/图像、视频与 3D 生成/FuseReg |
+| 2026-10-02 | 2609.32457 | Write Back the $Δ$: Revisiting the Same Tokens with Fresh Representations | Tongji University、Shanghai Jiao Tong University、Shanghai Innovation Institute | 31 | B · 名单外 | readings/推理服务与架构探索/ReFlux |
+| 2026-10-02 | 2609.35748 | Improving Test-Time Scaling with Adaptive Looped Transformers | Tsinghua University、Yale University | 30 | A · 名单内(Tsinghua) | reports/Tsinghua/TaH2 |
