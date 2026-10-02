@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" width="1120" height="540" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="seq-rv-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+<marker id="seq-rv-yel" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="seq-rv-gry" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b9b9b9"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="540" fill="#ffffff"/>
+<rect x="24" y="100" width="1072" height="168" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="24" y="284" width="1072" height="176" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="160" y="148" width="72" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="260" y="148" width="72" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="360" y="148" width="72" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="760" y="148" width="72" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="860" y="148" width="72" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="960" y="148" width="72" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="80" y="332" width="72" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="170" y="332" width="72" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="260" y="332" width="72" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="370" y="332" width="72" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="470" y="332" width="72" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="570" y="332" width="72" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<line x1="196" y1="214" x2="788" y2="214" stroke="#d9877a" stroke-width="1.4" marker-end="url(#seq-rv-red)"/>
+<line x1="332" y1="324" x2="366" y2="324" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#seq-rv-yel)"/>
+<line x1="116" y1="392" x2="598" y2="392" stroke="#b9b9b9" stroke-width="1.4" marker-end="url(#seq-rv-gry)"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">只反转源句，最短那一跳变短，平均距离不变</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">绿 = 源词；紫 = 目标词；红线 = 未反转时 a 到 α 的最短时滞；黄线 = 反转后的那一跳。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">灰线 = 反转后 c 到 γ 仍然很长。线的长短就是时滞，不是计时数据。</text>
+<text x="44" y="126" font-size="14" fill="#111827" font-weight="700">不反转：a b c 映到 α β γ</text>
+<text x="196" y="173" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">a</text>
+<text x="296" y="173" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">b</text>
+<text x="396" y="173" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">c</text>
+<text x="560" y="173" font-size="11" fill="#9ca3af" text-anchor="middle">源词和目标词隔着整句</text>
+<text x="796" y="173" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">α</text>
+<text x="896" y="173" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">β</text>
+<text x="996" y="173" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">γ</text>
+<text x="496" y="236" font-size="11" fill="#d9877a" text-anchor="middle">最小时滞</text>
+<text x="44" y="310" font-size="14" fill="#111827" font-weight="700">反转源句，目标不反转：c b a 映到 α β γ</text>
+<text x="351" y="316" font-size="11" fill="#d4a24c" text-anchor="middle">短时滞</text>
+<text x="116" y="357" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">c</text>
+<text x="206" y="357" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">b</text>
+<text x="296" y="357" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">a</text>
+<text x="406" y="357" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">α</text>
+<text x="506" y="357" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">β</text>
+<text x="606" y="357" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">γ</text>
+<text x="780" y="350" font-size="11" fill="#6b7280">a 挨着 α，b 也靠近 β。</text>
+<text x="780" y="370" font-size="11" fill="#6b7280">SGD 更容易接通两端。</text>
+<text x="360" y="422" font-size="11" fill="#9ca3af" text-anchor="middle">c 到 γ 这一跳仍然很长</text>
+<text x="30" y="490" font-size="13" fill="#6b7280">据 PDF p.3–4 重画。作者说对应词的平均距离不变，变的是最小时滞。他们没有给出实测距离，线长只表示远近，不是步数。</text>
+<text x="30" y="514" font-size="13" fill="#6b7280">这是作者的解释，不是一张计时实验。他们没有测量这些箭头的实际步数。</text>
+</svg>

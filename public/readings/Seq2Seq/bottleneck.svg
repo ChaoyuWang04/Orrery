@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="seq-bn-ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<rect x="24" y="96" width="400" height="392" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="696" y="96" width="400" height="392" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="124" y="168" width="200" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="124" y="208" width="200" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="124" y="248" width="200" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="124" y="288" width="200" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="796" y="168" width="200" height="32" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="796" y="208" width="200" height="32" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="796" y="248" width="200" height="32" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="796" y="288" width="200" height="32" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="528" y="200" width="64" height="88" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="72" y="356" width="64" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="152" y="356" width="64" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="232" y="356" width="64" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="312" y="356" width="64" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="736" y="356" width="56" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="802" y="356" width="56" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="868" y="356" width="56" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="934" y="356" width="56" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="1000" y="356" width="56" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="324" y1="244" x2="520" y2="244" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#seq-bn-ar)"/>
+<line x1="592" y1="244" x2="788" y2="244" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#seq-bn-ar)"/>
+<line x1="136" y1="374" x2="148" y2="374" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#seq-bn-ar)"/>
+<line x1="216" y1="374" x2="228" y2="374" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#seq-bn-ar)"/>
+<line x1="296" y1="374" x2="308" y2="374" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#seq-bn-ar)"/>
+<line x1="792" y1="374" x2="798" y2="374" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#seq-bn-ar)"/>
+<line x1="858" y1="374" x2="864" y2="374" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#seq-bn-ar)"/>
+<line x1="924" y1="374" x2="930" y2="374" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#seq-bn-ar)"/>
+<line x1="990" y1="374" x2="996" y2="374" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#seq-bn-ar)"/>
+<text x="30" y="36" font-size="19" fill="#111827" font-weight="700">整句只经过一个向量，另一座 LSTM 从它解码</text>
+<text x="30" y="60" font-size="13" fill="#6b7280">绿 = 编码器；紫 = 解码器，参数分开；黄 = 固定向量 v。横排是时间，竖的四格是层。</text>
+<text x="30" y="80" font-size="13" fill="#6b7280">没有从解码步指回源词的箭头。灰块是词，不是第三种模块。</text>
+<text x="224" y="122" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">编码器 LSTM</text>
+<text x="224" y="144" font-size="11" fill="#6b7280" text-anchor="middle">四层，每层 1000 个细胞</text>
+<text x="224" y="189" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1000</text>
+<text x="224" y="229" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1000</text>
+<text x="224" y="269" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1000</text>
+<text x="224" y="309" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1000</text>
+<text x="224" y="340" font-size="11" fill="#9ca3af" text-anchor="middle">层序是叠放示意，论文没画第几层在上</text>
+<text x="104" y="379" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">A</text>
+<text x="184" y="379" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">B</text>
+<text x="264" y="379" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">C</text>
+<text x="344" y="379" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">EOS</text>
+<text x="224" y="418" font-size="11" fill="#6b7280" text-anchor="middle">按 Figure 1 从左到右读入</text>
+<text x="224" y="438" font-size="11" fill="#9ca3af" text-anchor="middle">图注说实际训练会反转源句</text>
+<text x="560" y="188" font-size="11" fill="#9ca3af" text-anchor="middle">8000 个实数</text>
+<text x="560" y="250" font-size="19" fill="#111827" font-weight="700" text-anchor="middle">v</text>
+<text x="560" y="308" font-size="11" fill="#9ca3af" text-anchor="middle">整句只过这里</text>
+<text x="896" y="122" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">解码器 LSTM</text>
+<text x="896" y="144" font-size="11" fill="#6b7280" text-anchor="middle">另一座四层，初态设成 v</text>
+<text x="896" y="189" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1000</text>
+<text x="896" y="229" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1000</text>
+<text x="896" y="269" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1000</text>
+<text x="896" y="309" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">1000</text>
+<text x="896" y="340" font-size="11" fill="#9ca3af" text-anchor="middle">每步还吃上一个已生成词</text>
+<text x="764" y="379" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">W</text>
+<text x="830" y="379" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">X</text>
+<text x="896" y="379" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Y</text>
+<text x="962" y="379" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Z</text>
+<text x="1028" y="379" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">EOS</text>
+<text x="896" y="418" font-size="11" fill="#6b7280" text-anchor="middle">吐出 EOS 后停止</text>
+<text x="896" y="438" font-size="11" fill="#9ca3af" text-anchor="middle">条件语言模型，条件就是左边的 v</text>
+<text x="30" y="522" font-size="13" fill="#6b7280">据 PDF p.2 Figure 1、p.3 模型节、p.5 训练节重画。原图是一行方框，固定向量藏在读完 EOS 之后的状态里。</text>
+<text x="30" y="546" font-size="13" fill="#6b7280">这里把压扁画出来。机制示意，不是时间轴。格里的 1000 与 v 上的 8000 都是论文写的数，不是原图标注。</text>
+<text x="30" y="570" font-size="13" fill="#6b7280">4 × 1000 = 4000，对不上 8000。若把每层隐状态和细胞状态都算进那句向量，才是 8000。论文没把这 8000 拆开。</text>
+</svg>

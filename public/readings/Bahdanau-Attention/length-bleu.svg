@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 480" width="1120" height="480" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="480" fill="#ffffff"/>
+<line x1="88" y1="120" x2="1040" y2="120" stroke="#eeeeee" stroke-width="1"/>
+<line x1="88" y1="187" x2="1040" y2="187" stroke="#eeeeee" stroke-width="1"/>
+<line x1="88" y1="253" x2="1040" y2="253" stroke="#eeeeee" stroke-width="1"/>
+<line x1="88" y1="320" x2="1040" y2="320" stroke="#eeeeee" stroke-width="1"/>
+<line x1="88" y1="112" x2="88" y2="328" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="88" y1="320" x2="1052" y2="320" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="120,280 273,173 427,140 580,142 733,146 887,148 1040,150" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<polyline points="120,282 273,180 427,148 580,160 733,214 887,254 1040,274" fill="none" stroke="#d4a24c" stroke-width="2.2"/>
+<polyline points="120,292 273,200 427,174 580,214 733,240 887,268 1040,280" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<polyline points="120,298 273,186 427,226 580,266 733,294 887,302 1040,308" fill="none" stroke="#b9b9b9" stroke-width="2.2"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">句一长，固定向量先掉，软搜索的 50 词模型还在</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">紫 = RNNsearch-50；黄 = RNNsearch-30；红 = RNNenc-50；灰 = RNNenc-30。纵轴是 BLEU，刻度 0 到 30 来自原图。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">曲线按 PDF p.5 Figure 2 的走势重画。点上不标原文没有列出的小数。图例里的 RNNenc 是原图缩写。</text>
+<text x="80" y="124" font-size="11" fill="#9ca3af" text-anchor="end">30</text>
+<text x="80" y="191" font-size="11" fill="#9ca3af" text-anchor="end">20</text>
+<text x="80" y="257" font-size="11" fill="#9ca3af" text-anchor="end">10</text>
+<text x="80" y="324" font-size="11" fill="#9ca3af" text-anchor="end">0</text>
+<text x="120" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="273" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">10</text>
+<text x="427" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">20</text>
+<text x="580" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">30</text>
+<text x="733" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">40</text>
+<text x="887" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">50</text>
+<text x="1040" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">60</text>
+<text x="580" y="368" font-size="11" fill="#6b7280" text-anchor="middle">句长。含未登录词的完整测试集</text>
+<text x="30" y="408" font-size="13" fill="#6b7280">紫线升上去之后保持平，一直到 50 词以外。黄线和两条编码器–解码器曲线在中段之后掉下去，灰线掉得最狠。</text>
+<text x="30" y="432" font-size="13" fill="#6b7280">图注写 RNNsearch-50 在 50 词及以上几乎不掉，RNNencdec 随长度急剧下跌。逐点 BLEU 原文没有列表。</text>
+<text x="30" y="456" font-size="13" fill="#6b7280">据 PDF p.5 Figure 2 重画。横轴原图标到 60。</text>
+</svg>

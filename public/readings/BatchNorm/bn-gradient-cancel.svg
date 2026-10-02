@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 480" width="1120" height="480" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="mk-cx" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+<marker id="mk-cx-r" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+<marker id="mk-cx-g" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="480" fill="#ffffff"/>
+<text x="28" y="34" font-size="19" fill="#111827" font-weight="700">统计量若在梯度外面，更新会被归一化抵消</text>
+<text x="28" y="58" font-size="13" fill="#6b7280">红 = 梯度看不见均值对参数的依赖，输出不变、参数空涨。绿 = 归一化在计算图里，梯度要穿过它。</text>
+<text x="28" y="78" font-size="13" fill="#6b7280">据 PDF p.2 的偏置例子重画，不是实测曲线。作者在早期实验里见过右边没做成时网络崩掉。</text>
+
+<rect x="20" y="96" width="530" height="360" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="566" y="96" width="534" height="360" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="40" y="124" font-size="14" fill="#111827" font-weight="700">梯度步之间再归一化</text>
+<text x="40" y="144" font-size="11" fill="#6b7280">均值假装不依赖 b</text>
+
+<rect x="40" y="164" width="250" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="165" y="191" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">x = u + b</text>
+<line x1="165" y1="208" x2="165" y2="228" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-cx)"/>
+
+<rect x="40" y="232" width="250" height="44" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="165" y="259" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">减均值，在梯度外</text>
+<line x1="165" y1="276" x2="165" y2="296" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-cx)"/>
+
+<rect x="40" y="300" width="250" height="44" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="165" y="327" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">更新 b，再减新均值</text>
+
+<path d="M290,322 L360,322 L360,186 L294,186" fill="none" stroke="#d9877a" stroke-width="1.4" marker-end="url(#mk-cx-r)"/>
+<text x="372" y="250" font-size="11" fill="#d9877a">输出不变</text>
+<text x="372" y="268" font-size="11" fill="#d9877a">b 继续涨</text>
+<text x="40" y="376" font-size="11" fill="#9ca3af">损失不动。再带上缩放，模型会炸。</text>
+<text x="40" y="396" font-size="11" fill="#9ca3af">丢掉 ∂Norm/∂X 就是这一种。</text>
+
+<text x="586" y="124" font-size="14" fill="#111827" font-weight="700">归一化写进网络</text>
+<text x="586" y="144" font-size="11" fill="#6b7280">对任意参数值，激活都先被归一化</text>
+
+<rect x="586" y="164" width="280" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="726" y="191" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">层输入 x</text>
+<line x1="726" y1="208" x2="726" y2="228" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-cx)"/>
+
+<rect x="586" y="232" width="280" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="726" y="259" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">Norm(x, X) 在图里</text>
+<line x1="726" y1="276" x2="726" y2="296" stroke="#5fa886" stroke-width="1.4" marker-end="url(#mk-cx-g)"/>
+
+<rect x="586" y="300" width="280" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="726" y="327" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">损失对参数的梯度穿过它</text>
+
+<text x="586" y="376" font-size="11" fill="#9ca3af">既要 ∂Norm/∂x，也要 ∂Norm/∂X。</text>
+<text x="586" y="396" font-size="11" fill="#9ca3af">全数据白化每步太贵，所以改成按维、按 batch。</text>
+<text x="586" y="424" font-size="11" fill="#9ca3af">这是机制示意，不是时间测量。</text>
+</svg>

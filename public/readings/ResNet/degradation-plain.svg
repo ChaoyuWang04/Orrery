@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="mk-deg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="520" fill="#ffffff"/>
+<text x="28" y="34" font-size="19" fill="#111827" font-weight="700">更深的 plain 网，训练误差反而更高</text>
+<text x="28" y="58" font-size="13" fill="#6b7280">绿 = 构造解：多出来的层做成恒等，训练误差不该更高。红 = 实际退化：56 层高于 20 层。</text>
+<text x="28" y="78" font-size="13" fill="#6b7280">柱高只表示谁更高，不读 Figure 1 的精确百分比。据 PDF p.1 Figure 1 与 p.1–2 的构造解重画。</text>
+
+<rect x="20" y="96" width="500" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="536" y="96" width="564" height="400" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="44" y="124" font-size="14" fill="#111827" font-weight="700">构造解：更深不该更难拟合</text>
+<text x="44" y="144" font-size="11" fill="#6b7280">浅网的解可以嵌进深网。PDF p.1–2</text>
+
+<rect x="44" y="160" width="452" height="64" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="60" y="186" font-size="14" fill="#111827" font-weight="700">浅网已经能拟合训练集</text>
+<text x="60" y="208" font-size="11" fill="#6b7280">训练误差是后面要比的那条基线</text>
+
+<line x1="270" y1="224" x2="270" y2="246" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-deg)"/>
+<text x="282" y="242" font-size="11" fill="#9ca3af">再加层</text>
+
+<rect x="44" y="252" width="452" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="60" y="278" font-size="14" fill="#111827" font-weight="700">多出来的层做成恒等</text>
+<text x="60" y="300" font-size="11" fill="#6b7280">其余层从已训好的浅网拷过来</text>
+
+<line x1="270" y1="316" x2="270" y2="338" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-deg)"/>
+
+<rect x="44" y="344" width="452" height="64" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="60" y="370" font-size="14" fill="#111827" font-weight="700">训练误差不该高于浅网</text>
+<text x="60" y="392" font-size="11" fill="#6b7280">这条解存在。求解器却常常找不到</text>
+
+<text x="44" y="472" font-size="11" fill="#9ca3af">不是容量不够：更深的模型包含浅网的解</text>
+
+<text x="560" y="124" font-size="14" fill="#111827" font-weight="700">CIFAR-10 plain 网，Figure 1</text>
+<text x="560" y="144" font-size="11" fill="#6b7280">左栏训练误差，右栏测试误差。56 层两栏都更高</text>
+
+<text x="668" y="176" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">训练误差</text>
+<text x="948" y="176" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">测试误差</text>
+
+<text x="560" y="250" font-size="11" fill="#9ca3af">高</text>
+<text x="560" y="400" font-size="11" fill="#9ca3af">低</text>
+<line x1="578" y1="196" x2="578" y2="408" stroke="#9ca3af" stroke-width="1.4"/>
+
+<rect x="620" y="318" width="72" height="90" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="708" y="228" width="72" height="180" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="900" y="318" width="72" height="90" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="988" y="228" width="72" height="180" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+
+<text x="656" y="430" font-size="11" fill="#6b7280" text-anchor="middle">20 层</text>
+<text x="744" y="430" font-size="11" fill="#6b7280" text-anchor="middle">56 层</text>
+<text x="936" y="430" font-size="11" fill="#6b7280" text-anchor="middle">20 层</text>
+<text x="1024" y="430" font-size="11" fill="#6b7280" text-anchor="middle">56 层</text>
+
+<text x="792" y="300" font-size="11" fill="#9ca3af">更高</text>
+<text x="1024" y="216" font-size="11" fill="#9ca3af" text-anchor="middle">更高</text>
+
+<text x="560" y="462" font-size="11" fill="#9ca3af">横轴 iter. 0–6×10^4。纵轴刻度印了 0、10、20。</text>
+<text x="560" y="480" font-size="11" fill="#9ca3af">终点百分比图上读不出。测试更高是因为训练更高，不是过拟合。</text>
+</svg>

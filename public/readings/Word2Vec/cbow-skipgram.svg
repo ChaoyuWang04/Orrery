@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="520" viewBox="0 0 1120 520">
+  <rect width="1120" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7.2" refY="4" orient="auto">
+      <path d="M0,0.6 L7.2,4 L0,7.4 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+
+  <text x="36" y="36" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="19" font-weight="700" fill="#111827">CBOW 与 Skip-gram：预测方向相反</text>
+  <text x="36" y="60" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="13" fill="#6b7280">绿是输入，紫是投影，黄是输出。左图上下文汇入后预测中间词，右图用中间词预测周围词。</text>
+
+  <line x1="560" y1="84" x2="560" y2="468" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- CBOW -->
+  <text x="280" y="108" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">CBOW</text>
+  <text x="280" y="128" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">预测方向：上下文 → 中间词 w(t)</text>
+
+  <text x="102" y="156" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">输入</text>
+  <text x="268" y="156" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">投影</text>
+  <text x="458" y="156" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">输出</text>
+
+  <rect x="48" y="172" width="108" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="102" y="192" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t-2)</text>
+
+  <rect x="48" y="228" width="108" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="102" y="248" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t-1)</text>
+
+  <rect x="48" y="284" width="108" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="102" y="304" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t+1)</text>
+
+  <rect x="48" y="340" width="108" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="102" y="360" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t+2)</text>
+
+  <rect x="218" y="250" width="100" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+  <text x="268" y="276" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">SUM</text>
+
+  <rect x="404" y="256" width="108" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+  <text x="458" y="276" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t)</text>
+
+  <line x1="156" y1="192" x2="214" y2="262" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="156" y1="248" x2="214" y2="272" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="156" y1="304" x2="214" y2="280" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="156" y1="360" x2="214" y2="290" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="318" y1="276" x2="400" y2="276" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <text x="280" y="420" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">四个上下文词各进投影，求和后才预测中间词</text>
+  <text x="280" y="438" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">词序不进投影，所以叫词袋</text>
+
+  <!-- Skip-gram -->
+  <text x="840" y="108" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">Skip-gram</text>
+  <text x="840" y="128" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">预测方向：中间词 w(t) → 周围词</text>
+
+  <text x="654" y="156" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">输入</text>
+  <text x="832" y="156" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">投影</text>
+  <text x="1018" y="156" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">输出</text>
+
+  <rect x="600" y="256" width="108" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886" stroke-width="1.4"/>
+  <text x="654" y="276" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t)</text>
+
+  <rect x="782" y="250" width="100" height="52" rx="6" fill="#ecebfb" stroke="#8f8bd8" stroke-width="1.4"/>
+  <text x="832" y="276" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">投影</text>
+
+  <rect x="964" y="172" width="108" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+  <text x="1018" y="192" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t-2)</text>
+
+  <rect x="964" y="228" width="108" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+  <text x="1018" y="248" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t-1)</text>
+
+  <rect x="964" y="284" width="108" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+  <text x="1018" y="304" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t+1)</text>
+
+  <rect x="964" y="340" width="108" height="40" rx="6" fill="#fdf1dc" stroke="#d4a24c" stroke-width="1.4"/>
+  <text x="1018" y="360" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">w(t+2)</text>
+
+  <line x1="708" y1="276" x2="778" y2="276" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="882" y1="262" x2="960" y2="196" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="882" y1="270" x2="960" y2="246" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="882" y1="282" x2="960" y2="302" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="882" y1="290" x2="960" y2="356" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <text x="840" y="420" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">中间词进投影，再分叉预测前后的词</text>
+  <text x="840" y="438" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">投影层不求和，方向与左图相反</text>
+
+  <text x="36" y="488" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif" font-size="11" fill="#6b7280">与论文 Figure 1 同构：左是多进一，右是一出多。同一套颜色只标角色，不标模型。</text>
+</svg>

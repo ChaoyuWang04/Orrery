@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 420" width="1120" height="420" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="420" fill="#ffffff"/>
+<text x="28" y="34" font-size="19" fill="#111827" font-weight="700">同一参数预算下，tanh 拿到的单元最多</text>
+<text x="28" y="58" font-size="13" fill="#6b7280">红 = tanh；紫 = LSTM；绿 = GRU。条宽 = 单元数。每栏把该任务的 tanh 拉满，两栏不是同一把尺子。</text>
+<text x="28" y="78" font-size="13" fill="#6b7280">参数量钉在栏顶那一档。据 PDF p.6 Table 1 重画，不是学习曲线。</text>
+
+<rect x="28" y="100" width="520" height="280" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="572" y="100" width="520" height="280" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="48" y="128" font-size="14" fill="#111827" font-weight="700">多声部音乐</text>
+<text x="48" y="148" font-size="11" fill="#6b7280">参数量约 19.8–20.2 × 10³</text>
+<text x="592" y="128" font-size="14" fill="#111827" font-weight="700">语音信号</text>
+<text x="592" y="148" font-size="11" fill="#6b7280">参数量约 168.4–169.1 × 10³</text>
+
+<text x="48" y="190" font-size="11" fill="#6b7280">LSTM  36</text>
+<rect x="140" y="176" width="101" height="18" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="48" y="226" font-size="11" fill="#6b7280">GRU  46</text>
+<rect x="140" y="212" width="129" height="18" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="48" y="262" font-size="11" fill="#6b7280">tanh  100</text>
+<rect x="140" y="248" width="280" height="18" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+
+<text x="592" y="190" font-size="11" fill="#6b7280">LSTM  195</text>
+<rect x="700" y="176" width="137" height="18" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="592" y="226" font-size="11" fill="#6b7280">GRU  227</text>
+<rect x="700" y="212" width="159" height="18" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="592" y="262" font-size="11" fill="#6b7280">tanh  400</text>
+<rect x="700" y="248" width="280" height="18" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+
+<text x="48" y="320" font-size="11" fill="#9ca3af">音乐栏 2.8 px 对应 1 个单元</text>
+<text x="592" y="320" font-size="11" fill="#9ca3af">语音栏 0.7 px 对应 1 个单元</text>
+<text x="28" y="400" font-size="11" fill="#9ca3af">后面若 tanh 仍输，不能用容量不够来解释。两条任务的参数量各自钉死。</text>
+</svg>

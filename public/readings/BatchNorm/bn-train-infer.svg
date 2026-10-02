@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" width="1120" height="700" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="mk-bn" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="700" fill="#ffffff"/>
+<text x="28" y="34" font-size="19" fill="#111827" font-weight="700">训练用 batch 统计，推理换成总体统计</text>
+<text x="28" y="58" font-size="13" fill="#6b7280">紫 = 仿射 Wu；绿 = 用来归一化的统计；黄 = 可学的 γ、β。BN 插在非线性之前，不插在 u 上。</text>
+<text x="28" y="78" font-size="13" fill="#6b7280">据 PDF p.3 算法 1、p.4 算法 2、p.5 第 3.2 节重画。推理默认不是滑动平均。</text>
+
+<rect x="20" y="96" width="1080" height="118" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<text x="40" y="120" font-size="14" fill="#111827" font-weight="700">插在哪：仿射之后、非线性之前</text>
+
+<rect x="40" y="140" width="120" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="100" y="167" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">输入 u</text>
+<line x1="160" y1="162" x2="188" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-bn)"/>
+
+<rect x="192" y="140" width="160" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="272" y="167" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">W，丢掉偏置 b</text>
+<line x1="352" y1="162" x2="380" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-bn)"/>
+
+<rect x="384" y="140" width="140" height="44" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="454" y="167" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">x = Wu</text>
+<line x1="524" y1="162" x2="536" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-bn)"/>
+
+<rect x="540" y="140" width="180" height="44" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="630" y="167" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">减均值、除标准差</text>
+<line x1="720" y1="162" x2="744" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-bn)"/>
+
+<rect x="748" y="140" width="130" height="44" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="813" y="167" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">×γ + β</text>
+<line x1="878" y1="162" x2="902" y2="162" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-bn)"/>
+
+<rect x="906" y="140" width="120" height="44" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="966" y="167" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">非线性 g</text>
+<text x="40" y="204" font-size="11" fill="#9ca3af">b 会被减均值消掉，角色由 β 接管。归一化 u 消不掉协变量偏移，因为 u 往往已是非线性输出。</text>
+
+<rect x="20" y="230" width="530" height="360" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="566" y="230" width="534" height="360" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="40" y="258" font-size="14" fill="#111827" font-weight="700">训练：当前 mini-batch</text>
+<text x="40" y="278" font-size="11" fill="#6b7280">统计量进反传。除数是 m，不是 m−1</text>
+
+<rect x="40" y="296" width="490" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="56" y="318" font-size="14" fill="#111827" font-weight="700">μ：这 m 个样本的均值</text>
+<text x="56" y="338" font-size="11" fill="#6b7280">σ²：对这 m 个偏差平方再除以 m</text>
+
+<line x1="285" y1="348" x2="285" y2="368" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-bn)"/>
+
+<rect x="40" y="372" width="490" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="56" y="394" font-size="14" fill="#111827" font-weight="700">x 减 μ，再除以标准差</text>
+<text x="56" y="414" font-size="11" fill="#6b7280">分母是 σ² + ε 的平方根。ε 只为数值稳定</text>
+
+<line x1="285" y1="424" x2="285" y2="444" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-bn)"/>
+
+<rect x="40" y="448" width="490" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="56" y="470" font-size="14" fill="#111827" font-weight="700">再乘 γ、加 β，交给下一层</text>
+<text x="56" y="490" font-size="11" fill="#6b7280">γ、β 设回标准差和均值，就能表示恒等</text>
+
+<text x="40" y="528" font-size="11" fill="#9ca3af">一个样本的输出还依赖 batch 里的别人。这是正则，也是推理必须换统计的原因。</text>
+<text x="40" y="548" font-size="11" fill="#9ca3af">卷积：同一特征图所有位置合在一起估。每张图一对 γ、β。</text>
+<text x="40" y="568" font-size="11" fill="#9ca3af">有效样本数 m′ = m·p·q。p、q 是特征图高宽。</text>
+
+<text x="586" y="258" font-size="14" fill="#111827" font-weight="700">推理：训完后的总体统计</text>
+<text x="586" y="278" font-size="11" fill="#6b7280">输出只由输入决定。算法 2 的步骤</text>
+
+<rect x="586" y="296" width="494" height="52" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="602" y="318" font-size="14" fill="#111827" font-weight="700">均值：多个训练 batch 的 μ 再平均</text>
+<text x="602" y="338" font-size="11" fill="#6b7280">方差：先把 batch 方差乘 m/(m−1)，再平均</text>
+
+<line x1="833" y1="348" x2="833" y2="368" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#mk-bn)"/>
+
+<rect x="586" y="372" width="494" height="52" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<text x="602" y="394" font-size="14" fill="#111827" font-weight="700">与 γ、β 合成一条直线</text>
+<text x="602" y="414" font-size="11" fill="#6b7280">冻结后替换 BN(x)。不再看当前 batch</text>
+
+<rect x="586" y="448" width="494" height="72" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="602" y="472" font-size="14" fill="#111827" font-weight="700">滑动平均不是这条默认路径</text>
+<text x="602" y="494" font-size="11" fill="#6b7280">论文写它用来跟踪训练中的精度，不是算法 2 的推理步骤。</text>
+<text x="602" y="510" font-size="11" fill="#6b7280">忽略 ε 时，归一化后仍是均值 0、方差 1。</text>
+</svg>

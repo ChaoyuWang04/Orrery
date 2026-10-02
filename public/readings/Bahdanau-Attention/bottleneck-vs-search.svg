@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 640" width="1120" height="640" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="bah-cmp-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+<marker id="bah-cmp-yel" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d4a24c"/></marker>
+<marker id="bah-cmp-gry" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="640" fill="#ffffff"/>
+<rect x="24" y="100" width="520" height="430" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="576" y="100" width="520" height="430" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="48" y="176" width="88" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="196" y="176" width="88" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="344" y="176" width="88" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="236" y="268" width="56" height="72" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<rect x="56" y="380" width="64" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="140" y="380" width="64" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="224" y="380" width="64" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="360" y="380" width="64" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="56" y="456" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="140" y="456" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="224" y="456" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="360" y="456" width="64" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="792" y="156" width="88" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="808" y="228" width="56" height="48" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="620" y="300" width="72" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="648" y="392" width="28" height="14" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="748" y="360" width="28" height="46" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="848" y="388" width="28" height="18" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="968" y="394" width="28" height="12" rx="6" fill="#fdf1dc" stroke="#d4a24c"/>
+<rect x="640" y="412" width="44" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="740" y="412" width="44" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="840" y="412" width="44" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="960" y="412" width="44" height="32" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="640" y="468" width="44" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="740" y="468" width="44" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="840" y="468" width="44" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="960" y="468" width="44" height="28" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<line x1="92" y1="212" x2="248" y2="268" stroke="#d9877a" stroke-width="1.4" marker-end="url(#bah-cmp-red)"/>
+<line x1="240" y1="212" x2="260" y2="268" stroke="#d9877a" stroke-width="1.4" marker-end="url(#bah-cmp-red)"/>
+<line x1="388" y1="212" x2="276" y2="268" stroke="#d9877a" stroke-width="1.4" marker-end="url(#bah-cmp-red)"/>
+<line x1="88" y1="380" x2="248" y2="340" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#bah-cmp-gry)"/>
+<line x1="172" y1="380" x2="256" y2="340" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#bah-cmp-gry)"/>
+<line x1="256" y1="380" x2="264" y2="340" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#bah-cmp-gry)"/>
+<line x1="392" y1="380" x2="280" y2="340" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#bah-cmp-gry)"/>
+<line x1="836" y1="228" x2="836" y2="192" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#bah-cmp-yel)"/>
+<line x1="692" y1="318" x2="662" y2="412" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="692" y1="330" x2="762" y2="412" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="692" y1="330" x2="862" y2="412" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="692" y1="324" x2="982" y2="412" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="762" y1="360" x2="820" y2="276" stroke="#d4a24c" stroke-width="1.4" marker-end="url(#bah-cmp-yel)"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">固定向量每步都用，软搜索每步自己加权</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">红 = 整句共用的固定向量 c；黄 = 这一解码步自己的上下文；绿 = 编码器注释；紫 = 解码状态。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">右图黄条的高矮是示意，不是某一句的对齐权重。灰块是词。</text>
+<text x="284" y="126" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">基本编码器–解码器</text>
+<text x="284" y="148" font-size="11" fill="#6b7280" text-anchor="middle">每一步读的是同一个 c</text>
+<text x="92" y="199" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">y1</text>
+<text x="240" y="199" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">y2</text>
+<text x="388" y="199" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">y3</text>
+<text x="264" y="310" font-size="19" fill="#111827" font-weight="700" text-anchor="middle">c</text>
+<text x="88" y="401" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">h1</text>
+<text x="172" y="401" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">h2</text>
+<text x="256" y="401" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">h3</text>
+<text x="392" y="401" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">hT</text>
+<text x="88" y="475" font-size="11" fill="#6b7280" text-anchor="middle">x1</text>
+<text x="172" y="475" font-size="11" fill="#6b7280" text-anchor="middle">x2</text>
+<text x="256" y="475" font-size="11" fill="#6b7280" text-anchor="middle">x3</text>
+<text x="392" y="475" font-size="11" fill="#6b7280" text-anchor="middle">xT</text>
+<text x="284" y="510" font-size="11" fill="#6b7280" text-anchor="middle">长度变了，还是这一个向量</text>
+<text x="836" y="126" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">软搜索，每步一个上下文</text>
+<text x="836" y="146" font-size="11" fill="#6b7280" text-anchor="middle">只服务正在写的这一个词</text>
+<text x="836" y="179" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">yi</text>
+<text x="836" y="256" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">ci</text>
+<text x="656" y="323" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">s 上一步</text>
+<text x="662" y="433" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">h1</text>
+<text x="762" y="433" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">h2</text>
+<text x="862" y="433" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">h3</text>
+<text x="982" y="433" font-size="11" fill="#111827" font-weight="700" text-anchor="middle">hT</text>
+<text x="662" y="487" font-size="11" fill="#6b7280" text-anchor="middle">x1</text>
+<text x="762" y="487" font-size="11" fill="#6b7280" text-anchor="middle">x2</text>
+<text x="862" y="487" font-size="11" fill="#6b7280" text-anchor="middle">x3</text>
+<text x="982" y="487" font-size="11" fill="#6b7280" text-anchor="middle">xT</text>
+<text x="836" y="510" font-size="11" fill="#6b7280" text-anchor="middle">黄条高的位置，这一步看得多</text>
+<text x="30" y="560" font-size="13" fill="#6b7280">据 PDF p.2–3 的编码器–解码器与 Figure 1 重画。左图是式（2）里每步共用的 c；右图是式（5）的加权和。</text>
+<text x="30" y="584" font-size="13" fill="#6b7280">原图 Figure 1 只画了右图这一步，双向状态画成上下两排。这里把固定向量对照摆在左边。机制示意，不是时间轴。</text>
+<text x="30" y="612" font-size="13" fill="#6b7280">打分用的是发出这个词之前的解码状态。论文把这叫注意力。没有从解码步指回源词的硬对齐。</text>
+</svg>

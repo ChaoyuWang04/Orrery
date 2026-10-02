@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 440" width="1120" height="440" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="440" fill="#ffffff"/>
+<text x="28" y="32" font-size="19" fill="#111827" font-weight="700">去掉非线性隐层之后，主导项不再是 H 乘 V</text>
+<text x="28" y="54" font-size="13" fill="#6b7280">红 = 输出层对词表；紫 = 投影到隐层的稠密乘；绿 = 新模型留下的项。块宽只表示这一项在不在，不是实测耗时。</text>
+
+<rect x="20" y="72" width="350" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="385" y="72" width="350" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="750" y="72" width="350" height="340" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="195" y="100" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">前馈 NNLM</text>
+<text x="560" y="100" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">CBOW</text>
+<text x="925" y="100" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">Skip-gram</text>
+
+<rect x="44" y="124" width="70" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="79" y="147" font-size="11" fill="#6b7280" text-anchor="middle">N×D</text>
+<rect x="44" y="176" width="220" height="36" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="154" y="199" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">N×D×H</text>
+<rect x="44" y="228" width="302" height="36" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="195" y="251" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">H×V</text>
+<text x="195" y="292" font-size="11" fill="#6b7280" text-anchor="middle">主导项是 H×V</text>
+<text x="195" y="312" font-size="11" fill="#6b7280" text-anchor="middle">Huffman 把它收成约 log2(V)</text>
+<text x="195" y="332" font-size="11" fill="#6b7280" text-anchor="middle">剩下的瓶颈仍是 N×D×H</text>
+<text x="195" y="368" font-size="11" fill="#9ca3af" text-anchor="middle">式 2，PDF p. 3</text>
+
+<rect x="409" y="176" width="90" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="454" y="199" font-size="11" fill="#6b7280" text-anchor="middle">N×D</text>
+<rect x="409" y="228" width="200" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="509" y="251" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">D×log2(V)</text>
+<text x="560" y="292" font-size="11" fill="#6b7280" text-anchor="middle">没有隐层 H</text>
+<text x="560" y="312" font-size="11" fill="#6b7280" text-anchor="middle">投影共享，向量求平均</text>
+<text x="560" y="332" font-size="11" fill="#6b7280" text-anchor="middle">词序不进这一层</text>
+<text x="560" y="368" font-size="11" fill="#9ca3af" text-anchor="middle">式 4，PDF p. 4</text>
+
+<rect x="774" y="176" width="90" height="36" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<text x="819" y="199" font-size="11" fill="#6b7280" text-anchor="middle">C×D</text>
+<rect x="774" y="228" width="250" height="36" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="899" y="251" font-size="14" fill="#111827" text-anchor="middle" font-weight="700">C×D×log2(V)</text>
+<text x="925" y="292" font-size="11" fill="#6b7280" text-anchor="middle">每个中心词做 C 次分类</text>
+<text x="925" y="312" font-size="11" fill="#6b7280" text-anchor="middle">实验里 C = 10，不是图上的 ±2</text>
+<text x="925" y="332" font-size="11" fill="#6b7280" text-anchor="middle">远词抽得更少</text>
+<text x="925" y="368" font-size="11" fill="#9ca3af" text-anchor="middle">式 5，PDF p. 4</text>
+</svg>

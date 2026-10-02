@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 680" width="1120" height="680" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<defs>
+<marker id="gruCmpRed" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#d9877a"/></marker>
+<marker id="gruCmpPurp" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8f8bd8"/></marker>
+<marker id="gruCmpGreen" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5fa886"/></marker>
+<marker id="gruCmpGray" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9ca3af"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="680" fill="#ffffff"/>
+<text x="28" y="34" font-size="19" fill="#111827" font-weight="700">三种单元：旧内容留不留，新内容谁来写，状态露不露</text>
+<text x="28" y="58" font-size="13" fill="#6b7280">红 = tanh；紫 = LSTM；绿 = GRU。同色回环是加法捷径。灰 = 输入或输出。三列对齐的是同一件事。</text>
+<text x="28" y="78" font-size="13" fill="#6b7280">按 PDF p.3 图 1 与式 (2)(4)(5) 重画。图 1 没画的 peephole 这里不补。</text>
+
+<rect x="28" y="100" width="340" height="500" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="390" y="100" width="340" height="500" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+<rect x="752" y="100" width="340" height="500" rx="8" fill="#ffffff" stroke="#cbd2d9" stroke-dasharray="5 4"/>
+
+<text x="198" y="128" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">tanh，式 2</text>
+<text x="560" y="128" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">LSTM，图 1(a)</text>
+<text x="922" y="128" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">GRU，图 1(b)</text>
+<text x="198" y="150" font-size="11" fill="#6b7280" text-anchor="middle">旧内容：不留</text>
+<text x="560" y="150" font-size="11" fill="#6b7280" text-anchor="middle">旧内容：遗忘门留在回环上</text>
+<text x="922" y="150" font-size="11" fill="#6b7280" text-anchor="middle">旧内容：更新门留在回环上</text>
+
+<rect x="88" y="176" width="220" height="88" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="198" y="208" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">新值换掉旧 h</text>
+<text x="198" y="232" font-size="11" fill="#6b7280" text-anchor="middle">没有回环</text>
+<text x="198" y="250" font-size="11" fill="#6b7280" text-anchor="middle">每步都是覆盖</text>
+
+<rect x="430" y="176" width="140" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="600" y="184" width="88" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="500" y="200" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">细胞 c</text>
+<text x="500" y="218" font-size="11" fill="#6b7280" text-anchor="middle">旧内容住这里</text>
+<text x="644" y="210" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">f</text>
+<path d="M570 204 H600" stroke="#8f8bd8" stroke-width="1.4" fill="none" marker-end="url(#gruCmpPurp)"/>
+<path d="M644 184 V168 H500 V176" stroke="#8f8bd8" stroke-width="1.4" fill="none" marker-end="url(#gruCmpPurp)"/>
+
+<rect x="792" y="176" width="140" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<rect x="962" y="184" width="88" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="862" y="200" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">激活 h</text>
+<text x="862" y="218" font-size="11" fill="#6b7280" text-anchor="middle">没有独立细胞</text>
+<text x="1006" y="210" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">z</text>
+<path d="M932 204 H962" stroke="#5fa886" stroke-width="1.4" fill="none" marker-end="url(#gruCmpGreen)"/>
+<path d="M1006 184 V168 H862 V176" stroke="#5fa886" stroke-width="1.4" fill="none" marker-end="url(#gruCmpGreen)"/>
+
+<text x="198" y="300" font-size="11" fill="#6b7280" text-anchor="middle">新内容：就是下一步的全部状态</text>
+<text x="560" y="268" font-size="11" fill="#6b7280" text-anchor="middle">写入量由 i 独立决定</text>
+<text x="862" y="268" font-size="11" fill="#6b7280" text-anchor="middle">加多少绑在 z</text>
+
+<rect x="430" y="284" width="140" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="600" y="292" width="88" height="40" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<text x="500" y="308" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">候选 c̃</text>
+<text x="500" y="326" font-size="11" fill="#6b7280" text-anchor="middle">不另设重置</text>
+<text x="644" y="318" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">i</text>
+<path d="M644 292 V244 H500 V232" stroke="#8f8bd8" stroke-width="1.4" fill="none" marker-end="url(#gruCmpPurp)"/>
+
+<rect x="792" y="284" width="140" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="962" y="292" width="88" height="40" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="862" y="308" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">候选 h̃</text>
+<text x="862" y="326" font-size="11" fill="#6b7280" text-anchor="middle">旧 h 先过 r</text>
+<text x="1006" y="318" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">r</text>
+<path d="M932 218 V312 H962" stroke="#5fa886" stroke-width="1.4" fill="none" marker-end="url(#gruCmpGreen)"/>
+<path d="M1006 292 V224" stroke="#5fa886" stroke-width="1.4" fill="none" marker-end="url(#gruCmpGreen)"/>
+
+<text x="198" y="360" font-size="11" fill="#6b7280" text-anchor="middle">暴露：新 h 直接出去</text>
+<text x="560" y="368" font-size="11" fill="#6b7280" text-anchor="middle">暴露：输出门才放行</text>
+<text x="922" y="368" font-size="11" fill="#6b7280" text-anchor="middle">暴露：整份公开，没有输出门</text>
+
+<rect x="88" y="384" width="220" height="56" rx="6" fill="#eeeeee" stroke="#b9b9b9"/>
+<rect x="450" y="392" width="220" height="56" rx="6" fill="#ecebfb" stroke="#8f8bd8"/>
+<rect x="812" y="392" width="220" height="56" rx="6" fill="#e3f4ec" stroke="#5fa886"/>
+<text x="198" y="408" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">新 h 直接出去</text>
+<text x="198" y="428" font-size="11" fill="#6b7280" text-anchor="middle">没有输出门这一层</text>
+<text x="560" y="416" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">输出门 o</text>
+<text x="560" y="436" font-size="11" fill="#6b7280" text-anchor="middle">h = o · tanh(c)</text>
+<text x="922" y="416" font-size="14" fill="#111827" font-weight="700" text-anchor="middle">整份 h 公开</text>
+<text x="922" y="436" font-size="11" fill="#6b7280" text-anchor="middle">图 1(b) 从 h 直接到 OUT</text>
+
+<line x1="198" y1="264" x2="198" y2="376" stroke="#d9877a" stroke-width="1.4" marker-end="url(#gruCmpRed)"/>
+<line x1="500" y1="340" x2="500" y2="384" stroke="#9ca3af" stroke-width="1.4" marker-end="url(#gruCmpGray)"/>
+
+<text x="198" y="520" font-size="11" fill="#9ca3af" text-anchor="middle">传统单元。式 2。</text>
+<text x="560" y="500" font-size="11" fill="#9ca3af" text-anchor="middle">三门。本文跟 Graves 2013。</text>
+<text x="560" y="540" font-size="11" fill="#9ca3af" text-anchor="middle">对角 peephole 图 1 没画，这里不补。</text>
+<text x="922" y="520" font-size="11" fill="#9ca3af" text-anchor="middle">只有重置门和更新门。</text>
+<text x="922" y="560" font-size="11" fill="#9ca3af" text-anchor="middle">r 在进候选的旧 h 上，不在输出上。</text>
+</svg>

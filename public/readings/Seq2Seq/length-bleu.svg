@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" width="1120" height="560" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="560" fill="#ffffff"/>
+<line x1="88" y1="120" x2="520" y2="120" stroke="#eeeeee" stroke-width="1"/>
+<line x1="88" y1="170" x2="520" y2="170" stroke="#eeeeee" stroke-width="1"/>
+<line x1="88" y1="220" x2="520" y2="220" stroke="#eeeeee" stroke-width="1"/>
+<line x1="88" y1="270" x2="520" y2="270" stroke="#eeeeee" stroke-width="1"/>
+<line x1="88" y1="320" x2="520" y2="320" stroke="#eeeeee" stroke-width="1"/>
+<line x1="640" y1="120" x2="1060" y2="120" stroke="#eeeeee" stroke-width="1"/>
+<line x1="640" y1="170" x2="1060" y2="170" stroke="#eeeeee" stroke-width="1"/>
+<line x1="640" y1="220" x2="1060" y2="220" stroke="#eeeeee" stroke-width="1"/>
+<line x1="640" y1="270" x2="1060" y2="270" stroke="#eeeeee" stroke-width="1"/>
+<line x1="640" y1="320" x2="1060" y2="320" stroke="#eeeeee" stroke-width="1"/>
+<line x1="88" y1="112" x2="88" y2="328" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="88" y1="320" x2="528" y2="320" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640" y1="112" x2="640" y2="328" stroke="#9ca3af" stroke-width="1.4"/>
+<line x1="640" y1="320" x2="1068" y2="320" stroke="#9ca3af" stroke-width="1.4"/>
+<polyline points="108,210 126,280 144,276 200,180 250,188 300,170 350,160 410,156 490,176" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<polyline points="108,240 126,290 144,288 200,210 250,210 300,190 350,180 410,186 490,176" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<polyline points="648,280 648,120 708,130 768,140 828,150 888,170 948,200 1008,230" fill="none" stroke="#8f8bd8" stroke-width="2.2"/>
+<polyline points="648,250 648,150 708,170 768,180 828,180 888,180 948,195 1008,220" fill="none" stroke="#d9877a" stroke-width="2.2"/>
+<circle cx="108" cy="210" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="126" cy="280" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="144" cy="276" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="200" cy="180" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="250" cy="188" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="300" cy="170" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="350" cy="160" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="410" cy="156" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="490" cy="176" r="3.5" fill="#ecebfb" stroke="#8f8bd8"/>
+<circle cx="108" cy="240" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="126" cy="290" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="144" cy="288" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="200" cy="210" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="250" cy="210" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="300" cy="190" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="350" cy="180" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="410" cy="186" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<circle cx="490" cy="176" r="3.5" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="30" y="34" font-size="19" fill="#111827" font-weight="700">长句没有先崩，稀有词变多之后两条线交叉</text>
+<text x="30" y="58" font-size="13" fill="#6b7280">紫 = LSTM（图例 34.8）；红 = 基线（图例 33.3）。纵轴是 BLEU，刻度 20 到 40 来自原图。</text>
+<text x="30" y="78" font-size="13" fill="#6b7280">曲线按 PDF p.7 Figure 3 的走势重画。点上不标原文没有列出的小数。</text>
+<text x="80" y="124" font-size="11" fill="#9ca3af" text-anchor="end">40</text>
+<text x="80" y="174" font-size="11" fill="#9ca3af" text-anchor="end">35</text>
+<text x="80" y="224" font-size="11" fill="#9ca3af" text-anchor="end">30</text>
+<text x="80" y="274" font-size="11" fill="#9ca3af" text-anchor="end">25</text>
+<text x="80" y="324" font-size="11" fill="#9ca3af" text-anchor="end">20</text>
+<text x="632" y="124" font-size="11" fill="#9ca3af" text-anchor="end">40</text>
+<text x="632" y="174" font-size="11" fill="#9ca3af" text-anchor="end">35</text>
+<text x="632" y="224" font-size="11" fill="#9ca3af" text-anchor="end">30</text>
+<text x="632" y="274" font-size="11" fill="#9ca3af" text-anchor="end">25</text>
+<text x="632" y="324" font-size="11" fill="#9ca3af" text-anchor="end">20</text>
+<text x="108" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">4</text>
+<text x="126" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">7</text>
+<text x="144" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">8</text>
+<text x="200" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">12</text>
+<text x="250" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">17</text>
+<text x="300" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">22</text>
+<text x="350" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">28</text>
+<text x="410" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">35</text>
+<text x="490" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">79</text>
+<text x="300" y="368" font-size="11" fill="#6b7280" text-anchor="middle">测试句按长度排序，标的是句长</text>
+<text x="648" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">0</text>
+<text x="708" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">500</text>
+<text x="768" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">1000</text>
+<text x="828" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">1500</text>
+<text x="888" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">2000</text>
+<text x="948" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">2500</text>
+<text x="1008" y="342" font-size="11" fill="#9ca3af" text-anchor="middle">3000</text>
+<text x="850" y="368" font-size="11" fill="#6b7280" text-anchor="middle">测试句按平均词频排名排序</text>
+<text x="30" y="412" font-size="13" fill="#6b7280">左图：句长 7 和 8 两档两条线都掉到 25 以下，12 以后拉回；12 到 35，LSTM 在基线上面；79 处碰到一起。</text>
+<text x="30" y="436" font-size="13" fill="#6b7280">右图：稀有词变多时两条线都下降，在排名 2000 与 2500 之间交叉，之后 LSTM 低于基线。左端竖直段图注没有解释。</text>
+<text x="30" y="468" font-size="13" fill="#6b7280">图注只写了少于 35 词没有退化、最长句轻微退化。交叉和最短档下探是图上能看见的，原文没有逐点 BLEU。</text>
+<text x="30" y="500" font-size="13" fill="#6b7280">横轴 4、7、8 挤在左端，因为轴是排过序的测试句，不是均匀的长度尺。据 PDF p.7 Figure 3 重画。</text>
+<text x="30" y="532" font-size="13" fill="#6b7280">原图还标了 17、28，以及右图 3500。右图曲线在 3000 附近结束，没有画到 3500。</text>
+</svg>

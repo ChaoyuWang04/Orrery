@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 600" width="1120" height="600" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', Arial, sans-serif">
+<rect x="0" y="0" width="1120" height="600" fill="#ffffff"/>
+<text x="28" y="34" font-size="19" fill="#111827" font-weight="700">不校正时，步长相对校正后放大多少</text>
+<text x="28" y="58" font-size="13" fill="#6b7280">红条宽度 = 不校正步长 / 校正后步长，全图同一把尺子，36 px 为 1 倍。绿线 = 校正后，定为 1。</text>
+<text x="28" y="78" font-size="13" fill="#6b7280">按算法 1、ε = 0、β1 = 0.9 推得，不是图 4 的实测损失。β2 越接近 1，放大越大，退得越慢。</text>
+
+<line x1="224" y1="108" x2="224" y2="548" stroke="#5fa886" stroke-width="1.4"/>
+<text x="224" y="102" font-size="11" fill="#5fa886" text-anchor="middle">校正后 = 1</text>
+
+<text x="28" y="132" font-size="14" fill="#111827" font-weight="700">β2 = 0.99</text>
+<text x="168" y="158" font-size="11" fill="#6b7280" text-anchor="end">t = 1</text>
+<rect x="188" y="146" width="36" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="232" y="158" font-size="11" fill="#6b7280">1.0</text>
+<text x="168" y="186" font-size="11" fill="#6b7280" text-anchor="end">t = 10</text>
+<rect x="188" y="174" width="76" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="272" y="186" font-size="11" fill="#6b7280">2.1</text>
+<text x="168" y="214" font-size="11" fill="#6b7280" text-anchor="end">t = 100</text>
+<rect x="188" y="202" width="47" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="243" y="214" font-size="11" fill="#6b7280">1.3</text>
+<text x="168" y="242" font-size="11" fill="#6b7280" text-anchor="end">t = 1000</text>
+<rect x="188" y="230" width="36" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="232" y="242" font-size="11" fill="#6b7280">1.0</text>
+
+<text x="28" y="278" font-size="14" fill="#111827" font-weight="700">β2 = 0.999</text>
+<text x="168" y="304" font-size="11" fill="#6b7280" text-anchor="end">t = 1</text>
+<rect x="188" y="292" width="115" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="311" y="304" font-size="11" fill="#6b7280">3.2</text>
+<text x="168" y="332" font-size="11" fill="#6b7280" text-anchor="end">t = 10</text>
+<rect x="188" y="320" width="234" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="430" y="332" font-size="11" fill="#6b7280">6.5</text>
+<text x="168" y="360" font-size="11" fill="#6b7280" text-anchor="end">t = 100</text>
+<rect x="188" y="348" width="115" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="311" y="360" font-size="11" fill="#6b7280">3.2</text>
+<text x="168" y="388" font-size="11" fill="#6b7280" text-anchor="end">t = 1000</text>
+<rect x="188" y="376" width="47" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="243" y="388" font-size="11" fill="#6b7280">1.3</text>
+
+<text x="28" y="424" font-size="14" fill="#111827" font-weight="700">β2 = 0.9999</text>
+<text x="168" y="450" font-size="11" fill="#6b7280" text-anchor="end">t = 1</text>
+<rect x="188" y="438" width="360" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="556" y="450" font-size="11" fill="#6b7280">10.0</text>
+<text x="168" y="478" font-size="11" fill="#6b7280" text-anchor="end">t = 10</text>
+<rect x="188" y="466" width="742" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="938" y="478" font-size="11" fill="#6b7280">20.6</text>
+<text x="168" y="506" font-size="11" fill="#6b7280" text-anchor="end">t = 100</text>
+<rect x="188" y="494" width="360" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="556" y="506" font-size="11" fill="#6b7280">10.0</text>
+<text x="168" y="534" font-size="11" fill="#6b7280" text-anchor="end">t = 1000</text>
+<rect x="188" y="522" width="115" height="16" rx="6" fill="#fbe9e7" stroke="#d9877a"/>
+<text x="311" y="534" font-size="11" fill="#6b7280">3.2</text>
+
+<text x="700" y="132" font-size="11" fill="#9ca3af">倍数 = (1−β1 的 t 次方) / √(1−β2 的 t 次方)</text>
+<text x="700" y="152" font-size="11" fill="#9ca3af">t = 10 往往比 t = 1 更大：β1 先回到 1，β2 还没</text>
+<text x="700" y="172" font-size="11" fill="#9ca3af">图 4 只说明不校正会不稳，损失刻度读不出</text>
+</svg>
