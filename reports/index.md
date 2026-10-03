@@ -175,6 +175,9 @@
 | Nested-Learning | Google | 把「深度」重述为多尺度更新,连续学习的优化视角(arXiv 2512.24695,NeurIPS 2025) |
 | Simplex-Diffusion | Google | 把离散扩散搬到概率单纯形上,中间步保留类别上的信念而不是采样成硬类别;交叉熵训练、带可调随机性的类 DDIM 采样器,蒸馏到 8 步后 GSM8K 解出 32.1%(arXiv 2609.35553) |
 | Rufus-Air | Amazon | 在 GLM-4.5-Air-Base 上公开一条可复现的后训练配方:SFT 后串行接推理、代码、指令遵循 RL,再接通用、代码、搜索 agent 与 RLHF,按奖励可靠度排阶段,超过官方 GLM-4.5-Air 后训练版(arXiv 2609.29421) |
+| Sharpening-Tax | Meta | 智能体任务上基座模型配轻量 harness 的 pass@K 常超过后训练版本;提出度量这笔覆盖损失的 Sharpening Tax,并用按难度调温度的采样器 PTGS 少交税(arXiv 2610.01509) |
+| DRM | Tsinghua | 把奖励建模改成条件密度估计:冻结 LLM 编码器上接轻量 DiT,把高斯噪声去噪成奖励向量,表示多峰偏好并给出方差与分位数(arXiv 2609.33803) |
+| LDE | Tsinghua | 把上下文示例选择改成局部搜索:用 RLVR 训一个小模型对检索到的示例集做一次 Keep / Delete / Replace 编辑,再让目标 LLM 推理一次(arXiv 2609.33609) |
 
 ## Agent 训练与工具使用
 
@@ -242,6 +245,7 @@
 | Hyper-Connections | ByteDance | 把残差连接扩成多条带可学习权重的并行流,化解梯度消失与表示坍缩的跷跷板;DeepSeek mHC 的前作(arXiv 2409.19606,ICLR 2025) |
 | Flash-dLLM | MBZUAI | 扩散语言模型的免训练推理加速:融合 KV cache 更新内核削减显存读写,再让模型自己起草、自己验证做并行解码(arXiv 2609.26796) |
 | FlashLoop | MaxPlanck | 循环 Transformer 的免训练推理加速:跨循环只更新少数 token、稀疏注意力、KV 残差低比特量化,无损精度下端到端最高 1.64 倍提速、KV cache 最高省 6 倍(arXiv 2609.29812) |
+| DepthBench | MaxPlanck | 固定参数量与训练配方、只变宽深比,比较 10 种架构能否把更深变成有效计算:Pre-LN 及多数归一化变体变深无益甚至变差,HC 与 Full AttnRes 持续获益(arXiv 2609.32534) |
 
 ## 分布式训练与并行
 
@@ -297,6 +301,7 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| Looped-DiT | Tsinghua | 每个去噪步内循环复用共享 Transformer 块,参数不变而加深计算;配中间循环深监督与自调制注意力,260M 循环模型在多个文生图基准上超过 6.5 倍大的模型(arXiv 2609.40305) |
 | Video-DeltaNet | Berkeley | 视频扩散的混合注意力:局部 Softmax 加逐帧更新的双向线性记忆,分阶段对齐教师接进预训练模型,在 MiniMax H3 上实例化 |
 | Qwen-Image-2.0-RL | Alibaba | 在 Qwen-Image-2.0 上做 RLHF + on-policy 蒸馏;组合奖励模型、GRPO 框架与混合 CFG,最后用 OPD 合并 T2I 与编辑两条策略 |
 | World-Tracing | WorldLabs | 每像素预测一叠相机系 3D 点:可见表面重建与遮挡补全同出一个张量 |
@@ -398,6 +403,8 @@
 | DexAgent | Stanford | 把一段第一视角人类视频加任务提示转成灵巧手训练轨迹的 agent 流水线:视频理解、按物体属性重建仿真、轨迹优化、数据生成四阶段,每段有验证器,新技能沉淀进自进化工具库(arXiv 2609.35318) |
 | RAPID | MIT | 从单个人类演示自动生成、验证并迭代机器人程序:从演示里推出可测的任务规约、动作原语与交互环境,用以物体为中心的关系式程序表示让程序迁移到新场景(arXiv 2609.30249) |
 | AD-E2E-JEPA | NYU | 端到端自动驾驶的 JEPA 世界模型:给 patch 嵌入加 SIGReg 正则的可学习投影器,规划 patch 减 16 倍、维度减 4 倍,推理提速 100 倍,不训驾驶策略即做目标条件零样本规划(arXiv 2609.34085) |
+| T2Mem | Stanford | 用测试时训练把观测历史压进快权重,让无记忆的预训练 VLA 只靠动作示范学会记忆;RoboMME 16 个任务平均成功率从 17.93% 升到 56.83%(arXiv 2609.36720) |
+| RoboICL | Samsung | 不更新参数、不训 VLA,靠示范上下文加锚定的交互记忆让 GPT-6 Astra 做机器人控制;RoboDojo 30 个任务总分 50.64,最强基线 33.68(arXiv 2609.34261) |
 
 ## 自进化系统
 
@@ -447,6 +454,7 @@
 
 | 报告 | 公司 | 一句话 |
 |---|---|---|
+| ScholarCatalyst | Stanford | 请 184 位一作标注 207 篇近期计算机论文里真正推动了自己项目的前作,测检索系统能否找到「启发新研究」的论文(arXiv 2610.02202) |
 | Qwen3-Embedding | Alibaba | 用基模造 embedding 与 reranker 的全流程配方(arXiv 2506.05176) |
 | BGE-M3 | BAAI | 多语、多粒度、多功能的自蒸馏嵌入(ACL 2024 Findings,arXiv 2402.03216) |
 | jina-embeddings-v4 | Jina | 单模型统一图文多语检索与多向量重排(ACL 2025,arXiv 2506.18902) |

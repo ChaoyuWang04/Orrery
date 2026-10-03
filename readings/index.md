@@ -45,6 +45,7 @@
 
 | 材料 | 机构 | 一句话 |
 |---|---|---|
+| Invent-a-Dataset | Adaption Labs | 零种子数据下从数据集描述直接生成后训练数据的提示式系统;8 类任务、最多 2 万条样本上,质量与多样性都胜过 5 家前沿模型 API 直接生成(arXiv 2610.01674) |
 | Self-Play-Pretraining | Independent | 从随机初始化起零数据预训练:生成器用 RL 写程序交给通用图灵机产出字节序列,学习器做自回归预测,生成器专挑学习器能力边界上的数据(与特拉维夫大学、斯坦福合作) |
 | On-Policy Self-Distillation | UCSD | 无监督的 on-policy 自蒸馏,后训练不再依赖外部标注 |
 | Rethinking-OPD | Tsinghua | 系统查 on-policy 蒸馏的训练动力学:成败取决于师生思维模式是否兼容 |
@@ -127,6 +128,7 @@
 | Sparsely-Gated-MoE | Google | 稀疏门控 MoE 的源头:参数量涨千倍而单样本计算量不变 |
 | Clipper | Berkeley | 通用的低延迟预测服务层,NSDI;缓存、自适应批处理与模型选择 |
 | ReFlux | Tongji | 把深层相对浅层的增量 Δ 写回前面的层,用可学习的反馈图选路组合;同步版降困惑度、提推理精度,流式版保持 1 倍骨干理论 FLOPs(arXiv 2609.32457) |
+| SketchSSM | Seoul National University | 线性注意力解码时状态不变却每步全量读:状态更新时对离线固定的基向量预算一次输出存成草图,之后按查询系数重构,状态访存约降 10 倍(arXiv 2609.33051) |
 
 ## 分布式训练与并行
 
@@ -323,6 +325,7 @@
 | TruthfulQA | Oxford | 专挑人类也常答错的问题,测模型是否跟着复述常见谬误 |
 | MMLU | Berkeley | 57 个学科的多选题;十年里被引用最多、也被刷得最狠的通用知识评测 |
 | JEV-vs-LLM-Judges | University of Pennsylvania | 拿 Jev 与三个 flash 级 LLM 评审在 7 个 benchmark 的 9 组人工标注上逐条对照 rubric 打分:LLM 评审贵 16 到 325 倍、慢 28 到 350 倍,准确率差异多数不显著,而且错在同一批地方(arXiv 2609.29769) |
+| DrivingBench | 未标注 | 让通用 VLM 通过工具直接控制一辆真实丰田卡罗拉绕锥桶低速行驶,思考时车不停;4 个前沿模型里只有 GPT-6 Astra 在第二次尝试跑完全程(alphaXiv 原件,2026-09-29) |
 
 ## 金融市场与量化
 

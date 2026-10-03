@@ -99,3 +99,14 @@
 | 2026-10-02 | 2609.31620 | FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders | USC PSI Lab、Brown University、Rice University、University of Aberdeen | 33 | B · 名单外 | readings/图像、视频与 3D 生成/FuseReg |
 | 2026-10-02 | 2609.32457 | Write Back the $Δ$: Revisiting the Same Tokens with Fresh Representations | Tongji University、Shanghai Jiao Tong University、Shanghai Innovation Institute | 31 | B · 名单外 | readings/推理服务与架构探索/ReFlux |
 | 2026-10-02 | 2609.35748 | Improving Test-Time Scaling with Adaptive Looped Transformers | Tsinghua University、Yale University | 30 | A · 名单内(Tsinghua) | reports/Tsinghua/TaH2 |
+| 2026-10-03 | 2609.invent-a-dataset-zero-seed | Invent a Dataset: Measuring Dataset Generation Abilities with Zero Seed Data | Adaption Labs | 71 | B · 名单外 | readings/训练方法与强化学习/Invent-a-Dataset |
+| 2026-10-03 | 2610.02202 | ScholarCatalyst: A Benchmark for Retrieving Papers That Inspire New Research | Stanford University | 57 | A · 名单内(Stanford) | reports/Stanford/ScholarCatalyst |
+| 2026-10-03 | 2609.40305 | Looped Diffusion Transformer | Sensetime、Tsinghua University、Nanyang Technological University | 47 | A · 名单内(Tsinghua) | reports/Tsinghua/Looped-DiT |
+| 2026-10-03 | 2609.36720 | T$^2$Mem: Learning Test-Time Memory for Robotics | Stanford University、NVIDIA、University of Michigan | 38 | A · 名单内(Stanford) | reports/Stanford/T2Mem |
+| 2026-10-03 | 2609.33051 | SketchSSM: Write to the Full State, Read from a Compact Sketch | Seoul National University、University of California, Berkeley、KAIST | 32 | B · 名单外 | readings/推理服务与架构探索/SketchSSM |
+| 2026-10-03 | 2609.33609 | You Only Edit Once: Incentivizing In-Context Capability of LLMs via Local Demonstration Refinement | Tsinghua University | 31 | A · 名单内(Tsinghua) | reports/Tsinghua/LDE |
+| 2026-10-03 | 2609.33803 | Diffusion Reward Models | Tsinghua University、Chinese University of Hong Kong、University of Illinois Urbana-Champaign | 31 | A · 名单内(Tsinghua) | reports/Tsinghua/DRM |
+| 2026-10-03 | 2610.01509 | Sharpening Tax in Post-Training | University of Wisconsin–Madison | 30 | A · 名单内(Meta) | reports/Meta/Sharpening-Tax |
+| 2026-10-03 | 2609.drivingbench-vlm-driving-toyota | DrivingBench: Can Vision-Language Models Drive a Toyota Corolla? | (alphaXiv 未标) | 30 | B · 名单外 | readings/评测与 Benchmark/DrivingBench |
+| 2026-10-03 | 2609.32534 | DepthBench: Measuring How Residual Connections Enable More Computational Depth | ELLIS Institute Tübingen、Max Planck Institute for Intelligent Systems、Tübingen AI Center、Chinese University of Hong Kong | 30 | A · 名单内(MaxPlanck) | reports/MaxPlanck/DepthBench |
+| 2026-10-03 | 2609.34261 | RoboICL: Embodied In-Context Learning with GPT-6 Astra | Samsung Research、Samsung Robotics eXperience | 30 | A · 名单内(Samsung) | reports/Samsung/RoboICL |
